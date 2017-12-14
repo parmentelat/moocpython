@@ -53,7 +53,7 @@ monFichier = file_to_string(fichier)
 
 if monFichier != None:
 
-    """ Inserer les tratement ici"""
+    """ Inserer les traitement ici"""
 
     exo_title(monFichier)
 
