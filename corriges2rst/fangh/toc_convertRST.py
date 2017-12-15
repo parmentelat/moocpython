@@ -4,7 +4,6 @@
 """
 Script adapté à partir d'un modèle mis à dispo sur le Mooc Python 3
 Script de départ à compléter et à optimiser...
-
 Commentaires sur le script en cours et toutes suggestions bienvenues ;)
 Permet de regrouper les fichiers txt des corrigés par semaine sur un seul fichier rst
 Hypothèse de départ : tous les fichiers y compris le script sont dans le même dossier
@@ -30,17 +29,21 @@ def read():
         with open(titre_semaine, encoding='utf-8') as entree:
             contents = [line for line in entree.readlines()]
             for i, line in enumerate(contents):
+                
+                #suppression des ### et autres lignes inutiles
                 line = re.sub(r"^#*[\n]", "\n", line)
+                line = re.sub(r"(\# -\*- coding: utf-8 -\*-)", '', line)
+                line = re.sub(r"^(#*\s{1})$", '', line)
                               
                 # titre 2
                 if re.search(r"\w*(Corrigés de la semaine \d)\n", line):
-                    line = re.search(r"\w*(Corrigés de la semaine \d)\n", line)[0]
-                    line = line + ("-" * len(line))
+                    titre2 = re.search(r"\w*(Corrigés de la semaine \d)\n", line)[0]
+                    line = "\n\n" + titre2 + ("-" * len(titre2)) + "\n\n"
                     
                 # titre 3
                 if re.search(r"\w*(Semaine \d Séquence \d\n)", line):
-                    line = re.search(r"\w*(Semaine \d Séquence \d\n)", line)[0]
-                    line = line + ("~" * len(line)) + "\n"
+                    titre3 = "\n" + re.search(r"\w*(Semaine \d Séquence \d\n)", line)[0]
+                    line = titre3 + ("~" * len(titre3)) + "\n\n" + ".. code:: ipython3" + "\n\n"
                     
                 # regroupement de tous les corrges dans un seul objet 
                 full_contents += f"{line}"
@@ -52,7 +55,7 @@ def read():
 # regroupant tous les corrigés     
 def write(full_contents):
     titre = "Corrigés"
-    titre = titre + "\n" + ("=" * len(titre) + "\n" * 2)
+    titre = titre + "\n" + ("=" * len(titre))
     
     with open('corriges-all.rst', "w", encoding='utf-8') as sortie:
         sortie.write(titre)
