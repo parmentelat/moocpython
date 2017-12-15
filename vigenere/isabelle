@@ -1,0 +1,17 @@
+def encode_vigenere(message, key) :
+    l=[]
+    for i,c in enumerate(message) :
+        if ord('a') <= ord(c) <= ord('z') :
+            di = ord(key[i%len(key)]) - ord('a')
+            c = chr((ord(c) - ord('a') + di) % 26 + ord('a'))
+        l.append(c)
+    return "".join(l)
+
+def decode_vigenere(message, key) :
+    l=[]
+    for i,c in enumerate(message) :
+        if ord('a') <= ord(c) <= ord('z') :
+            c = ord(c)- ord(key[i%len(key)])
+            c = chr(c % 26 + ord('a'))
+        l.append(c)
+    return "".join(l)
