@@ -1,1 +1,1 @@
-Premier jet d'encodage vite fait pour voir comment ça marche.
+Une version un peu plus complete
