@@ -1,5 +1,4 @@
-C'est parti
+Mes propositions pour Vigenere
 
-J'en suis encore à maîtriser (un bien grand mot pour l'instant, patauger serait plus précis ) **github** en  mettant à jour cette première page. Demain je me mets à l'exercice mais en fait je l'avais déjà fait à l'occasion du **MOOC Arithmétique et Cryptographie**, qui , outre les deux thèmes annoncés , incluait également une introduction à **Python**, Il faut simplement que je m'y remette.
-
-A suivre donc
+**version 0** , brut de décoffrage à partir de ce que j'avais fait à l'époque - adaptation minimale à partir de la ligne 57, je n'ai pas touché au reste surabondant pour l'instant, mais je suis prêt à "attaquer" un code  
+Prochaine étape: rendre plus pythonique ( vous avez deviné, je viens de java ... ) et suivre les consignes du cours
