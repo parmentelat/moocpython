@@ -1,6 +1,5 @@
 # Bienvenue sur `corriges2rst`
-*Dossier dédié pour le sujet proposé par Fangh sur l'espace* réservé [moocpython]*.<br>
-*Espace "destiné à faire office de wiki évolué pour le MOOC python 2017" ouvert par Thierry Parmentelat.<br>
+*Dossier dédié pour le sujet proposé par Fangh sur l'espace réservé [moocpython] du MOOC python 2017.<br>
 _Règles du jeu et quelques consignes à l'utilisation de cet espace (cliquez sur le lien ci-dessus)._
 
 ## Objectif (sur ce dossier)<br>
