@@ -32,8 +32,7 @@ def read(corriges_list):
     for titre_semaine in corriges_list:
         # gestionnaire de contexte qui ouvre en lecture et ferme chaque fichier corriges.txt
         with open(titre_semaine, encoding='utf-8') as entree:
-            txt_content = [line for line in entree.readlines()]
-            for line in txt_content:
+            for line in entree:
                 #suppression de lignes avec #### et autres... à optimiser ?
                 line = re.sub(r"^#*[\n]", "\n", line)
                 line = re.sub(r"(\# -\*- coding: utf-8 -\*-)", '', line)
