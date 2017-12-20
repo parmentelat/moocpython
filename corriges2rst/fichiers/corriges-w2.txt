@@ -1,0 +1,299 @@
+# -*- coding: utf-8 -*-
+############################################################ 
+#
+# Corrigés de la semaine 2
+#
+############################################################
+
+##################################################
+# pythonid (regexp) - Semaine 2 Séquence 2
+##################################################
+# un identificateur commence par une lettre ou un underscore
+# et peut être suivi par n'importe quel nombre de
+# lettre, chiffre ou underscore, ce qui se trouve être \w
+# si on ne se met pas en mode unicode
+pythonid = "[a-zA-Z_]\w*"
+
+
+##################################################
+# pythonid (bis) - Semaine 2 Séquence 2
+##################################################
+# on peut aussi bien sûr l'écrire en clair
+pythonid_bis = "[a-zA-Z_][a-zA-Z0-9_]*"
+
+
+##################################################
+# agenda (regexp) - Semaine 2 Séquence 2
+##################################################
+# l'exercice est basé sur re.match, ce qui signifie que
+# le match est cherché au début de la chaine
+# MAIS il nous faut bien mettre \Z à la fin de notre regexp,
+# sinon par exemple avec la cinquième entrée le nom 'Du Pré'
+# sera reconnu partiellement comme simplement 'Du'
+# au lieu d'être rejeté à cause de l'espace
+# 
+# du coup pensez à bien toujours définir
+# vos regexps avec des raw-strings
+#
+# remarquez sinon l'utilisation à la fin de :? pour signifier qu'on peut
+# mettre ou non un deuxième séparateur ':' 
+#   
+agenda = r"\A(?P<prenom>[-\w]*):(?P<nom>[-\w]+):?\Z"
+
+
+##################################################
+# phone (regexp) - Semaine 2 Séquence 2
+##################################################
+# idem concernant le \Z final
+#
+# il faut bien backslasher le + dans le +33
+# car sinon cela veut dire 'un ou plusieurs'
+#
+phone = r"(\+33|0)(?P<number>[0-9]{9})\Z"
+
+
+##################################################
+# url (regexp) - Semaine 2 Séquence 2
+##################################################
+# en ignorant la casse on pourra ne mentionner les noms de protocoles
+# qu'en minuscules
+i_flag = "(?i)"
+
+# pour élaborer la chaine (proto1|proto2|...)
+protos_list = ['http', 'https', 'ftp', 'ssh', ] 
+protos      = "(?P<proto>" + "|".join(protos_list) + ")"
+
+# à l'intérieur de la zone 'user/password', la partie
+# password est optionnelle - mais on ne veut pas le ':' dans
+# le groupe 'password' - il nous faut deux groupes
+password    = r"(:(?P<password>[^:]+))?"
+
+# la partie user-password elle-même est optionnelle
+# on utilise ici un raw f-string avec le préfixe rf
+# pour insérer la regexp <password> dans la regexp <user>
+user        = rf"((?P<user>\w+){password}@)?"
+
+# pour le hostname on accepte des lettres, chiffres, underscore et '.'
+# attention à backslaher . car sinon ceci va matcher tout y compris /
+hostname    = r"(?P<hostname>[\w\.]+)"
+
+# le port est optionnel
+port        = r"(:(?P<port>\d+))?"
+
+# après le premier slash
+path        = r"(?P<path>.*)"
+
+# on assemble le tout
+url = i_flag + protos + "://" + user + hostname + port + '/' + path
+
+
+##################################################
+# label - Semaine 2 Séquence 6
+##################################################
+def label(prenom, note):
+    if note < 10:
+        return f"{prenom} est recalé"
+    elif note < 16:
+        return f"{prenom} est reçu"
+    else:
+        return f"félicitations à {prenom}"
+
+
+##################################################
+# label (bis) - Semaine 2 Séquence 6
+##################################################
+def label_bis(prenom, note):
+    if note < 10:
+        return f"{prenom} est recalé"
+    # on n'en a pas vraiment besoin ici, mais
+    # juste pour illustrer cette construction
+    elif 10 <= note < 16:
+        return f"{prenom} est reçu"
+    else:
+        return f"félicitations à {prenom}"
+
+
+##################################################
+# label (ter) - Semaine 2 Séquence 6
+##################################################
+# on n'a pas encore vu l'expression conditionnelle
+# et dans ce cas précis ce n'est pas forcément une
+# idée géniale, mais pour votre curiosité on peut aussi
+# faire comme ceci
+def label_ter(prenom, note):
+    return f"{prenom} est recalé" if note < 10 \
+    else f"{prenom} est reçu" if 10 <= note < 16 \
+    else f"félicitations à {prenom}"
+
+
+##################################################
+# inconnue - Semaine 2 Séquence 6
+##################################################
+# pour enlever à gauche et à droite une chaine de longueur x
+# on peut faire composite[ x : -x ]
+# or ici x vaut len(connue)
+def inconnue(composite, connue):
+    return composite[ len(connue) : -len(connue) ]
+
+
+##################################################
+# inconnue (bis) - Semaine 2 Séquence 6
+##################################################
+# ce qui peut aussi s'écrire comme ceci si on préfère
+def inconnue_bis(composite, connue):
+    return composite[ len(connue) : len(composite)-len(connue) ]
+
+
+##################################################
+# laccess - Semaine 2 Séquence 6
+##################################################
+def laccess(liste):
+    """
+    retourne un élément de la liste selon la taille
+    """
+    # si la liste est vide il n'y a rien à faire
+    if not liste:
+        return
+    # si la liste est de taille paire
+    if len(liste) % 2 == 0:
+        return liste[-1]
+    else:
+        return liste[len(liste)//2]
+
+
+##################################################
+# laccess (bis) - Semaine 2 Séquence 6
+##################################################
+# une autre version qui utilise
+# un trait qu'on n'a pas encore vu
+def laccess(liste):
+    # si la liste est vide il n'y a rien à faire
+    if not liste:
+        return
+    # l'index à utiliser selon la taille
+    index = -1 if len(liste) % 2 == 0 else len(liste) // 2
+    return liste[index]
+
+
+##################################################
+# divisible - Semaine 2 Séquence 6
+##################################################
+def divisible(a, b):
+    "renvoie True si un des deux arguments divise l'autre"
+    # b divise a si et seulement si le reste
+    # de la division de a par b est nul
+    if a % b == 0:
+        return True
+    # et il faut regarder aussi si a divise b
+    if b % a == 0:
+        return True
+    return False
+
+
+##################################################
+# divisible (bis) - Semaine 2 Séquence 6
+##################################################
+def divisible_bis(a, b):
+    "renvoie True si un des deux arguments divise l'autre"
+    # on n'a pas encore vu les opérateurs logiques, mais
+    # on peut aussi faire tout simplement comme ça
+    # sans faire de if du tout
+    return a % b == 0 or b % a == 0
+
+
+##################################################
+# morceaux - Semaine 2 Séquence 6
+##################################################
+def morceaux(x):
+    if x <= -5:
+        return -x - 5
+    elif x <= 5:
+        return 0
+    else:
+        return x / 5 - 1
+
+
+##################################################
+# morceaux (bis) - Semaine 2 Séquence 6
+##################################################
+def morceaux_bis(x):
+    if x <= -5:
+        return -x - 5
+    if x <= 5:
+        return 0
+    return x / 5 - 1
+
+
+##################################################
+# morceaux (ter) - Semaine 2 Séquence 6
+##################################################
+# on peut aussi faire des tests d'intervalle
+# comme ceci  0 <= x <= 10
+def morceaux_ter(x):
+    if x <= -5:
+        return -x - 5
+    elif -5 <= x <= 5:
+        return 0
+    else:
+        return x / 5 - 1
+
+
+##################################################
+# liste_P - Semaine 2 Séquence 7
+##################################################
+def P(x):
+    return 2 * x**2 - 3 * x - 2
+
+def liste_P(liste_x):
+    """
+    retourne la liste des valeurs de P 
+    sur les entrées figurant dans liste_x
+    """
+    return [P(x) for x in liste_x]
+
+
+##################################################
+# liste_P (bis) - Semaine 2 Séquence 7
+##################################################
+# On peut bien entendu faire aussi de manière pédestre
+def liste_P_bis(liste_x):
+    liste_y = []
+    for x in liste_x:
+        liste_y.append(P(x))
+    return liste_y
+
+
+##################################################
+# carre - Semaine 2 Séquence 7
+##################################################
+def carre(line):
+    # on enlève les espaces et les tabulations
+    line = line.replace(' ', '').replace('\t','')
+    # la ligne suivante fait le plus gros du travail
+    # d'abord on appelle split() pour découper selon les ';'
+    # dans le cas où on a des ';' en trop, on obtient dans le 
+    #    résultat du split un 'token' vide, que l'on ignore 
+    #    ici avec le clause 'if token'
+    # enfin on convertit tous les tokens restants en entiers avec int()
+    entiers = [int(token) for token in line.split(";")
+               # en éliminant les entrées vides qui correspondent
+               # à des point-virgules en trop
+               if token]
+    # il n'y a plus qu'à mettre au carré, retraduire en strings,
+    # et à recoudre le tout avec join et ':'
+    return ":".join([str(entier**2) for entier in entiers])
+
+
+##################################################
+# carre (bis) - Semaine 2 Séquence 7
+##################################################
+def carre_bis(line):
+    # pareil mais avec, à la place des compréhensions
+    # des expressions génératrices que - rassurez-vous -
+    # l'on n'a pas vues encore, on en parlera en semaine 5
+    # le point que je veux illustrer ici c'est que c'est
+    # exactement le même code mais avec () au lieu de []
+    line = line.replace(' ', '').replace('\t','')
+    entiers = (int(token) for token in line.split(";")
+               if token)
+    return ":".join(str(entier**2) for entier in entiers)
