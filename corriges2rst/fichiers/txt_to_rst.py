@@ -127,11 +127,8 @@ new_fichier = mon_titre + new_fichier
 
 sauve_fichier('corriges_all.rst', new_fichier)
 
+os.remove('temp_file.txt')
 
-
-
-
-
-
-
-
+print(f"{len(ma_liste)} fichier(s) traité(s).")
+print("1 fichier créé, 'corriges_all.txt'.")
+print("1 fichier temporaire éffacé.")
