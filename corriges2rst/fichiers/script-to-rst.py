@@ -21,12 +21,30 @@ import glob # trouve les chemins d'accès par motif
 import re # Opérations à base d’expressions rationnelles
 import textwrap # comme indiqué en titre du module ;)
 
-# Récupération dans une liste de tous les fichiers.txt du dossier
+# Comme indiqué ;)
+def test(file):
+    response = input(f"fichier => {file} ... à traiter ? (O/N) :")
+    
+    if str(response).lower() == "o":
+        print(response)
+        return True
+    else:
+        return False
+    
 def launch_script(ext):
-    corriges_list = glob.glob(ext)
-    corriges_list.sort()
-    # lance la lecture des fichiers txt et le regroupement des données
-    read(corriges_list)
+    # Récupération dans une liste de tous les fichiers.txt du dossier
+    txt_list = glob.glob(ext)
+    
+    # demande de sélection par fichier trouvé
+    file_list = [file for file in txt_list if test(file)]
+    file_list.sort()
+    print(file_list)
+    
+    if len(file_list):
+        # lance la lecture des fichiers txt et le regroupement des données
+        read(file_list)
+    else:
+        print("Oups! Apparemment aucun fichier à traiter...")
 
 def read(corriges_list):
     # Création liste vide regroupant le contenu de tous les corriges.txt
