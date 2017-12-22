@@ -21,30 +21,40 @@ import glob # trouve les chemins d'accès par motif
 import re # Opérations à base d’expressions rationnelles
 import textwrap # comme indiqué en titre du module ;)
 
-# Comme indiqué ;)
-def test(file):
-    response = input(f"fichier => {file} ... à traiter ? (O/N) :")
-    
-    if str(response).lower() == "o":
-        print(response)
-        return True
+# Vérification préalable pour le dossier et chaque fichier à traiter
+def test(*args):
+    #print(os.listdir("/home/jg/"))
+    #print(len(args))
+    if len(args):
+        response = input(f"fichier => {args} ... à traiter ? (Entrée pour oui) :")
     else:
+        path = os.path.dirname(os.path.abspath(__file__))
+        response = input(f"dossier => {path} ... à traiter ? (Entrée pour oui) :")
+
+    # validation ou non en réponse
+    if len(str(response)):
+        print("non")
         return False
+    else:
+        print("oui")
+        return True
     
 def launch_script(ext):
     # Récupération dans une liste de tous les fichiers.txt du dossier
-    txt_list = glob.glob(ext)
+    if test():
+        txt_list = glob.glob(ext) 
+        # demande de sélection par fichier trouvé
+        file_list = [file for file in txt_list if test(file)]
+        file_list.sort()
+        print(file_list)
     
-    # demande de sélection par fichier trouvé
-    file_list = [file for file in txt_list if test(file)]
-    file_list.sort()
-    print(file_list)
-    
-    if len(file_list):
-        # lance la lecture des fichiers txt et le regroupement des données
-        read(file_list)
+        if len(file_list):
+            # lance la lecture des fichiers txt et le regroupement des données
+            read(file_list)
+        else:
+            print("Oups! Apparemment aucun fichier à traiter...")
     else:
-        print("Oups! Apparemment aucun fichier à traiter...")
+        print("Oups! Apparemment ce n'est pas le bon dossier...")
 
 def read(corriges_list):
     # Création liste vide regroupant le contenu de tous les corriges.txt
