@@ -20,4 +20,7 @@ Une idée de "jeu" (c'est le cas de le dire) qui m'avait amusé: coder un puissa
 
 Moi ça m'avait amusé !( après les goûts et les couleurs...) J'avais fait une première version en utilisant uniquement des fonctions, puis une version plus satisfaisante je pense avec des classes (même si parfois, ça doit rester un peu maladroit dans l'écriture du code). Et puis, après puissance 4, un mastermind?
 
+ArgonCooper
+
   [1]: map.png
+
