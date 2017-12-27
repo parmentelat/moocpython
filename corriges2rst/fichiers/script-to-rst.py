@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-#!python3
-
+# -*- coding: utf-8 -*-
 """
-Created on Wed Dec 13 17:33:12 2017
+Updated on Sat Dec 23 05:41:40 2017
 @author: jg
 
 Script "artisanal" mais appliqué dont le point de départ est adapté
@@ -16,20 +15,21 @@ avant écriture finale dans le fihcier "corriges.rst"
 Le script fonctionne très bien mais doit pouvoir être optimisé
 Remarques, suggestions bienvenus...
 """
-import os # gestion des dossier et des fichiers
-import glob # trouve les chemins d'accès par motif
+
+from pathlib import Path
 import re # Opérations à base d’expressions rationnelles
 import textwrap # comme indiqué en titre du module ;)
 
 # Vérification préalable pour le dossier et chaque fichier à traiter
-def test(*args):
-    #print(os.listdir("/home/jg/"))
-    #print(len(args))
-    if len(args):
-        response = input(f"fichier => {args} ... à traiter ? (Entrée pour oui) :")
+def test(arg):
+    path_dir = Path(__file__).parent
+    if arg == path_dir:    
+        response = input(f"dossier => {path_dir} ... à traiter ? (Entrée pour oui) :")
     else:
-        path = os.path.dirname(os.path.abspath(__file__))
-        response = input(f"dossier => {path} ... à traiter ? (Entrée pour oui) :")
+        if isinstance(arg, list):
+            response = input(f"traitement automatique pour ces fichiers ? (Entrée pour oui) :")
+        else:
+            response = input(f"fichier => {arg} ... à traiter ? (Entrée pour oui) :")
 
     # validation ou non en réponse
     if len(str(response)):
@@ -38,19 +38,22 @@ def test(*args):
     else:
         print("oui")
         return True
-    
+
 def launch_script(ext):
+    path_dir = Path(__file__).parent
     # Récupération dans une liste de tous les fichiers.txt du dossier
-    if test():
-        txt_list = glob.glob(ext) 
-        # demande de sélection par fichier trouvé
-        file_list = [file for file in txt_list if test(file)]
-        file_list.sort()
-        print(file_list)
+    if test(path_dir):
+        files = [file.name for file in list(path_dir.glob(ext))]
+        files.sort()
+        print(f"Fichiers txt présents dans le dossier \"{path_dir.name}\": \n{files}")
+        if test(files):
+            files_list = files
+        else:
+            files_list = [file for file in files if test(file)]
     
-        if len(file_list):
+        if len(files_list):
             # lance la lecture des fichiers txt et le regroupement des données
-            read(file_list)
+            read(files_list)
         else:
             print("Oups! Apparemment aucun fichier à traiter...")
     else:
@@ -103,6 +106,7 @@ def write(txt_fullcontents):
     with open('corriges.rst', "w", encoding='utf-8') as sortie:
         sortie.write(titre)
         sortie.write(f"{txt_fullcontents}")
+        print('---\nTraitement effectué avec succès dans "corriges.rst" !')
 
 # Lance la procédure pour les fichiers txt du dossier
 launch_script("*.txt")
