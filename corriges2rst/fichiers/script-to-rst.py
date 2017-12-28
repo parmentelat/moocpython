@@ -27,11 +27,9 @@ import textwrap # comme indiqué en titre du module ;)
 
 # Vérification préalable pour le dossier et chaque fichier à traiter
 def test(arg):
-    path_dir = Path(__file__).parent
-    
+    path_dir = Path(__file__).parent 
     # si le dossier ne s'affiche pas dans un terminal (c'est mon cas;)
     dirname = sys.path[0] if sys.path[0] else path_dir.name
-  
     if arg == path_dir:
         print(f"\ndossier en cours => {dirname}")
         response = input(f"Est-ce le bon dossier à traiter ? (Entrée pour oui)")
@@ -117,6 +115,8 @@ def prepareData(entree, txt_fullcontents, week):
     return txt_fullcontents
 
 def write(txt_fullcontents):
+    platform = sys.platform
+    sep = "\\" if platform == 'win32' else "/"
     # *****************************
     dialog_box = tkinter.Tk()
     dialog_box.filename =  filedialog.askdirectory(title='Choisir le dossier de destination')
@@ -127,13 +127,13 @@ def write(txt_fullcontents):
     titre_corriges = titre_corriges + "\n" + ("=" * len(titre_corriges))
     # gestionnaire de contexte qui ouvre en écriture
     # et ferme le fichier.rst (regroupement)
-    with open(destination_path + "/corriges.rst", "w", encoding='utf-8') as corriges:
+    with open(destination_path + sep + "corriges.rst", "w", encoding='utf-8') as corriges:
         corriges.write(titre_corriges)
         corriges.write(f"{txt_fullcontents}")
-        with open(destination_path + "/index.rst", "w", encoding='utf-8') as index:
+        with open(destination_path + sep +"index.rst", "w", encoding='utf-8') as index:
             titre_index = 'MOOC Python 3 - corrigés'
             titre_index = titre_index + "\n" + ("=" * len(titre_index) + "\n" * 2)
-            contents_index = titre_index + ".. toctree::\n   :maxdepth: 3\n\n   corriges"
+            contents_index = titre_index + ".. toctree::\n   :maxdepth: 2\n\n   corriges"
             index.write(contents_index)    
     print(f'''
     Traitement effectué avec succès!
@@ -142,3 +142,4 @@ def write(txt_fullcontents):
 
 # Lance la procédure pour les fichiers txt du dossier
 launch_script("*.txt")
+
