@@ -1,0 +1,113 @@
+import os
+
+class ConnectFour():
+    def __init__ (self, height, width, token = ('X','@')):
+        self.height = height
+        self.width = width
+        self.token = token
+        self.board = [['.' for i in range(width)] for j in range(height)]
+        self.height_columns = dict((i, 0) for i in range(width))
+        
+    def __repr__(self):
+        os.system('clear')
+        result = ' '.join(str(i + 1) for i in range(self.width)) + '\n'
+        result += '\n'.join(' '.join(c for c in self.board[i]) for i in range(self.height - 1, -1, -1))
+        return result
+    
+        
+    def turn(self, player):
+        
+        valid = False
+        while not valid :
+            print(f"C'est au tour du joueur {player + 1}.\nDans quelle colonne voulez-vous jouer ?")
+            try :
+                col = int(input())
+            except ValueError :
+                print("Saisie non valide !")
+            else :
+                if 1 <= col <= self.width and self.height_columns[col - 1] < self.height :
+                    valid = True
+                else :
+                    print("Coup invalide !")     
+        self.board[self.height_columns[col - 1]][col - 1] = self.token[player]
+        self.height_columns[col - 1] += 1
+        print(self)
+        return (col - 1, self.height_columns[col - 1] - 1)
+        
+        
+    def game(self):
+        print(self)
+        end = False
+        counter = 0
+        player = 1
+        while not end and counter < self.width * self.height:
+            player = 1 - player
+            (col, row) = self.turn(player)
+            counter += 1
+            if counter >= 7 :
+                end = self.check_victory(player, col, row)
+        if not end :
+            print("Partie nulle !")
+        else :
+            print(f"Bravo joueur {player + 1}, vous avez gagné !")
+
+    def check_victory(self, player, col, row) :
+        subsequence = [self.token[player]] * 4
+
+        if row >= 3 :
+            column = [self.board[i][col] for i in range(self.height)]
+            if subsequence == column[:4] :
+                return True
+
+        def check_subsequence(line):
+            for i in range(max(0, col - 3), col + 1):
+                if subsequence == line[i : i + 4] :
+                    return True
+            return False
+            
+        if check_subsequence(self.board[row]) == True :
+            return True
+        
+        first_diag = []
+        for i in range(self.height):
+            try :
+                c = self.board[i][col - row + i]
+            except IndexError:
+                pass
+            else :
+                first_diag.append(c)
+        if len(first_diag) >= 4 :
+            if check_subsequence(first_diag) :
+                return True
+                
+        second_diag = []
+        for i in range(self.height):
+            try :
+                c = self.board[i][col + row - i]
+            except IndexError:
+                pass
+            else :
+                second_diag.append(c)
+        if len(second_diag) >= 4 :
+            if check_subsequence(second_diag) :
+                return True
+            
+if __name__ == '__main__':
+    print("Dimensions du plateau de jeu ?")
+    print("Hauteur ?\n(saisir un nombre ou une lettre pour la valeur par défaut)")
+    try :
+        height = max(4, int(input()))
+    except ValueError :
+          print("Valeur par défaut : 6")
+          height = 6
+    finally :
+          print("Largeur ?\n(saisir un nombre ou une lettre pour la valeur par défaut)")
+          try :
+              width = max(4, int(input()))
+          except ValueError :
+              print("Valeur par défaut : 7")
+              width = 7
+          finally :
+              play = ConnectFour(height, width)
+              play.game()
+   
