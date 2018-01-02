@@ -7,4 +7,12 @@ Prochaine étape: rendre plus pythonique ( vous avez deviné, je viens de java .
 
 **version 2**, version objet Vigenere( mode,cle) faire help(Vigenere) pour plus de détails( mode majuscule et minuscule mélangé et mode cyrillique mis en place - merci UTF-8).  ( NB mis en ligne maintenant, je croyais l'avoir déjà fait mais cele a du se perdre en route)
 
-Prochaine étape lever une exception si la cle ne correspond paa au mode et pouvoir coder et décoder un message donné dans un fichier texte - 
+**version 3**, On peut maintenant travailler soit une chaîne (s_code et s_decode), soit sur un fichier texte (f_code et f_decode).
+et une exception (tous les caractères de la clé doivent être dans l'alphabet)
+
+Je n'ai pas l'intention d'aller plus loin pour l'instant. Les prochaines étapes pourraient être à partir de
+https://www.ti89.com/cryptotut/home.htm
+* outils pour "casser" un code et relever les défis
+* autres types de cryptage 
+
+
