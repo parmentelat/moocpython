@@ -5,3 +5,6 @@ Mon cahier des charges: initialiser le plateaus de jeu ( Largeur, hauteur ) Le j
 * Objectif 3: L'ordinateur joue
 
 Question: ce jeu n'est pas très compliqué et, sans aller chercher Deep Blue, nos ordinateurs doivent pouvoir en faire une analyse complète. Quelqu'un connait-il le résultat?
+
+Lorsque j'aurais avancé un peu, je me propose de lancer une "issue" pour échanger  
+ 
