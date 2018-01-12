@@ -1,0 +1,57 @@
+#!/usr/local/bin/python3.6
+# coding: UTF-8
+# Auteur : Philippe Errembault
+
+from fractions import Fraction
+
+# la fonction order renvoie le nombre de bit composant
+# la représentation binaire du nombre x passé en paramètre
+def order(x):
+    r, old_r, n, old_n = 2, 1, 1, 0
+    # grosse louche : si r <= x, on teste le carré de r
+    while (x>=r):
+        r, old_r, n, old_n = r*r, r, 2*n, n
+    # on s'arrête au dernier r < x; et s'il était > 1, 
+        # alors on raffine de façon récursive avec x/r
+    return order(x >> old_n) + old_n if old_n > 0 else 0
+
+# Cette fonction représente la valeur absolue d'un termee
+# générique pour toutes les formules de type "Machin"
+def termes(coeficient, denominateur, ordre):
+    return Fraction(4 * coeficient, 
+            denominateur**(2*ordre+1) * (2*ordre+1))
+
+# ce générateur cherche parmi tous les possibles prochains
+# termees, celui qui est le plus grand en valeur absolue
+
+def generateur_des_termes(prec_att):
+    ws = [ [termes(parm[1], parm[2], 0), 0] + list(parm)
+      for parm in (
+          (1, 44, 57),     # les paramètres choisis ici ne
+          (1, 7, 239),     # sont pas ceux de la formule de 
+          (-1, 12, 682),   # Machin, mais de celle de Størmer
+          (1, 24, 12943)   # qui converge un peu plus vite.
+          )]
+    nb_chiffres = 0
+    while nb_chiffres<prec_att:
+        curws = max(ws, key=lambda col: col[0])
+        nb_chiffres = int(0.30103 *     # ~log₁₀(2)
+                     (order(curws[0].denominator))
+                      - order(curws[0].numerator))
+        yield curws[2] * curws[0], nb_chiffres
+        curws[2] = -curws[2]                
+        curws[1] += 1
+        curws[0] = termes(curws[3], curws[4], curws[1])
+
+precision_attendue = 2000
+
+pi = 0
+for terme, chiffres in generateur_des_termes(precision_attendue):
+    pi += terme
+
+# Je n'ai pas utilisé les f-strings pour pouvoir partager ce 
+# programme avec des gens qui n'ont pas encore python 3.6
+print("{} chiffres obtenus".format(chiffres), 
+      "({} décimales affichées)".format(precision_attendue))
+PI=int(pi)
+print("pi = {}.{}".format(PI, int((pi-PI)*10**precision_attendue)))
