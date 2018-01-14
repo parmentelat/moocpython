@@ -1,11 +1,11 @@
-# -*- coding: ISO-8859-15 -*-
+# -*- coding: utf-8 -*-
 '''
 o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o
 LE JEU DE LA VIE
 -- Ajout le 11/02/2015
--- ModifiÈ le 29/04/2015 : Optimisation du code et ajout de fonctionnalitÈs.
--- ModifiÈ le 01/05/2015 : Correction d'un bug.
--- ModifiÈ le 17/05/2015 : Ajout de fonctionnalitÈ (AccÈlÈrer)
+-- Modifi√© le 29/04/2015 : Optimisation du code et ajout de fonctionnalit√©s.
+-- Modifi√© le 01/05/2015 : Correction d'un bug.
+-- Modifi√© le 17/05/2015 : Ajout de fonctionnalit√© (Acc√©l√©rer)
 o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o
 '''
 import sys, os.path, time, pickle
@@ -21,19 +21,22 @@ else:
 
 class Grille:
     def __init__(self):
-        self.L_H_cellule = 15           #Largeur/hauteur d'une cellule par dÈfaut
-        self.L_H_grille = 0             #Largeur/hauteur de la grille(en fonction de la taille de l'Ècran)
-        self.H_appli_diff = 44          #En pixels = hauteur Ècran - hauteur de la grille
-        self.cpt_gener = 0              #Compteur de gÈnÈrations
-        self.traitement_en_cours = False #TÈmoin traitement gÈnÈrations actif/inactif
-        self.frequence_affich = 1       #Temporisation pour la frÈquence d'affichage
-        self.dic_cell_live = {}         #Dictionnaire des cellules en vie ‡ temps t
-        self.dic_cell_live_t1 = {}      #Dictionnaire des cellules en vie ‡ temps t+1
-        self.dic_examen = {}            #Dictionnaire des cellules dÈj‡ examinÈes
+        self.L_H_cellule = 15           #Largeur/hauteur d'une cellule par d√©faut
+        self.L_H_grille = 0             #Largeur/hauteur de la grille(en fonction de la taille de l'√©cran)
+        self.H_appli_diff = 44          #En pixels = hauteur √©cran - hauteur de la grille
+        self.cpt_gener = 0              #Compteur de g√©n√©rations
+        self.traitement_en_cours = False #T√©moin traitement g√©n√©rations actif/inactif
+        self.frequence_affich = 1       #Temporisation pour la fr√©quence d'affichage
+        self.dic_cell_live = {}         #Dictionnaire des cellules en vie √† temps t
+        self.dic_cell_live_t1 = {}      #Dictionnaire des cellules en vie √† temps t+1
+        self.dic_examen = {}            #Dictionnaire des cellules d√©j√† examin√©es
         self.dic_cell_voisines = {}     #Dictionnaire des cellules voisines de chaque cellule en vie
         self.font1 = "Arial 10 bold"    #Police Titres
         self.font2 = "Arial 8 bold"     #Police Entetes
-        self.chemin_motifs = os.environ['HOMEDRIVE'] #Chemin par dÈfaut du fichier Motifs (pour importation)
+        try:
+            self.chemin_motifs = os.environ['HOMEDRIVE'] #Chemin par d√©faut du fichier Motifs (pour importation)
+        except:
+            self.chemin_motifs = os.environ['HOME']
 
     def grille_dessin(self):
         '''
@@ -54,25 +57,25 @@ class Grille:
         self.Var_population.set(0)
         self.Var_nb_totcell.set(self.format_milliers(str(self.nb_cellules ** 2)))
         self.Var_Nb_cell_LH.set(self.format_milliers(str(self.nb_cellules)))
-        self.Var_Demarrer.set('DÈmarrer')
+        self.Var_Demarrer.set('D√©marrer')
 
     def grille_reinit(self):
         '''
-        AprËs modification de la taille d'une cellule, rÈ-initialisation de la
-        grille et des paramÍtres de l'application
+        Apr√®s modification de la taille d'une cellule, r√©-initialisation de la
+        grille et des param√™tres de l'application
         '''
-        self.cpt_gener = 0          #Compteur de gÈnÈrations
-        self.dic_cell_live = {}     #Dictionnaire des cellules en vie ‡ temps t
-        self.dic_cell_live_t1 = {}  #Dictionnaire des cellules en vie ‡ temps t+1
+        self.cpt_gener = 0          #Compteur de g√©n√©rations
+        self.dic_cell_live = {}     #Dictionnaire des cellules en vie √† temps t
+        self.dic_cell_live_t1 = {}  #Dictionnaire des cellules en vie √† temps t+1
         self.L_H_cellule = self.Var_L_cell.get()
         self.nb_cellules = int(self.L_H_grille / self.L_H_cellule)      #Nombre de cellules par ligne/colonne
         self.frequence_affich = 1
-        self.debut = time.time()    #Top dÈbut
+        self.debut = time.time()    #Top d√©but
         self.grille_dessin()
 
     def coords_lig_col(self, event):
         '''
-        Calcul des coordonnÈes x,y et des numÈros de ligne et colonne
+        Calcul des coordonn√©es x,y et des num√©ros de ligne et colonne
         '''
         x = event.x - (event.x % self.L_H_cellule)
         y = event.y - (event.y % self.L_H_cellule)
@@ -82,10 +85,10 @@ class Grille:
 
     def clic_gauche_cell(self, event):
         '''
-        - Mettre la cellule ‡ l'Ètat vivant: couleur blanche
-        - Enregistrer le numÈro de la cellule dans <dic_cell_live>
+        - Mettre la cellule √† l'√©tat vivant: couleur blanche
+        - Enregistrer le num√©ro de la cellule dans <dic_cell_live>
         '''
-        #CrÈation de la cellule et ajout dictionnaire cellules en vie
+        #Cr√©ation de la cellule et ajout dictionnaire cellules en vie
         x, y, lig, col = self.coords_lig_col(event)
 
         if lig <= self.nb_cellules and col <= self.nb_cellules:
@@ -101,7 +104,7 @@ class Grille:
         '''
         Suppression d'une cellule:
             - Supprimer la cellule de la grille
-            - Supprimer la clÈ de la cellule de <dic_cell_live>
+            - Supprimer la cl√© de la cellule de <dic_cell_live>
         '''
         #Suppression de la cellule sur la grille
         x, y, lig, col = self.coords_lig_col(event)
@@ -115,9 +118,9 @@ class Grille:
 
     def clic_gauche_listbox(self, event):
         '''
-        - Lire le nom du motif sÈlectionnÈ dans la listbox
-        - Initialiser les donnÈes dictionnaire correspondantes au motif
-        - Re-initialiser la grille et les paramËtres
+        - Lire le nom du motif s√©lectionn√© dans la listbox
+        - Initialiser les donn√©es dictionnaire correspondantes au motif
+        - Re-initialiser la grille et les param√®tres
         '''
         index = self.Lstbox.curselection()
         cle = self.Lstbox.get(index)
@@ -147,7 +150,7 @@ class Grille:
 
     def double_clic_gauche_listbox(self, event):
         '''
-        - Lire le nom du motif sÈlectionnÈ dans la listbox
+        - Lire le nom du motif s√©lectionn√© dans la listbox
         - Supprimer le motif dans le dictonnaire et dans la listbox
         '''
         index = self.Lstbox.curselection()
@@ -171,7 +174,7 @@ class Grille:
 
     def souris_survol(self, event):
         '''
-        Afficher les coordonnÈes ligne/colonne de la souris
+        Afficher les coordonn√©es ligne/colonne de la souris
         '''
         x, y, lig, col = self.coords_lig_col(event)
 
@@ -181,14 +184,14 @@ class Grille:
     def entree_saisie(self, event):
         '''
         - Lire le nom du motif dans la zone de saisie
-        - Sauvegarder les paramËtres dans le dictionnaire <self.dic_motifs>
+        - Sauvegarder les param√®tres dans le dictionnaire <self.dic_motifs>
         - Sauvegarder le dictionnaire des motifs dans la sauvegarde Pickle
         '''
         nom_motif = self.Var_Saisie.get()
 
         if nom_motif:
             if nom_motif in self.dic_motifs:
-                msg1 = "L'intitulÈ du motif <" + nom_motif + "> existe dÈj‡\n"
+                msg1 = "L'intitul√© du motif <" + nom_motif + "> existe d√©j√†\n"
                 msg2 = "Voulez vous le remplacer?"
 
                 if not askyesno("Jeu de la vie - Sauvegarde du motif", msg1 + msg2, default = "no", icon = "warning"):
@@ -217,13 +220,13 @@ class Grille:
                 C.Lstbox.insert(END, cle)
 
         else:
-            msg1 = "Dans la zone de saisie, veuillez indiquer le titre du motif ‡ sauvegarder."
+            msg1 = "Dans la zone de saisie, veuillez indiquer le titre du motif √† sauvegarder."
             showinfo("Jeu de la vie - Sauvegarde du motif", msg1, icon = "warning")
 
     def spin_ralentir(self):
         '''
         - Restaurer la valeur initiale du widget <spin_accelerer>
-        - Si affichage manuel => modification des paramËtres
+        - Si affichage manuel => modification des param√®tres
         '''
         self.Var_accelerer.set(1)
 
@@ -239,19 +242,19 @@ class Grille:
 
     def bouton_demarrer(self):
         '''
-        Lancer le calcul des gÈnÈrations.
+        Lancer le calcul des g√©n√©rations.
         '''
         if self.Spin_ralentir.get() == "Manuel":
             self.traitement_en_cours = False
             self.Var_duree.set("%.3f" % 0)
-            self.debut = time.time()    #Top dÈbut
+            self.debut = time.time()    #Top d√©but
             self.Var_Demarrer.set('Suite...')
             self.Demarrer.configure(state = NORMAL)
         else:
             self.traitement_en_cours = True
             self.Demarrer.configure(state = DISABLED)
             self.Spin_L_cell.configure(state = DISABLED)
-            self.Var_Demarrer.set('DÈmarrer')
+            self.Var_Demarrer.set('D√©marrer')
             self.ImportMotifs.configure(state = DISABLED)
 
         if self.L_H_cellule > 1 :
@@ -268,40 +271,40 @@ class Grille:
         self.Spin_L_cell.configure(state = "readonly")
         self.Demarrer.configure(state = NORMAL)
         self.ImportMotifs.configure(state = NORMAL)
-        self.Var_Demarrer.set('DÈmarrer')
+        self.Var_Demarrer.set('D√©marrer')
         self.Grille.itemconfigure("lignes", fill = "grey50")
         self.Grille.configure(bg = "black")
 
     def bouton_import_motifs(self):
         '''
-        Importation des motifs correspondants ‡ la norme "Life 1.05".
+        Importation des motifs correspondants √† la norme "Life 1.05".
          '''
         fic_motif = askopenfile(initialdir = self.chemin_motifs,
             filetypes =[( "Fichiers MOTIFS ", (".LIF", ".lif"))],
             defaultextension = ".LIF", title = "Lire un Motif", mode = "r")
 
         if fic_motif:
-            #RÈinitialisation par dÈfaut de la grille
+            #R√©initialisation par d√©faut de la grille
             self.L_H_cellule = 15
             self.Var_L_cell.set(self.L_H_cellule)
             self.Spin_L_cell.configure(state = DISABLED)
             self.grille_reinit()
 
-            #CoordonnÈes pour centrage du motif
+            #Coordonn√©es pour centrage du motif
             x_centre = y_centre = int(self.nb_cellules / 2)
 
-            #Initialisation par dÈfaut si la ligne #P":(Position x,y) est absente du fichier
+            #Initialisation par d√©faut si la ligne #P":(Position x,y) est absente du fichier
             x = y = x_pos = self.L_H_cellule * 10
             nomfic = os.path.splitext(os.path.split(fic_motif.name)[1])[0]
             infos = "Nom du fichier : " + nomfic + "\n"
 
             #Traitement Life 1.05
-            test = True     #TÈmoin lecture 1Ëre ligne
+            test = True     #T√©moin lecture 1√®re ligne
 
             for ligne in fic_motif:
                 ligne = ligne.rstrip("\r\n")
 
-                #Lecture de la 1Ëre ligne
+                #Lecture de la 1√®re ligne
                 if test:
                     if ligne == "#Life 1.05":
                         infos += ligne[1:] + "\n"
@@ -312,8 +315,8 @@ class Grille:
                         showinfo("Jeu de la vie - Importation des motifs", msg, icon = "warning")
                         return
 
-                #Lecture des lignes 2 ‡ n
-                #D: Description infos - #N: Nom du motif - #R: #RËgle
+                #Lecture des lignes 2 √† n
+                #D: Description infos - #N: Nom du motif - #R: #R√®gle
                 if ligne[:2] in("#D", "#N", "#R"):
                     infos += ligne[2:] + "\n"
 
@@ -348,7 +351,7 @@ class Grille:
         '''
         - Examen de chaque cellule en vie.
         - Examen et comptage des voisines de chaque cellule en vie.
-        - DÈcision vie/mort et ecriture dans <self.dic_cell_live_t1> selon dÈcision
+        - D√©cision vie/mort et ecriture dans <self.dic_cell_live_t1> selon d√©cision
         '''
         #Si une cellule en vie est sur un bord ==> diminution taille cellule de 1 pixel
         self.zoom()
@@ -373,14 +376,14 @@ class Grille:
         self.Var_population.set(len(self.dic_cell_live_t1))
         self.Grille.delete("vie")  #Suppression des cellules en vie au temps "t"
 
-        #CrÈation des cellules en vie au temps "t+1"
+        #Cr√©ation des cellules en vie au temps "t+1"
         for lig, col in self.dic_cell_live_t1:
             x = (col * self.L_H_cellule)
             y = (lig * self.L_H_cellule)
             self.Grille.create_rectangle(x, y, x + self.L_H_cellule, y + self.L_H_cellule,
                 fill = "white", tags = ((lig, col), "vie"))
 
-        #La gÈnÈration "t+1" devient la gÈnÈration "t"
+        #La g√©n√©ration "t+1" devient la g√©n√©ration "t"
         self.dic_cell_live = dict(self.dic_cell_live_t1)
         self.dic_cell_live_t1 = {}
         self.dic_examen = {}
@@ -395,7 +398,7 @@ class Grille:
         if self.Spin_ralentir.get() == "Manuel":
             return
 
-        #Rafraichissement Ècran et boucle Tk.after
+        #Rafraichissement √©cran et boucle Tk.after
         if self.traitement_en_cours:
             self.Var_duree.set("%.3f" % (time.time() - self.debut))
 
@@ -409,8 +412,8 @@ class Grille:
     def scan_cell_voisines(self, lig, col, test):
         '''
         Recherche des cellules voisines et comptage des cellules en vie.
-        Les clÈs des cellules voisines sont stockÈes dans <self.dic_cell_voisines>
-        ParamËtre <test>:
+        Les cl√©s des cellules voisines sont stock√©es dans <self.dic_cell_voisines>
+        Param√®tre <test>:
             - True si on recherche les voisines des cellules en vie
             - False si on recherche les voisines des voisines des cellules en vie
         '''
@@ -436,14 +439,14 @@ class Grille:
 
     def decision_vie_mort(self, cpt_cell_en_vie, lig, col):
         '''
-        Application des rËgles de vie ou de mort:
+        Application des r√®gles de vie ou de mort:
         - 0 ou 1 cellule voisine  en vie = mort par isolement
-        - 4 ‡ 8 cellules voisines en vie = mort par surpopulation
-          Dans ces cas la cellule n'est pas Ècrite dans <dic_cell_live_t1>
+        - 4 √† 8 cellules voisines en vie = mort par surpopulation
+          Dans ces cas la cellule n'est pas √©crite dans <dic_cell_live_t1>
          '''
         #2 cellules voisines en vie = survie (pas de changement)
         if cpt_cell_en_vie == 2:
-            #Si la cellule Ètait en vie au temps T
+            #Si la cellule √©tait en vie au temps T
             if (lig, col) in self.dic_cell_live:
                 self.dic_cell_live_t1.setdefault((lig, col))
 
@@ -455,10 +458,10 @@ class Grille:
         '''
         Si une cellule atteint un bord :
             - Diminuer taille cellule de 1 pixel pour augmenter le nombre de cellules
-            - Les coordonnÈes de chaque cellule sont recalculÈes
+            - Les coordonn√©es de chaque cellule sont recalcul√©es
          '''
         bord = False
-        nb_cellules = self.nb_cellules - 1     #Pour comptage de 0 ‡ n
+        nb_cellules = self.nb_cellules - 1     #Pour comptage de 0 √† n
 
         #Une cellule en vie se trouve-elle sur un bord?
         for lig, col in self.dic_cell_live.keys():
@@ -485,7 +488,7 @@ class Grille:
             self.Var_L_cell.set(str(self.L_H_cellule))
             self.grille_dessin()
 
-            #Si taille de la cellule = 1  ==> modif couleurs pour visibilitÈ
+            #Si taille de la cellule = 1  ==> modif couleurs pour visibilit√©
             if self.L_H_cellule == 1:
                 self.Grille.configure(bg = "grey")
                 self.Grille.itemconfigure("vie", fill = "black")
@@ -493,7 +496,7 @@ class Grille:
             else:
                 self.Grille.itemconfigure("lignes", fill = "black")
 
-            #Calcul des nouvelles coordonnÈes des cellules en vie de la gÈnÈration "t"
+            #Calcul des nouvelles coordonn√©es des cellules en vie de la g√©n√©ration "t"
             lst_dic_cell_live_cles = self.dic_cell_live.keys()
             self.dic_cell_live = {} #RAZ
 
@@ -506,7 +509,7 @@ class Grille:
                 self.Grille.create_rectangle(x, y, x + self.L_H_cellule, y + self.L_H_cellule,
                     fill = "white", tags = ((lig, col), "vie"))
 
-            #Calcul des nouvelles coordonnÈes des cellules de la gÈnÈration "t+1"
+            #Calcul des nouvelles coordonn√©es des cellules de la g√©n√©ration "t+1"
             lst_dic_cell_live_t1_cles = self.dic_cell_live_t1.keys()
             self.dic_cell_live_t1 = {}  #RAZ
 
@@ -517,7 +520,7 @@ class Grille:
 
     def format_milliers(self, nb, sep = " "):
         '''
-        Formatage pour sÈparation par milliers
+        Formatage pour s√©paration par milliers
         '''
         if len(nb) < 4:
             return nb
@@ -526,14 +529,14 @@ class Grille:
 
     def appli_Tk(self):
         '''
-        CrÈer les objets graphiques Tkinter
+        Cr√©er les objets graphiques Tkinter
         '''
         self.Ecran0 = Tk()
         self.Ecran0.title("Jeu de la vie")
         self.Ecran0.geometry("+0+0")
         self.Ecran0.resizable(0, 0)
 
-#-o-o-o-o   CrÈation des Frames conteneurs
+#-o-o-o-o   Cr√©ation des Frames conteneurs
         self.Frame_1 = Frame(self.Ecran0)
         self.Frame_2 = Frame(self.Ecran0)
         self.Frame_3 = Frame(self.Ecran0)
@@ -542,21 +545,21 @@ class Grille:
         self.Frame_2.grid(row = 1, column = 1, sticky = NW)
         self.Frame_3.grid(row = 1, column = 2, sticky = NW)
 
-#-o-o-o-o   CrÈation des widgets de self.Frame_1
+#-o-o-o-o   Cr√©ation des widgets de self.Frame_1
         self.Var_Saisie = StringVar()
         self.Lbl_Motifs = LabelFrame(self.Frame_1, text = "Motifs", font = self.font1)
 
-        #CrÈation Listbox zone de sÈlÈction des motifs
+        #Cr√©ation Listbox zone de s√©l√©ction des motifs
         self.Lstbox = Listbox(self.Lbl_Motifs, selectmode = SINGLE, width = 24,
             height = 40)
 
-        #CrÈation Scrollbar Listbox
+        #Cr√©ation Scrollbar Listbox
         self.Bar_Listbox = Scrollbar(self.Lbl_Motifs)
         self.Bar_Listbox.configure(command=self.Lstbox.yview)
         self.Lstbox.configure(yscrollcommand=self.Bar_Listbox.set)
         self.Bar_Listbox.pack(side = RIGHT, fill = Y)
 
-        #CrÈation saisie "nom_motif nouveau motif"
+        #Cr√©ation saisie "nom_motif nouveau motif"
         self.Ent_Saisie = Entry(self.Lbl_Motifs, width = 24,
             textvariable = self.Var_Saisie, takefocus = False)
 
@@ -564,11 +567,11 @@ class Grille:
         self.Lstbox.pack()
         self.Ent_Saisie.pack(pady = 4)
 
-#-o-o-o-o   CrÈation des widgets de self.Frame_2
+#-o-o-o-o   Cr√©ation des widgets de self.Frame_2
         self.Grille = Canvas(self.Frame_2, width = 0, height = 0, bg = "black")
         self.Grille.pack(pady = 4)
 
-#-o-o-o-o   CrÈation des widgets de self.Frame_3
+#-o-o-o-o   Cr√©ation des widgets de self.Frame_3
         self.Var_duree      = StringVar()
         self.Var_gener      = IntVar()
         self.Var_population = IntVar()
@@ -580,50 +583,50 @@ class Grille:
         self.Var_accelerer  = IntVar()
         self.Var_L_cell.set(self.L_H_cellule)
 
-        #CrÈation du label "DurÈe"
+        #Cr√©ation du label "Dur√©e"
         self.Lbl_Duree = Label(self.Frame_3, textvariable = self.Var_duree,
             width = 8, anchor = E, relief = "groove", fg = "green", bg = "black",
             font = "Arial 16 bold")
 
         self.LbF_infos      = LabelFrame(self.Frame_3, text = " Infos ", font = self.font1)
-        self.LbF_Gener      = LabelFrame(self.LbF_infos, text = "GÈnÈrations", font = self.font2)
+        self.LbF_Gener      = LabelFrame(self.LbF_infos, text = "G√©n√©rations", font = self.font2)
         self.LbF_Population = LabelFrame(self.LbF_infos, text = "Population", font = self.font2)
         self.LbF_Nb_cell_LH = LabelFrame(self.LbF_infos, text = "Nb cellules L/H", font = self.font2)
         self.LbF_Nb_totcell = LabelFrame(self.LbF_infos, text = "Nb Total cellules", font = self.font2)
-        self.LbF_Coord      = LabelFrame(self.LbF_infos, text = "CoordonnÈes", font = self.font2)
+        self.LbF_Coord      = LabelFrame(self.LbF_infos, text = "Coordonn√©es", font = self.font2)
         self.Lbl_sep1       = Label(self.Frame_3)
         self.LbF_actions    = LabelFrame(self.Frame_3, text = " Actions ", font = self.font1)
         self.LbF_L_cell     = LabelFrame(self.LbF_actions, text = "Largeur cellule", font = self.font2)
         self.LbF_ralentir   = LabelFrame(self.LbF_actions, text = "Ralentir", font = self.font2)
-        self.LbF_accelerer  = LabelFrame(self.LbF_actions, text = "AccÈlÈrer", font = self.font2)
+        self.LbF_accelerer  = LabelFrame(self.LbF_actions, text = "Acc√©l√©rer", font = self.font2)
         self.Lbl_sep2       = Label(self.LbF_actions)
 
-        #CrÈation du label "GÈnÈrations"
+        #Cr√©ation du label "G√©n√©rations"
         self.Lbl_Gener = Label(self.LbF_Gener, textvariable = self.Var_gener)
-        #CrÈation du label "Population"
+        #Cr√©ation du label "Population"
         self.Lbl_Population = Label(self.LbF_Population, textvariable = self.Var_population)
-        #CrÈation du label "Nb cellules L/H"
+        #Cr√©ation du label "Nb cellules L/H"
         self.Lbl_Nb_cell_LH = Label(self.LbF_Nb_cell_LH, textvariable = self.Var_Nb_cell_LH)
-        #CrÈation du label "Nb total de cellules"
+        #Cr√©ation du label "Nb total de cellules"
         self.Lbl_Nb_totcell = Label(self.LbF_Nb_totcell, textvariable = self.Var_nb_totcell)
-        #CrÈation du label "CoordonnÈes"
+        #Cr√©ation du label "Coordonn√©es"
         self.Lbl_Coord = Label(self.LbF_Coord, textvariable = self.Var_coord)
 
-        #CrÈation du Spinbox largeur cellule
+        #Cr√©ation du Spinbox largeur cellule
         self.Spin_L_cell = Spinbox(self.LbF_L_cell, from_ = 1, to_ = 40,
             increment = 1, textvariable = self.Var_L_cell, width = 10,
             relief = "groove", state = "readonly", command = self.grille_reinit)
-        #CrÈation du Spinbox Ralentir
+        #Cr√©ation du Spinbox Ralentir
         valeurs = ("1","10","30","50","100","200","300","400","500","1000","2000", "Manuel")
         self.Spin_ralentir = Spinbox(self.LbF_ralentir, values = valeurs,
             width = 10, textvariable = self.Var_ralentir, relief = "groove",
             wrap = "true", state = "readonly", command = self.spin_ralentir)
-        #CrÈation du Spinbox Accelerer
+        #Cr√©ation du Spinbox Accelerer
         self.Spin_accelerer = Spinbox(self.LbF_accelerer, from_ = 1, to_ = 10,
             width = 10, textvariable = self.Var_accelerer, relief = "groove",
             wrap = "true", state = "readonly", command = self.spin_accelerer)
 
-        #CrÈation des boutons
+        #Cr√©ation des boutons
         self.Var_Demarrer = StringVar()
         self.Demarrer = Button(self.LbF_actions, textvariable = self.Var_Demarrer,
             bg = "light yellow", width = 14, takefocus = False,
@@ -664,7 +667,7 @@ class Grille:
         self.ImportMotifs.pack(pady = 4)
         self.Quitter.pack(padx = 4, pady = 20)
 
-#-o-o-o-o   Activation des Èvenements
+#-o-o-o-o   Activation des √©venements
         self.Grille.bind("<Button-1>", self.clic_gauche_cell)
         self.Grille.bind("<Button-3>", self.clic_droit_cell)
         self.Grille.bind("<Motion>", self.souris_survol)
@@ -676,7 +679,7 @@ if __name__ == '__main__':
     C = Grille()
     C.appli_Tk()
 
-    #Ajustement dimension de la grille en fonction de la taille et rÈsolution de l'Ècran
+    #Ajustement dimension de la grille en fonction de la taille et r√©solution de l'√©cran
     C.L_H_grille = C.Ecran0.winfo_screenheight() - C.H_appli_diff
     C.Grille.configure(width = C.L_H_grille, height = C.L_H_grille)
     C.nb_cellules = int(C.L_H_grille / C.L_H_cellule)      #Nombre de cellules par ligne/colonne
@@ -701,6 +704,6 @@ if __name__ == '__main__':
     else:
         C.dic_motifs = {}
 
-    #Boucle de traitement des Èvenements
+    #Boucle de traitement des √©venements
     C.Ecran0.mainloop()
 
