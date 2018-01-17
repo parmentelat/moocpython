@@ -1,0 +1,142 @@
+#!/usr/local/bin/python3.6
+# coding: UTF-8
+# Auteur : Philippe Errembault
+
+DECIMALES=1000              # Valeur par défaut
+
+from argparse import ArgumentParser
+from time import clock
+
+
+# constantes
+auteurs = ['Machin','Euler','Hermann','Hutton','Gauss','Størmer','Takano','Chien-Lih 97','Chien-Lih 2003']
+synonyme = {
+    'machin':'Machin',
+    'euler':'Euler',
+    'hermann':'Hermann',
+    'hutton':'Hutton',
+    'gauss':'Gauss',
+    'størmer':'Størmer',
+    'takano':'Takano',
+    'chien-lih 97':'Chien-lih 97',
+    'chien-lih 2003':'Chien-Lih 2003',
+    'stormer':'Størmer',
+    'chien-Lih 1':'Chien-Lih 97',
+    'chien-Lih 2':'Chien-Lih 2003',
+    }
+formule={
+    'Machin':((1, 4, 5), (-1, 1, 239)),
+    'Euler':((1, 1, 2),(1, 1, 3)),
+    'Hermann':((1, 2, 2), (-1, 1, 7)),
+    'Hutton':((1, 2, 3), (1, 1, 7)),
+    'Gauss':((1, 12, 18), (1, 8, 57), (-1, 5, 239)),
+    'Størmer':((1, 44, 57), (1, 7, 239), (-1, 12, 682), (1, 24, 12943)),
+    'Takano':((1, 12, 49), (1, 32, 57), (-1, 5, 239), (1, 12, 110443)),
+    'Chien-Lih 97':((1, 183, 239), (1, 32, 1023), (-1, 68, 5832), (1, 12, 110443), (-1, 12, 4841182), (-1, 100, 6826318)),
+    'Chien-Lih 2003':((1, 183, 239), (1, 32, 1023), (-1, 68, 5832), (1, 12, 113021), (-1, 100, 6826318), (-1, 12, 33366019650), (1, 12, 43599522992503626068))
+    }
+
+
+
+parser = ArgumentParser()
+parser.add_argument(dest="decimales", type=int, nargs='?', default=DECIMALES,
+                    help="Nombre de décimales attendues (par défaut : {})".format(DECIMALES))
+parser.add_argument("-f", "--full",  action='store_true', help="affichage de toutes les décimales")
+parser.add_argument("-q", "--quiet", action='store_true', help="Pas d'animation, juste le résultat final")
+parser.add_argument("-s", "--shift", type=int, default=0, help="décalage des décimales")
+parser.add_argument("-a", "--author", type=str, default='',
+                    help="spécifier une formule particulière (sinon, on les compare toutes).\n\n"
+                         "Voici les noms (des auteurs) des formules que je connais :\n"
+                         "{}\n".format(auteurs))
+input_args = parser.parse_args()
+nombre_de_chiffres = input_args.decimales
+
+résultat={}
+paramètres = formule['Machin']
+paramètres = formule['Chien-Lih 2003']
+
+
+U=1
+from fractions import Fraction
+U=Fraction(1)               # 'Unité fractionelle' pour ne plus avoir besoin d'appeler le constructeur
+
+
+def ordre(x):
+    r, old_r, n, old_n = 2, 1, 1, 0
+    while (x>=r):
+        r, old_r, n, old_n = r*r, r, 2*n, n
+    return ordre(x >> old_n) + old_n if old_n > 0 else 0
+
+
+def terme(m, n, i):            # Calcule 2 termes à la fois pour pas me faire chier avec les signes alternés
+    return 4*m*(1/(U*n**(4*i+1))/(4*i+1) - 1/(U*n**(4*i+3))/(4*i+3))
+
+
+def generateur(nombre_de_chiffres, parms):
+    ws = [[terme(parm[1], parm[2], 0), 0]+list(parm) for parm in parms]
+    chiffres = 0
+    while chiffres<nombre_de_chiffres:
+        # curws est une référence à la ligne ws qui a la plus grande valeur en première colonne
+        curws=max(ws, key=lambda col: col[0])
+        # nombre de chiffres avant l'erreur
+        num = ordre(curws[0].numerator)
+        dén = ordre(curws[0].denominator)
+        chiffres = int(0.30103 * (dén - num))
+        # On retourne le terme curws[0], à ajouter ou à retrancher en
+        # fonction du signe configuré dans curws[2] (=parms[][0])
+        yield chiffres, curws[2] * curws[0], curws, num, dén
+        curws[1] += 1                 # On passe au terme de rang suivant pour curws
+        curws[0] = terme(curws[3], curws[4], curws[1])  # On calcule la valeur du terme de rang suivant
+
+
+
+def pi(nom):
+    if not input_args.quiet:
+        print("\x1b[2J", end='')
+
+    pi = 0
+    clck=clock()
+    wpool = [0 for i in range(50)]
+    for count, (chiffres, terme, _, wasted, _) in enumerate(generateur(nombre_de_chiffres, formule[nom]), start=1):
+        wpool.pop(0)
+        wpool.append(int(0.30103*wasted))
+        pi += terme
+        if not input_args.quiet:
+            lastclck=clck
+            clck=clock()
+            afficher = nombre_de_chiffres if input_args.full else min(nombre_de_chiffres, chiffres+input_args.shift)
+            PI=int(pi)
+            print(
+                    "\x1b[HFormule de {}, itération {:4}, {:5} chiffres,".format(nom, count, afficher), 
+                    "{:7.3f} s, {:5.0f} ms/iter,".format(clck, 1000*(clck-lastclck)),
+                    "de {:2} à {:2} chiffres gaspillés.\n".format(min(wpool), max(wpool)),
+                    "pi = {}.{}".format(PI, int((pi-PI)*10**afficher)))
+    if input_args.quiet:
+        print("Formule de {}, {} itérations.\npi = 3.{}".format(int((pi-3)*10**nombre_de_chiffres)))
+    return pi, count
+                            
+
+
+def all_pi():
+    for nom in auteurs:
+        résultat[nom]=pi(nom)
+    print()
+    for nom in auteurs:
+        print("{:^25} =".format("erreur({})".format(nom)),
+              "{:<10.3}".format(abs(float(1-résultat[nom][0]/résultat['Machin'][0]))),
+              "(converge vers la précision demandées en {:4} itérations.)".format(résultat[nom][1]))
+    print("\n"
+          "Attention, l'erreur n'est pas une indication de la précision obtenue, mais juste une\n"
+          "détection d'une éventuelle bogue dans les fomules utilisées. Dans ce cas, la formule\n"
+          "convergerait vers une valeur différente et l'erreur ne tendrait pas vers zéro.\n")
+        
+  
+if input_args.author=="":
+    all_pi()
+elif input_args.author in formule:
+    pi(input_args.author)
+elif input_args.author.lower() in synonyme:
+    pi(synonyme[input_args.author.lower()])
+else:
+    print("Je ne connais pas cette Formule. Voici les noms (des auteurs) des formules que je connais :\n{}\n".format(auteurs))
+    

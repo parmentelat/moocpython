@@ -1,35 +1,43 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Updated on Sat Dec 23 05:41:40 2017
 @author: jg
 
 Script "artisanal" mais appliqué dont le point de départ est adapté
 d'un modèle mis à dispo sur le Mooc Python 3
-
-Objectif : regrouper les fichiers txt des corrigés par semaine sur un seul fichier rst
-Hypothèse de départ : tous les fichiers y compris le script sont dans le même dossier
-Option choisie : traitement par lignes et regroupement dans un seul objet
-avant écriture finale dans le fihcier "corriges.rst"
-
+Excellent terrain de jeu pour un "apprentissage par tâtonnement expérimental".
+Du coup des options, variantes et autres choix de traitement sont possibles...
 Le script fonctionne très bien mais doit pouvoir être optimisé
-Remarques, suggestions bienvenus...
-"""
+Remarques, suggestions bienvenues...
 
+Objectif, contexte de départ et option d'exécution choisie 
+Regrouper les fichiers txt des corrigés par semaine sur un seul fichier rst
+Tous les fichiers y compris le script sont dans le même dossier
+Le traitement se fait par ligne et le regroupement dans un seul objet
+avant écriture finale dans le fichier "corriges.rst"
+"""
+# *************** voir à la fin du script
+import tkinter
+from tkinter import filedialog
+# ***************
+import sys
 from pathlib import Path
 import re # Opérations à base d’expressions rationnelles
 import textwrap # comme indiqué en titre du module ;)
 
 # Vérification préalable pour le dossier et chaque fichier à traiter
 def test(arg):
-    path_dir = Path(__file__).parent
-    if arg == path_dir:    
-        response = input(f"dossier => {path_dir} ... à traiter ? (Entrée pour oui) :")
+    path_dir = Path(__file__).parent 
+    # si le dossier ne s'affiche pas dans un terminal (c'est mon cas;)
+    dirname = sys.path[0] if sys.path[0] else path_dir.name
+    if arg == path_dir:
+        print(f"\ndossier en cours => {dirname}")
+        response = input(f"Est-ce le bon dossier à traiter ? (Entrée pour oui)")
     else:
         if isinstance(arg, list):
-            response = input(f"traitement automatique pour ces fichiers ? (Entrée pour oui) :")
+            response = input(f"traitement automatique pour ces fichiers ? (Entrée pour oui)")
         else:
-            response = input(f"fichier => {arg} ... à traiter ? (Entrée pour oui) :")
+            response = input(f"fichier => {arg} à traiter ? (Entrée pour oui)")
 
     # validation ou non en réponse
     if len(str(response)):
@@ -45,7 +53,7 @@ def launch_script(ext):
     if test(path_dir):
         files = [file.name for file in list(path_dir.glob(ext))]
         files.sort()
-        print(f"Fichiers txt présents dans le dossier \"{path_dir.name}\": \n{files}")
+        print(f"Fichiers txt présents dans le dossier : \n{files}")
         if test(files):
             files_list = files
         else:
@@ -67,22 +75,30 @@ def read(corriges_list):
         # gestionnaire de contexte qui ouvre en lecture
         # et ferme chaque fichier corriges.txt
         with open(titre_semaine, encoding='utf-8') as entree:
-            prepareData(entree, txt_fullcontents)
+            week = re.search(r"(?<=[wW])(\d*)(?=\.)", titre_semaine)[0]
+            prepareData(entree, txt_fullcontents, week)
 
     # lance l'écriture dans le fichier de regroupement rst
     write("".join(txt_fullcontents))
 
-def prepareData(entree, txt_fullcontents):
+def prepareData(entree, txt_fullcontents, week):
+    #print(week)
     for line in entree:
         #suppression de lignes avec #### et autres... à optimiser ?
         line = re.sub(r"^#*[\n]", "\n", line)
-        line = re.sub(r"(\# -\*- coding: utf-8 -\*-)", '', line)
+        line = re.sub(r"(\# -\*- coding: utf-8 -\*-)", '', line) 
         line = re.sub(r"^(#*\s{1})$", '', line)
 
         # titre 2
         if re.search(r"\w*(Corrigés de la semaine \d)\n", line):
             titre2 = re.search(r"\w*(Corrigés de la semaine \d)\n", line)[0]
             line = "\n\n" + titre2 + ("-" * len(titre2.strip())) + "\n\n"
+        
+        elif re.search(r"(#!/usr/bin/env python3)", line):
+            line = re.sub(r"(#!/usr/bin/env python3)", '', line)
+            titre2 = f"Corrigés de la semaine {week}\n"
+            line = "\n\n" + titre2 + ("-" * len(titre2.strip())) + "\n\n"  + ".. code:: ipython3" + "\n\n"
+            #print(line)
 
         # titre 3
         elif re.search(r"\w*(Semaine \d Séquence \d\n)", line):
@@ -99,14 +115,31 @@ def prepareData(entree, txt_fullcontents):
     return txt_fullcontents
 
 def write(txt_fullcontents):
-    titre = "Corrigés"
-    titre = titre + "\n" + ("=" * len(titre))
+    platform = sys.platform
+    sep = "\\" if platform == 'win32' else "/"
+    # *****************************
+    dialog_box = tkinter.Tk()
+    dialog_box.filename =  filedialog.askdirectory(title='Choisir le dossier de destination')
+    destination_path = dialog_box.filename
+    dialog_box .destroy()
+    # *****************************
+    titre_corriges = "Corrigés"
+    titre_corriges = titre_corriges + "\n" + ("=" * len(titre_corriges))
     # gestionnaire de contexte qui ouvre en écriture
     # et ferme le fichier.rst (regroupement)
-    with open('corriges.rst', "w", encoding='utf-8') as sortie:
-        sortie.write(titre)
-        sortie.write(f"{txt_fullcontents}")
-        print('---\nTraitement effectué avec succès dans "corriges.rst" !')
+    with open(destination_path + sep + "corriges.rst", "w", encoding='utf-8') as corriges:
+        corriges.write(titre_corriges)
+        corriges.write(f"{txt_fullcontents}")
+        with open(destination_path + sep +"index.rst", "w", encoding='utf-8') as index:
+            titre_index = 'MOOC Python 3 - corrigés'
+            titre_index = titre_index + "\n" + ("=" * len(titre_index) + "\n" * 2)
+            contents_index = titre_index + ".. toctree::\n   :maxdepth: 2\n\n   corriges"
+            index.write(contents_index)    
+    print(f'''
+    Traitement effectué avec succès!
+    --- 2 fichiers créés ou mis à jour : corrigés.rst et index.rst
+    --- dans le dossier : {destination_path}''')
 
 # Lance la procédure pour les fichiers txt du dossier
 launch_script("*.txt")
+
