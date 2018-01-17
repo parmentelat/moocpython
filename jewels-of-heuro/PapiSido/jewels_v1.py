@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun Jan 14 11:33:26 2018
-
-@author: franc
+Jewels of Heuro
+http://www.open.edu/openlearn/science-maths-technology/computing-and-ict/computing/the-jewels-heuro
+@author: francois sidoroff
 """
 
 import numpy as np
@@ -91,7 +92,6 @@ class Jewels:
 
 
 if __name__ == "__main__":
-    # donjon = Jewels("b", "d4a")
     donjon = Jewels("r", 5)
     # donjon = Jewels("f", "d4a")
     donjon.solve("fb")
