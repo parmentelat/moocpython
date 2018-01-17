@@ -18,7 +18,7 @@ Une idée de "jeu" (c'est le cas de le dire) qui m'avait amusé: coder un puissa
 
  - Après chaque coup, le programme vérifie s'il y a puissance 4 et arrête la partie si c'est le cas, en adressant ses plus sincères félicitations au gagnant!
 
-Moi ça m'avait amusé !( après les goûts et les couleurs...) J'avais fait une première version en utilisant uniquement des fonctions, puis une version plus satisfaisante je pense avec des classes (même si parfois, ça doit rester un peu maladroit dans l'écriture du code). Et puis, après puissance 4, un mastermind?
+Moi ça m'avait amusé! (après les goûts et les couleurs...) J'avais fait une première version en utilisant uniquement des fonctions, puis une version plus satisfaisante je pense avec des classes (même si parfois, ça doit rester un peu maladroit dans l'écriture du code). Et puis, après puissance 4, un mastermind?
 
 ArgonCooper
 

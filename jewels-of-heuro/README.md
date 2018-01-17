@@ -9,10 +9,10 @@ On peut envisager deux possibilités
 a/ On connait les coodonnées des points, le calcul des distances est alors facile, mais dans un donjon on progresse rarement en ligne droite !!! donc
 b/ on connait directement ces distances. pour les puristes on pourrait même vérifier l'axiome d (A,C) <= d(A,B) + d(B,C) et d'autre part pourquoi supposer d(A,B) = d(B,A) ? dans un donjon, ça monte et ça descend !!! 
 
+Première version implantée le 17/01/2018
 
-Probléme préliminaire dans les exemples proposés dans le lien, on ne nous donne pas directemnt ces distances ( Ou peut-être je n'ai pas su trouver où elles étaient donnés, si quelqu'un est plus malin que moi !!!!)
-Par exemple dans le cas N=4, on nous donne seulement le résultat des 6 chemins possibles. Alors question preliminaire au préliminaire comment trouver les 6 distances connaissant le sommes des 6 chemins: systeme linéaire 6 équations à 6 inconnues mais est-il régulier?? 
-Nous serons mieux armés après la semaine 7, puisque si j'ai bien compris nous y verrons des outils orientés calcul. 
+Je suggére, si vous voullez vous lancer que nous nous alignons sur ma structure de fichier de données 
+très basique, premiére ligne la taile n ( donc n-1 bijoux on part ey on revient à 0 )
+ensuite n lignes pour le tableau des distance 
 
-A suivre donc, vos réflexions sont bienvenues!!
 
