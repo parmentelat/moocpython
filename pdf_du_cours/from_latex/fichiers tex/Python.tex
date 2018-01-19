@@ -47,6 +47,7 @@
     \usepackage{amsmath} % Equations
     \usepackage{amssymb} % Equations
     \usepackage{textcomp} % defines textquotesingle
+    \usepackage{textcomp}
     % Hack from http://tex.stackexchange.com/a/47451/13684:
     \AtBeginDocument{%
         \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
@@ -143,10 +144,11 @@
     \def\gt{>}
     \def\lt{<}
     % Document parameters
-    \title{Python 3}
+ %   \title{Python 3}
     
-    
-    
+   \usepackage[Lenny]{fncychap} 
+   \DeclareTextSymbol{\degre}{T1}{6}
+
 
     % Pygments definitions
     
@@ -275,11 +277,78 @@
     
 
     \begin{document}
+     
+
     
+ %   \maketitle
+  \begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+\includegraphics{media/logo1.png}
+
+ \textsc{\Large Des fondamentaux au concepts avancés du langage}
+\HRule \\[0.4cm]
+
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+%\emph{Author:}\\
+Thierry \textsc{Parmentelat}
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+%\emph{Supervisor:} \\
+Arnaud \textsc{Legout}
+\end{flushright}
+\end{minipage}\\[1.5cm]
+
+
+ %----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+%\textsc{\Large Major Heading}\\ % Major heading
+\includegraphics{media/mooc2.png}\\
+\vskip100pt
+\includegraphics{media/mooc.png}\\
+\large https://www.fun-mooc.fr\\[0.5cm] % Minor heading
+\large Licence CC BY-NC-ND Thierry Parmentelat et Arnaud Legout\\[0.5cm] % Minor heading
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+%{\large \today}\\[2cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+%\includegraphics{media/logo.png}\\[1cm] 
+ 
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+  
+\tableofcontents
     
-    \maketitle
+    \chapter{Introduction au MOOC et aux outils Python}
     
-    \chapter{Semaine 1}
     \include{w1-s2-c1-installer-python}
     \include{w1-s2-c2-lecture}
     \include{w1-s4-c1-utiliser-les-notebooks}
@@ -299,7 +368,159 @@
     \include{w1-s6-c4-entiers-bit-a-bit}
     \include{w1-s6-x1-flottants}
 
+    \chapter{Notions de base pour écrire son premier programme Python}
 
+    \include{w2-s1-c1-accents}    
+    \include{w2-s2-c1-outils-chaines}
+    \include{w2-s2-c2-formatage}
+    \include{w2-s2-c3-la-fonction-input}   
+    \include{w2-s2-c4-expressions-regulieres}
+    \include{w2-s2-x1-expressions-regulieres}
+    \include{w2-s3-c1-slices}
+    \include{w2-s4-c1-listes}
+    \include{w2-s4-c2-listes-mutables}
+    \include{w2-s4-c3-tris-de-liste-1}
+    \include{w2-s5-c1-indentations}
+    \include{w2-s5-c2-presentation}
+    \include{w2-s5-c3-pass}
+    \include{w2-s6-c1-valeur-de-retour}
+    \include{w2-s6-x1-label}
+    \include{w2-s6-x2-inconnue}
+    \include{w2-s6-x3-laccess}
+    \include{w2-s6-x4-if-et-def}
+    \include{w2-s7-x1-liste-p}
+    \include{w2-s7-x2-carre}
+    
+    \chapter{Renforcement des notions de base, références partagées}
+
+    \include{w3-s1-c1-fichiers}    
+    \include{w3-s1-c2-utilitaires-sur-fichiers}
+    \include{w2-s2-c2-w3-s1-c3-format-json-et-autres}
+    \include{w3-s1-c4-fichiers-systeme}   
+    \include{w3-s2-c1-tuple-et-virgule}
+    \include{w3-s2-c2-sequence-unpacking}
+    \include{w3-s2-c3-for-sur-plusieurs-variables}
+    \include{w3-s2-x1-comptage}
+    \include{w3-s2-x2-surgery}
+    \include{w3-s4-c1-dictionnaires}
+    \include{w3-s4-c3-record-et-dictionnaire}
+    \include{w3-s4-x1-graph-dict}
+    \include{w3-s4-x2-marine-dict}
+    \include{w3-s5-c1-ensembles}
+    \include{w3-s5-x1-read-setl}
+    \include{w3-s5-x2-marine-set}
+    \include{w3-s6-c1-try-finally}
+    \include{w3-s7-c1-operateur-is-et-fonction-id}
+    \include{w3-s7-c2-references-circulaires}
+    \include{w3-s7-c3-les-differentes-copies}
+    \include{w3-s7-c5-affectation-simultanee}
+    \include{w3-s7-c6-affectation-operateurs-2}
+   \include{w3-s8-x1-fifo }
+    
+    \chapter{Fonctions et portée des variables}
+    
+    \include{w4-s1-c1-passage-par-reference}
+    \include{w4-s1-c2-docstring}
+    \include{w4-s1-c3-isinstance}
+    \include{w4-s1-c4-type-hints}
+    \include{w4-s2-c1-conditions-1}
+    \include{w4-s2-c2-evaluation-conditions}
+    \include{w4-s2-c3-if-comme-expression}
+    \include{w4-s2-c4-conditions-2}
+    \include{w4-s2-x1-dispatch}
+    \include{w4-s2-x2-libelle}
+    \include{w4-s3-c2-boucle-while}
+    \include{w4-s3-x1-pgcd}
+    \include{w4-s3-x2-taxes}
+    \include{w4-s4-c1-scope-builtin}
+    \include{w4-s4-c2-variable-de-boucle}
+    \include{w4-s4-c3-unboundlocalerror}
+    \include{w4-s5-c1-fonctions-globals-et-locals}
+    \include{w4-s6-c1-passage-arguments}
+    \include{w4-s6-c2-pas-de-valeur-par-defaut-mutable}
+    \include{w4-s6-c3-keyword-only}
+    \include{w4-s6-x1-passage-arguments}
+    
+    \chapter{Itération, importation et espace de nommage}
+    
+    \include{w5-s1-c1-break-et-continue}
+    \include{w5-s1-c2-ne-pas-modifier-sujet-boucle-for}
+    \include{w5-s1-c3-itertools}
+    \include{w5-s2-c1-fonctions}
+    \include{w5-s2-c2-tris-de-listes-2}
+    \include{w5-s2-x1-multi-tri}
+    \include{w5-s2-x2-doubler-premier}
+    \include{w5-s2-x3-compare}
+    \include{w5-s3-c1-comprehensions}
+    \include{w5-s3-c2-comprehensions-imbriquees}
+    \include{w5-s3-x1-comprehensions}
+    \include{w5-s4-c1-expressions-generatrices}
+    \include{w5-s4-x1-produit-scalaire}
+    \include{w5-s6-c1-import-once}
+    \include{w5-s6-c2-modules-et-chemins}
+    \include{w5-s7-c1-import-as}
+    \include{w5-s7-c2-recapitulatif-import}
+    \include{w5-s7-c3-packages}
+    \include{w5-s7-x1-decode-zen}
+
+    \chapter{Conception des classes}
+    
+    \include{w6-s1-c1-introduction-classes}
+    \include{w6-s1-c2-record-et-classe}
+    \include{w6-s1-c3-property}
+    \include{w6-s1-c4-datetime}
+    \include{w6-s2-c1-instance-hashable}
+    \include{w6-s2-c2-speciales-1}
+    \include{w6-s2-c3-speciales-2}
+    \include{w6-s2-c4-speciales-3}
+    \include{w6-s3-c1-heritage}
+    \include{w6-s3-c3-enums}
+    \include{w6-s3-c4-heritage-typage}
+    \include{w6-s4-c1-heritage-multiple}
+    \include{w6-s5-c1-attributs}
+    \include{w6-s5-c2-namepsaces}
+    \include{w6-s6-c1-permutations}
+    \include{w6-s8-c1-context-manager-et-exception}
+    \include{w6-s8-x1-classes-merger}
+
+    \chapter{L'écosystème data science Python}
+	
+	\include{w7-s1-c1-installation}
+	\include{w7-s2-c00-intro-numpy}
+	\include{w7-s2-c01-dimension1}
+	\include{w7-s2-c02-dtype}
+	\include{w7-s2-c03-shape}
+	\include{w7-s2-c04-initialisation}
+	\include{w7-s2-c05-broadcasting}
+	\include{w7-s2-c05-x1-stairs}
+	\include{w7-s2-c06-indexing-slicing}
+	\include{w7-s2-c07-operations-logiques}
+	\include{w7-s2-c08-algebre-lineaire}
+	\include{w7-s2-c09-indexation-evoluee}
+	\include{w7-s2-c10-divers}
+	\include{w7-s3-c01-data-science}
+	\include{w7-s3-c02-Series}
+	\include{w7-s3-c03-DataFrame}
+	\include{w7-s3-c04-operations-avancee-pandas}
+	\include{w7-s4-c01-matplotlib-2d}
+	\include{w7-s4-c02-matplotlib-3d}
+	\include{w7-s4-c04-bokeh-et-al}
+
+    \chapter{Programmation asynchrone-asyncio}
+	
+	\include{w8-s4-c1-async-http}
+	\include{w8-s8-c1-players}
+	\include{w8-s8-c2-game}
+
+    \chapter{Corrigés}
+    
+    \include{corriges-w2}
+    \include{corriges-w3}
+    \include{corriges-w4}
+    \include{corriges-w5}
+    \include{corriges-w6}
+    
+    
     % Add a bibliography block to the postdoc
     
     
