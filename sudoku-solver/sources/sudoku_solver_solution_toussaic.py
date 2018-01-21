@@ -234,6 +234,16 @@ class Grid():
             result += "\n" + ("-" * 18) + "\n"
         return result
 
+    def __getitem__(self, key):
+        """
+        v0: allow to access by a tuple line, col
+        return a Case object
+        """
+        if not isinstance(key, tuple):
+            raise ValueError("grid index must be a tuple")
+        line, col = key
+        return self.cases[9*line + col]
+
     def populate(self, array):
         """
         Fill the gris with the default values. The array must be a list of lists
