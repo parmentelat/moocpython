@@ -103,8 +103,8 @@ class Case(set):
 
     def set_as_completed(self):
         """
-        Set the case as completed, verifyif there is only one value left in the
-        csae possibilities
+        Set the case as completed, verify if there is only one value left in the
+        case possibilities
         """
         if len(self) is 1:
             self._completed = True
@@ -389,7 +389,8 @@ class Grid():
 
             # Show to the user the number of loops executed and if something was
             # done in this loop (False if somethinf was done)
-            print(counter, empty_loop)
+            print("counter = {counter}, empty_loop={empty_loop}"
+                  .format(**locals()))
             counter += 1
 
         if counter is 10:
@@ -447,8 +448,8 @@ class Grid():
 #                    print(f"CLEAN : Sets before removing {case} {case.position()} / {completed_values}")
 
                     # Remove the already completed values from the case
-                    self._remove_at(completed_values, *
-                                    case.position(), explanation="Cleaning")
+                    self._remove_at(completed_values, *case.position(),
+                                    explanation="Cleaning")
 
 #                    print(f"CLEAN : Sets after removing {case}")
 
