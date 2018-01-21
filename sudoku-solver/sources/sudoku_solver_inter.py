@@ -22,7 +22,7 @@ import itertools
 # Here are two grid you can use to test your algorithm
 # The first one can be easier to solve
 
-from samples import good_array, good_array_2
+from samples import sample1, sample2
 
 
 class Case(set):
@@ -380,13 +380,5 @@ class Grid():
 
 
 if __name__ == "__main__":
-    # Execute the solver on the two given examples
-    grid = Grid()
-    grid.populate(good_array)
-    pprint.pprint(grid)
-    grid.solve()
-
-    grid2 = Grid()
-    grid2.populate(good_array_2)
-    pprint.pprint(grid2)
-    grid2.solve()
+    from samples import main
+    main(Grid)
