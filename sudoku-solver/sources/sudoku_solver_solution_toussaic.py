@@ -246,7 +246,7 @@ class Grid():
 
     def populate(self, array):
         """
-        Fill the gris with the default values. The array must be a list of lists
+        Fill the grid with the default values. The array must be a list of lists
         of value, like a 2D array. See the exemples at the beginning of the file.
         """
         for n, line in enumerate(array):
@@ -398,13 +398,13 @@ class Grid():
             empty_loop &= self._square_algo()
 
             # Show to the user the number of loops executed and if something was
-            # done in this loop (False if somethinf was done)
+            # done in this loop (False if something was done)
             print("counter = {counter}, empty_loop={empty_loop}"
                   .format(**locals()))
             counter += 1
 
         if counter is 10:
-            print("The solver is maybe stuck in a loop")
+            print("The solver may be stuck in a loop")
 
         elif not self.is_completed():
             print("The algorithm can't solve the grid")
@@ -412,7 +412,7 @@ class Grid():
         else:
             print("Solution found !")
 
-        pprint.pprint(self)
+        # pprint.pprint(self)
 
     def _clean_cases(self):
         """
@@ -552,7 +552,7 @@ class Grid():
         [X,X, |X,{1,6},{6,7}| ,X,X]
         In the middle block, the first line can't contain {1, 3 or 9}, so it can
         only be in the third line. We compute the occurences of each values of
-        possibilities {1,6,7}. If one of them only appears one and is in the 
+        possibilities {1,6,7}. If one of them only appears once and is in the 
         "extended" set of value to exclude, it is the solution for this case.
         -> case {1,6} becomes 1
         """
@@ -690,6 +690,18 @@ class Grid():
         We now work on a subset of three blocks in line or in row.
         If two of the three blocks have some completed values in common (and 
         that the third has not)
+
+        [X, , | , , |3, ,9] <- The value 3 appears in line 1 and 3 but not in 
+        [X, , |X,A,B|X, ,X]    line 2
+        [3,6, |X, ,X| ,X,X]
+
+        We check the cases A and B, if the value 3 appears only in case A, so
+        this is the solution for A. If it appears in A and B, we can't make
+        any conclusion.
+
+        Depending on the number of free non-completed cases in the middle block
+        we can act differently (TODO : event if dealing with the three cases 
+        seems possible)
         """
         empty_operation = True
 

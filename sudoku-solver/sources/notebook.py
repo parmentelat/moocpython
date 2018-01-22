@@ -21,15 +21,16 @@ def notebook(grid):
     """
     style = """
 .rendered_html tr.sep {
-    background-color: #ddd; 
+    background-color: #000; 
     width: 3px;
 }
-.rendered_html td.sep, .rendered_html th.sep{
-    background-color: #ddd; 
+.rendered_html td.sep, .rendered_html th.sep {
+    background-color: #000; 
     padding-top: 0px;
     padding-bottom: 0px;
-
+} 
 .rendered_html td.digit, .rendered_html th.digit{
+    text-color: #000;
     padding-top: 0px;
     padding-bottom: 0px;
     font-family: monaco;
@@ -50,11 +51,11 @@ def notebook(grid):
     sepline = 10*'-'
     html += "<tbody>"
     for line, linesep in scan_sep():
-        html += f"<tr style='background-color:white;'><th class='digit'>{line+1}</th>"
+        html += f"<tr style='color:white;'><th class='digit'>{line+1}</th>"
         for col, colsep in scan_sep():
-            html += f"<td class='digit'>{grid[line, col]}</td>"
+            html += f"<td class='digit' style='color:white;'>{grid[line, col]}</td>"
             if colsep:
-                html += "<td class='sep'></td>"
+                html += "<td class='sep' style='background-color:black;'></td>"
         html += "</tr>"
         if linesep:
             html += f"<tr class='sep'><td colspan=13></td></tr>"
