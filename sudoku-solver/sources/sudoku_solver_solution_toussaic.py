@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Created on Wed Jan  3 16:17:57 2018
@@ -21,39 +22,21 @@ import itertools
 # Here are two grid you can use to test your algorithm
 # The first one can be easier to solve
 
-good_array = [[None,None,None,2   ,None,None,None,None,None],
-              [None,None,None,None,None,None,None,9   ,1   ],
-              [None,None,7   ,9   ,None,None,8   ,4   ,None],
-              [None,None,None,5   ,6   ,None,7   ,None,None],
-              [None,None,8   ,None,4   ,None,None,None,None],
-              [None,1   ,None,None,None,3   ,None,None,6   ],
-              [3   ,5   ,None,None,None,None,9   ,None,None],
-              [None,2   ,None,None,None,5   ,None,None,None],
-              [None,4   ,None,7   ,None,None,3   ,None,None]]
+from samples import sample1, sample2
 
-
-good_array_2 = [[1   ,None,7   ,None,None,None,None,None,9   ],
-                [None,None,None,2   ,None,None,None,None,6   ],
-                [None,None,None,None,4   ,None,8   ,3   ,None],
-                [None,None,None,None,None,5   ,None,None,None],
-                [4   ,None,None,None,7   ,3   ,2   ,None,None],
-                [6   ,None,None,None,2   ,None,9   ,None,8   ],
-                [7   ,3   ,None,None,None,None,None,None,1   ],
-                [None,None,None,7   ,3   ,None,None,None,None],
-                [None,None,9   ,5   ,None,None,None,2   ,None]]
 
 class Case(set):
     """
     The basic element in a sudoku. A Case is a set of all possibilities for
     case. If the Case have only one element left in it, it should be considered
     as the solution for this case.
-    
+
     A Case has two more attributes : _completed and _position (accessed with
     completed() and position())
     _completed is set when the case has only one element
     _position is a tuple with the line and row position of the case in the grid
     """
-    
+
     def __init__(self, n, m):
         """
         Create an empty Case wich is not completed and at the position n, m
@@ -61,8 +44,7 @@ class Case(set):
         super().__init__()
         self._completed = False
         self._position = (n, m)
-        
-    
+
     def add(self, elem):
         """
         (Overwritten)
@@ -71,25 +53,23 @@ class Case(set):
         default value.
         """
         if ((not self._completed) and
-            (type(elem) is int) and 
-            (0 < elem < 10)) :
+            (type(elem) is int) and
+                (0 < elem < 10)):
             super().add(elem)
-            
-            
+
     def __repr__(self):
         """
         (Overwritten)
         Return different representation of the set, depending on the number of
         values in it
         """
-        if self :
-            if len(self) < 2 :
+        if self:
+            if len(self) < 2:
                 return "".join(str(item) for item in self)
             return "{" + ",".join(str(item) for item in self) + "}"
-        else :
+        else:
             return " "
-        
-        
+
     def __copy__(self):
         """
         (Overwritten)
@@ -99,62 +79,56 @@ class Case(set):
         new_case.update(self)
         new_case._completed = self._completed
         return new_case
-    
-    
+
     def __deepcopy__(self, memo):
         """
         (Overwritten)
         No deepcopy needed, we use the copy instead
         """
         return self.__copy__()
-    
-    
+
     def update(self, values):
         """
         (Overwritten)
         Same as add, but with a set of values
         """
-        if not self._completed :
+        if not self._completed:
             super().update(values)
-        
-        
+
     def set_as_default(self):
         """
         Set the case as completed, no turning back
         """
         self._completed = True
-        
-        
+
     def set_as_completed(self):
         """
-        Set the case as completed, verifyif there is only one value left in the
-        csae possibilities
+        Set the case as completed, verify if there is only one value left in the
+        case possibilities
         """
-        if len(self) is 1 :
+        if len(self) is 1:
             self._completed = True
-        
-        
+
     def completed(self):
         """
         Return the state "completed" of the case
         """
         return self._completed
-    
-    
-    def position(self) :
+
+    def position(self):
         """
         Return the position of the case in the grid as a tuple (line, row)
         """
         return self._position
 
-        
+
 class Line(list):
     """
     A Line is a list of Cases. It has two accessible attributes :
     completed_values : A set of completed values for this subset of cases
     position : The number of the line (or row, or block)
     """
-    
+
     def __init__(self, cases, position):
         """
         Create a Line with a line number ans a list of cases
@@ -163,8 +137,7 @@ class Line(list):
         self.extend(cases)
         self.completed_values = set()
         self._position = position
-        
-        
+
     def __copy__(self):
         """
         When we copy a line, we must also copy the attributes
@@ -172,8 +145,7 @@ class Line(list):
         new_line = type(self)(self, self._position)
         new_line.completed_values = copy.copy(self.completed_values)
         return new_line
-        
-        
+
     def __repr__(self):
         """
         A pretty representation of a line
@@ -182,17 +154,15 @@ class Line(list):
         repr_gen = [repr(case) for case in self]
         result = []
         for i in range(3):
-            result.append(','.join(repr_gen[i*3:i*3+3]))
+            result.append(','.join(repr_gen[i * 3:i * 3 + 3]))
         return f"[{'|'.join(result)}]"
-    
-    
+
     def completed_list(self):
         """
         Returns the completed values as a list
         """
-        return [case for case in self if case.completed()]        
+        return [case for case in self if case.completed()]
 
-        
     def position(self):
         """
         Returns the number of the current line
@@ -215,121 +185,129 @@ class Block(Line):
     pass
 
 
-    
 def block_index(n, m):
     """
     Compute a block index from a line and a row number
     """
-    return (n//3)*3 + m//3
-    
+    return (n // 3) * 3 + m // 3
 
-class Grid() :
+
+class Grid():
     """
     A grid contains a list of Cases which can be indexed by their number or by
     the lines, rows, or blocks.
     """
-    
+
     def __init__(self):
         """
         Creates the grid of empty cases. Then creates the lines, rows and blocks
         which reference the cases by different means
         """
-        self.cases = [Case(i//9, i%9) for i in range(9*9)]
-        self.lines = [Line([self.cases[i] for i in range(9*j, 9*j+9)], j) for j in range(9)]
-        self.rows =  [Row([self.cases[i] for i in range(j, j+73, 9)], j) for j in range(9)]
+        self.cases = [Case(i // 9, i % 9) for i in range(9 * 9)]
+        self.lines = [Line([self.cases[i] for i in range(
+            9 * j, 9 * j + 9)], j) for j in range(9)]
+        self.rows = [Row([self.cases[i] for i in range(j, j + 73, 9)], j)
+                     for j in range(9)]
         self.blocks = []
-        
+
         # For the blocks, we use a matrix of the value 0,1,2 for defining the
         # "line and the row" of the block -> 00, 01, 02, 10, 11, 12, 20, 21, 22
-        for i, j in itertools.product(range(3), repeat = 2) :
+        for i, j in itertools.product(range(3), repeat=2):
             sub_array = []
             for k in range(0, 19, 9):
                 # Tricky index jumping to choose the good cases
                 # Could be more efficient with "pandas"
-                tmp = [i*27 + j*3 + k + l for l in range(3)]
+                tmp = [i * 27 + j * 3 + k + l for l in range(3)]
                 sub_array.extend(tmp)
-                
-            blocks = Block([self.cases[i] for i in sub_array], 3*i+j)
+
+            blocks = Block([self.cases[i] for i in sub_array], 3 * i + j)
             self.blocks.append(blocks)
-        
-        
+
     def __repr__(self):
         """
         A pretty representation of the grid
         """
         result = ""
-        for i in range(3) :
-            result += "\n".join(str(line) for line in self.lines[i*3:i*3+3])
+        for i in range(3):
+            result += "\n".join(str(line)
+                                for line in self.lines[i * 3:i * 3 + 3])
             result += "\n" + ("-" * 18) + "\n"
         return result
-        
-    
+
+    def __getitem__(self, key):
+        """
+        v0: allow to access by a tuple line, col
+        return a Case object
+        """
+        if not isinstance(key, tuple):
+            raise ValueError("grid index must be a tuple")
+        line, col = key
+        return self.cases[9*line + col]
+
     def populate(self, array):
         """
-        Fill the gris with the default values. The array must be a list of lists
+        Fill the grid with the default values. The array must be a list of lists
         of value, like a 2D array. See the exemples at the beginning of the file.
         """
-        for n, line in enumerate(array) :
-            for m, value in enumerate(line) :
+        for n, line in enumerate(array):
+            for m, value in enumerate(line):
                 if ((type(value) is int) and
-                    (0 < value < 10)) :
+                        (0 < value < 10)):
                     self._put_at(value, n, m, True)
         if not self.is_valid():
             print("La grille est non valide")
-            
-        
-    def _put_at(self, value, n, m, default = False):
+
+    def _put_at(self, value, n, m, default=False):
         """
         Write a value at the given position and set it as default. We must add
         te value to the completed values of the corresponding line, row and block
         TODO : The "default" parameter should be useless, all values set with 
         this function must be default values
         """
-        index = 9*n + m
-        
+        index = 9 * n + m
+
         self.cases[index].add(value)
-        if default :
+        if default:
             self.cases[index].set_as_default()
             self.lines[n].completed_values.add(value)
             self.rows[m].completed_values.add(value)
-            self.blocks[block_index(n,m)].completed_values.add(value)
-        
-    
-    def _remove_at(self, values, n, m, explanation = ""):
+            self.blocks[block_index(n, m)].completed_values.add(value)
+
+    def _remove_at(self, values, n, m, explanation=""):
         """
         The most usefull function of this algorithm. Remove a set a values of a
         case given by its position. The parameter "explanation" can be given to
         display an indication for debug.
         """
         # The real index of the case in the cases list
-        index = 9*n + m
-        
+        index = 9 * n + m
+
         # We can only change the value of non-completed cases
         if not self.cases[index].completed():
             # Remove the values in place of the case possibilities
-            self.cases[index].difference_update(set(values))                
-            
+            self.cases[index].difference_update(set(values))
+
             # Each time we remove values, we check if there is one value left in
             # the set, which means the case is solved
-            if len(self.cases[index]) is 1 :
+            if len(self.cases[index]) is 1:
                 # The newly completed value is the value of the case
                 completed_value = self.cases[index]
-                
+
                 # Compute the block index
                 i = block_index(n, m)
-                
+
                 # Add the value to the sets of completed values
                 self.lines[n].completed_values.update(completed_value)
                 self.rows[m].completed_values.update(completed_value)
                 self.blocks[i].completed_values.update(completed_value)
-                
+
                 # Set the case as completed
                 self.cases[index].set_as_completed()
-                
+
                 # Display a nice message to the user (and dev, mainly for dev)
-                print(f"Case resolved at ({n}, {m}) with value {completed_value} ({explanation})")
-    
-    
+                print(
+                    f"Case resolved at ({n}, {m}) with value {completed_value} ({explanation})")
+
     def is_valid(self):
         """
         This function checks if the grid is valid by checking if a value is 
@@ -337,103 +315,104 @@ class Grid() :
         is not very necessary after.
         """
         # Check all subsets
-        for selection in self.lines + self.rows + self.blocks :
-        
+        for selection in self.lines + self.rows + self.blocks:
+
             # Get the list of the completed values for the current subset
             completed_cases = selection.completed_list()
-            
+
             # Flush the list one by one value
-            while completed_cases :
-            
+            while completed_cases:
+
                 # The following value in the list
                 current_case = completed_cases.pop()
-                
+
                 # Check if this value is present in the rest of the list
                 # If True, the value appears more than once in the subset which
                 # is an error
-                if current_case in completed_cases :
+                if current_case in completed_cases:
                     print(f"Selection false : {current_case} in {selection}")
                     return False
-               
+
         return True
-    
-    
+
     def is_completed(self):
         """
         Check if all the cases are completed
         """
         return all(case.completed() for case in self.cases)
-    
-    
+
     def _complete_with_possibilities(self):
         """
         Fills the cases with all possibilities before solving the grid.
         The completed case are not affected by the update (overloaded in Case).
         """
-        complete_set = {1,2,3,4,5,6,7,8,9}
-        for case in self.cases :
+        complete_set = {1, 2, 3, 4, 5, 6, 7, 8, 9}
+        for case in self.cases:
             case.update(complete_set)
-        
-        
+
     def solve(self):
         """
         Execute the solver
         """
         # Initialize some data
         empty_loop = False
-        
+
         # Defines a maximal number of loop to solve the grid to avoid infinite loop
         counter = 0
-        
+
         # Fills the non-completed cases with all possibilities
         self._complete_with_possibilities()
-        
+
         # We loop until the grid is completed, or nothing was done in the
         # loop, or we reach the maximum number of loops
         # TODO : "_clean_case" should return an "empty_loop" too
         while ((not self.is_completed()) and
                (empty_loop is False) and
                (counter < 10)):
-            
+
             # First reset the empty_loop variable
             empty_loop = True
-            
+
             # We must call _clean_cases between each other functions to avoid
             # false resolution in the algorithm
-            
+
             # Refer to each function for more details
-            while not self._clean_cases() : pass
-            
+            while not self._clean_cases():
+                pass
+
             empty_loop &= self._check_identical_pair()
-            
-            while not self._clean_cases() : pass
-            
+
+            while not self._clean_cases():
+                pass
+
             empty_loop &= self._check_blocks_with_line_or_row_completed()
-            
-            while not self._clean_cases() : pass
-            
+
+            while not self._clean_cases():
+                pass
+
             empty_loop &= self._crossed_third_block()
-            
-            while not self._clean_cases() : pass
-            
+
+            while not self._clean_cases():
+                pass
+
             empty_loop &= self._square_algo()
-            
+
             # Show to the user the number of loops executed and if something was
-            # done in this loop (False if somethinf was done)
-            print(counter, empty_loop)
+            # done in this loop (False if something was done)
+            print("counter = {counter}, empty_loop={empty_loop}"
+                  .format(**locals()))
             counter += 1
-        
-        if counter is 10 :
-            print("The solver is maybe stuck in a loop")
-        
-        elif not self.is_completed() :
+
+        if counter is 10:
+            print("The solver may be stuck in a loop")
+
+        elif not self.is_completed():
             print("The algorithm can't solve the grid")
-            
-        else :
+
+        else:
             print("Solution found !")
-        
-        pprint.pprint(self)
-        
+
+        # pprint.pprint(self)
 
     def _clean_cases(self):
         """
@@ -457,416 +436,451 @@ class Grid() :
         """
         empty_operation = True
         for case in self.cases:
-                
+
             # For each case, we check if the Case is completed.
-            if not case.completed() :
+            if not case.completed():
                 n, m = case.position()
-                
+
                 # Build a set of completed values with the intersection of
                 # the line, the row and the block
                 completed_values = set()
-                
+
                 completed_values.update(self.lines[n].completed_values)
                 completed_values.update(self.rows[m].completed_values)
-                completed_values.update(self.blocks[block_index(n,m)].completed_values)
-                
-            
+                completed_values.update(
+                    self.blocks[block_index(n, m)].completed_values)
+
                 # Check if there is an intersection between sets
-                if case & completed_values :
+                if case & completed_values:
                     # Then set the flag that there was an operation
                     empty_operation = False
-                    
+
 #                    print(f"CLEAN : Sets before removing {case} {case.position()} / {completed_values}")
-                
+
                     # Remove the already completed values from the case
-                    self._remove_at(completed_values, *case.position(), explanation = "Cleaning")
-                    
+                    self._remove_at(completed_values, *case.position(),
+                                    explanation="Cleaning")
+
 #                    print(f"CLEAN : Sets after removing {case}")
-                    
+
         return empty_operation
-    
-    
-    def _check_identical_cases(self, subset) :
+
+    def _check_identical_cases(self, subset):
         """
         For this one, we check if two cases in a subset have the two same values.
         If this is true, so the other case in the subset can't have those values.
-        
+
         [{1,2}, , |X,{1,2},X|X, ,X]
         The cases 1 and 5 have the same set of possibilities, so the other cases
         of the line can't have those possibilities. So we eliminate them from
         their set.
-        
+
         TODO : could be extend to check if three case have the same set of three
         values or four case, the same set of four values and so far, but this
         seems difficult to implement. In most case, only checking pairs is enough.
         """
         empty_operation = True
-        
+
         # We work on a copy of the subset to determine the pairs of cases
         copy_subset = copy.deepcopy(subset)
         values_to_remove = set()
-        
+
         # If there is still elements in the copied subset
         # A break can occur if a pair of cases is found
         escape_loop = False
-        while copy_subset and (not escape_loop) :
+        while copy_subset and (not escape_loop):
             # Current case to compare to
             current_case = copy_subset.pop()
-            
+
             # We only check identical pairs for the moment but we could do more
             # The "len > 2" condition eliminates the cases already completed
-            if len(current_case) > 2 : continue
-            
-            # We poped a case and we compare it to the cases remaining in the 
+            if len(current_case) > 2:
+                continue
+
+            # We poped a case and we compare it to the cases remaining in the
             # copied subset
             for case in copy_subset:
-                if case.completed() : continue
-                
+                if case.completed():
+                    continue
+
                 # If the sets are identical (same length = 2, same values)
-                if case == current_case :
+                if case == current_case:
                     escape_loop = True
                     values_to_remove = set(case)
                     # Break the loop if a pair is found
                     break
-        
+
         # Have we found a pair?
-        if values_to_remove :
+        if values_to_remove:
             # We loop all the cases of the subset (the paired cases too)
-            for case in subset :
-                # Escape the completed cases and the paired cases (with the 
+            for case in subset:
+                # Escape the completed cases and the paired cases (with the
                 # condition "case > values_to_remove")
-                if ((not case.completed()) and (case > values_to_remove)) :
+                if ((not case.completed()) and (case > values_to_remove)):
                     empty_operation = False
-                    
+
 #                    print(f"PAIR : Sets before removing {case} {case.position()} / {values_to_remove}")
-                    
+
                     # Remove the pair of values in the other cases
-                    self._remove_at(values_to_remove, *case.position(), explanation = "Identical subset")
-                    
+                    self._remove_at(
+                        values_to_remove, *case.position(), explanation="Identical subset")
+
 #                    print(f"PAIR : Sets after removing {case}")
-                    
+
         return empty_operation
-    
-    
+
     def _check_identical_pair(self):
         """
         Function called to check pairs of cases in all the subsets
         """
         # results is a list of boolean values holding the "empty loop" result
-        results = [self._check_identical_cases(subset) for subset in 
+        results = [self._check_identical_cases(subset) for subset in
                    self.lines + self.rows + self.blocks]
-        
+
         # Return True if all results are empty
         return all(results)
-        
-    
+
     def _check_blocks_with_line_or_row_completed(self):
         """
         This one is more difficult. If a block is partially completed with one
         of its inner line or row completed; and the two remaining lines (or rows)
         contain exclusive values (with an extended set of values from the other 
         line (or row)), we can directly solve the value only present one.
-        
+
         [1, , | ,     ,     |3, ,9]
         [X, , |X,  X  ,  X  |X, ,X]
         [X,X, |X,{1,6},{6,7}| ,X,X]
         In the middle block, the first line can't contain {1, 3 or 9}, so it can
         only be in the third line. We compute the occurences of each values of
-        possibilities {1,6,7}. If one of them only appears one and is in the 
+        possibilities {1,6,7}. If one of them only appears once and is in the 
         "extended" set of value to exclude, it is the solution for this case.
         -> case {1,6} becomes 1
         """
         empty_operation = True
-        
+
         # Loop over all the blocks
-        for block in self.blocks :
-        
+        for block in self.blocks:
+
             # Work on a copy of the blocks
             copy_block = copy.deepcopy(block)
-            
+
             # First we build mini-lines and rows of the current block
             lines = []
             rows = []
             for index in range(3):
-                lines.append(Line([copy_block[3*index + i] for i in range(3)], index))
-                rows.append(Row([copy_block[3*i + index] for i in range(3)], index))
-            
+                lines.append(Line([copy_block[3 * index + i]
+                                   for i in range(3)], index))
+                rows.append(Row([copy_block[3 * i + index]
+                                 for i in range(3)], index))
+
             # Defines a subfunction to execute repeatedely on lines and rows
-            def _check_subset(subset, direction) :
-                
+            def _check_subset(subset, direction):
+
                 # Copy the subset because we will modify them
                 copy_subset = copy.copy(subset)
-                
+
                 #print(f"Copied subset {copy_subset}")
-                
+
                 # For each in the mini-line (or row)
-                for cases in copy_subset :
-                    
+                for cases in copy_subset:
+
                     # Check if the current line is completed
-                    if all(case.completed() for case in cases) :
+                    if all(case.completed() for case in cases):
                         subset.remove(cases)
                         #print(f"Subset remove {cases}")
-                
+
                 #print(f"Remaining subset {subset}")
                 # If there is not two remaining lines, no need to go further,
                 # the algorithm can't be applied
-                if len(subset) == 2 :
+                if len(subset) == 2:
                     # Identify the two remaining lines
                     first_line, second_line = subset
-                    
+
                     # Defines a new subfunction to compute the occurences with
                     # a given line and a given set of completed values
                     def _compute_occurences(line, completed_values):
-                    
+
                         # The number of occurences is contained in a dict
                         nb_occurences = dict()
-                        
-                        for case in line :
-                            for value in case :
+
+                        for case in line:
+                            for value in case:
                                 # Get the previous number of occurences and
                                 # theirs location. If the key doesn't exist,
                                 # create an empty tuple
-                                cpt, places = nb_occurences.get(value, (0, list()))
-                                
+                                cpt, places = nb_occurences.get(
+                                    value, (0, list()))
+
                                 # Add the case to the locations
                                 places.append(case)
-                                
+
                                 # Update the dict with one more location
                                 nb_occurences[value] = (cpt + 1, places)
-                                    
+
                         #print(f"Resolved occurences {nb_occurences}")
-                        
+
                         # Now we will check for each completed values if the
                         # value only appears one in the dict.
-                        for completed_value in completed_values :
-                        
+                        for completed_value in completed_values:
+
                             # Extract the number of occurences and the
                             # corresponding cases, empty if the value doesn't
                             # appear
-                            occurence, places = nb_occurences.get(completed_value, (0, []))
-                            
-                            if occurence is 1 :
+                            occurence, places = nb_occurences.get(
+                                completed_value, (0, []))
+
+                            if occurence is 1:
                                 empty_operation = False
-                                
+
                                 # Extract the only case from the list of cases
                                 case = places.pop()
-                                
+
                                 # Should not be necessary, but keep it just in case
-                                if not case.completed() :
-                                    
+                                if not case.completed():
+
                                     # Here, we must remvove all but the good value
-                                    values_to_remove = case - set([completed_value])
-                                    
+                                    values_to_remove = case - \
+                                        set([completed_value])
+
                                     #print(f"BLOCK : Sets before removing {case} {case.position()} / {values_to_remove}")
-                                    
-                                    self._remove_at(values_to_remove, *case.position(), explanation = "Block with completed line or row")
-                                    
+
+                                    self._remove_at(
+                                        values_to_remove, *case.position(), explanation="Block with completed line or row")
+
                                     #n, m = case.position()
                                     #print(f"BLOCK : Sets after removing {self.cases[n*9 + m]}")
-                    
+
                     # End of the subsubfunction
-                    
+
                     # First compute occurences on the first line with the
                     # completed values of the second
-                    
+
                     # We must seperate line and rows because we don't extract the
                     # completed values the same way
-                    if direction == "line" :
+                    if direction == "line":
                         index, _ = second_line[0].position()
                         completed_values = self.lines[index].completed_values
-                    else :
+                    else:
                         _, index = second_line[0].position()
                         completed_values = self.rows[index].completed_values
-                    
+
                     _compute_occurences(first_line, completed_values)
-                    
+
                     # Then compute occurences on the second line with the
                     # completed values of the first
-                    
-                    if direction == "line" :
+
+                    if direction == "line":
                         index, _ = first_line[0].position()
                         completed_values = self.lines[index].completed_values
-                    else :
+                    else:
                         _, index = first_line[0].position()
                         completed_values = self.rows[index].completed_values
-                        
+
                     _compute_occurences(second_line, completed_values)
-            
+
             # End of the first subfunction, execute it on the lines, then on the
             # rows
             _check_subset(lines, "line")
             _check_subset(rows, "row")
-                        
+
         return empty_operation
-    
-    
+
     def _crossed_third_block(self):
         """
         We now work on a subset of three blocks in line or in row.
         If two of the three blocks have some completed values in common (and 
         that the third has not)
+
+        [X, , | , , |3, ,9] <- The value 3 appears in line 1 and 3 but not in 
+        [X, , |X,A,B|X, ,X]    line 2
+        [3,6, |X, ,X| ,X,X]
+
+        We check the cases A and B, if the value 3 appears only in case A, so
+        this is the solution for A. If it appears in A and B, we can't make
+        any conclusion.
+
+        Depending on the number of free non-completed cases in the middle block
+        we can act differently (TODO : event if dealing with the three cases 
+        seems possible)
         """
         empty_operation = True
-        
-        block_lines = [[self.blocks[i*3 + j] for j in range(3)] for i in range(3)]
-        block_rows = [[self.blocks[j*3 + i] for j in range(3)] for i in range(3)]
-        
+
+        block_lines = [[self.blocks[i * 3 + j]
+                        for j in range(3)] for i in range(3)]
+        block_rows = [[self.blocks[j * 3 + i]
+                       for j in range(3)] for i in range(3)]
+
         # First subfunction which will work on each subset defined just before
         def _check_subset(subset):
-            for block_line in subset :
-                
+            for block_line in subset:
+
                 # Even if there are redundant permutations of the three blocks
                 # this is the only way I found to cover all cases easily
-                for block1, block2, block3 in itertools.permutations(block_line, 3) :
-                    
+                for block1, block2, block3 in itertools.permutations(block_line, 3):
+
                     # Compute the completed values in common in the two blocks
                     intersection = block1.completed_values & block2.completed_values
-                    
-                    if not intersection : continue
-                
+
+                    if not intersection:
+                        continue
+
                     #print(f"Intersection found : {intersection} with blocks @ position {block1.position()} and {block2.position()}")
-                
-                    for value in intersection :
-                    
+
+                    for value in intersection:
+
                         # If the value is in the completed values of the third
                         # block, no need to continue
                         # TODO : can be improve by removing them in the first
                         # intersection ?
-                        if value in block3.completed_values : continue
-                        
+                        if value in block3.completed_values:
+                            continue
+
                         # Second subfunction
-                        # Look for the position of the values in block1 and 
+                        # Look for the position of the values in block1 and
                         # block2
                         def _search_position(block):
-                            for case in block :
-                                # If the case is not completed, this is not the 
+                            for case in block:
+                                # If the case is not completed, this is not the
                                 # case we are looking for
-                                if not case.completed() : continue
-                            
+                                if not case.completed():
+                                    continue
+
                                 # Else, check the value and store the position
-                                if value in case :
+                                if value in case:
                                     if subset is block_lines:
                                         position, _ = case.position()
-                                    else :
+                                    else:
                                         _, position = case.position()
                                     return position
-                        
+
                         # End of the subsubfunction
-                        
+
                         # Compute the position of the value in the two blocks
                         position1 = _search_position(block1)
                         position2 = _search_position(block2)
-                        
-                        # Since the position returned is a abolute position in 
+
+                        # Since the position returned is a abolute position in
                         # the grid, we must compute position3 depending on it
-                        if position1 in {0,1,2} :
-                            position3 = ({0,1,2} - {position1, position2}).pop()
-                        elif position1 in {3,4,5} :
-                            position3 = ({3,4,5} - {position1, position2}).pop()
-                        elif position1 in {6,7,8} :
-                            position3 = ({6,7,8} - {position1, position2}).pop()
-                        
+                        if position1 in {0, 1, 2}:
+                            position3 = (
+                                {0, 1, 2} - {position1, position2}).pop()
+                        elif position1 in {3, 4, 5}:
+                            position3 = (
+                                {3, 4, 5} - {position1, position2}).pop()
+                        elif position1 in {6, 7, 8}:
+                            position3 = (
+                                {6, 7, 8} - {position1, position2}).pop()
+
                         #print(f"CROSS : Position of value {value} in block1, block2, block3 : {position1}, {position2}, {position3}")
-                        
+
                         # Now select the cases we will check in the third block
                         selected_cases = list()
                         for case in block3:
                             # If the case is completed, exclude it
-                            if case.completed() : continue
-                            
+                            if case.completed():
+                                continue
+
                             # We must a difference between lines and rows
-                            if subset is block_lines :
+                            if subset is block_lines:
                                 position_line, _ = case.position()
-                                
-                                if position_line != position3 : continue
-                            
+
+                                if position_line != position3:
+                                    continue
+
                             else:
                                 _, position_row = case.position()
-                                
-                                if position_row != position3 : continue
-                            
+
+                                if position_row != position3:
+                                    continue
+
                             # The cases which are not at the good position have
                             # been "escaped"
                             selected_cases.append(case)
-                        
+
                         # No need to go further if the selection is empty (the
                         # mini-line is already completed
                         # TODO : I think this line is useless?
-                        if not selected_cases : continue
-                    
+                        if not selected_cases:
+                            continue
+
                         #print(f"CROSS : Selected cases to scan : {[selected_case.position() for selected_case in selected_cases]}")
-                    
+
                         # Then we must separate each case, depending on the
                         # number of non-completed cases in the mini-line
                         # For each case, we should remove the solutions found
                         # from others case but we will let the "_clean_case"
                         # function do its work
-                        
+
                         # If there is only one case available for the current
                         # value, so this is the only solution for this case
-                        if len(selected_cases) is 1 :
+                        if len(selected_cases) is 1:
                             selected_case = selected_cases.pop()
-                            
+
                             # Remove all others values
                             values_to_remove = selected_case - intersection
                             empty_operation = False
-                            self._remove_at(values_to_remove, *selected_case.position(), explanation = "Crossing blocks")
-                    
+                            self._remove_at(
+                                values_to_remove, *selected_case.position(), explanation="Crossing blocks")
+
                         # If there are two cases non completed
-                        elif len(selected_cases) is 2 :
+                        elif len(selected_cases) is 2:
                             case1 = selected_cases.pop()
                             case2 = selected_cases.pop()
-                            
+
                             #print(f"CROSS : Two cases to scan {case1} and {case2}, with value {value}")
-                            
-                            # If the current value is not in the first case, 
+
+                            # If the current value is not in the first case,
                             # keep it only in the second one
-                            if value not in case2 :
+                            if value not in case2:
                                 values_to_remove = case1 - {value}
-                                self._remove_at(values_to_remove, *case1.position(), explanation = "Crossing blocks")
+                                self._remove_at(
+                                    values_to_remove, *case1.position(), explanation="Crossing blocks")
                                 #print(f"CROSS : Removing values {values_to_remove} from case at {case1.position()}")
-                            elif value not in case1 :
+                            elif value not in case1:
                                 values_to_remove = case2 - {value}
-                                self._remove_at(values_to_remove, *case2.position(), explanation = "Crossing blocks")
+                                self._remove_at(
+                                    values_to_remove, *case2.position(), explanation="Crossing blocks")
                                 #print(f"CROSS : Removing values {values_to_remove} from case at {case2.position()}")
-                            
+
                             empty_operation = False
-                        
+
                         # At least, if the three cases are not completed
-                        elif len(selected_cases) is 3 :
+                        elif len(selected_cases) is 3:
                             case1 = selected_cases.pop()
                             case2 = selected_cases.pop()
                             case3 = selected_cases.pop()
-                            
+
                             #print(f"CROSS : Concerned cases : {case1}, {case2}, {case3}")
-                            
+
                             # If the value only appears in one case, keep it as
                             # the solution for this case
-                            if (value not in case2) and  (value not in case3) :
+                            if (value not in case2) and (value not in case3):
                                 values_to_remove = case1 - {value}
-                                self._remove_at(values_to_remove, *case1.position(), explanation = "Crossing blocks")
-                            elif (value not in case1) and (value not in case3) :
+                                self._remove_at(
+                                    values_to_remove, *case1.position(), explanation="Crossing blocks")
+                            elif (value not in case1) and (value not in case3):
                                 values_to_remove = case2 - {value}
-                                self._remove_at(values_to_remove, *case2.position(), explanation = "Crossing blocks")
-                            elif (value not in case1) and (value not in case2) :
+                                self._remove_at(
+                                    values_to_remove, *case2.position(), explanation="Crossing blocks")
+                            elif (value not in case1) and (value not in case2):
                                 values_to_remove = case3 - {value}
-                                self._remove_at(values_to_remove, *case3.position(), explanation = "Crossing blocks")
-                                
+                                self._remove_at(
+                                    values_to_remove, *case3.position(), explanation="Crossing blocks")
+
                             empty_operation = False
-        
+
         # End of the subfunction
-        
+
         # Now apply it on each subset
         _check_subset(block_lines)
         _check_subset(block_rows)
-        
+
         return empty_operation
-    
-    
+
     def _square_algo(self):
         """
         This part of the algorithm is easier to understand
-        
+
         [X, , |X,X,X|X, ,X]
         [X, , | ,X,X|X, ,X]
         [X,X, |X, ,X| ,X,X]
@@ -881,66 +895,63 @@ class Grid() :
                                from the cases C
         """
         empty_operation = True
-        
+
         # We will check each block to verify if they fulfill the condition
-        for block in self.blocks :
-            
+        for block in self.blocks:
+
             # This time we will build a dict of non completed values of the
             # current block
             nb_occurences = dict()
-            
+
             # Build the dict
-            for case in block :
-                if case.completed() : continue
-            
-                for value in case :
+            for case in block:
+                if case.completed():
+                    continue
+
+                for value in case:
                     cpt, places = nb_occurences.get(value, (0, list()))
                     places.append(case)
                     nb_occurences[value] = (cpt + 1, places)
-                    
+
             # Look only for occurences that appear 2 times
-            for key, value in nb_occurences.items():                
+            for key, value in nb_occurences.items():
                 nb_occurence, places = value
-                
-                if nb_occurence is 2 :
+
+                if nb_occurence is 2:
                     case1 = places.pop()
                     case2 = places.pop()
-                    
+
                     position1_x, position1_y = case1.position()
                     position2_x, position2_y = case2.position()
-                    
+
                     # The two cases must be on the same line or row
-                    if position1_x == position2_x :
-                    
+                    if position1_x == position2_x:
+
                         # Then remove the value of this occurence from all other
                         # cases on the same line
-                        for case_line in self.lines[position1_x] :
-                            if (case_line is case1) or (case_line is case2) : continue
-                            
+                        for case_line in self.lines[position1_x]:
+                            if (case_line is case1) or (case_line is case2):
+                                continue
+
                             empty_operation = False
-                            self._remove_at([key], *case_line.position(), explanation = "Square algo")
-                    
-                    elif position1_y == position2_y :
-                    
+                            self._remove_at(
+                                [key], *case_line.position(), explanation="Square algo")
+
+                    elif position1_y == position2_y:
+
                         # Then remove the value of this occurence from all other
                         # cases on the same row
-                        for case_row in self.rows[position1_y] :
-                            if (case_row is case1) or (case_row is case2) : continue
-                            
+                        for case_row in self.rows[position1_y]:
+                            if (case_row is case1) or (case_row is case2):
+                                continue
+
                             empty_operation = False
-                            self._remove_at([key], *case_row.position(), explanation = "Square algo")
-            
+                            self._remove_at(
+                                [key], *case_row.position(), explanation="Square algo")
+
         return empty_operation
 
-        
-if __name__ == "__main__" :
-    # Execute the solver on the two given examples
-    grid = Grid()
-    grid.populate(good_array)
-    pprint.pprint(grid)
-    grid.solve()
-    
-    grid2 = Grid()
-    grid2.populate(good_array_2)
-    pprint.pprint(grid2)
-    grid2.solve()
+
+if __name__ == "__main__":
+    from samples import main
+    main(Grid)
