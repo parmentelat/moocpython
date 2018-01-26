@@ -206,4 +206,5 @@ def test_mm_compare():
 if __name__ == "__main__":
     with open("mastermind.jnl", "w", encoding='utf-8')as journal:
         jeu = Mastermind('ABCDEF', 4)
+        jeu.encodeur()
         jeu.decodeur()
