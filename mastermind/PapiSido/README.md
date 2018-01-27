@@ -8,4 +8,8 @@ en décodeur, le programme cherche et trouve votre code ( algorithme simple: le 
 
 Dans sa version actuelle le programme joue une partie en encodeur puis une partie en décodeur, mais facilement modifiable.
 Par contre il subsiste un bug: le décodeur décrète - parfois, mais pas reproductible !! - une impossibilité sans erreur de ma part
+
 A élucider, mais vous pouvez déjà essayer
+
+mastermind.3.py le précedent mais modifié pour être déterministe donc reproductible, mais je n'arrive pas à le faire "bugger" 
+
