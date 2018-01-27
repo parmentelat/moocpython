@@ -126,6 +126,8 @@ class Mastermind:
         return nb_tries
 
     def lcombinaison(self, idxl):
+#        if verbose:
+#            print(" lcombinaison", idxl )
         ii = idxl
         lc = []
         for i in range(self.nb_pions):
@@ -152,11 +154,13 @@ class Mastermind:
         if verbose:
             print(lcomb.shape, tcomb.shape)
         print("réponse par une chaîne o: à sa place -: ailleurs)  ")
+            
         ret = input("Choisis et note ton code puis retour  ")
         print("réponse par une chaîne de o et - ")
         print("o pour un pion à sa place ")
         print("- pour une lettre présente mais mal placée")
         print("exemple si code ABFF essai FAFA > réponse o--")
+            
         ret = (0, 0)
         nb_possibles = self.nb_comb
         while ret != "NO" and ret[0] < self.nb_pions:
@@ -184,6 +188,9 @@ class Mastermind:
             print("C'est impossible! Tricheur ou Distrait ? ")
         else:
             print(f"J'ai trouvé en {nb_tries} essais")
+
+
+
         self.print_historique()
         if verbose:
             print("historique:", self.historique)

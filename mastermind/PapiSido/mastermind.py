@@ -38,7 +38,7 @@ def mm_compare(l1, l2):
                 ll1[i] = -1
                 ll2[j] = -1
     if debug:
-        print("mm_compare ",l1, l2, cpos, ccol)
+        print("mm_compare ", l1, l2, cpos, ccol)
     return (cpos, ccol)
 
 
@@ -50,9 +50,9 @@ def str_compare(cmp):
         ss += "-"
     return ss
 
+
 def str2cmp(s):
     return (s.count('o'), s.count('-'))
-
 
 
 class Mastermind:
@@ -131,7 +131,7 @@ class Mastermind:
         ii = idxl
         lc = []
         for i in range(self.nb_pions):
-            lc.append(ii%self.nb_couleurs)
+            lc.append(ii % self.nb_couleurs)
             ii //= self.nb_couleurs
         # lc.reverse()
         return lc[::-1]
@@ -170,7 +170,7 @@ class Mastermind:
                 print(f"restent {nb_possibles} combinaisons possibles")
 #            lc = self.lcombinaison(idx0)
             while lcomb[idx0] > 0:
-                idx0 =(idx0 + 1) % self.nb_comb
+                idx0 = (idx0 + 1) % self.nb_comb
             ltry = self.lcombinaison(idx0)
             stry = self.scombinaison(ltry)
             ret = (ret[0] + 1, 2)
@@ -179,12 +179,12 @@ class Mastermind:
             for i in range(self.nb_comb):
                 if (lcomb[i] == 0) and not self.compatible(i, ltry, ret):
                     lcomb[i] = 1
-            nb_possibles = compte(0,lcomb) 
+            nb_possibles = compte(0, lcomb)
             if nb_possibles == 0:
                 ret = "NO"
             self.historique += ((stry, ret),)
         if ret == "NO":
-            print("C'est impossible! Tricheur ou Distrait ? " ) 
+            print("C'est impossible! Tricheur ou Distrait ? ")
         else:
             print(f"J'ai trouvé en {nb_tries} essais")
 
@@ -194,6 +194,7 @@ class Mastermind:
         if verbose:
             print("historique:", self.historique)
         return nb_tries
+
 
 def test_mm_compare():
     l1 = [0, 1, 2, 3]
