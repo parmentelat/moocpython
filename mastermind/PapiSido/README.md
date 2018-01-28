@@ -1,15 +1,6 @@
-ma version 2, 26/01/2018
-
-nb de couleurs et nombre de pions paramètrables (dans __init__ ) 4 pions, 6 couleurs par défaut
-
-en encodeur, le programme vous propose de découvrir le code qu'il a choisi. Présentation basique
-
-en décodeur, le programme cherche et trouve votre code ( algorithme simple: le programme choisit, au hasard un essai compatible avec tous les résultats précédemment obtenus)
-
-Dans sa version actuelle le programme joue une partie en encodeur puis une partie en décodeur, mais facilement modifiable.
-Par contre il subsiste un bug: le décodeur décrète - parfois, mais pas reproductible !! - une impossibilité sans erreur de ma part
-
-A élucider, mais vous pouvez déjà essayer
-
-mastermind.3.py le précedent mais modifié pour être déterministe donc reproductible, mais je n'arrive pas à le faire "bugger" 
-
+Une version raisonnablement achevée (28/01/2018)
+* mm_coder.py choisit un code et répond à vos essais ( jeu standard: 4 pions, 6 couleurs )
+* mm_solver.py trouve un code choisi par vous ( idem)
+* mm_tester.py sorte de bac à sable ( cf le docstring de mastermind.py )
+* mastermind.py le module principal, si éxécuté seul joue 20 fois contre lui-même et conserve trace du nombre de coups nécessaire
+cf l'issue correspondante pour plus de détails
