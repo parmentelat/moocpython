@@ -5,6 +5,8 @@ Created on Mon Jan 22 18:08:54 2018
 @author: francois.sidoroff
 """
 
+import sys
+
 import random
 import numpy as np
 verbose = False
@@ -62,7 +64,8 @@ class Mastermind:
     decodeur() trouvera un code, lorsque cela sera implanté
     """
 
-    def __init__(self,  alphabet="ABCDEF", nb_pions=4):
+    def __init__(self,  alphabet, nb_pions, journal,
+                 *, deterministic=False):
         """
         alphabet définit les "couleurs"
         """
@@ -70,14 +73,17 @@ class Mastermind:
         self.nb_couleurs = len(alphabet)
         self.nb_comb = self.nb_couleurs**nb_pions
         self.alphabet = alphabet
-        journal.write("---------" + self.info()+"\n")
+        self.journal = journal
+        self.deterministic = deterministic
+                       
+        self.journal.write("---------" + self.info()+"\n")
         print(self.info())
 
     def print_historique(self, partie=""):
-        journal.write(f"----- historique {partie} ------\n")
+        self.journal.write(f"----- historique {partie} ------\n")
         for h in self.historique:
-            journal.write(f"{h[0]} -> {h[1]}\n")
-        journal.write(f"soit {len(self.historique)} essais")
+            self.journal.write(f"{h[0]} -> {h[1]}\n")
+        self.journal.write(f"soit {len(self.historique)} essais")
 
     def info(self):
         s = f"Mastermind {self.nb_pions} pions de "
@@ -166,6 +172,10 @@ class Mastermind:
         while ret != "NO" and ret[0] < self.nb_pions:
             nb_tries += 1
             idx0 = random.randrange(self.nb_comb)
+            # tmp for debugging
+            if self.deterministic:
+                print(f"DEBUG: deterministic mode")
+                idx0 = 25
             if verbose:
                 print(f"restent {nb_possibles} combinaisons possibles")
 #            lc = self.lcombinaison(idx0)
@@ -188,8 +198,6 @@ class Mastermind:
         else:
             print(f"J'ai trouvé en {nb_tries} essais")
 
-
-
         self.print_historique()
         if verbose:
             print("historique:", self.historique)
@@ -204,8 +212,41 @@ def test_mm_compare():
     print(l1, l2)
 
 
+def main():
+    import argparse
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument("-s", "--solver", action='store_true', default=False,
+                        help="""
+default mode is the computer picks a code and you try to find it;
+within this solver mode, you pick a code and the computer tries to find it""")
+    parser.add_argument("-c", "--colors", action='store', default='ABCDEF',
+                        help = 'the symbols used for colors')
+    parser.add_argument("-n", "--number", action='store', default=4,
+                        help="number of positions in the code")
+    parser.add_argument("-j", "--journal", action='store', default="mastermind.jnl",
+                        help="filename to store journal info; use '-' for stdout")
+    # tmp for debugging
+    parser.add_argument("-d", "--deterministic", action='store_true', default=False,
+                        help='run deterministic mode for debugging')
+
+    def real_main(journal):
+        jeu = Mastermind(args.colors, args.number, journal)
+        try:
+            if args.solver:
+                jeu.decodeur()
+            else:
+                jeu.encodeur()
+        except KeyboardInterrupt as e:
+            print("bye") 
+
+    args = parser.parse_args()
+    if args.journal == '-':
+        real_main(sys.stdout)
+    else:
+        with open(args.journal, "w") as journal:
+            real_main(journal)
+
+
 if __name__ == "__main__":
-    with open("mastermind.jnl", "w", encoding='utf-8')as journal:
-        jeu = Mastermind('ABCDEF', 4)
-        jeu.encodeur()
-        jeu.decodeur()
+    main()
