@@ -14,7 +14,7 @@ debug = False
 def compte(element, liste):
     """
     compte le nombre d'occurence d'élément dans liste
-    J'ai essayé liste.count(eleemnt) mais ça ne marche pas 
+    J'ai essayé liste.count(element) mais ça ne marche pas 
     """
     ne = 0
     for e in liste:
