@@ -14,7 +14,7 @@ debug = False
 def compte(element, liste):
     """
     compte le nombre d'occurence d'élément dans liste
-    J'ai essayé liste.count(element) mais ça ne marche pas 
+    J'ai essayé liste.count(eleemnt) mais ça ne marche pas 
     """
     ne = 0
     for e in liste:
@@ -219,14 +219,46 @@ def test_mm_compare():
 
 
 if __name__ == "__main__":
-    with open("mastermind.jnl", "w", encoding='utf-8')as journal:
-        jeu = Mastermind(journal, 'ABCDEF', 4)
-        nb_coups = ()
-        n_essais = 20
-        nct = 0
-        for i in range(n_essais):
-            nc = jeu.partie(1, 1)
-            nb_coups += (nc,)
-            nct += nc
-        journal.write(f"------ finalement ------\n{nb_coups}, ")
-        print("------ finalement ------\n", nb_coups, nct/n_essais)
+    
+    
+    
+    import argparse
+    parser = argparse.ArgumentParser(
+            formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument("-a", "--alphabet", action='store', default='ABCDEF',
+                            help = 'alphabet: the symbols used for colors')
+    parser.add_argument("-n", "--number", action='store', default=4,
+                            help="number of positions in the code")
+    parser.add_argument("-z", "--nbgames", action='store', default=10,
+                            help="number of games to be played")
+    parser.add_argument("-s", "--solver", action='store_true', default=False,
+                        help="l'ordinateur cherche (et trouve) le code")
+    parser.add_argument("-c", "--coder", action='store_true', default=False,
+                        help="l'ordinateur choisit le code")
+    parser.add_argument("-j", "--journal", action='store', default="mm.jnl",
+                        help="filename to store journal info; '-' for stdout")
+    args = parser.parse_args()
+        
+    def real_main(journal):
+        if args.coder:
+            coder = 1
+        else:
+            coder = 0
+        if args.solver:
+            solver = 1
+        else:
+            solver = 0
+        jeu = Mastermind(journal, args.alphabet, int(args.number))
+        try:
+            jeu.partie(coder, solver)
+        except KeyboardInterrupt as e:
+            print("bye") 
+    
+    
+    if args.journal == '-':
+        real_main(sys.stdout)
+    else:
+        with open(args.journal, "w") as journal:
+            real_main(journal)
+    
+    
