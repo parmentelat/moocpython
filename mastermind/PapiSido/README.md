@@ -1,4 +1,5 @@
-Une version en évolution (30/01/2018): paramètrage du programme par la ligne de commande
+version 1 (01/02/2018, provisoirement définitive )
+version console: paramètrage du programme par la ligne de commande
  options disponibles ( en fonction du programme )
  *  -c l'ordinateur est le codeur: choisit le code ( sinon l'utilisateur )
  *  -s l'ordinateur est le solveur: il cherche ( et trouve plutôt plus vite que vous)  la solution, sinon l'utilisateur
@@ -14,4 +15,4 @@ Les autres programmes importent mastermind.py
 * mm_tester.py sorte de bac à sable ( cf le docstring de mastermind.py )
 * mm_stats.py joue plusieurs parties ( le paramètre -z ) contre lui-même, -a et -n disponibles
 
-Attention le programe bugge si le codeur humain entre une réponse incohérente avec les précédentes ( boucle infinie je pense) Normalemnt j'avais réglé ce problème mais il revient; ce doit être assez bête mais à corriger. Ce sera, avec quelques améliorations cosmétiques la prochaine version avant d'aborder gui et graphique
+En projet: version avec gui et graphique, mais plus tard: je vais commencer sur un autre projet 
