@@ -14,7 +14,7 @@ debug = False
 def compte(element, liste):
     """
     compte le nombre d'occurence d'élément dans liste
-    J'ai essayé liste.count(eleemnt) mais ça ne marche pas 
+    J'ai essayé liste.count(element) mais ça ne marche pas
     """
     ne = 0
     for e in liste:
@@ -24,10 +24,10 @@ def compte(element, liste):
 
 
 def mm_compare(l1, l2):
-    """ 
+    """
     deux listes l1 et l2
     renvoie le tuple (cpos,ccol)
-    cpos = nombre d'éléments identiques à la même position 
+    cpos = nombre d'éléments identiques à la même position
     ccol = nombre d'éléments identiques en position différente
     (régles du mastermind)
     """
@@ -73,6 +73,17 @@ def str2cmp(s):
     return (s.count('o'), s.count('-'))
 
 
+def str2lbyte(alphabet, mot):
+    ll = []
+    for car in mot:
+        try:
+            n = alphabet.index(car)
+        except ValueError:
+            n = -1
+        ll.append(n)
+    return ll
+
+
 class Mastermind:
     """ Mastermind
     nombre de couleurs et de pions définis à l'initialisation
@@ -103,15 +114,7 @@ class Mastermind:
         s += f"{self.nb_couleurs} couleurs ({self.alphabet})"
         return s + f"  -> {self.nb_comb} combinaisons"
 
-    def str2lbyte(self, mot):
-        ll = []
-        for car in mot:
-            try:
-                n = self.alphabet.index(car)
-            except ValueError:
-                n = -1
-            ll.append(n)
-        return ll
+
 
     def choix_code(self):
         self.scode = ""
@@ -141,7 +144,7 @@ class Mastermind:
     def compatible(self, idx, essai, retour):
         return mm_compare(essai, self.lcombinaison(idx)) == retour
 
-    def solver_ini(self):
+    def game_ini(self):
         self.lcomb = np.zeros(self.nb_comb, dtype=np.int8)
         self.lstidx0 = ()
         pass
@@ -159,13 +162,11 @@ class Mastermind:
         stry = self.scombinaison(ltry)
         return (stry, ltry)
 
-    def solver_analyse(self, ltry, ret):
+    def game_analyse(self, ltry, ret):
         for i in range(self.nb_comb):
             if (self.lcomb[i] == 0) and not self.compatible(i, ltry, ret):
                 self.lcomb[i] = 1
-            nb_possibles = compte(0, self.lcomb)
-            if nb_possibles == 0:
-                ret = "ERREUR"
+        return compte(0, self.lcomb)
 
     def partie(self, coder, solver):
         """
@@ -181,24 +182,28 @@ class Mastermind:
             self.journal.write(f"code choisi: {self.scode} {self.lcode}\n")
         self.historique = ()
         nb_tries = 0
-        if solver > 0:
-            self.solver_ini()
+        self.game_ini()
         ret = (0, 0)
         while ret != "ERREUR" and ret[0] < self.nb_pions:
             nb_tries += 1
+            # solveur: choix du prochain essai
             if solver > 0:
                 (stry, ltry) = self.solver_next()
             else:
                 stry = input(f"essai {nb_tries}: Ta proposition? ")
-                ltry = self.str2lbyte(stry)
+                ltry = str2lbyte(self.alphabet, stry)
+            # codeur; réponse
             if coder > 0:
                 ret = mm_compare(self.lcode, ltry)
                 print(f"résultat pour {stry} : {str_compare(ret)}")
             else:
                 res = input("pour essai: " + stry + "  réponse ? ")
                 ret = str2cmp(res)
-            if solver > 0:
-                self.solver_analyse(ltry, ret)
+            # ordinateur: nombre de combinaisons encore possibles
+            if compte('o', stry) == self.nb_pions:
+                ret = (self.nb_pions, 0)
+            elif self.game_analyse(ltry, ret) == 0:
+                ret = "ERREUR"
             self.historique += ((stry, ret),)
         if ret == "ERREUR":
             print("Pour moi, c'est impossible!?  ")
@@ -218,19 +223,16 @@ def test_mm_compare():
     print(l1, l2)
 
 
-if __name__ == "__main__":
-    
-    
-    
+def cmd_line():
     import argparse
     parser = argparse.ArgumentParser(
             formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("-a", "--alphabet", action='store', default='ABCDEF',
-                            help = 'alphabet: the symbols used for colors')
+                        help='alphabet: the symbols used for colors')
     parser.add_argument("-n", "--number", action='store', default=4,
-                            help="number of positions in the code")
+                        help="number of positions in the code")
     parser.add_argument("-z", "--nbgames", action='store', default=10,
-                            help="number of games to be played")
+                        help="number of games to be played")
     parser.add_argument("-s", "--solver", action='store_true', default=False,
                         help="l'ordinateur cherche (et trouve) le code")
     parser.add_argument("-c", "--coder", action='store_true', default=False,
@@ -238,7 +240,7 @@ if __name__ == "__main__":
     parser.add_argument("-j", "--journal", action='store', default="mm.jnl",
                         help="filename to store journal info; '-' for stdout")
     args = parser.parse_args()
-        
+
     def real_main(journal):
         if args.coder:
             coder = 1
@@ -252,13 +254,18 @@ if __name__ == "__main__":
         try:
             jeu.partie(coder, solver)
         except KeyboardInterrupt as e:
-            print("bye") 
-    
-    
+            print("bye")
+
     if args.journal == '-':
         real_main(sys.stdout)
     else:
         with open(args.journal, "w") as journal:
             real_main(journal)
-    
-    
+
+
+if __name__ == "__main__":
+    cmd_line()
+
+
+
+
