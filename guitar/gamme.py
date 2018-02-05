@@ -35,8 +35,7 @@ class gamme:
 
             idx = idx + valeur
 
-            if idx > 11 : # Si j'arrive au bout du tuple je retourne au début
-                idx = idx - 12 # Il doit y avoir plus pythonique...
+            idx = idx % 12 # Si j'arrive au bout du tuple je retourne au début
 
             self.myScale = self.myScale + ( notes[idx],)
 
