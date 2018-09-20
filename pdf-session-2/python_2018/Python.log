@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.10)  20 SEP 2018 09:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.10)  20 SEP 2018 13:56
 entering extended mode
 **./Python.tex
 (Python.tex
@@ -921,13 +921,32 @@ LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 33.
 
 (E:\Applis\tex\tex\latex\base\ts1cmtt.fd
 File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [6
+)
+Underfull \hbox (badness 10000) in paragraph at lines 81--83
 
-]) [7]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 84--87
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--90
+
+ []
+
+[6
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 91--94
+
+ []
+
+) [7]
 \openout2 = `w1-s2-c1-installer-python.aux'.
 
-
-(w1-s2-c1-installer-python.tex
+ (w1-s2-c1-installer-python.tex
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 8.
 
@@ -1668,7 +1687,7 @@ a.pfb><E:/Applis/tex/fonts/type1/urw/palatino/uplbi8a.pfb><E:/Applis/tex/fonts/
 type1/urw/palatino/uplr8a.pfb><E:/Applis/tex/fonts/type1/urw/palatino/uplr8a.pf
 b><E:/Applis/tex/fonts/type1/urw/palatino/uplri8a.pfb><E:/Applis/tex/fonts/type
 1/urw/times/utmr8a.pfb>
-Output written on Python.pdf (54 pages, 611481 bytes).
+Output written on Python.pdf (54 pages, 611541 bytes).
 PDF statistics:
  988 PDF objects out of 1000 (max. 8388607)
  293 named destinations out of 1000 (max. 500000)
