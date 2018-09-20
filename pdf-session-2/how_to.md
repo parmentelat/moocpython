@@ -1,6 +1,6 @@
 #### Génération du PDF avec LaTeX
 
-Environnement de travail : TeXstudio
+Environnement de travail : [TeXstudio](https://www.texstudio.org/)
 
 Structure de l'arborescence sur Github :
 
@@ -22,7 +22,7 @@ Structure de l'arborescence sur Github :
 
 |........|__ wx-sx-cx-xxxx.tex
 
-|...|_python.pdf
+|...|_ python.pdf
 
 Plus divers fichiers log, toc, out, gz, pdf.
 
