@@ -4,45 +4,33 @@ Environnement de travail : [TeXstudio](https://www.texstudio.org/)
 
 Structure de l'arborescence sur Github :
 
+~~~
 <pdf-session-2>
-
 |__<python_2018>
-
 |...|__ medias( dossier contenant les images )
-
 |........|__ str-bytes.png
-
 |........|__ xxx.png
-
 |........|__ python.tex ( Fichier maître )
-
 |........|__ w1-s2-c1-installer-python.tex
-
 |........|__ w1-s2-c1-installer-python.aux
-
 |........|__ wx-sx-cx-xxxx.tex
-
 |...|_ python.pdf
+~~~
 
 Plus divers fichiers log, toc, out, gz, pdf.
 
 Structure de l'arborescence sur votre pc si l’aventure vous tente :
 
+~~~
 <python_2018>
-
 |...|__ medias( dossier contenant les images )
-
 |........|__ str-bytes.png
-
 |........|__ xxx.png
-
 |........|__ python.tex ( Fichier maître )
-
 |........|__ w1-s2-c1-installer-python.tex
-
 |........|__ w1-s2-c1-installer-python.aux
-
 |........|__ wx-sx-cx-xxxx.tex
+~~~
 
 Étape 1
 
