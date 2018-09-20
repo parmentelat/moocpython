@@ -1,0 +1,91 @@
+    \hypertarget{gestion-de-la-muxe9moire}{%
+\section{Gestion de la mémoire}\label{gestion-de-la-muxe9moire}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    L'objet de ce complément est de vous montrer qu'avec Python vous n'avez
+pas à vous préoccuper de la mémoire. Pour expliquer la notion de gestion
+de la mémoire, il nous faut donner un certain nombre de détails sur
+d'autres langages comme C et C++. Si vous souhaitez suivre ce cours à un
+niveau basique vous pouvez ignorer ce complément et seulement retenir
+que Python se charge de tout pour vous~:)
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{langages-de-bas-niveau}{%
+\subsubsection{Langages de bas niveau}\label{langages-de-bas-niveau}}
+
+    Dans un langage traditionnel de bas niveau comme C ou C++, le
+programmeur est en charge de l'allocation - et donc de la libération -
+de la mémoire.\\
+
+Ce qui signifie que, sauf pour les valeurs stockées dans la pile, le
+programmeur est amené~:
+\begin{itemize}
+	\item 
+	à réclamer de la mémoire au système
+	d'exploitation en appelant explicitement \texttt{malloc} (C) ou
+	\texttt{new} (C++)~;
+	\item
+	et réciproquement à rendre cette mémoire au
+	système d'exploitation lorsqu'elle n'est plus utilisée, en appelant
+	\texttt{free} (C) ou \texttt{delete} (C++).
+\end{itemize}
+
+    Avec ce genre de langage, la gestion de la mémoire est un aspect
+important de la programmation. Ce modèle offre une grande flexibilité,
+mais au prix d'un coût élevé en matière de vitesse de développement.\\
+
+En effet, il est assez facile d'oublier de libérer la mémoire après
+usage, ce qui peut conduire à épuiser les ressources disponibles. À
+l'inverse, utiliser une zone mémoire non allouée peut conduire à des
+bugs très difficiles à localiser et à des problèmes de sécurité majeurs.
+Notons qu'une grande partie des attaques en informatique reposent sur
+l'exploitation d'erreurs de gestion de la mémoire.
+
+    \hypertarget{langages-de-haut-niveau}{%
+\subsubsection{Langages de haut niveau}\label{langages-de-haut-niveau}}
+
+    Pour toutes ces raisons, avec un langage de plus haut niveau comme
+Python, le programmeur est libéré de cet aspect de la programmation.\\
+
+Pour anticiper un peu sur le cours des semaines suivantes, voici ce que
+vous pouvez garder en tête s'agissant de la gestion mémoire en Python~:
+* vous créez vos objets au fur et à mesure de vos besoins~;
+
+\begin{itemize}
+\item
+  vous n'avez pas besoin de les libérer explicitement, le
+  ``\emph{Garbage Collector}'' de Python va s'en charger pour recycler
+  la mémoire lorsque c'est possible~;
+\item
+  Python a tendance à être assez gourmand en mémoire, comparé à un
+  langage de bas niveau, car tout est objet et chaque objet est assorti
+  de \emph{méta-informations} qui occupent une place non négligeable.
+  Par exemple, chaque objet possède au minimum~:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    une référence vers son type - c'est le prix du typage dynamique~;
+  \item
+    un compteur de références - le nombre d'autres valeurs (variables ou
+    objets) qui pointent vers l'objet, cette information est notamment
+    utilisée, précisément, par le \emph{Garbage Collector} pour
+    déterminer si la mémoire utilisée par un objet peut être libérée ou
+    non.
+  \end{itemize}
+\item
+  un certain nombre de types prédéfinis et non mutables sont implémentés
+  en Python comme des \emph{singletons}, c'est-à-dire qu'un seul objet
+  est créé et partagé, c'est le cas par exemple pour les petits entiers
+  et les chaînes de caractères, on en reparlera~;
+\item
+  lorsqu'on implémente une classe, il est possible de lui conférer cette
+  caractéristique de singleton, de manière à optimiser la mémoire
+  nécessaire pour exécuter un programme.
+\end{itemize}

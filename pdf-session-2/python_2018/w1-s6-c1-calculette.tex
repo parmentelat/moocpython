@@ -1,0 +1,505 @@
+    \hypertarget{utiliser-python-comme-une-calculette}{%
+\section{Utiliser Python comme une
+calculette}\label{utiliser-python-comme-une-calculette}}
+
+    Lorsque vous démarrez l'interprète Python, vous disposez en fait d'une
+calculette, par exemple, vous pouvez taper~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{l+m+mi}{20} \PY{o}{*} \PY{l+m+mi}{60}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}1}]:} 1200
+\end{Verbatim}
+            
+    Les règles de \textbf{priorité} entre les opérateurs sont habituelles,
+les produits et divisions sont évalués en premier, ensuite les sommes et
+soustractions~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{l+m+mi}{2} \PY{o}{*} \PY{l+m+mi}{30} \PY{o}{+} \PY{l+m+mi}{10} \PY{o}{*} \PY{l+m+mi}{5}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} 110
+\end{Verbatim}
+            
+    De manière générale, il est recommandé de bien parenthéser ses
+expressions. De plus, les parenthèses facilitent la lecture
+d'expressions complexes.\\
+
+Par exemple, il vaut mieux écrire ce qui suit, qui est équivalent mais
+plus lisible~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{p}{(}\PY{l+m+mi}{2} \PY{o}{*} \PY{l+m+mi}{30}\PY{p}{)} \PY{o}{+} \PY{p}{(}\PY{l+m+mi}{10} \PY{o}{*} \PY{l+m+mi}{5}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} 110
+\end{Verbatim}
+            
+    Attention, en Python la division \texttt{/} est une division naturelle~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{l+m+mi}{48} \PY{o}{/} \PY{l+m+mi}{5}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} 9.6
+\end{Verbatim}
+            
+    Rappelez-vous des opérateurs suivants qui sont très pratiques~:
+
+\begin{longtable}[]{@{}lr@{}}
+\toprule
+code & opération\tabularnewline
+\midrule
+\endhead
+\texttt{//} & quotient\tabularnewline
+\texttt{\%} & modulo\tabularnewline
+\texttt{**} & puissance\tabularnewline
+\bottomrule
+\end{longtable}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} calculer un quotient}
+        \PY{l+m+mi}{48} \PY{o}{/}\PY{o}{/} \PY{l+m+mi}{5}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} 9
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} modulo (le reste de la division par)}
+        \PY{l+m+mi}{48} \PY{o}{\PYZpc{}} \PY{l+m+mi}{5}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} 3
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} puissance}
+        \PY{l+m+mi}{2} \PY{o}{*}\PY{o}{*} \PY{l+m+mi}{10}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} 1024
+\end{Verbatim}
+            
+    Vous pouvez facilement faire aussi des calculs sur les complexes.
+Souvenez-vous seulement que la constante complexe que nous notons
+\texttt{i} en français se note \texttt{j} en Python, ce choix a été fait
+par \href{https://fr.wikipedia.org/wiki/Benevolent_Dictator_for_Life}{le
+BDFL} - alias Guido van Rossum - pour des raisons de lisibilité~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} multiplication de deux nombres complexes}
+        \PY{p}{(}\PY{l+m+mi}{2} \PY{o}{+} \PY{l+m+mi}{3}\PY{n}{j}\PY{p}{)} \PY{o}{*} \PY{l+m+mf}{2.5}\PY{n}{j}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} (-7.5+5j)
+\end{Verbatim}
+            
+    Aussi, pour entrer ce nombre complexe \texttt{j}, il faut toujours le
+faire précéder d'un nombre, donc ne pas entrer simplement \texttt{j}
+(qui serait compris comme un nom de variable, nous allons voir ça tout
+de suite) mais plutôt \texttt{1j} ou encore \texttt{1.j}, comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{l+m+mi}{1}\PY{n}{j} \PY{o}{*} \PY{l+m+mf}{1.}\PY{n}{j}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} (-1+0j)
+\end{Verbatim}
+            
+    \hypertarget{utiliser-des-variables}{%
+\subsubsection{Utiliser des variables}\label{utiliser-des-variables}}
+
+    Il peut être utile de stocker un résultat qui sera utilisé plus tard, ou
+de définir une valeur constante. Pour cela on utilise tout simplement
+une affectation comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} pour définir une variable il suffit de lui assigner une valeur}
+         \PY{n}{largeur} \PY{o}{=} \PY{l+m+mi}{5}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} une fois la variable définie, on peut l\PYZsq{}utiliser, ici comme un nombre}
+         \PY{n}{largeur} \PY{o}{*} \PY{l+m+mi}{20}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} 100
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} après quoi bien sûr la variable reste inchangée}
+         \PY{n}{largeur} \PY{o}{*} \PY{l+m+mi}{10}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} 50
+\end{Verbatim}
+            
+    Pour les symboles mathématiques, on peut utiliser la même technique~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} pour définir un réel, on utilise le point au lieu d\PYZsq{}une virgule en français}
+         \PY{n}{pi} \PY{o}{=} \PY{l+m+mf}{3.14159}
+         \PY{l+m+mi}{2} \PY{o}{*} \PY{n}{pi} \PY{o}{*} \PY{l+m+mi}{10}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}13}]:} 62.8318
+\end{Verbatim}
+            
+    Pour les valeurs spéciales comme \(\pi\), on peut utiliser les valeurs
+prédéfinies par la bibliothèque mathématique de Python. En anticipant un
+peu sur la notion d'importation que nous approfondirons plus tard, on
+peut écrire~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{k+kn}{from} \PY{n+nn}{math} \PY{k}{import} \PY{n}{e}\PY{p}{,} \PY{n}{pi}
+\end{Verbatim}
+
+
+    Et ainsi imprimer les racines troisièmes de l'unité par la formule~:
+
+\(r_n = e^{2i\pi \frac{n}{3}},\) pour \(n\in \{0,1,2\}\)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{n} \PY{o}{=} \PY{l+m+mi}{0}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{n=}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{n}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{racine = }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{e}\PY{o}{*}\PY{o}{*}\PY{p}{(}\PY{p}{(}\PY{l+m+mf}{2.}\PY{n}{j}\PY{o}{*}\PY{n}{pi}\PY{o}{*}\PY{n}{n}\PY{p}{)}\PY{o}{/}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}
+         \PY{n}{n} \PY{o}{=} \PY{l+m+mi}{1}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{n=}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{n}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{racine = }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{e}\PY{o}{*}\PY{o}{*}\PY{p}{(}\PY{p}{(}\PY{l+m+mf}{2.}\PY{n}{j}\PY{o}{*}\PY{n}{pi}\PY{o}{*}\PY{n}{n}\PY{p}{)}\PY{o}{/}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}
+         \PY{n}{n} \PY{o}{=} \PY{l+m+mi}{2}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{n=}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{n}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{racine = }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{e}\PY{o}{*}\PY{o}{*}\PY{p}{(}\PY{p}{(}\PY{l+m+mf}{2.}\PY{n}{j}\PY{o}{*}\PY{n}{pi}\PY{o}{*}\PY{n}{n}\PY{p}{)}\PY{o}{/}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+n= 0 racine =  (1+0j)
+n= 1 racine =  (-0.4999999999999998+0.8660254037844387j)
+n= 2 racine =  (-0.5000000000000004-0.8660254037844384j)
+
+    \end{Verbatim}
+
+    \textbf{Remarque~:} bien entendu il sera possible de faire ceci plus
+simplement lorsque nous aurons vu les boucles \texttt{for}.
+
+    \hypertarget{les-types}{%
+\subsubsection{Les types}\label{les-types}}
+
+    Ce qui change par rapport à une calculatrice standard est le fait que
+les valeurs sont typées. Pour illustrer les trois types de nombres que
+nous avons vus jusqu'ici~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{c+c1}{\PYZsh{} le type entier s\PYZsq{}appelle \PYZsq{}int\PYZsq{}}
+         \PY{n+nb}{type}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}16}]:} int
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} le type flottant s\PYZsq{}appelle \PYZsq{}float\PYZsq{}}
+         \PY{n+nb}{type}\PY{p}{(}\PY{l+m+mf}{3.5}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}17}]:} float
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{} le type complexe s\PYZsq{}appelle \PYZsq{}complex\PYZsq{}}
+         \PY{n+nb}{type}\PY{p}{(}\PY{l+m+mi}{1}\PY{n}{j}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}18}]:} complex
+\end{Verbatim}
+            
+    \hypertarget{chauxeenes-de-caractuxe8res}{%
+\subsubsection{Chaînes de
+caractères}\label{chauxeenes-de-caractuxe8res}}
+
+    On a également rapidement besoin de chaînes de caractères, on les
+étudiera bientôt en détail, mais en guise d'avant-goût~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n}{chaine} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Bonjour le monde !}\PY{l+s+s2}{\PYZdq{}}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{chaine}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Bonjour le monde !
+
+    \end{Verbatim}
+
+    \hypertarget{conversions}{%
+\subsubsection{Conversions}\label{conversions}}
+
+    Il est parfois nécessaire de convertir une donnée d'un type dans un
+autre. Par exemple on peut demander à l'utilisateur d'entrer une valeur
+au clavier grâce à la fonction \texttt{input}, comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{reponse} \PY{o}{=} \PY{n+nb}{input}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{quel est votre âge ? }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+quel est votre âge ? 42
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{c+c1}{\PYZsh{} vous avez entré la chaîne suivante}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{reponse}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+42
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{c+c1}{\PYZsh{} ici reponse est une variable, et son contenu est de type chaîne de caractères}
+         \PY{n+nb}{type}\PY{p}{(}\PY{n}{reponse}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}22}]:} str
+\end{Verbatim}
+            
+    Maintenant je veux faire des calculs sur votre âge, par exemple le
+multiplier par 2. Si je m'y prends naïvement, ça donne ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{c+c1}{\PYZsh{} multiplier une chaîne de caractères par deux ne fait pas ce que l\PYZsq{}on veut,}
+         \PY{c+c1}{\PYZsh{} nous verrons plus tard que ça fait une concaténation}
+         \PY{l+m+mi}{2} \PY{o}{*} \PY{n}{reponse}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}23}]:} '4242'
+\end{Verbatim}
+            
+    C'est pourquoi il me faut ici d'abord \textbf{convertir} la (valeur de
+la) variable \texttt{reponse} en un entier, que je peux ensuite doubler
+(assurez-vous d'avoir bien entré ci-dessus une valeur qui correspond à
+un nombre entier)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{c+c1}{\PYZsh{} reponse est une chaine}
+         \PY{c+c1}{\PYZsh{} je la convertis en entier en appelant la fonction int()}
+         \PY{n}{age} \PY{o}{=} \PY{n+nb}{int}\PY{p}{(}\PY{n}{reponse}\PY{p}{)}
+         \PY{n+nb}{type}\PY{p}{(}\PY{n}{age}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}24}]:} int
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{c+c1}{\PYZsh{} que je peux maintenant multiplier par 2}
+         \PY{l+m+mi}{2} \PY{o}{*} \PY{n}{age}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}25}]:} 84
+\end{Verbatim}
+            
+    Ou si on préfère, en une seule fois~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{le double de votre age est}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+m+mi}{2}\PY{o}{*}\PY{n+nb}{int}\PY{p}{(}\PY{n}{reponse}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+le double de votre age est 84
+
+    \end{Verbatim}
+
+    \hypertarget{conversions---suite}{%
+\subsubsection{Conversions - suite}\label{conversions---suite}}
+
+    De manière plus générale, pour convertir un objet en un entier, un
+flottant, ou une chaîne de caractères, on peut simplement appeler une
+fonction \emph{built-in} qui porte le même nom que le type cible~:
+
+\begin{longtable}[]{@{}lr@{}}
+\toprule
+Type & Fonction\tabularnewline
+\midrule
+\endhead
+Entier & \texttt{int}\tabularnewline
+Flottant & \texttt{float}\tabularnewline
+Complexe & \texttt{complex}\tabularnewline
+Chaîne & \texttt{str}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Ainsi dans l'exemple précédent, \texttt{int(reponse)} représente la
+conversion de \texttt{reponse} en entier.\\
+
+On a illustré cette même technique dans les exemples suivants~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{c+c1}{\PYZsh{} dans l\PYZsq{}autre sens, si j\PYZsq{}ai un entier}
+         \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{2345}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{c+c1}{\PYZsh{} je peux facilement le traduire en chaîne de caractères}
+         \PY{n+nb}{str}\PY{p}{(}\PY{l+m+mi}{2345}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}28}]:} '2345'
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{c+c1}{\PYZsh{} ou en complexe}
+         \PY{n+nb}{complex}\PY{p}{(}\PY{l+m+mi}{2345}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}29}]:} (2345+0j)
+\end{Verbatim}
+            
+    Nous verrons plus tard que ceci se généralise à tous les types de
+Python, pour convertir un objet \texttt{x} en un type \texttt{bidule},
+on appelle \texttt{bidule(x)}. On y reviendra, bien entendu.
+
+    \hypertarget{grands-nombres}{%
+\subsubsection{Grands nombres}\label{grands-nombres}}
+
+    Comme les entiers sont de précision illimitée, on peut améliorer leur
+lisibilité en insérant des caractères \texttt{\_} qui sont simplement
+ignorés à l'exécution.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{n}{tres\PYZus{}grand\PYZus{}nombre} \PY{o}{=} \PY{l+m+mi}{23}\PY{n}{\PYZus{}456\PYZus{}789\PYZus{}012\PYZus{}345}
+         
+         \PY{n}{tres\PYZus{}grand\PYZus{}nombre}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}30}]:} 23456789012345
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{c+c1}{\PYZsh{} ça marche aussi avec les flottants}
+         \PY{l+m+mi}{123}\PY{n}{\PYZus{}456}\PY{o}{.}\PY{l+m+mi}{789}\PY{n}{\PYZus{}012}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}31}]:} 123456.789012
+\end{Verbatim}
+            
+    \hypertarget{entiers-et-bases}{%
+\subsubsection{Entiers et bases}\label{entiers-et-bases}}
+
+    Les calculettes scientifiques permettent habituellement d'entrer les
+entiers dans d'autres bases que la base 10.\\
+
+En Python, on peut aussi entrer un entier sous forme binaire comme
+ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{n}{deux\PYZus{}cents} \PY{o}{=} \PY{l+m+mb}{0b11001000}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{deux\PYZus{}cents}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+200
+
+    \end{Verbatim}
+
+    Ou encore sous forme octale (en base 8) comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}33}]:} \PY{n}{deux\PYZus{}cents} \PY{o}{=} \PY{l+m+mo}{0o310}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{deux\PYZus{}cents}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+200
+
+    \end{Verbatim}
+
+    Ou enfin encore en hexadécimal (base 16) comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{n}{deux\PYZus{}cents} \PY{o}{=} \PY{l+m+mh}{0xc8}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{deux\PYZus{}cents}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+200
+
+    \end{Verbatim}
+
+    Pour d'autres bases, on peut utiliser la fonction de conversion
+\texttt{int} en lui passant un argument supplémentaire~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}35}]:} \PY{n}{deux\PYZus{}cents} \PY{o}{=} \PY{n+nb}{int}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{3020}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{deux\PYZus{}cents}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+200
+
+    \end{Verbatim}
+
+    \hypertarget{fonctions-mathuxe9matiques}{%
+\subsubsection{Fonctions
+mathématiques}\label{fonctions-mathuxe9matiques}}
+
+    Python fournit naturellement un ensemble très complet d'opérateurs
+mathématiques pour les fonctions exponentielles, trigonométriques et
+autres, mais leur utilisation ne nous est pas encore accessible à ce
+stade et nous les verrons ultérieurement.

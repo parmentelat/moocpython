@@ -1,0 +1,273 @@
+    \hypertarget{typages-statique-et-dynamique}{%
+\section{Typages statique et
+dynamique}\label{typages-statique-et-dynamique}}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    Parmi les langages typés, on distingue les langages à typage statique et
+ceux à typage dynamique. Ce notebook tente d'éclaircir ces notions pour
+ceux qui n'y sont pas familiers.
+
+    \hypertarget{typage-statique}{%
+\subsubsection{Typage statique}\label{typage-statique}}
+
+    À une extrémité du spectre, on trouve les langages compilés, dits à
+typage statique, comme par exemple C ou C++.
+
+En C on écrira, par exemple, une version simpliste de la fonction
+factoriel comme ceci~:
+
+    \begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ factoriel(}\DataTypeTok{int}\NormalTok{ n) \{}
+    \DataTypeTok{int}\NormalTok{ result = }\DecValTok{1}\NormalTok{;}
+    \ControlFlowTok{for}\NormalTok{ (}\DataTypeTok{int}\NormalTok{ loop = }\DecValTok{1}\NormalTok{; loop <= n; loop++)}
+\NormalTok{        result *= loop;}
+    \ControlFlowTok{return}\NormalTok{ result;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+    Comme vous pouvez le voir - ou le deviner - toutes les
+\textbf{variables} utilisées ici (comme par exemple \texttt{n},
+\texttt{result} et \texttt{loop}) sont typées~:
+
+\begin{itemize}
+\tightlist
+\item
+  on doit appeler \texttt{factoriel} avec un argument \texttt{n} qui
+  doit être un entier (\texttt{int} est le nom du type entier)~;
+\item
+  les variables internes \texttt{result} et \texttt{loop} sont de type
+  entier~;
+\item
+  \texttt{factoriel} retourne une valeur de type entier.
+\end{itemize}
+
+    Ces informations de type ont essentiellement trois fonctions~:
+
+\begin{itemize}
+\tightlist
+\item
+  en premier lieu, elles sont nécessaires au compilateur. En C si le
+  programmeur ne précisait pas que \texttt{result} est de type entier,
+  le compilateur n'aurait pas suffisamment d'éléments pour générer le
+  code assembleur correspondant~;
+\item
+  en contrepartie, le programmeur a un contrôle très fin de l'usage
+  qu'il fait de la mémoire et du matériel. Il peut choisir d'utiliser un
+  entier sur 32 ou 64 bits, signé ou pas, ou construire avec
+  \texttt{struct} et \texttt{union} un arrangement de ses données~;
+\item
+  enfin, et surtout, ces informations de type permettent de faire un
+  contrôle \emph{a priori} de la validité du programme, par exemple, si
+  à un autre endroit dans le code on trouve~:
+\end{itemize}
+
+    \begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<stdio.h>}
+
+\DataTypeTok{int}\NormalTok{ main(}\DataTypeTok{int}\NormalTok{ argc, }\DataTypeTok{char}\NormalTok{ *argv[]) \{}
+    \CommentTok{/* le premier argument de la ligne de commande est argv[1] */}
+    \DataTypeTok{char}\NormalTok{ *input = argv[}\DecValTok{1}\NormalTok{];}
+    \CommentTok{/* calculer son factoriel et afficher le résultat */}
+\NormalTok{    printf(}\StringTok{"Factoriel (%s) = %d}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, input, factoriel(input));}
+    \CommentTok{/*                                               ^^^^^}
+\CommentTok{     * ici on appelle factoriel avec une entrée de type 'chaîne de caractères' */}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+    alors le compilateur va remarquer qu'on essaie d'appeler
+\texttt{factoriel} avec comme argument \texttt{input} qui, pour faire
+simple, est une chaîne de caractères et comme \texttt{factoriel}
+s'attend à recevoir un entier, ce programme n'a aucune chance de
+compiler.\\
+
+On parle alors de \textbf{typage statique}, en ce sens que chaque
+\textbf{variable} a exactement un type qui est défini par le programmeur
+une bonne fois pour toutes.\\
+
+    C'est ce qu'on appelle le \textbf{contrôle de type}, ou
+\emph{type-checking} en anglais. Si on ignore le point sur le contrôle
+fin de la mémoire, qui n'est pas crucial à notre sujet, ce modèle de
+contrôle de type présente~:
+
+\begin{itemize}
+\tightlist
+\item
+  l'\textbf{inconvénient} de demander davantage au programmeur (je fais
+  abstraction, à ce stade et pour simplifier, de
+  \href{https://en.wikipedia.org/wiki/Type_inference}{langages à
+  inférence de types} comme ML et Haskell)~;
+\item
+  et l'\textbf{avantage} de permettre un contrôle étendu, et surtout
+  précoce (avant même de l'exécuter), de la bonne correction du
+  programme.
+\end{itemize}
+
+    Cela étant dit, le typage statique en C n'empêche pas le programmeur
+débutant d'essayer d'écrire dans la mémoire à partir d'un pointeur
+\texttt{NULL} - et le programme de s'interrompre brutalement. Il faut
+être conscient des limites du typage statique.
+
+    \hypertarget{typage-dynamique}{%
+\subsubsection{Typage dynamique}\label{typage-dynamique}}
+
+    À l'autre bout du spectre, on trouve des langages comme, eh bien,
+Python.\\
+
+    Pour comprendre cette notion de typage dynamique, regardons la fonction
+suivante \texttt{somme}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k}{def} \PY{n+nf}{somme}\PY{p}{(}\PY{o}{*}\PY{n}{largs}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{retourne la somme de tous ses arguments}\PY{l+s+s2}{\PYZdq{}}
+            \PY{k}{if} \PY{o+ow}{not} \PY{n}{largs}\PY{p}{:}
+                \PY{k}{return} \PY{l+m+mi}{0}
+            \PY{n}{result} \PY{o}{=} \PY{n}{largs}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{largs}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                \PY{n}{result} \PY{o}{+}\PY{o}{=} \PY{n}{largs}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+            \PY{k}{return} \PY{n}{result}
+\end{Verbatim}
+
+
+    Naturellement, vous n'êtes pas à ce stade en mesure de comprendre le
+fonctionnement intime de la fonction. Mais vous pouvez tout de même
+l'utiliser~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{somme}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{,} \PY{l+m+mi}{300}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} 326
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{liste1} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        \PY{n}{liste2} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{30}\PY{p}{]}
+        \PY{n}{liste3} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{spam}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{eggs}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        \PY{n}{somme}\PY{p}{(}\PY{n}{liste1}\PY{p}{,} \PY{n}{liste2}\PY{p}{,} \PY{n}{liste3}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} ['a', 'b', 'c', 0, 20, 30, 'spam', 'eggs']
+\end{Verbatim}
+            
+    Vous pouvez donc constater que \texttt{somme} peut fonctionner avec des
+objets de types différents. En fait, telle qu'elle est écrite, elle va
+fonctionner s'il est possible de faire \texttt{+} entre ses arguments.
+Ainsi, par exemple, on pourrait même faire~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} Python sait faire + entre deux chaînes de caractères}
+        \PY{n}{somme}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{def}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} 'abcdef'
+\end{Verbatim}
+            
+    Mais par contre on ne pourrait pas faire
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} ceci va déclencher une exception à l\PYZsq{}exécution}
+        \PY{n}{somme}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+
+        TypeError                                 Traceback (most recent call last)
+
+        <ipython-input-5-1b5269e9e129> in <module>()
+          1 \# ceci va déclencher une exception à l'exécution
+    ----> 2 somme(12, [1, 2, 3])
+    
+
+        <ipython-input-1-29005c25d5bb> in somme(*largs)
+          5     result = largs[0]
+          6     for i in range(1, len(largs)):
+    ----> 7         result += largs[i]
+          8     return result
+
+
+        TypeError: unsupported operand type(s) for +=: 'int' and 'list'
+
+    \end{Verbatim}
+
+    Il est utile de remarquer que le typage de Python, qui existe bel et
+bien comme on le verra, est qualifié de dynamique parce que le type est
+attaché \textbf{à un objet} et non à la variable qui le référence. On
+aura bien entendu l'occasion d'approfondir tout ça dans le cours.\\
+
+    En Python, on fait souvent référence au typage sous l'appellation
+\emph{duck typing}, de manière imagée~:\\
+
+\begin{quote}
+If it looks like a duck and quacks like a duck, it's a duck.\\
+\end{quote}
+
+    On voit qu'on se trouve dans une situation très différente de celle du
+programmeur C/C++, en ce sens que~:
+
+\begin{itemize}
+\tightlist
+\item
+  à l'écriture du programme, il n'y aucun des surcoûts qu'on trouve avec
+  C ou C++ en matière de définition de type~;
+\item
+  aucun contrôle de type n'est effectué \emph{a priori} par le langage
+  au moment de la définition de la fonction \texttt{somme}~;
+\item
+  par contre au moment de l'exécution, s'il s'avère qu'on tente de faire
+  une somme entre deux types qui ne peuvent pas être additionnés, comme
+  ci-dessus avec un entier et une liste, le programme ne pourra pas se
+  dérouler correctement.
+\end{itemize}
+
+    Il y a deux points de vue vis-à-vis de la question du typage.\\
+
+Les gens habitués au \emph{typage statique} se plaignent du typage
+dynamique en disant qu'on peut écrire des programmes faux et qu'on s'en
+rend compte trop tard - à l'exécution.\\
+
+À l'inverse les gens habitués au \emph{typage dynamique} font valoir que
+le typage statique est très partiel, par exemple, en C si on essaie
+d'écrire dans un pointeur \texttt{NULL}, le système d'exploitation ne le
+permet pas et le programme sort tout aussi brutalement.\\
+
+    Bref, selon le point de vue, le typage dynamique est vécu comme un
+inconvénient (pas assez de bonnes propriétés détectées par le langage)
+ou comme un avantage (pas besoin de passer du temps à déclarer le type
+des variables, ni à faire des conversions pour satisfaire le
+compilateur).\\
+
+Vous remarquerez cependant à l'usage, qu'en matière de vitesse de
+développement, les inconvénients du typage dynamique sont très largement
+compensés par ses avantages.
+
+    \hypertarget{type-hints}{%
+\subsubsection{\texorpdfstring{\emph{Type
+hints}}{Type hints}}\label{type-hints}}
+
+    Signalons enfin que depuis python-3.5, il est \textbf{possible}
+d'ajouter des annotations de type, pour expliciter les suppositions qui
+sont faites par le programmeur pour le bon fonctionnement du code.\\
+
+Nous aurons là encore l'occasion de détailler ce point dans le cours,
+signalons simplement que ces annotations sont totalement optionnelles,
+et que même lorsqu'elles sont présentes elles ne sont pas utilisées à
+l'exécution par l'interpréteur. L'idée est plutôt de permettre à des
+outils externes, \href{http://www.mypy-lang.org}{comme par exemple
+\texttt{mypy}}, d'effectuer des contrôles plus poussés concernant la
+correction du programme.

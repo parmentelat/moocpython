@@ -1,0 +1,88 @@
+    \hypertarget{dessiner-un-carruxe9}{%
+\section{Dessiner un carré}\label{dessiner-un-carruxe9}}
+
+    \hypertarget{exercice---niveau-intermuxe9diaire}{%
+\subsection{Exercice - niveau
+intermédiaire}\label{exercice---niveau-intermuxe9diaire}}
+
+    Voici un tout petit programme qui dessine un carré.\\
+
+    Il utilise le module \texttt{turtle}, conçu précisément à des fins
+pédagogiques. Pour des raisons techniques, le module \texttt{turtle}
+n'est \textbf{pas disponible} au travers de la plateforme FUN.\\
+
+    \textbf{Il est donc inutile d'essayer d'exécuter ce programme depuis le
+notebook}. L'objectif de cet exercice est plutôt de vous entraîner à
+télécharger ce programme en utilisant le menu
+\emph{``File~-\textgreater{}~Download~as~-\textgreater{}~Python''}, puis
+à le charger dans votre IDLE pour l'exécuter sur votre machine.\\
+
+    \textbf{Attention} également à sauver le programme téléchargé
+\textbf{sous un autre nom} que \texttt{turtle.py}, car sinon vous allez
+empêcher python de trouver le module standard \texttt{turtle}~;
+appelez-le par exemple \texttt{turtle\_basic.py}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} on a besoin du module turtle}
+        \PY{k+kn}{import} \PY{n+nn}{turtle}
+\end{Verbatim}
+
+
+    On commence par définir une fonction qui dessine un carré de coté
+\texttt{length}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{square}\PY{p}{(}\PY{n}{length}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{have the turtle draw a square of side \PYZlt{}length\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+            \PY{k}{for} \PY{n}{side} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{:}
+                \PY{n}{turtle}\PY{o}{.}\PY{n}{forward}\PY{p}{(}\PY{n}{length}\PY{p}{)}
+                \PY{n}{turtle}\PY{o}{.}\PY{n}{left}\PY{p}{(}\PY{l+m+mi}{90}\PY{p}{)}
+\end{Verbatim}
+
+
+    Maintenant on commence par initialiser la tortue~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{turtle}\PY{o}{.}\PY{n}{reset}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    On peut alors dessiner notre carré~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{square}\PY{p}{(}\PY{l+m+mi}{200}\PY{p}{)}
+\end{Verbatim}
+
+
+    Et pour finir on attend que l'utilisateur clique dans la fenêtre de la
+tortue, et alors on termine~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{turtle}\PY{o}{.}\PY{n}{exitonclick}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{exercice---niveau-avancuxe9}{%
+\subsection{Exercice - niveau
+avancé}\label{exercice---niveau-avancuxe9}}
+
+    Naturellement vous pouvez vous amuser à modifier ce code pour dessiner
+des choses un peu plus amusantes.\\
+
+Dans ce cas, commencez par chercher ``\emph{module python turtle}'' dans
+votre moteur de recherche favori, pour localiser la documentation du
+module
+\href{https://docs.python.org/3/library/turtle.html}{\texttt{turtle}}.\\
+
+Vous trouverez quelques exemples pour commencer ici~:
+\begin{itemize}
+	\item 
+	\href{media/turtle_multi_squares.py}{turtle\_multi\_squares.py} pour
+	dessiner des carrés à l'emplacement de la souris en utilisant plusieurs
+	tortues~;
+	\item
+	\href{media/turtle_fractal.py}{turtle\_fractal.py} pour
+	dessiner une fractale simple~;
+	\item \href{media/turtle_fractal_reglable.py}{turtle\_fractal\_reglable.py}
+	une variation sur la fractale, plus paramétrable.
+\end{itemize}

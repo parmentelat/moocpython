@@ -1,0 +1,230 @@
+    \hypertarget{modes-dexuxe9cution}{%
+\section{Modes d'exécution}\label{modes-dexuxe9cution}}
+
+    Nous avons donc à notre disposition plusieurs façons d'exécuter un
+programme Python. Nous allons les étudier plus en détail~:
+
+    \begin{longtable}[]{@{}ll@{}}
+\toprule
+Quoi & Avec quel outil\tabularnewline
+\midrule
+\endhead
+fichier complet &
+\texttt{python3\ \textless{}fichier\textgreater{}.py}\tabularnewline
+ligne à ligne & \texttt{python3} en mode interactif\tabularnewline
+~ & ou sous \texttt{ipython3}\tabularnewline
+~ & ou avec IDLE\tabularnewline
+par fragments & dans un notebook\tabularnewline
+\bottomrule
+\end{longtable}
+
+    Pour cela nous allons voir le comportement d'un tout petit programme
+Python lorsqu'on l'exécute sous ces différents environnements.\\
+
+On veut surtout expliquer une petite différence quant au niveau de
+détail de ce qui se trouve imprimé.\\
+
+    Essentiellement, lorsqu'on utilise l'interpréteur en mode interactif -
+ou sous IDLE - à chaque fois que l'on tape une ligne, le résultat est
+\textbf{calculé} (on dit aussi \textbf{évalué}) puis \textbf{imprimé}.\\
+
+Par contre, lorsqu'on écrit tout un programme, on ne peut plus imprimer
+le résultat de toutes les lignes, cela produirait un flot d'impression
+beaucoup trop important. Par conséquent, si vous ne déclenchez pas une
+impression avec, par exemple, la fonction \texttt{print}, rien ne
+s'affichera.\\
+
+Enfin, en ce qui concerne le notebook, le comportement est un peu
+hybride entre les deux, en ce sens que seul le \textbf{dernier résultat}
+de la cellule est imprimé.
+
+    \hypertarget{linterpruxe9teur-python-interactif}{%
+\subsubsection{L'interpréteur Python
+interactif}\label{linterpruxe9teur-python-interactif}}
+
+    Le programme choisi est très simple, c'est le suivant~:
+
+    \begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{10} \OperatorTok{*} \DecValTok{10}
+\DecValTok{20} \OperatorTok{*} \DecValTok{20}
+\DecValTok{30} \OperatorTok{*} \DecValTok{30}
+\end{Highlighting}
+\end{Shaded}
+
+    Voici comment se comporte l'interpréteur interactif quand on lui soumet
+ces instructions~:
+
+    \begin{verbatim}
+$ python3
+Python 3.5.1 (v3.5.1:37a07cee5969, Dec  5 2015, 21:12:44)
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 10 * 10
+100
+>>> 20 * 20
+400
+>>> 30 * 30
+900
+>>> exit()
+$
+\end{verbatim}
+
+    Notez que pour terminer la session, il nous faut ``sortir'' de
+l'interpréteur en tapant \texttt{exit()}.\\
+
+On peut aussi taper \texttt{Control-D} sous Linux ou macOS.\\
+
+    Comme on le voit ici, l'interpréteur imprime \textbf{le résultat de
+chaque ligne}. On voit bien apparaître toutes les valeurs calculées,
+100, 400, puis enfin 900.
+
+    \hypertarget{sous-forme-de-programme-constituuxe9}{%
+\subsubsection{Sous forme de programme
+constitué}\label{sous-forme-de-programme-constituuxe9}}
+
+    Voyons à présent ce que donne cette même séquence de calculs dans un
+programme complet. Pour cela, il nous faut tout d'abord fabriquer un
+fichier avec un suffixe en \texttt{.py}, en utilisant par exemple un
+éditeur de fichier. Le résultat doit ressembler à ceci~:
+
+    \begin{verbatim}
+$ cat foo.py
+10 * 10
+20 * 20
+30 * 30
+$
+\end{verbatim}
+
+    Exécutons à présent ce programme~:
+
+    \begin{verbatim}
+$ python3 foo.py
+$
+\end{verbatim}
+
+    On constate donc que ce programme \textbf{ne fait rien~!} En tout cas,
+selon toute apparence.\\
+
+En réalité, les 3 valeurs 100, 400 et 900 sont bien calculées, mais
+comme aucune instruction \texttt{print} n'est présente, rien n'est
+imprimé et le programme se termine sans signe apparent d'avoir
+réellement fonctionné.\\
+
+Ce comportement peut paraître un peu déroutant au début, mais comme nous
+l'avons mentionné c'est tout à fait délibéré. Un programme fonctionnel
+faisant facilement plusieurs milliers de lignes, voire beaucoup plus, il
+ne serait pas du tout réaliste que chaque ligne produise une impression,
+comme c'est le cas en mode interactif.
+
+    \hypertarget{dans-un-notebook}{%
+\subsubsection{Dans un notebook}\label{dans-un-notebook}}
+
+    Voici à présent le même programme dans un notebook~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{l+m+mi}{10} \PY{o}{*} \PY{l+m+mi}{10}
+        \PY{l+m+mi}{20} \PY{o}{*} \PY{l+m+mi}{20}
+        \PY{l+m+mi}{30} \PY{o}{*} \PY{l+m+mi}{30}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}1}]:} 900
+\end{Verbatim}
+            
+    Lorsqu'on exécute cette cellule (rappel~: sélectionner la cellule, et
+utiliser le bouton en forme de flèche vers la droite, ou entrer
+\textbf{``Shift+Enter''} au clavier), on obtient une seule valeur dans
+la rubrique \texttt{Out{[}{]}}, 900, qui correspond \textbf{au résultat
+de la dernière ligne.}
+
+    \hypertarget{utiliser-print}{%
+\subsubsection{\texorpdfstring{Utiliser
+\texttt{print}}{Utiliser print}}\label{utiliser-print}}
+
+    Ainsi, pour afficher un résultat intermédiaire, on utilise l'instruction
+\texttt{print}. Nous verrons cette instruction en détail dans les
+semaines qui viennent, mais en guise d'introduction disons seulement que
+c'est une fonction comme les autres en Python 3.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{10}
+        \PY{n}{b} \PY{o}{=} \PY{l+m+mi}{20}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+10 20
+
+    \end{Verbatim}
+
+    On peut naturellement mélanger des objets de plusieurs types, et donc
+mélanger des chaînes de caractères et des nombres pour obtenir un
+résultat un peu plus lisible. En effet, lorsque le programme devient
+gros, il est important de savoir à quoi correspond une ligne dans le
+flot de toutes les impressions. Aussi on préfèrera quelque chose comme~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a =}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{a}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{et b =}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a = 10 et b = 20
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} ou encore, équivalente mais avec un f\PYZhy{}string}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a = }\PY{l+s+si}{\PYZob{}a\PYZcb{}}\PY{l+s+s2}{ et b = }\PY{l+s+si}{\PYZob{}b\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a = 10 et b = 20
+
+    \end{Verbatim}
+
+    Une pratique courante consiste d'ailleurs à utiliser les commentaires
+pour laisser dans le code les instructions \texttt{print} qui
+correspondent à du debug (c'est-à-dire qui ont pu être utiles lors de la
+mise au point et qu'on veut pouvoir réactiver rapidement).
+
+    \hypertarget{utiliser-print-pour-sous-titrer-une-affectation}{%
+\subsubsection{\texorpdfstring{Utiliser \texttt{print} pour
+``sous-titrer'' une
+affectation}{Utiliser print pour ``sous-titrer'' une affectation}}\label{utiliser-print-pour-sous-titrer-une-affectation}}
+
+    Remarquons enfin que l'affectation à une variable ne retourne aucun
+résultat.
+
+C'est-à-dire, en pratique, que si on écrit~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{100}
+\end{Verbatim}
+
+
+    même une fois l'expression évaluée par l'interpréteur, aucune ligne
+\texttt{Out{[}{]}} n'est ajoutée.\\
+
+    C'est pourquoi, il nous arrivera parfois d'écrire, notamment lorsque
+l'expression est complexe et pour rendre explicite la valeur qui vient
+d'être affectée~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{100}\PY{p}{;} \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100
+
+    \end{Verbatim}
+
+    Notez bien que cette technique est uniquement pédagogique, et n'a
+absolument aucun autre intérêt dans la pratique; il n'est \textbf{pas
+recommandé} de l'utiliser en dehors de ce contexte.

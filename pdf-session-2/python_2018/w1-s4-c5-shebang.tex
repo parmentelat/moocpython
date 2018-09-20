@@ -1,0 +1,103 @@
+    \hypertarget{la-ligne-shebang}{%
+\section{\texorpdfstring{La ligne
+\emph{shebang}}{La ligne shebang}}\label{la-ligne-shebang}}
+
+    \begin{verbatim}
+#!/usr/bin/env python3
+\end{verbatim}
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    Ce complément est uniquement valable pour macOS et Linux.
+
+    \hypertarget{le-besoin}{%
+\subsubsection{Le besoin}\label{le-besoin}}
+
+    Nous avons vu dans la vidéo que, pour lancer un programme Python, on
+fait depuis le terminal~:
+
+    \begin{verbatim}
+$ python3 mon_module.py
+\end{verbatim}
+
+    Lorsqu'il s'agit d'un programme que l'on utilise fréquemment, on n'est
+pas forcément dans le répertoire où se trouve le programme Python.
+Aussi, dans ce cas, on peut utiliser un chemin ``absolu'', c'est-à-dire
+à partir de la racine des noms de fichiers, comme par exemple~:
+
+    \begin{verbatim}
+$ python3 /le/chemin/jusqu/a/mon_module.py
+\end{verbatim}
+
+    Sauf que c'est assez malcommode, et cela devient vite pénible à la
+longue.
+
+    \hypertarget{la-solution}{%
+\subsubsection{La solution}\label{la-solution}}
+
+    Sur Linux et macOS, il existe une astuce utile pour simplifier cela.
+Voyons comment s'y prendre, avec par exemple le programme
+\texttt{fibonacci.py} que vous pouvez
+\href{data/fibonacci.py}{télécharger ici} (nous avons vu ce code en
+détail dans les deux compléments précédents). Commencez par sauver ce
+code sur votre ordinateur dans un fichier qui s'appelle, bien entendu,
+\texttt{fibonacci.py}.\\
+
+    On commence par éditer le tout début du fichier pour lui ajouter une
+\textbf{première ligne}~:
+
+    \begin{verbatim}
+#!/usr/bin/env python3
+
+## La suite de Fibonacci (Suite)
+...etc...
+\end{verbatim}
+
+    Cette première ligne s'appelle un
+\href{http://en.wikipedia.org/wiki/Shebang_\%28Unix\%29}{Shebang} dans
+le jargon Unix. Unix stipule que le Shebang doit être en
+\textbf{première position} dans le fichier.\\
+
+    Ensuite on rajoute au fichier, depuis le terminal, le caractère
+exécutable comme ceci~:
+
+    \begin{verbatim}
+$ pwd
+/le/chemin/jusqu/a/
+\end{verbatim}
+
+    \begin{verbatim}
+$ chmod +x fibonacci.py
+\end{verbatim}
+
+    À partir de là, vous pouvez utiliser le fichier \texttt{fibonacci.py}
+comme une commande, sans avoir à mentionner \texttt{python3}, qui sera
+invoqué au travers du shebang~:
+
+    \begin{verbatim}
+$ /le/chemin/jusqu/a/fibonacci.py 20
+fibonacci(20) = 10946
+\end{verbatim}
+
+    Et donc vous pouvez aussi le déplacer dans un répertoire qui est dans
+votre variable \texttt{PATH}; de cette façon vous les rendez ainsi
+accessible à partir n'importe quel répertoire en faisant simplement~:
+
+    \begin{verbatim}
+$ export PATH=/le/chemin/jusqu/a:$PATH
+\end{verbatim}
+
+    \begin{verbatim}
+$ cd /tmp
+$ fibonacci.py 20
+fibonacci(20) = 10946
+\end{verbatim}
+
+    \textbf{Remarque~:} tout ceci fonctionne très bien tant que votre point
+d'entrée - ici \texttt{fibonacci.py} - n'utilise que des modules
+standards. Dans le cas où le point d'entrée vient avec au moins un
+module, il est également nécessaire d'installer ces modules quelque
+part, et d'indiquer au point d'entrée comment les trouver, nous y
+reviendrons dans la semaine où nous parlerons des modules.

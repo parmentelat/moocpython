@@ -1,0 +1,118 @@
+    \hypertarget{versions-de-python}{%
+\section{Versions de Python}\label{versions-de-python}}
+
+    \hypertarget{version-de-ruxe9fuxe9rence-python-3.6}{%
+\subsubsection{Version de référence:
+Python-3.6}\label{version-de-ruxe9fuxe9rence-python-3.6}}
+
+    Comme on l'indique dans la vidéo, la version de Python qui a servi de
+\textbf{référence pour le MOOC est la version 3.6}, c'est notamment avec
+cette version que l'on a tourné les vidéos.
+
+    \hypertarget{versions-plus-anciennes}{%
+\subsubsection{Versions plus anciennes}\label{versions-plus-anciennes}}
+
+    Certaines précautions sont à prendre si vous utilisez une version plus
+ancienne:
+
+    \hypertarget{python-3.5}{%
+\subparagraph{Python-3.5}\label{python-3.5}}
+
+    Si vous préférez utiliser python-3.5, la différence la plus visible pour
+vous apparaitra avec les \emph{f-strings}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{n}{age} \PY{o}{=} \PY{l+m+mi}{10}
+        
+        \PY{c+c1}{\PYZsh{} un exemple de f\PYZhy{}string}
+        \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Jean a }\PY{l+s+si}{\PYZob{}age\PYZcb{}}\PY{l+s+s2}{ ans}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}1}]:} 'Jean a 10 ans'
+\end{Verbatim}
+            
+    Cette construction - que nous utilisons très fréquemment - n'a été
+introduite qu'en Python-3.6, aussi si vous utilisez Python-3.5 vous
+verrez ceci~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>>}\NormalTok{ age }\OperatorTok{=} \DecValTok{10}
+\OperatorTok{>>>} \SpecialStringTok{f"Jean a }\SpecialCharTok{\{}\NormalTok{age}\SpecialCharTok{\}}\SpecialStringTok{ ans"}
+\NormalTok{  File }\StringTok{"<stdin>"}\NormalTok{, line }\DecValTok{1}
+    \SpecialStringTok{f"Jean a }\SpecialCharTok{\{}\NormalTok{age}\SpecialCharTok{\}}\SpecialStringTok{ ans"}
+                      \OperatorTok{^}
+\PreprocessorTok{SyntaxError}\NormalTok{: invalid syntax}
+\end{Highlighting}
+\end{Shaded}
+
+    Dans ce cas vous devrez remplacer ce code avec la méthode
+\texttt{format} - que nous verrons en Semaine 2 avec les chaines de
+caractères - et dans le cas présent il faudrait remplacer par ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{age} \PY{o}{=} \PY{l+m+mi}{10}
+        
+        \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Jean a }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{ ans}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{age}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} 'Jean a 10 ans'
+\end{Verbatim}
+            
+    Comme ces f-strings sont très présents dans le cours, il est recommandé
+d'utiliser au moins python-3.6.
+
+    \hypertarget{python-3.4}{%
+\subparagraph{Python-3.4}\label{python-3.4}}
+
+    La remarque vaut donc \emph{a fortiori} pour python-3.4 qui, en outre,
+ne vous permettra pas de suivre la semaine 8 sur la programmation
+asynchrone, car les mots-clés \texttt{async} et \texttt{await} ont été
+introduits seulement dans Python-3.5.
+
+    \hypertarget{version-utilisuxe9e-dans-les-notebooks-versions-plus-ruxe9centes}{%
+\subsubsection{Version utilisée dans les notebooks / versions plus
+récentes}\label{version-utilisuxe9e-dans-les-notebooks-versions-plus-ruxe9centes}}
+
+    Tout le cours doit pouvoir s'exécuter tel quel avec une version plus
+récente de Python.
+
+Cela dit, certains compléments illustrent des nouveautés apparues après
+la 3.6, comme les \emph{dataclasses} qui sont apparues avec python-3.7,
+et que nous verrons en semaine 6.
+
+Dans tous les cas, nous \textbf{signalons systématiquement} les
+notebooks qui nécessitent une version plus récente que 3.6.
+
+    Voici enfin, à toutes fins utiles, un premier fragment de code Python
+qui affiche la version de Python utilisée dans tous les notebooks de ce
+cours.
+
+Nous reviendrons en détail sur l'utilisation des notebooks dans une
+prochaine séquence, dans l'immédiat pour exécuter ce code vous pouvez~:
+* désigner avec la souris la cellule de code; vous verrez alors
+apparaître une petite flêche à coté du mot \texttt{In}, en cliquant
+cette flêche vous exécutez le code; * un autre méthode consiste à
+sélectionner la cellule de code avec la souris; une fois que c'est fait
+vous pouvez cliquer sur le bouton \texttt{\textgreater{}\textbar{}\ Run}
+dans la barre de menu (bleue claire) du notebook.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} ce premier fragment de code affiche des détails sur la}
+        \PY{c+c1}{\PYZsh{} version de python qui exécute tous les notebooks du cours}
+        \PY{k+kn}{import} \PY{n+nn}{sys}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{sys}\PY{o}{.}\PY{n}{version\PYZus{}info}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+sys.version\_info(major=3, minor=6, micro=3, releaselevel='final', serial=0)
+
+    \end{Verbatim}
+
+    Pas de panique si vous n'y arrivez pas, nous consacrons très bientôt une
+séquence entière à l'utilisation des notebooks :)

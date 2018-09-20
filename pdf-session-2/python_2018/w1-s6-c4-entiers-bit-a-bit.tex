@@ -1,0 +1,168 @@
+    \hypertarget{opuxe9rations-bit-uxe0-bit-bitwise}{%
+\section{\texorpdfstring{Opérations \emph{bit à bit}
+(\emph{bitwise})}{Opérations bit à bit (bitwise)}}\label{opuxe9rations-bit-uxe0-bit-bitwise}}
+
+    \hypertarget{compluxe9ments---niveau-avancuxe9}{%
+\subsection{Compléments - niveau
+avancé}\label{compluxe9ments---niveau-avancuxe9}}
+
+    Les compléments ci-dessous expliquent des fonctions évoluées sur les
+entiers. Les débutants en programmation peuvent sans souci sauter cette
+partie en cas de difficultés.
+
+    \hypertarget{opuxe9rations-logiques-et-ou-et-ou-exclusif}{%
+\subsubsection{\texorpdfstring{Opérations logiques~: ET \texttt{\&}, OU
+\texttt{\textbar{}} et OU exclusif
+\texttt{\^{}}}{Opérations logiques~: ET \&, OU \textbar{} et OU exclusif \^{}}}\label{opuxe9rations-logiques-et-ou-et-ou-exclusif}}
+
+    Il est possible aussi de faire des opérations \emph{bit à bit} sur les
+nombres entiers. Le plus simple est de penser à l'écriture du nombre en
+base 2.\\
+
+Considérons par exemple deux entiers constants dans cet exercice
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{n}{x49} \PY{o}{=} \PY{l+m+mi}{49}
+        \PY{n}{y81} \PY{o}{=} \PY{l+m+mi}{81}
+\end{Verbatim}
+
+
+    Ce qui nous donne comme décomposition binaire~:\\
+
+\(\begin{array}{rcccccc} x49 & = & 49 & = & 32 + 16 + 1 & \rightarrow &(0,1,1,0,0,0,1) \\ y81 & = & 81 & = & 64 + 16 + 1 & \rightarrow &(1,0,1,0,0,0,1) \end{array}\)\\
+
+    Pour comprendre comment passer de \(32 + 16 + 1\) à \((0,1,1,0,0,0,1)\)
+il suffit d'observer que~:\\
+
+\(32 + 16 + 1 = \textbf{0}*2^6 + \textbf{1}*2^5 + \textbf{1}*2^4 + \textbf{0}*2^3 + \textbf{0}*2^2 + \textbf{0}*2^1 + \textbf{1}*2^0\)
+
+    \hypertarget{et-logique-opuxe9rateur}{%
+\paragraph{\texorpdfstring{Et logique~: opérateur
+\texttt{\&}}{Et logique~: opérateur \&}\\\\}\label{et-logique-opuxe9rateur}}
+
+    L'opération logique \texttt{\&} va faire un \emph{et} logique bit à bit
+entre les opérandes, ainsi
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{x49} \PY{o}{\PYZam{}} \PY{n}{y81}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} 17
+\end{Verbatim}
+            
+    Et en effet~:\\
+
+\(\begin{array}{rcl} x49 & \rightarrow & (0,1,1,0,0,0,1) \\ y81 & \rightarrow & (1,0,1,0,0,0,1) \\ x49\ \&\ y81 & \rightarrow & (0,0,1,0,0,0,1) \rightarrow 16 + 1 \rightarrow 17 \end{array}\)
+
+    \hypertarget{ou-logique-opuxe9rateur}{%
+\paragraph{\texorpdfstring{Ou logique~: opérateur
+\texttt{\textbar{}}}{Ou logique~: opérateur \textbar{}}\\\\}\label{ou-logique-opuxe9rateur}}
+
+    De même, l'opérateur logique \texttt{\textbar{}} fait simplement un
+\emph{ou} logique, comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{x49} \PY{o}{|} \PY{n}{y81}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} 113
+\end{Verbatim}
+            
+    On s'y retrouve parce que~:\\
+
+\(\begin{array}{rcl} x49 & \rightarrow & (0,1,1,0,0,0,1) \\ y81 & \rightarrow & (1,0,1,0,0,0,1) \\ x49\ |\ y81 & \rightarrow & (1,1,1,0,0,0,1) \rightarrow 64 + 32 + 16 + 1 \rightarrow 113 \end{array}\)
+
+    \hypertarget{ou-exclusif-opuxe9rateur}{%
+\subparagraph{Ou exclusif~: opérateur
+\^{}\\\\}\label{ou-exclusif-opuxe9rateur}}
+
+    Enfin, on peut également faire la même opération à base de \emph{ou
+exclusif} avec l'opérateur \texttt{ˆ}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{x49} \PY{o}{\PYZca{}} \PY{n}{y81}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} 96
+\end{Verbatim}
+            
+    Je vous laisse le soin de décortiquer le calcul à titre d'exercice (le
+ou exclusif de deux bits est vrai si et seulement si exactement une des
+deux entrées est vraie).
+
+    \hypertarget{duxe9calages}{%
+\subsubsection{Décalages}\label{duxe9calages}}
+
+    Un décalage \textbf{à gauche} de, par exemple, 4 positions, revient à
+décaler tout le champ de bits de 4 cases à gauche (les 4 nouveaux bits
+insérés sont toujours des 0). C'est donc équivalent à une
+\textbf{multiplication} par \(2^4 = 16\)~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{x49} \PY{o}{\PYZlt{}\PYZlt{}} \PY{l+m+mi}{4}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} 784
+\end{Verbatim}
+            
+    \(\begin{array}{rcl} x49 & \rightarrow & (0,1,1,0,0,0,1) \\ x49\ <<\ 4 & \rightarrow & (0,1,1,0,0,0,1,0,0,0,0) \rightarrow 512 + 256 + 16 \rightarrow 784 \end{array}\)\\
+
+    De la même manière, le décalage à \textbf{droite} de \(n\) revient à une
+\textbf{division} par \(2^n\) (plus précisément, le quotient de la
+division)~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{x49} \PY{o}{\PYZgt{}\PYZgt{}} \PY{l+m+mi}{4}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} 3
+\end{Verbatim}
+            
+    \(\begin{array}{rcl} x49 & \rightarrow & (0,1,1,0,0,0,1) \\ x49\ >>\ 4 & \rightarrow & (0,0,0,0,0,1,1) \rightarrow 2 + 1 \rightarrow 3 \end{array}\)
+
+    \hypertarget{une-astuce}{%
+\subsubsection{Une astuce}\label{une-astuce}}
+
+    On peut utiliser la fonction \emph{built-in} \texttt{bin} pour calculer
+la représentation binaire d'un entier. Attention, la valeur de retour
+est une chaîne de caractères de type \texttt{str}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n+nb}{bin}\PY{p}{(}\PY{n}{x49}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} '0b110001'
+\end{Verbatim}
+            
+    Dans l'autre sens, on peut aussi entrer un entier directement en base 2
+comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{x49bis} \PY{o}{=} \PY{l+m+mb}{0b110001}
+        \PY{n}{x49bis} \PY{o}{==} \PY{n}{x49}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} True
+\end{Verbatim}
+            
+    Ici, comme on le voit, \texttt{x49bis} est bien un entier.
+
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+    \href{https://docs.python.org/3/library/stdtypes.html\#bitwise-operations-on-integer-types}{Section
+de la documentation Python}.

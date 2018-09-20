@@ -1,0 +1,42 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction au MOOC et aux outils Python}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Versions de Python}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Installer la distribution standard Python}{chapter.1}% 3
+\BOOKMARK [2][-]{subsection.1.2.1}{Compl\351ment - niveau basique}{section.1.2}% 4
+\BOOKMARK [2][-]{subsection.1.2.2}{Sachez \340 qui vous parlez}{section.1.2}% 5
+\BOOKMARK [2][-]{subsection.1.2.3}{Digression - coexistence de Python2 et Python3}{section.1.2}% 6
+\BOOKMARK [2][-]{subsection.1.2.4}{Installation de base}{section.1.2}% 7
+\BOOKMARK [1][-]{section.1.3}{Un peu de lecture}{chapter.1}% 8
+\BOOKMARK [2][-]{subsection.1.3.1}{Compl\351ment - niveau basique}{section.1.3}% 9
+\BOOKMARK [2][-]{subsection.1.3.2}{Compl\351ment - niveau interm\351diaire}{section.1.3}% 10
+\BOOKMARK [1][-]{section.1.4}{``Notebooks'' Jupyter comme support de cours}{chapter.1}% 11
+\BOOKMARK [1][-]{section.1.5}{Modes d'ex\351cution}{chapter.1}% 12
+\BOOKMARK [1][-]{section.1.6}{La suite de Fibonacci}{chapter.1}% 13
+\BOOKMARK [2][-]{subsection.1.6.1}{Compl\351ment - niveau basique}{section.1.6}% 14
+\BOOKMARK [1][-]{section.1.7}{La suite de Fibonacci \(suite\)}{chapter.1}% 15
+\BOOKMARK [2][-]{subsection.1.7.1}{Compl\351ment - niveau interm\351diaire}{section.1.7}% 16
+\BOOKMARK [1][-]{section.1.8}{La ligne shebang}{chapter.1}% 17
+\BOOKMARK [2][-]{subsection.1.8.1}{Compl\351ment - niveau avanc\351}{section.1.8}% 18
+\BOOKMARK [1][-]{section.1.9}{Dessiner un carr\351}{chapter.1}% 19
+\BOOKMARK [2][-]{subsection.1.9.1}{Exercice - niveau interm\351diaire}{section.1.9}% 20
+\BOOKMARK [2][-]{subsection.1.9.2}{Exercice - niveau avanc\351}{section.1.9}% 21
+\BOOKMARK [1][-]{section.1.10}{Noms de variables}{chapter.1}% 22
+\BOOKMARK [2][-]{subsection.1.10.1}{Compl\351ment - niveau basique}{section.1.10}% 23
+\BOOKMARK [1][-]{section.1.11}{Les mots-cl\351s de Python}{chapter.1}% 24
+\BOOKMARK [1][-]{section.1.12}{Un peu de calcul sur les types}{chapter.1}% 25
+\BOOKMARK [2][-]{subsection.1.12.1}{Compl\351ment - niveau basique}{section.1.12}% 26
+\BOOKMARK [2][-]{subsection.1.12.2}{Compl\351ment - niveau avanc\351}{section.1.12}% 27
+\BOOKMARK [1][-]{section.1.13}{Gestion de la m\351moire}{chapter.1}% 28
+\BOOKMARK [2][-]{subsection.1.13.1}{Compl\351ment - niveau basique}{section.1.13}% 29
+\BOOKMARK [2][-]{subsection.1.13.2}{Compl\351ment - niveau interm\351diaire}{section.1.13}% 30
+\BOOKMARK [1][-]{section.1.14}{Typages statique et dynamique}{chapter.1}% 31
+\BOOKMARK [2][-]{subsection.1.14.1}{Compl\351ment - niveau interm\351diaire}{section.1.14}% 32
+\BOOKMARK [1][-]{section.1.15}{Utiliser Python comme une calculette}{chapter.1}% 33
+\BOOKMARK [1][-]{section.1.16}{Affectations et Op\351rations \(\340 la +=\)}{chapter.1}% 34
+\BOOKMARK [2][-]{subsection.1.16.1}{Compl\351ment - niveau interm\351diaire}{section.1.16}% 35
+\BOOKMARK [1][-]{section.1.17}{Notions sur la pr\351cision des calculs flottants}{chapter.1}% 36
+\BOOKMARK [2][-]{subsection.1.17.1}{Compl\351ment - niveau avanc\351}{section.1.17}% 37
+\BOOKMARK [1][-]{section.1.18}{Op\351rations bit \340 bit \(bitwise\)}{chapter.1}% 38
+\BOOKMARK [2][-]{subsection.1.18.1}{Compl\351ments - niveau avanc\351}{section.1.18}% 39
+\BOOKMARK [1][-]{section.1.19}{Estimer le plus petit \(grand\) flottant}{chapter.1}% 40
+\BOOKMARK [2][-]{subsection.1.19.1}{Exercice - niveau basique}{section.1.19}% 41
+\BOOKMARK [2][-]{subsection.1.19.2}{Compl\351ment - niveau avanc\351}{section.1.19}% 42

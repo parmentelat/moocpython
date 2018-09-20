@@ -1,0 +1,95 @@
+    \hypertarget{les-mots-cluxe9s-de-python}{%
+\section{Les mots-clés de Python}\label{les-mots-cluxe9s-de-python}}
+
+    \hypertarget{mots-ruxe9servuxe9s}{%
+\subsubsection{Mots réservés}\label{mots-ruxe9servuxe9s}}
+
+    Il existe en Python certains mots spéciaux, qu'on appelle des mots-clés,
+ou \emph{keywords} en anglais, qui sont réservés et \textbf{ne peuvent
+pas être utilisés} comme identifiants, c'est-à-dire comme un nom de
+variable.\\
+
+    C'est le cas par exemple pour l'instruction \texttt{if}, que nous
+verrons prochainement, qui permet bien entendu d'exécuter tel ou tel
+code selon le résultat d'un test.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{n}{variable} \PY{o}{=} \PY{l+m+mi}{15}
+        \PY{k}{if} \PY{n}{variable} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{10}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{en dessous de la moyenne}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{k}{else}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{au dessus}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+au dessus
+
+    \end{Verbatim}
+
+    À cause de la présence de cette instruction dans le langage, il n'est
+pas autorisé d'appeler une variable \texttt{if}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} interdit, if est un mot\PYZhy{}clé}
+        \PY{k}{if} \PY{o}{=} \PY{l+m+mi}{1}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+          File "<ipython-input-2-f16082c36546>", line 2
+        if = 1
+           \^{}
+    SyntaxError: invalid syntax
+
+
+    \end{Verbatim}
+
+    \hypertarget{liste-compluxe8te}{%
+\subsubsection{Liste complète}\label{liste-compluxe8te}}
+
+    Voici la liste complète des mots-clés~:
+
+    \begin{longtable}[]{@{}lllll@{}}
+%\toprule
+~ & ~ & ~ & ~ & ~\tabularnewline
+\midrule
+\endhead
+\textbf{False} & class & finally & is & return\tabularnewline
+\textbf{None} & continue & for & lambda & try\tabularnewline
+\textbf{True} & def & from & \textbf{nonlocal} & while\tabularnewline
+and & del & global & not & with\tabularnewline
+as & elif & if & or & yield\tabularnewline
+assert & else & import & pass &\tabularnewline
+break & except & in & raise &\tabularnewline
+\bottomrule
+\end{longtable}
+
+    Nous avons indiqué \textbf{en gras} les nouveautés \textbf{par rapport à
+Python 2} (sachant que réciproquement \texttt{exec} et \texttt{print}
+ont perdu leur statut de mot-clé depuis Python 2, ce sont maintenant des
+fonctions).
+
+    Il vous faudra donc y prêter attention, surtout au début, mais avec un
+tout petit peu d'habitude vous saurez rapidement les éviter.
+
+Vous remarquerez aussi que tous les bons éditeurs de texte supportant du
+code Python vont colorer les mots-clés différemment des variables. Par
+exemple, IDLE colorie les mots-clés en orange, vous pouvez donc très
+facilement vous rendre compte que vous allez, par erreur, en utiliser un
+comme nom de variable.\\
+
+Cette fonctionnalité, dite de \emph{coloration syntaxique}, permet
+d'identifier d'un coup d'œil, grâce à un code de couleur, le rôle des
+différents éléments de votre code: variables, mots-clés, etc\ldots{}
+D'une manière générale, nous vous déconseillons fortement d'utiliser un
+éditeur de texte qui n'offre pas cette fonctionnalité de coloration
+syntaxique.
+
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+    On peut se reporter à cette page~:
+
+\href{https://docs.python.org/3/reference/lexical\_analysis.html\#keywords}{https://docs.python.org/3/reference/lexical\_analysis.html\#keywords}

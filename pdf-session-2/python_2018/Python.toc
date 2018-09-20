@@ -1,0 +1,125 @@
+\select@language {french}
+\contentsline {chapter}{\numberline {1}Introduction au MOOC et aux outils Python}{5}{chapter.1}
+\contentsline {section}{\numberline {1.1}Versions de Python}{6}{section.1.1}
+\contentsline {subsubsection}{Version de r\IeC {\'e}f\IeC {\'e}rence: Python-3.6}{6}{section*.1}
+\contentsline {subsubsection}{Versions plus anciennes}{6}{section*.2}
+\contentsline {subparagraph}{Python-3.5}{6}{section*.3}
+\contentsline {subparagraph}{Python-3.4}{6}{section*.4}
+\contentsline {subsubsection}{Version utilis\IeC {\'e}e dans les notebooks / versions plus r\IeC {\'e}centes}{6}{section*.5}
+\contentsline {section}{\numberline {1.2}Installer la distribution standard Python}{8}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Compl\IeC {\'e}ment - niveau basique}{8}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Sachez \IeC {\`a} qui vous parlez}{8}{subsection.1.2.2}
+\contentsline {subsubsection}{Le terminal}{8}{section*.6}
+\contentsline {subsubsection}{L'interpr\IeC {\`e}te Python}{8}{section*.7}
+\contentsline {subsubsection}{Les erreurs typiques}{9}{section*.8}
+\contentsline {subsection}{\numberline {1.2.3}Digression - coexistence de Python2 et Python3}{9}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.4}Installation de base}{10}{subsection.1.2.4}
+\contentsline {subsubsection}{Vous utilisez Windows}{10}{section*.9}
+\contentsline {subsubsection}{Vous utilisez macOS}{10}{section*.10}
+\contentsline {subsubsection}{Vous utilisez Linux}{10}{section*.11}
+\contentsline {subsubsection}{Installation de biblioth\IeC {\`e}ques compl\IeC {\'e}mentaires}{11}{section*.12}
+\contentsline {subsubsection}{Anaconda}{11}{section*.13}
+\contentsline {section}{\numberline {1.3}Un peu de lecture}{12}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Compl\IeC {\'e}ment - niveau basique}{12}{subsection.1.3.1}
+\contentsline {subsubsection}{Mise \IeC {\`a} jour de Juillet 2018}{12}{section*.14}
+\contentsline {subsubsection}{Le Zen de Python}{12}{section*.15}
+\contentsline {subsubsection}{Documentation}{12}{section*.16}
+\contentsline {subsubsection}{Historique et survol}{13}{section*.17}
+\contentsline {subsubsection}{Un peu de folklore}{13}{section*.18}
+\contentsline {subsection}{\numberline {1.3.2}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{13}{subsection.1.3.2}
+\contentsline {subsubsection}{Licence}{13}{section*.19}
+\contentsline {subsubsection}{Le processus de d\IeC {\'e}veloppement}{13}{section*.20}
+\contentsline {section}{\numberline {1.4}``Notebooks'' Jupyter comme support de cours}{14}{section.1.4}
+\contentsline {subsubsection}{Avertissement: r\IeC {\'e}glages du navigateur}{14}{section*.21}
+\contentsline {subsubsection}{Avantages des notebooks}{14}{section*.22}
+\contentsline {subsubsection}{Comment utiliser les notebooks}{14}{section*.23}
+\contentsline {subsubsection}{Attention \IeC {\`a} bien \IeC {\'e}valuer les cellules dans l'ordre}{15}{section*.24}
+\contentsline {subsubsection}{R\IeC {\'e}initialiser l'interpr\IeC {\'e}teur}{16}{section*.25}
+\contentsline {subsubsection}{Vous travaillez sur une copie}{16}{section*.26}
+\contentsline {subsubsection}{Revenir \IeC {\`a} la version du cours}{16}{section*.27}
+\contentsline {subsubsection}{T\IeC {\'e}l\IeC {\'e}charger au format Python}{16}{section*.28}
+\contentsline {subsubsection}{Partager un notebook en lecture seule}{16}{section*.29}
+\contentsline {subsubsection}{Ajouter des cellules}{16}{section*.30}
+\contentsline {section}{\numberline {1.5}Modes d'ex\IeC {\'e}cution}{17}{section.1.5}
+\contentsline {subsubsection}{L'interpr\IeC {\'e}teur Python interactif}{17}{section*.31}
+\contentsline {subsubsection}{Sous forme de programme constitu\IeC {\'e}}{18}{section*.32}
+\contentsline {subsubsection}{Dans un notebook}{18}{section*.33}
+\contentsline {subsubsection}{Utiliser \texttt {print}}{19}{section*.34}
+\contentsline {subsubsection}{Utiliser \texttt {print} pour ``sous-titrer'' une affectation}{19}{section*.35}
+\contentsline {section}{\numberline {1.6}La suite de Fibonacci}{20}{section.1.6}
+\contentsline {subsection}{\numberline {1.6.1}Compl\IeC {\'e}ment - niveau basique}{20}{subsection.1.6.1}
+\contentsline {subsubsection}{Exercice}{21}{section*.36}
+\contentsline {section}{\numberline {1.7}La suite de Fibonacci (suite)}{22}{section.1.7}
+\contentsline {subsection}{\numberline {1.7.1}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{22}{subsection.1.7.1}
+\contentsline {subsubsection}{Le module \texttt {argparse}}{22}{section*.37}
+\contentsline {subsubsection}{Un objet \texttt {parser}}{22}{section*.38}
+\contentsline {section}{\numberline {1.8}La ligne \emph {shebang}}{24}{section.1.8}
+\contentsline {subsection}{\numberline {1.8.1}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{24}{subsection.1.8.1}
+\contentsline {subsubsection}{Le besoin}{24}{section*.39}
+\contentsline {subsubsection}{La solution}{24}{section*.40}
+\contentsline {section}{\numberline {1.9}Dessiner un carr\IeC {\'e}}{26}{section.1.9}
+\contentsline {subsection}{\numberline {1.9.1}Exercice - niveau interm\IeC {\'e}diaire}{26}{subsection.1.9.1}
+\contentsline {subsection}{\numberline {1.9.2}Exercice - niveau avanc\IeC {\'e}}{26}{subsection.1.9.2}
+\contentsline {section}{\numberline {1.10}Noms de variables}{27}{section.1.10}
+\contentsline {subsection}{\numberline {1.10.1}Compl\IeC {\'e}ment - niveau basique}{27}{subsection.1.10.1}
+\contentsline {subsubsection}{Conventions habituelles}{27}{section*.41}
+\contentsline {subsubsection}{Le tiret bas comme premier caract\IeC {\`e}re}{28}{section*.42}
+\contentsline {subsubsection}{Ponctuation}{28}{section*.43}
+\contentsline {subsubsection}{Caract\IeC {\`e}res exotiques}{28}{section*.44}
+\contentsline {paragraph}{Conseil}{29}{section*.45}
+\contentsline {subsubsection}{Pour en savoir plus}{29}{section*.46}
+\contentsline {section}{\numberline {1.11}Les mots-cl\IeC {\'e}s de Python}{30}{section.1.11}
+\contentsline {subsubsection}{Mots r\IeC {\'e}serv\IeC {\'e}s}{30}{section*.47}
+\contentsline {subsubsection}{Liste compl\IeC {\`e}te}{30}{section*.48}
+\contentsline {subsubsection}{Pour en savoir plus}{31}{section*.49}
+\contentsline {section}{\numberline {1.12}Un peu de calcul sur les types}{32}{section.1.12}
+\contentsline {subsection}{\numberline {1.12.1}Compl\IeC {\'e}ment - niveau basique}{32}{subsection.1.12.1}
+\contentsline {subsubsection}{La fonction \texttt {type}}{32}{section*.50}
+\contentsline {subsubsection}{Types, variables et objets}{32}{section*.51}
+\contentsline {subsection}{\numberline {1.12.2}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{32}{subsection.1.12.2}
+\contentsline {subsubsection}{La fonction \texttt {isinstance}}{32}{section*.52}
+\contentsline {section}{\numberline {1.13}Gestion de la m\IeC {\'e}moire}{34}{section.1.13}
+\contentsline {subsection}{\numberline {1.13.1}Compl\IeC {\'e}ment - niveau basique}{34}{subsection.1.13.1}
+\contentsline {subsection}{\numberline {1.13.2}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{34}{subsection.1.13.2}
+\contentsline {subsubsection}{Langages de bas niveau}{34}{section*.53}
+\contentsline {subsubsection}{Langages de haut niveau}{34}{section*.54}
+\contentsline {section}{\numberline {1.14}Typages statique et dynamique}{36}{section.1.14}
+\contentsline {subsection}{\numberline {1.14.1}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{36}{subsection.1.14.1}
+\contentsline {subsubsection}{Typage statique}{36}{section*.55}
+\contentsline {subsubsection}{Typage dynamique}{37}{section*.56}
+\contentsline {subsubsection}{\emph {Type hints}}{39}{section*.57}
+\contentsline {section}{\numberline {1.15}Utiliser Python comme une calculette}{40}{section.1.15}
+\contentsline {subsubsection}{Utiliser des variables}{41}{section*.58}
+\contentsline {subsubsection}{Les types}{42}{section*.59}
+\contentsline {subsubsection}{Cha\IeC {\^\i }nes de caract\IeC {\`e}res}{42}{section*.60}
+\contentsline {subsubsection}{Conversions}{42}{section*.61}
+\contentsline {subsubsection}{Conversions - suite}{43}{section*.62}
+\contentsline {subsubsection}{Grands nombres}{44}{section*.63}
+\contentsline {subsubsection}{Entiers et bases}{44}{section*.64}
+\contentsline {subsubsection}{Fonctions math\IeC {\'e}matiques}{45}{section*.65}
+\contentsline {section}{\numberline {1.16}Affectations et Op\IeC {\'e}rations (\IeC {\`a} la \texttt {+=})}{46}{section.1.16}
+\contentsline {subsection}{\numberline {1.16.1}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{46}{subsection.1.16.1}
+\contentsline {subsubsection}{Incr\IeC {\'e}mentation}{46}{section*.66}
+\contentsline {subsubsection}{Autres op\IeC {\'e}rateurs courants}{46}{section*.67}
+\contentsline {subsubsection}{Types non num\IeC {\'e}riques}{46}{section*.68}
+\contentsline {subsubsection}{Op\IeC {\'e}rateurs plus abscons}{47}{section*.69}
+\contentsline {section}{\numberline {1.17}Notions sur la pr\IeC {\'e}cision des calculs flottants}{48}{section.1.17}
+\contentsline {subsection}{\numberline {1.17.1}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{48}{subsection.1.17.1}
+\contentsline {subsubsection}{Le probl\IeC {\`e}me}{48}{section*.70}
+\contentsline {subsubsection}{Une solution~: penser en termes de nombres rationnels}{48}{section*.71}
+\contentsline {subsubsection}{Une autre solution~: le module decimal}{49}{section*.72}
+\contentsline {subsubsection}{Pour aller plus loin}{49}{section*.73}
+\contentsline {section}{\numberline {1.18}Op\IeC {\'e}rations \emph {bit \IeC {\`a} bit} (\emph {bitwise})}{50}{section.1.18}
+\contentsline {subsection}{\numberline {1.18.1}Compl\IeC {\'e}ments - niveau avanc\IeC {\'e}}{50}{subsection.1.18.1}
+\contentsline {subsubsection}{Op\IeC {\'e}rations logiques~: ET \texttt {\&}, OU \texttt {\textbar {}} et OU exclusif \texttt {\^{}}}{50}{section*.74}
+\contentsline {paragraph}{Et logique~: op\IeC {\'e}rateur \texttt {\&}\\\\}{50}{section*.75}
+\contentsline {paragraph}{Ou logique~: op\IeC {\'e}rateur \texttt {\textbar {}}\\\\}{50}{section*.76}
+\contentsline {subparagraph}{Ou exclusif~: op\IeC {\'e}rateur \^{}\\\\}{51}{section*.77}
+\contentsline {subsubsection}{D\IeC {\'e}calages}{51}{section*.78}
+\contentsline {subsubsection}{Une astuce}{51}{section*.79}
+\contentsline {subsubsection}{Pour en savoir plus}{51}{section*.80}
+\contentsline {section}{\numberline {1.19}Estimer le plus petit (grand) flottant}{52}{section.1.19}
+\contentsline {subsection}{\numberline {1.19.1}Exercice - niveau basique}{52}{subsection.1.19.1}
+\contentsline {subsubsection}{Le plus petit flottant}{52}{section*.81}
+\contentsline {subsubsection}{Le plus grand flottant}{53}{section*.82}
+\contentsline {subsection}{\numberline {1.19.2}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{54}{subsection.1.19.2}

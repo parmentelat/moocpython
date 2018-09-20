@@ -1,0 +1,136 @@
+    \hypertarget{la-suite-de-fibonacci}{%
+\section{La suite de Fibonacci}\label{la-suite-de-fibonacci}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    Voici un premier exemple de code qui tourne.\\
+
+Nous allons commencer par le faire tourner dans ce notebook. Nous
+verrons en fin de séance comment le faire fonctionner localement sur
+votre ordinateur.\\
+
+    Le but de ce programme est de calculer la
+\href{https://fr.wikipedia.org/wiki/Suite_de_Fibonacci}{suite de
+Fibonacci}, qui est définie comme ceci~:
+
+\begin{itemize}
+\tightlist
+\item
+  \(u_0 = 1\)
+\item
+  \(u_1 = 1\)
+\item
+  \(\forall n >= 2, u_n = u_{n-1} + u_{n-2}\)
+\end{itemize}
+
+Ce qui donne pour les premières valeurs~:
+
+    \begin{longtable}[]{@{}lr@{}}
+\toprule
+n & fibonacci(n)\tabularnewline
+\midrule
+\endhead
+0 & 1\tabularnewline
+1 & 1\tabularnewline
+2 & 2\tabularnewline
+3 & 3\tabularnewline
+4 & 5\tabularnewline
+5 & 8\tabularnewline
+6 & 13\tabularnewline
+\bottomrule
+\end{longtable}
+
+    On commence par définir la fonction \texttt{fibonacci} comme il suit.
+Naturellement vous n'avez pas encore tout le bagage pour lire ce code,
+ne vous inquiétez pas, nous allons vous expliquer tout ça dans les
+prochaines semaines. Le but est uniquement de vous montrer un
+fonctionnement de l'interpréteur Python et de IDLE.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k}{def} \PY{n+nf}{fibonacci}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{retourne le nombre de fibonacci pour l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{entier n}\PY{l+s+s2}{\PYZdq{}}
+            \PY{c+c1}{\PYZsh{} pour les petites valeurs de n il n\PYZsq{}y a rien à calculer}
+            \PY{k}{if} \PY{n}{n} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{1}\PY{p}{:}
+                \PY{k}{return} \PY{l+m+mi}{1}
+            \PY{c+c1}{\PYZsh{} sinon on initialise f1 pour n\PYZhy{}1 et f2 pour n\PYZhy{}2}
+            \PY{n}{f2}\PY{p}{,} \PY{n}{f1} \PY{o}{=} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}
+            \PY{c+c1}{\PYZsh{} et on itère n\PYZhy{}1 fois pour additionner}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{n} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+                \PY{n}{f2}\PY{p}{,} \PY{n}{f1} \PY{o}{=} \PY{n}{f1}\PY{p}{,} \PY{n}{f1} \PY{o}{+} \PY{n}{f2}
+        \PY{c+c1}{\PYZsh{}        print(i, f2, f1)}
+            \PY{c+c1}{\PYZsh{} le résultat est dans f1}
+            \PY{k}{return} \PY{n}{f1}
+\end{Verbatim}
+
+
+    Pour en faire un programme utilisable on va demander à l'utilisateur de
+rentrer un nombre~; il faut le convertir en entier car \texttt{input}
+renvoie une chaîne de caractères~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{entier} \PY{o}{=} \PY{n+nb}{int}\PY{p}{(}\PY{n+nb}{input}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Entrer un entier }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Entrer un entier 42
+
+    \end{Verbatim}
+
+    On imprime le résultat~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fibonacci(}\PY{l+s+si}{\PYZob{}entier\PYZcb{}}\PY{l+s+s2}{) = }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{fibonacci(entier)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+fibonacci(42) = 433494437
+
+    \end{Verbatim}
+
+    \hypertarget{exercice}{%
+\subsubsection{Exercice}\label{exercice}}
+
+    Vous pouvez donc à présent~:
+
+\begin{itemize}
+\item
+  exécuter le code dans ce notebook
+\item
+  télécharger ce code sur votre disque comme un fichier
+  \texttt{fibonacci\_prompt.py}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    utiliser pour cela le menu
+    \emph{``File~-\textgreater{}~Download~as~-\textgreater{}~Python''}
+  \item
+    et \textbf{renommer le fichier obtenu} au besoin
+  \end{itemize}
+\item
+  l'exécuter sous IDLE
+\item
+  le modifier, par exemple pour afficher les résultats intermédiaires
+
+  \begin{itemize}
+  \tightlist
+  \item
+    on a laissé exprès une fonction \texttt{print} en commentaire que
+    vous pouvez réactiver simplement
+  \end{itemize}
+\item
+  l'exécuter avec l'interpréteur Python comme ceci~:
+
+  \texttt{\$\ python3\ fibonacci\_prompt.py}
+\end{itemize}
+
+    Ce code est volontairement simple et peu robuste pour ne pas l'alourdir.
+Par exemple, ce programme se comporte mal si vous entrez un entier
+négatif.\\
+
+    Nous allons voir tout de suite une version légèrement différente qui va
+vous permettre de donner la valeur d'entrée sur la ligne de commande.
