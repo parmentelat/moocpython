@@ -59,8 +59,11 @@ Plus simplement utilisez mon fichier python.tex comme base.
 
 Étape 3
 
-    • Pour les fichiers à inclure, il faut supprimer toute l'entête du fichier jusqu’à la ligne {Licence CC BY-NC-ND} {Thierry Parmentelat & Arnaud Legout} {} incluse. (Cette information ne figurera qu'une seule fois sur la page de garde par exemple) 
-    • Supprimer aussi les deux dernières lignes : 
+    • Pour les fichiers à inclure, il faut supprimer toute l'entête du fichier jusqu’à la ligne:
+    {Licence CC BY-NC-ND} {Thierry Parmentelat & Arnaud Legout} {} incluse.
+    (Cette information ne figurera qu'une seule fois sur la page de garde par exemple)
+
+    • Supprimer aussi les deux dernières lignes : 
         ◦ % Add a bibliography block to the postdoc 
         ◦ \end{document} 
 
@@ -69,7 +72,8 @@ Problèmes rencontrés.
 
     • Parfois des sauts de lignes à ajouter (commande : \\) 
 
-    • URL pas pris en compte faire : \href{https://www.python.org/download}{https://www.python.org/download}
+    • URL pas pris en compte faire : \href{https://www.python.org/download}{https://www.python.org/download}
+							url				texte
 
     • Certaines listes ne sont pas mises en forme faire :
     \begin{itemise}
@@ -78,7 +82,7 @@ Problèmes rencontrés.
     \end{itemise}
 
     • Justifier un colonne de tableau à droite
-    \begin{longtable}[]{@{}lr@{}} Le l justifie à gaucge le r à droite
+    \begin{longtable}[]{@{}lr@{}} Le l justifie à gauche le r à droite
 
     • Inserer une image :
     \includegraphics{medias/notebook-eval-button.png}
