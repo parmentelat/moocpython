@@ -1,0 +1,340 @@
+    \hypertarget{expressions-ruxe9guliuxe8res}{%
+\section{Expressions régulières}\label{expressions-ruxe9guliuxe8res}}
+
+    Nous vous proposons dans ce notebook quelques exercices sur les
+expressions régulières. Faisons quelques remarques avant de commencer~:
+
+\begin{itemize}
+\tightlist
+\item
+  nous nous concentrons sur l'écriture de l'expression régulière en
+  elle-même, et pas sur l'utilisation de la bibliothèque~;
+\item
+  en particulier, tous les exercices font appel à \texttt{re.match}
+  entre votre \emph{regexp} et une liste de chaînes d'entrée qui servent
+  de jeux de test.
+\end{itemize}
+
+    \hypertarget{liens-utiles}{%
+\subparagraph{Liens utiles}\label{liens-utiles}}
+
+    Pour travailler sur ces exercices, il pourra être profitable d'avoir
+sous la main~:
+
+\begin{itemize}
+\tightlist
+\item
+  la
+  \href{https://docs.python.org/3/library/re.html\#regular-expression-syntax}{documentation
+  officielle}~;
+\item
+  et \href{https://pythex.org/}{cet outil interactif sur
+  https://pythex.org/} qui permet d'avoir un retour presque immédiat, et
+  donc d'accélérer la mise au point.
+\end{itemize}
+
+    \hypertarget{exercice---niveau-intermuxe9diaire-1}{%
+\subsection{Exercice - niveau intermédiaire
+(1)}\label{exercice---niveau-intermuxe9diaire-1}}
+
+    \hypertarget{identificateurs-python}{%
+\subparagraph{Identificateurs Python}\label{identificateurs-python}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} évaluez cette cellule pour charger l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{regexp\PYZus{}pythonid} \PY{k}{import} \PY{n}{exo\PYZus{}pythonid}
+\end{Verbatim}
+
+
+    On vous demande d'écrire une expression régulière qui décrit les noms de
+variable en Python. Pour cet exercice on se concentre sur les caractères
+ASCII. On exclut donc les noms de variables qui pourraient contenir des
+caractères exotiques comme les caractères accentués ou autres lettres
+grecques.\\
+
+Il s'agit donc de reconnaître toutes les chaînes qui commencent par une
+lettre ou un \texttt{\_}, suivi de lettres, chiffres ou \texttt{\_}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} quelques exemples de résultat attendus}
+        \PY{n}{exo\PYZus{}pythonid}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} à vous de jouer: écrivez ici}
+        \PY{c+c1}{\PYZsh{} sous forme de chaîne votre expression régulière}
+        
+        \PY{n}{regexp\PYZus{}pythonid} \PY{o}{=} \PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre\PYZus{}regexp\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} évaluez cette cellule pour valider votre code}
+        \PY{n}{exo\PYZus{}pythonid}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{regexp\PYZus{}pythonid}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{exercice---niveau-intermuxe9diaire-2}{%
+\subsection{Exercice - niveau intermédiaire
+(2)}\label{exercice---niveau-intermuxe9diaire-2}}
+
+    \hypertarget{lignes-avec-nom-et-pruxe9nom}{%
+\subparagraph{Lignes avec nom et
+prénom}\label{lignes-avec-nom-et-pruxe9nom}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour charger l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{regexp\PYZus{}agenda} \PY{k}{import} \PY{n}{exo\PYZus{}agenda}
+\end{Verbatim}
+
+
+    On veut reconnaître dans un fichier toutes les lignes qui contiennent un
+nom et un prénom.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}agenda}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    Plus précisément, on cherche les chaînes qui~:
+
+\begin{itemize}
+\tightlist
+\item
+  commencent par une suite - possiblement vide - de caractères
+  alphanumériques (vous pouvez utiliser \texttt{\textbackslash{}w}) ou
+  tiret haut (\texttt{-}) qui constitue le prénom~;
+\item
+  contiennent ensuite comme séparateur le caractère `deux-points'
+  \texttt{:}~;
+\item
+  contiennent ensuite une suite - cette fois jamais vide - de caractères
+  alphanumériques, qui constitue le nom~;
+\item
+  et enfin contiennent un deuxième caractère \texttt{:} mais
+  optionnellement seulement.
+\end{itemize}
+
+    On vous demande de construire une expression régulière qui définit les
+deux groupes \texttt{nom} et \texttt{prenom}, et qui rejette les lignes
+qui ne satisfont pas ces critères.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} entrez votre regexp ici}
+        \PY{c+c1}{\PYZsh{} il faudra la faire terminer par \PYZbs{}Z}
+        \PY{c+c1}{\PYZsh{} regardez ce qui se passe si vous ne le faites pas}
+        
+        \PY{n}{regexp\PYZus{}agenda} \PY{o}{=} \PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre regexp\PYZgt{}}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{Z}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} évaluez cette cellule pour valider votre code}
+        \PY{n}{exo\PYZus{}agenda}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{regexp\PYZus{}agenda}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{exercice---niveau-intermuxe9diaire-3}{%
+\subsection{Exercice - niveau intermédiaire
+(3)}\label{exercice---niveau-intermuxe9diaire-3}}
+
+    \hypertarget{numuxe9ros-de-tuxe9luxe9phone}{%
+\subparagraph{Numéros de
+téléphone}\label{numuxe9ros-de-tuxe9luxe9phone}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour charger l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{regexp\PYZus{}phone} \PY{k}{import} \PY{n}{exo\PYZus{}phone}
+\end{Verbatim}
+
+
+    Cette fois on veut reconnaître des numéros de téléphone français, qui
+peuvent être~:
+
+\begin{itemize}
+\tightlist
+\item
+  soit au format contenant 10 chiffres dont le premier est un
+  \texttt{0}~;
+\item
+  soit un format international commençant par \texttt{+33} suivie de 9
+  chiffres.
+\end{itemize}
+
+Dans tous les cas on veut trouver dans le groupe `number' les 9 chiffres
+vraiment significatifs, comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}phone}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} votre regexp}
+        \PY{c+c1}{\PYZsh{} à nouveau il faut terminer la regexp par \PYZbs{}Z}
+        \PY{n}{regexp\PYZus{}phone} \PY{o}{=} \PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre regexp\PYZgt{}}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{Z}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} évaluez cette cellule pour valider votre code}
+        \PY{n}{exo\PYZus{}phone}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{regexp\PYZus{}phone}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{exercice---niveau-avancuxe9}{%
+\subsection{Exercice - niveau
+avancé}\label{exercice---niveau-avancuxe9}}
+
+    Vu comment sont conçus les exercices, vous ne pouvez pas passer à
+\texttt{re.compile} un drapeau comme \texttt{re.IGNORECASE} ou autre~;
+sachez cependant que vous pouvez \textbf{\emph{embarquer} ces drapeaux
+dans la \emph{regexp}} elle-même~; par exemple pour rendre la regexp
+insensible à la casse de caractères, au lieu d'appeler
+\texttt{re.compile} avec le flag \texttt{re.I}, vous pouvez utiliser
+\texttt{(?i)} comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{re}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} on peut embarquer les flags comme IGNORECASE}
+        \PY{c+c1}{\PYZsh{} directement dans la regexp}
+        \PY{c+c1}{\PYZsh{} c\PYZsq{}est équivalent de faire ceci}
+        
+        \PY{n}{re\PYZus{}obj} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{abc}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{flags}\PY{o}{=}\PY{n}{re}\PY{o}{.}\PY{n}{IGNORECASE}\PY{p}{)}
+        \PY{n}{re\PYZus{}obj}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ABC}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{group}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} ou cela}
+        
+        \PY{n}{re}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{(?i)abc}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ABC}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{group}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} les flags comme (?i) doivent apparaître}
+        \PY{c+c1}{\PYZsh{} en premier dans la regexp}
+        \PY{n}{re}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{abc(?i)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ABC}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{group}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
+\end{Verbatim}
+
+
+    Pour plus de précisions sur ce trait, que nous avons laissé de côté dans
+le complément pour ne pas trop l'alourdir, voyez
+\href{https://docs.python.org/3/library/re.html\#regular-expression-syntax}{la
+documentation sur les expressions régulières} et cherchez la première
+occurrence de \texttt{iLmsux}.
+
+    \hypertarget{duxe9cortiquer-une-url}{%
+\subsubsection{Décortiquer une URL}\label{duxe9cortiquer-une-url}}
+
+    On vous demande d'écrire une expression régulière qui permette
+d'analyser des URLs.
+
+Voici les conventions que nous avons adoptées pour l'exercice~:
+
+\begin{itemize}
+\tightlist
+\item
+  la chaîne contient les parties suivantes~:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{\textless{}protocol\textgreater{}://\textless{}location\textgreater{}/\textless{}path\textgreater{}}~;
+  \end{itemize}
+\item
+  l'URL commence par le nom d'un protocole qui doit être parmi
+  \texttt{http}, \texttt{https}, \texttt{ftp}, \texttt{ssh}~;
+\item
+  le nom du protocole peut contenir de manière indifférente des
+  minuscules ou des majuscules~;
+\item
+  ensuite doit venir la séquence \texttt{://}~;
+\item
+  ensuite on va trouver une chaîne
+  \texttt{\textless{}location\textgreater{}} qui contient~:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    potentiellement un nom d'utilisateur, et s'il est présent,
+    potentiellement un mot de passe~;
+  \item
+    obligatoirement un nom de \texttt{hostname}~;
+  \item
+    potentiellement un numéro de port~;
+  \end{itemize}
+\item
+  lorsque les 4 parties sont présentes dans
+  \texttt{\textless{}location\textgreater{}}, cela se présente comme
+  ceci~:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{\textless{}location\textgreater{}\ =\ \textless{}user\textgreater{}:\textless{}password\textgreater{}@\textless{}hostname\textgreater{}:\textless{}port\textgreater{}}~;
+  \end{itemize}
+\item
+  si l'on note entre crochets les parties optionnelles, cela donne~:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{\textless{}location\textgreater{}\ =\ {[}\textless{}user\textgreater{}{[}:\textless{}password\textgreater{}{]}@{]}\textless{}hostname\textgreater{}{[}:\textless{}port\textgreater{}{]}}~;
+  \end{itemize}
+\item
+  le champ \texttt{\textless{}user\textgreater{}} ne peut contenir que
+  des caractères alphanumériques~; si le \texttt{@} est présent le champ
+  \texttt{\textless{}user\textgreater{}} ne peut pas être vide~;
+\item
+  le champ \texttt{\textless{}password\textgreater{}} peut contenir tout
+  sauf un \texttt{:} et de même, si le \texttt{:} est présent le champ
+  \texttt{\textless{}password\textgreater{}} ne peut pas être vide~;
+\item
+  le champ \texttt{\textless{}hostname\textgreater{}} peut contenir un
+  suite non-vide de caractères alphanumériques, underscores, ou
+  \texttt{.}~;
+\item
+  le champ \texttt{\textless{}port\textgreater{}} ne contient que des
+  chiffres, et il est non vide si le \texttt{:} est spécifié~;
+\item
+  le champ \texttt{\textless{}path\textgreater{}} peut être vide.
+\end{itemize}
+
+Enfin, vous devez définir les groupes \texttt{proto}, \texttt{user},
+\texttt{password}, \texttt{hostname}, \texttt{port} et \texttt{path} qui
+sont utilisés pour vérifier votre résultat. Dans la case
+\texttt{Résultat\ attendu}, vous trouverez soit \texttt{None} si la
+regexp ne filtre pas l'intégralité de l'entrée, ou bien une liste
+ordonnée de tuples qui donnent la valeur de ces groupes~; vous n'avez
+rien à faire pour construire ces tuples, c'est l'exercice qui s'en
+occupe.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour charger l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{regexp\PYZus{}url} \PY{k}{import} \PY{n}{exo\PYZus{}url}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} exemples du résultat attendu}
+        \PY{n}{exo\PYZus{}url}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} n\PYZsq{}hésitez pas à construire votre regexp petit à petit}
+        
+        \PY{n}{regexp\PYZus{}url} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre\PYZus{}regexp\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}url}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{regexp\PYZus{}url}\PY{p}{)}
+\end{Verbatim}

@@ -1,0 +1,80 @@
+    \hypertarget{objets-mutables-et-objets-immuables}{%
+\section{Objets mutables et objets
+immuables}\label{objets-mutables-et-objets-immuables}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    \hypertarget{les-chauxeenes-sont-des-objets-immuables}{%
+\subsubsection{Les chaînes sont des objets
+immuables}\label{les-chauxeenes-sont-des-objets-immuables}}
+
+    Voici un exemple d'un fragment de code qui illustre le caractère
+immuable des chaînes de caractères. Nous l'exécutons sous
+\href{pythontutor.com}{pythontutor}, afin de bien illustrer les
+relations entre variables et objets.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} il vous faut charger cette cellule}
+        \PY{c+c1}{\PYZsh{} pour pouvoir utiliser les suivantes}
+        \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} ipythontutor
+\end{Verbatim}
+
+
+    \textbf{Note}~: une fois que vous avez évalué la cellule avec
+\texttt{\%\%ipythontutor}, vous devez cliquer sur le bouton
+\texttt{Forward} pour voir pas à pas le comportement du programme.\\
+
+    Le scénario est très simple, on crée deux variables \texttt{s1} et
+\texttt{s2} vers le même objet
+\texttt{\textquotesingle{}abc\textquotesingle{}}, puis on fait une
+opération \texttt{+=} sur la variable \texttt{s1}.\\
+
+Comme l'objet est une chaîne, il est donc immuable, on ne \textbf{peut
+pas modifier l'objet} directement~; pour obtenir l'effet recherché (à
+savoir que \texttt{s1} s'allonge de
+\texttt{\textquotesingle{}def\textquotesingle{}}), Python \textbf{crée
+un deuxième objet}, comme on le voit bien sous pythontutor~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{ipythontutor} heapPrimitives=true
+        \PYZsh{} deux variables vers le même objet
+        s1 = \PYZsq{}abc\PYZsq{}
+        s2 = s1
+        \PYZsh{} on essaie de modifier l\PYZsq{}objet
+        s1 += \PYZsq{}def\PYZsq{}
+        \PYZsh{} pensez à cliquer sur `Forward`
+\end{Verbatim}
+
+
+    \hypertarget{les-listes-sont-des-objets-mutables}{%
+\subsubsection{Les listes sont des objets
+mutables}\label{les-listes-sont-des-objets-mutables}}
+
+    Voici ce qu'on obtient par contraste pour le même scénario mais qui
+cette fois utilise des listes, qui sont des objets mutables~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{ipythontutor} heapPrimitives=true ratio=0.8
+        \PYZsh{} deux variables vers le même objet
+        liste1 = [\PYZsq{}a\PYZsq{}, \PYZsq{}b\PYZsq{}, \PYZsq{}c\PYZsq{}]
+        liste2 = liste1
+        \PYZsh{} on modifie l\PYZsq{}objet
+        liste1 += [\PYZsq{}d\PYZsq{}, \PYZsq{}e\PYZsq{}, \PYZsq{}f\PYZsq{}]
+        \PYZsh{} pensez à cliquer sur `Forward`
+\end{Verbatim}
+
+
+    \hypertarget{conclusion}{%
+\subsubsection{Conclusion}\label{conclusion}}
+
+    Ce comportement n'est pas propre à l'usage de l'opérateur \texttt{+=} -
+que pour cette raison d'ailleurs nous avons tendance à déconseiller.\\
+
+
+Les objets mutables et immuables ont par essence un comportement
+différent, il est très important d'avoir ceci présent à l'esprit.\\
+
+Nous aurons notamment l'occasion d'approfondir cela dans la séquence
+consacrée aux références partagées, en semaine 3.

@@ -40,3 +40,62 @@
 \BOOKMARK [1][-]{section.1.19}{Estimer le plus petit \(grand\) flottant}{chapter.1}% 40
 \BOOKMARK [2][-]{subsection.1.19.1}{Exercice - niveau basique}{section.1.19}% 41
 \BOOKMARK [2][-]{subsection.1.19.2}{Compl\351ment - niveau avanc\351}{section.1.19}% 42
+\BOOKMARK [0][-]{chapter.2}{Notions de base, premier programme en Python}{}% 43
+\BOOKMARK [1][-]{section.2.1}{Caract\350res accentu\351s}{chapter.2}% 44
+\BOOKMARK [2][-]{subsection.2.1.1}{Compl\351ment - niveau basique}{section.2.1}% 45
+\BOOKMARK [2][-]{subsection.2.1.2}{Compl\351ment - niveau interm\351diaire}{section.2.1}% 46
+\BOOKMARK [1][-]{section.2.2}{Les outils de base sur les cha\356nes de caract\350res \(str\)}{chapter.2}% 47
+\BOOKMARK [2][-]{subsection.2.2.1}{Compl\351ment - niveau interm\351diaire}{section.2.2}% 48
+\BOOKMARK [1][-]{section.2.3}{Formatage de cha\356nes de caract\350res}{chapter.2}% 49
+\BOOKMARK [2][-]{subsection.2.3.1}{Compl\351ment - niveau basique}{section.2.3}% 50
+\BOOKMARK [2][-]{subsection.2.3.2}{Compl\351ment - niveau interm\351diaire}{section.2.3}% 51
+\BOOKMARK [2][-]{subsection.2.3.3}{Compl\351ment - niveau avanc\351}{section.2.3}% 52
+\BOOKMARK [1][-]{section.2.4}{Obtenir une r\351ponse de l'utilisateur}{chapter.2}% 53
+\BOOKMARK [2][-]{subsection.2.4.1}{Compl\351ment - niveau basique}{section.2.4}% 54
+\BOOKMARK [1][-]{section.2.5}{Expressions r\351guli\350res et le module re}{chapter.2}% 55
+\BOOKMARK [2][-]{subsection.2.5.1}{Compl\351ment - niveau basique}{section.2.5}% 56
+\BOOKMARK [2][-]{subsection.2.5.2}{Compl\351ment - niveau interm\351diaire}{section.2.5}% 57
+\BOOKMARK [1][-]{section.2.6}{Expressions r\351guli\350res}{chapter.2}% 58
+\BOOKMARK [2][-]{subsection.2.6.1}{Exercice - niveau interm\351diaire \(1\)}{section.2.6}% 59
+\BOOKMARK [2][-]{subsection.2.6.2}{Exercice - niveau interm\351diaire \(2\)}{section.2.6}% 60
+\BOOKMARK [2][-]{subsection.2.6.3}{Exercice - niveau interm\351diaire \(3\)}{section.2.6}% 61
+\BOOKMARK [2][-]{subsection.2.6.4}{Exercice - niveau avanc\351}{section.2.6}% 62
+\BOOKMARK [1][-]{section.2.7}{Les slices en Python}{chapter.2}% 63
+\BOOKMARK [2][-]{subsection.2.7.1}{Compl\351ment - niveau basique}{section.2.7}% 64
+\BOOKMARK [2][-]{subsection.2.7.2}{Compl\351ment - niveau avanc\351}{section.2.7}% 65
+\BOOKMARK [1][-]{section.2.8}{M\351thodes sp\351cifiques aux listes}{chapter.2}% 66
+\BOOKMARK [2][-]{subsection.2.8.1}{Compl\351ment - niveau basique}{section.2.8}% 67
+\BOOKMARK [1][-]{section.2.9}{Objets mutables et objets immuables}{chapter.2}% 68
+\BOOKMARK [2][-]{subsection.2.9.1}{Compl\351ment - niveau basique}{section.2.9}% 69
+\BOOKMARK [1][-]{section.2.10}{Tris de listes}{chapter.2}% 70
+\BOOKMARK [2][-]{subsection.2.10.1}{Compl\351ment - niveau basique}{section.2.10}% 71
+\BOOKMARK [1][-]{section.2.11}{Indentations en Python}{chapter.2}% 72
+\BOOKMARK [2][-]{subsection.2.11.1}{Compl\351ment - niveau basique}{section.2.11}% 73
+\BOOKMARK [2][-]{subsection.2.11.2}{Compl\351ment - niveau interm\351diaire}{section.2.11}% 74
+\BOOKMARK [2][-]{subsection.2.11.3}{Compl\351ment - niveau avanc\351}{section.2.11}% 75
+\BOOKMARK [1][-]{section.2.12}{Bonnes pratiques de pr\351sentation de code}{chapter.2}% 76
+\BOOKMARK [2][-]{subsection.2.12.1}{Compl\351ment - niveau basique}{section.2.12}% 77
+\BOOKMARK [2][-]{subsection.2.12.2}{Compl\351ment - niveau interm\351diaire}{section.2.12}% 78
+\BOOKMARK [1][-]{section.2.13}{L'instruction pass}{chapter.2}% 79
+\BOOKMARK [2][-]{subsection.2.13.1}{Compl\351ment - niveau basique}{section.2.13}% 80
+\BOOKMARK [2][-]{subsection.2.13.2}{Compl\351ment - niveau interm\351diaire}{section.2.13}% 81
+\BOOKMARK [1][-]{section.2.14}{Fonctions avec ou sans valeur de retour}{chapter.2}% 82
+\BOOKMARK [2][-]{subsection.2.14.1}{Compl\351ment - niveau basique}{section.2.14}% 83
+\BOOKMARK [1][-]{section.2.15}{Formatage des chaines de caract\350res}{chapter.2}% 84
+\BOOKMARK [2][-]{subsection.2.15.1}{Exercice - niveau basique}{section.2.15}% 85
+\BOOKMARK [1][-]{section.2.16}{S\351quences}{chapter.2}% 86
+\BOOKMARK [2][-]{subsection.2.16.1}{Exercice - niveau basique}{section.2.16}% 87
+\BOOKMARK [2][-]{subsection.2.16.2}{Exercice - niveau interm\351diaire}{section.2.16}% 88
+\BOOKMARK [1][-]{section.2.17}{Listes}{chapter.2}% 89
+\BOOKMARK [2][-]{subsection.2.17.1}{Exercice - niveau basique}{section.2.17}% 90
+\BOOKMARK [1][-]{section.2.18}{Instruction if et fonction def}{chapter.2}% 91
+\BOOKMARK [2][-]{subsection.2.18.1}{Exercice - niveau basique}{section.2.18}% 92
+\BOOKMARK [2][-]{subsection.2.18.2}{Exercice - niveau basique}{section.2.18}% 93
+\BOOKMARK [1][-]{section.2.19}{Comptage dans les chaines}{chapter.2}% 94
+\BOOKMARK [2][-]{subsection.2.19.1}{Exercice - niveau basique}{section.2.19}% 95
+\BOOKMARK [2][-]{subsection.2.19.2}{La commande UNIX wc\(1\)}{section.2.19}% 96
+\BOOKMARK [1][-]{section.2.20}{Compr\351hensions \(1\)}{chapter.2}% 97
+\BOOKMARK [2][-]{subsection.2.20.1}{Exercice - niveau basique}{section.2.20}% 98
+\BOOKMARK [2][-]{subsection.2.20.2}{R\351cr\351ation}{section.2.20}% 99
+\BOOKMARK [1][-]{section.2.21}{Compr\351hensions \(2\)}{chapter.2}% 100
+\BOOKMARK [2][-]{subsection.2.21.1}{Exercice - niveau interm\351diaire}{section.2.21}% 101

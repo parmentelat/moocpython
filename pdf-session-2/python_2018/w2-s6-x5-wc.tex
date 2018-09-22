@@ -1,0 +1,69 @@
+    \hypertarget{comptage-dans-les-chaines}{%
+\section{Comptage dans les chaines}\label{comptage-dans-les-chaines}}
+
+    \hypertarget{exercice---niveau-basique}{%
+\subsection{Exercice - niveau basique}\label{exercice---niveau-basique}}
+
+    Nous remercions Benoit Izac pour cette contribution aux exercices.
+
+    \hypertarget{la-commande-unix-wc1}{%
+\subsection{La commande UNIX wc(1)}\label{la-commande-unix-wc1}}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+Sur les systèmes de type UNIX, la commande
+\href{http://pubs.opengroup.org/onlinepubs/9699919799/utilities/wc.html}{wc}
+permet de compter le nombre de lignes, de mots et d'octets (ou de
+caractères) présents sur l'entrée standard ou contenus dans un fichier.\\
+
+L'exercice consiste à écrire une fonction nommée \emph{wc} qui prendra
+en argument une chaîne de caractères et retournera une liste contenant
+trois éléments~:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  le nombre de lignes (plus précisément le nombre de retours à la
+  ligne)~;
+\item
+  le nombre de mots (un mot étant séparé par des espaces)~;
+\item
+  le nombre de caractères (on utilisera uniquement le jeu de caractères
+  ASCII).
+\end{enumerate}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} chargement de l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}wc} \PY{k}{import} \PY{n}{exo\PYZus{}wc}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} exemple}
+        \PY{n}{exo\PYZus{}wc}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \textbf{Indice}~: nous avons vu rapidement la boucle \texttt{for},
+sachez toutefois qu'on peut tout à fait résoudre l'exercice en utilisant
+uniquement la bibliothèque standard.\\
+
+\textbf{Remarque}~: usuellement, ce genre de fonctions retournerait
+plutôt un tuple qu'une liste, mais comme nous ne voyons les tuples que
+la semaine prochaine..
+
+    À vous de jouer~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} la fonction à implémenter}
+        \PY{k}{def} \PY{n+nf}{wc}\PY{p}{(}\PY{n}{string}\PY{p}{)}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} remplacer pass par votre code}
+            \PY{k}{pass}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} correction}
+        \PY{n}{exo\PYZus{}wc}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{wc}\PY{p}{)}
+\end{Verbatim}

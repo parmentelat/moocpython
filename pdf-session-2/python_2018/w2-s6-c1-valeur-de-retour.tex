@@ -1,0 +1,268 @@
+    \hypertarget{fonctions-avec-ou-sans-valeur-de-retour}{%
+\section{Fonctions avec ou sans valeur de
+retour}\label{fonctions-avec-ou-sans-valeur-de-retour}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    \hypertarget{le-style-procuxe9dural}{%
+\subsubsection{Le style procédural}\label{le-style-procuxe9dural}}
+
+    Une procédure est une fonction qui se contente de dérouler des
+instructions. Voici un exemple d'une telle fonction~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k}{def} \PY{n+nf}{affiche\PYZus{}carre}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{le carre de}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{n}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{vaut}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{n}\PY{o}{*}\PY{n}{n}\PY{p}{)}
+\end{Verbatim}
+
+
+    qui s'utiliserait comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{affiche\PYZus{}carre}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+le carre de 12 vaut 144
+
+    \end{Verbatim}
+
+    \hypertarget{le-style-fonctionnel}{%
+\subsubsection{Le style fonctionnel}\label{le-style-fonctionnel}}
+
+    Mais en fait, dans notre cas, il serait beaucoup plus commode de définir
+une fonction qui \textbf{retourne} le carré d'un nombre, afin de pouvoir
+écrire quelque chose comme~:
+
+    \begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{surface }\OperatorTok{=}\NormalTok{ carre(}\DecValTok{15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+    quitte à imprimer cette valeur ensuite si nécessaire. Jusqu'ici nous
+avons fait beaucoup appel à \texttt{print}, mais dans la pratique,
+imprimer n'est pas un but en soi.
+
+    \hypertarget{linstruction-return}{%
+\subsubsection{\texorpdfstring{L'instruction
+\texttt{return}}{L'instruction return}}\label{linstruction-return}}
+
+    Voici comment on pourrait écrire une fonction \texttt{carre} qui
+\textbf{retourne} (on dit aussi \textbf{renvoie}) le carré de son
+argument~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{def} \PY{n+nf}{carre}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{n}{n}\PY{o}{*}\PY{n}{n}
+        
+        \PY{k}{if} \PY{n}{carre}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{)} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{100}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{petit appartement}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+petit appartement
+
+    \end{Verbatim}
+
+    La sémantique (le mot savant pour ``comportement'') de l'instruction
+\texttt{return} est assez simple. La fonction qui est en cours
+d'exécution \textbf{s'achève} immédiatement, et l'objet cité dans
+l'instruction \texttt{return} est retourné à l'appelant, qui peut
+utiliser cette valeur comme n'importe quelle expression.
+
+    \hypertarget{le-singleton-none}{%
+\subsubsection{\texorpdfstring{Le singleton
+\texttt{None}}{Le singleton None}}\label{le-singleton-none}}
+
+    Le terme même de fonction, si vous vous rappelez vos souvenirs de
+mathématiques, suggère qu'on calcule un résultat à partir de valeurs
+d'entrée. Dans la pratique il est assez rare qu'on définisse une
+fonction qui ne retourne rien.\\
+
+    En fait \textbf{toutes} les fonctions retournent quelque chose. Lorsque
+le programmeur n'a pas prévu d'instruction \texttt{return}, Python
+retourne un objet spécial, baptisé \texttt{None}. Voici par exemple ce
+qu'on obtient si on essaie d'afficher la valeur de retour de notre
+première fonction, qui, on le rappelle, ne retourne rien~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} ce premier appel provoque l\PYZsq{}impression d\PYZsq{}une ligne}
+        \PY{n}{retour} \PY{o}{=} \PY{n}{affiche\PYZus{}carre}\PY{p}{(}\PY{l+m+mi}{15}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+le carre de 15 vaut 225
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} voyons ce qu\PYZsq{}a retourné la fonction affiche\PYZus{}carre}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{retour =}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{retour}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+retour = None
+
+    \end{Verbatim}
+
+    L'objet \texttt{None} est un singleton prédéfini par Python, un peu
+comme \texttt{True} et \texttt{False}. Ce n'est pas par contre une
+valeur booléenne, nous aurons l'occasion d'en reparler.
+
+    \hypertarget{un-exemple-un-peu-plus-ruxe9aliste}{%
+\subsubsection{Un exemple un peu plus
+réaliste}\label{un-exemple-un-peu-plus-ruxe9aliste}}
+
+    Pour illustrer l'utilisation de \texttt{return} sur un exemple plus
+utile, voyons le code suivant~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{def} \PY{n+nf}{premier}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    Retourne un booléen selon que n est premier ou non}
+        \PY{l+s+sd}{    Retourne None pour les entrées négatives ou nulles}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{c+c1}{\PYZsh{} retourne None pour les entrées non valides}
+            \PY{k}{if} \PY{n}{n} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{0}\PY{p}{:}
+                \PY{k}{return}
+            \PY{c+c1}{\PYZsh{} traiter le cas singulier}
+            \PY{k}{elif} \PY{n}{n} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
+                \PY{k}{return} \PY{k+kc}{False}
+            \PY{c+c1}{\PYZsh{} chercher un diviseur dans [2..n\PYZhy{}1]}
+            \PY{c+c1}{\PYZsh{} bien sûr on pourrait s\PYZsq{}arrêter à la racine carrée de n}
+            \PY{c+c1}{\PYZsh{} mais ce n\PYZsq{}est pas notre sujet}
+            \PY{k}{else}\PY{p}{:}
+                \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{n}\PY{p}{)}\PY{p}{:}
+                    \PY{k}{if} \PY{n}{n} \PY{o}{\PYZpc{}} \PY{n}{i} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+                        \PY{c+c1}{\PYZsh{} on a trouvé un diviseur,}
+                        \PY{c+c1}{\PYZsh{} on peut sortir de la fonction}
+                        \PY{k}{return} \PY{k+kc}{False}
+            \PY{c+c1}{\PYZsh{} à ce stade, le nombre est bien premier}
+            \PY{k}{return} \PY{k+kc}{True}
+\end{Verbatim}
+
+
+    Cette fonction teste si un entier est premier ou non~; il s'agit
+naturellement d'une version d'école, il existe d'autres méthodes
+beaucoup plus adaptées à cette tâche. On peut toutefois vérifier que
+cette version est fonctionnelle pour de petits entiers comme suit. On
+rappelle que \texttt{1} n'est pas considéré comme un nombre premier~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{k}{for} \PY{n}{test} \PY{o+ow}{in} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{19}\PY{p}{,} \PY{l+m+mi}{35}\PY{p}{]}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{premier(}\PY{l+s+si}{\PYZob{}test:2d\PYZcb{}}\PY{l+s+s2}{) = }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{premier(test)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+premier(-2) = None
+premier( 1) = False
+premier( 2) = True
+premier( 4) = False
+premier(19) = True
+premier(35) = False
+
+    \end{Verbatim}
+
+    \hypertarget{return-sans-valeur}{%
+\subparagraph{\texorpdfstring{\texttt{return} sans
+valeur}{return sans valeur}}\label{return-sans-valeur}}
+
+    Pour les besoins de cette discussion, nous avons choisi de retourner
+\texttt{None} pour les entiers négatifs ou nuls, une manière comme une
+autre de signaler que la valeur en entrée n'est pas valide.\\
+
+Ceci n'est pas forcément une bonne pratique, mais elle nous permet ici
+d'illustrer que dans le cas où on ne mentionne pas de valeur de retour,
+Python retourne \texttt{None}.
+
+    \hypertarget{return-interrompt-la-fonction}{%
+\subparagraph{\texorpdfstring{\texttt{return} interrompt la
+fonction}{return interrompt la fonction}}\label{return-interrompt-la-fonction}}
+
+    Comme on peut s'en convaincre en instrumentant le code - ce que vous
+pouvez faire à titre d'exercice en ajoutant des fonctions \texttt{print}
+- dans le cas d'un nombre qui n'est pas premier la boucle \texttt{for}
+ne va pas jusqu'à son terme.\\
+
+    On aurait pu d'ailleurs tirer profit de cette propriété pour écrire la
+fonction de manière légèrement différente comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{k}{def} \PY{n+nf}{premier\PYZus{}sans\PYZus{}else}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    Retourne un booléen selon que n est premier ou non}
+        \PY{l+s+sd}{    Retourne None pour les entrées négatives ou nulles}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{c+c1}{\PYZsh{} retourne None pour les entrées non valides}
+            \PY{k}{if} \PY{n}{n} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{0}\PY{p}{:}
+                \PY{k}{return}
+            \PY{c+c1}{\PYZsh{} traiter le cas singulier}
+            \PY{k}{if} \PY{n}{n} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
+                \PY{k}{return} \PY{k+kc}{False}
+            \PY{c+c1}{\PYZsh{} par rapport à la première version, on a supprimé}
+            \PY{c+c1}{\PYZsh{} la clause else: qui est inutile}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{n}\PY{p}{)}\PY{p}{:}
+                \PY{k}{if} \PY{n}{n} \PY{o}{\PYZpc{}} \PY{n}{i} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+                    \PY{c+c1}{\PYZsh{} on a trouve un diviseur}
+                    \PY{k}{return} \PY{k+kc}{False}
+            \PY{c+c1}{\PYZsh{} a ce stade c\PYZsq{}est que le nombre est bien premier}
+            \PY{k}{return} \PY{k+kc}{True}
+\end{Verbatim}
+
+
+    C'est une question de style et de goût. En tout cas, les deux versions
+sont tout à fait équivalentes, comme on le voit ici~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k}{for} \PY{n}{test} \PY{o+ow}{in} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{19}\PY{p}{,} \PY{l+m+mi}{35}\PY{p}{]}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{pour n = }\PY{l+s+si}{\PYZob{}test:2d\PYZcb{}}\PY{l+s+s2}{ : premier → }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{premier(test)\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}
+                  \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{    premier\PYZus{}sans\PYZus{}else → }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{premier\PYZus{}sans\PYZus{}else(test)\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+pour n = -2 : premier → None
+    premier\_sans\_else → None
+
+pour n =  2 : premier → True
+    premier\_sans\_else → True
+
+pour n =  4 : premier → False
+    premier\_sans\_else → False
+
+pour n = 19 : premier → True
+    premier\_sans\_else → True
+
+pour n = 35 : premier → False
+    premier\_sans\_else → False
+
+
+    \end{Verbatim}
+
+    \hypertarget{digression-sur-les-chauxeenes}{%
+\subparagraph{Digression sur les
+chaînes}\label{digression-sur-les-chauxeenes}}
+
+    Vous remarquerez dans cette dernière cellule, si vous regardez bien le
+paramètre de \texttt{print}, qu'on peut accoler deux chaînes (ici deux
+\emph{f-strings}) sans même les ajouter~; un petit détail pour éviter
+d'alourdir le code~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} quand deux chaînes apparaissent immédiatement}
+         \PY{c+c1}{\PYZsh{} l\PYZsq{}une après l\PYZsq{}autre sans opérateur, elles sont concaténées}
+         \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{abc}\PY{l+s+s2}{\PYZdq{}} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{def}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:} 'abcdef'
+\end{Verbatim}

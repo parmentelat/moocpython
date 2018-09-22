@@ -1,0 +1,143 @@
+    \hypertarget{linstruction-pass}{%
+\section{\texorpdfstring{L'instruction
+\texttt{pass}}{L'instruction pass}}\label{linstruction-pass}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    Nous avons vu qu'en Python les blocs de code sont définis par leur
+indentation.
+
+    \hypertarget{une-fonction-vide}{%
+\subsubsection{Une fonction vide}\label{une-fonction-vide}}
+
+    Cette convention a une limitation lorsqu'on essaie de définir un bloc
+vide. Voyons par exemple comment on définirait en C une fonction qui ne
+fait rien~:
+
+    \begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{/* une fonction C qui ne fait rien */}
+\DataTypeTok{void}\NormalTok{ foo() \{\}}
+\end{Highlighting}
+\end{Shaded}
+
+    Comme en Python on n'a pas d'accolade pour délimiter les blocs de code,
+il existe une instruction \texttt{pass}, qui ne fait rien. À l'aide de
+cette instruction on peut à présent définir une fonction vide comme
+ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} une fonction Python qui ne fait rien}
+        \PY{k}{def} \PY{n+nf}{foo}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{k}{pass}
+\end{Verbatim}
+
+
+    \hypertarget{une-boucle-vide}{%
+\subsubsection{Une boucle vide}\label{une-boucle-vide}}
+
+    Pour prendre un second exemple un peu plus pratique, et pour anticiper
+un peu sur l'instruction \texttt{while} que nous verrons très bientôt,
+voici un exemple d'une boucle vide, c'est à dire sans corps, qui permet
+de ``dépiler'' dans une liste jusqu'à l'obtention d'une certaine
+valeur~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{liste} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{avant}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
+        \PY{k}{while} \PY{n}{liste}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{p}{)} \PY{o}{!=} \PY{l+m+mi}{5}\PY{p}{:}
+            \PY{k}{pass}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{après}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+avant [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+après [0, 1, 2, 3, 4]
+
+    \end{Verbatim}
+
+    On voit qu'ici encore l'instruction \texttt{pass} a toute son utilité.
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{un-if-sans-then}{%
+\subsubsection{\texorpdfstring{Un \texttt{if} sans
+\texttt{then}}{Un if sans then}}\label{un-if-sans-then}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} on utilise dans ces exemples une condition fausse}
+        \PY{n}{condition} \PY{o}{=} \PY{k+kc}{False}
+\end{Verbatim}
+
+
+    Imaginons qu'on parte d'un code hypothétique qui fasse ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} la version initiale}
+        \PY{k}{if} \PY{n}{condition}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{non}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{k}{else}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{bingo}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+bingo
+
+    \end{Verbatim}
+
+    Et que l'on veuille modifier ce code pour simplement supprimer
+l'impression de \texttt{non}. La syntaxe du langage \textbf{ne permet
+pas} de simplement commenter le premier \texttt{print}~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# si on commente le premier print}
+\CommentTok{# la syntaxe devient incorrecte}
+\ControlFlowTok{if}\NormalTok{ condition:}
+\CommentTok{#    print "non"}
+\ControlFlowTok{else}\NormalTok{:}
+    \BuiltInTok{print} \StringTok{"bingo"}
+\end{Highlighting}
+\end{Shaded}
+
+    Évidemment ceci pourrait être récrit autrement en inversant la
+condition, mais parfois on s'efforce de limiter au maximum l'impact
+d'une modification sur le code. Dans ce genre de situation on préférera
+écrire plutôt~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} on peut s\PYZsq{}en sortir en ajoutant une instruction pass}
+        \PY{k}{if} \PY{n}{condition}\PY{p}{:}
+        \PY{c+c1}{\PYZsh{}    print \PYZdq{}non\PYZdq{}}
+            \PY{k}{pass}
+        \PY{k}{else}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{bingo}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+bingo
+
+    \end{Verbatim}
+
+    \hypertarget{une-classe-vide}{%
+\subsubsection{Une classe vide}\label{une-classe-vide}}
+
+    Enfin, comme on vient de le voir dans la vidéo, on peut aussi utiliser
+\texttt{pass} pour définir une classe vide comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{class} \PY{n+nc}{Foo}\PY{p}{:}
+            \PY{k}{pass}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{foo} \PY{o}{=} \PY{n}{Foo}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}

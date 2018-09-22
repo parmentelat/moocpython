@@ -1,0 +1,82 @@
+    \hypertarget{compruxe9hensions-1}{%
+\section{Compréhensions (1)}\label{compruxe9hensions-1}}
+
+    \hypertarget{exercice---niveau-basique}{%
+\subsection{Exercice - niveau basique}\label{exercice---niveau-basique}}
+
+    \hypertarget{liste-des-valeurs-dune-fonction}{%
+\subsubsection{Liste des valeurs d'une
+fonction}\label{liste-des-valeurs-dune-fonction}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} Pour charger l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}liste\PYZus{}p} \PY{k}{import} \PY{n}{exo\PYZus{}liste\PYZus{}P}
+\end{Verbatim}
+
+
+    On se donne une fonction polynomiale~:
+
+\(P(x) = 2x^2 - 3x - 2\)
+
+    On vous demande d'écrire une fonction \texttt{liste\_P} qui prend en
+argument une liste de nombres réels \(x\) et qui retourne la liste des
+valeurs \(P(x)\).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} voici un exemple de ce qui est attendu}
+        \PY{n}{exo\PYZus{}liste\PYZus{}P}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    Écrivez votre code dans la cellule suivante (\emph{On vous suggère
+d'écrire une fonction \texttt{P} qui implémente le polynôme mais ça
+n'est pas strictement indispensable, seul le résultat de
+\texttt{liste\_P} compte})~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{P}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+        
+        \PY{k}{def} \PY{n+nf}{liste\PYZus{}P}\PY{p}{(}\PY{n}{liste\PYZus{}x}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{votre code}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    Et vous pouvez le vérifier en évaluant cette cellule~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour vérifier votre code}
+        \PY{n}{exo\PYZus{}liste\PYZus{}P}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{liste\PYZus{}P}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+    \hypertarget{ruxe9cruxe9ation}{%
+\subsection{Récréation}\label{ruxe9cruxe9ation}}
+
+    Si vous avez correctement implémenté la fonction \texttt{liste\_P} telle
+que demandé dans le premier exercice, vous pouvez visualiser le polynôme
+\texttt{P} en utilisant \texttt{matplotlib} avec le code suivant~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} on importe les bibliothèques}
+        \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} un échantillon des X entre \PYZhy{}10 et 10}
+        \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} et les Y correspondants}
+        \PY{n}{Y} \PY{o}{=} \PY{n}{liste\PYZus{}P}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} on n\PYZsq{}a plus qu\PYZsq{}à dessiner}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}

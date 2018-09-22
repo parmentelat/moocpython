@@ -1,0 +1,203 @@
+    \hypertarget{suxe9quences}{%
+\section{Séquences}\label{suxe9quences}}
+
+    \hypertarget{exercice---niveau-basique}{%
+\subsection{Exercice - niveau basique}\label{exercice---niveau-basique}}
+
+    \hypertarget{slicing}{%
+\subsubsection{Slicing}\label{slicing}}
+
+    Commençons par créer une chaîne de caractères. Ne vous inquiétez pas si
+vous ne comprenez pas encore le code d'initialisation utilisé
+ci-dessous.\\
+
+Pour les plus curieux, l'instruction \texttt{import} permet de charger
+dans votre programme une boîte à outils que l'on appelle un module.
+Python vient avec de nombreux modules qui forment la bibliothèque
+standard. Le plus difficile avec les modules de la bibliothèque standard
+est de savoir qu'ils existent. En effet, il y en a un grand nombre et
+bien souvent il existe un module pour faire ce que vous souhaitez.\\
+
+Ici en particulier nous utilisons le module \texttt{string}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{string}
+        \PY{n}{chaine} \PY{o}{=} \PY{n}{string}\PY{o}{.}\PY{n}{ascii\PYZus{}lowercase}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{chaine}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+abcdefghijklmnopqrstuvwxyz
+
+    \end{Verbatim}
+
+    Pour chacune des sous-chaînes ci-dessous, écrire une expression de
+slicing sur \texttt{chaine} qui renvoie la sous-chaîne. La cellule de
+code doit retourner \texttt{True}.
+
+    Par exemple, pour obtenir ``def''~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{chaine}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{:}\PY{l+m+mi}{6}\PY{p}{]} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{def}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} True
+\end{Verbatim}
+            
+    \begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  Écrivez une slice pour obtenir ``vwx'' (n'hésitez pas à utiliser les
+  indices négatifs)~:
+\end{enumerate}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{chaine}\PY{p}{[} \PY{o}{\PYZlt{}}\PY{n}{votre\PYZus{}code}\PY{o}{\PYZgt{}} \PY{p}{]} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{vwx}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Une slice pour obtenir ``wxyz'' (avec une seule constante)~:
+\end{enumerate}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{chaine}\PY{p}{[} \PY{o}{\PYZlt{}}\PY{n}{votre\PYZus{}code}\PY{o}{\PYZgt{}} \PY{p}{]} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{wxyz}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Une slice pour obtenir ``dfhjlnprtvxz'' (avec deux constantes)~:
+\end{enumerate}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{chaine}\PY{p}{[} \PY{o}{\PYZlt{}}\PY{n}{votre\PYZus{}code}\PY{o}{\PYZgt{}} \PY{p}{]} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dfhjlnprtvxz}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Une slice pour obtenir ``xurolifc'' (avec deux constantes)~:
+\end{enumerate}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{chaine}\PY{p}{[} \PY{o}{\PYZlt{}}\PY{n}{votre\PYZus{}code}\PY{o}{\PYZgt{}} \PY{p}{]} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{xurolifc}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \hypertarget{exercice---niveau-intermuxe9diaire}{%
+\subsection{Exercice - niveau
+intermédiaire}\label{exercice---niveau-intermuxe9diaire}}
+
+    \hypertarget{longueur}{%
+\subsubsection{Longueur}\label{longueur}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} il vous faut évaluer cette cellule magique}
+        \PY{c+c1}{\PYZsh{} pour charger l\PYZsq{}exercice qui suit}
+        \PY{c+c1}{\PYZsh{} et autoévaluer votre réponse}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}inconnue} \PY{k}{import} \PY{n}{exo\PYZus{}inconnue}
+\end{Verbatim}
+
+
+    On vous donne une chaîne \texttt{composite} dont on sait qu'elle a été
+calculée à partir de deux chaînes \texttt{inconnue} et \texttt{connue}
+comme ceci~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{composite }\OperatorTok{=}\NormalTok{ connue }\OperatorTok{+}\NormalTok{ inconnue }\OperatorTok{+}\NormalTok{ connue}
+\end{Highlighting}
+\end{Shaded}
+
+    On vous donne également la chaîne \texttt{connue}. Imaginez par exemple
+que vous avez (ce ne sont pas les vraies valeurs)~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{connue }\OperatorTok{=} \StringTok{'0bf1'}
+\NormalTok{composite }\OperatorTok{=} \StringTok{'0bf1a9730e150bf1'}
+\end{Highlighting}
+\end{Shaded}
+
+alors, dans ce cas~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{inconnue }\OperatorTok{=} \StringTok{'a9730e15'}
+\end{Highlighting}
+\end{Shaded}
+
+    L'exercice consiste à écrire une fonction qui retourne la valeur de
+\texttt{inconnue} à partir de celles de \texttt{composite} et
+\texttt{connue}. Vous pouvez admettre que \texttt{connue} n'est pas
+vide, c'est-à-dire qu'elle contient au moins un caractère.\\
+
+    Vous pouvez utiliser du \emph{slicing}, et la fonction \texttt{len()},
+qui retourne la longueur d'une chaîne~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n+nb}{len}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abcd}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} 4
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} à vous de jouer}
+        \PY{k}{def} \PY{n+nf}{inconnue}\PY{p}{(}\PY{n}{composite}\PY{p}{,} \PY{n}{connue}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{votre code}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    Une fois votre code évalué, vous pouvez évaluer la cellule suivante pour
+vérifier votre résultat.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} correction}
+        \PY{n}{exo\PYZus{}inconnue}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{inconnue}\PY{p}{)}
+\end{Verbatim}
+
+
+    Lorsque vous évaluez cette cellule, la correction vous montre~:
+
+\begin{itemize}
+\tightlist
+\item
+  dans la première colonne l'appel qui est fait à votre fonction~;
+\item
+  dans la seconde colonne la valeur attendue pour \texttt{inconnue}~;
+\item
+  dans la troisième colonne ce que votre code a réellement calculé.
+\end{itemize}
+
+Si toutes les lignes sont \textbf{en vert} c'est que vous avez réussi
+cet exercice.
+
+    Vous pouvez essayer autant de fois que vous voulez, mais il vous faut
+alors à chaque itération~:
+
+\begin{itemize}
+\tightlist
+\item
+  évaluer votre cellule-réponse (là où vous définissez la fonction
+  \texttt{inconnue})~;
+\item
+  et ensuite évaluer la cellule correction pour la mettre à jour.
+\end{itemize}

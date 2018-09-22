@@ -1,0 +1,423 @@
+    \hypertarget{formatage-de-chauxeenes-de-caractuxe8res}{%
+\section{Formatage de chaînes de
+caractères}\label{formatage-de-chauxeenes-de-caractuxe8res}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    On désigne par formatage les outils qui permettent d'obtenir une
+présentation fine des résultats, que ce soit pour améliorer la
+lisibilité lorsqu'on s'adresse à des humains, ou pour respecter la
+syntaxe d'un outil auquel on veut passer les données pour un traitement
+ultérieur.
+
+    \hypertarget{la-fonction-print}{%
+\subsubsection{\texorpdfstring{La fonction
+\texttt{print}}{La fonction print}}\label{la-fonction-print}}
+
+    Nous avons jusqu'à maintenant presque toujours utilisé la fonction
+\texttt{print} pour afficher nos résultats. Comme on l'a vu, celle-ci
+réalise un formatage sommaire~: elle insère une espace entre les valeurs
+qui lui sont passées.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{12} \PY{o}{+} \PY{l+m+mi}{4}\PY{n}{j}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1 a (12+4j)
+
+    \end{Verbatim}
+
+    La seule subtilité notable concernant \texttt{print} est que, par
+défaut, elle ajoute un saut de ligne à la fin. Pour éviter ce
+comportement, on peut passer à la fonction un argument \texttt{end}, qui
+sera inséré \emph{au lieu} du saut de ligne. Ainsi par exemple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} une première ligne}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{une}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{seule}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ligne}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+une seule ligne
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} une deuxième ligne en deux appels à print}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{une}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{autre}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{end}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ligne}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+une autre ligne
+
+    \end{Verbatim}
+
+    Il faut remarquer aussi que \texttt{print} est capable d'imprimer
+\textbf{n'importe quel objet}. Nous l'avons déjà fait avec les listes et
+les tuples, voici par exemple un module~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} on peut imprimer par exemple un objet \PYZsq{}module\PYZsq{}}
+        \PY{k+kn}{import} \PY{n+nn}{math}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{le module math est}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{math}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+le module math est <module 'math' (built-in)>
+
+    \end{Verbatim}
+
+    En anticipant un peu, voici comment \texttt{print} présente les
+instances de classe (ne vous inquiétez pas, nous apprendrons dans une
+semaine ultérieure ce que sont les classes et les instances).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} pour définir la classe Personne}
+        \PY{k}{class} \PY{n+nc}{Personne}\PY{p}{:}
+            \PY{k}{pass}
+        
+        \PY{c+c1}{\PYZsh{} et pour créer une instance de cette classe}
+        \PY{n}{personne} \PY{o}{=} \PY{n}{Personne}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} voilà comment s\PYZsq{}affiche une instance de classe}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{personne}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+<\_\_main\_\_.Personne object at 0x0502DB30>
+
+    \end{Verbatim}
+
+    On rencontre assez vite les limites de \texttt{print}~:
+
+\begin{itemize}
+\tightlist
+\item
+  d'une part, il peut être nécessaire de formater une chaîne de
+  caractères sans nécessairement vouloir l'imprimer, ou en tout cas pas
+  immédiatement~;
+\item
+  d'autre part, les espaces ajoutées peuvent être plus néfastes
+  qu'utiles~;
+\item
+  enfin, on peut avoir besoin de préciser un nombre de chiffres
+  significatifs, ou de choisir comment présenter une date.
+\end{itemize}
+
+C'est pourquoi il est plus courant de \textbf{formater} les chaînes -
+c'est-à-dire de calculer des chaînes en mémoire, sans nécessairement les
+imprimer de suite, et c'est ce que nous allons étudier dans ce
+complément.
+
+    \hypertarget{les-f-strings}{%
+\subsubsection{\texorpdfstring{Les
+\emph{f-strings}}{Les f-strings}}\label{les-f-strings}}
+
+    Depuis la version 3.6 de Python, on peut utiliser les f-strings, le
+premier mécanisme de formatage que nous étudierons. C'est le mécanisme
+de formatage le plus simple et le plus agréable à utiliser.\\
+
+Je vous recommande tout de même de lire les sections à propos de
+\texttt{format} et de \texttt{\%}, qui sont encore massivement utilisées
+dans le code existant (surtout \texttt{\%} d'ailleurs, bien que
+essentiellement obsolète).\\
+
+    Mais définissons d'abord quelques données à afficher~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} donnons\PYZhy{}nous quelques variables}
+        \PY{n}{prenom}\PY{p}{,} \PY{n}{nom}\PY{p}{,} \PY{n}{age} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Jean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Dupont}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{35}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} mon premier f\PYZhy{}string}
+        \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}prenom\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZob{}nom\PYZcb{}}\PY{l+s+s2}{ a }\PY{l+s+si}{\PYZob{}age\PYZcb{}}\PY{l+s+s2}{ ans}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} 'Jean Dupont a 35 ans'
+\end{Verbatim}
+            
+    Vous remarquez d'abord que le string commence par \texttt{f"}, c'est
+bien sûr pour cela qu'on l'appelle un \emph{f-string}.\\
+
+On peut bien entendu ajouter le \texttt{f} devant toutes les formes de
+strings, qu'ils commencent par \texttt{\textquotesingle{}} ou \texttt{"}
+ou \texttt{\textquotesingle{}\textquotesingle{}\textquotesingle{}} ou
+\texttt{"""}.\\
+
+    Ensuite vous remarquez que les zones délimitées entre \texttt{\{\}} sont
+remplacées. La logique d'un \emph{f-string}, c'est tout simplement de
+considérer l'intérieur d'un \texttt{\{\}} comme du code Python (une
+expression pour être précis), de l'évaluer, et d'utiliser le résultat
+pour remplir le \texttt{\{\}}.\\
+
+    Ça veut dire, en clair, que je peux faire des calculs à l'intérieur des
+\texttt{\{\}}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} toutes les expressions sont autorisées à l\PYZsq{}intérieur d\PYZsq{}un \PYZob{}\PYZcb{}}
+        \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dans 10 ans }\PY{l+s+si}{\PYZob{}prenom\PYZcb{}}\PY{l+s+s2}{ aura }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{age + 10\PYZcb{} ans}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} 'dans 10 ans Jean aura 45 ans'
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} on peut donc aussi mettre des appels de fonction}
+         \PY{n}{notes} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{,} \PY{l+m+mi}{19}\PY{p}{]}
+         \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{nous avons pour l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{instant }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{len(notes)\PYZcb{} notes}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:} "nous avons pour l'instant 3 notes"
+\end{Verbatim}
+            
+    Nous allons en rester là pour la partie en niveau basique. Il nous reste
+à étudier comment chaque \texttt{\{\}} est formaté (par exemple comment
+choisir le nombre de chiffres significatifs sur un flottant), voyez plus
+bas pour plus de détails sur ce point.\\
+
+Comme vous le voyez, les \emph{f-strings} fournissent une méthode très
+simple et expressive pour formater des données dans des chaînes de
+caractère. Redisons-le pour être bien clair~: un \emph{f-string}
+\textbf{ne réalise pas d'impression}, il faut donc le passer à
+\texttt{print} si l'impression est souhaitée.
+
+    \hypertarget{la-muxe9thode-format}{%
+\subsubsection{\texorpdfstring{La méthode
+\texttt{format}}{La méthode format}}\label{la-muxe9thode-format}}
+
+    Avant l'introduction des \emph{f-strings}, la technique recommandée pour
+faire du formatage était d'utiliser la méthode \texttt{format} qui est
+définie sur les objets \texttt{str} et qui s'utilise comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{ a }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{ ans}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{prenom}\PY{p}{,} \PY{n}{nom}\PY{p}{,} \PY{n}{age}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} 'Jean Dupont a 35 ans'
+\end{Verbatim}
+            
+    Dans cet exemple le plus simple, les données sont affichées en lieu et
+place des \texttt{\{\}}, dans l'ordre où elles sont fournies.\\
+
+    Cela convient bien lorsqu'on a peu de données. Si par la suite on veut
+changer l'ordre par exemple des nom et prénom, on peut bien sûr échanger
+l'ordre des arguments passés à format, ou encore utiliser la
+\textbf{liaison par position}, comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}1\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZob{}0\PYZcb{}}\PY{l+s+s2}{ a }\PY{l+s+si}{\PYZob{}2\PYZcb{}}\PY{l+s+s2}{ ans}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{prenom}\PY{p}{,} \PY{n}{nom}\PY{p}{,} \PY{n}{age}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} 'Dupont Jean a 35 ans'
+\end{Verbatim}
+            
+    Dans la pratique toutefois, cette forme est assez peu utile, on lui
+préfère souvent la \textbf{liaison par nom} qui se présente comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}le\PYZus{}prenom\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZob{}le\PYZus{}nom\PYZcb{}}\PY{l+s+s2}{ a }\PY{l+s+si}{\PYZob{}l\PYZus{}age\PYZcb{}}\PY{l+s+s2}{ ans}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{le\PYZus{}nom}\PY{o}{=}\PY{n}{nom}\PY{p}{,} \PY{n}{le\PYZus{}prenom}\PY{o}{=}\PY{n}{prenom}\PY{p}{,} \PY{n}{l\PYZus{}age}\PY{o}{=}\PY{n}{age}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}13}]:} 'Jean Dupont a 35 ans'
+\end{Verbatim}
+            
+    Dans ce premier exemple de liaison par nom, nous avons délibérément
+utilisé des noms différents pour les données externes et pour les noms
+apparaissant dans le format, pour bien illustrer comment la liaison est
+résolue, mais on peut aussi bien faire tout simplement~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}prenom\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZob{}nom\PYZcb{}}\PY{l+s+s2}{ a }\PY{l+s+si}{\PYZob{}age\PYZcb{}}\PY{l+s+s2}{ ans}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{nom}\PY{o}{=}\PY{n}{nom}\PY{p}{,} \PY{n}{prenom}\PY{o}{=}\PY{n}{prenom}\PY{p}{,} \PY{n}{age}\PY{o}{=}\PY{n}{age}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}14}]:} 'Jean Dupont a 35 ans'
+\end{Verbatim}
+            
+    Voici qui conclut notre courte introduction à la méthode
+\texttt{format}.
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{la-toute-premiuxe8re-version-du-formatage-lopuxe9rateur}{%
+\subsubsection{\texorpdfstring{La toute première version du formatage~:
+l'opérateur
+\texttt{\%}}{La toute première version du formatage~: l'opérateur \%}}\label{la-toute-premiuxe8re-version-du-formatage-lopuxe9rateur}}
+
+    \texttt{format} a été en fait introduite assez tard dans Python, pour
+remplacer la technique que nous allons présenter maintenant.\\
+
+Étant donné le volume de code qui a été écrit avec l'opérateur
+\texttt{\%}, il nous a semblé important d'introduire brièvement cette
+construction ici. Vous ne devez cependant pas utiliser cet opérateur
+dans du code moderne, la manière pythonique de formater les chaînes de
+caractères est le f-string.\\
+
+    Le principe de l'opérateur \texttt{\%} est le suivant. On élabore comme
+ci-dessus un ``format'' c'est-à-dire le patron de ce qui doit être
+rendu, auquel on passe des arguments pour ``remplir'' les trous. Voyons
+les exemples de tout à l'heure rendus avec l'opérateur \texttt{\%}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} l\PYZsq{}ancienne façon de formater les chaînes avec \PYZpc{}}
+         \PY{c+c1}{\PYZsh{} est souvent moins lisible}
+         \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}s}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZpc{}s}\PY{l+s+s2}{ a }\PY{l+s+si}{\PYZpc{}s}\PY{l+s+s2}{ ans}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{prenom}\PY{p}{,} \PY{n}{nom}\PY{p}{,} \PY{n}{age}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}15}]:} 'Jean Dupont a 35 ans'
+\end{Verbatim}
+            
+    On pouvait également avec cet opérateur recourir à un mécanisme de
+liaison par nommage, en passant par un dictionnaire. Pour anticiper un
+tout petit peu sur cette notion que nous verrons très bientôt, voici
+comment
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{variables} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{le\PYZus{}nom}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{nom}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{le\PYZus{}prenom}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{prenom}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l\PYZus{}age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{age}\PY{p}{\PYZcb{}}
+         \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}(le\PYZus{}nom)s}\PY{l+s+s2}{, }\PY{l+s+si}{\PYZpc{}(le\PYZus{}prenom)s}\PY{l+s+s2}{, }\PY{l+s+si}{\PYZpc{}(l\PYZus{}age)s}\PY{l+s+s2}{ ans}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{variables}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}16}]:} 'Dupont, Jean, 35 ans'
+\end{Verbatim}
+            
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    De retour aux \emph{f-strings} et à la fonction \texttt{format}, il
+arrive qu'on ait besoin de spécifier plus finement la façon dont une
+valeur doit être affichée.
+
+    \hypertarget{pruxe9cision-des-arrondis}{%
+\subsubsection{Précision des arrondis}\label{pruxe9cision-des-arrondis}}
+
+    C'est typiquement le cas avec les valeurs flottantes pour lesquelles la
+précision de l'affichage vient au détriment de la lisibilité. Voici deux
+formes équivalentes pour obtenir une valeur de pi arrondie~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{k+kn}{from} \PY{n+nn}{math} \PY{k}{import} \PY{n}{pi}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{} un f\PYZhy{}string}
+         \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{pi avec seulement 2 chiffres apres la virgule }\PY{l+s+si}{\PYZob{}pi:.2f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}18}]:} 'pi avec seulement 2 chiffres apres la virgule 3.14'
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} avec format() et liaison par nom}
+         \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{pi avec seulement 2 chiffres apres la virgule }\PY{l+s+si}{\PYZob{}flottant:.2f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{flottant}\PY{o}{=}\PY{n}{pi}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}19}]:} 'pi avec seulement 2 chiffres apres la virgule 3.14'
+\end{Verbatim}
+            
+    Dans ces deux exemples, la partie à l'intérieur des \texttt{\{\}} et à
+droite du \texttt{:} s'appelle le format, ici \texttt{.2f}~; vous
+remarquez que c'est le même pour les \emph{f-strings} et pour
+\texttt{format}, et c'est toujours le cas. C'est pourquoi on ne verra
+plus à partir d'ici que des exemples avec les \emph{f-strings}.
+
+    \hypertarget{en-duxe9but-de-nombre}{%
+\subsubsection{\texorpdfstring{\texttt{0} en début de
+nombre}{0 en début de nombre}}\label{en-duxe9but-de-nombre}}
+
+    Pour forcer un petit entier à s'afficher sur 4 caractères, avec des
+\texttt{0} ajoutés au début si nécessaire~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{x} \PY{o}{=} \PY{l+m+mi}{15}
+         
+         \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}x:04d\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}20}]:} '0015'
+\end{Verbatim}
+            
+    Ici on utilise le format \texttt{d} (toutes ces lettres \texttt{d},
+\texttt{f}, \texttt{g} viennent des formats ancestraux de la libc comme
+\texttt{printf}). Ici avec \texttt{04d} on précise qu'on veut une sortie
+sur 4 caractères et qu'il faut remplir à gauche si nécessaire avec des
+\texttt{0}.
+
+    \hypertarget{largeur-fixe}{%
+\subsubsection{Largeur fixe}\label{largeur-fixe}}
+
+    Dans certains cas, on a besoin d'afficher des données en colonnes de
+largeur fixe, on utilise pour cela les formats \texttt{\textless{}}
+\texttt{\^{}} et \texttt{\textgreater{}} pour afficher à gauche, au
+centre, ou à droite d'une zone de largeur fixe~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{c+c1}{\PYZsh{} les données à afficher}
+         \PY{n}{comptes} \PY{o}{=} \PY{p}{[}
+          \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Apollin}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Dupont}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{127}\PY{p}{)}\PY{p}{,}
+          \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Myrtille}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Lamartine}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{25432}\PY{p}{)}\PY{p}{,}
+          \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Prune}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Soc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{827465}\PY{p}{)}\PY{p}{,}
+         \PY{p}{]}
+         
+         \PY{k}{for} \PY{n}{prenom}\PY{p}{,} \PY{n}{nom}\PY{p}{,} \PY{n}{solde} \PY{o+ow}{in} \PY{n}{comptes}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}prenom:\PYZlt{}10\PYZcb{}}\PY{l+s+s2}{ \PYZhy{}\PYZhy{} }\PY{l+s+si}{\PYZob{}nom:\PYZca{}12\PYZcb{}}\PY{l+s+s2}{ \PYZhy{}\PYZhy{} }\PY{l+s+si}{\PYZob{}solde:\PYZgt{}8\PYZcb{}}\PY{l+s+s2}{ €}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Apollin    --    Dupont    --      127 €
+Myrtille   --  Lamartine   --    25432 €
+Prune      --     Soc      --   827465 €
+
+    \end{Verbatim}
+
+    \hypertarget{voir-aussi}{%
+\subsubsection{Voir aussi}\label{voir-aussi}}
+
+    Nous vous invitons à vous reporter à la documentation de \texttt{format}
+pour plus de détails
+\href{https://docs.python.org/3/library/string.html\#formatstrings}{sur
+les formats disponibles}, et notamment aux
+\href{https://docs.python.org/3/library/string.html\#format-examples}{nombreux
+exemples} qui y figurent.

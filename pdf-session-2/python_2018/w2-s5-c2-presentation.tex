@@ -1,0 +1,251 @@
+    \hypertarget{bonnes-pratiques-de-pruxe9sentation-de-code}{%
+\section{Bonnes pratiques de présentation de
+code}\label{bonnes-pratiques-de-pruxe9sentation-de-code}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    \hypertarget{la-pep-008}{%
+\subsubsection{La PEP-008}\label{la-pep-008}}
+
+    On trouve \href{http://legacy.python.org/dev/peps/pep-0008/}{dans la
+PEP-008 (en anglais)} les conventions de codage qui s'appliquent à toute
+la librairie standard, et qui sont certainement un bon point de départ
+pour vous aider à trouver le style de présentation qui vous convient.\\
+
+Nous vous recommandons en particulier les sections sur
+
+\begin{itemize}
+	\item 
+	\href{http://legacy.python.org/dev/peps/pep-0008/\#code-lay-out}{l'indentation}
+	\item
+	\href{http://legacy.python.org/dev/peps/pep-0008/\#whitespace-in-expressions-and-statements}{les
+	espaces}
+	\item
+	\href{http://legacy.python.org/dev/peps/pep-0008/\#comments}{les
+	commentaires}
+\end{itemize}
+
+    \hypertarget{un-peu-de-lecture-le-module-pprint}{%
+\subsubsection{\texorpdfstring{Un peu de lecture : le module
+\texttt{pprint}}{Un peu de lecture : le module pprint}}\label{un-peu-de-lecture-le-module-pprint}}
+
+    Voici par exemple le code du module \texttt{pprint} (comme PrettyPrint)
+de la librairie standard qui permet d'imprimer des données.\\
+
+La fonction du module - le pretty printing - est évidemment accessoire
+ici, mais vous pouvez y voir illustré
+
+\begin{itemize}
+	\item 
+	le \emph{docstring} pour le module: les lignes de 11 à 35,
+	\item
+	les indentations, comme nous l'avons déjà mentionné sont à 4 espaces, et sans tabulation,
+	\item
+	l'utilisation des espaces, notamment autour des affectations et opérateurs, des
+	définitions de fonction, des appels de fonctions\ldots{}
+	\item
+	les lignes qui restent dans une largeur ``raisonnable'' (79 caractères)
+	\item 
+	vous pouvez regarder notamment la façon de couper les lignes pour respecter cette limite en largeur.
+\end{itemize}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{from} \PY{n+nn}{modtools} \PY{k}{import} \PY{n}{show\PYZus{}module\PYZus{}html}
+        \PY{k+kn}{import} \PY{n+nn}{pprint}
+        \PY{n}{show\PYZus{}module\PYZus{}html}\PY{p}{(}\PY{n}{pprint}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{espaces}{%
+\subsubsection{Espaces}\label{espaces}}
+
+    Comme vous pouvez le voir dans \texttt{pprint.py}, les règles
+principales concernant les espaces sont les suivantes.
+
+    \begin{itemize}
+\item
+  S'agissant des \textbf{affectations} et \textbf{opérateurs}, on fera
+
+  \texttt{x\ =\ y\ +\ z}
+
+  Et non pas
+
+  \sout{\texttt{x=y+z}}
+
+  Ni
+
+  \sout{\texttt{x\ =\ y+z}}
+
+  Ni encore
+
+  \sout{\texttt{x=y\ +\ z}}
+\end{itemize}
+
+L'idée étant d'aérer de manière homogène pour faciliter la lecture.
+
+    \begin{itemize}
+\item
+  On \textbf{déclare une fonction} comme ceci
+
+  \texttt{def\ foo(x,\ y,\ z):}
+
+  Et non pas comme ceci (un espace en trop avant la parenthèse ouvrante)
+
+  \sout{\texttt{def\ foo\ (x,\ y,\ z):}}
+
+  Ni surtout comme ceci (pas d'espace entre les paramètres)
+
+  \sout{\texttt{def\ foo\ (x,y,z):}}
+\end{itemize}
+
+    \begin{itemize}
+\item
+  La même règle s'applique naturellement aux \textbf{appels de
+  fonction}:
+
+  \texttt{foo(x,\ y,\ z)}
+
+  et non pas \sout{\texttt{foo\ (x,y,z)}}
+
+  ni \sout{\texttt{def\ foo\ (x,\ y,\ z):}}
+\end{itemize}
+
+    Il est important de noter qu'il s'agit ici de \textbf{règles d'usage} et
+non pas de règles syntaxiques; tous les exemples barrés ci-dessus sont
+en fait \textbf{syntaxiquement corrects}, l'interpréteur les accepterait
+sans souci; mais ces règles sont \textbf{très largement adoptées}, et
+obligatoires pour intégrer du code dans la librairie standard.
+
+    \hypertarget{coupures-de-ligne}{%
+\subsubsection{Coupures de ligne}\label{coupures-de-ligne}}
+
+    Nous allons à présent zoomer dans ce module pour voir quelques exemples
+de coupure de ligne. Par contraste avec ce qui précède, il s'agit cette
+fois surtout de \textbf{règles syntaxiques}, qui peuvent rendre un code
+non valide si elles ne sont pas suivies.
+
+    \hypertarget{coupure-de-ligne-sans-backslash}{%
+\subparagraph{\texorpdfstring{Coupure de ligne sans \emph{backslash}
+(\textbackslash{})}{Coupure de ligne sans backslash (\textbackslash{})}}\label{coupure-de-ligne-sans-backslash}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{show\PYZus{}module\PYZus{}html}\PY{p}{(}\PY{n}{pprint}\PY{p}{,} 
+                         \PY{n}{beg}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{def pprint}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                         \PY{n}{end}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{def pformat}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    La fonction \texttt{pprint} (ligne \textasciitilde{}47) est une
+commodité (qui crée une instance de \texttt{PrettyPrinter}, sur lequel
+on envoie la méthode \texttt{pprint}).\\
+
+Vous voyez ici qu'il n'est \textbf{pas nécessaire} d'insérer un
+\emph{backslash} (\texttt{\textbackslash{}}) à la fin des lignes 50 et
+51, car il y a une parenthèse ouvrante qui n'est pas fermée à ce stade.\\
+
+De manière générale, lorsqu'une parenthèse ouvrante \texttt{(} - idem
+avec les crochets \texttt{{[}} et accolades \texttt{\{} - n'est pas
+fermée sur la même ligne, l'interpréteur suppose qu'elle sera fermée
+plus loin et n'impose pas de \emph{backslash}.\\
+
+    Ainsi par exemple on peut écrire sans \emph{backslash}:
+
+\begin{verbatim}
+valeurs = [ 
+   1,
+   2,
+   3,
+   5,
+   7,
+]
+\end{verbatim}
+
+Ou encore
+
+\begin{verbatim}
+x = un_nom_de_fonction_tres_tres_long(
+       argument1, argument2,
+       argument3, argument4,
+    )        
+\end{verbatim}
+
+    À titre de rappel, signalons aussi les chaînes de caractères à base de
+\texttt{"""} ou
+\texttt{\textquotesingle{}\textquotesingle{}\textquotesingle{}} qui
+permettent elles aussi d'utiliser pluseurs lignes consécutives sans
+\emph{backslash}, comme
+
+\begin{verbatim}
+texte = """ Les sanglots longs
+Des violons
+De l'automne"""
+\end{verbatim}
+
+    \hypertarget{coupure-de-ligne-avec-backslash}{%
+\subparagraph{\texorpdfstring{Coupure de ligne avec \emph{backslash}
+(\textbackslash{})}{Coupure de ligne avec backslash (\textbackslash{})}\\\\}\label{coupure-de-ligne-avec-backslash}}
+
+    Par contre il est des cas où le backslash est nécessaire:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{show\PYZus{}module\PYZus{}html}\PY{p}{(}\PY{n}{pprint}\PY{p}{,} 
+                         \PY{n}{beg}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{components), readable, recursive}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} 
+                         \PY{n}{end}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{elif len(object) }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} 
+                         \PY{n}{lineno\PYZus{}width}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{)}
+\end{Verbatim}
+
+
+    Dans ce fragment au contraire, vous voyez en ligne 522 qu'\textbf{il a
+fallu cette fois} insérer un \emph{backslash} \texttt{\textbackslash{}}
+comme caractère de continuation pour que l'instruction puisse se
+poursuivre en ligne 523.
+
+    \hypertarget{coupures-de-lignes---uxe9pilogue}{%
+\subparagraph{Coupures de lignes -
+épilogue\\\\}\label{coupures-de-lignes---uxe9pilogue}}
+
+    Dans tous le cas où une instruction est répartie sur plusieurs lignes,
+c'est naturellement l'indentation de \textbf{la première ligne} qui est
+significative pour savoir à quel bloc rattacher cette instruction.\\
+
+    Notez bien enfin qu'on peut toujours mettre un \emph{backslash} même
+lorsque ce n'est pas nécessaire, mais on évite cette pratique en règle
+générale car les \emph{backslash} nuisent à la lisibilité.
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{outils-liuxe9s-uxe0-pep008}{%
+\subsubsection{Outils liés à PEP008}\label{outils-liuxe9s-uxe0-pep008}}
+
+Il existe plusieurs outils liés à la PEP0008, pour vérifier si votre
+code est conforme, ou même le modifier pour qu'il le devienne.\\
+
+Ce qui nous donne un excellent prétexte pour parler un peu de
+\href{https://pypi.python.org}{https://pypi.python.org}, qui est la plateforme qui distribue les
+logiciels disponibles via l'outil \texttt{pip3}.\\
+
+Je vous signale notamment:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://pypi.python.org/pypi/pep8/}{https://pypi.python.org/pypi/pep8/}pour vérifier, et
+\item
+  \href{https://pypi.python.org/pypi/autopep8/}{https://pypi.python.org/pypi/autopep8/} pour modifier automatiquement
+  votre code et le rendre conforme.
+\end{itemize}
+
+    \hypertarget{les-deux-points}{%
+\subsubsection{Les deux-points `: '}\label{les-deux-points}}
+
+    Dans un autre registre entièrement, vous pouvez
+\href{https://docs.python.org/3/faq/design.html\#why-are-colons-required-for-the-if-while-def-class-statements}{vous
+reporter à ce lien} si vous êtes intéressé par la question de savoir
+pourquoi on a choisi un délimiteur (le caractère deux-points \texttt{:})
+pour terminer les instructions comme \texttt{if}, \texttt{for} et
+\texttt{def}.
