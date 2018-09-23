@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.11.11)  22 SEP 2018 15:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.11.11)  23 SEP 2018 16:40
 entering extended mode
 **./Python.tex
 (Python.tex
@@ -847,6 +847,211 @@ LaTeX Warning: Label `exercice---niveau-basique' multiply defined.
 
 LaTeX Warning: Label `exercice---niveau-intermuxe9diaire' multiply defined.
 
+) (w3-s1-c1-fichiers.aux
+
+LaTeX Warning: Label `compluxe9ment---niveau-basique' multiply defined.
+
+
+LaTeX Warning: Label `compluxe9ment---niveau-intermuxe9diaire' multiply defined
+.
+
+
+LaTeX Warning: Label `compluxe9ment---niveau-avancuxe9' multiply defined.
+
+
+LaTeX Warning: Label `pour-en-savoir-plus' multiply defined.
+
+) (w3-s1-c2-utilitaires-sur-fichiers.aux
+
+LaTeX Warning: Label `compluxe9ment---niveau-basique' multiply defined.
+
+
+LaTeX Warning: Label `compluxe9ment---niveau-avancuxe9' multiply defined.
+
+) (w3-s1-c3-format-json-et-autres.aux
+
+LaTeX Warning: Label `le-probluxe8me' multiply defined.
+
+
+LaTeX Warning: Label `pour-en-savoir-plus' multiply defined.
+
+) (w3-s1-c4-fichiers-systeme.aux
+
+LaTeX Warning: Label `compluxe9ment---niveau-avancuxe9' multiply defined.
+
+) (w3-s2-c1-tuple-et-virgule.aux
+
+LaTeX Warning: Label `compluxe9ment---niveau-intermuxe9diaire' multiply defined
+.
+
+) (w3-s2-c2-sequence-unpacking.aux
+
+LaTeX Warning: Label `compluxe9ment---niveau-basique' multiply defined.
+
+
+LaTeX Warning: Label `un-exemple-simple' multiply defined.
+
+
+LaTeX Warning: Label `compluxe9ment---niveau-intermuxe9diaire' multiply defined
+.
+
+
+LaTeX Warning: Label `pour-en-savoir-plus' multiply defined.
+
+) (w3-s2-c3-for-sur-plusieurs-variables.aux
+
+LaTeX Warning: Label `compluxe9ment---niveau-basique' multiply defined.
+
+
+LaTeX Warning: Label `compluxe9ment---niveau-intermuxe9diaire' multiply defined
+.
+
+) (w3-s2-x1-comptage.aux
+
+LaTeX Warning: Label `exercice---niveau-basique' multiply defined.
+
+) (w3-s2-x2-surgery.aux
+
+LaTeX Warning: Label `sequence-unpacking' multiply defined.
+
+
+LaTeX Warning: Label `exercice---niveau-basique' multiply defined.
+
+) (w3-s4-c1-dictionnaires.aux
+
+LaTeX Warning: Label `compluxe9ment---niveau-basique' multiply defined.
+
+
+LaTeX Warning: Label `compluxe9ment---niveau-intermuxe9diaire' multiply defined
+.
+
+
+LaTeX Warning: Label `compluxe9ment---niveau-avancuxe9' multiply defined.
+
+) (w3-s4-c2-cles-immuables.aux
+
+LaTeX Warning: Label `compluxe9ment---niveau-intermuxe9diaire' multiply defined
+.
+
+) (w3-s4-c3-record-et-dictionnaire.aux
+
+LaTeX Warning: Label `compluxe9ment---niveau-intermuxe9diaire' multiply defined
+.
+
+
+LaTeX Warning: Label `compluxe9ment---niveau-avancuxe9' multiply defined.
+
+) (w3-s4-x1-graph-dict.aux
+
+LaTeX Warning: Label `exercice---niveau-basique' multiply defined.
+
+) (w3-s4-x2-marine-dict.aux
+
+LaTeX Warning: Label `exercice---niveau-basique' multiply defined.
+
+
+LaTeX Warning: Label `exercice---niveau-intermuxe9diaire' multiply defined.
+
+
+LaTeX Warning: Label `but-de-lexercice' multiply defined.
+
+
+LaTeX Warning: Label `votre-code' multiply defined.
+
+
+LaTeX Warning: Label `validation' multiply defined.
+
+) (w3-s5-c1-ensembles.aux
+
+LaTeX Warning: Label `compluxe9ment---niveau-basique' multiply defined.
+
+
+LaTeX Warning: Label `cruxe9ation-en-extension' multiply defined.
+
+
+LaTeX Warning: Label `pour-en-savoir-plus' multiply defined.
+
+) (w3-s5-x1-read-set.aux
+
+LaTeX Warning: Label `ensembles' multiply defined.
+
+
+LaTeX Warning: Label `exercice---niveau-basique' multiply defined.
+
+) (w3-s5-x2-marine-set.aux
+
+LaTeX Warning: Label `exercice---niveau-intermuxe9diaire' multiply defined.
+
+
+LaTeX Warning: Label `but-de-lexercice' multiply defined.
+
+
+LaTeX Warning: Label `votre-code' multiply defined.
+
+
+LaTeX Warning: Label `validation' multiply defined.
+
+) (w3-s6-c1-try-finally.aux
+
+LaTeX Warning: Label `compluxe9ment---niveau-intermuxe9diaire' multiply defined
+.
+
+
+LaTeX Warning: Label `pour-en-savoir-plus' multiply defined.
+
+) (w3-s7-c1-operateur-is-et-fonction-id.aux
+
+LaTeX Warning: Label `compluxe9ment---niveau-basique' multiply defined.
+
+
+LaTeX Warning: Label `scuxe9nario-1' multiply defined.
+
+
+LaTeX Warning: Label `scuxe9nario-2' multiply defined.
+
+
+LaTeX Warning: Label `compluxe9ment---niveau-intermuxe9diaire' multiply defined
+.
+
+
+LaTeX Warning: Label `pour-en-savoir-plus' multiply defined.
+
+) (w3-s7-c2-references-circulaires.aux
+
+LaTeX Warning: Label `compluxe9ment---niveau-intermuxe9diaire' multiply defined
+.
+
+) (w3-s7-c3-les-differentes-copies.aux
+
+LaTeX Warning: Label `compluxe9ment---niveau-basique' multiply defined.
+
+
+LaTeX Warning: Label `compluxe9ment---niveau-intermuxe9diaire' multiply defined
+.
+
+
+LaTeX Warning: Label `pour-en-savoir-plus' multiply defined.
+
+) (w3-s7-c4-instruction-del.aux
+
+LaTeX Warning: Label `compluxe9ment---niveau-basique' multiply defined.
+
+
+LaTeX Warning: Label `pour-en-savoir-plus' multiply defined.
+
+) (w3-s7-c5-affectation-simultanee.aux
+
+LaTeX Warning: Label `compluxe9ment---niveau-basique' multiply defined.
+
+) (w3-s7-c6-affectation-operateurs-2.aux
+
+LaTeX Warning: Label `compluxe9ment---niveau-intermuxe9diaire' multiply defined
+.
+
+) (w3-s8-x1-fifo.aux
+
+LaTeX Warning: Label `exercice---niveau-basique' multiply defined.
+
 ))
 \openout1 = `Python.aux'.
 
@@ -981,7 +1186,7 @@ LaTeX Info: Redefining \nameref on input line 279.
 \@outlinefile=\write4
 \openout4 = `Python.out'.
 
-<medias/logo1.png, id=407, 582.23155pt x 206.63113pt>
+<medias/logo1.png, id=663, 582.23155pt x 206.63113pt>
 File: medias/logo1.png Graphic file (type png)
 <use medias/logo1.png>
 Package pdftex.def Info: medias/logo1.png  used on input line 296. on input lin
@@ -1032,14 +1237,14 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 8.33606pt on input line 311.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 6.25204pt on input line 311.
-<medias/mooc2.png, id=409, 602.25pt x 376.2858pt>
+<medias/mooc2.png, id=665, 602.25pt x 376.2858pt>
 File: medias/mooc2.png Graphic file (type png)
 <use medias/mooc2.png>
 Package pdftex.def Info: medias/mooc2.png  used on input line 325. on input lin
 e 325.
 Package pdftex.def Info: Requested size: 362.37569pt x 226.42201pt on input lin
 e 325.
-<medias/mooc.png, id=410, 322.806pt x 40.4712pt>
+<medias/mooc.png, id=666, 322.806pt x 40.4712pt>
 File: medias/mooc.png Graphic file (type png)
 <use medias/mooc.png>
 Package pdftex.def Info: medias/mooc.png  used on input line 327. on input line
@@ -1063,13 +1268,11 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 100.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [3] [4])
+) [3] [4] [5])
 \tf@toc=\write5
 \openout5 = `Python.toc'.
 
- [5] [6
-
-]
+ [6]
 Chapitre 1.
 LaTeX Font Info:    Try loading font information for OT1+phv on input line 351.
 
@@ -1081,7 +1284,9 @@ LaTeX Font Info:    Try loading font information for OT1+ptm on input line 351.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
-) [7]
+) [7
+
+]
 \openout2 = `w1-s1-c1-versions-python.aux'.
 
 
@@ -1217,7 +1422,7 @@ l.7 ...que}\label{compluxe9ment---niveau-basique}}
 
 
 (w1-s4-c1-utiliser-les-notebooks.tex
-<medias/notebook-eval-button.png, id=662, 792.9625pt x 83.31125pt>
+<medias/notebook-eval-button.png, id=982, 792.9625pt x 83.31125pt>
 File: medias/notebook-eval-button.png Graphic file (type png)
 <use medias/notebook-eval-button.png>
 Package pdftex.def Info: medias/notebook-eval-button.png  used on input line 70
@@ -1806,7 +2011,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--20
 
  []
 
-<medias/str-bytes.png, id=1018, 560.0925pt x 351.3125pt>
+<medias/str-bytes.png, id=1338, 560.0925pt x 351.3125pt>
 File: medias/str-bytes.png Graphic file (type png)
 <use medias/str-bytes.png>
 Package pdftex.def Info: medias/str-bytes.png  used on input line 40. on input 
@@ -2216,7 +2421,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 543--549
 
  []
 
-<medias/re-workflow.png, id=1252, 862.22125pt x 311.1625pt>
+<medias/re-workflow.png, id=1572, 862.22125pt x 311.1625pt>
 File: medias/re-workflow.png Graphic file (type png)
 <use medias/re-workflow.png>
 Package pdftex.def Info: medias/re-workflow.png  used on input line 550. on inp
@@ -2285,7 +2490,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1034--1035
 
  []
 
-<medias/re-serie-parallele.png, id=1296, 505.89pt x 329.23pt>
+<medias/re-serie-parallele.png, id=1616, 505.89pt x 329.23pt>
 File: medias/re-serie-parallele.png Graphic file (type png)
 <use medias/re-serie-parallele.png>
 Package pdftex.def Info: medias/re-serie-parallele.png  used on input line 1045
@@ -2380,7 +2585,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--10
 
  []
 
-<medias/brackets.png, id=1375, 501.875pt x 255.95625pt>
+<medias/brackets.png, id=1695, 501.875pt x 255.95625pt>
 File: medias/brackets.png Graphic file (type png)
 <use medias/brackets.png>
 Package pdftex.def Info: medias/brackets.png  used on input line 69. on input l
@@ -2825,14 +3030,14 @@ dy used, duplicate ignored
                    \relax 
 l.42 ...basique}\label{exercice---niveau-basique}}
                                                   
-<medias/equation.png, id=1646, 204.765pt x 65.49469pt>
+<medias/equation.png, id=1966, 204.765pt x 65.49469pt>
 File: medias/equation.png Graphic file (type png)
 <use medias/equation.png>
 Package pdftex.def Info: medias/equation.png  used on input line 66. on input l
 ine 66.
 Package pdftex.def Info: Requested size: 163.8122pt x 52.39879pt on input line 
 66.
-<medias/morceaux.png, id=1647, 393.47pt x 271.0125pt>
+<medias/morceaux.png, id=1967, 393.47pt x 271.0125pt>
 File: medias/morceaux.png Graphic file (type png)
 <use medias/morceaux.png>
 Package pdftex.def Info: medias/morceaux.png  used on input line 97. on input l
@@ -2891,15 +3096,1002 @@ l.6 ...\label{exercice---niveau-intermuxe9diaire}}
                                                   ) [137
 
 
+] [138
+
+
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 535.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 535.
- (Python.aux
-(w1-s1-c1-versions-python.aux) (w1-s2-c1-installer-python.aux)
-(w1-s2-c2-lecture.aux) (w1-s4-c1-utiliser-les-notebooks.aux)
-(w1-s4-c2-interpreteur-et-notebooks.aux) (w1-s4-c3-fibonacci-prompt.aux)
-(w1-s4-c4-fibonacci.aux) (w1-s4-c5-shebang.aux) (w1-s4-x1-turtle.aux)
-(w1-s5-c1-noms-de-variables.aux) (w1-s5-c2-mots-cles.aux)
+Chapitre 3.
+[139]
+\openout2 = `w3-s1-c1-fichiers.aux'.
+
+ (w3-s1-c1-fichiers.texpdfTeX warning (ext4): destination with the same identif
+ier (name{compluxe9ment---niveau-basique}) has been already used, duplicate ign
+ored
+<to be read again> 
+                   \relax 
+l.6 ...que}\label{compluxe9ment---niveau-basique}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{compluxe9ment---niveau-intermuxe9diaire}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.91 ...{compluxe9ment---niveau-intermuxe9diaire}}
+                                                   [140
+
+]pdfTeX warning (ext4): destination with the same identifier (name{compluxe9men
+t---niveau-avancuxe9}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.147 ...\label{compluxe9ment---niveau-avancuxe9}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 160--163
+
+ []
+
+
+Underfull \hbox (badness 1478) in paragraph at lines 160--163
+[] \T1/ppl/m/n/10.95 Comme nous al-lons uti-li-ser main-te-nant des ou-tils d'a
+s-sez bas ni-veau pour lire du
+ []
+
+[141]
+Underfull \hbox (badness 10000) in paragraph at lines 200--202
+
+ []
+
+
+Underfull \hbox (badness 1259) in paragraph at lines 200--202
+[] \T1/ppl/m/n/10.95 Re-ve-nons aux fi-chiers ; la mé-thode \T1/cmtt/m/n/10.95 
+read() \T1/ppl/m/n/10.95 per-met de lire dans le fi-chier un buf-fer
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 255--260
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 255--260
+
+ []
+
+[142]
+Underfull \hbox (badness 10000) in paragraph at lines 269--272
+
+ []
+
+[143]
+Underfull \hbox (badness 10000) in paragraph at lines 352--355
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 356--358
+
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{pour-en-savoi
+r-plus}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.383 ... savoir plus}\label{pour-en-savoir-plus}}
+                                                  ) [144]
+\openout2 = `w3-s1-c2-utilitaires-sur-fichiers.aux'.
+
+
+(w3-s1-c2-utilitaires-sur-fichiers.texpdfTeX warning (ext4): destination with t
+he same identifier (name{compluxe9ment---niveau-basique}) has been already used
+, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6 ...que}\label{compluxe9ment---niveau-basique}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 37--41
+
+ []
+
+
+Underfull \hbox (badness 1067) in paragraph at lines 74--77
+[]\T1/cmtt/m/n/10.95 os.path.getatime \T1/ppl/m/n/10.95 et aussi \T1/cmtt/m/n/1
+0.95 getmtime \T1/ppl/m/n/10.95 et \T1/cmtt/m/n/10.95 getctime \T1/ppl/m/n/10.9
+5 pour ob-te-nir les dates de créa-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 110--112
+
+ []
+
+
+Underfull \hbox (badness 1314) in paragraph at lines 110--112
+[] \T1/ppl/m/n/10.95 Comme on l'a men-tionné \T1/cmtt/m/n/10.95 pathlib \T1/ppl
+/m/n/10.95 offre une in-ter-face orien-tée ob-jet ; mais qu'est-ce
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 110--112
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--116
+
+ []
+
+[145
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 154--156
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 212--214
+
+ []
+
+[146]
+Underfull \hbox (badness 10000) in paragraph at lines 225--227
+
+ []
+
+[147]
+Underfull \hbox (badness 10000) in paragraph at lines 326--328
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 326--328
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 350--352
+
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{compluxe9ment
+---niveau-avancuxe9}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.355 ...\label{compluxe9ment---niveau-avancuxe9}}
+                                                  ) [148]
+\openout2 = `w3-s1-c3-format-json-et-autres.aux'.
+
+
+(w3-s1-c3-format-json-et-autres.texpdfTeX warning (ext4): destination with the 
+same identifier (name{le-probluxe8me}) has been already used, duplicate ignored
+
+<to be read again> 
+                   \relax 
+l.14 ...ction{Le problÃ¨me}\label{le-probluxe8me}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 16--20
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--30
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--42
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--48
+
+ []
+
+[149
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 77--79
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--138
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 148--150
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--154
+
+ []
+
+[150]pdfTeX warning (ext4): destination with the same identifier (name{pour-en-
+savoir-plus}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.161 ... savoir plus}\label{pour-en-savoir-plus}}
+                                                  ) [151]
+\openout2 = `w3-s1-c4-fichiers-systeme.aux'.
+
+
+(w3-s1-c4-fichiers-systeme.texpdfTeX warning (ext4): destination with the same 
+identifier (name{compluxe9ment---niveau-avancuxe9}) has been already used, dupl
+icate ignored
+<to be read again> 
+                   \relax 
+l.6 ...©}\label{compluxe9ment---niveau-avancuxe9}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 15--21
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--59
+
+ []
+
+[152
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 105--108
+
+ []
+
+) [153]
+\openout2 = `w3-s2-c1-tuple-et-virgule.aux'.
+
+ (w3-s2-c1-tuple-et-virgule.texpdfTeX warning (ext4): destination with the same
+ identifier (name{compluxe9ment---niveau-intermuxe9diaire}) has been already us
+ed, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6 ...l{compluxe9ment---niveau-intermuxe9diaire}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 71--76
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--85
+
+ []
+
+[154
+
+
+] [155]
+Underfull \hbox (badness 10000) in paragraph at lines 230--232
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 265--269
+
+ []
+
+[156]
+Underfull \hbox (badness 10000) in paragraph at lines 311--317
+
+ []
+
+) [157]
+\openout2 = `w3-s2-c2-sequence-unpacking.aux'.
+
+ (w3-s2-c2-sequence-unpacking.texpdfTeX warning (ext4): destination with the sa
+me identifier (name{compluxe9ment---niveau-basique}) has been already used, dup
+licate ignored
+<to be read again> 
+                   \relax 
+l.6 ...que}\label{compluxe9ment---niveau-basique}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{un-exemple-simple}) has been already used,
+ duplicate ignored
+<to be read again> 
+                   \relax 
+l.32 ... exemple simple}\label{un-exemple-simple}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 58--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--82
+
+ []
+
+[158
+
+
+] [159]
+Underfull \hbox (badness 10000) in paragraph at lines 206--211
+
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{compluxe9ment
+---niveau-intermuxe9diaire}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.247 ...compluxe9ment---niveau-intermuxe9diaire}}
+                                                   [160] [161]pdfTeX warning (e
+xt4): destination with the same identifier (name{pour-en-savoir-plus}) has been
+ already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.394 ... savoir plus}\label{pour-en-savoir-plus}}
+                                                  ) [162]
+\openout2 = `w3-s2-c3-for-sur-plusieurs-variables.aux'.
+
+
+(w3-s2-c3-for-sur-plusieurs-variables.texpdfTeX warning (ext4): destination wit
+h the same identifier (name{compluxe9ment---niveau-basique}) has been already u
+sed, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7 ...que}\label{compluxe9ment---niveau-basique}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{compluxe9ment---niveau-intermuxe9diaire}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.52 ...{compluxe9ment---niveau-intermuxe9diaire}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 58--60
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--101
+
+ []
+
+[163
+
+
+] [164]) [165]
+\openout2 = `w3-s2-x1-comptage.aux'.
+
+ (w3-s2-x1-comptage.texpdfTeX warning (ext4): destination with the same identif
+ier (name{exercice---niveau-basique}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5 ... basique}\label{exercice---niveau-basique}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 17--19
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--93
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--101
+
+ []
+
+[166
+
+
+]) [167]
+\openout2 = `w3-s2-x2-surgery.aux'.
+
+ (w3-s2-x2-surgery.texpdfTeX warning (ext4): destination with the same identifi
+er (name{sequence-unpacking}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3 ...ence unpacking}}\label{sequence-unpacking}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{exercice---niveau-basique}) has been alrea
+dy used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6 ... basique}\label{exercice---niveau-basique}}
+                                                  ) [168
+
+
+]
+\openout2 = `w3-s4-c1-dictionnaires.aux'.
+
+
+(w3-s4-c1-dictionnaires.texpdfTeX warning (ext4): destination with the same ide
+ntifier (name{compluxe9ment---niveau-basique}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.6 ...que}\label{compluxe9ment---niveau-basique}}
+                                                   [169
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 181--185
+
+ []
+
+[170]
+Underfull \hbox (badness 10000) in paragraph at lines 235--237
+
+ []
+
+[171]pdfTeX warning (ext4): destination with the same identifier (name{compluxe
+9ment---niveau-intermuxe9diaire}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.244 ...compluxe9ment---niveau-intermuxe9diaire}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 314--317
+
+ []
+
+[172]
+Underfull \hbox (badness 10000) in paragraph at lines 349--352
+
+ []
+
+[173] [174]pdfTeX warning (ext4): destination with the same identifier (name{co
+mpluxe9ment---niveau-avancuxe9}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.504 ...\label{compluxe9ment---niveau-avancuxe9}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 514--517
+
+ []
+
+[175] [176]) [177]
+\openout2 = `w3-s4-c2-cles-immuables.aux'.
+
+ (w3-s4-c2-cles-immuables.texpdfTeX warning (ext4): destination with the same i
+dentifier (name{compluxe9ment---niveau-intermuxe9diaire}) has been already used
+, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6 ...l{compluxe9ment---niveau-intermuxe9diaire}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 19--22
+
+ []
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 26.
+
+Missing character: There is no é in font pplr7t!
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--30
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--34
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--80
+
+ []
+
+[178
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 157--160
+
+ []
+
+) [179]
+\openout2 = `w3-s4-c3-record-et-dictionnaire.aux'.
+
+ (w3-s4-c3-record-et-dictionnaire.texpdfTeX warning (ext4): destination with th
+e same identifier (name{compluxe9ment---niveau-intermuxe9diaire}) has been alre
+ady used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6 ...l{compluxe9ment---niveau-intermuxe9diaire}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 12--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--20
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--77
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--82
+
+ []
+
+[180
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 110--115
+
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{compluxe9ment
+---niveau-avancuxe9}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.148 ...\label{compluxe9ment---niveau-avancuxe9}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 154--159
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 154--159
+
+ []
+
+[181]
+Underfull \hbox (badness 10000) in paragraph at lines 212--215
+
+ []
+
+) [182]
+\openout2 = `w3-s4-x1-graph-dict.aux'.
+
+ (w3-s4-x1-graph-dict.texpdfTeX warning (ext4): destination with the same ident
+ifier (name{exercice---niveau-basique}) has been already used, duplicate ignore
+d
+<to be read again> 
+                   \relax 
+l.5 ... basique}\label{exercice---niveau-basique}}
+                                                  ) [183
+
+
+]
+\openout2 = `w3-s4-x2-marine-dict.aux'.
+
+
+(w3-s4-x2-marine-dict.tex
+Underfull \hbox (badness 10000) in paragraph at lines 7--9
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--56
+
+ []
+
+[184
+
+
+]pdfTeX warning (ext4): destination with the same identifier (name{exercice---n
+iveau-basique}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.97 basique}\label{exercice---niveau-basique}}
+                                                [185]pdfTeX warning (ext4): des
+tination with the same identifier (name{exercice---niveau-intermuxe9diaire}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.199 ...abel{exercice---niveau-intermuxe9diaire}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{but-de-lexercice}) has been already used, 
+duplicate ignored
+<to be read again> 
+                   \relax 
+l.208 ...t de l'exercice}\label{but-de-lexercice}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{votre-code}) has been already used, duplic
+ate ignored
+<to be read again> 
+                   \relax 
+l.244 \subparagraph{Votre code}\label{votre-code}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{validation}) has been already used, duplic
+ate ignored
+<to be read again> 
+                   \relax 
+l.253 \subparagraph{Validation}\label{validation}}
+                                                   [186]
+Underfull \hbox (badness 10000) in paragraph at lines 264--267
+
+ []
+
+) [187]
+\openout2 = `w3-s5-c1-ensembles.aux'.
+
+ (w3-s5-c1-ensembles.texpdfTeX warning (ext4): destination with the same identi
+fier (name{compluxe9ment---niveau-basique}) has been already used, duplicate ig
+nored
+<to be read again> 
+                   \relax 
+l.6 ...que}\label{compluxe9ment---niveau-basique}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{cruxe9ation-en-extension}) has been alread
+y used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.13 ...xtension}\label{cruxe9ation-en-extension}}
+                                                   [188
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 130--133
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--139
+
+ []
+
+[189] [190]
+Underfull \hbox (badness 10000) in paragraph at lines 322--324
+
+ []
+
+[191]pdfTeX warning (ext4): destination with the same identifier (name{pour-en-
+savoir-plus}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.468 ... savoir plus}\label{pour-en-savoir-plus}}
+                                                  ) [192]
+\openout2 = `w3-s5-x1-read-set.aux'.
+
+
+(w3-s5-x1-read-set.texpdfTeX warning (ext4): destination with the same identifi
+er (name{ensembles}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2 \section{Ensembles}\label{ensembles}}
+                                         pdfTeX warning (ext4): destination wit
+h the same identifier (name{exercice---niveau-basique}) has been already used, 
+duplicate ignored
+<to be read again> 
+                   \relax 
+l.5 ... basique}\label{exercice---niveau-basique}}
+                                                  ) [193
+
+
+]
+\openout2 = `w3-s5-x2-marine-set.aux'.
+
+
+(w3-s5-x2-marine-set.texpdfTeX warning (ext4): destination with the same identi
+fier (name{exercice---niveau-intermuxe9diaire}) has been already used, duplicat
+e ignored
+<to be read again> 
+                   \relax 
+l.6 ...\label{exercice---niveau-intermuxe9diaire}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{but-de-lexercice}) has been already used, 
+duplicate ignored
+<to be read again> 
+                   \relax 
+l.44 ...ut de l'exercice}\label{but-de-lexercice}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 52--55
+
+ []
+
+
+Underfull \hbox (badness 1968) in paragraph at lines 69--73
+[]\T1/ppl/m/n/10.95 l'ensemble (\T1/cmtt/m/n/10.95 set\T1/ppl/m/n/10.95 ) des \
+T1/ppl/b/n/10.95 noms \T1/ppl/m/n/10.95 des ba-teaux pré-sents dans \T1/cmtt/m/
+n/10.95 extended \T1/ppl/m/n/10.95 mais pas dans
+ []
+
+[194
+
+
+]pdfTeX warning (ext4): destination with the same identifier (name{votre-code})
+ has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.105 ...subsection{Votre code}\label{votre-code}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{validation}) has been already used, duplic
+ate ignored
+<to be read again> 
+                   \relax 
+l.114 ...subsection{Validation}\label{validation}}
+                                                  ) [195]
+\openout2 = `w3-s6-c1-try-finally.aux'.
+
+
+(w3-s6-c1-try-finally.texpdfTeX warning (ext4): destination with the same ident
+ifier (name{compluxe9ment---niveau-intermuxe9diaire}) has been already used, du
+plicate ignored
+<to be read again> 
+                   \relax 
+l.7 ...l{compluxe9ment---niveau-intermuxe9diaire}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 9--11
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--32
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--85
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--89
+
+ []
+
+[196
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 97--100
+
+ []
+
+[197]pdfTeX warning (ext4): destination with the same identifier (name{pour-en-
+savoir-plus}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.189 ... savoir plus}\label{pour-en-savoir-plus}}
+                                                  ) [198]
+\openout2 = `w3-s7-c1-operateur-is-et-fonction-id.aux'.
+
+
+(w3-s7-c1-operateur-is-et-fonction-id.texpdfTeX warning (ext4): destination wit
+h the same identifier (name{compluxe9ment---niveau-basique}) has been already u
+sed, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7 ...que}\label{compluxe9ment---niveau-basique}}
+                                                   [199
+
+
+]pdfTeX warning (ext4): destination with the same identifier (name{scuxe9nario-
+2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.106 ...agraph{ScÃ©nario 2}\label{scuxe9nario-2}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 122--124
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 153--156
+
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{compluxe9ment
+---niveau-intermuxe9diaire}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.165 ...compluxe9ment---niveau-intermuxe9diaire}}
+                                                   [200pdfTeX warning (ext4): d
+estination with the same identifier (name{scuxe9nario-1}) has been already used
+, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.187 (
+       \texttt{a\ is\ b}) \(\Longleftrightarrow\) (\texttt{id(a)\ ==\ id(b)})]
+Underfull \hbox (badness 10000) in paragraph at lines 223--229
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 257--260
+
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{pour-en-savoi
+r-plus}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.266 ... savoir plus}\label{pour-en-savoir-plus}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 268--270
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 271--272
+
+ []
+
+[201]) [202]
+\openout2 = `w3-s7-c2-references-circulaires.aux'.
+
+ (w3-s7-c2-references-circulaires.texpdfTeX warning (ext4): destination with th
+e same identifier (name{compluxe9ment---niveau-intermuxe9diaire}) has been alre
+ady used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7 ...l{compluxe9ment---niveau-intermuxe9diaire}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 14--17
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--42
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--49
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--53
+
+ []
+
+[203
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 140--143
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 144--149
+
+ []
+
+[204]) [205]
+\openout2 = `w3-s7-c3-les-differentes-copies.aux'.
+
+ (w3-s7-c3-les-differentes-copies.texpdfTeX warning (ext4): destination with th
+e same identifier (name{compluxe9ment---niveau-basique}) has been already used,
+ duplicate ignored
+<to be read again> 
+                   \relax 
+l.11 ...ue}\label{compluxe9ment---niveau-basique}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 62--64
+
+ []
+
+[206
+
+
+]pdfTeX warning (ext4): destination with the same identifier (name{compluxe9men
+t---niveau-intermuxe9diaire}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.151 ...compluxe9ment---niveau-intermuxe9diaire}}
+                                                   [207]
+Underfull \hbox (badness 10000) in paragraph at lines 256--259
+
+ []
+
+[208]pdfTeX warning (ext4): destination with the same identifier (name{pour-en-
+savoir-plus}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.339 ... savoir plus}\label{pour-en-savoir-plus}}
+                                                  ) [209]
+\openout2 = `w3-s7-c4-instruction-del.aux'.
+
+
+(w3-s7-c4-instruction-del.texpdfTeX warning (ext4): destination with the same i
+dentifier (name{compluxe9ment---niveau-basique}) has been already used, duplica
+te ignored
+<to be read again> 
+                   \relax 
+l.7 ...que}\label{compluxe9ment---niveau-basique}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+
+ []
+
+[210
+
+
+]pdfTeX warning (ext4): destination with the same identifier (name{pour-en-savo
+ir-plus}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.169 ... savoir plus}\label{pour-en-savoir-plus}}
+                                                  ) [211]
+\openout2 = `w3-s7-c5-affectation-simultanee.aux'.
+
+
+(w3-s7-c5-affectation-simultanee.texpdfTeX warning (ext4): destination with the
+ same identifier (name{compluxe9ment---niveau-basique}) has been already used, 
+duplicate ignored
+<to be read again> 
+                   \relax 
+l.6 ...que}\label{compluxe9ment---niveau-basique}}
+                                                  ) [212
+
+
+]
+\openout2 = `w3-s7-c6-affectation-operateurs-2.aux'.
+
+
+(w3-s7-c6-affectation-operateurs-2.texpdfTeX warning (ext4): destination with t
+he same identifier (name{compluxe9ment---niveau-intermuxe9diaire}) has been alr
+eady used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7 ...l{compluxe9ment---niveau-intermuxe9diaire}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 17--21
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--25
+
+ []
+
+[213
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 97--102
+
+ []
+
+) [214] [215]
+\openout2 = `w3-s8-x1-fifo.aux'.
+
+ (w3-s8-x1-fifo.texpdfTeX warning (ext4): destination with the same identifier 
+(name{exercice---niveau-basique}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5 ... basique}\label{exercice---niveau-basique}}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 26--29
+
+ []
+
+) [216
+
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 537.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 537.
+ (Python.aux (w1-s1-c1-versions-python.aux)
+(w1-s2-c1-installer-python.aux) (w1-s2-c2-lecture.aux)
+(w1-s4-c1-utiliser-les-notebooks.aux) (w1-s4-c2-interpreteur-et-notebooks.aux)
+(w1-s4-c3-fibonacci-prompt.aux) (w1-s4-c4-fibonacci.aux) (w1-s4-c5-shebang.aux)
+(w1-s4-x1-turtle.aux) (w1-s5-c1-noms-de-variables.aux) (w1-s5-c2-mots-cles.aux)
 (w1-s5-c3-introduction-types.aux) (w1-s5-c4-garbage-collector.aux)
 (w1-s5-c5-type-checking.aux) (w1-s6-c1-calculette.aux)
 (w1-s6-c2-affectation-operateurs.aux) (w1-s6-c3-precision-flottants.aux)
@@ -2912,25 +4104,36 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 535.
 (w2-s5-c2-presentation.aux) (w2-s5-c3-pass.aux) (w2-s6-c1-valeur-de-retour.aux)
 (w2-s6-x1-label.aux) (w2-s6-x2-inconnue.aux) (w2-s6-x3-laccess.aux)
 (w2-s6-x4-if-et-def.aux) (w2-s6-x5-wc.aux) (w2-s7-x1-liste-p.aux)
-(w2-s7-x2-carre.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 535.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 535.
+(w2-s7-x2-carre.aux) (w3-s1-c1-fichiers.aux)
+(w3-s1-c2-utilitaires-sur-fichiers.aux) (w3-s1-c3-format-json-et-autres.aux)
+(w3-s1-c4-fichiers-systeme.aux) (w3-s2-c1-tuple-et-virgule.aux)
+(w3-s2-c2-sequence-unpacking.aux) (w3-s2-c3-for-sur-plusieurs-variables.aux)
+(w3-s2-x1-comptage.aux) (w3-s2-x2-surgery.aux) (w3-s4-c1-dictionnaires.aux)
+(w3-s4-c2-cles-immuables.aux) (w3-s4-c3-record-et-dictionnaire.aux)
+(w3-s4-x1-graph-dict.aux) (w3-s4-x2-marine-dict.aux) (w3-s5-c1-ensembles.aux)
+(w3-s5-x1-read-set.aux) (w3-s5-x2-marine-set.aux) (w3-s6-c1-try-finally.aux)
+(w3-s7-c1-operateur-is-et-fonction-id.aux) (w3-s7-c2-references-circulaires.aux
+) (w3-s7-c3-les-differentes-copies.aux) (w3-s7-c4-instruction-del.aux)
+(w3-s7-c5-affectation-simultanee.aux) (w3-s7-c6-affectation-operateurs-2.aux)
+(w3-s8-x1-fifo.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 537.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 537.
 Package rerunfilecheck Info: File `Python.out' has not changed.
-(rerunfilecheck)             Checksum: AB11AFAB71DFA820DCA3E5D4197F0D4D;8460.
+(rerunfilecheck)             Checksum: 881DB60CF82507DCAE7D05CDC9A9AC6F;13751.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 535.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 537.
  ) 
 Here is how much of TeX's memory you used:
- 16522 strings out of 493312
- 244368 string characters out of 3138904
- 336797 words of memory out of 3000000
- 18763 multiletter control sequences out of 15000+200000
- 52451 words of font info for 102 fonts, out of 3000000 for 9000
+ 17346 strings out of 493312
+ 263877 string characters out of 3138904
+ 357332 words of memory out of 3000000
+ 18996 multiletter control sequences out of 15000+200000
+ 54245 words of font info for 104 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,7n,79p,571b,679s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 40i,7n,79p,659b,679s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\jim\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\tc
 rm1095.pk> <C:\Users\jim\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\d
 pi600\ecst1095.pk> <C:\Users\jim\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknap
@@ -2953,9 +4156,9 @@ pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Progra
 m Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/urw/palatino/uplri8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
 pe1/urw/times/utmr8a.pfb>
-Output written on Python.pdf (137 pages, 1120890 bytes).
+Output written on Python.pdf (216 pages, 1399575 bytes).
 PDF statistics:
- 2121 PDF objects out of 2487 (max. 8388607)
- 714 named destinations out of 1000 (max. 500000)
- 859 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3198 PDF objects out of 3580 (max. 8388607)
+ 1130 named destinations out of 1200 (max. 500000)
+ 1371 words of extra memory for PDF output out of 10000 (max. 10000000)
 

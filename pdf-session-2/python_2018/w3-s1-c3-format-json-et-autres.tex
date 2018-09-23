@@ -1,0 +1,165 @@
+    \hypertarget{formats-de-fichiers-json-et-autres}{%
+\section{Formats de fichiers~: JSON et
+autres}\label{formats-de-fichiers-json-et-autres}}
+
+    \hypertarget{compluxe9ments---niveau-basique}{%
+\subsection{Compléments - niveau
+basique}\label{compluxe9ments---niveau-basique}}
+
+    Voici quelques mots sur des outils Python fournis dans la bibliothèque
+standard, et qui permettent de lire ou écrire des données dans des
+fichiers.
+
+    \hypertarget{le-probluxe8me}{%
+\subsubsection{Le problème}\label{le-probluxe8me}}
+
+    Les données dans un programme Python sont stockées en mémoire (la RAM),
+sous une forme propice aux calculs. Par exemple un petit entier est
+fréquemment stocké en binaire dans un mot de 64 bits, qui est prêt à
+être soumis au processeur pour faire une opération arithmétique.\\
+
+    Ce format ne se prête pas forcément toujours à être transposé tel quel
+lorsqu'on doit écrire des données sur un support plus pérenne, comme un
+disque dur, ou encore sur un réseau pour transmission distante - ces
+deux supports étant à ce point de vue très voisins.\\
+
+Ainsi par exemple il pourra être plus commode d'écrire notre entier sur
+disque, ou de le transmettre à un programme distant, sous une forme
+décimale qui sera plus lisible, sachant que par ailleurs toutes les
+machines ne codent pas un entier de la même façon.\\
+
+    Il convient donc de faire de la traduction dans les deux sens entre
+représentations d'une part en mémoire, et d'autre part sur disque ou sur
+réseau (à nouveau, on utilise en général les mêmes formats pour ces deux
+usages).
+
+    \hypertarget{le-format-json}{%
+\subsubsection{Le format JSON}\label{le-format-json}}
+
+    Le format sans aucun doute le plus populaire à l'heure actuelle est
+\href{http://fr.wikipedia.org/wiki/JavaScript_Object_Notation}{le format
+JSON} pour \emph{JavaScript Object Notation}.\\
+
+Sans trop nous attarder nous dirons que JSON est un encodage - en
+anglais
+\href{http://en.wikipedia.org/wiki/Marshalling_\%28computer_science\%29}{marshalling}
+- qui se prête bien à la plupart des types de base que l'on trouve dans
+les langages modernes comme Python, Ruby ou JavaScript.\\
+
+La bibliothèque standard de Python contient
+\href{https://docs.python.org/3/library/json.html}{le module json} que
+nous illustrons très rapidement ici~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{json}
+        
+        \PY{c+c1}{\PYZsh{} En partant d\PYZsq{}une donnée construite à partir de types de base}
+        \PY{n}{data} \PY{o}{=} \PY{p}{[}
+            \PY{c+c1}{\PYZsh{} des types qui ne posent pas de problème}
+            \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{3.23}\PY{p}{,} \PY{l+m+mf}{4.32}\PY{p}{]}\PY{p}{,} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{eric}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{32}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{jean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{43}\PY{p}{\PYZcb{}}\PY{p}{]}\PY{p}{,}
+            \PY{c+c1}{\PYZsh{} un tuple}
+            \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,}
+        \PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{} sauver ceci dans un fichier}
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{s1.json}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{w}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{json\PYZus{}output}\PY{p}{:}
+            \PY{n}{json}\PY{o}{.}\PY{n}{dump}\PY{p}{(}\PY{n}{data}\PY{p}{,} \PY{n}{json\PYZus{}output}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} et relire le résultat}
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{s1.json}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{json\PYZus{}input}\PY{p}{:}
+            \PY{n}{data2} \PY{o}{=} \PY{n}{json}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{n}{json\PYZus{}input}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{limitations-de-json}{%
+\subparagraph{Limitations de json\\\\}\label{limitations-de-json}}
+
+    Certains types de base ne sont pas supportés par le format JSON (car ils
+ne sont pas natifs en JavaScript), c'est le cas notamment pour~:
+
+\begin{itemize}
+	\item 
+	\texttt{tuple}, qui se fait encoder comme une liste~;
+	\item
+	\texttt{complex}, \texttt{set} et \texttt{frozenset}, que l'on ne peut
+	pas encoder du tout (sans étendre la bibliothèque).
+\end{itemize}
+
+    C'est ce qui explique ce qui suit~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} le premier élément de data est intact,}
+        \PY{c+c1}{\PYZsh{} comme si on avait fait une *deep copy* en fait}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{première partie de data}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{data}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{==} \PY{n}{data2}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+première partie de data True
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} par contre le `tuple` se fait encoder comme une `list`}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{deuxième partie}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{entrée}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{type}\PY{p}{(}\PY{n}{data}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{sortie}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{type}\PY{p}{(}\PY{n}{data2}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+deuxième partie entrée <class 'tuple'> sortie <class 'list'>
+
+    \end{Verbatim}
+
+    Malgré ces petites limitations, ce format est de plus en plus populaire,
+notamment parce qu'on peut l'utiliser pour communiquer avec des
+applications Web écrites en JavaScript, et aussi parce qu'il est très
+léger, et supporté par de nombreux langages.
+
+    \hypertarget{compluxe9ments---niveau-intermuxe9diaire}{%
+\subsection{Compléments - niveau
+intermédiaire}\label{compluxe9ments---niveau-intermuxe9diaire}}
+
+    \hypertarget{le-format-csv}{%
+\subsubsection{\texorpdfstring{Le format
+\texttt{csv}}{Le format csv}}\label{le-format-csv}}
+
+    Le format \texttt{csv} pour \emph{Comma Separated Values}, originaire du
+monde des tableurs, peut rendre service à l'occasion, il est proposé
+\href{https://docs.python.org/3/library/csv.html}{dans le module
+\texttt{csv}}.
+
+    \hypertarget{le-format-pickle}{%
+\subsubsection{Le format pickle}\label{le-format-pickle}}
+
+    Le format \texttt{pickle} remplit une fonctionnalité très voisine de
+\texttt{JSON}, mais est spécifique à Python. C'est pourquoi, malgré des
+limites un peu moins sévères, son usage tend à rester plutôt marginal
+pour l'échange de données, on lui préfère en général le format JSON.\\
+
+Par contre, pour la sauvegarde locale d'objets Python (pour, par
+exemple, faire des points de reprises d'un programme), il est très
+utile. Il est implémenté
+\href{https://docs.python.org/3/library/pickle.html}{dans le module
+\texttt{pickle}}.
+
+    \hypertarget{le-format-xml}{%
+\subsubsection{Le format XML}\label{le-format-xml}}
+
+    Vous avez aussi très probablement entendu parler de XML, qui est un
+format assez populaire également.\\
+
+Cela dit, la puissance, et donc le coût, de XML et JSON ne sont pas du
+tout comparables, XML étant beaucoup plus flexible mais au prix d'une
+complexité de mise en œuvre très supérieure.\\
+
+Il existe plusieurs souches différentes de bibliothèques prenant en
+charge le format XML,
+\href{https://docs.python.org/3/library/xml.html}{qui sont introduites
+ici}.
+
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+    Voyez la page sur
+\href{https://docs.python.org/3/library/fileformats.html}{les formats de
+fichiers} dans la documentation Python.

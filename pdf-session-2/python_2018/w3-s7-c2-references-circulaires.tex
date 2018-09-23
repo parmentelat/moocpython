@@ -1,0 +1,164 @@
+    \hypertarget{listes-infinies-ruxe9fuxe9rences-circulaires}{%
+\section{Listes infinies \& références
+circulaires}\label{listes-infinies-ruxe9fuxe9rences-circulaires}}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} ipythontutor
+\end{Verbatim}
+
+
+    Nous allons maintenant construire un objet un peu abscons. Cet exemple
+précis n'a aucune utilité pratique, mais permet de bien comprendre la
+logique du langage.\\
+
+    Construisons une liste à un seul élément, peu importe quoi~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{n}{infini\PYZus{}1} \PY{o}{=} \PY{p}{[}\PY{k+kc}{None}\PY{p}{]}
+\end{Verbatim}
+
+
+    À présent nous allons remplacer le premier et seul élément de la liste
+par\ldots{} la liste elle-même~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{infini\PYZus{}1}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{n}{infini\PYZus{}1}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{infini\PYZus{}1}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[{\ldots}]]
+
+    \end{Verbatim}
+
+    Pour essayer de décrire l'objet liste ainsi obtenu, on pourrait dire
+qu'il s'agit d'une liste de taille 1 et de profondeur infinie, une sorte
+de fil infini en quelque sorte.\\
+
+Naturellement, l'objet obtenu est difficile à imprimer de manière
+convaincante. Pour faire en sorte que cet objet soit tout de même
+imprimable, et éviter une boucle infinie, python utilise l'ellipse
+\texttt{...} pour indiquer ce qu'on appelle une référence circulaire. Si
+on n'y prenait pas garde en effet, il faudrait écrire
+\texttt{{[}{[}{[}{[}\ etc.\ {]}{]}{]}{]}} avec une infinité de crochets.\\
+
+    Voici la même séquence exécutée sous \href{http://pythontutor.com}{http://pythontutor.com}~; il s'agit
+d'un site très utile pour comprendre comment python implémente les
+objets, les références et les partages.\\
+
+Cliquez sur le bouton \texttt{Forward} pour avancer dans l'exécution de
+la séquence. À la fin de la séquence vous verrez - ce n'est pas
+forcément clair - la seule cellule de la liste à se référencer
+elle-même~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{ipythontutor} height=230
+        infini\PYZus{}1 = [None]
+        infini\PYZus{}1[0] = infini\PYZus{}1
+\end{Verbatim}
+
+
+    Toutes les fonctions de python ne sont pas aussi intelligentes que
+\texttt{print}. Bien qu'on puisse comparer cette liste avec elle-même~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{infini\PYZus{}1} \PY{o}{==} \PY{n}{infini\PYZus{}1}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} True
+\end{Verbatim}
+            
+    il n'en est pas de même si on la compare avec un objet analogue mais pas
+identique~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{infini\PYZus{}2} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+        \PY{n}{infini\PYZus{}2}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{n}{infini\PYZus{}2}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{infini\PYZus{}2}\PY{p}{)}
+        \PY{n}{infini\PYZus{}1} \PY{o}{==} \PY{n}{infini\PYZus{}2}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[{\ldots}]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+
+        RecursionError                            Traceback (most recent call last)
+
+        <ipython-input-4-3c044c24fccb> in <module>()
+          2 infini\_2[0] = infini\_2
+          3 print(infini\_2)
+    ----> 4 infini\_1 == infini\_2
+    
+
+        RecursionError: maximum recursion depth exceeded in comparison
+
+    \end{Verbatim}
+
+    \hypertarget{guxe9nuxe9ralisation-aux-ruxe9fuxe9rences-circulaires}{%
+\subsubsection{Généralisation aux références
+circulaires}\label{guxe9nuxe9ralisation-aux-ruxe9fuxe9rences-circulaires}}
+
+    On obtient un phénomène équivalent dès lors qu'un élément contenu dans
+un objet fait référence à l'objet lui-même. Voici par exemple comment on
+peut construire un dictionnaire qui contient une référence circulaire~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{collection\PYZus{}de\PYZus{}points} \PY{o}{=} \PY{p}{[}
+            \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{10}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{20}\PY{p}{\PYZcb{}}\PY{p}{,}
+            \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{30}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{50}\PY{p}{\PYZcb{}}\PY{p}{,}
+            \PY{c+c1}{\PYZsh{} imaginez plein de points}
+        \PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{} on rajoute dans chaque dictionnaire une clé \PYZsq{}points\PYZsq{}}
+        \PY{c+c1}{\PYZsh{} qui référence la collection complète}
+        \PY{k}{for} \PY{n}{point} \PY{o+ow}{in} \PY{n}{collection\PYZus{}de\PYZus{}points}\PY{p}{:}
+            \PY{n}{point}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{points}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{collection\PYZus{}de\PYZus{}points}
+        
+        \PY{c+c1}{\PYZsh{} la structure possède maintenant des références circulaires}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{collection\PYZus{}de\PYZus{}points}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[\{'x': 10, 'y': 20, 'points': [{\ldots}]\}, \{'x': 30, 'y': 50, 'points': [{\ldots}]\}]
+
+    \end{Verbatim}
+
+    On voit à nouveau réapparaître les ellipses, qui indiquent que pour
+chaque point, le nouveau champ \texttt{points} est un objet qui a déjà
+été imprimé.\\
+
+Cette technique est cette fois très utile et très utilisée dans la
+pratique, dès lors qu'on a besoin de naviguer de manière arbitraire dans
+une structure de données compliquée. Dans cet exemple, pas très réaliste
+naturellement, on pourrait à présent accéder depuis un point à tous les
+autres points de la collection dont il fait partie.\\
+
+    À nouveau il peut être intéressant de voir le comportement de cet
+exemple avec\\
+\url{http://pythontutor.com} pour bien comprendre ce qui se
+passe, si cela ne vous semble pas clair à première vue~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{ipythontutor} curInstr=7
+        points = [
+            \PYZob{}\PYZsq{}x\PYZsq{}: 10,\PYZsq{}y\PYZsq{}: 20\PYZcb{},
+            \PYZob{}\PYZsq{}x\PYZsq{}: 30,\PYZsq{}y\PYZsq{}: 50\PYZcb{},
+        ]
+        
+        for point in points:
+            point[\PYZsq{}points\PYZsq{}] = points
+\end{Verbatim}

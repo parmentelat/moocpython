@@ -1,0 +1,472 @@
+    \hypertarget{ensembles}{%
+\section{Ensembles}\label{ensembles}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    Ce document résume les opérations courantes disponibles sur le type
+\texttt{set}. On rappelle que le type \texttt{set} est un type
+\textbf{mutable}.
+
+    \hypertarget{cruxe9ation-en-extension}{%
+\subsubsection{Création en extension}\label{cruxe9ation-en-extension}}
+
+    On crée un ensemble avec les accolades, comme les dictionnaires, mais
+sans utiliser le caractère \texttt{:}, et cela donne par exemple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{n}{heteroclite} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{marc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pierre}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pierre}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{heteroclite}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\{'pierre', 12, 'marc', (1, 2, 3)\}
+
+    \end{Verbatim}
+
+    \hypertarget{cruxe9ation---la-fonction-set}{%
+\subsubsection{\texorpdfstring{Création - la fonction
+\texttt{set}}{Création - la fonction set}}\label{cruxe9ation---la-fonction-set}}
+
+    Il devrait être clair à ce stade que, le nom du type étant \texttt{set},
+la fonction \texttt{set} est un constructeur d'ensemble. On aurait donc
+aussi bien pu faire~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{heteroclite2} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{marc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pierre}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pierre}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{heteroclite2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\{'pierre', 12, 'marc', (1, 2, 3)\}
+
+    \end{Verbatim}
+
+    \hypertarget{cruxe9er-un-ensemble-vide}{%
+\subsubsection{Créer un ensemble vide}\label{cruxe9er-un-ensemble-vide}}
+
+    Il faut remarquer que l'on ne peut pas créer un ensemble vide en
+extension. En effet~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n+nb}{type}\PY{p}{(}\PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} dict
+\end{Verbatim}
+            
+    Ceci est lié à des raisons historiques, les ensembles n'ayant fait leur
+apparition que tardivement dans le langage en tant que citoyen de
+première classe.
+
+    Pour créer un ensemble vide, la pratique la plus courante est celle-ci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{ensemble\PYZus{}vide} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{type}\PY{p}{(}\PY{n}{ensemble\PYZus{}vide}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+<class 'set'>
+
+    \end{Verbatim}
+
+    Ou également, moins élégant mais que l'on trouve parfois dans du vieux
+code~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{autre\PYZus{}ensemble\PYZus{}vide} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{type}\PY{p}{(}\PY{n}{autre\PYZus{}ensemble\PYZus{}vide}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+<class 'set'>
+
+    \end{Verbatim}
+
+    \hypertarget{un-uxe9luxe9ment-dans-un-ensemble-doit-uxeatre-globalement-immuable}{%
+\subsubsection{Un élément dans un ensemble doit être globalement
+immuable}\label{un-uxe9luxe9ment-dans-un-ensemble-doit-uxeatre-globalement-immuable}}
+
+    On a vu précédemment que les clés dans un dictionnaire doivent être
+globalement immuables. Pour exactement les mêmes raisons, les éléments
+d'un ensemble doivent aussi être globalement immuables~:
+
+    \begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# on ne peut pas insérer un tuple qui contient une liste}
+\OperatorTok{>>>}\NormalTok{ ensemble }\OperatorTok{=}\NormalTok{ \{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, [}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{])\}}
+\NormalTok{Traceback (most recent call last):}
+\NormalTok{  File }\StringTok{"<stdin>"}\NormalTok{, line }\DecValTok{1}\NormalTok{, }\KeywordTok{in} \OperatorTok{<}\NormalTok{module}\OperatorTok{>}
+\PreprocessorTok{TypeError}\NormalTok{: unhashable }\BuiltInTok{type}\NormalTok{: }\StringTok{'list'}
+\end{Highlighting}
+\end{Shaded}
+
+    Le type \texttt{set} étant lui-même mutable, on ne peut pas créer un
+ensemble d'ensembles~:
+
+    \begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>>>}\NormalTok{ ensemble }\OperatorTok{=}\NormalTok{ \{\{}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{\}\}}
+\NormalTok{Traceback (most recent call last):}
+\NormalTok{  File }\StringTok{"<stdin>"}\NormalTok{, line }\DecValTok{1}\NormalTok{, }\KeywordTok{in} \OperatorTok{<}\NormalTok{module}\OperatorTok{>}
+\PreprocessorTok{TypeError}\NormalTok{: unhashable }\BuiltInTok{type}\NormalTok{: }\StringTok{'set'}
+\end{Highlighting}
+\end{Shaded}
+
+    Et c'est une des raisons d'être du type \texttt{frozenset}.
+
+    \hypertarget{cruxe9ation---la-fonction-frozenset}{%
+\subsubsection{\texorpdfstring{Création - la fonction
+\texttt{frozenset}}{Création - la fonction frozenset}}\label{cruxe9ation---la-fonction-frozenset}}
+
+    Un \texttt{frozenset} est un ensemble qu'on ne peut pas modifier, et qui
+donc peut servir de clé dans un dictionnaire, ou être inclus dans un
+autre ensemble (mutable ou pas).\\
+
+    Il n'existe pas de raccourci syntaxique comme les \texttt{\{\}} pour
+créer un ensemble immuable, qui doit être créé avec la fonction
+\texttt{frozenset}. Toutes les opérations documentées dans ce notebook,
+et qui n'ont pas besoin de modifier l'ensemble, sont disponibles sur un
+\texttt{frozenset}.\\
+
+Parmi les fonctions exclues sur un \texttt{frozenset}, on peut citer~:
+\texttt{update}, \texttt{pop}, \texttt{clear}, \texttt{remove} ou
+\texttt{discard}.
+
+    \hypertarget{opuxe9rations-simples}{%
+\subsubsection{Opérations simples}\label{opuxe9rations-simples}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} pour rappel}
+        \PY{n}{heteroclite}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} \{(1, 2, 3), 12, 'marc', 'pierre'\}
+\end{Verbatim}
+            
+    \hypertarget{test-dappartenance}{%
+\subparagraph{Test d'appartenance}\label{test-dappartenance}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)} \PY{o+ow}{in} \PY{n}{heteroclite}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} True
+\end{Verbatim}
+            
+    \hypertarget{cardinal}{%
+\subparagraph{Cardinal}\label{cardinal}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n+nb}{len}\PY{p}{(}\PY{n}{heteroclite}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} 4
+\end{Verbatim}
+            
+    \hypertarget{manipulations}{%
+\subparagraph{Manipulations}\label{manipulations}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{ensemble} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{\PYZcb{}}
+        \PY{n}{ensemble}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} \{1, 2\}
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} pour nettoyer}
+         \PY{n}{ensemble}\PY{o}{.}\PY{n}{clear}\PY{p}{(}\PY{p}{)}
+         \PY{n}{ensemble}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:} set()
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} ajouter un element}
+         \PY{n}{ensemble}\PY{o}{.}\PY{n}{add}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+         \PY{n}{ensemble}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} \{1\}
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} ajouter tous les elements d\PYZsq{}un autre *ensemble*}
+         \PY{n}{ensemble}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+m+mi}{2}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{\PYZcb{}}\PY{p}{)}
+         \PY{n}{ensemble}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} \{(1, 2, 3), (1, 3, 5), 1, 2\}
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} enlever un element avec discard}
+         \PY{n}{ensemble}\PY{o}{.}\PY{n}{discard}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ensemble}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}13}]:} \{(1, 2, 3), 1, 2\}
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} discard fonctionne même si l\PYZsq{}élément n\PYZsq{}est pas présent}
+         \PY{n}{ensemble}\PY{o}{.}\PY{n}{discard}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{foo}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{ensemble}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}14}]:} \{(1, 2, 3), 1, 2\}
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} enlever un élément avec remove}
+         \PY{n}{ensemble}\PY{o}{.}\PY{n}{remove}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ensemble}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}15}]:} \{1, 2\}
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{c+c1}{\PYZsh{} contrairement à discard, l\PYZsq{}élément doit être présent,}
+         \PY{c+c1}{\PYZsh{} sinon il y a une exception}
+         \PY{k}{try}\PY{p}{:}
+             \PY{n}{ensemble}\PY{o}{.}\PY{n}{remove}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{foo}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{k}{except} \PY{n+ne}{KeyError} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{remove a levé l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{exception}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{e}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+remove a levé l'exception 'foo'
+
+    \end{Verbatim}
+
+    La capture d'exception avec \texttt{try} et \texttt{except} sert à
+capturer une erreur d'exécution du programme (que l'on appelle
+exception) pour continuer le programme. Le but de cet exemple est
+simplement de montrer (d'une manière plus élégante que de voir
+simplement le programme planter avec une exception non capturée) que
+l'expression
+\texttt{ensemble.remove(\textquotesingle{}foo\textquotesingle{})} génère
+une exception. Si ce concept vous paraît obscur, pas d'inquiétude, nous
+l'aborderons cette semaine et nous y reviendrons en détail en semaine 6.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} pop() ressemble à la méthode éponyme sur les listes}
+         \PY{c+c1}{\PYZsh{} sauf qu\PYZsq{}il n\PYZsq{}y a pas d\PYZsq{}ordre dans un ensemble}
+         \PY{k}{while} \PY{n}{ensemble}\PY{p}{:}
+             \PY{n}{element} \PY{o}{=} \PY{n}{ensemble}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{p}{)}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{element}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{element}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{et bien sûr maintenant l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{ensemble est vide}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{ensemble}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+element 1
+element 2
+et bien sûr maintenant l'ensemble est vide set()
+
+    \end{Verbatim}
+
+    \hypertarget{opuxe9rations-classiques-sur-les-ensembles}{%
+\subsubsection{Opérations classiques sur les
+ensembles}\label{opuxe9rations-classiques-sur-les-ensembles}}
+
+    Donnons-nous deux ensembles simples~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{A2} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{A2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{A2}\PY{p}{)}
+         \PY{n}{A3} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{A3}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{A3}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+A2 \{0, 2, 4, 6\}
+A3 \{0, 3, 6\}
+
+    \end{Verbatim}
+
+    N'oubliez pas que les ensembles, comme les dictionnaires, ne sont
+\textbf{pas ordonnés}.\\
+
+    \textbf{Remarques}~:
+    
+\begin{itemize}
+	\item 
+    les notations des opérateurs sur les ensembles
+	rappellent les opérateurs ``bit-à-bit'' sur les entiers~;
+	\item
+	ces opérateurs sont également disponibles sous la forme de méthodes.
+\end{itemize}
+
+    \hypertarget{union}{%
+\subparagraph{Union}\label{union}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n}{A2} \PY{o}{|} \PY{n}{A3}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}19}]:} \{0, 2, 3, 4, 6\}
+\end{Verbatim}
+            
+    \hypertarget{intersection}{%
+\subparagraph{Intersection}\label{intersection}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{A2} \PY{o}{\PYZam{}} \PY{n}{A3}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}20}]:} \{0, 6\}
+\end{Verbatim}
+            
+    \hypertarget{diffuxe9rence}{%
+\subparagraph{Différence}\label{diffuxe9rence}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{A2} \PY{o}{\PYZhy{}} \PY{n}{A3}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}21}]:} \{2, 4\}
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n}{A3} \PY{o}{\PYZhy{}} \PY{n}{A2}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}22}]:} \{3\}
+\end{Verbatim}
+            
+    \hypertarget{diffuxe9rence-symuxe9trique}{%
+\subparagraph{Différence symétrique}\label{diffuxe9rence-symuxe9trique}}
+
+    On rappelle que \(A \Delta B = (A - B) \cup (B - A)\)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{n}{A2} \PY{o}{\PYZca{}} \PY{n}{A3}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}23}]:} \{2, 3, 4\}
+\end{Verbatim}
+            
+    \hypertarget{comparaisons}{%
+\subsubsection{Comparaisons}\label{comparaisons}}
+
+    Ici encore on se donne deux ensembles~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{n}{superset} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{\PYZcb{}}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{superset}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{superset}\PY{p}{)}
+         \PY{n}{subset} \PY{o}{=}  \PY{p}{\PYZob{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{\PYZcb{}}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{subset}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{subset}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+superset \{0, 1, 2, 3\}
+subset \{1, 3\}
+
+    \end{Verbatim}
+
+    \hypertarget{uxe9galituxe9}{%
+\subparagraph{Égalité}\label{uxe9galituxe9}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{heteroclite} \PY{o}{==} \PY{n}{heteroclite2}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}25}]:} True
+\end{Verbatim}
+            
+    \hypertarget{inclusion}{%
+\subparagraph{Inclusion}\label{inclusion}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{n}{subset} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{superset}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}26}]:} True
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{n}{subset} \PY{o}{\PYZlt{}} \PY{n}{superset}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}27}]:} True
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{n}{heteroclite} \PY{o}{\PYZlt{}} \PY{n}{heteroclite2}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}28}]:} False
+\end{Verbatim}
+            
+    \hypertarget{ensembles-disjoints}{%
+\subparagraph{Ensembles disjoints}\label{ensembles-disjoints}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{n}{heteroclite}\PY{o}{.}\PY{n}{isdisjoint}\PY{p}{(}\PY{n}{A3}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}29}]:} True
+\end{Verbatim}
+            
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+    Reportez vous à
+\href{https://docs.python.org/3/library/stdtypes.html\#set-types-set-frozenset}{la
+section sur les ensembles} dans la documentation Python.

@@ -1,0 +1,311 @@
+    \hypertarget{fusionner-des-donnuxe9es}{%
+\section{Fusionner des données}\label{fusionner-des-donnuxe9es}}
+
+    \hypertarget{exercices}{%
+\subsection{Exercices}\label{exercices}}
+
+    Cet exercice vient en deux versions, une de niveau basique et une de
+niveau intermédiaire.\\
+
+La version basique est une application de la technique d'indexation que
+l'on a vue dans le complément ``Gérer des enregistrements''. On peut
+très bien faire les deux versions dans l'ordre, une fois qu'on a fait la
+version basique on est en principe un peu plus avancé pour aborder la
+version intermédiaire.
+
+    \hypertarget{contexte}{%
+\subsubsection{Contexte}\label{contexte}}
+
+    Nous allons commencer à utiliser des données un peu plus réalistes. Il
+s'agit de données obtenues auprès de
+\href{https://www.marinetraffic.com}{MarineTraffic} - et légèrement
+simplifiées pour les besoins de l'exercice. Ce site expose les
+coordonnées géographiques de bateaux observées en mer au travers d'un
+réseau de collecte de type \emph{crowdsourcing}.\\
+
+    De manière à optimiser le volume de données à transférer, l'API de
+MarineTraffic offre deux modes pour obtenir les données~:
+
+\begin{itemize}
+	\item 
+	\textbf{mode étendu}~: chaque mesure (bateau x position x temps) est accompagnée de
+	tous les détails du bateau (\texttt{id}, nom, pays de rattachement, etc.)~;
+	\item
+	\textbf{mode abrégé}~: chaque mesure est uniquement attachée à
+	l'\texttt{id} du bateau.	
+\end{itemize}
+
+En effet, chaque bateau possède un identifiant unique qui est un entier,
+que l'on note \texttt{id}.
+
+    \hypertarget{chargement-des-donnuxe9es}{%
+\subsubsection{Chargement des données}\label{chargement-des-donnuxe9es}}
+
+    Commençons par charger les données de l'exercice~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}marine\PYZus{}dict} \PY{k}{import} \PY{n}{extended}\PY{p}{,} \PY{n}{abbreviated}
+\end{Verbatim}
+
+
+    \hypertarget{format-des-donnuxe9es}{%
+\subsubsection{Format des données}\label{format-des-donnuxe9es}}
+
+    Le format de ces données est relativement simple, il s'agit dans les
+deux cas d'une liste d'entrées - une par bateau.\\
+
+Chaque entrée à son tour est une liste qui contient~:
+
+\begin{verbatim}
+mode étendu: [id, latitude, longitude, date_heure, nom_bateau, code_pays, ...]
+mode abrégé: [id, latitude, longitude, date_heure]
+\end{verbatim}
+
+sachant que les entrées après le code pays dans le format étendu ne nous
+intéressent pas pour cet exercice.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} une entrée étendue est une liste qui ressemble à ceci}
+        \PY{n}{sample\PYZus{}extended\PYZus{}entry} \PY{o}{=} \PY{n}{extended}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{sample\PYZus{}extended\PYZus{}entry}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} une entrée abrégée ressemble à ceci}
+        \PY{n}{sample\PYZus{}abbreviated\PYZus{}entry} \PY{o}{=} \PY{n}{abbreviated}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{sample\PYZus{}abbreviated\PYZus{}entry}\PY{p}{)}
+\end{Verbatim}
+
+
+    On précise également que les deux listes \texttt{extended} et
+\texttt{abbreviated}~:
+
+\begin{itemize}
+	\item 
+	possèdent exactement \textbf{le même nombre} d'entrées~;
+	\item
+	et correspondent \textbf{aux mêmes bateaux}~;
+	\item
+	mais naturellement \textbf{à des moments différents}~;
+	\item
+	et \textbf{pas forcément dans le même ordre}.
+\end{itemize}
+
+    \hypertarget{exercice---niveau-basique}{%
+\subsubsection{Exercice - niveau
+basique}\label{exercice---niveau-basique}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} chargement de l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}marine\PYZus{}dict} \PY{k}{import} \PY{n}{exo\PYZus{}index}
+\end{Verbatim}
+
+
+    \hypertarget{but-de-lexercice}{%
+\subparagraph{But de l'exercice}\label{but-de-lexercice}}
+
+    On vous demande d'écrire une fonction \texttt{index} qui calcule, à
+partir de la liste des données étendues, un dictionnaire qui est~:
+
+\begin{itemize}
+	\item 
+	indexé par l'\texttt{id} de chaque bateau~;
+	\item
+	et qui a pour valeur la liste qui décrit le bateau correspondant.
+\end{itemize}
+
+    De manière plus imagée, si~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{extended }\OperatorTok{=}\NormalTok{ [ bateau1, bateau2, ... ]}
+\end{Highlighting}
+\end{Shaded}
+
+Et si~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bateau1 }\OperatorTok{=}\NormalTok{ [ id1, latitude, ... ]}
+\end{Highlighting}
+\end{Shaded}
+
+On doit obtenir comme résultat de \texttt{index} un dictionnaire~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\{}
+\NormalTok{    id1 }\OperatorTok{->}\NormalTok{ [ id_bateau1, latitude, ... ],}
+\NormalTok{    id2 ...}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Bref, on veut pouvoir retrouver les différents éléments de la liste
+\texttt{extended} par accès direct, en ne faisant qu'une seule recherche
+dans l'index.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} le résultat attendu}
+        \PY{n}{result\PYZus{}index} \PY{o}{=} \PY{n}{exo\PYZus{}index}\PY{o}{.}\PY{n}{resultat}\PY{p}{(}\PY{n}{extended}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} on en profite pour illustrer le module pprint}
+        \PY{k+kn}{from} \PY{n+nn}{pprint} \PY{k}{import} \PY{n}{pprint}
+        
+        \PY{c+c1}{\PYZsh{} à quoi ressemble le résultat pour un bateau au hasard}
+        \PY{k}{for} \PY{n}{key}\PY{p}{,} \PY{n}{value} \PY{o+ow}{in} \PY{n}{result\PYZus{}index}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{==== clé}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n}{pprint}\PY{p}{(}\PY{n}{key}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{==== valeur}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n}{pprint}\PY{p}{(}\PY{n}{value}\PY{p}{)}
+            \PY{k}{break}
+\end{Verbatim}
+
+
+    Remarquez ci-dessus l'utilisation d'un utilitaire parfois pratique~: le
+\href{https://docs.python.org/3/library/pprint.html}{module
+\texttt{pprint} pour pretty-printer}.
+
+    \hypertarget{votre-code}{%
+\subparagraph{Votre code}\label{votre-code}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{index}\PY{p}{(}\PY{n}{extended}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre\PYZus{}code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \hypertarget{validation}{%
+\subparagraph{Validation}\label{validation}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}index}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{index}\PY{p}{,} \PY{n}{abbreviated}\PY{p}{)}
+\end{Verbatim}
+
+
+    Vous remarquerez d'ailleurs que la seule chose que l'on utilise dans cet
+exercice, c'est que l'id des bateaux arrive en première position (dans
+la liste qui matérialise le bateau), aussi votre code doit marcher à
+l'identique avec les bateaux étendus~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}index}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{index}\PY{p}{,} \PY{n}{extended}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{exercice---niveau-intermuxe9diaire}{%
+\subsubsection{Exercice - niveau
+intermédiaire}\label{exercice---niveau-intermuxe9diaire}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} chargement de l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}marine\PYZus{}dict} \PY{k}{import} \PY{n}{exo\PYZus{}merge}
+\end{Verbatim}
+
+
+    \hypertarget{but-de-lexercice}{%
+\subparagraph{But de l'exercice}\label{but-de-lexercice}}
+
+    On vous demande d'écrire une fonction \texttt{merge} qui fasse une
+consolidation des données, de façon à obtenir en sortie un
+dictionnaire~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{id} \OperatorTok{->}\NormalTok{ [nom_bateau, code_pays, position_etendu, position_abrege]}
+\end{Highlighting}
+\end{Shaded}
+
+dans lequel les deux objets \texttt{position} sont tous les deux des
+tuples de la forme~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(latitude, longitude, date_heure)}
+\end{Highlighting}
+\end{Shaded}
+
+    Voici par exemple un couple clé-valeur dans le résultat attendu~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} le résultat attendu}
+        \PY{n}{result\PYZus{}merge} \PY{o}{=} \PY{n}{exo\PYZus{}merge}\PY{o}{.}\PY{n}{resultat}\PY{p}{(}\PY{n}{extended}\PY{p}{,} \PY{n}{abbreviated}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} à quoi ressemble le résultat pour un bateau au hasard}
+        \PY{k+kn}{from} \PY{n+nn}{pprint} \PY{k}{import} \PY{n}{pprint}
+        \PY{k}{for} \PY{n}{key\PYZus{}value} \PY{o+ow}{in} \PY{n}{result\PYZus{}merge}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n}{pprint}\PY{p}{(}\PY{n}{key\PYZus{}value}\PY{p}{)}
+            \PY{k}{break}
+\end{Verbatim}
+
+
+    \hypertarget{votre-code}{%
+\subparagraph{Votre code}\label{votre-code}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{merge}\PY{p}{(}\PY{n}{extended}\PY{p}{,} \PY{n}{abbreviated}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{votre code}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \hypertarget{validation}{%
+\subparagraph{Validation}\label{validation}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}merge}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{merge}\PY{p}{,} \PY{n}{extended}\PY{p}{,} \PY{n}{abbreviated}\PY{p}{)}
+\end{Verbatim}
+
+\newpage
+    \hypertarget{les-fichiers-de-donnuxe9es-complets}{%
+\subsubsection{Les fichiers de données
+complets}\label{les-fichiers-de-donnuxe9es-complets}}
+
+    Signalons enfin pour ceux qui sont intéressés que les données chargées
+dans cet exercice sont disponibles au format JSON - qui est précisément
+celui exposé par marinetraffic.\\
+
+Nous avons beaucoup simplifié les données d'entrée pour vous permettre
+une mise au point plus facile. Si vous voulez vous amuser à charger des
+données un peu plus significatives, sachez que~:
+
+\begin{itemize}
+\tightlist
+\item
+  vous avez accès aux fichiers de données plus complets~:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \url{data/marine-e1-ext.json}
+  \item
+    \url{data/marine-e1-abb.json}
+  \end{itemize}
+\item
+  pour charger ces fichiers, qui sont donc au
+  \href{http://en.wikipedia.org/wiki/JSON}{format JSON}, la connaissance
+  intime de ce format n'est pas nécessaire, on peut tout simplement
+  utiliser le \href{https://docs.python.org/3/library/json.html}{module
+  \texttt{json}}. Voici le code utilisé dans l'exercice pour charger ces
+  JSON en mémoire~; il utilise des notions que nous verrons dans les
+  semaines à venir~:
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} load data from files}
+        \PY{k+kn}{import} \PY{n+nn}{json}
+        
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{data/marine\PYZhy{}e1\PYZhy{}ext.json}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{utf\PYZhy{}8}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} \PY{k}{as} \PY{n}{feed}\PY{p}{:}
+            \PY{n}{extended\PYZus{}full} \PY{o}{=} \PY{n}{json}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{n}{feed}\PY{p}{)}
+        
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{data/marine\PYZhy{}e1\PYZhy{}abb.json}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{utf\PYZhy{}8}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} \PY{k}{as} \PY{n}{feed}\PY{p}{:}
+            \PY{n}{abbreviated\PYZus{}full} \PY{o}{=} \PY{n}{json}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{n}{feed}\PY{p}{)}
+\end{Verbatim}
+
+
+    Une fois que vous avez un code qui fonctionne vous pouvez le lancer sur
+ces données plus copieuses en faisant~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}merge}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{merge}\PY{p}{,} \PY{n}{extended\PYZus{}full}\PY{p}{,} \PY{n}{abbreviated\PYZus{}full}\PY{p}{)}
+\end{Verbatim}

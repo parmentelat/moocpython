@@ -1,0 +1,274 @@
+    \hypertarget{lopuxe9rateur-is}{%
+\section{\texorpdfstring{L'opérateur
+\texttt{is}}{L'opérateur is}}\label{lopuxe9rateur-is}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} ipythontutor
+\end{Verbatim}
+
+
+    \hypertarget{les-opuxe9rateurs-is-et}{%
+\subsubsection{\texorpdfstring{Les opérateurs \texttt{is} et
+\texttt{==}}{Les opérateurs is et ==}}\label{les-opuxe9rateurs-is-et}}
+
+    \begin{itemize}
+\tightlist
+\item
+  nous avons déjà parlé de l'opérateur \texttt{==} qui \textbf{compare
+  la valeur} de deux objets~;
+\item
+  python fournit aussi un opérateur \texttt{is} qui permet de savoir si
+  deux valeurs correspondent \textbf{au même objet} en mémoire.
+\end{itemize}
+
+Nous allons illustrer la différence entre ces deux opérateurs.
+
+    \hypertarget{scuxe9nario-1}{%
+\subparagraph{Scénario 1}\label{scuxe9nario-1}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} deux listes identiques}
+        \PY{n}{a} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}
+        \PY{n}{b} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{} les deux objets se ressemblent}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{==}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{a} \PY{o}{==} \PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+== True
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} mais ce ne sont pas les mêmes objets}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{is}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{a} \PY{o+ow}{is} \PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+is False
+
+    \end{Verbatim}
+
+    \hypertarget{scuxe9nario-2}{%
+\subparagraph{Scénario 2}\label{scuxe9nario-2}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} par contre ici il n\PYZsq{}y a qu\PYZsq{}une liste}
+        \PY{n}{a} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{} et les deux variables}
+        \PY{c+c1}{\PYZsh{} référencent le même objet}
+        \PY{n}{b} \PY{o}{=} \PY{n}{a}
+        
+        \PY{c+c1}{\PYZsh{} non seulement les deux expressions se ressemblent}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{==}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{a} \PY{o}{==} \PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+== True
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} mais elles désignent le même objet}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{is}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{a} \PY{o+ow}{is} \PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+is True
+
+    \end{Verbatim}
+
+    \hypertarget{la-muxeame-chose-sous-pythontutor}{%
+\subsubsection{La même chose sous
+pythontutor}\label{la-muxeame-chose-sous-pythontutor}}
+
+    \hypertarget{scuxe9nario-1}{%
+\subparagraph{Scénario 1}\label{scuxe9nario-1}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{ipythontutor} curInstr=2
+        a = [1, 2]
+        b = [1, 2]
+\end{Verbatim}
+
+
+    \hypertarget{scuxe9nario-2}{%
+\subparagraph{Scénario 2}\label{scuxe9nario-2}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{ipythontutor} curInstr=1
+        \PYZsh{} équivalent à la forme ci\PYZhy{}dessus
+        \PYZsh{} a = [1, 2]
+        \PYZsh{} b = a
+        a = b = [1, 2]
+\end{Verbatim}
+
+
+    \hypertarget{utilisez-is-plutuxf4t-que-lorsque-cest-possible}{%
+\subsubsection{\texorpdfstring{Utilisez \texttt{is} plutôt que
+\texttt{==} lorsque c'est
+possible}{Utilisez is plutôt que == lorsque c'est possible}}\label{utilisez-is-plutuxf4t-que-lorsque-cest-possible}}
+
+    La pratique usuelle est d'utiliser \texttt{is} lorsqu'on compare avec un
+objet qui est un singleton, comme typiquement \texttt{None}.\\
+
+    Par exemple on préfèrera écrire~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{undef} \PY{o}{=} \PY{k+kc}{None}
+        
+        \PY{k}{if} \PY{n}{undef} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{indéfini}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+indéfini
+
+    \end{Verbatim}
+
+    Plutôt que~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{if} \PY{n}{undef} \PY{o}{==} \PY{k+kc}{None}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{indéfini}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+indéfini
+
+    \end{Verbatim}
+
+    Qui se comporte de la même manière (à nouveau, parce qu'on compare avec
+\texttt{None}), mais est légèrement moins lisible, et franchement moins
+pythonique. :)\\
+
+    Notez aussi et surtout que \texttt{is} est \textbf{plus efficace} que
+\texttt{==}. En effet \texttt{is} peut être évalué en temps constant,
+puisqu'il s'agit essentiellement de comparer les deux adresses. Alors
+que pour \texttt{==} il peut s'agir de parcourir toute une structure de
+données possiblement très complexe.
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{la-fonction-id}{%
+\subsubsection{\texorpdfstring{La fonction
+\texttt{id}}{La fonction id}}\label{la-fonction-id}}
+
+    Pour bien comprendre le fonctionnement de \texttt{is} nous allons voir
+la fonction \texttt{id} qui retourne un identificateur unique pour
+chaque objet~; un modèle mental acceptable est celui d'adresse mémoire.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n+nb}{id}\PY{p}{(}\PY{k+kc}{True}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} 1924796304
+\end{Verbatim}
+            
+    Comme vous vous en doutez, l'opérateur \texttt{is} peut être décrit
+formellement à partir de \texttt{id} comme ceci~:
+
+(\texttt{a\ is\ b}) \(\Longleftrightarrow\) (\texttt{id(a)\ ==\ id(b)})
+
+    \hypertarget{certains-types-de-base-sont-des-singletons}{%
+\subsubsection{Certains types de base sont des
+singletons}\label{certains-types-de-base-sont-des-singletons}}
+
+    Un singleton est un objet qui n'existe qu'en un seul exemplaire dans la
+mémoire. Un usage classique des singletons en Python est de minimiser le
+nombre d'objets immuables en mémoire. Voyons ce que cela nous donne avec
+des entiers~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{3}
+        \PY{n}{b} \PY{o}{=} \PY{l+m+mi}{3}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n+nb}{id}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n+nb}{id}\PY{p}{(}\PY{n}{b}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a 1924978512 b 1924978512
+
+    \end{Verbatim}
+
+    Tiens, c'est curieux, nous avons ici deux objets, que l'on pourrait
+penser différents, mais en fait ce sont les mêmes~; \texttt{a} et
+\texttt{b} désignent \textbf{le même objet} python, et on a~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{a} \PY{o+ow}{is} \PY{n}{b}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} True
+\end{Verbatim}
+            
+    Il se trouve que, dans le cas des petits entiers, python réalise une
+optimisation de l'utilisation de la mémoire. Quel que soit le nombre de
+variables dont la valeur est \texttt{3}, un seul objet correspondant à
+l'entier \texttt{3} est alloué et créé, pour éviter d'engorger la
+mémoire. On dit que l'entier \texttt{3} est implémenté comme un
+singleton~; nous reverrons ceci en exercice.\\
+
+    On trouve cette optimisation avec quelques autres objets python, comme
+par exemple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{a} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}}
+         \PY{n}{b} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}}
+         \PY{n}{a} \PY{o+ow}{is} \PY{n}{b}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:} True
+\end{Verbatim}
+            
+    Ou encore, plus surprenant~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{a} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{foo}\PY{l+s+s2}{\PYZdq{}}
+         \PY{n}{b} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{foo}\PY{l+s+s2}{\PYZdq{}}
+         \PY{n}{a} \PY{o+ow}{is} \PY{n}{b}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} True
+\end{Verbatim}
+            
+    \textbf{Conclusion} cette optimisation ne touche aucun type mutable
+(heureusement)~; pour les types immuables, il n'est pas extrêmement
+important de savoir en détail quels objets sont implémentés de la sorte.\\
+
+Ce qui est par contre extrêmement important est de comprendre la
+différence entre \texttt{is} et \texttt{==}, et de les utiliser à bon
+escient au risque d'écrire du code fragile.
+
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+    Aux étudiants de niveau avancé, nous recommandons la lecture de la
+section ``Objects, values and types'' dans la documentation Python~:\\
+
+\href{https://docs.python.org/3/reference/datamodel.html\#objects-values-and-types}{https://docs.python.org/3/reference/datamodel.html\#objects-values-and-types}\\
+
+qui aborde également la notion de ``garbage collection'', que nous
+n'aurons pas le temps d'approfondir dans ce MOOC.

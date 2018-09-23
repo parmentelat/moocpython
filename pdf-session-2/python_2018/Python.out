@@ -99,3 +99,67 @@
 \BOOKMARK [2][-]{subsection.2.20.2}{R\351cr\351ation}{section.2.20}% 99
 \BOOKMARK [1][-]{section.2.21}{Compr\351hensions \(2\)}{chapter.2}% 100
 \BOOKMARK [2][-]{subsection.2.21.1}{Exercice - niveau interm\351diaire}{section.2.21}% 101
+\BOOKMARK [0][-]{chapter.3}{Renforcement des notions de base, r\351f\351rences partag\351es}{}% 102
+\BOOKMARK [1][-]{section.3.1}{Les fichiers}{chapter.3}% 103
+\BOOKMARK [2][-]{subsection.3.1.1}{Compl\351ment - niveau basique}{section.3.1}% 104
+\BOOKMARK [2][-]{subsection.3.1.2}{Compl\351ment - niveau interm\351diaire}{section.3.1}% 105
+\BOOKMARK [2][-]{subsection.3.1.3}{Compl\351ment - niveau avanc\351}{section.3.1}% 106
+\BOOKMARK [1][-]{section.3.2}{Fichiers et utilitaires}{chapter.3}% 107
+\BOOKMARK [2][-]{subsection.3.2.1}{Compl\351ment - niveau basique}{section.3.2}% 108
+\BOOKMARK [2][-]{subsection.3.2.2}{Compl\351ment - niveau avanc\351}{section.3.2}% 109
+\BOOKMARK [1][-]{section.3.3}{Formats de fichiers : JSON et autres}{chapter.3}% 110
+\BOOKMARK [2][-]{subsection.3.3.1}{Compl\351ments - niveau basique}{section.3.3}% 111
+\BOOKMARK [2][-]{subsection.3.3.2}{Compl\351ments - niveau interm\351diaire}{section.3.3}% 112
+\BOOKMARK [1][-]{section.3.4}{Fichiers syst\350mes}{chapter.3}% 113
+\BOOKMARK [2][-]{subsection.3.4.1}{Compl\351ment - niveau avanc\351}{section.3.4}% 114
+\BOOKMARK [1][-]{section.3.5}{La construction de tuples}{chapter.3}% 115
+\BOOKMARK [2][-]{subsection.3.5.1}{Compl\351ment - niveau interm\351diaire}{section.3.5}% 116
+\BOOKMARK [1][-]{section.3.6}{Sequence unpacking}{chapter.3}% 117
+\BOOKMARK [2][-]{subsection.3.6.1}{Compl\351ment - niveau basique}{section.3.6}% 118
+\BOOKMARK [2][-]{subsection.3.6.2}{Compl\351ment - niveau interm\351diaire}{section.3.6}% 119
+\BOOKMARK [2][-]{subsection.3.6.3}{Pour en savoir plus}{section.3.6}% 120
+\BOOKMARK [1][-]{section.3.7}{Plusieurs variables dans une boucle for}{chapter.3}% 121
+\BOOKMARK [2][-]{subsection.3.7.1}{Compl\351ment - niveau basique}{section.3.7}% 122
+\BOOKMARK [2][-]{subsection.3.7.2}{Compl\351ment - niveau interm\351diaire}{section.3.7}% 123
+\BOOKMARK [1][-]{section.3.8}{Fichiers}{chapter.3}% 124
+\BOOKMARK [2][-]{subsection.3.8.1}{Exercice - niveau basique}{section.3.8}% 125
+\BOOKMARK [1][-]{section.3.9}{Sequence unpacking}{chapter.3}% 126
+\BOOKMARK [2][-]{subsection.3.9.1}{Exercice - niveau basique}{section.3.9}% 127
+\BOOKMARK [1][-]{section.3.10}{Dictionnaires}{chapter.3}% 128
+\BOOKMARK [2][-]{subsection.3.10.1}{Compl\351ment - niveau basique}{section.3.10}% 129
+\BOOKMARK [2][-]{subsection.3.10.2}{Compl\351ment - niveau interm\351diaire}{section.3.10}% 130
+\BOOKMARK [2][-]{subsection.3.10.3}{Compl\351ment - niveau avanc\351}{section.3.10}% 131
+\BOOKMARK [1][-]{section.3.11}{Cl\351s immuables}{chapter.3}% 132
+\BOOKMARK [2][-]{subsection.3.11.1}{Compl\351ment - niveau interm\351diaire}{section.3.11}% 133
+\BOOKMARK [1][-]{section.3.12}{G\351rer des enregistrements}{chapter.3}% 134
+\BOOKMARK [2][-]{subsection.3.12.1}{Compl\351ment - niveau interm\351diaire}{section.3.12}% 135
+\BOOKMARK [2][-]{subsection.3.12.2}{Compl\351ment - niveau avanc\351}{section.3.12}% 136
+\BOOKMARK [1][-]{section.3.13}{Dictionnaires et listes}{chapter.3}% 137
+\BOOKMARK [2][-]{subsection.3.13.1}{Exercice - niveau basique}{section.3.13}% 138
+\BOOKMARK [1][-]{section.3.14}{Fusionner des donn\351es}{chapter.3}% 139
+\BOOKMARK [2][-]{subsection.3.14.1}{Exercices}{section.3.14}% 140
+\BOOKMARK [1][-]{section.3.15}{Ensembles}{chapter.3}% 141
+\BOOKMARK [2][-]{subsection.3.15.1}{Compl\351ment - niveau basique}{section.3.15}% 142
+\BOOKMARK [1][-]{section.3.16}{Ensembles}{chapter.3}% 143
+\BOOKMARK [2][-]{subsection.3.16.1}{Exercice - niveau basique}{section.3.16}% 144
+\BOOKMARK [2][-]{subsection.3.16.2}{Deuxi\350me partie - niveau basique}{section.3.16}% 145
+\BOOKMARK [1][-]{section.3.17}{Exercice sur les ensembles}{chapter.3}% 146
+\BOOKMARK [2][-]{subsection.3.17.1}{Exercice - niveau interm\351diaire}{section.3.17}% 147
+\BOOKMARK [1][-]{section.3.18}{try \203 else \203 finally}{chapter.3}% 148
+\BOOKMARK [2][-]{subsection.3.18.1}{Compl\351ment - niveau interm\351diaire}{section.3.18}% 149
+\BOOKMARK [1][-]{section.3.19}{L'op\351rateur is}{chapter.3}% 150
+\BOOKMARK [2][-]{subsection.3.19.1}{Compl\351ment - niveau basique}{section.3.19}% 151
+\BOOKMARK [2][-]{subsection.3.19.2}{Compl\351ment - niveau interm\351diaire}{section.3.19}% 152
+\BOOKMARK [1][-]{section.3.20}{Listes infinies \046 r\351f\351rences circulaires}{chapter.3}% 153
+\BOOKMARK [2][-]{subsection.3.20.1}{Compl\351ment - niveau interm\351diaire}{section.3.20}% 154
+\BOOKMARK [1][-]{section.3.21}{Les diff\351rentes copies}{chapter.3}% 155
+\BOOKMARK [2][-]{subsection.3.21.1}{Compl\351ment - niveau basique}{section.3.21}% 156
+\BOOKMARK [2][-]{subsection.3.21.2}{Compl\351ment - niveau interm\351diaire}{section.3.21}% 157
+\BOOKMARK [1][-]{section.3.22}{L'instruction del}{chapter.3}% 158
+\BOOKMARK [2][-]{subsection.3.22.1}{Compl\351ment - niveau basique}{section.3.22}% 159
+\BOOKMARK [1][-]{section.3.23}{Affectation simultan\351e}{chapter.3}% 160
+\BOOKMARK [2][-]{subsection.3.23.1}{Compl\351ment - niveau basique}{section.3.23}% 161
+\BOOKMARK [1][-]{section.3.24}{Les instructions += et autres revisit\351es}{chapter.3}% 162
+\BOOKMARK [2][-]{subsection.3.24.1}{Compl\351ment - niveau interm\351diaire}{section.3.24}% 163
+\BOOKMARK [1][-]{section.3.25}{Classe}{chapter.3}% 164
+\BOOKMARK [2][-]{subsection.3.25.1}{Exercice - niveau basique}{section.3.25}% 165

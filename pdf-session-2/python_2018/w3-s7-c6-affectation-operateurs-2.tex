@@ -1,0 +1,166 @@
+    \hypertarget{les-instructions-et-autres-revisituxe9es}{%
+\section{\texorpdfstring{Les instructions \texttt{+=} et autres
+revisitées}{Les instructions += et autres revisitées}}\label{les-instructions-et-autres-revisituxe9es}}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    Nous avons vu en première semaine (Séquence ``Les types numériques'')
+une première introduction à l'instruction \texttt{+=} et ses dérivées
+comme \texttt{*=}, \texttt{**=}, etc.
+
+    \hypertarget{ces-constructions-ont-une-duxe9finition-uxe0-guxe9omuxe9trie-variable}{%
+\subsubsection{Ces constructions ont une définition à géométrie
+variable}\label{ces-constructions-ont-une-duxe9finition-uxe0-guxe9omuxe9trie-variable}}
+
+    En C quand on utilise \texttt{+=} (ou encore \texttt{++}) on modifie la
+mémoire en place - historiquement, cet opérateur permettait au
+programmeur d'aider à l'optimisation du code pour utiliser les
+instructions assembleur idoines.\\
+
+Ces constructions en Python s'inspirent clairement de C, aussi dans
+l'esprit ces constructions devraient fonctionner en \textbf{modifiant}
+l'objet référencé par la variable.\\
+
+Mais les types numériques en Python ne sont \textbf{pas mutables}, alors
+que les listes le sont. Du coup le comportement de \texttt{+=} est
+\textbf{différent} selon qu'on l'utilise sur un nombre ou sur une liste,
+ou plus généralement selon qu'on l'invoque sur un type mutable ou non.
+Voyons cela sur des exemples très simples~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} Premier exemple avec un entier}
+        
+        \PY{c+c1}{\PYZsh{} on commence avec une référence partagée}
+        \PY{n}{a} \PY{o}{=} \PY{n}{b} \PY{o}{=} \PY{l+m+mi}{3}
+        \PY{n}{a} \PY{o+ow}{is} \PY{n}{b}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}1}]:} True
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} on utilise += sur une des deux variables}
+        \PY{n}{a} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+        
+        \PY{c+c1}{\PYZsh{} ceci n\PYZsq{}a pas modifié b}
+        \PY{c+c1}{\PYZsh{} c\PYZsq{}est normal, l\PYZsq{}entier n\PYZsq{}est pas mutable}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{b}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a} \PY{o+ow}{is} \PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+4
+3
+False
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} Deuxième exemple, cette fois avec une liste}
+        
+        \PY{c+c1}{\PYZsh{} la même référence partagée}
+        \PY{n}{a} \PY{o}{=} \PY{n}{b} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+        \PY{n}{a} \PY{o+ow}{is} \PY{n}{b}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} True
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} pareil, on fait += sur une des variables}
+        \PY{n}{a} \PY{o}{+}\PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{} cette fois on a modifié a et b}
+        \PY{c+c1}{\PYZsh{} car += a pu modifier la liste en place}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{b}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a} \PY{o+ow}{is} \PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[1]
+[1]
+True
+
+    \end{Verbatim}
+
+    Vous voyez donc que la sémantique de \texttt{+=} (c'est bien entendu le
+cas pour toutes les autres formes d'instructions qui combinent
+l'affectation avec un opérateur) \textbf{est différente} suivant que
+l'objet référencé par le terme de gauche est \textbf{mutable ou
+immuable}.\\
+
+    Pour cette raison, c'est là une opinion personnelle, cette famille
+d'instructions n'est pas le trait le plus réussi dans le langage, et je
+ne recommande pas de l'utiliser.
+
+    \hypertarget{pruxe9cision-sur-la-duxe9finition-de}{%
+\subsubsection{\texorpdfstring{Précision sur la définition de
+\texttt{+=}}{Précision sur la définition de +=}}\label{pruxe9cision-sur-la-duxe9finition-de}}
+
+    Nous avions dit en première semaine, et en première approximation, que~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{+=}\NormalTok{ y}
+\end{Highlighting}
+\end{Shaded}
+
+était équivalent à~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ x }\OperatorTok{+}\NormalTok{ y}
+\end{Highlighting}
+\end{Shaded}
+
+    Au vu de ce qui précède, on voit que ce n'est \textbf{pas tout à fait
+exact}, puisque~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} si on fait x += y sur une liste}
+        \PY{c+c1}{\PYZsh{} on fait un effet de bord sur la liste}
+        \PY{c+c1}{\PYZsh{} comme on vient de le voir}
+        
+        \PY{n}{a} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{avant}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{id}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{)}
+        \PY{n}{a} \PY{o}{+}\PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{après}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{id}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+avant 82877176
+après 82877176
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} alors que si on fait x = x + y sur une liste}
+        \PY{c+c1}{\PYZsh{} on crée un nouvel objet liste}
+        
+        \PY{n}{a} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{avant}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{id}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{)}
+        \PY{n}{a} \PY{o}{=} \PY{n}{a} \PY{o}{+} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{après}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{id}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+avant 82981752
+après 82877496
+
+    \end{Verbatim}
+
+    Vous voyez donc que vis-à-vis des références partagées, ces deux façons
+de faire mènent à un résultat différent.

@@ -1,0 +1,173 @@
+    \hypertarget{linstruction-del}{%
+\section{\texorpdfstring{L'instruction
+\texttt{del}}{L'instruction del}}\label{linstruction-del}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    Voici un récapitulatif sur l'instruction \texttt{del} selon le contexte
+dans lequel elle est utilisée.
+
+    \hypertarget{sur-une-variable}{%
+\subsubsection{Sur une variable}\label{sur-une-variable}}
+
+    On peut annuler la définition d'une variable, avec \texttt{del}.\\
+
+Pour l'illustrer, nous utilisons un bloc
+\texttt{try\ \ldots{}\ except\ \ldots{}} pour attraper le cas échéant
+l'exception \texttt{NameError}, qui est produite lorsqu'on référence une
+variable qui n'est pas définie.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} la variable a n\PYZsq{}est pas définie}
+        \PY{k}{try}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a=}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{a}\PY{p}{)}
+        \PY{k}{except} \PY{n+ne}{NameError} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a n}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{est pas définie}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a n'est pas définie
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} on la définit}
+        \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{10}
+        
+        \PY{c+c1}{\PYZsh{} aucun souci ici, l\PYZsq{}exception n\PYZsq{}est pas levée}
+        \PY{k}{try}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a=}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{a}\PY{p}{)}
+        \PY{k}{except} \PY{n+ne}{NameError} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a n}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{est pas définie}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a= 10
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} maintenant on peut effacer la variable}
+        \PY{k}{del} \PY{n}{a}
+        
+        \PY{c+c1}{\PYZsh{} c\PYZsq{}est comme si on ne l\PYZsq{}avait pas définie}
+        \PY{c+c1}{\PYZsh{} dans la cellule précédente}
+        \PY{k}{try}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a=}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{a}\PY{p}{)}
+        \PY{k}{except} \PY{n+ne}{NameError} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a n}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{est pas définie}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a n'est pas définie
+
+    \end{Verbatim}
+
+    \hypertarget{sur-une-liste}{%
+\subsubsection{Sur une liste}\label{sur-une-liste}}
+
+    On peut enlever d'une liste les éléments qui correspondent à une
+\emph{slice}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} on se donne une liste}
+        \PY{n}{l} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{l}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} on considère une slice dans cette liste}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{slice=}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{l}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{:}\PY{l+m+mi}{10}\PY{p}{:}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} voyons ce que ça donne si on efface cette slice}
+        \PY{k}{del} \PY{n}{l}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{:}\PY{l+m+mi}{10}\PY{p}{:}\PY{l+m+mi}{3}\PY{p}{]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{après del}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{l}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+slice= [2, 5, 8]
+après del [0, 1, 3, 4, 6, 7, 9, 10, 11]
+
+    \end{Verbatim}
+
+    \hypertarget{sur-un-dictionnaire}{%
+\subsubsection{Sur un dictionnaire}\label{sur-un-dictionnaire}}
+
+    Avec \texttt{del} on peut enlever une clé, et donc la valeur
+correspondante, d'un dictionnaire~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} partons d\PYZsq{}un dictionaire simple}
+        \PY{n}{d} \PY{o}{=} \PY{n+nb}{dict}\PY{p}{(}\PY{n}{foo}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bar}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{spam}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{eggs}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{a}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{d}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\{'foo': 'bar', 'spam': 'eggs', 'a': 'b'\}
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} on peut enlever une clé avec del}
+        \PY{k}{del} \PY{n}{d}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{d}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\{'foo': 'bar', 'spam': 'eggs'\}
+
+    \end{Verbatim}
+
+    \hypertarget{on-peut-passer-plusieurs-arguments-uxe0-del}{%
+\subsubsection{\texorpdfstring{On peut passer plusieurs arguments à
+\texttt{del}}{On peut passer plusieurs arguments à del}}\label{on-peut-passer-plusieurs-arguments-uxe0-del}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} Voyons où en sont nos données}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{l}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{d}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+l [0, 1, 3, 4, 6, 7, 9, 10, 11]
+d \{'foo': 'bar', 'spam': 'eggs'\}
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} on peut invoquer \PYZsq{}del\PYZsq{} avec plusieurs expressions}
+        \PY{c+c1}{\PYZsh{} séparées par une virgule}
+        \PY{k}{del} \PY{n}{l}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{:}\PY{p}{]}\PY{p}{,} \PY{n}{d}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{spam}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{l}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{d}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+l [0, 1, 3]
+d \{'foo': 'bar'\}
+
+    \end{Verbatim}
+
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+    La page sur
+\href{https://docs.python.org/3/reference/simple_stmts.html\#the-del-statement}{l'instruction
+\texttt{del}} dans la documentation Python.

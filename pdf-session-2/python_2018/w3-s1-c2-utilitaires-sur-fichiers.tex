@@ -1,0 +1,397 @@
+    \hypertarget{fichiers-et-utilitaires}{%
+\section{Fichiers et utilitaires}\label{fichiers-et-utilitaires}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    Outre les objets fichiers créés avec la fonction \texttt{open}, comme on
+l'a vu dans la vidéo, et qui servent à lire et écrire à un endroit
+précis, une application a besoin d'un minimum d'utilitaires pour
+\textbf{parcourir l'arborescence de répertoires et fichiers}, c'est
+notre propos dans ce complément.
+
+    \hypertarget{le-module-os.path-obsoluxe8te}{%
+\subsubsection{\texorpdfstring{Le module \texttt{os.path}
+(obsolète)}{Le module os.path (obsolète)}}\label{le-module-os.path-obsoluxe8te}}
+
+    Avant la version python-3.4, la librairie standard offrait une
+conjonction d'outils pour ce type de fonctionnalités:
+
+\begin{itemize}
+\tightlist
+\item
+  le module \texttt{os.path}, pour faire des calculs sur les les chemins
+  et noms de fichiers
+  \href{https://docs.python.org/3/library/os.html}{doc},
+\item
+  le module \texttt{os} pour certaines fonctions complémentaires comme
+  renommer ou détruire un fichier
+  \href{https://docs.python.org/3/library/os.path.html}{doc},
+\item
+  et enfin le module \texttt{glob} pour la recherche de fichiers, par
+  exemple pour trouver tous les fichiers en \texttt{*.txt}
+  \href{https://docs.python.org/3/library/glob.html}{doc}.
+\end{itemize}
+
+    Cet ensemble un peu disparate a été remplacé par une \textbf{librairie
+unique \texttt{pathlib}}, qui fournit toutes ces fonctionnalités sous un
+interface unique et moderne, que nous \textbf{recommandons} évidemment
+d'utiliser pour \textbf{du nouveau code}.\\
+
+Avant d'aborder \texttt{pathlib}, voici un très bref aperçu de ces trois
+anciens modules, pour le cas - assez probable - où vous les
+rencontreriez dans du code existant; tous les noms qui suivent
+correspondent à des \textbf{fonctions} - par opposition à
+\texttt{pathlib} qui, comme nous allons le voir, offre une interface
+orientée objet:
+
+    \begin{itemize}
+\tightlist
+\item
+  \texttt{os.path.join} ajoute `/' ou '' entre deux morceaux de chemin,
+  selon l'OS
+\item
+  \texttt{os.path.basename} trouve le nom de fichier dans un chemin
+\item
+  \texttt{os.path.dirname} trouve le nom du directory dans un chemin
+\item
+  \texttt{os.path.abspath} calcule un chemin absolu, c'est-à-dire à
+  partir de la racine du filesystem
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  \texttt{os.path.exists} pour savoir si un chemin existe ou pas
+  (fichier ou répertoire)
+\item
+  \texttt{os.path.isfile} (et \texttt{isdir}) pour savoir si un chemin
+  est un fichier (et un répertoire)
+\item
+  \texttt{os.path.getsize} pour obtenir la taille du fichier
+\item
+  \texttt{os.path.getatime} et aussi \texttt{getmtime} et
+  \texttt{getctime} pour obtenir les dates de création/modification d'un
+  fichier
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  \texttt{os.remove} (ou son ancien nom \texttt{os.unlink}), qui permet
+  de supprimer un fichier
+\item
+  \texttt{os.rmdir} pour supprimer un répertoire (mais qui doit être
+  vide)
+\item
+  \texttt{os.removedirs} pour supprimer tout un répertoire avec son
+  contenu, récursivement si nécessaire
+\item
+  \texttt{os.rename} pour renommer un fichier
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  \texttt{glob.glob} comme dans par exemple \texttt{glob.glob("*.txt")}
+\end{itemize}
+
+    \hypertarget{le-module-pathlib}{%
+\subsubsection{\texorpdfstring{Le module
+\texttt{pathlib}}{Le module pathlib}}\label{le-module-pathlib}}
+
+    C'est la méthode recommandée aujourd'hui pour travailler sur les
+fichiers et répertoires.
+
+    \hypertarget{orientuxe9-objet}{%
+\subparagraph{Orienté Objet\\\\}\label{orientuxe9-objet}}
+
+    Comme on l'a mentionné \texttt{pathlib} offre une interface orientée
+objet; mais qu'est-ce que ça veut dire au juste ?\\
+
+Ceci nous donne un prétexte pour une première application pratique des
+notions de module (que nous avons introduits en fin de semaine 2) et de
+classe (que nous allons voir en fin de semaine).\\
+
+    De même que le langage nous propose les types \emph{builtin}
+\texttt{int} et \texttt{str}, le module \texttt{pathlib} nous expose
+\textbf{un type} (on dira plutôt \textbf{une classe}) qui s'appelle
+\texttt{Path}, que nous allons importer comme ceci:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{pathlib} \PY{k}{import} \PY{n}{Path}
+\end{Verbatim}
+
+
+    Nous allons faire tourner un petit scénario qui va créer un fichier:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} le nom de notre fichier jouet }
+        \PY{n}{nom} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fichier\PYZhy{}temoin}\PY{l+s+s1}{\PYZsq{}}
+\end{Verbatim}
+
+
+    Pour commencer, nous allons vérifier si le fichier en question existe.
+
+Pour ça nous créons un \textbf{objet} qui est une \textbf{instance} de
+la classe \texttt{Path}, comme ceci:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} on crée un objet de la classe Path, associé au nom de fichier}
+        \PY{n}{path} \PY{o}{=} \PY{n}{Path}\PY{p}{(}\PY{n}{nom}\PY{p}{)}
+\end{Verbatim}
+
+
+    Vous remarquez que c'est consistent avec par exemple:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} transformer un float en int}
+        \PY{n}{i} \PY{o}{=} \PY{n+nb}{int}\PY{p}{(}\PY{l+m+mf}{3.5}\PY{p}{)}
+\end{Verbatim}
+
+
+    en ce sens que le type (\texttt{int} ou \texttt{Path}) se comporte comme
+une usine pour créer des objets du type en question.\\
+
+    Quoi qu'il en soit, cet objet \texttt{path} offre un certain nombre de
+méthodes; pour les voir puisque nous sommes dans un notebook, je vous
+invite dans la cellule suivante à utiliser l'aide en ligne en appuyant
+sur la touche `Tabulation' après avoir ajouté un \texttt{.} comme si
+vous alliez envoyer une méthode à cet objet
+
+\begin{verbatim}
+path.[taper la touche TAB]
+\end{verbatim}
+
+et le notebook vous montrera la liste des méthodes disponibles.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} ajouter un . et utilisez la touche \PYZlt{}Tabulation\PYZgt{}}
+        \PY{n}{path}\PY{o}{.}\PY{n}{chmod}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} <bound method Path.chmod of WindowsPath('fichier-temoin')>
+\end{Verbatim}
+            
+    Ainsi par exemple on peut savoir si le fichier existe avec la méthode
+\texttt{exists()}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} au départ le fichier n\PYZsq{}existe pas}
+        \PY{n}{path}\PY{o}{.}\PY{n}{exists}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} False
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} si j\PYZsq{}écris dedans je le crée}
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{n}{nom}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{w}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{output}\PY{p}{:}
+            \PY{n}{output}\PY{o}{.}\PY{n}{write}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{0123456789}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} et maintenant il existe}
+        \PY{n}{path}\PY{o}{.}\PY{n}{exists}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} True
+\end{Verbatim}
+            
+    \hypertarget{muxe9tadonnuxe9es}{%
+\subparagraph{Métadonnées\\\\}\label{muxe9tadonnuxe9es}}
+
+    Voici quelques exemples qui montrent comment accéder aux métadonnées de
+ce fichier:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} cette méthode retourne (en un seul appel système) les métadonnées agrégées}
+        \PY{n}{path}\PY{o}{.}\PY{n}{stat}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} os.stat\_result(st\_mode=33206, st\_ino=2251799814156457, st\_dev=571766744, st\_nlink=1, st\_uid=0, st\_gid=0, st\_size=12, st\_atime=1537703765, st\_mtime=1537703765, st\_ctime=1537703765)
+\end{Verbatim}
+            
+    Pour ceux que ça intéresse, l'objet retourné par cette méthode
+\texttt{stat} est un \texttt{namedtuple}, que l'on va voir très bientôt.\\
+
+On accède aux différentes informations comme ceci:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} la taille du fichier en octets est de 11 }
+         \PY{c+c1}{\PYZsh{} car il faut compter un caractère \PYZdq{}newline\PYZdq{} en fin de ligne }
+         \PY{n}{path}\PY{o}{.}\PY{n}{stat}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{st\PYZus{}size}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:} 12
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} la date de dernière modification, sous forme d\PYZsq{}un entier}
+         \PY{c+c1}{\PYZsh{} c\PYZsq{}est le nombre de secondes depuis le 1er Janvier 1970}
+         \PY{n}{mtime} \PY{o}{=} \PY{n}{path}\PY{o}{.}\PY{n}{stat}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{st\PYZus{}mtime}
+         \PY{n}{mtime}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} 1537703765.728249
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} que je peux rendre lisible comme ceci}
+         \PY{c+c1}{\PYZsh{} en anticipant sur le module datetime}
+         \PY{k+kn}{from} \PY{n+nn}{datetime} \PY{k}{import} \PY{n}{datetime}
+         \PY{n}{mtime\PYZus{}datetime} \PY{o}{=} \PY{n}{datetime}\PY{o}{.}\PY{n}{fromtimestamp}\PY{p}{(}\PY{n}{mtime}\PY{p}{)}
+         \PY{n}{mtime\PYZus{}datetime}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} datetime.datetime(2018, 9, 23, 13, 56, 5, 728249)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} ou encore, si je formatte pour n\PYZsq{}obtenir que}
+         \PY{c+c1}{\PYZsh{} l\PYZsq{}heure et la minute}
+         \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{mtime\PYZus{}datetime:}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{H:}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{M\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}13}]:} '13:56'
+\end{Verbatim}
+            
+    \hypertarget{duxe9truire-un-fichier}{%
+\subparagraph{Détruire un fichier}\label{duxe9truire-un-fichier}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} je peux maintenant détruire le fichier}
+         \PY{n}{path}\PY{o}{.}\PY{n}{unlink}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} ou encore mieux, si je veux détruire }
+         \PY{c+c1}{\PYZsh{} seulement dans le cas où il existe je peux aussi faire}
+         \PY{k}{try}\PY{p}{:} 
+             \PY{n}{path}\PY{o}{.}\PY{n}{unlink}\PY{p}{(}\PY{p}{)}
+         \PY{k}{except} \PY{n+ne}{FileNotFoundError}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{no need to remove}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+no need to remove
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{c+c1}{\PYZsh{} et maintenant il n\PYZsq{}existe plus}
+         \PY{n}{path}\PY{o}{.}\PY{n}{exists}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}16}]:} False
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} je peux aussi retrouver le nom du fichier comme ceci}
+         \PY{c+c1}{\PYZsh{} attention ce n\PYZsq{}est pas une méthode mais un attribut }
+         \PY{c+c1}{\PYZsh{} c\PYZsq{}est pourquoi il n\PYZsq{}y a pas de parenthèses}
+         \PY{n}{path}\PY{o}{.}\PY{n}{name}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}17}]:} 'fichier-temoin'
+\end{Verbatim}
+            
+    \hypertarget{recherche-de-fichiers}{%
+\subparagraph{Recherche de fichiers\\\\}\label{recherche-de-fichiers}}
+
+    Maintenant je voudrais connaître la liste des fichiers de nom
+\texttt{*.json} dans le directory \texttt{data}.\\
+
+La méthode la plus naturelle consiste à créer une instance de
+\texttt{Path} associée au directory lui-même:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{dirpath} \PY{o}{=} \PY{n}{Path}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{./data/}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    Sur cet objet la méthode \texttt{glob} nous retourne un itérable qui
+contient ce qu'on veut:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} tous les fichiers *.json dans le répertoire data/}
+         \PY{k}{for} \PY{n}{json} \PY{o+ow}{in} \PY{n}{dirpath}\PY{o}{.}\PY{n}{glob}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{*.json}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{json}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{documentation-compluxe8te}{%
+\subparagraph{Documentation complète\\\\}\label{documentation-compluxe8te}}
+
+    Voyez \href{https://docs.python.org/3/library/pathlib.html}{la
+documentation complète ici}
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    Pour ceux qui sont déjà familiers avec les classes, j'en profite pour
+vous faire remarquer le type de notre objet path
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n+nb}{type}\PY{p}{(}\PY{n}{path}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}20}]:} pathlib.WindowsPath
+\end{Verbatim}
+            
+    qui n'est pas \texttt{Path}, mais en fait une sous-classe de
+\texttt{Path} qui est - sur la plateforme du MOOC au moins, qui
+fonctionne sous linux - un objet de type \texttt{PosixPath}, qui est une
+sous-classe de \texttt{Path}, comme vous pouvez le voir:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{k+kn}{from} \PY{n+nn}{pathlib} \PY{k}{import} \PY{n}{PosixPath}
+         \PY{n+nb}{issubclass}\PY{p}{(}\PY{n}{PosixPath}\PY{p}{,} \PY{n}{Path}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}21}]:} True
+\end{Verbatim}
+            
+    Ce qui fait que mécaniquement, path est bien une instance de
+\texttt{Path}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{path}\PY{p}{,} \PY{n}{Path}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}22}]:} True
+\end{Verbatim}
+            
+    ce qui est heureux puisqu'on avait utilisé \texttt{Path()} pour
+construire l'objet \texttt{path} au départ :)

@@ -1,0 +1,394 @@
+    \hypertarget{les-fichiers}{%
+\section{Les fichiers}\label{les-fichiers}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    Voici quelques utilisations habituelles du type fichier en Python.
+
+    \hypertarget{avec-un-context-manager}{%
+\subsubsection{\texorpdfstring{Avec un \emph{context
+manager}}{Avec un context manager}}\label{avec-un-context-manager}}
+
+    Nous avons vu dans la vidéo les mécanismes de base sur les fichiers.
+Nous avons vu notamment qu'il est important de bien fermer un fichier
+après usage. On a vu aussi qu'il est recommandé de \textbf{toujours}
+utiliser l'instruction \texttt{with} et de contrôler son encodage. Il
+est donc recommandé de faire~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} avec un `with\PYZsq{} on garantit la fermeture du fichier}
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{foo.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{w}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{sortie}\PY{p}{:}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{:}
+                \PY{n}{sortie}\PY{o}{.}\PY{n}{write}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}i\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{les-modes-douverture}{%
+\subsubsection{Les modes d'ouverture}\label{les-modes-douverture}}
+
+    Les modes d'ouverture les plus utilisés sont~:
+  
+\begin{itemize}
+	\item
+	\texttt{\textquotesingle{}r\textquotesingle{}} (la chaîne contenant
+	l'unique caractère \texttt{r}) pour ouvrir un fichier en lecture
+	seulement~;
+	\item
+	\texttt{\textquotesingle{}w\textquotesingle{}} en écriture
+	seulement~; le contenu précédent du fichier, s'il existait, est perdu~;
+	\item
+	\texttt{\textquotesingle{}a\textquotesingle{}} en écriture seulement~;
+	mais pour ajouter du contenu en fin de fichier.
+\end{itemize}
+
+    Voici par exemple comment on pourrait ajouter deux lignes de texte dans
+le fichier \texttt{foo.txt} qui contient, à ce stade du notebook, deux
+entiers~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} on ouvre le fichier en mode \PYZsq{}a\PYZsq{} comme append (= ajouter)}
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{foo.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{sortie}\PY{p}{:}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{102}\PY{p}{)}\PY{p}{:}
+                \PY{n}{sortie}\PY{o}{.}\PY{n}{write}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}i\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} maintenant on regarde ce que contient le fichier}
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{foo.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{entree}\PY{p}{:} \PY{c+c1}{\PYZsh{} remarquez que sans \PYZsq{}mode\PYZsq{}, on ouvre en lecture seule}
+            \PY{k}{for} \PY{n}{line} \PY{o+ow}{in} \PY{n}{entree}\PY{p}{:}
+                \PY{c+c1}{\PYZsh{} line contient déjà un retour à la ligne}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{line}\PY{p}{,} \PY{n}{end}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+0
+1
+100
+101
+
+    \end{Verbatim}
+
+    Il existe de nombreuses variantes au mode d'ouverture, pour par
+exemple~:
+\begin{itemize}
+	\item 
+	ouvrir le fichier en lecture \emph{et} en écriture (mode
+	\texttt{+})~;
+	\item
+	ouvrir le fichier en mode binaire (mode \texttt{b}).
+\end{itemize}
+
+Ces variantes sont décrites dans
+\href{https://docs.python.org/3/library/functions.html\#open}{la section
+sur la fonction built-in \texttt{open}} dans la documentation Python.
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{un-fichier-est-un-ituxe9rateur}{%
+\subsubsection{Un fichier est un
+itérateur}\label{un-fichier-est-un-ituxe9rateur}}
+
+    Nous reparlerons des notions d'itérable et d'itérateur dans les semaines
+suivantes. Pour l'instant, on peut dire qu'un fichier - qui donc
+\textbf{est itérable} puisqu'on peut le lire par une boucle \texttt{for}
+- est aussi \textbf{son propre itérateur}. Cela implique que l'on ne
+peut le parcourir qu'une fois dans une boucle \texttt{for}. Pour le
+reparcourir, il faut le fermer et l'ouvrir de nouveau.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} un fichier est son propre itérateur}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{foo.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{entree}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{entree}\PY{o}{.}\PY{n+nf+fm}{\PYZus{}\PYZus{}iter\PYZus{}\PYZus{}}\PY{p}{(}\PY{p}{)} \PY{o+ow}{is} \PY{n}{entree}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+True
+
+    \end{Verbatim}
+
+    Par conséquent, écrire deux boucles \texttt{for} imbriquées sur
+\textbf{le même objet fichier} ne \textbf{fonctionnerait pas} comme on
+pourrait s'y attendre.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} Si l\PYZsq{}on essaie d\PYZsq{}écrire deux boucles imbriquées}
+        \PY{c+c1}{\PYZsh{} sur le même objet fichier, le résultat est inattendu}
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{foo.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{entree}\PY{p}{:}
+            \PY{k}{for} \PY{n}{l1} \PY{o+ow}{in} \PY{n}{entree}\PY{p}{:}
+                \PY{c+c1}{\PYZsh{} on enlève les fins de ligne}
+                \PY{n}{l1} \PY{o}{=} \PY{n}{l1}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)}
+                \PY{k}{for} \PY{n}{l2} \PY{o+ow}{in} \PY{n}{entree}\PY{p}{:}
+                    \PY{c+c1}{\PYZsh{} on enlève les fins de ligne}
+                    \PY{n}{l2} \PY{o}{=} \PY{n}{l2}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)}
+                    \PY{n+nb}{print}\PY{p}{(}\PY{n}{l1}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{x}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{l2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+0 x 1
+0 x 100
+0 x 101
+
+    \end{Verbatim}
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    \hypertarget{autres-muxe9thodes}{%
+\subsubsection{Autres méthodes}\label{autres-muxe9thodes}}
+
+    Vous pouvez également accéder à des fonctions de beaucoup plus bas
+niveau, notamment celle fournies directement par le système
+d'exploitation~; nous allons en décrire deux parmi les plus utiles.
+
+    \hypertarget{digression---repr}{%
+\subparagraph{\texorpdfstring{Digression -
+\texttt{repr()}}{Digression - repr()}\\\\}\label{digression---repr}}
+
+    Comme nous allons utiliser maintenant des outils d'assez bas niveau pour
+lire du texte, pour examiner ce texte nous allons utiliser la fonction
+\texttt{repr()}, et voici pourquoi~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} construisons à la main une chaîne qui contient deux lignes}
+        \PY{n}{lines} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{abc}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{def}\PY{l+s+s2}{\PYZdq{}}  \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} si on l\PYZsq{}imprime on voit bien les retours à la ligne}
+        \PY{c+c1}{\PYZsh{} d\PYZsq{}ailleurs on sait qu\PYZsq{}il n\PYZsq{}est pas utile}
+        \PY{c+c1}{\PYZsh{} d\PYZsq{}ajouter un retour à la ligne à la fin}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{lines}\PY{p}{,} \PY{n}{end}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+abc
+def
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} vérifions que repr() nous permet de bien}
+        \PY{c+c1}{\PYZsh{} voir le contenu de cette chaine}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{repr}\PY{p}{(}\PY{n}{lines}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+'abc\textbackslash{}ndef\textbackslash{}n'
+
+    \end{Verbatim}
+
+    \hypertarget{lire-un-contenu---bas-niveau}{%
+\subparagraph{Lire un contenu - bas
+niveau\\\\}\label{lire-un-contenu---bas-niveau}}
+
+    Revenons aux fichiers~; la méthode \texttt{read()} permet de lire dans
+le fichier un buffer d'une certaine taille~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} read() retourne TOUT le contenu}
+         \PY{c+c1}{\PYZsh{} ne pas utiliser avec de très gros fichiers bien sûr}
+         
+         \PY{c+c1}{\PYZsh{} une autre façon de montrer tout le contenu du fichier}
+         \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{foo.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{entree}\PY{p}{:}
+             \PY{n}{full\PYZus{}contents} \PY{o}{=} \PY{n}{entree}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Contenu complet}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}full\PYZus{}contents\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{end}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Contenu complet
+0
+1
+100
+101
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} lire dans le fichier deux blocs de quatre caractères}
+         \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{foo.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{entree}\PY{p}{:}
+             \PY{k}{for} \PY{n}{bloc} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{:}
+                 \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Bloc }\PY{l+s+si}{\PYZob{}bloc\PYZcb{}}\PY{l+s+s2}{ \PYZgt{}\PYZgt{}}\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{repr(entree.read(4))\PYZcb{}\PYZlt{}\PYZlt{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Bloc 0 >>'0\textbackslash{}n1\textbackslash{}n'<<
+Bloc 1 >>'100\textbackslash{}n'<<
+
+    \end{Verbatim}
+
+    On voit donc que chaque bloc contient bien quatre caractères en comptant
+les sauts de ligne~:
+
+\begin{longtable}[]{@{}lr@{}}
+\toprule
+bloc \# & contenu\tabularnewline
+\midrule
+\endhead
+0 & un \texttt{0}, un \emph{newline}, un \texttt{1}, un
+\emph{newline}\tabularnewline
+1 & un \texttt{1}, deux \texttt{0}, un \emph{newline}\tabularnewline
+\bottomrule
+\end{longtable}
+
+    \hypertarget{la-muxe9thode-flush}{%
+\subparagraph{\texorpdfstring{La méthode
+\texttt{flush}}{La méthode flush}\\\\}\label{la-muxe9thode-flush}}
+
+    Les entrées-sorties sur fichier sont bien souvent \emph{bufferisées} par
+le système d'exploitation. Cela signifie qu'un appel à \texttt{write} ne
+provoque pas forcément une écriture immédiate, car pour des raisons de
+performance on attend d'avoir suffisamment de matière avant d'écrire sur
+le disque.\\
+
+Il y a des cas où ce comportement peut s'avérer gênant, et où on a
+besoin d'écrire immédiatement (et donc de vider le \emph{buffer}), et
+c'est le propos de la méthode \texttt{flush}.
+
+    \hypertarget{fichiers-textuels-et-fichiers-binaires}{%
+\subsubsection{Fichiers textuels et fichiers
+binaires}\label{fichiers-textuels-et-fichiers-binaires}}
+
+    De la même façon que le langage propose les deux types \texttt{str} et
+\texttt{bytes}, il est possible d'ouvrir un fichier en mode
+\emph{textuel} ou en mode \emph{binaire}.\\
+
+    Les fichiers que nous avons vus jusqu'ici étaient ouverts en mode
+\emph{textuel} (c'est le défaut), et c'est pourquoi nous avons interagi
+avec eux avec des objets de type \texttt{str}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} un fichier ouvert en mode textuel nous donne des str}
+         \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{foo.txt}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n+nb}{input}\PY{p}{:}
+             \PY{k}{for} \PY{n}{line} \PY{o+ow}{in} \PY{n+nb}{input}\PY{p}{:}
+                 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{on a lu un objet de type}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{type}\PY{p}{(}\PY{n}{line}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+on a lu un objet de type <class 'str'>
+on a lu un objet de type <class 'str'>
+on a lu un objet de type <class 'str'>
+on a lu un objet de type <class 'str'>
+
+    \end{Verbatim}
+
+    Lorsque ce n'est pas le comportement souhaité, on peut~:
+    
+\begin{itemize}
+	\item 
+	ouvrir le fichier en mode \emph{binaire} - pour cela on ajoute le caractère
+	\texttt{b} au mode d'ouverture~;
+	\item
+	et on peut alors interagir avec le fichier avec des objets de type \texttt{bytes}
+\end{itemize}
+
+    Pour illustrer ce trait, nous allons~: 0. créer un fichier en mode
+texte, et y insérer du texte en UTF-8~; 0. relire le fichier en mode
+binaire, et retrouver le codage des différents caractères.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} phase 1 : on écrit un fichier avec du texte en UTF\PYZhy{}8}
+         \PY{c+c1}{\PYZsh{} on ouvre donc le fichier en mode texte}
+         \PY{c+c1}{\PYZsh{} en toute rigueur il faut préciser l\PYZsq{}encodage,}
+         \PY{c+c1}{\PYZsh{} si on ne le fait pas il sera déterminé}
+         \PY{c+c1}{\PYZsh{} à partir de vos réglages système}
+         \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{strbytes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{w}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{output}\PY{p}{:}
+             \PY{n}{output}\PY{o}{.}\PY{n}{write}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{déjà l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{été}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} phase 2: on ouvre le fichier en mode binaire}
+         \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{strbytes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rb}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{rawinput}\PY{p}{:}
+             \PY{c+c1}{\PYZsh{} on lit tout le contenu}
+             \PY{n}{octets} \PY{o}{=} \PY{n}{rawinput}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}
+             \PY{c+c1}{\PYZsh{} qui est de type bytes}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{on a lu un objet de type}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{type}\PY{p}{(}\PY{n}{octets}\PY{p}{)}\PY{p}{)}
+             \PY{c+c1}{\PYZsh{} si on regarde chaque octet un par un}
+             \PY{k}{for} \PY{n}{i}\PY{p}{,} \PY{n}{octet} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{octets}\PY{p}{)}\PY{p}{:}
+                 \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}i\PYZcb{}}\PY{l+s+s2}{ → }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{repr(chr(octet))\PYZcb{} [}\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{hex(octet)\PYZcb{}]}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+on a lu un objet de type <class 'bytes'>
+0 → 'd' [0x64]
+1 → 'Ã' [0xc3]
+2 → '©' [0xa9]
+3 → 'j' [0x6a]
+4 → 'Ã' [0xc3]
+5 → '\textbackslash{}xa0' [0xa0]
+6 → ' ' [0x20]
+7 → 'l' [0x6c]
+8 → "'" [0x27]
+9 → 'Ã' [0xc3]
+10 → '©' [0xa9]
+11 → 't' [0x74]
+12 → 'Ã' [0xc3]
+13 → '©' [0xa9]
+14 → '\textbackslash{}r' [0xd]
+15 → '\textbackslash{}n' [0xa]
+
+    \end{Verbatim}
+
+    Vous retrouvez ainsi le fait que l'unique caractère Unicode \texttt{é} a
+été encodé par UTF-8 sous la forme de deux octets de code hexadécimal
+\texttt{0xc3} et \texttt{0xa9}.\\
+
+    Vous pouvez également consulter ce site qui visualise l'encodage UTF-8,
+avec notre séquence d'entrée~:\\
+
+\href{https://mothereff.in/utf-8\#d\%C3\%A9j\%C3\%A0\%20l\%27\%C3\%A9t\%C3\%A9\%0A}{https://mothereff.in/utf-8\#d\%C3\%A9j\%C3\%A0\%20l\%27\%C3\%A9t\%C3\%A9\%0A}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} on peut comparer le nombre d\PYZsq{}octets et le nombre de caractères}
+         \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{strbytes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{textfile}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{en mode texte, }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{len(textfile.read())\PYZcb{} caractères}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{strbytes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rb}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{binfile}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{en mode binaire, }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{len(binfile.read())\PYZcb{} octets}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+en mode texte, 11 caractères
+en mode binaire, 16 octets
+
+    \end{Verbatim}
+
+    Ce qui correspond au fait que nos quatre caractères non-ASCII (3 x
+\texttt{é} et 1 x \texttt{à}) sont tous encodés par UTF-8 comme deux
+octets, comme vous pouvez vous en assurer
+\href{https://mothereff.in/utf-8\#\%C3\%A9}{ici pour \texttt{é}} et
+\href{https://mothereff.in/utf-8\#\%C3\%A0}{là pour \texttt{à}}.
+
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+    Pour une description exhaustive vous pouvez vous reporter~:
+    
+\begin{itemize}
+	\item 
+	au \href{https://docs.python.org/3/glossary.html\#term-file-object}{glossaire
+	sur la notion de \texttt{object\ file}},
+	\item
+	et aussi et surtout \href{https://docs.python.org/3/library/io.html\#module-io}{au module
+	\texttt{io}} qui décrit plus en détail les fonctionnalités disponibles.
+\end{itemize}

@@ -1,0 +1,80 @@
+    \hypertarget{dictionnaires-et-listes}{%
+\section{Dictionnaires et listes}\label{dictionnaires-et-listes}}
+
+    \hypertarget{exercice---niveau-basique}{%
+\subsection{Exercice - niveau basique}\label{exercice---niveau-basique}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}graph\PYZus{}dict} \PY{k}{import} \PY{n}{exo\PYZus{}graph\PYZus{}dict}
+\end{Verbatim}
+
+
+    On veut implémenter un petit modèle de graphes. Comme on a les données
+dans des fichiers, on veut analyser des fichiers d'entrée qui
+ressemblent à ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{o}{!}cat data/graph1.txt
+\end{Verbatim}
+
+
+    qui signifierait~:
+    
+\begin{itemize}
+	\item 
+	un graphe à 3 sommets \emph{s1}, \emph{s2} et \emph{s3};
+	\item
+	et 4 arêtes
+	\begin{itemize}
+		\item 
+		une entre \emph{s1} et \emph{s2} de longueur 10;
+		\item
+		une entre \emph{s2} et \emph{s3} de longueur 12;
+		\item
+		etc\ldots{}
+	\end{itemize}
+\end{itemize}
+
+    On vous demande d'écrire une fonction qui lit un tel fichier texte, et
+construit (et retourne) un dictionnaire Python qui représente ce graphe.
+
+Dans cet exercice on choisit~:
+
+\begin{itemize}
+	\item
+	de modéliser le graphe comme un dictionnaire indexé sur les (noms de) sommets~;
+	\item
+	et chaque valeur est une liste de tuples de la forme (\emph{suivant}, \emph{longueur}), dans
+	l'ordre d'apparition dans le fichier d'entrée.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} voici ce qu\PYZsq{}on obtiendrait par exemple avec les données ci\PYZhy{}dessus}
+        \PY{n}{exo\PYZus{}graph\PYZus{}dict}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \textbf{Notes}
+    
+\begin{itemize}
+	\item
+    Vous remarquerez que l'exemple ci-dessus retourne un
+	dictionnaire standard; une solution qui utiliserait \texttt{defaultdict}
+	est acceptable également;
+	\item
+	Notez bien également que dans le résultat,
+	la longueur d'un arc est attendue comme un \textbf{\texttt{int}}.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} n\PYZsq{}oubliez pas d\PYZsq{}importer si nécessaire}
+        
+        \PY{c+c1}{\PYZsh{} à vous de jouer}
+        \PY{k}{def} \PY{n+nf}{graph\PYZus{}dict}\PY{p}{(}\PY{n}{filename}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{votre code}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}graph\PYZus{}dict}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{graph\PYZus{}dict}\PY{p}{)}
+\end{Verbatim}

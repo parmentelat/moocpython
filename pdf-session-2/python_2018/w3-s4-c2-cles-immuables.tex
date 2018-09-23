@@ -1,0 +1,173 @@
+    \hypertarget{cluxe9s-immuables}{%
+\section{Clés immuables}\label{cluxe9s-immuables}}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    Nous avons vu comment manipuler un dictionnaire, il nous reste à voir un
+peu plus en détail les contraintes qui sont mises par le langage sur ce
+qui peut servir de clé dans un dictionnaire. On parle dans ce complément
+spécifiquement des clefs construites à partir des types
+\texttt{built-in}. Le cas de vos propres classes utilisées comme clefs
+de dictionnaires n'est pas abordé dans ce complément.
+
+    \hypertarget{une-cluxe9-doit-uxeatre-immuable}{%
+\subsubsection{Une clé doit être
+immuable}\label{une-cluxe9-doit-uxeatre-immuable}}
+
+    Si vous vous souvenez de la vidéo sur les tables de hash, la mécanique
+interne du dictionnaire repose sur le calcul, à partir de chaque clé,
+d'une fonction de hachage.\\
+
+C'est-à-dire que, pour simplifier, on localise la présence d'une clé en
+calculant d'abord
+
+\(f(clé) = hash\)\\
+
+puis on poursuit la recherche en utilisant \(hash\) comme indice dans le
+tableau contenant les couples (clé, valeur).\\
+
+On le rappelle, c'est cette astuce qui permet de réaliser les opérations
+sur les dictionnaires en temps constant - c'est-à-dire indépendamment du
+nombre d'éléments.\\
+
+    Cependant, pour que ce mécanisme fonctionne, il est indispensable que
+\textbf{la valeur de la clé reste inchangée} pendant la durée de vie du
+dictionnaire. Sinon, bien entendu, on pourrait avoir le scénario
+suivant~:
+
+\begin{itemize}
+	\item 
+	on range un tuple \texttt{(clef,\ valeur)} à un premier
+	indice \(f(clef) = hash_1\)~;
+	\item
+	on modifie la valeur de \(clef\) qui
+	devient \(clef'\)~;
+	\item
+	on recherche notre valeur à l'indice
+	\(f(clef') = hash_2 \neq hash_1\).
+\end{itemize}
+
+et donc, avec ces hypothèses, on n'a plus la garantie de bon
+fonctionnement de la logique.
+
+    \hypertarget{une-cluxe9-doit-uxeatre-globalement-immuable}{%
+\subsubsection{Une clé doit être globalement
+immuable}\label{une-cluxe9-doit-uxeatre-globalement-immuable}}
+
+    Nous avons depuis le début du cours longuement insisté sur le caractère
+mutable ou immuable des différents types prédéfinis de Python. Vous
+devez donc à présent avoir au moins en partie ce tableau en tête~:
+
+\begin{longtable}[]{@{}rr@{}}
+\toprule
+Type & Mutable~?\tabularnewline
+\midrule
+\endhead
+\texttt{int}, \texttt{float} & immuable\tabularnewline
+\texttt{complex},\texttt{bool} & immuable\tabularnewline
+\texttt{str} & immuable\tabularnewline
+\texttt{list} & mutable\tabularnewline
+\texttt{dict} & mutable\tabularnewline
+\texttt{set} & mutable\tabularnewline
+\texttt{frozenset} & immuable\tabularnewline
+\bottomrule
+\end{longtable}
+
+    Le point important ici, est qu'il \textbf{ne suffit pas}, pour une clé,
+d'être \textbf{de type immuable}.\\
+
+On peut le voir sur un exemple très simple~; donnons-nous donc un
+dictionnaire~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{n}{d} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+\end{Verbatim}
+
+
+    Et commençons avec un objet de type immuable, un tuple d'entiers~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{bonne\PYZus{}cle} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+
+    Cet objet est non seulement \textbf{de type immuable}, mais tous ses
+composants et sous-composants sont \textbf{immuables}, on peut donc
+l'utiliser comme clé dans le dictionnaire~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{d}\PY{p}{[}\PY{n}{bonne\PYZus{}cle}\PY{p}{]} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{pas de probleme ici}\PY{l+s+s2}{\PYZdq{}}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{d}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\{(1, 2): 'pas de probleme ici'\}
+
+    \end{Verbatim}
+
+    Si à présent on essaie d'utiliser comme clé un tuple qui contient une
+liste~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{mauvaise\PYZus{}cle} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    Il se trouve que cette clé, \textbf{bien que de type immuable}, peut
+être \textbf{indirectement modifiée} puisque~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{mauvaise\PYZus{}cle}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{mauvaise\PYZus{}cle}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+(1, [1, 2, 3])
+
+    \end{Verbatim}
+
+    Et c'est pourquoi on ne peut pas utiliser cet objet comme clé dans le
+dictionnaire~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} provoque une exception}
+        \PY{n}{d}\PY{p}{[}\PY{n}{mauvaise\PYZus{}cle}\PY{p}{]} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{on ne peut pas faire ceci}\PY{l+s+s1}{\PYZsq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+
+        TypeError                                 Traceback (most recent call last)
+
+        <ipython-input-6-08a3625a4eed> in <module>()
+          1 \# provoque une exception
+    ----> 2 d[mauvaise\_cle] = 'on ne peut pas faire ceci'
+    
+
+        TypeError: unhashable type: 'list'
+
+    \end{Verbatim}
+
+    Pour conclure, il faut retenir qu'un objet n'est éligible pour être
+utilisé comme clé que s'il est \textbf{composé de types immuables de
+haut en bas} de la structure de données.\\
+
+    La raison d'être principale du type \texttt{tuple}, que nous avons vu la
+semaine passée, et du type \texttt{frozenset}, que nous verrons très
+prochainement, est précisément de construire de tels objets globalement
+immuables.
+
+    \hypertarget{uxe9pilogue}{%
+\subsubsection{Épilogue}\label{uxe9pilogue}}
+
+    Tout ceci est valable pour les types \emph{built-in}. Nous verrons que
+pour les types définis par l'utilisateur - les classes donc - que nous
+effleurons à la fin de cette semaine et que nous étudions plus en
+profondeur en semaine 6, c'est un autre mécanisme qui est utilisé pour
+calculer la clé de hachage d'une instance de classe.

@@ -1,0 +1,107 @@
+    \hypertarget{ensembles}{%
+\section{Ensembles}\label{ensembles}}
+
+    \hypertarget{exercice---niveau-basique}{%
+\subsection{Exercice - niveau basique}\label{exercice---niveau-basique}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} charger l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}read\PYZus{}set} \PY{k}{import} \PY{n}{exo\PYZus{}read\PYZus{}set}
+\end{Verbatim}
+
+
+    On se propose d'écrire une fonction \texttt{read\_set} qui construit un
+ensemble à partir du contenu d'un fichier. Voici par exemple un fichier
+d'entrée~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{o}{!}cat data/setref1.txt
+\end{Verbatim}
+
+
+    \texttt{read\_set} va prendre en argument un nom de fichier (vous pouvez
+supposer qu'il existe), enlever les espaces éventuelles au début et à la
+fin de chaque ligne, et construire un ensemble de toutes les lignes~;
+par exemple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}read\PYZus{}set}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} écrivez votre code ici}
+        \PY{k}{def} \PY{n+nf}{read\PYZus{}set}\PY{p}{(}\PY{n}{filename}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{votre code}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} vérifiez votre code ici}
+        \PY{n}{exo\PYZus{}read\PYZus{}set}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{read\PYZus{}set}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{deuxiuxe8me-partie---niveau-basique}{%
+\subsection{Deuxième partie - niveau
+basique}\label{deuxiuxe8me-partie---niveau-basique}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} la définition de l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}read\PYZus{}set} \PY{k}{import} \PY{n}{exo\PYZus{}search\PYZus{}in\PYZus{}set}
+\end{Verbatim}
+
+
+    Ceci étant acquis, on veut écrire une deuxième fonction
+\texttt{search\_in\_set} qui prend en argument deux fichiers~:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{filename\_reference} est le nom d'un fichier contenant des
+  mots de référence~;
+\item
+  \texttt{filename} est le nom d'un fichier contenant des mots, dont on
+  veut savoir s'ils sont ou non dans les références.
+\end{itemize}
+
+Pour cela \texttt{search\_in\_set} doit retourner une liste, contenant
+pour chaque ligne du fichier \texttt{filename} un tuple avec~:
+
+\begin{itemize}
+\tightlist
+\item
+  la ligne (sans les espaces de début et de fin, ni la fin de ligne)~;
+\item
+  un booléen qui indique si ce mot est présent dans les références ou
+  pas.
+\end{itemize}
+
+Par exemple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{o}{!}cat data/setref1.txt
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{o}{!}cat data/setsample1.txt
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}search\PYZus{}in\PYZus{}set}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} à vous}
+        \PY{k}{def} \PY{n+nf}{search\PYZus{}in\PYZus{}set}\PY{p}{(}\PY{n}{filename\PYZus{}reference}\PY{p}{,} \PY{n}{filename}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{votre code}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} vérifiez}
+        \PY{n}{exo\PYZus{}search\PYZus{}in\PYZus{}set}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{search\PYZus{}in\PYZus{}set}\PY{p}{)}
+\end{Verbatim}

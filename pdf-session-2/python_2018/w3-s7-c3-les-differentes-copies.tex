@@ -1,0 +1,343 @@
+    \hypertarget{les-diffuxe9rentes-copies}{%
+\section{Les différentes copies}\label{les-diffuxe9rentes-copies}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} ipythontutor
+\end{Verbatim}
+
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    \hypertarget{deux-types-de-copie}{%
+\subsubsection{Deux types de copie}\label{deux-types-de-copie}}
+
+    Pour résumer les deux grands types de copie que l'on a vus dans la
+vidéo~:
+
+\begin{itemize}
+	\item 
+	La \emph{shallow copy} - de l'anglais \emph{shallow} qui
+	signifie superficiel~;
+	\item
+	La \emph{deep copy} - de \emph{deep} qui
+	signifie profond.
+\end{itemize}
+
+    \hypertarget{le-module-copy}{%
+\subsubsection{\texorpdfstring{Le module
+\texttt{copy}}{Le module copy}}\label{le-module-copy}}
+
+    Pour réaliser une copie, la méthode la plus simple, en ceci qu'elle
+fonctionne avec tous les types de manière identique, consiste à utiliser
+\href{https://docs.python.org/3/library/copy.html}{le module standard
+\texttt{copy}}, et notamment~:
+
+\begin{itemize}
+	\item 
+	\texttt{copy.copy} pour une copie superficielle~;
+	\item
+	\texttt{copy.deepcopy} pour une copie en profondeur.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{copy}
+        \PY{c+c1}{\PYZsh{}help(copy.copy)}
+        \PY{c+c1}{\PYZsh{}help(copy.deepcopy)}
+\end{Verbatim}
+
+
+    \hypertarget{un-exemple}{%
+\subsubsection{Un exemple}\label{un-exemple}}
+
+    Nous allons voir le résultat des deux formes de copie sur un même sujet
+de départ.
+
+    \hypertarget{la-copie-superficielle-shallow-copie-copy.copy}{%
+\paragraph{\texorpdfstring{La copie superficielle / \emph{shallow} copie
+/
+\texttt{copy.copy}}{La copie superficielle / shallow copie / copy.copy}\\\\}\label{la-copie-superficielle-shallow-copie-copy.copy}}
+
+    N'oubliez pas de cliquer le bouton \texttt{Forward} dans la fenêtre
+pythontutor~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{ipythontutor} height=410 curInstr=6
+        import copy
+        \PYZsh{} On se donne un objet de départ
+        source = [
+            [1, 2, 3],  \PYZsh{} une liste
+            \PYZob{}1, 2, 3\PYZcb{},  \PYZsh{} un ensemble
+            (1, 2, 3),  \PYZsh{} un tuple
+            \PYZsq{}123\PYZsq{},       \PYZsh{} un string
+            123,         \PYZsh{} un entier
+        ]
+        \PYZsh{} une copie simple renvoie ceci
+        shallow\PYZus{}copy = copy.copy(source)
+\end{Verbatim}
+
+
+    Vous remarquez que~:
+    
+\begin{itemize}
+	\item 
+	la source et la copie partagent tous leurs
+	(sous-)éléments, et notamment la liste \texttt{source{[}0{]}} et
+	l'ensemble \texttt{source{[}1{]}}~;
+	\item
+	ainsi, après cette copie, on peut
+	modifier l'un de ces deux objets (la liste ou l'ensemble), et ainsi
+	modifier la source \textbf{et} la copie.
+\end{itemize}
+
+    On rappelle aussi que, la source étant une liste, on aurait pu aussi
+bien faire la copie superficielle avec
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{shallow2 }\OperatorTok{=}\NormalTok{ source[:]}
+\end{Highlighting}
+\end{Shaded}
+
+    \hypertarget{la-copie-profonde-deep-copie-copy.deepcopy}{%
+\paragraph{\texorpdfstring{La copie profonde / \emph{deep} copie /
+\texttt{copy.deepcopy}}{La copie profonde / deep copie / copy.deepcopy}}\label{la-copie-profonde-deep-copie-copy.deepcopy}}
+
+    Sur le même objet de départ, voici ce que fait la copie profonde~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{ipythontutor} height=410 curInstr=6
+        import copy
+        \PYZsh{} On se donne un objet de départ
+        source = [
+            [1, 2, 3],  \PYZsh{} une liste
+            \PYZob{}1, 2, 3\PYZcb{},  \PYZsh{} un ensemble
+            (1, 2, 3),  \PYZsh{} un tuple
+            \PYZsq{}123\PYZsq{},       \PYZsh{} un string
+            123,         \PYZsh{} un entier
+        ]
+        \PYZsh{} une copie profonde renvoie ceci
+        deep\PYZus{}copy = copy.deepcopy(source)
+\end{Verbatim}
+
+
+    Ici, il faut remarquer que~:
+    
+\begin{itemize}
+	\item 
+	les deux objets mutables accessibles via
+	\texttt{source}, c'est-à-dire \textbf{la liste} \texttt{source{[}0{]}}
+	et \textbf{l'ensemble \texttt{source{[}1{]}}}, ont été tous deux dupliqués~;
+	\item
+	\textbf{le tuple} correspondant à \texttt{source{[}2{]}}
+	n'est \textbf{pas dupliqué}, mais comme il n'est \textbf{pas mutable} on
+	ne peut pas modifier la copie au travers de la source~;
+	\item
+	de manière générale, on a la bonne propriété que la source et sa copie ne partagent
+	rien qui soit modifiable~;
+	\item
+	et donc on ne peut pas modifier l'un au
+	travers de l'autre.
+\end{itemize}
+
+On retrouve donc à nouveau l'optimisation qui est mise en place dans
+python pour implémenter les types immuables comme des singletons lorsque
+c'est possible. Cela a été vu en détail dans le complément consacré à
+l'opérateur \texttt{is}.
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} on répète car le code précédent a seulement été exposé à pythontutor}
+        \PY{k+kn}{import} \PY{n+nn}{copy}
+        \PY{n}{source} \PY{o}{=} \PY{p}{[}
+            \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,}  \PY{c+c1}{\PYZsh{} une liste}
+            \PY{p}{\PYZob{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{\PYZcb{}}\PY{p}{,}  \PY{c+c1}{\PYZsh{} un ensemble}
+            \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,}  \PY{c+c1}{\PYZsh{} un tuple}
+            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{123}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}       \PY{c+c1}{\PYZsh{} un string}
+            \PY{l+m+mi}{123}\PY{p}{,}         \PY{c+c1}{\PYZsh{} un entier}
+        \PY{p}{]}
+        \PY{n}{shallow\PYZus{}copy} \PY{o}{=} \PY{n}{copy}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{n}{source}\PY{p}{)}
+        \PY{n}{deep\PYZus{}copy} \PY{o}{=} \PY{n}{copy}\PY{o}{.}\PY{n}{deepcopy}\PY{p}{(}\PY{n}{source}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{objets-uxe9gaux-au-sens-logique}{%
+\subsubsection{\texorpdfstring{Objets \emph{égaux} au sens
+logique}{Objets égaux au sens logique}}\label{objets-uxe9gaux-au-sens-logique}}
+
+    Bien sûr ces trois objets se ressemblent si on fait une comparaison
+\emph{logique} avec \texttt{==}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{source == shallow\PYZus{}copy:}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{source} \PY{o}{==} \PY{n}{shallow\PYZus{}copy}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{source == deep\PYZus{}copy:}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{source} \PY{o}{==} \PY{n}{deep\PYZus{}copy}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+source == shallow\_copy: True
+source == deep\_copy: True
+
+    \end{Verbatim}
+
+    \hypertarget{inspectons-les-objets-de-premier-niveau}{%
+\subsubsection{Inspectons les objets de premier
+niveau}\label{inspectons-les-objets-de-premier-niveau}}
+
+    Mais par contre si on compare \textbf{l'identité} des objets de premier
+niveau, on voit que \texttt{source} et \texttt{shallow\_copy} partagent
+leurs objets~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} voir la cellule ci\PYZhy{}dessous si ceci vous parait peu clair}
+        \PY{k}{for} \PY{n}{i}\PY{p}{,} \PY{p}{(}\PY{n}{source\PYZus{}item}\PY{p}{,} \PY{n}{copy\PYZus{}item}\PY{p}{)} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n+nb}{zip}\PY{p}{(}\PY{n}{source}\PY{p}{,} \PY{n}{shallow\PYZus{}copy}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+            \PY{n}{compare} \PY{o}{=} \PY{n}{source\PYZus{}item} \PY{o+ow}{is} \PY{n}{copy\PYZus{}item}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{source[}\PY{l+s+si}{\PYZob{}i\PYZcb{}}\PY{l+s+s2}{] is shallow\PYZus{}copy[}\PY{l+s+si}{\PYZob{}i\PYZcb{}}\PY{l+s+s2}{] \PYZhy{}\PYZgt{} }\PY{l+s+si}{\PYZob{}compare\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+source[0] is shallow\_copy[0] -> True
+source[1] is shallow\_copy[1] -> True
+source[2] is shallow\_copy[2] -> True
+source[3] is shallow\_copy[3] -> True
+source[4] is shallow\_copy[4] -> True
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} rappel au sujet de zip et enumerate}
+        \PY{c+c1}{\PYZsh{} la cellule ci\PYZhy{}dessous est essentiellement équivalente à}
+        \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{source}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+            \PY{n}{compare} \PY{o}{=} \PY{n}{source}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o+ow}{is} \PY{n}{shallow\PYZus{}copy}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{source[}\PY{l+s+si}{\PYZob{}i\PYZcb{}}\PY{l+s+s2}{] is shallow\PYZus{}copy[}\PY{l+s+si}{\PYZob{}i\PYZcb{}}\PY{l+s+s2}{] \PYZhy{}\PYZgt{} }\PY{l+s+si}{\PYZob{}compare\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+source[0] is shallow\_copy[0] -> True
+source[1] is shallow\_copy[1] -> True
+source[2] is shallow\_copy[2] -> True
+source[3] is shallow\_copy[3] -> True
+source[4] is shallow\_copy[4] -> True
+
+    \end{Verbatim}
+
+    Alors que naturellement ce \textbf{n'est pas le cas} avec la copie en
+profondeur~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{for} \PY{n}{i}\PY{p}{,} \PY{p}{(}\PY{n}{source\PYZus{}item}\PY{p}{,} \PY{n}{deep\PYZus{}item}\PY{p}{)} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n+nb}{zip}\PY{p}{(}\PY{n}{source}\PY{p}{,} \PY{n}{deep\PYZus{}copy}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+            \PY{n}{compare} \PY{o}{=} \PY{n}{source\PYZus{}item} \PY{o+ow}{is} \PY{n}{deep\PYZus{}item}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{source[}\PY{l+s+si}{\PYZob{}i\PYZcb{}}\PY{l+s+s2}{] is deep\PYZus{}copy[}\PY{l+s+si}{\PYZob{}i\PYZcb{}}\PY{l+s+s2}{] \PYZhy{}\PYZgt{} }\PY{l+s+si}{\PYZob{}compare\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+source[0] is deep\_copy[0] -> False
+source[1] is deep\_copy[1] -> False
+source[2] is deep\_copy[2] -> True
+source[3] is deep\_copy[3] -> True
+source[4] is deep\_copy[4] -> True
+
+    \end{Verbatim}
+
+    On retrouve ici ce qu'on avait déjà remarqué sous pythontutor, à savoir
+que les trois derniers objets - immuables - n'ont pas été dupliqués
+comme on aurait pu s'y attendre.
+
+    \hypertarget{on-modifie-la-source}{%
+\subsubsection{On modifie la source}\label{on-modifie-la-source}}
+
+    Il doit être clair à présent que, précisément parce que
+\texttt{deep\_copy} est une copie en profondeur, on peut modifier
+\texttt{source} sans impacter du tout \texttt{deep\_copy}.\\
+
+    S'agissant de \texttt{shallow\_copy}, par contre, seuls les éléments de
+premier niveau ont été copiés. Aussi si on fait une modification par
+exemple \textbf{à l'intérieur} de la liste qui est le premier fils de
+\texttt{source}, cela sera \textbf{répercuté} dans
+\texttt{shallow\_copy}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{avant, source      }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{source}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{avant, shallow\PYZus{}copy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{shallow\PYZus{}copy}\PY{p}{)}
+        \PY{n}{source}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{après, source      }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{source}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{après, shallow\PYZus{}copy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{shallow\PYZus{}copy}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+avant, source       [[1, 2, 3], \{1, 2, 3\}, (1, 2, 3), '123', 123]
+avant, shallow\_copy [[1, 2, 3], \{1, 2, 3\}, (1, 2, 3), '123', 123]
+après, source       [[1, 2, 3, 4], \{1, 2, 3\}, (1, 2, 3), '123', 123]
+après, shallow\_copy [[1, 2, 3, 4], \{1, 2, 3\}, (1, 2, 3), '123', 123]
+
+    \end{Verbatim}
+
+    Si par contre on remplace complètement un élément de premier niveau dans
+la source, cela ne sera pas répercuté dans la copie superficielle~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{avant, source      }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{source}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{avant, shallow\PYZus{}copy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{shallow\PYZus{}copy}\PY{p}{)}
+        \PY{n}{source}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{remplacement}\PY{l+s+s1}{\PYZsq{}}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{après, source      }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{source}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{après, shallow\PYZus{}copy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{shallow\PYZus{}copy}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+avant, source       [[1, 2, 3, 4], \{1, 2, 3\}, (1, 2, 3), '123', 123]
+avant, shallow\_copy [[1, 2, 3, 4], \{1, 2, 3\}, (1, 2, 3), '123', 123]
+après, source       ['remplacement', \{1, 2, 3\}, (1, 2, 3), '123', 123]
+après, shallow\_copy [[1, 2, 3, 4], \{1, 2, 3\}, (1, 2, 3), '123', 123]
+
+    \end{Verbatim}
+
+    \hypertarget{copie-et-circularituxe9}{%
+\subsubsection{Copie et circularité}\label{copie-et-circularituxe9}}
+
+    Le module \texttt{copy} est capable de copier - même en profondeur - des
+objets contenant des références circulaires.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{l} \PY{o}{=} \PY{p}{[}\PY{k+kc}{None}\PY{p}{]}
+        \PY{n}{l}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{n}{l}
+        \PY{n}{l}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} [[{\ldots}]]
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{copy}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{n}{l}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:} [[[{\ldots}]]]
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{copy}\PY{o}{.}\PY{n}{deepcopy}\PY{p}{(}\PY{n}{l}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} [[{\ldots}]]
+\end{Verbatim}
+            
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+    On peut se reporter à
+\href{https://docs.python.org/3/library/copy.html}{la section sur le
+module \texttt{copy}} dans la documentation Python.

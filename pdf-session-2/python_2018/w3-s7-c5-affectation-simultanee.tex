@@ -1,0 +1,81 @@
+    \hypertarget{affectation-simultanuxe9e}{%
+\section{Affectation simultanée}\label{affectation-simultanuxe9e}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    Nous avons déjà parlé de l'affectation par \emph{sequence unpacking} (en
+Semaine 3, séquence ``Les tuples''), qui consiste à affecter à plusieurs
+variables des ``morceaux'' d'un objet, comme dans~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{n}{x}\PY{p}{,} \PY{n}{y} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{spam}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{egg}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+
+    Dans ce complément nous allons voir une autre forme de l'affectation,
+qui consiste à affecter \textbf{le même objet} à plusieurs variables.
+Commençons par un exemple simple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{a} \PY{o}{=} \PY{n}{b} \PY{o}{=} \PY{l+m+mi}{1}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{a}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a 1 b 1
+
+    \end{Verbatim}
+
+    La raison pour laquelle nous abordons cette construction maintenant est
+qu'elle a une forte relation avec les références partagées~; pour bien
+le voir, nous allons utiliser une valeur mutable comme valeur à
+affecter~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} on affecte a et b au même objet liste vide}
+        \PY{n}{a} \PY{o}{=} \PY{n}{b} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+\end{Verbatim}
+
+
+    Dès lors nous sommes dans le cas typique d'une référence partagée~; une
+modification de \texttt{a} va se répercuter sur \texttt{b} puisque ces
+deux variables désignent \textbf{le même objet}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{a}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{a}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a [1] b [1]
+
+    \end{Verbatim}
+
+    Ceci est à mettre en contraste avec plusieurs affectations séparées~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} si on utilise deux affectations différentes}
+        \PY{n}{a} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+        \PY{n}{b} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{} alors on peut changer a sans changer b}
+        \PY{n}{a}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{a}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a [1] b []
+
+    \end{Verbatim}
+
+    On voit que dans ce cas chaque affectation crée une liste vide
+différente, et les deux variables ne partagent plus de donnée.
+
+    D'une manière générale, utiliser l'affectation simultanée vers un objet
+mutable crée mécaniquement des \textbf{références partagées}, aussi
+vérifiez bien dans ce cas que c'est votre intention.

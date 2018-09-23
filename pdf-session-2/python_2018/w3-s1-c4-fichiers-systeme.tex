@@ -1,0 +1,158 @@
+    \hypertarget{fichiers-systuxe8mes}{%
+\section{Fichiers systèmes}\label{fichiers-systuxe8mes}}
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    Dans ce complément, nous allons voir comment un programme Python
+interagit avec ce qu'il est convenu d'appeler le système
+d'entrées-sorties standard du système d'exploitation.
+
+    \hypertarget{introduction}{%
+\subsubsection{Introduction}\label{introduction}}
+
+    Dans un ordinateur, le système d'exploitation (Windows, Linux, macOS,
+etc.) comprend un noyau (\emph{kernel}) qui est un logiciel qui a
+l'exclusivité pour interagir physiquement avec le matériel
+(processeur(s), mémoire, disque(s), périphériques, etc.)~; il offre aux
+programmes utilisateur (\emph{userspace}) des abstractions pour
+interagir avec ce matériel.\\
+
+La notion de fichier, telle qu'on l'a vue dans la vidéo, correspond à
+une de ces abstractions~; elle repose principalement sur les quatre
+opérations élémentaires~suivantes~:
+
+\begin{itemize}
+	\item 
+	\texttt{open}~;
+	\item
+	\texttt{close}~;
+	\item
+	\texttt{read}~;
+	\item
+	\texttt{write}.
+\end{itemize}
+
+    Parmi les autres conventions d'interaction entre le système (pour être
+précis~: le
+\href{http://fr.wikipedia.org/wiki/Interface_système}{\emph{shell}}) et
+une application, il y a les notions de~:
+
+\begin{itemize}
+	\item 
+	entrée standard	(\emph{standard input}, en abrégé \texttt{stdin})~;
+	\item
+	sortie standard (\emph{standard output}, en abrégé \texttt{stdout})~;
+	\item
+	erreur standard (\emph{standard error}, en abrégé \texttt{stderr}).
+\end{itemize}
+
+Ceci est principalement pertinent dans le contexte d'un terminal. L'idée
+c'est que l'on a envie de pouvoir
+\href{http://en.wikipedia.org/wiki/Redirection_\%28computing\%29}{\emph{rediriger}
+les entrées-sorties} d'un programme sans avoir à le modifier. De la
+sorte, on peut également \emph{chaîner} des traitements
+\href{http://en.wikipedia.org/wiki/Redirection_\%28computing\%29\#Piping}{à
+l'aide de \emph{pipes}}, sans avoir besoin de sauver les résultats
+intermédiaires sur disque.\\
+
+    Ainsi par exemple lorsque l'on écrit~:
+
+\begin{verbatim}
+    $ monprogramme < fichier_entree > fichier_sortie
+\end{verbatim}
+
+Les deux fichiers en question sont ouverts par le \emph{shell}, et
+passés à \texttt{monprogramme} - que celui-ci soit écrit en C, en Python
+ou en Java - sous la forme des fichiers \texttt{stdin} et
+\texttt{stdout} respectivement, et donc \textbf{déjà ouverts}.
+
+    \hypertarget{le-module-sys}{%
+\subsubsection{\texorpdfstring{Le module
+\texttt{sys}}{Le module sys}}\label{le-module-sys}}
+
+    L'interpréteur Python vous expose ces trois fichiers sous la forme
+d'attributs du module \texttt{sys}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{sys}
+        \PY{k}{for} \PY{n}{channel} \PY{o+ow}{in} \PY{p}{(}\PY{n}{sys}\PY{o}{.}\PY{n}{stdin}\PY{p}{,} \PY{n}{sys}\PY{o}{.}\PY{n}{stdout}\PY{p}{,} \PY{n}{sys}\PY{o}{.}\PY{n}{stderr}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{channel}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+<\_io.TextIOWrapper name='<stdin>' mode='r' encoding='cp1252'>
+<ipykernel.iostream.OutStream object at 0x041774F0>
+<ipykernel.iostream.OutStream object at 0x04177CF0>
+
+    \end{Verbatim}
+
+    Dans le contexte du notebook vous pouvez constater que les deux flux de
+sortie sont implémentés comme des classes spécifiques à IPython. Si vous
+exécutez ce code localement dans votre ordinateur vous allez sans doute
+obtenir quelque chose comme~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{<}\NormalTok{_io.TextIOWrapper name}\OperatorTok{=}\StringTok{'<stdin>'}\NormalTok{ mode}\OperatorTok{=}\StringTok{'r'}\NormalTok{ encoding}\OperatorTok{=}\StringTok{'UTF-8'}\OperatorTok{>}
+\OperatorTok{<}\NormalTok{_io.TextIOWrapper name}\OperatorTok{=}\StringTok{'<stdout>'}\NormalTok{ mode}\OperatorTok{=}\StringTok{'w'}\NormalTok{ encoding}\OperatorTok{=}\StringTok{'UTF-8'}\OperatorTok{>}
+\OperatorTok{<}\NormalTok{_io.TextIOWrapper name}\OperatorTok{=}\StringTok{'<stderr>'}\NormalTok{ mode}\OperatorTok{=}\StringTok{'w'}\NormalTok{ encoding}\OperatorTok{=}\StringTok{'UTF-8'}\OperatorTok{>}
+\end{Highlighting}
+\end{Shaded}
+
+    On n'a pas extrêmement souvent besoin d'utiliser ces variables en règle
+générale, mais elles peuvent s'avérer utiles dans des contextes
+spécifiques.\\
+
+Par exemple, l'instruction \texttt{print} écrit dans \texttt{sys.stdout}
+(c'est-à-dire la sortie standard). Et comme \texttt{sys.stdout} est une
+variable (plus exactement \texttt{stdout} est un attribut dans le module
+référencé par la variable \texttt{sys}) et qu'elle référence un objet
+fichier, on peut lui faire référencer un autre objet fichier et ainsi
+rediriger depuis notre programme tous les sorties, qui sinon iraient sur
+le terminal, vers un fichier de notre choix~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} ici je fais exprès de ne pas utiliser un `with`}
+        \PY{c+c1}{\PYZsh{} car très souvent les deux redirections apparaissent}
+        \PY{c+c1}{\PYZsh{} dans des fonctions différentes}
+        \PY{k+kn}{import} \PY{n+nn}{sys}
+        \PY{c+c1}{\PYZsh{} on ouvre le fichier destination}
+        \PY{n}{autre\PYZus{}stdout} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ma\PYZus{}sortie.txt}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{w}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} on garde un lien vers le fichier sortie standard}
+        \PY{c+c1}{\PYZsh{} pour le réinstaller plus tard si besoin.}
+        \PY{n}{tmp} \PY{o}{=} \PY{n}{sys}\PY{o}{.}\PY{n}{stdout}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sur le terminal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} première redirection}
+        \PY{n}{sys}\PY{o}{.}\PY{n}{stdout} \PY{o}{=} \PY{n}{autre\PYZus{}stdout}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dans le fichier}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} on remet comme c\PYZsq{}était au début}
+        \PY{n}{sys}\PY{o}{.}\PY{n}{stdout} \PY{o}{=} \PY{n}{tmp}
+        \PY{c+c1}{\PYZsh{} et alors pour être propre on n\PYZsq{}oublie pas de fermer}
+        \PY{n}{autre\PYZus{}stdout}\PY{o}{.}\PY{n}{close}\PY{p}{(}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{de nouveau sur le terminal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+sur le terminal
+de nouveau sur le terminal
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} et en effet, dans le fichier on a bien}
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ma\PYZus{}sortie.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{check}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{check}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+dans le fichier
+
+
+    \end{Verbatim}

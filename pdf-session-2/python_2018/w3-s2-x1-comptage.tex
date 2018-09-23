@@ -1,0 +1,105 @@
+    \hypertarget{fichiers}{%
+\section{Fichiers}\label{fichiers}}
+
+    \hypertarget{exercice---niveau-basique}{%
+\subsection{Exercice - niveau basique}\label{exercice---niveau-basique}}
+
+    \hypertarget{calcul-du-nombre-de-lignes-de-mots-et-de-caractuxe8res}{%
+\subsubsection{Calcul du nombre de lignes, de mots et de
+caractères}\label{calcul-du-nombre-de-lignes-de-mots-et-de-caractuxe8res}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} chargement de l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}comptage} \PY{k}{import} \PY{n}{exo\PYZus{}comptage}
+\end{Verbatim}
+
+
+    On se propose d'écrire une \emph{moulinette} qui annote un fichier avec
+des nombres de lignes, de mots et de caractères.\\
+
+Le but de l'exercice est d'écrire une fonction \texttt{comptage}~:
+
+\begin{itemize}
+	\item 
+	qui prenne en argument un nom de fichier d'entrée (on suppose qu'il existe)
+	et un nom de fichier de sortie (on suppose qu'on a le droit de l'écrire)~;
+	\item
+	le fichier d'entrée est supposé encodé en UTF-8~;
+	\item
+	le fichier d'entrée est laissé intact~;
+	\item
+	pour chaque ligne en entrée, le
+	fichier de sortie comporte une ligne qui donne le numéro de ligne, le
+	nombre de mots (\textbf{séparés par des espaces}), le nombre de
+	caractères (y compris la fin de ligne), et la ligne d'origine.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} un exemple de ce qui est attendu}
+        \PY{n}{exo\PYZus{}comptage}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} votre code}
+        \PY{k}{def} \PY{n+nf}{comptage}\PY{p}{(}\PY{n}{in\PYZus{}filename}\PY{p}{,} \PY{n}{out\PYZus{}filename}\PY{p}{)}\PY{p}{:}
+           \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{votre code}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \textbf{N'oubliez pas de vérifier} que vous ajoutez bien les
+\textbf{fins de ligne}, car la vérification automatique est pointilleuse
+(elle utilise l'opérateur \texttt{==}), et rejettera votre code si vous
+ne produisez pas une sortie rigoureusement similaire à ce qui est
+attendu.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour vérifier votre code}
+        \PY{c+c1}{\PYZsh{} voyez aussi un peu plus bas, une cellule d\PYZsq{}aide au debugging}
+        
+        \PY{n}{exo\PYZus{}comptage}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{comptage}\PY{p}{)}
+\end{Verbatim}
+
+
+    La méthode \texttt{debug} applique votre fonction au premier fichier
+d'entrée, et affiche le résultat comme dans l'exemple ci-dessus~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} debugging}
+        \PY{n}{exo\PYZus{}comptage}\PY{o}{.}\PY{n}{debug}\PY{p}{(}\PY{n}{comptage}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{accuxe8s-aux-fichiers-dexemples}{%
+\subsubsection{Accès aux fichiers
+d'exemples}\label{accuxe8s-aux-fichiers-dexemples}}
+
+    Vous pouvez télécharger les fichiers d'exemples~:
+    
+\begin{itemize}
+	\item
+	\href{data/romeo_and_juliet.txt}{Romeo and Juliet}
+	\item
+	\href{data/lorem_ipsum.txt}{Lorem Ipsum}
+	\item
+	\href{data/une_charogne_unicode.txt}{``Une charogne'' en UTF-8}
+\end{itemize}
+
+
+Pour les courageux, je vous donne également
+\href{data/une_charogne_iso15.txt}{``Une charogne'' en ISO-8859-15}, qui
+contient le même texte que ``Une charogne'', mais encodé en Latin-9,
+connu aussi sous le nom ISO-8859-15.\\
+
+Ce dernier fichier n'est pas à prendre en compte dans la version basique
+de l'exercice, mais vous pourrez vous rendre compte par vous-mêmes, au
+cas où cela ne serait pas clair encore pour vous, qu'il n'est pas facile
+d'écrire une fonction \texttt{comptage} qui devine l'encodage,
+c'est-à-dire qui fonctionne correctement avec des entrées indifféremment
+en Unicode ou Latin, sans que cet encodage soit passé en paramètre à
+\texttt{comptage}.\\
+
+    C'est d'ailleurs le propos de
+\href{https://pypi.python.org/pypi/chardet}{la bibliothèque
+\texttt{chardet}} qui s'efforce de déterminer l'encodage de fichiers
+d'entrée, sur la base de modèles statistiques.

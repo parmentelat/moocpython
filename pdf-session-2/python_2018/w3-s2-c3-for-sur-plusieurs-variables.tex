@@ -1,0 +1,183 @@
+    \hypertarget{plusieurs-variables-dans-une-boucle-for}{%
+\section{\texorpdfstring{Plusieurs variables dans une boucle
+\texttt{for}}{Plusieurs variables dans une boucle for}}\label{plusieurs-variables-dans-une-boucle-for}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    Nous avons vu précédemment (séquence `Les tuples', complément `Sequence
+unpacking') la possibilité d'affecter plusieurs variables à partir d'un
+seul objet, comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{n}{item} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+        \PY{n}{a}\PY{p}{,} \PY{n}{b} \PY{o}{=} \PY{n}{item}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a=}\PY{l+s+si}{\PYZob{}a\PYZcb{}}\PY{l+s+s2}{ b=}\PY{l+s+si}{\PYZob{}b\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a=1 b=2
+
+    \end{Verbatim}
+
+    D'une façon analogue, il est possible de faire une boucle \texttt{for}
+qui itère sur \textbf{une seule} liste mais qui \emph{agit} sur
+\textbf{plusieurs variables}, comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{entrees} \PY{o}{=} \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{]}
+        \PY{k}{for} \PY{n}{a}\PY{p}{,} \PY{n}{b} \PY{o+ow}{in} \PY{n}{entrees}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a=}\PY{l+s+si}{\PYZob{}a\PYZcb{}}\PY{l+s+s2}{ b=}\PY{l+s+si}{\PYZob{}b\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a=1 b=2
+a=3 b=4
+a=5 b=6
+
+    \end{Verbatim}
+
+    À chaque itération, on trouve dans \texttt{entree} un tuple (d'abord
+\texttt{(1,\ 2)}, puis à l'itération suivante \texttt{(3,\ 4)}, etc.)~;
+à ce stade les variables \texttt{a} et \texttt{b} vont être affectées à,
+respectivement, le premier et le deuxième élément du tuple, exactement
+comme dans le \emph{sequence unpacking}. Cette mécanique est massivement
+utilisée en Python.
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{la-fonction-zip}{%
+\subsubsection{\texorpdfstring{La fonction
+\texttt{zip}}{La fonction zip}}\label{la-fonction-zip}}
+
+    Voici un exemple très simple qui utilise la technique que l'on vient de
+voir.\\
+
+    Imaginons qu'on dispose de deux listes de longueurs égales, dont on sait
+que les entrées correspondent une à une, comme par exemple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{villes} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Paris}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Nice}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Lyon}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        \PY{n}{populations} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{2}\PY{o}{*}\PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{4}\PY{o}{*}\PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{6}\PY{p}{]}
+\end{Verbatim}
+
+
+    Afin d'écrire facilement un code qui ``associe'' les deux listes entre
+elles, Python fournit une fonction \emph{built-in} baptisée
+\texttt{zip}~; voyons ce qu'elle peut nous apporter sur cet exemple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{zip}\PY{p}{(}\PY{n}{villes}\PY{p}{,} \PY{n}{populations}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} [('Paris', 2000000), ('Nice', 400000), ('Lyon', 1000000)]
+\end{Verbatim}
+            
+    On le voit, on obtient en retour une liste composée de tuples. On peut à
+présent écrire une boucle \texttt{for} comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{for} \PY{n}{ville}\PY{p}{,} \PY{n}{population} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n}{villes}\PY{p}{,} \PY{n}{populations}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{population}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{habitants à}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{ville}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+2000000 habitants à Paris
+400000 habitants à Nice
+1000000 habitants à Lyon
+
+    \end{Verbatim}
+
+    Qui est, nous semble-t-il, beaucoup plus lisible que ce que l'on serait
+amené à écrire avec des langages plus traditionnels.\\
+
+Tout ceci se généralise naturellement à plus de deux variables~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{for} \PY{n}{i}\PY{p}{,} \PY{n}{j}\PY{p}{,} \PY{n}{k} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{103}\PY{p}{)}\PY{p}{,} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{200}\PY{p}{,} \PY{l+m+mi}{203}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{i=}\PY{l+s+si}{\PYZob{}i\PYZcb{}}\PY{l+s+s2}{ j=}\PY{l+s+si}{\PYZob{}j\PYZcb{}}\PY{l+s+s2}{ k=}\PY{l+s+si}{\PYZob{}k\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+i=0 j=100 k=200
+i=1 j=101 k=201
+i=2 j=102 k=202
+
+    \end{Verbatim}
+
+    \textbf{Remarque}~: lorsqu'on passe à \texttt{zip} des listes de tailles
+différentes, le résultat est tronqué, c'est l'entrée \textbf{de plus
+petite taille} qui détermine la fin du parcours.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} on n\PYZsq{}itère que deux fois}
+        \PY{c+c1}{\PYZsh{} car le premier argument de zip est de taille 2}
+        \PY{k}{for} \PY{n}{units}\PY{p}{,} \PY{n}{tens} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{30}\PY{p}{,} \PY{l+m+mi}{40}\PY{p}{]}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{units}\PY{p}{,} \PY{n}{tens}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1 10
+2 20
+
+    \end{Verbatim}
+
+    \hypertarget{la-fonction-enumerate}{%
+\subsubsection{\texorpdfstring{La fonction
+\texttt{enumerate}}{La fonction enumerate}}\label{la-fonction-enumerate}}
+
+    Une autre fonction très utile permet d'itérer sur une liste avec
+l'indice dans la liste, il s'agit de \texttt{enumerate}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{k}{for} \PY{n}{i}\PY{p}{,} \PY{n}{ville} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{villes}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{ville}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+0 Paris
+1 Nice
+2 Lyon
+
+    \end{Verbatim}
+
+    Cette forme est \textbf{plus simple} et \textbf{plus lisible} que les
+formes suivantes qui sont équivalentes, mais qui ne sont pas
+pythoniques~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{villes}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{villes}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+0 Paris
+1 Nice
+2 Lyon
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{k}{for} \PY{n}{i}\PY{p}{,} \PY{n}{ville} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{villes}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{villes}\PY{p}{)}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{ville}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+0 Paris
+1 Nice
+2 Lyon
+
+    \end{Verbatim}

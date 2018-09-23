@@ -1,0 +1,193 @@
+    \hypertarget{try-else-finally}{%
+\section{\texorpdfstring{\texttt{try} \ldots{} \texttt{else} \ldots{}
+\texttt{finally}}{try \ldots{} else \ldots{} finally}}\label{try-else-finally}}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    L'instruction \texttt{try} est généralement assortie d'une une ou
+plusieurs clauses \texttt{except}, comme on l'a vu dans la vidéo.\\
+
+Sachez que l'on peut aussi utiliser - après toutes les clauses
+\texttt{except}~:
+
+\begin{itemize}
+	\item 
+	une clause \texttt{else}, qui va être exécutée si
+	aucune exception n'est attrapée~;
+	\item 
+	t/ou une clause \texttt{finally} qui sera alors exécutée quoi qu'il arrive.
+\end{itemize}
+
+    Voyons cela sur des exemples.
+
+    \hypertarget{finally}{%
+\subsubsection{\texorpdfstring{\texttt{finally}}{finally}}\label{finally}}
+
+    C'est sans doute \texttt{finally} qui est la plus utile de ces deux
+clauses, car elle permet de faire un nettoyage \textbf{dans tous les cas
+de figure} - de ce point de vue, cela rappelle un peu les \emph{context
+managers}.\\
+
+Et par exemple, comme avec les \emph{context managers}, une fonction
+peut faire des choses même après un \texttt{return}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} une fonction qui fait des choses après un return}
+        \PY{k}{def} \PY{n+nf}{return\PYZus{}with\PYZus{}finally}\PY{p}{(}\PY{n}{number}\PY{p}{)}\PY{p}{:}
+            \PY{k}{try}\PY{p}{:}
+                \PY{k}{return} \PY{l+m+mi}{1}\PY{o}{/}\PY{n}{number}
+            \PY{k}{except} \PY{n+ne}{ZeroDivisionError} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS, }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{type(e)\PYZcb{}, }\PY{l+s+si}{\PYZob{}e\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                \PY{k}{return}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{zero\PYZhy{}divide}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{k}{finally}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{on passe ici même si on a vu un return}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} sans exception}
+        \PY{n}{return\PYZus{}with\PYZus{}finally}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+on passe ici même si on a vu un return
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} 1.0
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} avec exception}
+        \PY{n}{return\PYZus{}with\PYZus{}finally}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+OOPS, <class 'ZeroDivisionError'>, division by zero
+on passe ici même si on a vu un return
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} 'zero-divide'
+\end{Verbatim}
+            
+    \hypertarget{else}{%
+\subsubsection{\texorpdfstring{\texttt{else}}{else}}\label{else}}
+
+    La logique ici est assez similaire, sauf que le code du \texttt{else}
+n'est exécuté que dans le cas où aucune exception n'est attrapée.\\
+
+    En première approximation, on pourrait penser que c'est équivalent de
+mettre du code dans la clause \texttt{else} ou à la fin de la clause
+\texttt{try}. En fait il y a une différence subtile~:\\
+
+\begin{quote}
+\emph{The use of the \texttt{else} clause is better than adding
+additional code to the \texttt{try} clause because it avoids
+accidentally catching an exception that wasn't raised by the code being
+protected by the \texttt{try} \ldots{} \texttt{except} statement.}
+\end{quote}
+
+Dit autrement, si le code dans la clause \texttt{else} lève une
+exception, celle-ci ne \textbf{sera pas attrapée} par le \texttt{try}
+courant, et sera donc propagée.\\
+
+    Voici un exemple rapide, en pratique on rencontre assez peu souvent une
+clause \texttt{else} dans un \texttt{try}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} pour montrer la clause else dans un usage banal}
+        \PY{k}{def} \PY{n+nf}{function\PYZus{}with\PYZus{}else}\PY{p}{(}\PY{n}{number}\PY{p}{)}\PY{p}{:}
+            \PY{k}{try}\PY{p}{:}
+                \PY{n}{x} \PY{o}{=} \PY{l+m+mi}{1}\PY{o}{/}\PY{n}{number}
+            \PY{k}{except} \PY{n+ne}{ZeroDivisionError} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS, }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{type(e)\PYZcb{}, }\PY{l+s+si}{\PYZob{}e\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{on passe ici seulement avec un nombre non nul}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{k}{return} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{something else}\PY{l+s+s1}{\PYZsq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} sans exception}
+        \PY{n}{function\PYZus{}with\PYZus{}else}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+on passe ici seulement avec un nombre non nul
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} 'something else'
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} avec exception}
+        \PY{n}{function\PYZus{}with\PYZus{}else}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+OOPS, <class 'ZeroDivisionError'>, division by zero
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} 'something else'
+\end{Verbatim}
+            
+    Remarquez que \texttt{else} ne présente pas cette particularité de
+``traverser'' le \texttt{return}, que l'on a vue avec \texttt{finally}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} la clause else ne traverse pas les return}
+        \PY{k}{def} \PY{n+nf}{return\PYZus{}with\PYZus{}else}\PY{p}{(}\PY{n}{number}\PY{p}{)}\PY{p}{:}
+            \PY{k}{try}\PY{p}{:}
+                \PY{k}{return} \PY{l+m+mi}{1}\PY{o}{/}\PY{n}{number}
+            \PY{k}{except} \PY{n+ne}{ZeroDivisionError} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS, }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{type(e)\PYZcb{}, }\PY{l+s+si}{\PYZob{}e\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                \PY{k}{return}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{zero\PYZhy{}divide}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{on ne passe jamais ici à cause des return}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} sans exception}
+        \PY{n}{return\PYZus{}with\PYZus{}else}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} 1.0
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} avec exception}
+        \PY{n}{return\PYZus{}with\PYZus{}else}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+OOPS, <class 'ZeroDivisionError'>, division by zero
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} 'zero-divide'
+\end{Verbatim}
+            
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+    Voyez
+\href{https://docs.python.org/3/tutorial/errors.html\#handling-exceptions}{le
+tutorial sur les exceptions} dans la documentation officielle.

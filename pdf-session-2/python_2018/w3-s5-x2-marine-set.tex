@@ -1,0 +1,172 @@
+    \hypertarget{exercice-sur-les-ensembles}{%
+\section{Exercice sur les ensembles}\label{exercice-sur-les-ensembles}}
+
+    \hypertarget{exercice---niveau-intermuxe9diaire}{%
+\subsection{Exercice - niveau
+intermédiaire}\label{exercice---niveau-intermuxe9diaire}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} chargement de l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}marine\PYZus{}set} \PY{k}{import} \PY{n}{exo\PYZus{}diff}
+\end{Verbatim}
+
+
+    \hypertarget{les-donnuxe9es}{%
+\subsubsection{Les données}\label{les-donnuxe9es}}
+
+    Nous reprenons le même genre de données marines en provenance de
+MarineTraffic que nous avons vues dans l'exercice précédent.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}marine\PYZus{}set} \PY{k}{import} \PY{n}{abbreviated}\PY{p}{,} \PY{n}{extended}
+\end{Verbatim}
+
+
+    \hypertarget{rappels-sur-les-formats}{%
+\subsubsection{Rappels sur les formats}\label{rappels-sur-les-formats}}
+
+    \begin{verbatim}
+étendu: [id, latitude, longitude, date_heure, nom_bateau, code_pays...]
+abrégé: [id, latitude, longitude, date_heure]
+\end{verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{extended}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{abbreviated}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{but-de-lexercice}{%
+\subsubsection{But de l'exercice}\label{but-de-lexercice}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} chargement de l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}marine\PYZus{}set} \PY{k}{import} \PY{n}{exo\PYZus{}diff}
+\end{Verbatim}
+
+
+    Notez bien une différence importante avec l'exercice précédent~: cette
+fois \textbf{il n'y a plus correspondance} entre les bateaux rapportés
+dans les données étendues et abrégées.\\
+
+Le but de l'exercice est précisément d'étudier la différence, et pour
+cela on vous demande d'écrire une fonction
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    diff(extended, abbreviated)}
+\end{Highlighting}
+\end{Shaded}
+
+qui retourne un tuple à trois éléments~:
+
+\begin{itemize}
+	\item 
+	l'ensemble (\texttt{set}) des
+	\textbf{noms} des bateaux présents dans \texttt{extended} mais pas dans
+	\texttt{abbreviated}~;
+	\item
+	l'ensemble des \textbf{noms} des bateaux
+	présents dans \texttt{extended} et dans \texttt{abbreviated}~;
+	\item
+	l'ensemble des \textbf{id} des bateaux présents dans
+	\texttt{abbreviated} mais pas dans \texttt{extended} (par construction,
+	les données ne nous permettent pas d'obtenir les noms de ces bateaux).
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} le résultat attendu}
+        \PY{n}{result} \PY{o}{=} \PY{n}{exo\PYZus{}diff}\PY{o}{.}\PY{n}{resultat}\PY{p}{(}\PY{n}{extended}\PY{p}{,} \PY{n}{abbreviated}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} combien de bateaux sont concernés}
+        \PY{k}{def} \PY{n+nf}{show\PYZus{}result}\PY{p}{(}\PY{n}{extended}\PY{p}{,} \PY{n}{abbreviated}\PY{p}{,} \PY{n}{result}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    Affiche divers décomptes sur les arguments}
+        \PY{l+s+sd}{    en entrée et en sortie de diff}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+m+mi}{10}\PY{o}{*}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Les entrées}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Dans extended: }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{len(extended)\PYZcb{} entrées}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Dans abbreviated: }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{len(abbreviated)\PYZcb{} entrées}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+m+mi}{10}\PY{o}{*}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Le résultat du diff}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n}{extended\PYZus{}only}\PY{p}{,} \PY{n}{both}\PY{p}{,} \PY{n}{abbreviated\PYZus{}only} \PY{o}{=} \PY{n}{result}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Dans extended mais pas dans abbreviated }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{len(extended\PYZus{}only)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Dans les deux }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{len(both)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Dans abbreviated mais pas dans extended }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{len(abbreviated\PYZus{}only)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{n}{show\PYZus{}result}\PY{p}{(}\PY{n}{extended}\PY{p}{,} \PY{n}{abbreviated}\PY{p}{,} \PY{n}{result}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{votre-code}{%
+\subsubsection{Votre code}\label{votre-code}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{diff}\PY{p}{(}\PY{n}{extended}\PY{p}{,} \PY{n}{abbreviated}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre\PYZus{}code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \hypertarget{validation}{%
+\subsubsection{Validation}\label{validation}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}diff}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{diff}\PY{p}{,} \PY{n}{extended}\PY{p}{,} \PY{n}{abbreviated}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{des-fichiers-de-donnuxe9es-plus-ruxe9alistes}{%
+\subsubsection{Des fichiers de données plus
+réalistes}\label{des-fichiers-de-donnuxe9es-plus-ruxe9alistes}}
+
+    Comme pour l'exercice précédent, les données fournies ici sont très
+simplistes~; vous pouvez, si vous le voulez, essayer votre code avec des
+données (un peu) plus réalistes en chargeant des fichiers de données
+plus complets~:
+
+\begin{itemize}
+	\item 
+	\url{data/marine-e2-ext.json}
+	\item
+	\url{data/marine-e2-abb.json}
+\end{itemize}
+
+Ce qui donnerait en Python~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} load data from files}
+        \PY{k+kn}{import} \PY{n+nn}{json}
+        
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{data/marine\PYZhy{}e2\PYZhy{}ext.json}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{utf\PYZhy{}8}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} \PY{k}{as} \PY{n}{feed}\PY{p}{:}
+            \PY{n}{extended\PYZus{}full} \PY{o}{=} \PY{n}{json}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{n}{feed}\PY{p}{)}
+        
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{data/marine\PYZhy{}e2\PYZhy{}abb.json}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{utf\PYZhy{}8}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} \PY{k}{as} \PY{n}{feed}\PY{p}{:}
+            \PY{n}{abbreviated\PYZus{}full} \PY{o}{=} \PY{n}{json}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{n}{feed}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} le résultat de votre fonction sur des données plus vastes}
+        \PY{c+c1}{\PYZsh{} attention, show\PYZus{}result fait des hypothèses sur le type de votre résultat}
+        \PY{c+c1}{\PYZsh{} aussi si vous essayez d\PYZsq{}exécuter ceci avec comme fonction diff}
+        \PY{c+c1}{\PYZsh{} la version vide qui est dans le notebook original}
+        \PY{c+c1}{\PYZsh{} cela peut provoquer une exception}
+        \PY{n}{diff\PYZus{}full} \PY{o}{=} \PY{n}{diff}\PY{p}{(}\PY{n}{extended\PYZus{}full}\PY{p}{,} \PY{n}{abbreviated\PYZus{}full}\PY{p}{)}
+        \PY{n}{show\PYZus{}result}\PY{p}{(}\PY{n}{extended\PYZus{}full}\PY{p}{,} \PY{n}{abbreviated\PYZus{}full}\PY{p}{,} \PY{n}{diff\PYZus{}full}\PY{p}{)}
+\end{Verbatim}
+
+
+    Je signale enfin à propos de ces données plus complètes que~:
+    
+\begin{itemize}
+	\item 
+	on a supprimé les entrées correspondant à des bateaux différents mais de même
+	nom~; cette situation peut arriver dans la réalité (c'est pourquoi
+	d'ailleurs les bateaux ont un \emph{id}) mais ici ce n'est pas le cas~;
+	\item
+	il se peut par contre qu'un même bateau fasse l'objet de plusieurs
+	mesures dans \texttt{extended} et/ou dans \texttt{abbreviated}.
+\end{itemize}	
