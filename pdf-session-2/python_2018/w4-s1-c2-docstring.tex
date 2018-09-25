@@ -1,0 +1,159 @@
+    \hypertarget{rappels-sur-docstring}{%
+\section{\texorpdfstring{Rappels sur
+\emph{docstring}}{Rappels sur docstring}}\label{rappels-sur-docstring}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    \hypertarget{comment-documenter-une-fonction}{%
+\subsubsection{Comment documenter une
+fonction}\label{comment-documenter-une-fonction}}
+
+    Pour rappel, il est recommandé de toujours documenter les fonctions en
+ajoutant une chaîne comme première instruction.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k}{def} \PY{n+nf}{flatten}\PY{p}{(}\PY{n}{containers}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{returns a list of the elements of the elements in containers}\PY{l+s+s2}{\PYZdq{}}
+            \PY{k}{return} \PY{p}{[}\PY{n}{element} \PY{k}{for} \PY{n}{container} \PY{o+ow}{in} \PY{n}{containers} \PY{k}{for} \PY{n}{element} \PY{o+ow}{in} \PY{n}{container}\PY{p}{]}
+\end{Verbatim}
+
+
+    Cette information peut être consultée, soit interactivement~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{help}\PY{p}{(}\PY{n}{flatten}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Help on function flatten in module \_\_main\_\_:
+
+flatten(containers)
+    returns a list of the elements of the elements in containers
+
+
+    \end{Verbatim}
+
+    Soit programmativement~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{flatten}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}doc\PYZus{}\PYZus{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} 'returns a list of the elements of the elements in containers'
+\end{Verbatim}
+            
+    \hypertarget{sous-quel-format}{%
+\subsubsection{Sous quel format ?}\label{sous-quel-format}}
+
+    L'usage est d'utiliser une chaîne simple (délimitée par «~\texttt{"}~»
+ou «~\texttt{\textquotesingle{}}~») lorsque le \emph{docstring} tient
+sur une seule ligne, comme ci-dessus.\\
+
+    Lorsque ce n'est pas le cas - et pour du vrai code, c'est rarement le
+cas - on utilise des chaînes multi-lignes (délimitées par
+«~\texttt{"""}~» ou
+«~\texttt{\textquotesingle{}\textquotesingle{}\textquotesingle{}}~»).
+Dans ce cas le format est très flexible, car le \emph{docstring} est
+normalisé, comme on le voit sur ces deux exemples, où le rendu final est
+identique~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} un style de docstring multi\PYZhy{}lignes}
+        \PY{k}{def} \PY{n+nf}{flatten}\PY{p}{(}\PY{n}{containers}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{provided that containers is a list (or more generally an iterable)}
+        \PY{l+s+sd}{of elements that are themselves iterables, this function}
+        \PY{l+s+sd}{returns a list of the items in these elements}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{k}{return} \PY{p}{[}\PY{n}{element} \PY{k}{for} \PY{n}{container} \PY{o+ow}{in} \PY{n}{containers} \PY{k}{for} \PY{n}{element} \PY{o+ow}{in} \PY{n}{container}\PY{p}{]}
+        
+        \PY{n}{help}\PY{p}{(}\PY{n}{flatten}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Help on function flatten in module \_\_main\_\_:
+
+flatten(containers)
+    provided that containers is a list (or more generally an iterable)
+    of elements that are themselves iterables, this function
+    returns a list of the items in these elements
+
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} un autre style, qui donne le même résultat}
+        \PY{k}{def} \PY{n+nf}{flatten}\PY{p}{(}\PY{n}{containers}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    provided that containers is a list (or more generally an iterable)}
+        \PY{l+s+sd}{    of elements that are themselves iterables, this function}
+        \PY{l+s+sd}{    returns a list of the items in these elements}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{k}{return} \PY{p}{[}\PY{n}{element} \PY{k}{for} \PY{n}{container} \PY{o+ow}{in} \PY{n}{containers} \PY{k}{for} \PY{n}{element} \PY{o+ow}{in} \PY{n}{container}\PY{p}{]}
+        
+        \PY{n}{help}\PY{p}{(}\PY{n}{flatten}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Help on function flatten in module \_\_main\_\_:
+
+flatten(containers)
+    provided that containers is a list (or more generally an iterable)
+    of elements that are themselves iterables, this function
+    returns a list of the items in these elements
+
+
+    \end{Verbatim}
+
+    \hypertarget{quelle-information}{%
+\subsubsection{Quelle information ?}\label{quelle-information}}
+
+    On remarquera que dans ces exemples, le \emph{docstring} ne répète pas
+le nom de la fonction ou des arguments (en mots savants, sa
+\emph{signature}), et que ça n'empêche pas \texttt{help} de nous
+afficher cette information.\\
+
+Le \href{http://legacy.python.org/dev/peps/pep-0257/}{PEP 257} qui donne
+les conventions autour du \emph{docstring} précise bien ceci~:
+
+    \begin{quote}
+The one-line docstring should NOT be a ``signature'' reiterating the
+function/method parameters (which can be obtained by introspection).
+Don't do:
+\end{quote}
+
+\begin{verbatim}
+def function(a, b):
+    """function(a, b) -> list"""
+ 
+\end{verbatim}
+
+\begin{quote}
+\textless{}\ldots{}\textgreater{}
+\end{quote}
+
+\begin{quote}
+The preferred form for such a docstring would be something like:
+\end{quote}
+
+\begin{verbatim}
+def function(a, b):
+    """Do X and return a list."""
+\end{verbatim}
+
+\begin{quote}
+(Of course ``Do X'' should be replaced by a useful description!)
+\end{quote}
+
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+    Vous trouverez tous les détails sur \emph{docstring} dans le
+\href{http://legacy.python.org/dev/peps/pep-0257/}{PEP 257}.

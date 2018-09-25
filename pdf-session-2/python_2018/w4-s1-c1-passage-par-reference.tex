@@ -1,0 +1,160 @@
+    \hypertarget{passage-darguments-par-ruxe9fuxe9rence}{%
+\section{Passage d'arguments par
+référence}\label{passage-darguments-par-ruxe9fuxe9rence}}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    Entre le code qui appelle une fonction et le code de la fonction
+elle-même
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k}{def} \PY{n+nf}{ma\PYZus{}fonction}\PY{p}{(}\PY{n}{dans\PYZus{}fonction}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{dans\PYZus{}fonction}\PY{p}{)}
+            
+        \PY{n}{dans\PYZus{}appelant} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{texte}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        \PY{n}{ma\PYZus{}fonction}\PY{p}{(}\PY{n}{dans\PYZus{}appelant}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+['texte']
+
+    \end{Verbatim}
+
+    on peut se demander quelle est exactement la nature de la relation entre
+l'appelant et l'appelé, c'est-à-dire ici \texttt{dans\_appelant} et
+\texttt{dans\_fonction}.\\
+
+C'est l'objet de ce complément.
+
+    \hypertarget{passage-par-valeur---passage-par-ruxe9fuxe9rence}{%
+\subsubsection{Passage par valeur - passage par
+référence}\label{passage-par-valeur---passage-par-ruxe9fuxe9rence}}
+
+    Si vous avez appris d'autres langages de programmation comme C ou C++,
+on a pu vous parler de deux modes de passage de paramètres~:
+
+\begin{itemize}
+	\item 
+	par valeur~: cela signifie qu'on communique à la fonction, non pas l'entité
+	dans l'appelant, mais seulement \textbf{sa valeur}~; en clair,
+	\textbf{une copie}~;
+	\item
+	par référence~: cela signifie qu'on passe à la
+	fonction une \textbf{référence} à l'argument dans l'appelant, donc
+	essentiellement les deux codes \textbf{partagent} la même mémoire.
+\end{itemize}
+
+    \hypertarget{python-fait-du-passage-par-ruxe9fuxe9rence}{%
+\subsubsection{Python fait du passage par
+référence}\label{python-fait-du-passage-par-ruxe9fuxe9rence}}
+
+    Certains langages comme Pascal - et C++ si on veut - proposent ces deux
+modes. En Python, tous les passages de paramètres se font \textbf{par
+référence}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} chargeons la magie pour pythontutor}
+        \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} ipythontutor
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{ipythontutor} curInstr=4
+        def ma\PYZus{}fonction(dans\PYZus{}fonction):
+            print(dans\PYZus{}fonction)
+            
+        dans\PYZus{}appelant = [\PYZdq{}texte\PYZdq{}]
+        ma\PYZus{}fonction(dans\PYZus{}appelant)
+\end{Verbatim}
+
+
+    Ce qui signifie qu'on peut voir le code ci-dessus comme étant - pour
+simplifier - équivalent à ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{dans\PYZus{}appelant} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{texte}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{} ma\PYZus{}fonction (dans\PYZus{}appelant)}
+        \PY{c+c1}{\PYZsh{} → on entre dans la fonction}
+        \PY{n}{dans\PYZus{}fonction} \PY{o}{=} \PY{n}{dans\PYZus{}appelant}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{dans\PYZus{}fonction}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+['texte']
+
+    \end{Verbatim}
+
+    On peut le voir encore d'une autre façon en instrumentant le code comme
+ceci -- on rappelle que la fonction built-in \texttt{id} retourne
+l'adresse mémoire d'un objet~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{def} \PY{n+nf}{ma\PYZus{}fonction}\PY{p}{(}\PY{n}{dans\PYZus{}fonction}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dans ma\PYZus{}fonction}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{dans\PYZus{}fonction} \PY{p}{,} \PY{n+nb}{id}\PY{p}{(}\PY{n}{dans\PYZus{}fonction}\PY{p}{)}\PY{p}{)}
+            
+        \PY{n}{dans\PYZus{}appelant} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{texte}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dans appelant   }\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{dans\PYZus{}appelant}\PY{p}{,} \PY{n+nb}{id}\PY{p}{(}\PY{n}{dans\PYZus{}appelant}\PY{p}{)}\PY{p}{)}
+        \PY{n}{ma\PYZus{}fonction}\PY{p}{(}\PY{n}{dans\PYZus{}appelant}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+dans appelant    ['texte'] 69872896
+dans ma\_fonction ['texte'] 69872896
+
+    \end{Verbatim}
+
+    \hypertarget{des-ruxe9fuxe9rences-partaguxe9es}{%
+\subsubsection{Des références
+partagées}\label{des-ruxe9fuxe9rences-partaguxe9es}}
+
+    On voit donc que l'appel de fonction crée des références partagées,
+exactement comme l'affectation, et que tout ce que nous avons vu au
+sujet des références partagées s'applique exactement à l'identique~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} on ne peut pas modifier un immuable dans une fonction}
+        \PY{k}{def} \PY{n+nf}{increment}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+            \PY{n}{n} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+        
+        \PY{n}{compteur} \PY{o}{=} \PY{l+m+mi}{10}
+        \PY{n}{increment}\PY{p}{(}\PY{n}{compteur}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{compteur}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+10
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} on peut par contre ajouter dans une liste}
+        \PY{k}{def} \PY{n+nf}{insert}\PY{p}{(}\PY{n}{liste}\PY{p}{,} \PY{n}{valeur}\PY{p}{)}\PY{p}{:}
+            \PY{n}{liste}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{valeur}\PY{p}{)}
+            
+        \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{un}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        \PY{n}{insert}\PY{p}{(}\PY{n}{liste}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{texte}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{liste}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+['un', 'texte']
+
+    \end{Verbatim}
+
+    Pour cette raison, il est important de bien préciser, quand vous
+documentez une fonction, si elle fait des effets de bord sur ses
+arguments (c'est-à-dire qu'elle modifie ses arguments), ou si elle
+produit une copie. Rappelez-vous par exemple le cas de la méthode
+\texttt{sort} sur les listes, et de la fonction de commodité
+\texttt{sorted}, que nous avions vues en semaine 2.\\
+
+De cette façon, on saura s'il faut ou non copier l'argument avant de le
+passer à votre fonction.

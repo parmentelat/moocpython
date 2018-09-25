@@ -1,0 +1,131 @@
+    \hypertarget{la-boucle-while-else}{%
+\section{\texorpdfstring{La boucle \texttt{while} \ldots{}
+\texttt{else}}{La boucle while \ldots{} else}}\label{la-boucle-while-else}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    \hypertarget{boucles-sans-fin---break}{%
+\subsubsection{\texorpdfstring{Boucles sans fin -
+\texttt{break}}{Boucles sans fin - break}}\label{boucles-sans-fin---break}}
+
+    Utiliser \texttt{while} plutôt que \texttt{for} est une affaire de style
+et d'habitude. Cela dit en Python, avec les notions d'itérable et
+d'itérateur, on a tendance à privilégier l'usage du \texttt{for} pour
+les boucles finies et déterministes.\\
+
+    Le \texttt{while} reste malgré tout d'un usage courant, et notamment
+avec une condition \texttt{True}.
+
+Par exemple le code de l'interpréteur interactif de python pourrait
+ressembler, vu de très loin, à quelque chose comme ceci~:
+
+\begin{verbatim}
+while True:
+    print(eval(read()))
+\end{verbatim}
+
+    Notez bien par ailleurs que les instructions \texttt{break} et
+\texttt{continue} fonctionnent, à l'intérieur d'une boucle
+\texttt{while}, exactement comme dans un \texttt{for}, c'est-à-dire
+que~:
+
+\begin{itemize}
+	\item 
+	\texttt{continue} termine l'itération courante mais reste dans
+	la boucle, alors que
+	\item
+	\texttt{break} interrompt l'itération courante et
+	sort également de la boucle.
+\end{itemize}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{rappel-sur-les-conditions}{%
+\subsubsection{Rappel sur les
+conditions}\label{rappel-sur-les-conditions}}
+
+    On peut utiliser dans une boucle \texttt{while} toutes les formes de
+conditions que l'on a vues à l'occasion de l'instruction \texttt{if}.\\
+
+Dans le contexte de la boucle \texttt{while} on comprend mieux,
+toutefois, pourquoi le langage autorise d'écrire des conditions dont le
+résultat n'est \textbf{pas nécessairement un booléen}. Voyons cela sur
+un exemple simple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} une autre façon de parcourir une liste}
+        \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        
+        \PY{k}{while} \PY{n}{liste}\PY{p}{:}
+            \PY{n}{element} \PY{o}{=} \PY{n}{liste}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{element}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+c
+b
+a
+
+    \end{Verbatim}
+
+    \hypertarget{une-curiosituxe9-la-clause-else}{%
+\subsubsection{\texorpdfstring{Une curiosité~: la clause
+\texttt{else}}{Une curiosité~: la clause else}}\label{une-curiosituxe9-la-clause-else}}
+
+    Signalons enfin que la boucle \texttt{while} - au même titre d'ailleurs
+que la boucle \texttt{for}, peut être assortie
+\href{https://docs.python.org/3/reference/compound_stmts.html\#the-while-statement}{d'une
+clause \texttt{else}}, qui est exécutée à la fin de la boucle,
+\textbf{sauf dans le cas d'une sortie avec \texttt{break}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} Un exemple de while avec une clause else}
+        
+        \PY{c+c1}{\PYZsh{} si break\PYZus{}mode est vrai on va faire un break}
+        \PY{c+c1}{\PYZsh{} après le premier élément de la liste}
+        \PY{k}{def} \PY{n+nf}{scan}\PY{p}{(}\PY{n}{liste}\PY{p}{,} \PY{n}{break\PYZus{}mode}\PY{p}{)}\PY{p}{:}
+        
+            \PY{c+c1}{\PYZsh{} un message qui soit un peu parlant}
+            \PY{n}{message} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{avec break}\PY{l+s+s2}{\PYZdq{}} \PY{k}{if} \PY{n}{break\PYZus{}mode} \PY{k}{else} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{sans break}\PY{l+s+s2}{\PYZdq{}}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{message}\PY{p}{)}
+            \PY{k}{while} \PY{n}{liste}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{liste}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+                \PY{k}{if} \PY{n}{break\PYZus{}mode}\PY{p}{:}
+                    \PY{k}{break}
+            \PY{k}{else}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{else...}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} sortie de la boucle sans break}
+        \PY{c+c1}{\PYZsh{} on passe par else}
+        \PY{n}{scan}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{k+kc}{False}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+sans break
+a
+else{\ldots}
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} on sort de la boucle par le break}
+        \PY{n}{scan}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{k+kc}{True}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+avec break
+a
+
+    \end{Verbatim}
+
+    Ce trait est toutefois \textbf{très rarement} utilisé.

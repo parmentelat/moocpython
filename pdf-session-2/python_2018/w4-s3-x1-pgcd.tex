@@ -1,0 +1,55 @@
+    \hypertarget{calculer-le-pgcd}{%
+\section{Calculer le PGCD}\label{calculer-le-pgcd}}
+
+    \hypertarget{exercice---niveau-basique}{%
+\subsection{Exercice - niveau basique}\label{exercice---niveau-basique}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} chargement de l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}pgcd} \PY{k}{import} \PY{n}{exo\PYZus{}pgcd}
+\end{Verbatim}
+
+
+    On vous demande d'écrire une fonction qui calcule le PGCD de deux
+entiers, en utilisant
+\href{http://fr.wikipedia.org/wiki/Algorithme_d'Euclide}{l'algorithme
+d'Euclide}.\\
+
+    Les deux paramètres sont supposés être des entiers positifs ou nuls (pas
+la peine de le vérifier).\\
+
+Dans le cas où un des deux paramètres est nul, le PGCD vaut l'autre
+paramètre. Ainsi par exemple:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}pgcd}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \textbf{Remarque} on peut tout à fait utiliser une fonction récursive
+pour implémenter l'algorithme d'Euclide. Par exemple cette version de
+\texttt{pgcd} fonctionne très bien aussi (en supposant
+a\textgreater{}=b)
+
+\begin{verbatim}
+def pgcd(a, b):
+   "Le PGCD avec une fonction récursive"
+   if not b:
+       return a
+   return pgcd(b, a % b)
+\end{verbatim}
+
+Cependant, il vous est demandé ici d'utiliser une boucle \texttt{while},
+qui est le sujet de la séquence, pour implémenter \texttt{pgcd}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} à vous de jouer}
+        \PY{k}{def} \PY{n+nf}{pgcd}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour vérifier votre code}
+        \PY{n}{exo\PYZus{}pgcd}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{pgcd}\PY{p}{)}
+\end{Verbatim}

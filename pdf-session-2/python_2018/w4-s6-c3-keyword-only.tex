@@ -1,0 +1,178 @@
+    \hypertarget{arguments-keyword-only}{%
+\section{\texorpdfstring{Arguments
+\emph{keyword-only}}{Arguments keyword-only}}\label{arguments-keyword-only}}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{rappel}{%
+\subsubsection{Rappel}\label{rappel}}
+
+    Nous avons vu dans un précédent complément les 4 familles de paramètres
+qu'on peut déclarer dans une fonction~:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  paramètres positionnels (usuels)
+\item
+  paramètres nommés (forme \emph{name=default})
+\item
+  paramètres **args* qui attrape dans un tuple le reliquat des arguments
+  positionnels
+\item
+  paramètres **\emph{kwds} qui attrape dans un dictionnaire le reliquat
+  des arguments nommés
+\end{enumerate}
+
+Pour rappel~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} une fonction qui combine les différents }
+        \PY{c+c1}{\PYZsh{} types de paramètres}
+        \PY{k}{def} \PY{n+nf}{foo}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{,} \PY{o}{*}\PY{n}{args}\PY{p}{,} \PY{o}{*}\PY{o}{*}\PY{n}{kwds}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a=}\PY{l+s+si}{\PYZob{}a\PYZcb{}}\PY{l+s+s2}{, b=}\PY{l+s+si}{\PYZob{}b\PYZcb{}}\PY{l+s+s2}{, args=}\PY{l+s+si}{\PYZob{}args\PYZcb{}}\PY{l+s+s2}{, kwds=}\PY{l+s+si}{\PYZob{}kwds\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{foo}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a=1, b=100, args=(), kwds=\{\}
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{foo}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a=1, b=2, args=(), kwds=\{\}
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{foo}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a=1, b=2, args=(3,), kwds=\{\}
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{foo}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{n}{bar}\PY{o}{=}\PY{l+m+mi}{1000}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a=1, b=2, args=(3,), kwds=\{'bar': 1000\}
+
+    \end{Verbatim}
+
+    \hypertarget{un-seul-paramuxe8tre-attrape-tout}{%
+\subsubsection{Un seul paramètre
+attrape-tout}\label{un-seul-paramuxe8tre-attrape-tout}}
+
+    Notez également que, de bon sens, on ne peut déclarer qu'un seul
+paramètre de chacune des formes d'attrape-tout~; on ne peut pas par
+exemple déclarer
+
+\begin{verbatim}
+# c'est illégal de faire ceci
+def foo(*args1, *args2):
+    pass
+  
+\end{verbatim}
+
+car évidemment on ne saurait pas décider de ce qui va dans
+\texttt{args1} et ce qui va dans \texttt{args2}.
+
+    \hypertarget{ordre-des-duxe9clarations}{%
+\subsubsection{Ordre des déclarations}\label{ordre-des-duxe9clarations}}
+
+    L'ordre dans lequel sont déclarés les différents types de paramètres
+d'une fonction est imposé par le langage. Ce que vous avez peut-être en
+tête si vous avez appris \textbf{Python 2}, c'est qu'à l'époque on
+devait impérativement les déclarer dans cet ordre~:
+
+\begin{quote}
+positionnels, nommés, forme \texttt{*}, forme \texttt{**}
+\end{quote}
+
+comme dans notre fonction \texttt{foo}.\\
+
+    Ça reste une bonne approximation, mais depuis Python-3, les choses ont
+un petit peu changé suite à
+\href{https://www.python.org/dev/peps/pep-3102/}{l'adoption du PEP
+3102}, qui vise à introduire la notion de paramètre qu'il faut
+impérativement nommer lors de l'appel (en anglais~: \emph{keyword-only}
+argument)\\
+
+    Pour résumer, il est maintenant possible de déclarer des
+\textbf{paramètres nommés après la forme \texttt{*}}\\
+
+Voyons cela sur un exemple
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} on peut déclarer un paramètre nommé **après** l\PYZsq{}attrape\PYZhy{}tout *args}
+        \PY{k}{def} \PY{n+nf}{bar}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{o}{*}\PY{n}{args}\PY{p}{,} \PY{n}{b}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{,} \PY{o}{*}\PY{o}{*}\PY{n}{kwds}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a=}\PY{l+s+si}{\PYZob{}a\PYZcb{}}\PY{l+s+s2}{, b=}\PY{l+s+si}{\PYZob{}b\PYZcb{}}\PY{l+s+s2}{, args=}\PY{l+s+si}{\PYZob{}args\PYZcb{}}\PY{l+s+s2}{, kwds=}\PY{l+s+si}{\PYZob{}kwds\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    L'effet de cette déclaration est que, si je veux passer un argument au
+paramètre \texttt{b}, \textbf{je dois le nommer}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} je peux toujours faire ceci}
+        \PY{n}{bar}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a=1, b=100, args=(), kwds=\{\}
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} mais si je fais ceci l\PYZsq{}argument 2 va aller dans args}
+        \PY{n}{bar}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a=1, b=100, args=(2,), kwds=\{\}
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} pour passer b=2, je **dois** nommer mon argument}
+        \PY{n}{bar}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{b}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a=1, b=2, args=(), kwds=\{\}
+
+    \end{Verbatim}
+
+    Ce trait n'est objectivement pas utilisé massivement en Python, mais
+cela peut être utile de le savoir~:
+
+\begin{itemize}
+\tightlist
+\item
+  en tant qu'utilisateur d'une bibliothèque, car cela vous impose une
+  certaine façon d'appeler une fonction~;
+\item
+  en tant que concepteur d'une fonction, car cela vous permet de
+  manifester qu'un paramètre optionnel joue un rôle particulier.
+\end{itemize}

@@ -1,0 +1,264 @@
+    \hypertarget{les-fonctions-globals-et-locals}{%
+\section{\texorpdfstring{Les fonctions \texttt{globals} et
+\texttt{locals}}{Les fonctions globals et locals}}\label{les-fonctions-globals-et-locals}}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{un-exemple}{%
+\subsubsection{Un exemple}\label{un-exemple}}
+
+    python fournit un accès à la liste des noms et valeurs des variables
+visibles à cet endroit du code. Dans le jargon des langages de
+programmation on appelle ceci \textbf{l'environnement}.\\
+
+Cela est fait grâce aux fonctions \emph{builtins} \texttt{globals} et
+\texttt{locals}, que nous allons commencer par essayer sur quelques
+exemples. Nous avons pour cela écrit un module dédié~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{env\PYZus{}locals\PYZus{}globals}
+\end{Verbatim}
+
+
+    Dont voici le code
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{modtools} \PY{k}{import} \PY{n}{show\PYZus{}module}
+        \PY{n}{show\PYZus{}module}\PY{p}{(}\PY{n}{env\PYZus{}locals\PYZus{}globals}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Fichier /home/jovyan/modules/env\_locals\_globals.py
+----------------------------------------
+|"""
+ |un module pour illustrer les fonctions globals et locals
+ |"""
+ |
+ |globale = "variable globale au module"
+ |
+ |def display\_env(env):
+ |    """
+ |    affiche un environnement
+ |    on affiche juste le nom et le type de chaque variable
+ |    """
+ |    for variable, valeur in sorted(env.items()):
+ |        print("\{:>20\} → \{\}".format(variable, type(valeur).\_\_name\_\_))
+ |
+ |def temoin(x):
+ |    "la fonction témoin"
+ |    y = x ** 2
+ |    print(20 * '-', 'globals:')
+ |    display\_env(globals())
+ |    print(20 * '-', 'locals:')
+ |    display\_env(locals())
+ |
+ |class Foo:
+ |    "une classe vide"
+ 
+    \end{Verbatim}
+
+    et voici ce qu'on obtient lorsqu'on appelle
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{env\PYZus{}locals\PYZus{}globals}\PY{o}{.}\PY{n}{temoin}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+-------------------- globals:
+                 Foo → type
+        \_\_builtins\_\_ → dict
+          \_\_cached\_\_ → str
+             \_\_doc\_\_ → str
+            \_\_file\_\_ → str
+          \_\_loader\_\_ → SourceFileLoader
+            \_\_name\_\_ → str
+         \_\_package\_\_ → str
+            \_\_spec\_\_ → ModuleSpec
+         display\_env → function
+             globale → str
+              temoin → function
+-------------------- locals:
+                   x → int
+                   y → int
+
+    \end{Verbatim}
+
+    \hypertarget{interpruxe9tation}{%
+\subsubsection{Interprétation}\label{interpruxe9tation}}
+
+    Que nous montre cet exemple~?
+
+\begin{itemize}
+\item
+  D'une part la fonction \textbf{\texttt{globals}} nous donne la liste
+  des symboles définis au niveau de \textbf{l'espace de noms du module}.
+  Il s'agit évidemment du module dans lequel est définie la fonction,
+  pas celui dans lequel elle est appelée. Vous remarquerez que ceci
+  englobe \textbf{tous} les symboles du module
+  \texttt{env\_locals\_globals}, et non pas seulement ceux définis avant
+  \texttt{temoin}, c'est-à-dire la variable \texttt{globale}, les deux
+  fonctions \texttt{display\_env} et \texttt{temoin}, et la classe
+  \texttt{Foo}.
+\item
+  D'autre part \textbf{\texttt{locals}} nous donne les variables locales
+  qui sont accessibles \textbf{à cet endroit du code}, comme le montre
+  ce second exemple qui se concentre sur \texttt{locals} à différents
+  points d'une même fonction.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k+kn}{import} \PY{n+nn}{env\PYZus{}locals}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} le code de ce module }
+        \PY{n}{show\PYZus{}module}\PY{p}{(}\PY{n}{env\PYZus{}locals}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Fichier /home/jovyan/modules/env\_locals.py
+----------------------------------------
+|"""
+ |un module pour illustrer la fonction locals
+ |"""
+ |
+ |\# pour afficher
+ |from env\_locals\_globals import display\_env
+ |
+ |def temoin(x):
+ |    "la fonction témoin"
+ |    y = x ** 2
+ |    print(20*'-', 'locals - entrée:')
+ |    display\_env(locals())
+ |
+ |    for i in (1,):
+ |        for j in (1,):
+ |            print(20*'-', 'locals - boucles for:')
+ |            display\_env(locals())
+ |            
+ 
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{env\PYZus{}locals}\PY{o}{.}\PY{n}{temoin}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+-------------------- locals - entrée:
+                   x → int
+                   y → int
+-------------------- locals - boucles for:
+                   i → int
+                   j → int
+                   x → int
+                   y → int
+
+    \end{Verbatim}
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    \textbf{NOTE}: cette section est en pratique devenue obsolète maintenant
+que les \emph{f-strings} sont présents dans la version 3.6.\\
+
+Nous l'avons conservée pour l'instant toutefois, pour ceux d'entre vous
+qui ne peuvent pas encore utiliser les \emph{f-strings} en production.
+N'hésitez pas à passer si vous n'êtes pas dans ce cas.
+
+    \hypertarget{usage-pour-le-formatage-de-chauxeenes}{%
+\subsubsection{Usage pour le formatage de
+chaînes}\label{usage-pour-le-formatage-de-chauxeenes}}
+
+    Les deux fonctions \texttt{locals} et \texttt{globals} ne sont pas d'une
+utilisation très fréquente. Elles peuvent cependant être utiles dans le
+contexte du formatage de chaînes, comme on peut le voir dans les deux
+exemples ci-dessous.
+
+    \hypertarget{avec-format}{%
+\subparagraph{\texorpdfstring{Avec
+\texttt{format}}{Avec format}\\\\}\label{avec-format}}
+
+    On peut utiliser \texttt{format} qui s'attend à quelque chose comme~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}nom\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{nom}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Dupont}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} 'Dupont'
+\end{Verbatim}
+            
+    que l'on peut obtenir de manière équivalente, en anticipant sur la
+prochaine vidéo, avec le passage d'arguments en \texttt{**}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}nom\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{o}{*}\PY{o}{*}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{nom}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Dupont}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} 'Dupont'
+\end{Verbatim}
+            
+    En versant la fonction \texttt{locals} dans cette formule on obtient une
+forme relativement élégante
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k}{def} \PY{n+nf}{format\PYZus{}et\PYZus{}locals}\PY{p}{(}\PY{n}{nom}\PY{p}{,} \PY{n}{prenom}\PY{p}{,} \PY{n}{civilite}\PY{p}{,} \PY{n}{telephone}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}civilite\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZob{}prenom\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZob{}nom\PYZcb{}}\PY{l+s+s2}{ : Poste }\PY{l+s+si}{\PYZob{}telephone\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{o}{*}\PY{o}{*}\PY{n+nb}{locals}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+        
+        \PY{n}{format\PYZus{}et\PYZus{}locals}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Dupont}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Jean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Mr}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{7748}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} 'Mr Jean Dupont : Poste 7748'
+\end{Verbatim}
+            
+    \hypertarget{avec-lopuxe9rateur}{%
+\subparagraph{\texorpdfstring{Avec l'opérateur
+\texttt{\%}}{Avec l'opérateur \%}\\\\}\label{avec-lopuxe9rateur}}
+
+    De manière similaire, avec l'opérateur \texttt{\%} - dont nous rappelons
+qu'il est obsolète - on peut écrire
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{k}{def} \PY{n+nf}{pourcent\PYZus{}et\PYZus{}locals}\PY{p}{(}\PY{n}{nom}\PY{p}{,} \PY{n}{prenom}\PY{p}{,} \PY{n}{civilite}\PY{p}{,} \PY{n}{telephone}\PY{p}{)}\PY{p}{:}
+             \PY{k}{return} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}(civilite)s}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZpc{}(prenom)s}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZpc{}(nom)s}\PY{l+s+s2}{ : Poste }\PY{l+s+si}{\PYZpc{}(telephone)s}\PY{l+s+s2}{\PYZdq{}}\PY{o}{\PYZpc{}}\PY{k}{locals}()
+         
+         \PY{n}{pourcent\PYZus{}et\PYZus{}locals}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Dupont}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Jean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Mr}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{7748}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:} 'Mr Jean Dupont : Poste 7748'
+\end{Verbatim}
+            
+    \hypertarget{avec-un-f-string}{%
+\subparagraph{\texorpdfstring{Avec un
+\emph{f-string}}{Avec un f-string}\\\\}\label{avec-un-f-string}}
+
+    Pour rappel si vous disposez de python 3.6, vous pouvez alors écrire
+simplement - et sans avoir recours, donc, à \texttt{locals()} ou autre~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} attention ceci nécessite python\PYZhy{}3.6}
+         \PY{k}{def} \PY{n+nf}{avec\PYZus{}f\PYZus{}string}\PY{p}{(}\PY{n}{nom}\PY{p}{,} \PY{n}{prenom}\PY{p}{,} \PY{n}{civilite}\PY{p}{,} \PY{n}{telephone}\PY{p}{)}\PY{p}{:}
+             \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}civilite\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZob{}prenom\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZob{}nom\PYZcb{}}\PY{l+s+s2}{ : Poste }\PY{l+s+si}{\PYZob{}telephone\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}
+         
+         \PY{n}{avec\PYZus{}f\PYZus{}string}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Dupont}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Jean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Mr}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{7748}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} 'Mr Jean Dupont : Poste 7748'
+\end{Verbatim}

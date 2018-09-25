@@ -1,0 +1,167 @@
+    \hypertarget{lexception-unboundlocalerror}{%
+\section{\texorpdfstring{L'exception
+\texttt{UnboundLocalError}}{L'exception UnboundLocalError}}\label{lexception-unboundlocalerror}}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    Nous résumons ici quelques cas simples de portée de variables.
+
+    \hypertarget{variable-locale}{%
+\subsubsection{Variable locale}\label{variable-locale}}
+
+    Les \textbf{arguments} attendus par la fonction sont considérés comme
+des variables \textbf{locales}, c'est-à-dire dans l'espace de noms de la
+fonction.\\
+
+Pour définir une autre variable locale, il suffit de la définir
+(l'affecter), elle devient alors accessible en lecture~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k}{def} \PY{n+nf}{ma\PYZus{}fonction1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n}{variable1} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{locale}\PY{l+s+s2}{\PYZdq{}}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{variable1}\PY{p}{)}
+        
+        \PY{n}{ma\PYZus{}fonction1}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+locale
+
+    \end{Verbatim}
+
+    et ceci que l'on ait ou non une variable globale de même nom
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{variable2} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{globale}\PY{l+s+s2}{\PYZdq{}}
+        
+        \PY{k}{def} \PY{n+nf}{ma\PYZus{}fonction2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n}{variable2} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{locale}\PY{l+s+s2}{\PYZdq{}}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{variable2}\PY{p}{)}
+        
+        \PY{n}{ma\PYZus{}fonction2}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+locale
+
+    \end{Verbatim}
+
+    \hypertarget{variable-globale}{%
+\subsubsection{Variable globale}\label{variable-globale}}
+
+    On peut accéder \textbf{en lecture} à une variable globale sans
+précaution particulière~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{variable3} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{globale}\PY{l+s+s2}{\PYZdq{}}
+        
+        \PY{k}{def} \PY{n+nf}{ma\PYZus{}fonction3}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{variable3}\PY{p}{)}
+        
+        \PY{n}{ma\PYZus{}fonction3}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+globale
+
+    \end{Verbatim}
+
+    \hypertarget{mais-il-faut-choisir}{%
+\subsubsection{Mais il faut choisir~!}\label{mais-il-faut-choisir}}
+
+    Par contre on ne \textbf{peut pas} faire la chose suivante dans une
+fonction. On ne peut pas utiliser \textbf{d'abord} une variable comme
+une variable \textbf{globale}, \textbf{puis} essayer de l'affecter
+localement - ce qui signifie la déclarer comme une \textbf{locale}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} cet exemple ne fonctionne pas et lève UnboundLocalError}
+        \PY{n}{variable4} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{globale}\PY{l+s+s2}{\PYZdq{}}
+        
+        \PY{k}{def} \PY{n+nf}{ma\PYZus{}fonction4}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} on référence la variable globale}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{variable4}\PY{p}{)}
+            \PY{c+c1}{\PYZsh{} et maintenant on crée une variable locale}
+            \PY{n}{variable4} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{locale}\PY{l+s+s2}{\PYZdq{}}
+        
+        \PY{c+c1}{\PYZsh{} on \PYZdq{}attrape\PYZdq{} l\PYZsq{}exception}
+        \PY{k}{try}\PY{p}{:}
+            \PY{n}{ma\PYZus{}fonction4}\PY{p}{(}\PY{p}{)}
+        \PY{k}{except} \PY{n+ne}{Exception} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS, exception }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{type(e)\PYZcb{}:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}e\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+OOPS, exception <class 'UnboundLocalError'>:
+local variable 'variable4' referenced before assignment
+
+    \end{Verbatim}
+
+    \hypertarget{comment-faire-alors}{%
+\subsubsection{Comment faire alors~?}\label{comment-faire-alors}}
+
+    L'intérêt de cette erreur est d'interdire de mélanger des variables
+locales et globales de même nom dans une même fonction. On voit bien que
+ça serait vite incompréhensible. Donc une variable dans une fonction
+peut être \textbf{ou bien} locale si elle est affectée dans la fonction
+\textbf{ou bien} globale, mais \textbf{pas les deux à la fois}. Si vous
+avez une erreur \texttt{UnboundLocalError}, c'est qu'à un moment donné
+vous avez fait cette confusion.\\
+
+    Vous vous demandez peut-être à ce stade, mais comment fait-on alors pour
+modifier une variable globale depuis une fonction~? Pour cela il faut
+utiliser l'instruction \texttt{global} comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} Pour résoudre ce conflit il faut explicitement}
+        \PY{c+c1}{\PYZsh{} déclarer la variable  comme globale}
+        \PY{n}{variable5} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{globale}\PY{l+s+s2}{\PYZdq{}}
+        
+        \PY{k}{def} \PY{n+nf}{ma\PYZus{}fonction5}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{k}{global} \PY{n}{variable5}
+            \PY{c+c1}{\PYZsh{} on référence la variable globale}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dans la fonction}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{variable5}\PY{p}{)}
+            \PY{c+c1}{\PYZsh{} cette fois on modifie la variable globale}
+            \PY{n}{variable5} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{changée localement}\PY{l+s+s2}{\PYZdq{}}
+        
+        \PY{n}{ma\PYZus{}fonction5}\PY{p}{(}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{après la fonction}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{variable5}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+dans la fonction globale
+après la fonction changée localement
+
+    \end{Verbatim}
+
+    Nous reviendrons plus longuement sur l'instruction \texttt{global} dans
+la prochaine vidéo.
+
+    \hypertarget{bonnes-pratiques}{%
+\subsubsection{Bonnes pratiques}\label{bonnes-pratiques}}
+
+    Cela étant dit, l'utilisation de variables globales est généralement
+considérée comme une mauvaise pratique.\\
+
+Le fait d'utiliser une variable globale en \emph{lecture seule} peut
+rester acceptable, lorsqu'il s'agit de matérialiser une constante qu'il
+est facile de changer. Mais dans une application aboutie, ces constantes
+elles-mêmes peuvent être modifiées par l'utilisateur via un système de
+configuration, donc on préférera passer en argument un objet
+\emph{config}.\\
+
+Et dans les cas où votre code doit recourir à l'utilisation de
+l'instruction \texttt{global}, c'est très probablement que quelque chose
+peut être amélioré au niveau de la conception de votre code.
+
+Il est recommandé, au contraire, de passer en argument à une fonction
+tout le contexte dont elle a besoin pour travailler~; et à l'inverse
+d'utiliser le résultat d'une fonction plutôt que de modifier une
+variable globale.\\

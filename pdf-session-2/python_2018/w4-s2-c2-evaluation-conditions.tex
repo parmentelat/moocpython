@@ -1,0 +1,305 @@
+    \hypertarget{uxe9valuation-des-tests}{%
+\section{Évaluation des tests}\label{uxe9valuation-des-tests}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    \hypertarget{quels-tests-sont-uxe9valuuxe9s}{%
+\subsubsection{Quels tests sont évalués
+?}\label{quels-tests-sont-uxe9valuuxe9s}}
+
+    On a vu dans la vidéo que l'instruction conditionnelle \texttt{if}
+permet d'implémenter simplement des branchements à plusieurs choix,
+comme dans cet exemple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{n}{s} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{berlin}\PY{l+s+s1}{\PYZsq{}}
+        \PY{k}{if} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{s}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{avec a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{k}{elif} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{s}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{avec b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{k}{elif} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{s}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{avec c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{k}{else}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sans a ni b ni c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+avec b
+
+    \end{Verbatim}
+
+    Comme on s'en doute, les expressions conditionnelles \textbf{sont
+évaluées jusqu'à obtenir un résultat vrai} - ou considéré comme vrai -,
+et le bloc correspondant est alors exécuté. Le point important ici est
+qu'\textbf{une fois qu'on a obtenu un résultat vrai}, on sort de
+l'expression conditionnelle \textbf{sans évaluer les autres conditions}.
+En termes savants, on parle d'évaluation paresseuse : on s'arrête dès
+qu'on peut.\\
+
+    Dans notre exemple, on aura évalué à la sortie
+\texttt{\textquotesingle{}a\textquotesingle{}\ in\ s}, et aussi
+\texttt{\textquotesingle{}b\textquotesingle{}\ in\ s}, mais pas
+\texttt{\textquotesingle{}c\textquotesingle{}\ in\ s}
+
+    \hypertarget{pourquoi-cest-important}{%
+\subsubsection{Pourquoi c'est important
+?}\label{pourquoi-cest-important}}
+
+    C'est important de bien comprendre quels sont les tests qui sont
+réellement évalués pour deux raisons~:
+
+\begin{itemize}
+\tightlist
+\item
+  d'abord, pour des raisons de performance~; comme on n'évalue que les
+  tests nécessaires, si un des tests prend du temps, il est peut-être
+  préférable de le faire en dernier~;
+\item
+  mais aussi et surtout, il se peut tout à fait qu'un test fasse des
+  \textbf{effets de bord}, c'est-à-dire qu'il modifie un ou plusieurs
+  objets.
+\end{itemize}
+
+    Dans notre premier exemple, les conditions elles-mêmes sont
+inoffensives~; la valeur de \texttt{s} reste \emph{identique}, que l'on
+\emph{évalue ou non} les différentes conditions.\\
+
+Mais nous allons voir ci-dessous qu'il est relativement facile d'écrire
+des conditions qui \textbf{modifient} par \textbf{effet de bord} les
+objets mutables sur lesquelles elles opèrent, et dans ce cas il est
+crucial de bien assimiler la règle des évaluations des expressions dans
+un \texttt{if}.
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{rappel-sur-la-muxe9thode-pop}{%
+\subsubsection{\texorpdfstring{Rappel sur la méthode
+\texttt{pop}}{Rappel sur la méthode pop}}\label{rappel-sur-la-muxe9thode-pop}}
+
+    Pour illustrer la notion d'\textbf{effet de bord}, nous revenons sur la
+méthode de liste \texttt{pop()} qui, on le rappelle, renvoie un élément
+de liste \textbf{après l'avoir effacé} de la liste.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} on se donne une liste}
+        \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{premier}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{deuxieme}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{troisieme}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{liste=}\PY{l+s+si}{\PYZob{}liste\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+liste=['premier', 'deuxieme', 'troisieme']
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} pop(0) renvoie le premier élément de la liste, et raccourcit la liste}
+        \PY{n}{element} \PY{o}{=} \PY{n}{liste}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{après pop(0), element=}\PY{l+s+si}{\PYZob{}element\PYZcb{}}\PY{l+s+s2}{ et liste=}\PY{l+s+si}{\PYZob{}liste\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+après pop(0), element=premier et liste=['deuxieme', 'troisieme']
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} et ainsi de suite}
+        \PY{n}{element} \PY{o}{=} \PY{n}{liste}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{après pop(0), element=}\PY{l+s+si}{\PYZob{}element\PYZcb{}}\PY{l+s+s2}{ et liste=}\PY{l+s+si}{\PYZob{}liste\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+après pop(0), element=deuxieme et liste=['troisieme']
+
+    \end{Verbatim}
+
+    \hypertarget{conditions-avec-effet-de-bord}{%
+\subsubsection{Conditions avec effet de
+bord}\label{conditions-avec-effet-de-bord}}
+
+    Une fois ce rappel fait, voyons maintenant l'exemple suivant~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{liste} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{liste en entree:}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{de taille}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{liste}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+liste en entree: [0, 1, 2, 3, 4] de taille 5
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{if} \PY{n}{liste}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{0}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cas 1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{k}{elif} \PY{n}{liste}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{1}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cas 2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{k}{elif} \PY{n}{liste}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{2}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cas 3}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{k}{else}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cas 4}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{liste en sortie de taille}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{liste}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+cas 1
+liste en sortie de taille 4
+
+    \end{Verbatim}
+
+    Avec cette entrée, le premier test est vrai (car \texttt{pop(0)} renvoie
+0), aussi on n'exécute en tout \texttt{pop()} qu'\textbf{une seule
+fois}, et donc à la sortie la liste n'a été raccourcie que d'un élément.\\
+
+    Exécutons à présent le même code avec une entrée différente~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{liste} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{en entree: liste=}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{de taille}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{liste}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+en entree: liste= [5, 6, 7, 8, 9] de taille 5
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{k}{if} \PY{n}{liste}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{0}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cas 1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{k}{elif} \PY{n}{liste}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{1}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cas 2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{k}{elif} \PY{n}{liste}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{2}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cas 3}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{k}{else}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cas 4}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{en sortie: liste=}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{de taille}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{liste}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+cas 4
+en sortie: liste= [8, 9] de taille 2
+
+    \end{Verbatim}
+
+    On observe que cette fois la liste a été \textbf{raccourcie 3 fois}, car
+les trois tests se sont révélés faux.\\
+
+    Cet exemple vous montre qu'il faut être attentif avec des conditions qui
+font des effets de bord. Bien entendu, ce type de pratique est de
+manière générale à utiliser avec beaucoup de discernement.
+
+    \hypertarget{court-circuit-short-circuit}{%
+\subsubsection{\texorpdfstring{Court-circuit
+(\emph{short-circuit})}{Court-circuit (short-circuit)}}\label{court-circuit-short-circuit}}
+
+    La logique que l'on vient de voir est celle qui s'applique aux
+différentes branches d'un \texttt{if}~; c'est la même logique qui est à
+l'œuvre aussi lorsque python évalue une condition logique à base de
+\texttt{and} et \texttt{or}. C'est ici aussi une forme d'évaluation
+paresseuse.\\
+
+    Pour illustrer cela, nous allons nous définir deux fonctions toutes
+simples qui renvoient \texttt{True} et \texttt{False} mais avec une
+impression de sorte qu'on voit lorsqu'elles sont exécutées~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k}{def} \PY{n+nf}{true}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{true}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{k}{return} \PY{k+kc}{True}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{k}{def} \PY{n+nf}{false}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{false}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+             \PY{k}{return} \PY{k+kc}{False}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{true}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+true
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} True
+\end{Verbatim}
+            
+    Ceci va nous permettre d'illustrer notre point, qui est que lorsque
+python évalue un \texttt{and} ou un \texttt{or}, il \textbf{n'évalue la
+deuxième condition que si c'est nécessaire}. Ainsi par exemple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{false}\PY{p}{(}\PY{p}{)} \PY{o+ow}{and} \PY{n}{true}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+false
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} False
+\end{Verbatim}
+            
+    Dans ce cas, python évalue la première partie du \texttt{and} - qui
+provoque l'impression de \texttt{false} - et comme le résultat est faux,
+il n'est \textbf{pas nécessaire} d'évaluer la seconde condition, on sait
+que de toute façon le résultat du \texttt{and} est forcément faux. C'est
+pourquoi vous ne voyez pas l'impression de \texttt{true}.\\
+
+    De manière symétrique avec un \texttt{or}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{true}\PY{p}{(}\PY{p}{)} \PY{o+ow}{or} \PY{n}{false}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+true
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}13}]:} True
+\end{Verbatim}
+            
+    À nouveau ici il n'est pas nécessaire d'évaluer \texttt{false()}, et
+donc seul \texttt{true} est imprimé à l'évaluation.\\
+
+    À titre d'exercice, essayez de dire combien d'impressions sont émises
+lorsqu'on évalue cette expression un peu plus compliquée~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{true}\PY{p}{(}\PY{p}{)} \PY{o+ow}{and} \PY{p}{(}\PY{n}{false}\PY{p}{(}\PY{p}{)} \PY{o+ow}{or} \PY{n}{true}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o+ow}{or} \PY{p}{(}\PY{n}{true} \PY{p}{(}\PY{p}{)} \PY{o+ow}{and} \PY{n}{false}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+true
+false
+true
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}14}]:} True
+\end{Verbatim}

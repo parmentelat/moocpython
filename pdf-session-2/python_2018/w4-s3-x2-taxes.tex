@@ -1,0 +1,92 @@
+    \hypertarget{exercice}{%
+\section{Exercice}\label{exercice}}
+
+    \hypertarget{niveau-basique}{%
+\subsection{Niveau basique}\label{niveau-basique}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}taxes} \PY{k}{import} \PY{n}{exo\PYZus{}taxes}
+\end{Verbatim}
+
+
+    On se propose d'écrire une fonction \texttt{taxes} qui calcule le
+montant de l'impôt sur le revenu au Royaume-Uni.\\
+
+    Le barème est \href{https://www.gov.uk/income-tax-rates}{publié ici par
+le gouvernement anglais}, voici les données utilisées pour l'exercice~:
+
+    \begin{longtable}[]{@{}rrr@{}}
+\toprule
+Tranche & Revenu imposable & Taux\tabularnewline
+\midrule
+\endhead
+Non imposable & jusque £11.500 & 0\%\tabularnewline
+Taux de base & £11.501 à £45.000 & 20\%\tabularnewline
+Taux élevé & £45.001 à £150.000 & 40\%\tabularnewline
+Taux supplémentaire & au delà de £150.000 & 45\%\tabularnewline
+\bottomrule
+\end{longtable}
+
+    Donc naturellement il s'agit d'écrire une fonction qui prend en argument
+le revenu imposable, et retourne le montant de l'impôt, \textbf{arrondi
+à l'entier inférieur}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}taxes}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \textbf{Indices}
+
+\begin{itemize}
+\tightlist
+\item
+  évidemment on parle ici d'une fonction continue~;
+\item
+  aussi en termes de programmation, je vous encourage à séparer la
+  définition des tranches de la fonction en elle-même.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{taxes}\PY{p}{(}\PY{n}{income}\PY{p}{)}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} ce n\PYZsq{}est pas la bonne réponse}
+            \PY{k}{return} \PY{p}{(}\PY{n}{income}\PY{o}{\PYZhy{}}\PY{l+m+mi}{11}\PY{n}{\PYZus{}500}\PY{p}{)} \PY{o}{*} \PY{p}{(}\PY{l+m+mi}{20}\PY{o}{/}\PY{l+m+mi}{100}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}taxes}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{taxes}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{repruxe9sentation-graphique}{%
+\subparagraph{Représentation
+graphique}\label{repruxe9sentation-graphique}}
+
+    Comme d'habitude vous pouvez voir la représentation graphique de votre
+fonction~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+        \PY{n}{plt}\PY{o}{.}\PY{n}{ion}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{200}\PY{n}{\PYZus{}000}\PY{p}{)}
+        \PY{n}{Y} \PY{o}{=} \PY{p}{[}\PY{n}{taxes}\PY{p}{(}\PY{n}{x}\PY{p}{)} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{X}\PY{p}{]}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} et pour changer la taille de la figure}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}

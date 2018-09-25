@@ -1,0 +1,317 @@
+    \hypertarget{conditions-expressions-booluxe9ennes}{%
+\section{Conditions \& Expressions
+Booléennes}\label{conditions-expressions-booluxe9ennes}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    Nous présentons rapidement dans ce notebook comment construire la
+condition qui contrôle l'exécution d'un \texttt{if}.
+
+    \hypertarget{tests-considuxe9ruxe9s-comme-vrai}{%
+\subsubsection{Tests considérés comme
+vrai}\label{tests-considuxe9ruxe9s-comme-vrai}}
+
+    Lorsqu'on écrit une instruction comme
+
+\begin{verbatim}
+if <expression>:
+   <do_something>
+\end{verbatim}
+
+le résultat de l'expression peut \textbf{ne pas être un booléen}.\\
+
+Par exemple, pour n'importe quel type numérique, la valeur 0 est
+considérée comme fausse. Cela signifie que
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} ici la condition s\PYZsq{}évalue à 0, donc on ne fait rien}
+        \PY{k}{if} \PY{l+m+mi}{3} \PY{o}{\PYZhy{}} \PY{l+m+mi}{3}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ne passera pas par là}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} par contre si vous vous souvenez de notre cours sur les flottants}
+        \PY{c+c1}{\PYZsh{} ici la condition donne un tout petit réel mais pas 0.}
+        \PY{k}{if} \PY{l+m+mf}{0.1} \PY{o}{+} \PY{l+m+mf}{0.2} \PY{o}{\PYZhy{}} \PY{l+m+mf}{0.3}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{par contre on passe ici}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+par contre on passe ici
+
+    \end{Verbatim}
+
+    De même, une chaîne vide, une liste vide, un tuple vide, sont considérés
+comme faux. Bref, vous voyez l'idée générale.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{if} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} 
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ne passera pas par là}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{k}{if} \PY{p}{[}\PY{p}{]}\PY{p}{:} 
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ne passera pas par là}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{k}{if} \PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ne passera pas par là}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} assez logiquement, None aussi}
+        \PY{c+c1}{\PYZsh{} est considéré comme faux}
+        \PY{k}{if} \PY{k+kc}{None}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ne passe toujours pas par ici}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{uxe9galituxe9}{%
+\subsubsection{Égalité}\label{uxe9galituxe9}}
+
+    Les tests les plus simples se font à l'aide des opérateurs d'égalité,
+qui fonctionnent sur presque tous les objets. L'opérateur \texttt{==}
+vérifie si deux objets ont la même valeur~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{bas} \PY{o}{=} \PY{l+m+mi}{12}
+        \PY{n}{haut} \PY{o}{=} \PY{l+m+mf}{25.82}
+        
+        \PY{c+c1}{\PYZsh{} égalité ?}
+        \PY{k}{if} \PY{n}{bas} \PY{o}{==} \PY{n}{haut}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{==}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} non égalité ?}
+        \PY{k}{if} \PY{n}{bas} \PY{o}{!=} \PY{n}{haut}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{!=}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+!=
+
+    \end{Verbatim}
+
+    En général, deux objets de types différents ne peuvent pas être égaux.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} ces deux objets se ressemblent }
+        \PY{c+c1}{\PYZsh{} mais ils ne sont pas du même type !}
+        \PY{k}{if} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]} \PY{o}{!=} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{!=}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+!=
+
+    \end{Verbatim}
+
+    Par contre, des \texttt{float}, des \texttt{int} et des \texttt{complex}
+peuvent être égaux entre eux~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{bas\PYZus{}reel} \PY{o}{=} \PY{l+m+mf}{12.}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{bas}\PY{p}{,} \PY{n}{bas\PYZus{}reel}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+12 12.0
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} le réel 12 et }
+         \PY{c+c1}{\PYZsh{} l\PYZsq{}entier 12 sont égaux}
+         \PY{k}{if} \PY{n}{bas} \PY{o}{==} \PY{n}{bas\PYZus{}reel}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{int == float}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+int == float
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} ditto pour int et complex}
+         \PY{k}{if} \PY{p}{(}\PY{l+m+mi}{12} \PY{o}{+} \PY{l+m+mi}{0}\PY{n}{j}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{12}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{int == complex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+int == complex
+
+    \end{Verbatim}
+
+    Signalons à titre un peu anecdotique une syntaxe ancienne~:
+historiquement et \textbf{seulement en Python 2} on pouvait aussi noter
+\texttt{\textless{}\textgreater{}} le test de non égalité. On trouve
+ceci dans du code ancien mais il faut éviter de l'utiliser~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{python2}
+         
+         \PYZsh{} l\PYZsq{}ancienne forme de !=
+         if 12 \PYZlt{}\PYZgt{} 25:
+             print(\PYZdq{}\PYZlt{}\PYZgt{} est obsolete et ne fonctionne qu\PYZsq{}en python2\PYZdq{})
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Couldn't find program: 'python2'
+
+    \end{Verbatim}
+
+    \hypertarget{les-opuxe9rateurs-de-comparaison}{%
+\subsubsection{Les opérateurs de
+comparaison}\label{les-opuxe9rateurs-de-comparaison}}
+
+    Sans grande surprise on peut aussi écrire
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{k}{if} \PY{n}{bas} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{haut}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZlt{}=}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{k}{if} \PY{n}{bas} \PY{o}{\PYZlt{}} \PY{n}{haut}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZlt{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+<=
+<
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{k}{if} \PY{n}{haut} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{n}{bas}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZgt{}=}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{k}{if} \PY{n}{haut} \PY{o}{\PYZgt{}} \PY{n}{bas}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZgt{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+>=
+>
+
+    \end{Verbatim}
+
+    À titre de curiosité, on peut même écrire en un seul test une
+appartenance à un intervalle, ce qui donne un code plus lisible
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{x} \PY{o}{=} \PY{p}{(}\PY{n}{bas} \PY{o}{+} \PY{n}{haut}\PY{p}{)} \PY{o}{/} \PY{l+m+mi}{2}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+18.91
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{c+c1}{\PYZsh{} deux tests en une expression}
+         \PY{k}{if} \PY{n}{bas} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{x} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{haut}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dans l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{intervalle}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+dans l'intervalle
+
+    \end{Verbatim}
+
+    On peut utiliser les comparaisons sur une palette assez large de types,
+comme par exemple avec les listes
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} on peut comparer deux listes, mais ATTENTION}
+         \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}17}]:} True
+\end{Verbatim}
+            
+    Il est parfois utile de vérifier le sens qui est donné à ces opérateurs
+selon le type~; ainsi par exemple sur les ensembles ils se réfèrent à
+l'\textbf{inclusion}.\\
+
+Il faut aussi se méfier avec les types numériques, si un complexe est
+impliqué, comme dans l'exemple suivant~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{} on ne peut pas par contre comparer deux nombres complexes}
+         \PY{k}{try}\PY{p}{:}
+             \PY{l+m+mi}{2}\PY{n}{j} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{3}\PY{n}{j}
+         \PY{k}{except} \PY{n+ne}{Exception} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{type}\PY{p}{(}\PY{n}{e}\PY{p}{)}\PY{p}{,} \PY{n}{e}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+OOPS <class 'TypeError'> '<=' not supported between instances of 'complex' and 'complex'
+
+    \end{Verbatim}
+
+    \hypertarget{connecteurs-logiques-et-ou-non}{%
+\subsubsection{Connecteurs logiques et / ou /
+non}\label{connecteurs-logiques-et-ou-non}}
+
+    On peut bien sûr combiner facilement plusieurs expressions entre elles,
+grâce aux opérateurs \texttt{and}, \texttt{or} et \texttt{not}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} il ne faut pas faire ceci, mettez des parenthèses}
+         \PY{k}{if} \PY{l+m+mi}{12} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mf}{25.} \PY{o+ow}{or} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]} \PY{o+ow}{and} \PY{o+ow}{not} \PY{l+m+mi}{12} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{32}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OK mais pourrait être mieux}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+OK mais pourrait être mieux
+
+    \end{Verbatim}
+
+    En matière de priorités~: le plus simple si vous avez une expression
+compliquée reste de mettre les parenthèses qui rendent son évaluation
+claire et lisible pour tous. Aussi on préfèrera de beaucoup la
+formulation équivalente~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{c+c1}{\PYZsh{} c\PYZsq{}est mieux avec un parenthésage}
+         \PY{k}{if} \PY{l+m+mi}{12} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mf}{25.} \PY{o+ow}{or} \PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]} \PY{o+ow}{and} \PY{o+ow}{not} \PY{l+m+mi}{12} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{32}\PY{p}{)}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OK, c}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{est équivalent et plus clair}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+OK, c'est équivalent et plus clair
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{c+c1}{\PYZsh{} attention, si on fait un autre parenthésage, on change le sens}
+         \PY{k}{if} \PY{p}{(}\PY{l+m+mi}{12} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mf}{25.} \PY{o+ow}{or} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)} \PY{o+ow}{and} \PY{o+ow}{not} \PY{l+m+mi}{12} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{32} \PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ce n}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{est pas équivalent, ne passera pas par là}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+    Reportez-vous à la section sur les
+\href{https://docs.python.org/3/library/stdtypes.html\#truth-value-testing}{opérateurs
+booléens} dans la documentation python.

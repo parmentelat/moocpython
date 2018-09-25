@@ -1,0 +1,102 @@
+    \hypertarget{un-piuxe8ge-courant}{%
+\section{Un piège courant}\label{un-piuxe8ge-courant}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    \hypertarget{nutilisez-pas-dobjet-mutable-pour-les-valeurs-par-duxe9faut}{%
+\subsubsection{N'utilisez pas d'objet mutable pour les valeurs par
+défaut}\label{nutilisez-pas-dobjet-mutable-pour-les-valeurs-par-duxe9faut}}
+
+    En Python il existe un piège dans lequel il est très facile de tomber.
+Aussi si vous voulez aller à l'essentiel~: \textbf{n'utilisez pas
+d'objet mutable pour les valeurs par défaut} lors de la définition d'une
+fonction.\\
+
+Si vous avez besoin d'écrire une fonction qui prend en argument par
+défaut une liste ou un dictionnaire vide, voici comment faire
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} ne faites SURTOUT PAS ça}
+        \PY{k}{def} \PY{n+nf}{ne\PYZus{}faites\PYZus{}pas\PYZus{}ca}\PY{p}{(}\PY{n}{options}\PY{o}{=}\PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{faire quelque chose}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} mais plutôt comme ceci}
+        \PY{k}{def} \PY{n+nf}{mais\PYZus{}plutot\PYZus{}ceci}\PY{p}{(}\PY{n}{options}\PY{o}{=}\PY{k+kc}{None}\PY{p}{)}\PY{p}{:}
+            \PY{k}{if} \PY{n}{options} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:} 
+                \PY{n}{options} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{faire quelque chose}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{que-se-passe-t-il-si-on-le-fait}{%
+\subsubsection{Que se passe-t-il si on le
+fait~?}\label{que-se-passe-t-il-si-on-le-fait}}
+
+    Considérons le cas relativement simple d'une fonction qui calcule une
+valeur - ici un entier aléatoire entre 0 et 10 -, et l'ajoute à une
+liste passée par l'appelant.\\
+
+    Et pour rendre la vie de l'appelant plus facile, on se dit qu'il peut
+être utile de faire en sorte que si l'appelant n'a pas de liste sous la
+main, on va créer pour lui une liste vide. Et pour ça on fait~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k+kn}{import} \PY{n+nn}{random}
+        
+        \PY{c+c1}{\PYZsh{} l\PYZsq{}intention ici est que si l\PYZsq{}appelant ne fournit pas }
+        \PY{c+c1}{\PYZsh{} la liste en entrée, on crée pour lui une liste vide}
+        \PY{k}{def} \PY{n+nf}{ajouter\PYZus{}un\PYZus{}aleatoire}\PY{p}{(}\PY{n}{resultats}\PY{o}{=}\PY{p}{[}\PY{p}{]}\PY{p}{)}\PY{p}{:}
+            \PY{n}{resultats}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{random}\PY{o}{.}\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
+            \PY{k}{return} \PY{n}{resultats}
+\end{Verbatim}
+
+
+    Si on appelle cette fonction une première fois, tout semble bien aller
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{ajouter\PYZus{}un\PYZus{}aleatoire}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} [6]
+\end{Verbatim}
+            
+    Sauf que, si on appelle la fonction une deuxième fois, on a une
+surprise~!
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{ajouter\PYZus{}un\PYZus{}aleatoire}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} [6, 9]
+\end{Verbatim}
+            
+    \hypertarget{pourquoi}{%
+\subsubsection{Pourquoi~?}\label{pourquoi}}
+
+    Le problème ici est qu'une valeur par défaut - ici l'expression
+\texttt{{[}{]}} - est évaluée \textbf{une fois} au moment de la
+\textbf{définition} de la fonction.\\
+
+Toutes les fois où la fonction est appelée avec cet argument manquant,
+on va utiliser comme valeur par défaut \textbf{le même objet}, qui la
+première fois est bien une liste vide, mais qui se fait modifier par le
+premier appel.\\
+
+Si bien que la deuxième fois on réutilise la même liste \textbf{qui
+n'est plus vide}. Pour aller plus loin, vous pouvez regarder la
+documentation Python sur
+\href{https://docs.python.org/3/faq/programming.html\#why-are-default-values-shared-between-objects}{ce
+problème}.

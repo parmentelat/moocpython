@@ -1,0 +1,94 @@
+    \hypertarget{passage-darguments}{%
+\section{Passage d'arguments}\label{passage-darguments}}
+
+    \hypertarget{exercice---niveau-basique}{%
+\subsection{Exercice - niveau basique}\label{exercice---niveau-basique}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour charger l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}distance} \PY{k}{import} \PY{n}{exo\PYZus{}distance}
+\end{Verbatim}
+
+
+    Vous devez écrire une fonction \texttt{distance} qui prend un nombre
+quelconque d'arguments numériques non complexes, et qui retourne la
+racine carrée de la somme des carrés des arguments.\\
+
+Plus précisément~: \(distance\) (\(x_1\), \ldots{}, \(x_n\)) =
+\(\sqrt{\sum x_i^2}\)\\
+
+Par convention on fixe que \(distance\) () = 0
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} des exemples}
+        \PY{n}{exo\PYZus{}distance}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} ATTENTION vous devez aussi définir les arguments de la fonction}
+        \PY{k}{def} \PY{n+nf}{distance}\PY{p}{(}\PY{n}{votre}\PY{p}{,} \PY{n}{signature}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{votre code}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} la correction}
+        \PY{n}{exo\PYZus{}distance}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{distance}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{exercice---niveau-intermuxe9diaire}{%
+\subsection{Exercice - niveau
+intermédiaire}\label{exercice---niveau-intermuxe9diaire}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} Pour charger l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}numbers} \PY{k}{import} \PY{n}{exo\PYZus{}numbers}
+\end{Verbatim}
+
+
+    On vous demande d'écrire une fonction \texttt{numbers}
+    
+\begin{itemize}
+	\item 
+	qui prend en argument un nombre quelconque d'entiers,
+	\item
+	et qui retourne un tuple contenant
+	\begin{itemize}
+		\item 
+		la somme
+		\item
+		le minimum
+		\item
+		le maximum de ses arguments.
+	\end{itemize}
+\end{itemize}
+
+    Si aucun argument n'est passé, \texttt{numbers} doit renvoyer un tuple
+contenant 3 entiers \texttt{0}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} par exemple}
+        \PY{n}{exo\PYZus{}numbers}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    En guise d'indice, je vous invite à regarder les fonctions
+\emph{built-in}
+\href{https://docs.python.org/3/library/functions.html\#sum}{\texttt{sum}},
+\href{https://docs.python.org/3/library/functions.html\#min}{\texttt{min}}
+et
+\href{https://docs.python.org/3/library/functions.html\#max}{\texttt{max}}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} vous devez définir votre propre signature}
+        \PY{k}{def} \PY{n+nf}{numbers}\PY{p}{(}\PY{n}{votre}\PY{p}{,} \PY{n}{signature}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre\PYZus{}code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour vérifier votre code}
+        \PY{n}{exo\PYZus{}numbers}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{numbers}\PY{p}{)}
+\end{Verbatim}

@@ -1,0 +1,159 @@
+    \hypertarget{une-forme-alternative-du-if}{%
+\section{\texorpdfstring{Une forme alternative du
+\texttt{if}}{Une forme alternative du if}}\label{une-forme-alternative-du-if}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    \hypertarget{expressions-et-instructions}{%
+\subsubsection{Expressions et
+instructions}\label{expressions-et-instructions}}
+
+    Les constructions python que nous avons vues jusqu'ici peuvent se ranger
+en deux familles~:
+
+\begin{itemize}
+\tightlist
+\item
+  d'une part les \textbf{expressions} sont les fragments de code qui
+  \textbf{retournent une valeur}~;
+
+  \begin{itemize}
+  \tightlist
+  \item
+    c'est le cas lorsqu'on invoque n'importe quel opérateur numérique,
+    pour les appels de fonctions, \ldots{}
+  \end{itemize}
+\item
+  d'autre part les \textbf{instructions} ;
+
+  \begin{itemize}
+  \tightlist
+  \item
+    dans cette famille, nous avons vu par exemple l'affectation et
+    \texttt{if}, et nous en verrons bien d'autres.
+  \end{itemize}
+\end{itemize}
+
+La différence essentielle est que les expressions peuvent être combinées
+entre elles pour faire des expressions arbitrairement grosses. Aussi, si
+vous avez un doute pour savoir si vous avez affaire à une expression ou
+à une instruction, demandez-vous si vous pourriez utiliser ce code
+\textbf{comme membre droit d'une affectation}. Si oui, vous avez une
+expression.
+
+    \hypertarget{if-est-une-instruction}{%
+\subsubsection{\texorpdfstring{\texttt{if} est une
+instruction}{if est une instruction}}\label{if-est-une-instruction}}
+
+    La forme du \texttt{if} qui vous a été présentée pendant la vidéo ne
+peut pas servir à renvoyer une valeur, c'est donc une
+\textbf{instruction}.\\
+
+    Imaginons maintenant qu'on veuille écrire quelque chose d'aussi simple
+que \emph{``affecter à y la valeur 12 ou 35, selon que x est vrai ou
+non''}.\\
+
+    Avec les notions introduites jusqu'ici, il nous faudrait écrire ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{n}{x} \PY{o}{=} \PY{k+kc}{True}  \PY{c+c1}{\PYZsh{} ou quoi que ce soit d\PYZsq{}autre}
+        \PY{k}{if} \PY{n}{x}\PY{p}{:}
+            \PY{n}{y} \PY{o}{=} \PY{l+m+mi}{12}
+        \PY{k}{else}\PY{p}{:}
+            \PY{n}{y} \PY{o}{=} \PY{l+m+mi}{35}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{y}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+12
+
+    \end{Verbatim}
+
+    \hypertarget{expression-conditionnelle}{%
+\subsubsection{Expression
+conditionnelle}\label{expression-conditionnelle}}
+
+    Il existe en Python une expression qui fait le même genre de test~;
+c'est la forme dite d'\textbf{expression conditionnelle}, qui est une
+\textbf{expression à part entière}, avec la syntaxe~:
+
+\begin{verbatim}
+<résultat_si_vrai> if <condition> else <résultat_si_faux> 
+\end{verbatim}
+
+    Ainsi on pourrait écrire l'exemple ci-dessus de manière plus simple et
+plus concise comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{y} \PY{o}{=} \PY{l+m+mi}{12} \PY{k}{if} \PY{n}{x} \PY{k}{else} \PY{l+m+mi}{35}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{y}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+12
+
+    \end{Verbatim}
+
+    Cette construction peut souvent rendre le style de programmation plus
+fonctionnel et plus fluide.
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{imbrications}{%
+\subsubsection{Imbrications}\label{imbrications}}
+
+    Puisque cette forme est une expression, on peut l'utiliser dans une
+autre expression conditionnelle, comme ici~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} on veut calculer en fonction d\PYZsq{}une entrée x}
+        \PY{c+c1}{\PYZsh{} une sortie qui vaudra}
+        \PY{c+c1}{\PYZsh{} \PYZhy{}1 si x \PYZlt{} \PYZhy{}10}
+        \PY{c+c1}{\PYZsh{} 0 si \PYZhy{}10 \PYZlt{}= x \PYZlt{}= 10}
+        \PY{c+c1}{\PYZsh{} 1 si x \PYZgt{} 10}
+        
+        \PY{n}{x} \PY{o}{=} \PY{l+m+mi}{5} \PY{c+c1}{\PYZsh{} ou quoi que ce soit d\PYZsq{}autre}
+        
+        \PY{n}{valeur} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1} \PY{k}{if} \PY{n}{x} \PY{o}{\PYZlt{}} \PY{o}{\PYZhy{}}\PY{l+m+mi}{10} \PY{k}{else} \PY{p}{(}\PY{l+m+mi}{0} \PY{k}{if} \PY{n}{x} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{10} \PY{k}{else} \PY{l+m+mi}{1}\PY{p}{)}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{valeur}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+0
+
+    \end{Verbatim}
+
+    Remarquez bien que cet exemple est équivalent à la ligne
+
+\begin{verbatim}
+valeur = -1 if x < -10 else 0 if x <= 10 else 1
+\end{verbatim}
+
+mais qu'il est fortement recommandé d'utiliser, comme on l'a fait, un
+parenthésage pour lever toute ambiguïté.
+
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+    \begin{itemize}
+\tightlist
+\item
+  La section sur les
+  \href{https://docs.python.org/3/reference/expressions.html\#conditional-expressions}{expressions
+  conditionnelles} de la documentation Python.
+\item
+  Le \href{http://legacy.python.org/dev/peps/pep-0308/}{PEP308} qui
+  résume les discussions ayant donné lieu au choix de la syntaxe
+  adoptée.
+\end{itemize}
+
+De manière générale, les PEP rassemblent les discussions préalables à
+toutes les évolutions majeures du langage Python.

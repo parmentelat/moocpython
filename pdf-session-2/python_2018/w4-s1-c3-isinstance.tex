@@ -1,0 +1,240 @@
+    \hypertarget{isinstance}{%
+\section{\texorpdfstring{\texttt{isinstance}}{isinstance}}\label{isinstance}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    \hypertarget{typage-dynamique}{%
+\subsubsection{Typage dynamique}\label{typage-dynamique}}
+
+    En première semaine, nous avons rapidement mentionné les concepts de
+typage statique et dynamique.\\
+
+Avec la fonction prédéfinie \texttt{isinstance} - qui peut être par
+ailleurs utile dans d'autres contextes - vous pouvez facilement~:
+
+\begin{itemize}
+	\item 
+	vérifier qu'un argument d'une fonction a bien le type attendu,
+	\item
+	traiter différemment les entrées selon leur type.
+\end{itemize}
+
+    Voyons tout de suite sur un exemple simple comment on pourrait définir
+une fonction qui travaille sur un entier, mais qui par commodité peut
+aussi accepter un entier passé comme une chaîne de caractères, ou même
+une liste d'entiers (auquel cas on renvoie la liste des factorielles)~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k}{def} \PY{n+nf}{factoriel}\PY{p}{(}\PY{n}{argument}\PY{p}{)}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} si on reçoit un entier}
+            \PY{k}{if} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{argument}\PY{p}{,} \PY{n+nb}{int}\PY{p}{)}\PY{p}{:}              \PY{c+c1}{\PYZsh{} (*)}
+                \PY{k}{return} \PY{l+m+mi}{1} \PY{k}{if} \PY{n}{argument} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{1} \PY{k}{else} \PY{n}{argument} \PY{o}{*} \PY{n}{factoriel}\PY{p}{(}\PY{n}{argument} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{)}
+            \PY{c+c1}{\PYZsh{} convertir en entier si on reçoit une chaîne}
+            \PY{k}{elif} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{argument}\PY{p}{,} \PY{n+nb}{str}\PY{p}{)}\PY{p}{:}
+                \PY{k}{return} \PY{n}{factoriel}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n}{argument}\PY{p}{)}\PY{p}{)}
+            \PY{c+c1}{\PYZsh{} la liste des résultats si on reçoit un tuple ou une liste }
+            \PY{k}{elif} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{argument}\PY{p}{,} \PY{p}{(}\PY{n+nb}{tuple}\PY{p}{,} \PY{n+nb}{list}\PY{p}{)}\PY{p}{)}\PY{p}{:}  \PY{c+c1}{\PYZsh{} (**)}
+                \PY{k}{return} \PY{p}{[}\PY{n}{factoriel}\PY{p}{(}\PY{n}{i}\PY{p}{)} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{argument}\PY{p}{]}
+            \PY{c+c1}{\PYZsh{} sinon on lève une exception}
+            \PY{k}{else}\PY{p}{:}
+                \PY{k}{raise} \PY{n+ne}{TypeError}\PY{p}{(}\PY{n}{argument}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{entier}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{factoriel}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{chaine}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{factoriel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{8}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tuple}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{factoriel}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+entier 24
+chaine 40320
+tuple [24, 40320]
+
+    \end{Verbatim}
+
+    Remarquez que la fonction \texttt{isinstance} \textbf{possède elle-même}
+une logique de ce genre, puisqu'en ligne 3 \texttt{(*)} nous lui avons
+passé en deuxième argument un type (\texttt{int}), alors qu'en ligne 11
+\texttt{(**)} on lui a passé un tuple de deux types. Dans ce second cas
+naturellement, elle vérifie si l'objet (le premier argument) est
+\textbf{de l'un des types} mentionnés dans le tuple.
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{le-module-types}{%
+\subsubsection{\texorpdfstring{Le module
+\texttt{types}}{Le module types}}\label{le-module-types}}
+
+    Le module \texttt{types} définit un certain nombre de constantes qui
+peuvent être utiles dans ce contexte - vous trouverez une liste
+exhaustive à la fin de ce notebook. Par exemple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k+kn}{from} \PY{n+nn}{types} \PY{k}{import} \PY{n}{FunctionType}
+        \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{factoriel}\PY{p}{,} \PY{n}{FunctionType}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} True
+\end{Verbatim}
+            
+    Mais méfiez-vous toutefois des fonctions \emph{built-in}, qui sont de
+type \texttt{BuiltinFunctionType}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k+kn}{from} \PY{n+nn}{types} \PY{k}{import} \PY{n}{BuiltinFunctionType}
+        \PY{n+nb}{isinstance}\PY{p}{(}\PY{n+nb}{len}\PY{p}{,} \PY{n}{BuiltinFunctionType}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} True
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} alors qu\PYZsq{}on pourrait penser que}
+        \PY{n+nb}{isinstance}\PY{p}{(}\PY{n+nb}{len}\PY{p}{,} \PY{n}{FunctionType}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} False
+\end{Verbatim}
+            
+    \hypertarget{isinstance-vs-type}{%
+\subsubsection{\texorpdfstring{\texttt{isinstance} \emph{vs}
+\texttt{type}}{isinstance vs type}}\label{isinstance-vs-type}}
+
+    Il est recommandé d'utiliser \texttt{isinstance} par rapport à la
+fonction \texttt{type}. Tout d'abord, cela permet, on vient de le voir,
+de prendre en compte plusieurs types.\\
+
+Mais aussi et surtout \texttt{isinstance} supporte la notion d'héritage
+qui est centrale dans le cadre de la programmation orientée objet, sur
+laquelle nous allons anticiper un tout petit peu par rapport aux
+présentations de la semaine prochaine.\\
+
+Avec la programmation objet, vous pouvez définir vos propres types. On
+peut par exemple définir une classe \texttt{Animal} qui convient pour
+tous les animaux, puis définir une sous-classe \texttt{Mammifere}. On
+dit que la classe \texttt{Mammifere} \emph{hérite} de la classe
+\texttt{Animal}, et on l'appelle sous-classe parce qu'elle représente
+une partie des animaux ; et donc tout ce qu'on peut faire sur les
+animaux peut être fait sur les mammifères.\\
+
+En voici une implémentation très rudimentaire, uniquement pour illustrer
+le principe de l'héritage. Si ce qui suit vous semble difficile à
+comprendre, pas d'inquiétude, nous reviendrons sur ce sujet lorsque nous
+parlerons des classes.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{class} \PY{n+nc}{Animal}\PY{p}{:}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{name}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{name} \PY{o}{=} \PY{n}{name}
+        
+        \PY{k}{class} \PY{n+nc}{Mammifere}\PY{p}{(}\PY{n}{Animal}\PY{p}{)}\PY{p}{:}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{name}\PY{p}{)}\PY{p}{:}
+                \PY{n}{Animal}\PY{o}{.}\PY{n+nf+fm}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{name}\PY{p}{)}
+\end{Verbatim}
+
+
+    Ce qui nous intéresse dans l'immédiat c'est que \texttt{isinstance}
+permet dans ce contexte de faire des choses qu'on ne peut pas faire
+directement avec la fonction \texttt{type}, comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} c\PYZsq{}est comme ceci qu\PYZsq{}on peut créer un objet de type `Animal` (méthode \PYZus{}\PYZus{}init\PYZus{}\PYZus{})}
+        \PY{n}{requin} \PY{o}{=} \PY{n}{Animal}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{requin}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} idem pour un Mammifere}
+        \PY{n}{baleine} \PY{o}{=} \PY{n}{Mammifere}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{baleine}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} bien sûr ici la réponse est \PYZsq{}True\PYZsq{}}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{objet baleine est\PYZhy{}il un mammifere ?}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{baleine}\PY{p}{,} \PY{n}{Mammifere}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+l'objet baleine est-il un mammifere ? True
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} ici c\PYZsq{}est moins évident, mais la réponse est \PYZsq{}True\PYZsq{} aussi}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{objet baleine est\PYZhy{}il un animal ?}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{baleine}\PY{p}{,} \PY{n}{Animal}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+l'objet baleine est-il un animal ? True
+
+    \end{Verbatim}
+
+    Vous voyez qu'ici, bien que l'objet baleine soit de type
+\texttt{Mammifere}, on peut le considérer comme étant \textbf{aussi} de
+type \texttt{Animal}.\\
+
+Ceci est motivé de la façon suivante~: comme on l'a dit plus haut, tout
+ce qu'on peut faire (en matière notamment d'envoi de méthodes) sur un
+objet de type \texttt{Animal}, on peut le faire sur un objet de type
+\texttt{Mammifere}. Dit en termes ensemblistes, l'ensemble des
+mammifères est inclus dans l'ensemble des animaux.
+
+    \hypertarget{annexe---les-symboles-du-module-types}{%
+\subsubsection{\texorpdfstring{Annexe - Les symboles du module
+\texttt{types}}{Annexe - Les symboles du module types}}\label{annexe---les-symboles-du-module-types}}
+
+    Vous pouvez consulter
+\href{https://docs.python.org/3/library/types.html}{la documentation du
+module \texttt{types}}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} voici par ailleurs la liste de ses attributs}
+        \PY{k+kn}{import} \PY{n+nn}{types} 
+        \PY{n+nb}{dir}\PY{p}{(}\PY{n}{types}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} ['AsyncGeneratorType',
+         'BuiltinFunctionType',
+         'BuiltinMethodType',
+         'CodeType',
+         'CoroutineType',
+         'DynamicClassAttribute',
+         'FrameType',
+         'FunctionType',
+         'GeneratorType',
+         'GetSetDescriptorType',
+         'LambdaType',
+         'MappingProxyType',
+         'MemberDescriptorType',
+         'MethodType',
+         'ModuleType',
+         'SimpleNamespace',
+         'TracebackType',
+         '\_GeneratorWrapper',
+         '\_\_all\_\_',
+         '\_\_builtins\_\_',
+         '\_\_cached\_\_',
+         '\_\_doc\_\_',
+         '\_\_file\_\_',
+         '\_\_loader\_\_',
+         '\_\_name\_\_',
+         '\_\_package\_\_',
+         '\_\_spec\_\_',
+         '\_ag',
+         '\_calculate\_meta',
+         '\_collections\_abc',
+         '\_functools',
+         'coroutine',
+         'new\_class',
+         'prepare\_class']
+\end{Verbatim}

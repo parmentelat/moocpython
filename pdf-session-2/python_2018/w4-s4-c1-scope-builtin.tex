@@ -1,0 +1,297 @@
+    \hypertarget{le-module-builtins}{%
+\section{\texorpdfstring{Le module
+\texttt{builtins}}{Le module builtins}}\label{le-module-builtins}}
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    \hypertarget{ces-noms-qui-viennent-de-nulle-part}{%
+\subsubsection{Ces noms qui viennent de nulle
+part}\label{ces-noms-qui-viennent-de-nulle-part}}
+
+    Nous avons vu déjà un certain nombre de \textbf{fonctions
+\emph{built-in}} comme par exemple
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{n+nb}{open}\PY{p}{,} \PY{n+nb}{len}\PY{p}{,} \PY{n+nb}{zip}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}1}]:} (<function io.open>, <function len>, zip)
+\end{Verbatim}
+            
+    Ces noms font partie du \textbf{module \texttt{builtins}}. Il est
+cependant particulier puisque tout se passe \textbf{comme si} on avait
+fait avant toute chose~:
+
+\begin{verbatim}
+from builtins import *
+\end{verbatim}
+
+sauf que cet import est implicite.
+
+    \hypertarget{on-peut-ruxe9affecter-un-nom-built-in}{%
+\subsubsection{\texorpdfstring{On peut réaffecter un nom
+\emph{built-in}}{On peut réaffecter un nom built-in}}\label{on-peut-ruxe9affecter-un-nom-built-in}}
+
+    Quoique ce soit une pratique déconseillée, il est tout à fait possible
+de redéfinir ces noms~; on peut faire par exemple
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} on réaffecte le nom open à un nouvel objet fonction}
+        \PY{k}{def} \PY{n+nf}{open}\PY{p}{(}\PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ma fonction open}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{k}{pass}
+\end{Verbatim}
+
+
+    qui est naturellement \textbf{très vivement déconseillé}. Notez,
+cependant, que la coloration syntaxique vous montre clairement que le
+nom que vous utilisez est un \emph{built-in} (en vert dans un notebook).
+
+    \hypertarget{on-ne-peut-pas-ruxe9affecter-un-mot-cluxe9}{%
+\subsubsection{On ne peut pas réaffecter un mot
+clé}\label{on-ne-peut-pas-ruxe9affecter-un-mot-cluxe9}}
+
+    À titre de digression, rappelons que les noms prédéfinis dans le module
+\texttt{builtins} sont, à cet égard aussi, très différents des mots-clés
+comme \texttt{if}, \texttt{def}, \texttt{with} et autres \texttt{for}
+qui eux, ne peuvent pas être modifiés en aucune manière~:
+
+\begin{verbatim}
+>>> lambda = 1
+  File "<stdin>", line 1
+    lambda = 1
+           ^
+SyntaxError: invalid syntax
+\end{verbatim}
+
+    \hypertarget{retrouver-un-objet-built-in}{%
+\subsubsection{\texorpdfstring{Retrouver un objet
+\emph{built-in}}{Retrouver un objet built-in}}\label{retrouver-un-objet-built-in}}
+
+    Il faut éviter de redéfinir un nom prédéfini dans le module
+\texttt{builtins} ; un bon éditeur de texte vous signalera les fonctions
+\emph{built-in} avec une coloration syntaxique spécifique. Cependant, on
+peut vouloir redéfinir un nom \emph{built-in} pour changer un
+comportement par défaut, puis vouloir revenir au comportement original.\\
+
+Sachez que vous pouvez toujours ``retrouver'' alors la fonction
+\emph{built-in} en l'important explicitement du module
+\texttt{builtins}. Par exemple, pour réaliser notre ouverture de
+fichier, nous pouvons toujours faire~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} nous ne pouvons pas utiliser open puisque}
+        \PY{n+nb}{open}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+ma fonction open
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} pour être sûr d\PYZsq{}utiliser la bonne fonction open}
+        
+        \PY{k+kn}{import} \PY{n+nn}{builtins} 
+        
+        \PY{k}{with} \PY{n}{builtins}\PY{o}{.}\PY{n}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{builtins.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{w}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{utf\PYZhy{}8}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} \PY{k}{as} \PY{n}{f}\PY{p}{:}
+            \PY{n}{f}\PY{o}{.}\PY{n}{write}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{quelque chose}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    Ou encore, de manière équivalente~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k+kn}{from} \PY{n+nn}{builtins} \PY{k}{import} \PY{n+nb}{open} \PY{k}{as} \PY{n}{builtins\PYZus{}open}
+        
+        \PY{k}{with} \PY{n}{builtins\PYZus{}open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{builtins.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{utf\PYZhy{}8}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} \PY{k}{as} \PY{n}{f}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+quelque chose
+
+    \end{Verbatim}
+
+    \hypertarget{liste-des-fonctions-pruxe9duxe9finies}{%
+\subsubsection{Liste des fonctions
+prédéfinies}\label{liste-des-fonctions-pruxe9duxe9finies}}
+
+    Vous pouvez trouver la liste des fonctions prédéfinies ou
+\emph{built-in} avec la fonction \texttt{dir} sur le module
+\texttt{builtins} comme ci-dessous (qui vous montre aussi les exceptions
+prédéfinies, qui commencent par une majuscule), ou dans la documentation
+sur
+\href{https://docs.python.org/3/library/functions.html\#built-in-funcs}{les
+fonctions prédéfinies}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n+nb}{dir}\PY{p}{(}\PY{n}{builtins}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} ['ArithmeticError',
+         'AssertionError',
+         'AttributeError',
+         'BaseException',
+         'BlockingIOError',
+         'BrokenPipeError',
+         'BufferError',
+         'BytesWarning',
+         'ChildProcessError',
+         'ConnectionAbortedError',
+         'ConnectionError',
+         'ConnectionRefusedError',
+         'ConnectionResetError',
+         'DeprecationWarning',
+         'EOFError',
+         'Ellipsis',
+         'EnvironmentError',
+         'Exception',
+         'False',
+         'FileExistsError',
+         'FileNotFoundError',
+         'FloatingPointError',
+         'FutureWarning',
+         'GeneratorExit',
+         'IOError',
+         'ImportError',
+         'ImportWarning',
+         'IndentationError',
+         'IndexError',
+         'InterruptedError',
+         'IsADirectoryError',
+         'KeyError',
+         'KeyboardInterrupt',
+         'LookupError',
+         'MemoryError',
+         'ModuleNotFoundError',
+         'NameError',
+         'None',
+         'NotADirectoryError',
+         'NotImplemented',
+         'NotImplementedError',
+         'OSError',
+         'OverflowError',
+         'PendingDeprecationWarning',
+         'PermissionError',
+         'ProcessLookupError',
+         'RecursionError',
+         'ReferenceError',
+         'ResourceWarning',
+         'RuntimeError',
+         'RuntimeWarning',
+         'StopAsyncIteration',
+         'StopIteration',
+         'SyntaxError',
+         'SyntaxWarning',
+         'SystemError',
+         'SystemExit',
+         'TabError',
+         'TimeoutError',
+         'True',
+         'TypeError',
+         'UnboundLocalError',
+         'UnicodeDecodeError',
+         'UnicodeEncodeError',
+         'UnicodeError',
+         'UnicodeTranslateError',
+         'UnicodeWarning',
+         'UserWarning',
+         'ValueError',
+         'Warning',
+         'WindowsError',
+         'ZeroDivisionError',
+         '\_\_IPYTHON\_\_',
+         '\_\_build\_class\_\_',
+         '\_\_debug\_\_',
+         '\_\_doc\_\_',
+         '\_\_import\_\_',
+         '\_\_loader\_\_',
+         '\_\_name\_\_',
+         '\_\_package\_\_',
+         '\_\_spec\_\_',
+         'abs',
+         'all',
+         'any',
+         'ascii',
+         'bin',
+         'bool',
+         'bytearray',
+         'bytes',
+         'callable',
+         'chr',
+         'classmethod',
+         'compile',
+         'complex',
+         'copyright',
+         'credits',
+         'delattr',
+         'dict',
+         'dir',
+         'display',
+         'divmod',
+         'enumerate',
+         'eval',
+         'exec',
+         'filter',
+         'float',
+         'format',
+         'frozenset',
+         'get\_ipython',
+         'getattr',
+         'globals',
+         'hasattr',
+         'hash',
+         'help',
+         'hex',
+         'id',
+         'input',
+         'int',
+         'isinstance',
+         'issubclass',
+         'iter',
+         'len',
+         'license',
+         'list',
+         'locals',
+         'map',
+         'max',
+         'memoryview',
+         'min',
+         'next',
+         'object',
+         'oct',
+         'open',
+         'ord',
+         'pow',
+         'print',
+         'property',
+         'range',
+         'repr',
+         'reversed',
+         'round',
+         'set',
+         'setattr',
+         'slice',
+         'sorted',
+         'staticmethod',
+         'str',
+         'sum',
+         'super',
+         'tuple',
+         'type',
+         'vars',
+         'zip']
+\end{Verbatim}
+            
+    Vous remarquez que les exceptions (les symboles qui commencent par des
+majuscules) représentent à elles seules une proportion substantielle de
+cet espace de noms.

@@ -1,0 +1,103 @@
+    \hypertarget{linstruction-if}{%
+\section{\texorpdfstring{L'instruction
+\texttt{if}}{L'instruction if}}\label{linstruction-if}}
+
+    \hypertarget{exercice---niveau-basique}{%
+\subsection{Exercice - niveau basique}\label{exercice---niveau-basique}}
+
+    \hypertarget{ruxe9partiteur-1}{%
+\subsubsection{Répartiteur (1)}\label{ruxe9partiteur-1}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} on charge l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}dispatch} \PY{k}{import} \PY{n}{exo\PYZus{}dispatch1}
+\end{Verbatim}
+
+
+    On vous demande d'écrire une fonction \texttt{dispatch1}, qui prend en
+argument deux entiers \texttt{a} et \texttt{b}, et qui renvoie selon les
+cas~:
+
+\[\begin{array}{c|c|c} & a~ pair & a~ impair\\
+\hline
+& & \\
+b~ pair & a\textsuperscript{2}+b\textsuperscript{2} & (a-1) * \emph{b}\\
+\hline
+& & \\
+b~impair & a * (b-1) & a\textsuperscript{2}-b\textsuperscript{2}
+\end{array}
+\]
+
+%    \$\textbackslash{}begin\{array\}\{c\textbar{}c\textbar{}c\} ~\& a~ pair
+%\& a~impair \textbackslash{} \hline b~pair \& a\textsuperscript{2+b}2 \&
+%(a-1)\emph{b\textbackslash{} \hline b~impair \& a}(b-1)\&
+%a\textsuperscript{2-b}2\textbackslash{} \textbackslash{}end\{array\} \$
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} un petit exemple}
+        \PY{n}{exo\PYZus{}dispatch1}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{dispatch1}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre\PYZus{}code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour vérifier votre code}
+        \PY{n}{exo\PYZus{}dispatch1}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{dispatch1}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{exercice---niveau-basique}{%
+\subsection{Exercice - niveau basique}\label{exercice---niveau-basique}}
+
+    \hypertarget{ruxe9partiteur-2}{%
+\subsubsection{Répartiteur (2)}\label{ruxe9partiteur-2}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} chargement de l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}dispatch} \PY{k}{import} \PY{n}{exo\PYZus{}dispatch2}
+\end{Verbatim}
+
+
+    Dans une seconde version de cet exercice, on vous demande d'écrire une
+fonction \texttt{dispatch2} qui prend en arguments~:
+
+\begin{itemize}
+	\item 
+	\texttt{a} et \texttt{b} deux entiers
+	\item
+	\texttt{A} et \texttt{B} deux ensembles
+	(chacun pouvant être matérialisé par un ensemble, une liste ou un tuple)
+\end{itemize}
+
+et qui renvoie selon les cas~:
+
+\[\begin{array}{c|c|c} & a\in A & a\notin A\\
+\hline
+& & \\
+b\in B & a\textsuperscript{2}+b\textsuperscript{2} & (a-1) * \emph{b}\\
+\hline
+& & \\
+b\notin B & a * (b-1) & a\textsuperscript{2}+b\textsuperscript{2}
+\end{array}
+\]
+
+%\$\textbackslash{}begin\{array\}\{c\textbar{}c\textbar{}c\} ~\& a \in A
+%\& a\notin A \textbackslash{} \hline b\in B \& a\textsuperscript{2+b}2
+%\& (a-1)\emph{b\textbackslash{} \hline b\notin B \& a}(b-1)\&
+%a\textsuperscript{2+b}2\textbackslash{} \textbackslash{}end\{array\} \$
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{dispatch2}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{A}\PY{p}{,} \PY{n}{B}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre\PYZus{}code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour vérifier votre code}
+        \PY{n}{exo\PYZus{}dispatch2}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{dispatch2}\PY{p}{)}
+\end{Verbatim}

@@ -1,0 +1,437 @@
+    \hypertarget{ruxe9capitulatif-sur-les-conditions-dans-un-if}{%
+\section{\texorpdfstring{Récapitulatif sur les conditions dans un
+\texttt{if}}{Récapitulatif sur les conditions dans un if}}\label{ruxe9capitulatif-sur-les-conditions-dans-un-if}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    Dans ce complément nous résumons ce qu'il faut savoir pour écrire une
+condition dans un \texttt{if}.
+
+    \hypertarget{expression-vs-instruction}{%
+\subsubsection{\texorpdfstring{Expression \emph{vs}
+instruction}{Expression vs instruction}}\label{expression-vs-instruction}}
+
+    Nous avons déjà introduit la différence entre instruction et expression,
+lorsque nous avons vu l'expression conditionnelle~:
+
+\begin{itemize}
+	\item 
+	une expression est un fragment de code qui ``retourne quelque chose'',
+	item
+	alors qu'une instruction permet bien souvent de faire une action, mais ne retourne
+	rien.
+\end{itemize}
+
+    Ainsi parmi les notions que nous avons vues jusqu'ici, nous pouvons
+citer dans un ordre arbitraire~:
+
+\begin{longtable}[]{@{}rlr@{}}
+\toprule
+Instructions & & Expressions\tabularnewline
+\midrule
+\endhead
+affectation & & appel de fonction\tabularnewline
+\texttt{import} & & opérateurs \texttt{is}, \texttt{in}, \texttt{==},
+\ldots{}\tabularnewline
+instruction \texttt{if} & & expression conditionnelle\tabularnewline
+instruction \texttt{for} & & compréhension(s)\tabularnewline
+\bottomrule
+\end{longtable}
+
+    \hypertarget{toutes-les-expressions-sont-uxe9ligibles}{%
+\subsubsection{Toutes les expressions sont
+éligibles}\label{toutes-les-expressions-sont-uxe9ligibles}}
+
+    Comme condition d'une instruction \texttt{if}, on peut mettre n'importe
+quelle expression. On l'a déjà signalé, il n'est pas nécessaire que
+cette expression retourne un booléen~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} dans ce code le test }
+        \PY{c+c1}{\PYZsh{} if n \PYZpc{} 3:}
+        \PY{c+c1}{\PYZsh{} est équivalent à}
+        \PY{c+c1}{\PYZsh{} if n \PYZpc{} 3 != 0:}
+        
+        \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{p}{(}\PY{l+m+mi}{18}\PY{p}{,} \PY{l+m+mi}{19}\PY{p}{)}\PY{p}{:}
+            \PY{k}{if} \PY{n}{n} \PY{o}{\PYZpc{}} \PY{l+m+mi}{3}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}n\PYZcb{}}\PY{l+s+s2}{ non divisible par trois}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}n\PYZcb{}}\PY{l+s+s2}{ divisible par trois}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+18 divisible par trois
+19 non divisible par trois
+
+    \end{Verbatim}
+
+    \hypertarget{une-valeur-est-elle-vraie}{%
+\subsubsection{Une valeur est-elle ``vraie''
+?}\label{une-valeur-est-elle-vraie}}
+
+    Se pose dès lors la question de savoir précisément quelles valeurs sont
+considérées comme \emph{vraies} par l'instruction \texttt{if}.\\
+
+Parmi les types de base, nous avons déjà eu l'occasion de l'évoquer, les
+valeurs \emph{fausses} sont typiquement~:
+
+\begin{itemize}
+	\item 
+	0 pour les valeurs numériques~;
+	\item
+	les objets vides pour les chaînes, listes, ensembles,
+	dictionnaires, etc.
+\end{itemize}
+
+    Pour en avoir le cœur net, pensez à utiliser dans le terminal interactif
+la fonction \texttt{bool}. Comme pour toutes les fonctions qui portent
+le nom d'un type, la fonction \texttt{bool} est un constructeur qui
+fabrique un objet booléen.\\
+
+Si vous appelez \texttt{bool} sur un objet, la valeur de retour - qui
+est donc par construction une valeur booléenne - vous indique, cette
+fois sans ambiguïté - comment se comportera \texttt{if} avec cette
+entrée.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k}{def} \PY{n+nf}{show\PYZus{}bool}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{condition }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{repr(x):\PYZgt{}10\PYZcb{} considérée comme }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{bool(x)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{for} \PY{n}{exp} \PY{o+ow}{in} \PY{p}{[}\PY{k+kc}{None}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}\PY{p}{,} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{1}\PY{p}{\PYZcb{}}\PY{p}{,} \PY{n+nb}{set}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{p}{\PYZob{}}\PY{l+m+mi}{1}\PY{p}{\PYZcb{}}\PY{p}{]}\PY{p}{:}
+            \PY{n}{show\PYZus{}bool}\PY{p}{(}\PY{n}{exp}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+condition       None considérée comme False
+condition         '' considérée comme False
+condition        'a' considérée comme True
+condition         [] considérée comme False
+condition        [1] considérée comme True
+condition         () considérée comme False
+condition     (1, 2) considérée comme True
+condition         \{\} considérée comme False
+condition   \{'a': 1\} considérée comme True
+condition      set() considérée comme False
+condition        \{1\} considérée comme True
+
+    \end{Verbatim}
+
+    \hypertarget{quelques-exemples-dexpressions}{%
+\subsubsection{Quelques exemples
+d'expressions}\label{quelques-exemples-dexpressions}}
+
+    \hypertarget{ruxe9fuxe9rence-uxe0-une-variable-et-duxe9rivuxe9s}{%
+\subparagraph{Référence à une variable et
+dérivés}\label{ruxe9fuxe9rence-uxe0-une-variable-et-duxe9rivuxe9s}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{a} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[0, 1, 2, 3]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{if} \PY{n}{a}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a n}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{est pas vide}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{k}{if} \PY{n}{a}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{on ne passe pas par ici}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{k}{if} \PY{n}{a}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a[1] n}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{est pas nul}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a n'est pas vide
+a[1] n'est pas nul
+
+    \end{Verbatim}
+
+    \hypertarget{appels-de-fonction-ou-de-muxe9thode}{%
+\subparagraph{Appels de fonction ou de
+méthode}\label{appels-de-fonction-ou-de-muxe9thode}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{chaine} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{jean}\PY{l+s+s2}{\PYZdq{}}
+        \PY{k}{if} \PY{n}{chaine}\PY{o}{.}\PY{n}{upper}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{la chaine mise en majuscule n}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{est pas vide}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+la chaine mise en majuscule n'est pas vide
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} on rappelle qu\PYZsq{}une fonction qui ne fait pas \PYZsq{}return\PYZsq{} retourne None}
+        \PY{k}{def} \PY{n+nf}{procedure}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{c}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{cette fonction ne retourne rien}\PY{l+s+s2}{\PYZdq{}}
+            \PY{k}{pass}
+        
+        \PY{k}{if} \PY{n}{procedure}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ne passe pas ici car procedure retourne None}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{k}{else}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{par contre on passe ici}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+par contre on passe ici
+
+    \end{Verbatim}
+
+    \hypertarget{compruxe9hensions}{%
+\subparagraph{Compréhensions\\\\}\label{compruxe9hensions}}
+
+    Il découle de ce qui précède qu'on peut tout à fait mettre une
+compréhension comme condition, ce qui peut être utile pour savoir si au
+moins un élément remplit une condition, comme par exemple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{inputs} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{23}\PY{p}{,} \PY{l+m+mi}{65}\PY{p}{,} \PY{l+m+mi}{24}\PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{} y a\PYZhy{}t\PYZhy{}il dans inputs au moins un nombre }
+        \PY{c+c1}{\PYZsh{} dont le carré est de la forme 10*n+5}
+        \PY{k}{def} \PY{n+nf}{condition}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{p}{(}\PY{n}{n} \PY{o}{*} \PY{n}{n}\PY{p}{)} \PY{o}{\PYZpc{}} \PY{l+m+mi}{10} \PY{o}{==} \PY{l+m+mi}{5}
+        
+        \PY{k}{if} \PY{p}{[}\PY{n}{value} \PY{k}{for} \PY{n}{value} \PY{o+ow}{in} \PY{n}{inputs} \PY{k}{if} \PY{n}{condition}\PY{p}{(}\PY{n}{value}\PY{p}{)}\PY{p}{]}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{au moins une entrée convient}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+au moins une entrée convient
+
+    \end{Verbatim}
+
+    \hypertarget{opuxe9rateurs}{%
+\subparagraph{Opérateurs\\\\}\label{opuxe9rateurs}}
+
+    Nous avons déjà eu l'occasion de rencontrer la plupart des opérateurs de
+comparaison du langage, dont voici à nouveau les principaux~:
+
+\begin{longtable}[]{@{}rlr@{}}
+\toprule
+Famille & & Exemples\tabularnewline
+\midrule
+\endhead
+Égalité & & \texttt{==}, \texttt{!=}, \texttt{is},
+\texttt{is\ not}\tabularnewline
+Appartenance & & \texttt{in}\tabularnewline
+Comparaison & & \texttt{\textless{}=}, \texttt{\textless{}},
+\texttt{\textgreater{}}, \texttt{\textgreater{}=}\tabularnewline
+Logiques & & \texttt{and}, \texttt{or}, \texttt{not}\tabularnewline
+\bottomrule
+\end{longtable}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{remarques-sur-les-opuxe9rateurs}{%
+\subsubsection{Remarques sur les
+opérateurs}\label{remarques-sur-les-opuxe9rateurs}}
+
+    Voici enfin quelques remarques sur ces opérateurs
+
+    \hypertarget{opuxe9rateur-duxe9galituxe9}{%
+\subparagraph{\texorpdfstring{opérateur d'égalité
+\texttt{==}\\\\}{opérateur d'égalité ==}}\label{opuxe9rateur-duxe9galituxe9}}
+
+    L'opérateur \texttt{==} ne fonctionne en général (sauf pour les nombres)
+que sur des objets de même type~; c'est-à-dire que notamment un tuple ne
+sera jamais égal à une liste~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{p}{[}\PY{p}{]} \PY{o}{==} \PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} False
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]} \PY{o}{==} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:} False
+\end{Verbatim}
+            
+    \hypertarget{opuxe9rateur-logiques}{%
+\subparagraph{opérateur logiques\\\\}\label{opuxe9rateur-logiques}}
+
+    Comme c'est le cas avec par exemple les opérateurs arithmétiques, les
+opérateurs logiques ont une \emph{priorité}, qui précise le sens des
+phrases non parenthésées. C'est-à-dire pour être explicite, que de la
+même manière que
+
+\begin{verbatim}
+12 + 4 * 8 
+\end{verbatim}
+
+est équivalent à
+
+\begin{verbatim}
+12 + ( 4 * 8 )
+\end{verbatim}
+
+pour les booléens il existe une règle de ce genre et
+
+\begin{verbatim}
+a and not b or c and d
+\end{verbatim}
+
+est équivalent à
+
+\begin{verbatim}
+(a and (not b)) or (c and d)
+\end{verbatim}
+
+Mais en fait, il est assez facile de s'emmêler dans ces priorités, et
+c'est pourquoi il est \textbf{très fortement conseillé} de parenthéser.
+
+    \hypertarget{opuxe9rateurs-logiques-2}{%
+\subparagraph{opérateurs logiques (2)\\\\}\label{opuxe9rateurs-logiques-2}}
+
+    Remarquez aussi que les opérateurs logiques peuvent être appliqués à des
+valeurs qui ne sont pas booléennes~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{l+m+mi}{2} \PY{o+ow}{and} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} [1, 2]
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{k+kc}{None} \PY{o+ow}{or} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{abcde}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} 'abcde'
+\end{Verbatim}
+            
+    Dans la logique de l'évaluation paresseuse qu'on a vue récemment,
+remarquez que lorsque l'évaluation d'un \texttt{and} ou d'un \texttt{or}
+ne peut pas être court-circuitée, le résultat est alors toujours le
+résultat de la dernière expression évaluée~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{l+m+mi}{1} \PY{o+ow}{and} \PY{l+m+mi}{2} \PY{o+ow}{and} \PY{l+m+mi}{3}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}13}]:} 3
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{l+m+mi}{1} \PY{o+ow}{and} \PY{l+m+mi}{2} \PY{o+ow}{and} \PY{l+m+mi}{3} \PY{o+ow}{and} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{and} \PY{l+m+mi}{4}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}14}]:} ''
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{p}{[}\PY{p}{]} \PY{o+ow}{or} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}} \PY{o+ow}{or} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}15}]:} \{\}
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{p}{[}\PY{p}{]} \PY{o+ow}{or} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}} \PY{o+ow}{or} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}} \PY{o+ow}{or} \PY{l+m+mi}{4} \PY{o+ow}{or} \PY{n+nb}{set}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}16}]:} 4
+\end{Verbatim}
+            
+    \hypertarget{expression-conditionnelle-dans-une-instruction-if}{%
+\subsubsection{\texorpdfstring{Expression conditionnelle dans une
+instruction
+\texttt{if}}{Expression conditionnelle dans une instruction if}}\label{expression-conditionnelle-dans-une-instruction-if}}
+
+    En toute rigueur on peut aussi mettre un
+\texttt{\textless{}\textgreater{}\ if\ \textless{}\textgreater{}\ else\ \textless{}\textgreater{}}
+- donc une expression conditionnelle - comme condition dans une
+instruction \texttt{if}. Nous le signalons pour bien illustrer la
+logique du langage, mais cette pratique n'est bien sûr pas du tout
+conseillée.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} cet exemple est volontairement tiré par les cheveux }
+         \PY{c+c1}{\PYZsh{} pour bien montrer qu\PYZsq{}on peut mettre n\PYZsq{}importe quelle expression comme condition}
+         \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{1}
+         \PY{c+c1}{\PYZsh{} ceci est franchement illisible}
+         \PY{k}{if} \PY{l+m+mi}{0} \PY{k}{if} \PY{o+ow}{not} \PY{n}{a} \PY{k}{else} \PY{l+m+mi}{2}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{une construction illisible}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} et encore pire}
+         \PY{k}{if} \PY{l+m+mi}{0} \PY{k}{if} \PY{n}{a} \PY{k}{else} \PY{l+m+mi}{3} \PY{k}{if} \PY{n}{a} \PY{o}{+} \PY{l+m+mi}{1} \PY{k}{else} \PY{l+m+mi}{2}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{encore pire}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+une construction illisible
+
+    \end{Verbatim}
+
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+    \href{https://docs.python.org/3/tutorial/datastructures.html\#more-on-conditions}{https://docs.python.org/3/tutorial/datastructures.html\#more-on-conditions}
+
+    \hypertarget{types-duxe9finis-par-lutilisateur}{%
+\subsubsection{Types définis par
+l'utilisateur}\label{types-duxe9finis-par-lutilisateur}}
+
+    Pour anticiper un tout petit peu, nous verrons que les classes en Python
+vous donnent le moyen de définir vos propres types d'objets. Nous
+verrons à cette occasion qu'il est possible d'indiquer à python quels
+sont les objets de type \texttt{MaClasse} qui doivent être considérés
+comme \texttt{True} ou comme \texttt{False}.\\
+
+De manière plus générale, tous les traits natifs du langage sont
+redéfinissables sur les classes. Nous verrons par exemple également
+comment donner du sens à des phrases comme
+
+\begin{verbatim}
+mon_objet = MaClasse()
+if mon_objet:
+    <faire quelque chose>
+\end{verbatim}
+
+ou encore
+
+\begin{verbatim}
+mon_objet = MaClasse()
+for partie in mon_objet:
+    <faire quelque chose sur partie>
+\end{verbatim}
+
+Mais n'anticipons pas trop, rendez-vous en semaine 6.

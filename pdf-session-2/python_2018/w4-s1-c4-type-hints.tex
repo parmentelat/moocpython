@@ -1,0 +1,378 @@
+    \hypertarget{type-hints}{%
+\section{\texorpdfstring{\emph{Type
+hints}}{Type hints}}\label{type-hints}}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{langages-compiluxe9s}{%
+\subsubsection{Langages compilés}\label{langages-compiluxe9s}}
+
+    Nous avons évoqué en première semaine le typage, lorsque nous avons
+comparé Python avec les langages compilés. Dans un langage compilé avec
+typage statique, on \textbf{doit fournir du typage}, ce qui fait qu'on
+écrit typiquement une fonction comme ceci~:
+
+\begin{verbatim}
+int factoriel(int n) {
+  return (n<=1) ? 1 : n * factoriel(n-1);
+}
+\end{verbatim}
+
+ce qui signifie que la fonction factoriel prend un premier argument qui
+est un entier, et qu'elle retourne également un entier.\\
+
+    Nous avons vu également que, par contraste, pour écrire une fonction en
+Python, on n'a \textbf{pas besoin} de préciser \textbf{le type} des
+arguments ni du retour de la fonction.
+
+    \hypertarget{vous-pouvez-aussi-typer-votre-code-python}{%
+\subsubsection{Vous pouvez aussi typer votre code
+python}\label{vous-pouvez-aussi-typer-votre-code-python}}
+
+    Cependant depuis la version 3.5, python supporte un mécanisme
+\textbf{totalement optionnel} qui vous permet d'annoter les arguments
+des fonctions avec des informations de typage, ce mécanisme est connu
+sous le nom de \emph{type hints}, et ça se présente comme ceci~:
+
+    \hypertarget{typer-une-variable}{%
+\subparagraph{typer une variable}\label{typer-une-variable}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} pour typer une variable avec les type hints}
+        \PY{n}{nb\PYZus{}items} \PY{p}{:} \PY{n+nb}{int} \PY{o}{=} \PY{l+m+mi}{0}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{nb\PYZus{}items}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} 0
+\end{Verbatim}
+            
+    \hypertarget{typer-les-paramuxe8tres-et-le-retour-dune-fonction}{%
+\subparagraph{typer les paramètres et le retour d'une
+fonction}\label{typer-les-paramuxe8tres-et-le-retour-dune-fonction}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} une fonction factorielle avec des type hints}
+        \PY{k}{def} \PY{n+nf}{fact}\PY{p}{(}\PY{n}{n} \PY{p}{:} \PY{n+nb}{int}\PY{p}{)} \PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{n+nb}{int}\PY{p}{:}
+            \PY{k}{return} \PY{l+m+mi}{1} \PY{k}{if} \PY{n}{n} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{1} \PY{k}{else} \PY{n}{n} \PY{o}{*} \PY{n}{fact}\PY{p}{(}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{fact}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} 479001600
+\end{Verbatim}
+            
+    \hypertarget{usages}{%
+\subsubsection{Usages}\label{usages}}
+
+    À ce stade, on peut entrevoir les usages suivants à ce type
+d'annotation~:
+
+\begin{itemize}
+\tightlist
+\item
+  tout d'abord, et évidemment, cela peut permettre de mieux documenter
+  le code~;
+\item
+  les environnements de développement sont susceptibles de vous aider de
+  manière plus effective~; si quelque part vous écrivez
+  \texttt{z\ =\ fact(12)}, le fait de savoir que \texttt{z} est entier
+  permet de fournir une complétion plus pertinente lorsque vous
+  commencez à écrire \texttt{z.{[}TAB{]}}~;
+\item
+  on peut espérer trouver des erreurs dans les passages d'arguments à un
+  stade plus précoce du développement.
+\end{itemize}
+
+    Par contre ce qui est très très clairement annoncé également, c'est que
+ces informations de typage sont \textbf{totalement facultatives}, et que
+le langage les \textbf{ignore totalement}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} l\PYZsq{}interpréteur ignore totalement ces informations}
+        \PY{k}{def} \PY{n+nf}{fake\PYZus{}fact}\PY{p}{(}\PY{n}{n} \PY{p}{:} \PY{n+nb}{str}\PY{p}{)} \PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{n+nb}{str}\PY{p}{:}
+            \PY{k}{return} \PY{l+m+mi}{1} \PY{k}{if} \PY{n}{n} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{1} \PY{k}{else} \PY{n}{n} \PY{o}{*} \PY{n}{fake\PYZus{}fact}\PY{p}{(}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} on peut appeler fake\PYZus{}fact avec un int alors }
+        \PY{c+c1}{\PYZsh{} que c\PYZsq{}est déclaré pour des str}
+        \PY{n}{fake\PYZus{}fact}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} 479001600
+\end{Verbatim}
+            
+    Le modèle préconisé est d'utiliser des \textbf{outils extérieurs}, qui
+peuvent faire une analyse statique du code pour exploiter ces
+informations à des fins de validation. Dans cette catégorie, le plus
+célèbre \href{http://mypy-lang.org/}{est sans doute \texttt{mypy}}.
+Notez aussi que les IDE comme PyCharm sont également capables de tirer
+parti de ces annotations.
+
+    \hypertarget{est-ce-ruxe9pandu}{%
+\subsubsection{Est-ce répandu ?}\label{est-ce-ruxe9pandu}}
+
+    Parce qu'ils ont été introduits pour la première fois avec python-3.5,
+en 2015 donc, puis améliorés dans la 3.6 pour le typage des variables,
+l'usage des \emph{type hints} n'est pour l'instant pas très répandu, en
+proportion de code en tous cas. En outre, il aura fallu un temps de
+latence avant que tous les outils (IDE's, producteurs de documentation,
+outils de test, validateurs\ldots{}) ne soient améliorés pour en tirer
+un profit maximal.\\
+
+On peut penser que cet usage va se répandre avec le temps, peut-être /
+sans doute pas de manière systématique, mais \emph{a minima} pour lever
+certaines ambiguïtés.
+
+    \hypertarget{comment-annoter-son-code}{%
+\subsubsection{Comment annoter son
+code}\label{comment-annoter-son-code}}
+
+    Maintenant que nous en avons bien vu la finalité, voyons un très bref
+aperçu des possibilités offertes pour la construction des types dans ce
+contexte de \emph{type hints}. N'hésitez pas à vous reporter à la
+documentation officielle
+\href{https://docs.python.org/3/library/typing.html}{du module
+\texttt{typing}} pour un exposé plus exhaustif.
+
+    \hypertarget{le-module-typing}{%
+\subparagraph{\texorpdfstring{le module
+\texttt{typing}}{le module typing}\\\\}\label{le-module-typing}}
+
+    L'ensemble des symboles que nous allons utiliser dans la suite de ce
+complément provient du module \texttt{typing}
+
+    \hypertarget{exemples-simples}{%
+\subparagraph{exemples simples}\label{exemples-simples}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k+kn}{from} \PY{n+nn}{typing} \PY{k}{import} \PY{n}{List}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} une fonction qui }
+        \PY{c+c1}{\PYZsh{} attend un paramètre qui soit une liste d\PYZsq{}entiers,}
+        \PY{c+c1}{\PYZsh{} et qui retourne une liste de chaînes}
+        \PY{k}{def} \PY{n+nf}{foo}\PY{p}{(}\PY{n}{x}\PY{p}{:} \PY{n}{List}\PY{p}{[}\PY{n+nb}{int}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{n}{List}\PY{p}{[}\PY{n+nb}{str}\PY{p}{]}\PY{p}{:}
+            \PY{k}{pass}    
+\end{Verbatim}
+
+
+    \hypertarget{avertissement-list-vs-list}{%
+\subparagraph{\texorpdfstring{avertissement~: \texttt{list} vs
+\texttt{List}}{avertissement~: list vs List}\\\\}\label{avertissement-list-vs-list}}
+
+    Remarquez bien dans l'exemple ci-dessus que nous avons utilisé
+\texttt{typing.List} plutôt que le type \emph{built-in} \texttt{list},
+alors que l'on a pu par contre utiliser \texttt{int} et \texttt{str}.\\
+
+Les raisons pour cela sont de deux ordres~:
+
+\begin{itemize}
+\item
+  tout d'abord, si je devais utiliser \texttt{list} pour construire un
+  type comme \emph{liste d'entiers}, il me faudrait écrire quelque chose
+  comme \texttt{list(int)} ou encore \texttt{list{[}int{]}}, et cela
+  serait source de confusion car ceci a déjà une signification dans le
+  langage~;
+\item
+  de manière plus profonde, il faut distinguer entre \texttt{list} qui
+  est un type concret (un objet qui sert à construire des instances), de
+  \texttt{List} qui dans ce contexte doit plus être vu comme un type
+  abstrait.
+\end{itemize}
+
+    Pour bien voir cela, considérez l'exemple suivant~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{k+kn}{from} \PY{n+nn}{typing} \PY{k}{import} \PY{n}{Iterable}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k}{def} \PY{n+nf}{lower\PYZus{}split}\PY{p}{(}\PY{n}{sep}\PY{p}{:} \PY{n+nb}{str}\PY{p}{,} \PY{n}{inputs} \PY{p}{:} \PY{n}{Iterable}\PY{p}{[}\PY{n+nb}{str}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{n+nb}{str}\PY{p}{:}
+            \PY{k}{return} \PY{n}{sep}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{p}{[}\PY{n}{x}\PY{o}{.}\PY{n}{lower}\PY{p}{(}\PY{p}{)} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{inputs}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{lower\PYZus{}split}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{AB}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{CD}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{EF}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:} 'ab--cd--ef'
+\end{Verbatim}
+            
+    On voit bien dans cet exemple que \texttt{Iterable} ne correspond pas à
+un type concret particulier, c'est un type abstrait dans le sens du
+\emph{duck typing}.
+
+    \hypertarget{un-exemple-plus-complet}{%
+\subparagraph{un exemple plus complet\\\\}\label{un-exemple-plus-complet}}
+
+    Voici un exemple tiré de la documentation du module \texttt{typing} qui
+illustre davantage de types construits à partir des types \emph{builtin}
+du langage~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{k+kn}{from} \PY{n+nn}{typing} \PY{k}{import} \PY{n}{Dict}\PY{p}{,} \PY{n}{Tuple}\PY{p}{,} \PY{n}{List}
+         
+         \PY{n}{ConnectionOptions} \PY{o}{=} \PY{n}{Dict}\PY{p}{[}\PY{n+nb}{str}\PY{p}{,} \PY{n+nb}{str}\PY{p}{]}
+         \PY{n}{Address} \PY{o}{=} \PY{n}{Tuple}\PY{p}{[}\PY{n+nb}{str}\PY{p}{,} \PY{n+nb}{int}\PY{p}{]}
+         \PY{n}{Server} \PY{o}{=} \PY{n}{Tuple}\PY{p}{[}\PY{n}{Address}\PY{p}{,} \PY{n}{ConnectionOptions}\PY{p}{]}
+         
+         \PY{k}{def} \PY{n+nf}{broadcast\PYZus{}message}\PY{p}{(}\PY{n}{message}\PY{p}{:} \PY{n+nb}{str}\PY{p}{,} \PY{n}{servers}\PY{p}{:} \PY{n}{List}\PY{p}{[}\PY{n}{Server}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{k+kc}{None}\PY{p}{:}
+             \PY{o}{.}\PY{o}{.}\PY{o}{.}
+         
+         \PY{c+c1}{\PYZsh{} The static type checker will treat the previous type signature as}
+         \PY{c+c1}{\PYZsh{} being exactly equivalent to this one.}
+         \PY{k}{def} \PY{n+nf}{broadcast\PYZus{}message}\PY{p}{(}
+                 \PY{n}{message}\PY{p}{:} \PY{n+nb}{str}\PY{p}{,}
+                 \PY{n}{servers}\PY{p}{:} \PY{n}{List}\PY{p}{[}\PY{n}{Tuple}\PY{p}{[}\PY{n}{Tuple}\PY{p}{[}\PY{n+nb}{str}\PY{p}{,} \PY{n+nb}{int}\PY{p}{]}\PY{p}{,} \PY{n}{Dict}\PY{p}{[}\PY{n+nb}{str}\PY{p}{,} \PY{n+nb}{str}\PY{p}{]}\PY{p}{]}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{k+kc}{None}\PY{p}{:}
+             \PY{o}{.}\PY{o}{.}\PY{o}{.}
+\end{Verbatim}
+
+
+    J'en profite d'ailleurs (ça n'a rien a voir, mais\ldots{}) pour vous
+signaler un objet python assez étrange~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} L\PYZsq{}objet ... existe bel et bien en Python}
+         \PY{n}{el} \PY{o}{=} \PY{o}{.}\PY{o}{.}\PY{o}{.}
+         \PY{n}{el}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} Ellipsis
+\end{Verbatim}
+            
+    qui sert principalement pour le slicing multidimensionnel de numpy. Mais
+ne nous égarons pas\ldots{}
+
+    \hypertarget{typage-partiel}{%
+\subparagraph{typage partiel\\\\}\label{typage-partiel}}
+
+    Puisque c'est un mécanisme optionnel, vous pouvez tout à fait ne typer
+qu'une partie de vos variables et paramètres~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} imaginez que vous ne typez pas n2, ni la valeur de retour}
+         
+         \PY{c+c1}{\PYZsh{} c\PYZsq{}est équivalent de dire ceci}
+         \PY{k}{def} \PY{n+nf}{partially\PYZus{}typed}\PY{p}{(}\PY{n}{n1}\PY{p}{:} \PY{n+nb}{int}\PY{p}{,} \PY{n}{n2}\PY{p}{)}\PY{p}{:}
+             \PY{k}{return} \PY{k+kc}{None}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} ou cela}
+         \PY{k+kn}{from} \PY{n+nn}{typing} \PY{k}{import} \PY{n}{Any}
+         
+         \PY{k}{def} \PY{n+nf}{partially\PYZus{}typed}\PY{p}{(}\PY{n}{n1}\PY{p}{:} \PY{n+nb}{int}\PY{p}{,} \PY{n}{n2}\PY{p}{:} \PY{n}{Any}\PY{p}{)} \PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{n}{Any}\PY{p}{:}
+             \PY{k}{return} \PY{k+kc}{None}
+\end{Verbatim}
+
+
+    \hypertarget{alias}{%
+\subparagraph{alias\\\\}\label{alias}}
+
+    On peut facilement se définir des alias~; lorsque vous avez implémenté
+un système d'identifiants basé sur le type \texttt{int}, il est
+préférable de faire~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{k+kn}{from} \PY{n+nn}{typing} \PY{k}{import} \PY{n}{NewType}
+         
+         \PY{n}{UserId} \PY{o}{=} \PY{n}{NewType}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{UserId}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n+nb}{int}\PY{p}{)}
+         
+         \PY{n}{user1\PYZus{}id} \PY{p}{:} \PY{n}{UserId} \PY{o}{=} \PY{l+m+mi}{0}
+\end{Verbatim}
+
+
+    plutôt que ceci, qui est beaucoup moins parlant~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{user1\PYZus{}id} \PY{p}{:} \PY{n+nb}{int} \PY{o}{=} \PY{l+m+mi}{0}
+\end{Verbatim}
+
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    \hypertarget{generic}{%
+\subparagraph{\texorpdfstring{\texttt{Generic}}{Generic}}\label{generic}}
+
+    Pour ceux qui connaissent déjà la notion de classe (les autres peuvent
+ignorer la fin de ce complément)~:\\
+
+    Grâce aux constructions \texttt{TypeVar} et \texttt{Generic}, il est
+possible de manipuler une notion de \emph{variable de type}, que je vous
+montre sur un exemple tiré à nouveau de la documentation du module
+\texttt{typing}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{k+kn}{from} \PY{n+nn}{typing} \PY{k}{import} \PY{n}{TypeVar}\PY{p}{,} \PY{n}{Generic}
+         \PY{k+kn}{from} \PY{n+nn}{logging} \PY{k}{import} \PY{n}{Logger}
+         
+         \PY{n}{T} \PY{o}{=} \PY{n}{TypeVar}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{T}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{k}{class} \PY{n+nc}{LoggedVar}\PY{p}{(}\PY{n}{Generic}\PY{p}{[}\PY{n}{T}\PY{p}{]}\PY{p}{)}\PY{p}{:}
+             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{value}\PY{p}{:} \PY{n}{T}\PY{p}{,} \PY{n}{name}\PY{p}{:} \PY{n+nb}{str}\PY{p}{,} \PY{n}{logger}\PY{p}{:} \PY{n}{Logger}\PY{p}{)} \PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{k+kc}{None}\PY{p}{:}
+                 \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{name} \PY{o}{=} \PY{n}{name}
+                 \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{logger} \PY{o}{=} \PY{n}{logger}
+                 \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{value} \PY{o}{=} \PY{n}{value}
+         
+             \PY{k}{def} \PY{n+nf}{set}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{new}\PY{p}{:} \PY{n}{T}\PY{p}{)} \PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{k+kc}{None}\PY{p}{:}
+                 \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{log}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Set }\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{repr}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{value}\PY{p}{)}\PY{p}{)}
+                 \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{value} \PY{o}{=} \PY{n}{new}
+         
+             \PY{k}{def} \PY{n+nf}{get}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)} \PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{n}{T}\PY{p}{:}
+                 \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{log}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Get }\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{repr}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{value}\PY{p}{)}\PY{p}{)}
+                 \PY{k}{return} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{value}
+         
+             \PY{k}{def} \PY{n+nf}{log}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{message}\PY{p}{:} \PY{n+nb}{str}\PY{p}{)} \PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{k+kc}{None}\PY{p}{:}
+                 \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{logger}\PY{o}{.}\PY{n}{info}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+si}{\PYZpc{}s}\PY{l+s+s1}{: }\PY{l+s+si}{\PYZpc{}s}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{name}\PY{p}{,} \PY{n}{message}\PY{p}{)}
+\end{Verbatim}
+
+
+    qui vous donne je l'espère une idée de ce qu'il est possible de faire,
+et jusqu'où on peut aller avec les \emph{type hints}. Si vous êtes
+intéressé par cette fonctionnalité, je vous invite
+\href{https://docs.python.org/3/library/typing.html\#user-defined-generic-types}{à
+poursuivre la lecture ici}.
+
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+\begin{itemize}
+\item
+  la documentation officielle sur
+  \href{https://docs.python.org/3/library/typing.html}{le module
+  typing}~;
+\item
+  la page d'accueil \href{http://mypy-lang.org/}{de l'outil mypy}.
+\item
+  le \href{https://www.python.org/dev/peps/pep-0484/}{PEP-525} sur le
+  typage des paramètres et retours de fonctions, implémenté dans
+  python-3.5~;
+\item
+  le \href{https://www.python.org/dev/peps/pep-0526/}{PEP-526} sur le
+  typage des variables, implémenté dans 3.6.
+\end{itemize}

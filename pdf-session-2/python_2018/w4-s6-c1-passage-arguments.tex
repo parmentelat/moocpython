@@ -1,0 +1,372 @@
+    \hypertarget{passage-darguments}{%
+\section{Passage d'arguments}\label{passage-darguments}}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{motivation}{%
+\subsubsection{Motivation}\label{motivation}}
+
+    Jusqu'ici nous avons développé le modèle simple qu'on trouve dans tous
+les langages de programmation, à savoir qu'une fonction a un nombre
+fixe, supposé connu, d'arguments. Ce modèle a cependant quelques
+limitations~; les mécanismes de passage d'arguments que propose python,
+et que nous venons de voir dans les vidéos, visent à lever ces
+limitations.\\
+
+Voyons de quelles limitations il s'agit.
+
+    \hypertarget{nombre-darguments-non-connu-uxe0-lavance}{%
+\subsubsection{Nombre d'arguments non connu à
+l'avance}\label{nombre-darguments-non-connu-uxe0-lavance}}
+
+    \hypertarget{ou-encore-introduction-uxe0-la-forme-arguments}{%
+\subparagraph{\texorpdfstring{Ou encore~: introduction à la forme
+\texttt{*arguments}}{Ou encore~: introduction à la forme *arguments}\\\\}\label{ou-encore-introduction-uxe0-la-forme-arguments}}
+
+    Pour prendre un exemple aussi simple que possible, considérons la
+fonction \texttt{print}, qui nous l'avons vu, accepte un nombre
+quelconque d'arguments.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{la fonction}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{print}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{peut}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{prendre}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{plein}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{d}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{arguments}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+la fonction print peut prendre plein d'arguments
+
+    \end{Verbatim}
+
+    Imaginons maintenant que nous voulons implémenter une variante de
+\texttt{print}, c'est-à-dire une fonction \texttt{error}, qui se
+comporte exactement comme \texttt{print} sauf qu'elle ajoute en début de
+ligne une balise \texttt{ERROR}.\\
+
+Se posent alors deux problèmes~:
+
+\begin{itemize}
+	\item 
+	D'une part il nous faut un moyen de
+	spécifier que notre fonction prend un nombre quelconque d'arguments.
+	\item
+	D'autre part il faut une syntaxe pour repasser tous ces arguments à la
+	fonction \texttt{print}.
+\end{itemize}
+
+On peut faire tout cela avec la notation en \texttt{*} comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} accepter n\PYZsq{}importe quel nombre d\PYZsq{}arguments}
+        \PY{k}{def} \PY{n+nf}{error}\PY{p}{(}\PY{o}{*}\PY{n}{print\PYZus{}args}\PY{p}{)}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} et les repasser à l\PYZsq{}identique à print en plus de la balise}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ERROR}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{o}{*}\PY{n}{print\PYZus{}args}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} on peut alors l\PYZsq{}utiliser comme ceci}
+        \PY{n}{error}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{problème}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dans}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{la}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fonction}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{foo}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} ou même sans argument}
+        \PY{n}{error}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+ERROR problème dans la fonction foo
+ERROR
+
+    \end{Verbatim}
+
+    \hypertarget{luxe9guxe8re-variation}{%
+\subsubsection{Légère variation}\label{luxe9guxe8re-variation}}
+
+    Pour sophistiquer un peu cet exemple, on veut maintenant imposer à la
+fonction erreur qu'elle reçoive un argument obligatoire de type entier
+qui représente un code d'erreur, plus à nouveau un nombre quelconque
+d'arguments pour \texttt{print}.\\
+
+Pour cela, on peut définir une signature (les paramètres de la fonction)
+qui
+
+\begin{itemize}
+	\item 
+	prévoit un argument traditionnel en première position, qui sera
+	obligatoire lors de l'appel,
+	\item
+	et le tuple des arguments pour \texttt{print}, comme ceci~:
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} le premier argument est obligatoire}
+        \PY{k}{def} \PY{n+nf}{error1}\PY{p}{(}\PY{n}{error\PYZus{}code}\PY{p}{,} \PY{o}{*}\PY{n}{print\PYZus{}args}\PY{p}{)}\PY{p}{:}
+            \PY{n}{message} \PY{o}{=} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{message d}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{erreur code }\PY{l+s+si}{\PYZob{}error\PYZus{}code\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ERROR}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{message}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{o}{*}\PY{n}{print\PYZus{}args}\PY{p}{)}
+            
+        \PY{c+c1}{\PYZsh{} que l\PYZsq{}on peut à présent appeler comme ceci}
+        \PY{n}{error1}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{un}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{petit souci avec}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+ERROR message d'erreur code 100 -- un petit souci avec [1, 2, 3]
+
+    \end{Verbatim}
+
+    Remarquons que maintenant la fonction \texttt{error1} ne peut plus être
+appelée sans argument, puisqu'on a mentionné un paramètre
+\textbf{obligatoire} \texttt{error\_code}.
+
+    \hypertarget{ajout-de-fonctionnalituxe9s}{%
+\subsubsection{Ajout de
+fonctionnalités}\label{ajout-de-fonctionnalituxe9s}}
+
+    \hypertarget{ou-encore-la-forme-argumentvaleur_par_defaut}{%
+\subparagraph{\texorpdfstring{Ou encore~: la forme
+\texttt{argument=valeur\_par\_defaut}}{Ou encore~: la forme argument=valeur\_par\_defaut}\\\\}\label{ou-encore-la-forme-argumentvaleur_par_defaut}}
+
+    Nous envisageons à présent le cas - tout à fait indépendant de ce qui
+précède - où vous avez écrit une librairie graphique, dans laquelle vous
+exposez une fonction \texttt{ligne} définie comme suit. Évidemment pour
+garder le code simple, nous imprimons seulement les coordonnées du
+segment~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} première version de l\PYZsq{}interface pour dessiner une ligne}
+        \PY{k}{def} \PY{n+nf}{ligne}\PY{p}{(}\PY{n}{x1}\PY{p}{,} \PY{n}{y1}\PY{p}{,} \PY{n}{x2}\PY{p}{,} \PY{n}{y2}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dessine la ligne (x1, y1) \PYZhy{}\PYZgt{} (x2, y2)}\PY{l+s+s2}{\PYZdq{}}
+            \PY{c+c1}{\PYZsh{} restons simple}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{la ligne (}\PY{l+s+si}{\PYZob{}x1\PYZcb{}}\PY{l+s+s2}{, }\PY{l+s+si}{\PYZob{}y1\PYZcb{}}\PY{l+s+s2}{) \PYZhy{}\PYZgt{} (}\PY{l+s+si}{\PYZob{}x2\PYZcb{}}\PY{l+s+s2}{, }\PY{l+s+si}{\PYZob{}y2\PYZcb{}}\PY{l+s+s2}{)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    Vous publiez cette librairie en version 1, vous avez des utilisateurs~;
+et quelque temps plus tard vous écrivez une version 2 qui prend en
+compte la couleur. Ce qui vous conduit à ajouter un paramètre pour
+\texttt{ligne}.\\
+
+    Si vous le faites en déclarant
+
+\begin{verbatim}
+def ligne(x1, y1, x2, y2, couleur):
+    ...
+  
+\end{verbatim}
+
+alors tous les utilisateurs de la version 1 vont \textbf{devoir changer
+leur code} - pour rester à fonctionnalité égale - en ajoutant un
+cinquième argument \texttt{\textquotesingle{}noir\textquotesingle{}} à
+leurs appels à \texttt{ligne}.\\
+
+    Vous pouvez éviter cet inconvénient en définissant la deuxième version
+de \texttt{ligne} comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} deuxième version de l\PYZsq{}interface pour dessiner une ligne}
+        \PY{k}{def} \PY{n+nf}{ligne}\PY{p}{(}\PY{n}{x1}\PY{p}{,} \PY{n}{y1}\PY{p}{,} \PY{n}{x2}\PY{p}{,} \PY{n}{y2}\PY{p}{,} \PY{n}{couleur}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{noir}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dessine la ligne (x1, y1) \PYZhy{}\PYZgt{} (x2, y2) dans la couleur spécifiée}\PY{l+s+s2}{\PYZdq{}}
+            \PY{c+c1}{\PYZsh{} restons simple}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{la ligne (}\PY{l+s+si}{\PYZob{}x1\PYZcb{}}\PY{l+s+s2}{, }\PY{l+s+si}{\PYZob{}y1\PYZcb{}}\PY{l+s+s2}{) \PYZhy{}\PYZgt{} (}\PY{l+s+si}{\PYZob{}x2\PYZcb{}}\PY{l+s+s2}{, }\PY{l+s+si}{\PYZob{}y2\PYZcb{}}\PY{l+s+s2}{) en }\PY{l+s+si}{\PYZob{}couleur\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    Avec cette nouvelle définition, on peut aussi bien
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} faire fonctionner du vieux code sans le modifier}
+        \PY{n}{ligne}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} ou bien tirer profit du nouveau trait}
+        \PY{n}{ligne}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rouge}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+la ligne (0, 0) -> (100, 100) en noir
+la ligne (0, 100) -> (100, 0) en rouge
+
+    \end{Verbatim}
+
+    \hypertarget{les-paramuxe8tres-par-duxe9faut-sont-truxe8s-utiles}{%
+\subparagraph{Les paramètres par défaut sont très
+utiles\\\\}\label{les-paramuxe8tres-par-duxe9faut-sont-truxe8s-utiles}}
+
+    Notez bien que ce genre de situation peut tout aussi bien se produire
+sans que vous ne publiiez de librairie, à l'intérieur d'une seule
+application. Par exemple, vous pouvez être amené à ajouter un argument à
+une fonction parce qu'elle doit faire face à de nouvelles situations
+imprévues, et que vous n'avez pas le temps de modifier tout le code.\\
+
+    Ou encore plus simplement, vous pouvez choisir d'utiliser ce passage de
+paramètres dès le début de la conception~; une fonction \texttt{ligne}
+réaliste présentera une interface qui précise les points concernés, la
+couleur du trait, l'épaisseur du trait, le style du trait, le niveau de
+transparence, etc.~Il n'est vraiment pas utile que tous les appels à
+\texttt{ligne} reprécisent tout ceci intégralement, aussi une bonne
+partie de ces paramètres seront très constructivement déclarés avec une
+valeur par défaut.
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    \hypertarget{uxe9crire-un-wrapper}{%
+\subsubsection{Écrire un wrapper}\label{uxe9crire-un-wrapper}}
+
+    \hypertarget{ou-encore-la-forme-keywords}{%
+\subparagraph{\texorpdfstring{Ou encore~: la forme
+\texttt{**keywords}\\\\}{Ou encore~: la forme **keywords}}\label{ou-encore-la-forme-keywords}}
+
+    La notion de \emph{wrapper} - emballage, en anglais - est très répandue
+en informatique, et consiste, à partir d'un morceau de code souche
+existant (fonction ou classe) à définir une variante qui se comporte
+comme la souche, mais avec quelques légères différences.\\
+
+La fonction \texttt{error} était déjà un premier exemple de
+\emph{wrapper}. Maintenant nous voulons définir un \emph{wrapper}
+\texttt{ligne\_rouge}, qui sous-traite à la fonction \texttt{ligne} mais
+toujours avec la couleur rouge.\\
+
+Maintenant que l'on a injecté la notion de paramètre par défaut dans le
+système de signature des fonctions, se repose la question de savoir
+comment passer à l'identique les arguments de \texttt{ligne\_rouge} à
+\texttt{ligne}.\\
+
+    Évidemment, une première option consiste à regarder la signature de
+\texttt{ligne}~:
+
+\begin{verbatim}
+def ligne(x1, y1, x2, y2, couleur="noir")
+\end{verbatim}
+
+    Et à en déduire une implémentation de \texttt{ligne\_rouge} comme ceci
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} la version naïve \PYZhy{} non conseillée \PYZhy{} de ligne\PYZus{}rouge}
+        \PY{k}{def} \PY{n+nf}{ligne\PYZus{}rouge}\PY{p}{(}\PY{n}{x1}\PY{p}{,} \PY{n}{y1}\PY{p}{,} \PY{n}{x2}\PY{p}{,} \PY{n}{y2}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{n}{ligne}\PY{p}{(}\PY{n}{x1}\PY{p}{,} \PY{n}{y1}\PY{p}{,} \PY{n}{x2}\PY{p}{,} \PY{n}{y2}\PY{p}{,} \PY{n}{couleur}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rouge}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{n}{ligne\PYZus{}rouge}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+la ligne (0, 0) -> (100, 100) en rouge
+
+    \end{Verbatim}
+
+    Toutefois, avec cette implémentation, si la signature de \texttt{ligne}
+venait à changer, on serait vraisemblablement amené à changer
+\textbf{aussi} celle de \texttt{ligne\_rouge}, sauf à perdre en
+fonctionnalité. Imaginons en effet que \texttt{ligne} devienne dans une
+version suivante
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} on ajoute encore une fonctionnalité à la fonction ligne}
+        \PY{k}{def} \PY{n+nf}{ligne}\PY{p}{(}\PY{n}{x1}\PY{p}{,} \PY{n}{y1}\PY{p}{,} \PY{n}{x2}\PY{p}{,} \PY{n}{y2}\PY{p}{,} \PY{n}{couleur}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{noir}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{epaisseur}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{la ligne (}\PY{l+s+si}{\PYZob{}x1\PYZcb{}}\PY{l+s+s2}{, }\PY{l+s+si}{\PYZob{}y1\PYZcb{}}\PY{l+s+s2}{) \PYZhy{}\PYZgt{} (}\PY{l+s+si}{\PYZob{}x2\PYZcb{}}\PY{l+s+s2}{, }\PY{l+s+si}{\PYZob{}y2\PYZcb{}}\PY{l+s+s2}{)}\PY{l+s+s2}{\PYZdq{}}
+                  \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ en }\PY{l+s+si}{\PYZob{}couleur\PYZcb{}}\PY{l+s+s2}{ \PYZhy{} ep. }\PY{l+s+si}{\PYZob{}epaisseur\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    Alors le wrapper ne nous permet plus de profiter de la nouvelle
+fonctionnalité. De manière générale, on cherche au maximum à se prémunir
+contre de telles dépendances. Aussi, il est de beaucoup préférable
+d'implémenter \texttt{ligne\_rouge} comme suit, où vous remarquerez que
+\textbf{la seule hypothèse} faite sur \texttt{ligne} est qu'elle accepte
+un argument nommé \texttt{couleur}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k}{def} \PY{n+nf}{ligne\PYZus{}rouge}\PY{p}{(}\PY{o}{*}\PY{n}{arguments}\PY{p}{,} \PY{o}{*}\PY{o}{*}\PY{n}{keywords}\PY{p}{)}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} c\PYZsq{}est le seul endroit où on fait une hypothèse sur la fonction `ligne`}
+            \PY{c+c1}{\PYZsh{} qui est qu\PYZsq{}elle accepte un argument nommé \PYZsq{}couleur\PYZsq{}}
+            \PY{n}{keywords}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{couleur}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{rouge}\PY{l+s+s2}{\PYZdq{}}
+            \PY{k}{return} \PY{n}{ligne}\PY{p}{(}\PY{o}{*}\PY{n}{arguments}\PY{p}{,} \PY{o}{*}\PY{o}{*}\PY{n}{keywords}\PY{p}{)}
+\end{Verbatim}
+
+
+    Ce qui permet maintenant de faire
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{ligne\PYZus{}rouge}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{n}{epaisseur}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+la ligne (0, 100) -> (100, 0) en rouge - ep. 4
+
+    \end{Verbatim}
+
+    \hypertarget{pour-en-savoir-plus---la-forme-guxe9nuxe9rale}{%
+\subsubsection{Pour en savoir plus - la forme
+générale}\label{pour-en-savoir-plus---la-forme-guxe9nuxe9rale}}
+
+    Une fois assimilé ce qui précède, vous avez de quoi comprendre une
+énorme majorité (99\% au moins) du code Python.\\
+
+Dans le cas général, il est possible de combiner les 4 formes
+d'arguments:
+
+\begin{itemize}
+	\item 
+	arguments ``normaux'', dits positionnels
+	\item
+	arguments nommés, comme \texttt{nom=\textless{}valeur\textgreater{}}
+	\item
+	forme \texttt{*args}
+	\item
+	forme \texttt{**dargs}
+\end{itemize}
+
+Vous pouvez
+\href{https://docs.python.org/3/reference/expressions.html\#calls}{vous
+reporter à cette page} pour une description détaillée de ce cas général.\\
+
+    À l'appel d'une fonction, il faut résoudre les arguments, c'est-à-dire
+associer une valeur à chaque paramètre formel (ceux qui apparaissent
+dans le \texttt{def}) à partir des valeurs figurant dans l'appel.\\
+
+L'idée est que pour faire cela, les arguments de l'appel ne sont pas
+pris dans l'ordre où ils apparaissent, mais les arguments positionnels
+sont utilisés en premier. La logique est que, naturellement les
+arguments positionnels (ou ceux qui proviennent d'une
+\texttt{*expression}) viennent sans nom, et donc ne peuvent pas être
+utilisés pour résoudre des arguments nommés.\\
+
+    Voici un tout petit exemple pour vous donner une idée de la complexité
+de ce mécanisme lorsqu'on mélange toutes les 4 formes d'arguments à
+l'appel de la fonction (alors qu'on a défini la fonction avec 4
+paramètres positionnels)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} une fonction qui prend 4 paramètres simples}
+         \PY{k}{def} \PY{n+nf}{foo}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{n}{d}\PY{p}{)}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{n}{d}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} on peut l\PYZsq{}appeler par exemple comme ceci}
+         \PY{n}{foo}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{,} \PY{o}{*}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{p}{)}\PY{p}{,} \PY{o}{*}\PY{o}{*}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{l+m+mi}{4}\PY{p}{\PYZcb{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1 2 3 4
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} mais pas comme cela}
+         \PY{k}{try}\PY{p}{:}
+             \PY{n}{foo} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{b}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{,} \PY{o}{*}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{p}{)}\PY{p}{,} \PY{o}{*}\PY{o}{*}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{l+m+mi}{4}\PY{p}{\PYZcb{}}\PY{p}{)}
+         \PY{k}{except} \PY{n+ne}{Exception} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS, }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{type(e)\PYZcb{}, }\PY{l+s+si}{\PYZob{}e\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+OOPS, <class 'TypeError'>, foo() got multiple values for argument 'b'
+
+    \end{Verbatim}
+
+    Si le problème ne vous semble pas clair, vous pouvez regarder la
+\href{https://docs.python.org/3/reference/expressions.html\#calls}{documentation
+python décrivant ce problème}.
