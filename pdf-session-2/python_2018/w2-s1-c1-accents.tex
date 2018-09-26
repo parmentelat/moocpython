@@ -19,7 +19,7 @@ octet}. Aussi en Python 3, lorsqu'il s'agit de manipuler des données
 provenant de diverses sources de données~:
 
 \begin{itemize}
-	\item
+	\item 
 	le type \texttt{byte} est
 	approprié si vous voulez charger en mémoire les données binaires brutes,
 	sous forme d'octets donc~;
@@ -31,15 +31,16 @@ provenant de diverses sources de données~:
 	on passe de l'un à l'autre de ces types par des
 	opérations d'encodage et décodage, comme illustré ci-dessous~;
 	\item
-	et pour \textbf{toutes} les opérations d'encodage et décodage, il est nécessaire
+	et pour
+	\textbf{toutes} les opérations d'encodage et décodage, il est nécessaire
 	de connaître l'encodage utilisé.
 \end{itemize}
 
 \begin{figure}[h!]
-\centering
-\includegraphics{medias/str-bytes.png}
-\caption{les types bytes et str}
-\end{figure}
+	\centering
+	\includegraphics{medias/str-bytes.png}
+	\caption{les types bytes et str}
+\end{figure}}
 
     On peut appeler les méthodes \texttt{encode} et \texttt{decode} sans
 préciser l'encodage (dans ce cas Python choisit l'encodage par défaut
@@ -58,7 +59,7 @@ utiliser sans aucun risque des accents ou des cédilles dans vos chaînes
 de caractères. Il faut cependant faire attention à deux choses~:
 
 \begin{itemize}
-	\item
+	\item 
 	Python supporte Unicode, donc tous les caractères du monde, mais les
 	ordinateurs n'ont pas forcément les polices de caractères nécessaires
 	pour afficher ces caractères~;
@@ -67,7 +68,10 @@ de caractères. Il faut cependant faire attention à deux choses~:
 	Unicode pour les noms de variables, mais nous vous recommandons dans
 	toute la mesure du possible d'écrire votre code en anglais, comme c'est
 	le cas pour la quasi-totalité du code que vous serez amenés à utiliser
-	sous forme de bibliothèques.
+	sous forme de bibliothèques. Ceci est particulièrement important pour
+	les noms de lignes et de colonnes dans un dataset afin de faciliter les
+	transferts entre logiciels, la majorité des logiciels n'acceptant pas
+	les accents et cédilles dans les noms de variables.
 \end{itemize}
 
 Ainsi, il faut bien distinguer les chaînes de caractères qui doivent par
@@ -98,7 +102,7 @@ sources, voici ce qu'il faut savoir.
 \end{itemize}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} pas recommandé, mais autorisé par le langage}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pas recommandé, mais autorisé par le langage}
         \PY{n}{nb\PYZus{}élèves} \PY{o}{=} \PY{l+m+mi}{12}
 \end{Verbatim}
 
@@ -110,17 +114,13 @@ sources, voici ce qu'il faut savoir.
 \end{itemize}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{math} \PY{k}{import} \PY{n}{cos}\PY{p}{,} \PY{n}{pi} \PY{k}{as} \PY{n}{Π}
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{from} \PY{n+nn}{math} \PY{k}{import} \PY{n}{cos}\PY{p}{,} \PY{n}{pi} \PY{k}{as} \PY{n}{Π}
         \PY{n}{θ} \PY{o}{=} \PY{n}{Π} \PY{o}{/} \PY{l+m+mi}{4}
         \PY{n}{cos}\PY{p}{(}\PY{n}{θ}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}2}]:} 0.7071067811865476
-\end{Verbatim}
-            
-\begin{itemize}
+    \begin{itemize}
 \tightlist
 \item
   Je vous recommande toutefois de \textbf{ne pas utiliser} cette
@@ -313,6 +313,7 @@ manière minimale, il se peut qu'il utilise par défaut l'encodage
 pas un simple é, ni a fortiori €. Pour écrire du français, il faut donc
 au minimum que l'encodage par défaut de votre ordinateur contienne les
 caractères français, comme par exemple~:
+
 \begin{itemize}
 	\item
 	\texttt{ISO\ 8859-1} (\texttt{Latin-1})
@@ -330,7 +331,7 @@ encodages}\label{un-peu-dhistoire-sur-les-encodages}}
 
     \hypertarget{le-code-us-ascii}{%
 \subparagraph{\texorpdfstring{Le code
-\texttt{US-ASCII}}{Le code US-ASCII}\\\\}\label{le-code-us-ascii}}
+\texttt{US-ASCII}\\\\}{Le code US-ASCII}}\label{le-code-us-ascii}}
 
     Jusque dans les années 1980, les ordinateurs ne parlaient pour
 l'essentiel que l'anglais. La première vague de standardisation avait
@@ -375,13 +376,14 @@ a utilisé à l'époque
 un fichier il faut connaître son encodage.
 
     \hypertarget{unicode}{%
-\subparagraph{Unicode\\\\}\label{unicode}}
+\subparagraph{Unicode}\label{unicode}}
 
     Lorsque l'on a ensuite cherché à manipuler aussi les langues asiatiques,
 il a de toute façon fallu définir de nouveaux encodages beaucoup plus
 larges. C'est ce qui a été fait par le standard
 \href{http://en.wikipedia.org/wiki/Unicode}{Unicode} qui définit 3
 nouveaux encodages~:
+
 \begin{itemize}
 	\item
 	\href{http://en.wikipedia.org/wiki/UTF-8}{\texttt{UTF-8}} : un encodage
@@ -392,8 +394,9 @@ nouveaux encodages~:
 	: un encodage à taille variable, à base de mots de 16 bits~;
 	\item
 	\href{http://en.wikipedia.org/wiki/UTF-32}{\texttt{UTF-32}} : un
-	encodage à taille fixe, à base de mots de 32 bits~;\\
+	encodage à taille fixe, à base de mots de 32 bits~;
 \end{itemize}
+
 Ces 3 standards couvrent le même jeu de caractères (113 021 tout de même
 dans la dernière version). Parmi ceux-ci le plus utilisé est
 certainement \texttt{UTF-8}. Un texte ne contenant que des caractères du
