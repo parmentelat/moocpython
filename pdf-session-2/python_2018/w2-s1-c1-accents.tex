@@ -19,7 +19,7 @@ octet}. Aussi en Python 3, lorsqu'il s'agit de manipuler des données
 provenant de diverses sources de données~:
 
 \begin{itemize}
-	\item 
+	\item
 	le type \texttt{byte} est
 	approprié si vous voulez charger en mémoire les données binaires brutes,
 	sous forme d'octets donc~;
@@ -40,7 +40,7 @@ provenant de diverses sources de données~:
 	\centering
 	\includegraphics{medias/str-bytes.png}
 	\caption{les types bytes et str}
-\end{figure}}
+\end{figure}
 
     On peut appeler les méthodes \texttt{encode} et \texttt{decode} sans
 préciser l'encodage (dans ce cas Python choisit l'encodage par défaut
@@ -119,6 +119,9 @@ sources, voici ce qu'il faut savoir.
         \PY{n}{cos}\PY{p}{(}\PY{n}{θ}\PY{p}{)}
 \end{Verbatim}
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} 0.7071067811865476
+\end{Verbatim}
 
     \begin{itemize}
 \tightlist
@@ -287,14 +290,19 @@ sur Windows va utiliser l'encodage par défaut du système, c'est-à-dire
 le voyez dans cette table, l'octet `0xA4' correspond au caractère ¤ et
 c'est ça que vous allez voir à la place de €.\\
 
-C'est à cela que sert la balise
-\texttt{\#\ coding:\ \textless{}nom\_de\_l\_encodage\textgreater{}}.\\
+Contrairement à ce qu'on pourrait espérer, ce type de problème ne peut
+pas se régler en ajoutant une balise
+\texttt{\#\ coding:\ \textless{}nom\_de\_l\_encodage\textgreater{}}, qui
+n'agit que sur l'encodage utilisé \emph{pour lire le fichier source en
+question} (celui qui contient la balise).\\
 
-De cette manière, Python lorsqu'il lit votre code source, a les moyens
-d'interpréter correctement son contenu car il sait quel encodage
-utiliser. On vous rappelle que si vous ne spécifiez aucun encodage pour
-votre code source, Python utilisera l'encodage \texttt{UTF-8}, ce qui
-est souvent le meilleur choix.
+Pour régler correctement ce type de problème, il vous faut préciser
+explicitement l'encodage à utiliser pour décoder le fichier. Et donc
+avoir un moyen fiable de déterminer cet encodage; ce qui n'est pas
+toujours aisé d'ailleurs, mais c'est une autre discussion
+malheureusement. Ce qui signifie que pour être totalement propre, il
+faut pouvoir préciser explicitement le paramètre \texttt{encoding} à
+l'appel de toutes les méthodes qui sont susceptibles d'en avoir besoin.
 
     \hypertarget{pourquoi-uxe7a-marche-en-local}{%
 \subsubsection{Pourquoi ça marche en
@@ -303,9 +311,7 @@ local~?}\label{pourquoi-uxe7a-marche-en-local}}
     Lorsque le producteur (le programme qui écrit le fichier) et le
 consommateur (le programme qui le lit) tournent dans le même ordinateur,
 tout fonctionne bien - en général - parce que les deux programmes se
-ramènent à l'encodage défini comme l'encodage par défaut. On a vu
-pourquoi il vaut mieux toutefois être explicite, et spécifier la balise
-\texttt{\#\ coding:\ ...}\\
+ramènent à l'encodage défini comme l'encodage par défaut.\\
 
 Il y a toutefois une limite, si vous utilisez un Linux configuré de
 manière minimale, il se peut qu'il utilise par défaut l'encodage
@@ -315,7 +321,7 @@ au minimum que l'encodage par défaut de votre ordinateur contienne les
 caractères français, comme par exemple~:
 
 \begin{itemize}
-	\item
+	\item 
 	\texttt{ISO\ 8859-1} (\texttt{Latin-1})
 	\item
 	\texttt{ISO\ 8859-15} (\texttt{Latin-9})
@@ -325,13 +331,16 @@ caractères français, comme par exemple~:
 	\texttt{CP1252}
 \end{itemize}
 
+À nouveau dans cette liste, il faut clairement préférer UTF-8 lorsque
+c'est possible.
+
     \hypertarget{un-peu-dhistoire-sur-les-encodages}{%
 \subsubsection{Un peu d'histoire sur les
 encodages}\label{un-peu-dhistoire-sur-les-encodages}}
 
     \hypertarget{le-code-us-ascii}{%
 \subparagraph{\texorpdfstring{Le code
-\texttt{US-ASCII}\\\\}{Le code US-ASCII}}\label{le-code-us-ascii}}
+\texttt{US-ASCII}}{Le code US-ASCII}\\\\}\label{le-code-us-ascii}}
 
     Jusque dans les années 1980, les ordinateurs ne parlaient pour
 l'essentiel que l'anglais. La première vague de standardisation avait
@@ -376,7 +385,7 @@ a utilisé à l'époque
 un fichier il faut connaître son encodage.
 
     \hypertarget{unicode}{%
-\subparagraph{Unicode}\label{unicode}}
+\subparagraph{Unicode\\\\}\label{unicode}}
 
     Lorsque l'on a ensuite cherché à manipuler aussi les langues asiatiques,
 il a de toute façon fallu définir de nouveaux encodages beaucoup plus
@@ -385,7 +394,7 @@ larges. C'est ce qui a été fait par le standard
 nouveaux encodages~:
 
 \begin{itemize}
-	\item
+	\item 
 	\href{http://en.wikipedia.org/wiki/UTF-8}{\texttt{UTF-8}} : un encodage
 	à taille variable, à base d'octets, qui maximise la compatibilité avec
 	US-ASCII~;
