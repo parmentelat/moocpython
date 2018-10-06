@@ -42,8 +42,6 @@ pas autorisé d'appeler une variable \texttt{if}.
         if = 1
            \^{}
     SyntaxError: invalid syntax
-
-
     \end{Verbatim}
 
     \hypertarget{liste-compluxe8te}{%
@@ -51,28 +49,28 @@ pas autorisé d'appeler une variable \texttt{if}.
 
     Voici la liste complète des mots-clés~:
 
-    \begin{longtable}[]{@{}lllll@{}}
-%\toprule
+    \begin{longtable}[]{@{}rrrrr@{}}
+\toprule
 ~ & ~ & ~ & ~ & ~\tabularnewline
 \midrule
 \endhead
-\textbf{False} & class & finally & is & return\tabularnewline
-\textbf{None} & continue & for & lambda & try\tabularnewline
-\textbf{True} & def & from & \textbf{nonlocal} & while\tabularnewline
-and & del & global & not & with\tabularnewline
-as & elif & if & or & yield\tabularnewline
-assert & else & import & pass &\tabularnewline
-break & except & in & raise &\tabularnewline
+\textbf{False} & await & else & import & pass\tabularnewline
+\textbf{None} & break & except & in & raise\tabularnewline
+\textbf{True} & class & finally & is & return\tabularnewline
+and & continue & for & lambda & try\tabularnewline
+as & def & from & \textbf{nonlocal} & while\tabularnewline
+assert & del & global & not & with\tabularnewline
+async & elif & if & or & yield\tabularnewline
 \bottomrule
 \end{longtable}
 
     Nous avons indiqué \textbf{en gras} les nouveautés \textbf{par rapport à
 Python 2} (sachant que réciproquement \texttt{exec} et \texttt{print}
 ont perdu leur statut de mot-clé depuis Python 2, ce sont maintenant des
-fonctions).
+fonctions).\\
 
     Il vous faudra donc y prêter attention, surtout au début, mais avec un
-tout petit peu d'habitude vous saurez rapidement les éviter.
+tout petit peu d'habitude vous saurez rapidement les éviter.\\
 
 Vous remarquerez aussi que tous les bons éditeurs de texte supportant du
 code Python vont colorer les mots-clés différemment des variables. Par
@@ -82,8 +80,8 @@ comme nom de variable.\\
 
 Cette fonctionnalité, dite de \emph{coloration syntaxique}, permet
 d'identifier d'un coup d'œil, grâce à un code de couleur, le rôle des
-différents éléments de votre code: variables, mots-clés, etc\ldots{}
-D'une manière générale, nous vous déconseillons fortement d'utiliser un
+différents éléments de votre code~: variables, mots-clés, etc.~D'une
+manière générale, nous vous déconseillons fortement d'utiliser un
 éditeur de texte qui n'offre pas cette fonctionnalité de coloration
 syntaxique.
 

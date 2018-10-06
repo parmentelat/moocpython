@@ -1,4 +1,3 @@
-
     \hypertarget{installer-la-distribution-standard-python}{%
 \section{Installer la distribution standard
 Python}\label{installer-la-distribution-standard-python}}
@@ -8,14 +7,14 @@ Python}\label{installer-la-distribution-standard-python}}
 basique}\label{compluxe9ment---niveau-basique}}
 
     Ce complément a pour but de vous donner quelques guides pour
-l'installation de la distribution standard Python 3.
+l'installation de la distribution standard Python 3.\\
 
 Notez bien qu'il ne s'agit ici que d'indications, il existe de
-nombreuses façons de procéder.
+nombreuses façons de procéder.\\
 
-En cas de souci, commencez par chercher par vous-même, sur google ou
+En cas de souci, commencez par chercher par vous-même, sur Google ou
 autre, une solution à votre problème~; pensez également à utiliser le
-forum du cours.
+forum du cours.\\
 
     Le point important est de \textbf{bien vérifier le numéro de version} de
 votre installation qui doit être \textbf{au moins 3.6}
@@ -32,12 +31,11 @@ pendant la phase d'installation.\\
 Lorsque c'est le cas, il est important de bien distinguer~:
 
 \begin{itemize}
-\item
-	les cas où on s'adresse \textbf{au terminal} (en jargon, on dit le \emph{shell}),
-\item	
-	et les cas où on s'adresse à \textbf{l'interpréteur Python}.
+	\item 
+    les cas où on s'adresse \textbf{au terminal} (en jargon, on dit le \emph{shell}),
+    \item
+    et les cas où on s'adresse à \textbf{l'interpréteur Python}.
 \end{itemize}
-
 
 C'est très important car ces deux programmes ne parlent \textbf{pas} du
 tout le \textbf{même langage} ! Il peut arriver au début qu'on écrive
@@ -50,7 +48,7 @@ source de frustration. Essayons de bien comprendre ce point.
 Je peux dire que je parle à mon \textbf{terminal} quand l'invite de
 commande (en jargon on dit le \emph{prompt}) \textbf{se termine par un
 dollar \texttt{\$}} - ou un simple chevron \texttt{\textgreater{}} sur
-Windows
+Windows\\
 
 Par exemple~sur un mac :
 
@@ -95,11 +93,11 @@ j'utilise la fonction Python \texttt{exit()}~:
 
 Gardez bien cette distinction présente à l'esprit, lorsque vous lisez la
 suite. Voici quelques symptômes habituels de ce qu'on obtient si on se
-trompe.
+trompe.\\
 
 Par exemple, la commande \texttt{python3\ -V} est une commande qui
-s'adresse au terminal; c'est pourquoi nous la faisons précéder d'un
-dollar \texttt{\$}.
+s'adresse au terminal~; c'est pourquoi nous la faisons précéder d'un
+dollar \texttt{\$}.\\
 
 Si vous essayez de la taper alors que vous êtes déjà dans un
 interpréteur python - ou sous IDLE d'ailleurs -, vous obtenez un message
@@ -191,15 +189,14 @@ Pour éviter d'éventuelles confusions, nous précisons toujours
 d'installation qui contient tout ce dont vous aurez besoin pour suivre
 le cours.\\
 
-Pour vérifier que vous êtes prêts, il vous faut lancer IDLE (quelque
-part dans le menu Démarrer) et vérifier le numéro de version.
+Pour vérifier que vous êtes prêt, il vous faut lancer IDLE (quelque part
+dans le menu Démarrer) et vérifier le numéro de version.
 
     \hypertarget{vous-utilisez-macos}{%
 \subsubsection{Vous utilisez macOS}\label{vous-utilisez-macos}}
 
     Ici encore, la méthode recommandée est de partir de la page
-\href{https://www.python.org/download}{www.python.org/download} et d'utiliser le programme
-d'installation.\\
+\href{https://www.python.org/download}{https://www.python.org/download} et d'utiliser le programme d'installation.\\
 
 Sachez aussi, si vous utilisez déjà MacPorts (\href{https://www.macports.org}{https://www.macports.org}),
 que vous pouvez également utiliser cet outil pour installer, par exemple
@@ -214,12 +211,12 @@ $ sudo port install python36
 
     Dans ce cas il est très probable que Python-3.x soit déjà disponible sur
 votre machine. Pour vous en assurer, essayez de lancer la commande
-\texttt{python3} dans un terminal.\\
+\texttt{python3} dans un terminal.
 
-\textbf{RHEL / Fedora}\\
+    \hypertarget{rhel-fedora}{%
+\subparagraph{RHEL / Fedora}\label{rhel-fedora}}
 
-
-Voici par exemple ce qu'on obtient depuis un terminal sur une machine
+    Voici par exemple ce qu'on obtient depuis un terminal sur une machine
 installée en Fedora-20~:
 
     \begin{verbatim}
@@ -256,8 +253,8 @@ avec~:
 $ sudo yum install python3-tools
 \end{verbatim}
 
-
-\textbf{Debian / Ubuntu}\\
+    \hypertarget{debian-ubuntu}{%
+\subparagraph{Debian / Ubuntu}\label{debian-ubuntu}}
 
     Ici encore, Python-2.7 est sans doute déjà disponible. Procédez comme
 ci-dessus, voici un exemple recueilli dans un terminal sur une machine
@@ -302,9 +299,9 @@ disponibles au travers de ces outils.
     Sachez qu'il existe beaucoup de distributions alternatives qui incluent
 Python~; parmi elles, la plus populaire est sans aucun doute
 \href{https://www.anaconda.com/}{Anaconda}, qui contient un grand nombre
-de bibliothèques de calcul scientifique, et également d'ailleurs jupyter
+de bibliothèques de calcul scientifique, et également d'ailleurs Jupyter
 pour travailler nativement sur des notebooks au format \texttt{.ipynb}.\\
 
-Anaconda vient avec son propre gestionnaires de paquets pour
+Anaconda vient avec son propre gestionnaire de paquets pour
 l'installation de bibliothèques supplémentaires qui s'appelle
 \texttt{conda}.

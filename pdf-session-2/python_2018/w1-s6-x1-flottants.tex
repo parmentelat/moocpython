@@ -41,7 +41,7 @@ valeurs~:
 \end{Verbatim}
             
     Comme on le voit, \(10^{-320}\) est correctement imprimé, alors que
-\(10^{-330}\) est, de manière erronée, rapporté comme étant nul.
+\(10^{-330}\) est, de manière erronée, rapporté comme étant nul.\\
 
     \textbf{Notes~:}
 
@@ -80,12 +80,12 @@ d'utiliser le menu \emph{``Insert~-\textgreater{}~Insert~Cell~Below''}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}10}]:} \PY{o}{.}\PY{l+m+mi}{24}\PY{o}{*}\PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{o}{\PYZhy{}}\PY{l+m+mi}{323}
+{\color{incolor}In [{\color{incolor}4}]:} \PY{o}{.}\PY{l+m+mi}{24}\PY{o}{*}\PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{o}{\PYZhy{}}\PY{l+m+mi}{323}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}10}]:} 0.0
+{\color{outcolor}Out[{\color{outcolor}4}]:} 0.0
 \end{Verbatim}
             
     \hypertarget{le-plus-grand-flottant}{%
@@ -96,22 +96,22 @@ est un peu moins évident, car comme toujours il faut faire attention aux
 types~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}4}]:} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{450}
+{\color{incolor}In [{\color{incolor}5}]:} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{450}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
 {\color{outcolor}Out[{\color{outcolor}4}]:} 100000000000000000000000000000000000000000000000000000000000000000000000\\
-	000000000000000000000000000000000000000000000000000000000000000000000000\\
-	000000000000000000000000000000000000000000000000000000000000000000000000\\
-	000000000000000000000000000000000000000000000000000000000000000000000000\\
-	000000000000000000000000000000000000000000000000000000000000000000000000\\
-	000000000000000000000000000000000000000000000000000000000000000000000000\\
-	0000000000000000000
+        000000000000000000000000000000000000000000000000000000000000000000000000\\
+        000000000000000000000000000000000000000000000000000000000000000000000000\\
+        000000000000000000000000000000000000000000000000000000000000000000000000\\
+        000000000000000000000000000000000000000000000000000000000000000000000000\\
+        000000000000000000000000000000000000000000000000000000000000000000000000\\
+        0000000000000000000
 \end{Verbatim}
             
-    Ce qui passe très bien car j'ai utilisé un \texttt{int} pour l'exposant,
-dans ce premier cas Python calcule le résultat comme un \texttt{int},
+    Ce qui passe très bien car j'ai utilisé un \texttt{int} pour l'exposant.
+Dans ce premier cas Python calcule le résultat comme un \texttt{int},
 qui est un type qui n'a pas de limitation de précision (Python utilise
 intelligemment autant de bits que nécessaire pour ce genre de calculs).\\
 
@@ -120,7 +120,7 @@ flottant, Python essaie cette fois de faire son calcul avec un flottant,
 et là on obtient une erreur~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}5}]:} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{l+m+mf}{450.0}
+{\color{incolor}In [{\color{incolor}6}]:} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{l+m+mf}{450.0}
 \end{Verbatim}
 
 
@@ -130,11 +130,11 @@ et là on obtient une erreur~:
 
         OverflowError                             Traceback (most recent call last)
 
-        <ipython-input-5-d63f7e475389> in <module>()
+        <ipython-input-6-d63f7e475389> in <module>()
     ----> 1 10**450.0
     
 
-        OverflowError: (34, 'Numerical result out of range')
+        OverflowError: (34, 'Result too large')
 
     \end{Verbatim}
 
@@ -151,16 +151,16 @@ d'estimer comme ci-dessus une valeur approchée du plus grand nombre
 qu'il soit possible de représenter comme un flottant.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}6}]:} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{l+m+mf}{300.}
+{\color{incolor}In [{\color{incolor}7}]:} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{l+m+mf}{300.}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}6}]:} 1e+300
+{\color{outcolor}Out[{\color{outcolor}7}]:} 1e+300
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}7}]:} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{l+m+mf}{310.}
+{\color{incolor}In [{\color{incolor}8}]:} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{l+m+mf}{310.}
 \end{Verbatim}
 
 
@@ -170,11 +170,11 @@ qu'il soit possible de représenter comme un flottant.
 
         OverflowError                             Traceback (most recent call last)
 
-        <ipython-input-7-5d701e1fa38c> in <module>()
+        <ipython-input-8-5d701e1fa38c> in <module>()
     ----> 1 10**310.
     
 
-        OverflowError: (34, 'Numerical result out of range')
+        OverflowError: (34, 'Result too large')
 
     \end{Verbatim}
 
@@ -191,15 +191,15 @@ avancé}\label{compluxe9ment---niveau-avancuxe9}}
 flottants comme ceci
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}8}]:} \PY{k+kn}{import} \PY{n+nn}{sys}
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k+kn}{import} \PY{n+nn}{sys}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{sys}\PY{o}{.}\PY{n}{float\PYZus{}info}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
 sys.float\_info(max=1.7976931348623157e+308, max\_exp=1024, max\_10\_exp=308,
-min=2.2250738585072014e-308, min\_exp=-1021, min\_10\_exp=-307, dig=15, mant\_dig=53,
-epsilon=2.220446049250313e-16, radix=2, rounds=1)
+min=2.2250738585072014e-308, min\_exp=-1021, min\_10\_exp=-307, dig=15,
+mant\_dig=53, epsilon=2.220446049250313e-16, radix=2, rounds=1)
 
     \end{Verbatim}
 
@@ -208,8 +208,8 @@ epsilon=2.220446049250313e-16, radix=2, rounds=1)
 expliqué ici}.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}9}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Flottant minimum}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{sys}\PY{o}{.}\PY{n}{float\PYZus{}info}\PY{o}{.}\PY{n}{min}\PY{p}{)}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Flottant maximum}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{sys}\PY{o}{.}\PY{n}{float\PYZus{}info}\PY{o}{.}\PY{n}{max}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Flottant minimum}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{sys}\PY{o}{.}\PY{n}{float\PYZus{}info}\PY{o}{.}\PY{n}{min}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Flottant maximum}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{sys}\PY{o}{.}\PY{n}{float\PYZus{}info}\PY{o}{.}\PY{n}{max}\PY{p}{)}
 \end{Verbatim}
 
 

@@ -11,8 +11,8 @@ entiers. Les débutants en programmation peuvent sans souci sauter cette
 partie en cas de difficultés.
 
     \hypertarget{opuxe9rations-logiques-et-ou-et-ou-exclusif}{%
-\subsubsection{\texorpdfstring{Opérations logiques~: ET \texttt{\&}, OU
-\texttt{\textbar{}} et OU exclusif
+\subsubsection{\texorpdfstring{Opérations logiques~: \emph{ET}
+\texttt{\&}, \emph{OU} \texttt{\textbar{}} et \emph{OU} exclusif
 \texttt{\^{}}}{Opérations logiques~: ET \&, OU \textbar{} et OU exclusif \^{}}}\label{opuxe9rations-logiques-et-ou-et-ou-exclusif}}
 
     Il est possible aussi de faire des opérations \emph{bit à bit} sur les
@@ -37,8 +37,8 @@ il suffit d'observer que~:\\
 \(32 + 16 + 1 = \textbf{0}*2^6 + \textbf{1}*2^5 + \textbf{1}*2^4 + \textbf{0}*2^3 + \textbf{0}*2^2 + \textbf{0}*2^1 + \textbf{1}*2^0\)
 
     \hypertarget{et-logique-opuxe9rateur}{%
-\paragraph{\texorpdfstring{Et logique~: opérateur
-\texttt{\&}}{Et logique~: opérateur \&}\\\\}\label{et-logique-opuxe9rateur}}
+\paragraph{\texorpdfstring{\emph{ET} logique~: opérateur
+\texttt{\&}}{ET logique~: opérateur \&}\\\\}\label{et-logique-opuxe9rateur}}
 
     L'opération logique \texttt{\&} va faire un \emph{et} logique bit à bit
 entre les opérandes, ainsi
@@ -57,8 +57,8 @@ entre les opérandes, ainsi
 \(\begin{array}{rcl} x49 & \rightarrow & (0,1,1,0,0,0,1) \\ y81 & \rightarrow & (1,0,1,0,0,0,1) \\ x49\ \&\ y81 & \rightarrow & (0,0,1,0,0,0,1) \rightarrow 16 + 1 \rightarrow 17 \end{array}\)
 
     \hypertarget{ou-logique-opuxe9rateur}{%
-\paragraph{\texorpdfstring{Ou logique~: opérateur
-\texttt{\textbar{}}}{Ou logique~: opérateur \textbar{}}\\\\}\label{ou-logique-opuxe9rateur}}
+\paragraph{\texorpdfstring{\emph{OU} logique~: opérateur
+\texttt{\textbar{}}}{OU logique~: opérateur \textbar{}}\\\\}\label{ou-logique-opuxe9rateur}}
 
     De même, l'opérateur logique \texttt{\textbar{}} fait simplement un
 \emph{ou} logique, comme ceci~:
@@ -77,11 +77,11 @@ entre les opérandes, ainsi
 \(\begin{array}{rcl} x49 & \rightarrow & (0,1,1,0,0,0,1) \\ y81 & \rightarrow & (1,0,1,0,0,0,1) \\ x49\ |\ y81 & \rightarrow & (1,1,1,0,0,0,1) \rightarrow 64 + 32 + 16 + 1 \rightarrow 113 \end{array}\)
 
     \hypertarget{ou-exclusif-opuxe9rateur}{%
-\subparagraph{Ou exclusif~: opérateur
-\^{}\\\\}\label{ou-exclusif-opuxe9rateur}}
+\paragraph{\texorpdfstring{\emph{OU} exclusif~: opérateur
+\texttt{\^{}}}{OU exclusif~: opérateur \^{}}\\\\}\label{ou-exclusif-opuxe9rateur}}
 
-    Enfin, on peut également faire la même opération à base de \emph{ou
-exclusif} avec l'opérateur \texttt{ˆ}~:
+    Enfin, on peut également faire la même opération à base de \emph{ou}
+exclusif avec l'opérateur \texttt{\^{}}~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{x49} \PY{o}{\PYZca{}} \PY{n}{y81}
@@ -93,8 +93,8 @@ exclusif} avec l'opérateur \texttt{ˆ}~:
 \end{Verbatim}
             
     Je vous laisse le soin de décortiquer le calcul à titre d'exercice (le
-ou exclusif de deux bits est vrai si et seulement si exactement une des
-deux entrées est vraie).
+\emph{ou} exclusif de deux bits est vrai si et seulement si exactement
+une des deux entrées est vraie).
 
     \hypertarget{duxe9calages}{%
 \subsubsection{Décalages}\label{duxe9calages}}
@@ -113,7 +113,7 @@ insérés sont toujours des 0). C'est donc équivalent à une
 {\color{outcolor}Out[{\color{outcolor}5}]:} 784
 \end{Verbatim}
             
-    \(\begin{array}{rcl} x49 & \rightarrow & (0,1,1,0,0,0,1) \\ x49\ <<\ 4 & \rightarrow & (0,1,1,0,0,0,1,0,0,0,0) \rightarrow 512 + 256 + 16 \rightarrow 784 \end{array}\)\\
+    \(\begin{array}{rcl} x49 & \rightarrow & (0,1,1,0,0,0,1) \\ x49\ <<\ 4 & \rightarrow & (0,1,1,0,0,0,1,0,0,0,0) \rightarrow 512 + 256 + 16 \rightarrow 784 \end{array}\)
 
     De la même manière, le décalage à \textbf{droite} de \(n\) revient à une
 \textbf{division} par \(2^n\) (plus précisément, le quotient de la

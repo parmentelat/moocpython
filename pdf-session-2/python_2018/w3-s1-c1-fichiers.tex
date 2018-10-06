@@ -300,9 +300,15 @@ on a lu un objet de type <class 'str'>
 	et on peut alors interagir avec le fichier avec des objets de type \texttt{bytes}
 \end{itemize}
 
-    Pour illustrer ce trait, nous allons~: 0. créer un fichier en mode
-texte, et y insérer du texte en UTF-8~; 0. relire le fichier en mode
-binaire, et retrouver le codage des différents caractères.
+    Pour illustrer ce trait, nous allons~:
+
+\begin{enumerate}
+	\item 
+	créer un fichier en mode texte, et y insérer du texte en UTF-8~;
+	\item
+	relire le fichier en mode
+	binaire, et retrouver le codage des différents caractères.
+\end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} phase 1 : on écrit un fichier avec du texte en UTF\PYZhy{}8}

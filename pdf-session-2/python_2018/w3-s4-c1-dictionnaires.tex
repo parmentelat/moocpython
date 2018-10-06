@@ -233,11 +233,10 @@ fonction \texttt{len}~:
 \texttt{dict}}{Pour en savoir plus sur le type dict}}\label{pour-en-savoir-plus-sur-le-type-dict}}
 
     Pour une liste exhaustive reportez-vous à la page de la documentation
-Python ici~:\\
+Python ici~:
 
 \href{https://docs.python.org/3/library/stdtypes.html\#mapping-types-dict}{https://docs.python.org/3/library/stdtypes.html\#mapping-types-dict}
 
-\newpage
 
     \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
 \subsection{Complément - niveau
@@ -281,16 +280,22 @@ C'était particulièrement visible dans les versions de Python jusque
 3.5~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{python2}
-        
-        \PYZsh{} cette cellule utilise python\PYZhy{}2.7 pour illustrer le fait
-        \PYZsh{} que les dictionnaires ne sont pas ordonnés
-        
-        d = \PYZob{}\PYZsq{}c\PYZsq{} : 3, \PYZsq{}b\PYZsq{} : 1, \PYZsq{}a\PYZsq{} : 2\PYZcb{}
-        for k, v in d.items():
-            print k, v
+{\color{incolor}In [{\color{incolor}16}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{python2}
+         \PYZsh{} coding: utf\PYZhy{}8
+         
+         \PYZsh{} cette cellule utilise python\PYZhy{}2.7 pour illustrer le fait
+         \PYZsh{} que les dictionnaires ne sont pas ordonnés
+         
+         d = \PYZob{}\PYZsq{}c\PYZsq{} : 3, \PYZsq{}b\PYZsq{} : 1, \PYZsq{}a\PYZsq{} : 2\PYZcb{}
+         for k, v in d.items():
+             print k, v
 \end{Verbatim}
 
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Couldn't find program: 'python2'
+
+    \end{Verbatim}
 
     En réalité, et depuis la version 3.6 de Python, il se trouve
 qu'\textbf{incidemment} l'implémentation CPython (la plus répandue donc)
@@ -447,7 +452,7 @@ exemple compter des occurrences~:
           ('è', 1)]
 \end{Verbatim}
             
-    Signalons enfin une fonctionnalité un peu analogue, quoiqu'un peut moins
+    Signalons enfin une fonctionnalité un peu analogue, quoiqu'un peu moins
 élégante à mon humble avis, mais qui est présente avec les dictionnaires
 \texttt{dict} standard. Il s'agit de
 \href{https://docs.python.org/3/library/stdtypes.html\#dict.setdefault}{la
@@ -596,7 +601,7 @@ de temps à construire~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-193 ns ± 51 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+194 ns ± 92.9 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 
     \end{Verbatim}
 
@@ -615,13 +620,13 @@ de temps à construire~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-20.1 ms ± 391 µs per loop (mean ± std. dev. of 7 runs, 20 loops each)
+19.4 ms ± 333 µs per loop (mean ± std. dev. of 7 runs, 20 loops each)
 
     \end{Verbatim}
 
     \hypertarget{en-fait-ce-sont-des-vues}{%
 \paragraph{\texorpdfstring{En fait ce sont des
-\emph{vues}}{En fait ce sont des vues}}\label{en-fait-ce-sont-des-vues}}
+\emph{vues}}{En fait ce sont des vues}\\\\}\label{en-fait-ce-sont-des-vues}}
 
     Une autre propriété un peu inattendue de ces objets, c'est que
 \textbf{ce sont des vues}~; ce qu'on veut dire par là (pour ceux qui

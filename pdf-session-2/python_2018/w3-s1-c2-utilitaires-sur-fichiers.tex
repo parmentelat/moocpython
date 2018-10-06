@@ -108,7 +108,7 @@ fichiers et répertoires.
 \subparagraph{Orienté Objet\\\\}\label{orientuxe9-objet}}
 
     Comme on l'a mentionné \texttt{pathlib} offre une interface orientée
-objet; mais qu'est-ce que ça veut dire au juste ?\\
+objet; mais qu'est-ce que ça veut dire au juste ?
 
 Ceci nous donne un prétexte pour une première application pratique des
 notions de module (que nous avons introduits en fin de semaine 2) et de
@@ -143,7 +143,7 @@ la classe \texttt{Path}, comme ceci:
 \end{Verbatim}
 
 
-    Vous remarquez que c'est consistent avec par exemple:
+    Vous remarquez que c'est cohérent avec par exemple:
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} transformer un float en int}
@@ -168,12 +168,12 @@ et le notebook vous montrera la liste des méthodes disponibles.
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} ajouter un . et utilisez la touche \PYZlt{}Tabulation\PYZgt{}}
-        \PY{n}{path}\PY{o}{.}\PY{n}{chmod}
+        \PY{n}{path}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}5}]:} <bound method Path.chmod of WindowsPath('fichier-temoin')>
+{\color{outcolor}Out[{\color{outcolor}5}]:} WindowsPath('fichier-temoin')
 \end{Verbatim}
             
     Ainsi par exemple on peut savoir si le fichier existe avec la méthode
@@ -219,7 +219,9 @@ ce fichier:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}9}]:} os.stat\_result(st\_mode=33206, st\_ino=2251799814156457, st\_dev=571766744, st\_nlink=1, st\_uid=0, st\_gid=0, st\_size=12, st\_atime=1537703765, st\_mtime=1537703765, st\_ctime=1537703765)
+{\color{outcolor}Out[{\color{outcolor}9}]:} os.stat\_result(st\_mode=33206, st\_ino=3659174697725158, st\_dev=571766744,
+        st\_nlink=1, st\_uid=0, st\_gid=0, st\_size=12, st\_atime=1538841704,
+        st\_mtime=1538841704, st\_ctime=1538841704)
 \end{Verbatim}
             
     Pour ceux que ça intéresse, l'objet retourné par cette méthode
@@ -247,7 +249,7 @@ On accède aux différentes informations comme ceci:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}11}]:} 1537703765.728249
+{\color{outcolor}Out[{\color{outcolor}11}]:} 1538841704.208089
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -260,7 +262,7 @@ On accède aux différentes informations comme ceci:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}12}]:} datetime.datetime(2018, 9, 23, 13, 56, 5, 728249)
+{\color{outcolor}Out[{\color{outcolor}12}]:} datetime.datetime(2018, 10, 6, 18, 1, 44, 208089)
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -271,7 +273,7 @@ On accède aux différentes informations comme ceci:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}13}]:} '13:56'
+{\color{outcolor}Out[{\color{outcolor}13}]:} '18:01'
 \end{Verbatim}
             
     \hypertarget{duxe9truire-un-fichier}{%

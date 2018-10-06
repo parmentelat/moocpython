@@ -14,7 +14,7 @@ naturellement, réalisés par le processeur. Cependant contrairement au
 cas des entiers où les calculs sont toujours exacts, les flottants
 posent un problème de précision. Cela n'est pas propre au langage
 Python, mais est dû à la technique de codage des nombres flottants sous
-forme binaire.\\
+forme binaire.
 
     Voyons tout d'abord comment se matérialise le problème~:
 
@@ -46,7 +46,7 @@ toujours exactement} le nombre entré.
 produisent à chaque étape du calcul s'accumulent et produisent un
 résultat parfois surprenant. De nouveau, ce problème n'est pas
 spécifique à Python, il existe pour tous les langages, et il est bien
-connu des numériciens.\\
+connu des numériciens.
 
     Dans une grande majorité des cas, ces erreurs d'arrondi ne sont pas
 pénalisantes. Il faut toutefois en être conscient car cela peut
@@ -58,12 +58,12 @@ rationnels}\label{une-solution-penser-en-termes-de-nombres-rationnels}}
 
     Tout d'abord si votre problème se pose bien en termes de nombres
 rationnels, il est alors tout à fait possible de le résoudre avec
-exactitude.\\
+exactitude.
 
     Alors qu'il n'est pas possible d'écrire exactement \(3/10\) en base 2,
 ni d'ailleurs \(1/3\) en base 10, on peut représenter
 \textbf{exactement} ces nombres dès lors qu'on les considère comme des
-fractions et qu'on les encode avec deux nombres entiers.\\
+fractions et qu'on les encode avec deux nombres entiers.
 
     Python fournit en standard le module \texttt{fractions} qui permet de
 résoudre le problème. Voici comment on pourrait l'utiliser pour
@@ -104,7 +104,7 @@ coup la représentation sous forme de fractions ne peut pas convenir dans
 votre cas, signalons l'existence du module standard \texttt{decimal} qui
 offre des fonctionnalités très voisines du type \texttt{float}, tout en
 éliminant la plupart des inconvénients, au prix naturellement d'une
-consommation mémoire supérieure.\\
+consommation mémoire supérieure.
 
     Pour reprendre l'exemple de départ, mais en utilisant le module decimal,
 on écrirait alors~:

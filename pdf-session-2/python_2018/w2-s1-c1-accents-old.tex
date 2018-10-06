@@ -20,13 +20,19 @@ provenant de diverses sources de données~:
 
 \begin{itemize}
 	\item
-	le type \texttt{byte} est approprié si vous voulez charger en mémoire les données binaires brutes, sous forme d'octets donc~;
+	le type \texttt{byte} est
+	approprié si vous voulez charger en mémoire les données binaires brutes,
+	sous forme d'octets donc~;
 	\item
-	le type \texttt{str} est approprié pour représenter une chaîne de caractères - qui, à nouveau ne sont pas forcément des octets~;
+	le type \texttt{str} est approprié pour
+	représenter une chaîne de caractères - qui, à nouveau ne sont pas
+	forcément des octets~;
 	\item
-	on passe de l'un à l'autre de ces types par des opérations d'encodage et décodage, comme illustré ci-dessous~;
+	on passe de l'un à l'autre de ces types par des
+	opérations d'encodage et décodage, comme illustré ci-dessous~;
 	\item
-	et pour \textbf{toutes} les opérations d'encodage et décodage, il est nécessaire
+	et pour
+	\textbf{toutes} les opérations d'encodage et décodage, il est nécessaire
 	de connaître l'encodage utilisé.
 \end{itemize}
 
@@ -43,8 +49,6 @@ et de choisir son encodage. En cas de doute, il est recommandé de
 \textbf{spécifier explicitement} \texttt{utf-8}, qui se généralise au
 détriment d'encodages anciens comme \texttt{cp1242} (Windows) et
 \texttt{iso8859-*}, que de laisser le système hôte choisir pour vous.
-
-\newpage
 
     \hypertarget{utilisation-des-accents-et-autres-cuxe9dilles}{%
 \subparagraph{Utilisation des accents et autres
@@ -115,6 +119,9 @@ sources, voici ce qu'il faut savoir.
         \PY{n}{cos}\PY{p}{(}\PY{n}{θ}\PY{p}{)}
 \end{Verbatim}
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} 0.7071067811865476
+\end{Verbatim}
 
     \begin{itemize}
 \tightlist
@@ -169,7 +176,7 @@ cet endroit de la documentation officielle (en anglais)}.
     \hypertarget{commentaires}{%
 \paragraph{Commentaires}\label{commentaires}}
 
-\begin{itemize}
+    \begin{itemize}
 \tightlist
 \item
   Enfin on peut aussi bien sûr mettre dans les commentaires n'importe
@@ -177,7 +184,7 @@ cet endroit de la documentation officielle (en anglais)}.
   on choisit malgré tout d'écrire le code en français.
 \end{itemize}
 
-\begin{Shaded}
+    \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# on peut mettre un caractère accentué dans un commentaire}
 \CommentTok{# ainsi que cos(Θ)  \(\forall x \in \int\)f(t)dt \(\iiint\) vous voyez l'idée générale}
@@ -315,7 +322,7 @@ caractères français, comme par exemple~:
 
 \begin{itemize}
 	\item 
-	\texttt{ISO\ 8859-1}(\texttt{Latin-1})
+	\texttt{ISO\ 8859-1} (\texttt{Latin-1})
 	\item
 	\texttt{ISO\ 8859-15} (\texttt{Latin-9})
 	\item

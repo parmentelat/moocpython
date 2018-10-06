@@ -5,7 +5,7 @@ cours}\label{notebooks-jupyter-comme-support-de-cours}}
     Pour illustrer les vidéos du MOOC, nous avons choisi d'utiliser Jupyter
 pour vous rédiger les documents ``mixtes'' contenant du texte et du code
 Python, qu'on appelle des ``notebooks'', et dont le présent document est
-un exemple.
+un exemple.\\
 
 Nous allons, dans la suite, utiliser du code Python, pourtant nous
 n'avons pas encore abordé le langage. Pas d'inquiétude, ce code est
@@ -13,7 +13,7 @@ uniquement destiné à valider le fonctionnement des notebooks, et nous
 n'utilisons que des choses très simples.
 
     \hypertarget{avertissement-ruxe9glages-du-navigateur}{%
-\subsubsection{Avertissement: réglages du
+\subsubsection{Avertissement~: réglages du
 navigateur}\label{avertissement-ruxe9glages-du-navigateur}}
 
     Avant toute chose, pour un bon fonctionnement des notebooks, on rappelle
@@ -26,11 +26,11 @@ héberge tous les notebooks.
 \subsubsection{Avantages des notebooks}\label{avantages-des-notebooks}}
 
     Comme vous le voyez, ce support permet un format plus lisible que des
-commentaires dans un fichier de code.
+commentaires dans un fichier de code.\\
 
     Nous attirons votre attention sur le fait que \textbf{les fragments de
 code peuvent être évalués et modifiés}. Ainsi vous pouvez facilement
-essayer des variantes autour du notebook original.
+essayer des variantes autour du notebook original.\\
 
 Notez bien également que le code Python est interprété \textbf{sur une
 machine distante}, ce qui vous permet de faire vos premiers pas avant
@@ -45,16 +45,16 @@ notebooks}\label{comment-utiliser-les-notebooks}}
 contenant~:
 
 \begin{itemize}
-	\item
-un titre pour le notebook, avec un numéro de version~;
-	\item
-une barre de menus avec les entrées \texttt{File}, \texttt{Insert},
-\texttt{Cell}, \texttt{Kernel};
-	\item
-et une barre de boutons qui sont des
-raccourcis vers certains menus fréquemment utilisés. Si vous laissez
-votre souris au dessus d'un bouton, un petit texte apparaît, indiquant à
-quelle fonction correspond ce bouton.
+	\item 
+     un titre pour le notebook, avec un numéro de version~;
+     \item
+     une barre de menus avec les entrées \texttt{File}, \texttt{Insert},
+     \texttt{Cell}, \texttt{Kernel};
+     \item
+     et une barre de boutons qui sont des
+    raccourcis vers certains menus fréquemment utilisés. Si vous laissez
+	votre souris au dessus d'un bouton, un petit texte apparaît, indiquant à
+	quelle fonction correspond ce bouton.
 \end{itemize}
 
 Nous avons vu dans la vidéo qu'un notebook est constitué d'une suite de
@@ -68,6 +68,7 @@ appuyez dans la barre de menu - en haut du notebook, donc - sur celui en
 forme de flèche triangulaire vers la droite (Play)~: 
 
 \includegraphics{medias/notebook-eval-button.png}\\
+
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{l+m+mi}{20} \PY{o}{*} \PY{l+m+mi}{30}
 \end{Verbatim}
@@ -78,17 +79,18 @@ forme de flèche triangulaire vers la droite (Play)~:
 \end{Verbatim}
             
     Comme vous le voyez, la cellule est ``exécutée'' (on dira plus
-volontiers évaluée), et on passe à la cellule suivante.
+volontiers évaluée), et on passe à la cellule suivante.\\
 
 Alternativement, vous pouvez simplement taper au clavier
 \textbf{\emph{Shift+Enter}}, ou selon les claviers
 \textbf{\emph{Maj-Entrée}}, pour obtenir le même effet. D'une manière
 générale, il est important d'apprendre et d'utiliser les raccourcis
-clavier, cela vous fera gagner beaucoup de temps par la suite.
+clavier, cela vous fera gagner beaucoup de temps par la suite.\\
 
     La façon habituelle d'\emph{exécuter} l'ensemble du notebook consiste~:
+    
 \begin{itemize}
-	\item
+	\item 
 	à sélectionner la première cellule,
 	\item
 	et à taper \textbf{\emph{Shift+Enter}} jusqu'à attendre la fin du notebook.
@@ -100,7 +102,7 @@ Python, soit ci-dessus 600.\\
 
 Jupyter ajoute également un nombre entre les crochets pour afficher, par
 exemple ci-dessus, \texttt{In\ {[}1{]}:}. Ce nombre vous permet de
-retrouver l'ordre dans lequel les cellules ont été évaluées.
+retrouver l'ordre dans lequel les cellules ont été évaluées.\\
 
     Vous pouvez naturellement modifier ces cellules de code pour faire des
 essais~; ainsi vous pouvez vous servir du modèle ci-dessous pour
@@ -170,7 +172,7 @@ l'interpréteur}\label{ruxe9initialiser-linterpruxe9teur}}
 avez évalué, il peut être utile de redémarrer votre interpréteur. Le
 menu \emph{Kernel~→~Restart} vous permet de faire cela, un peu à la
 manière de IDLE qui repart d'un interpréteur vierge lorsque vous
-utilisez la fonction F5.
+utilisez la fonction F5.\\
 
     Le menu \emph{Kernel~→~Interrupt} peut être quant à lui utilisé si votre
 fragment prend trop longtemps à s'exécuter (par exemple vous avez écrit
@@ -181,7 +183,7 @@ une boucle dont la logique est cassée et qui ne termine pas).
 copie}\label{vous-travaillez-sur-une-copie}}
 
     Un des avantages principaux des notebooks est de vous permettre de
-modifier le code que nous avons écrit, et de voir par vous-mêmes comment
+modifier le code que nous avons écrit, et de voir par vous-même comment
 se comporte le code modifié.\\
 
 Pour cette raison, chaque élève dispose de sa \textbf{propre copie} de
@@ -193,7 +195,7 @@ que vous souhaitez à vos notebooks sans affecter les autres étudiants.
 cours}\label{revenir-uxe0-la-version-du-cours}}
 
     Vous pouvez toujours revenir à la version ``du cours'' grâce au menu
-\emph{File~→~Reset to original}.\\
+\emph{File~→~Reset to original}.
 
     Attention, avec cette fonction vous restaurez \textbf{tout le notebook}
 et donc \textbf{vous perdez vos modifications sur ce notebook}.
@@ -203,7 +205,7 @@ et donc \textbf{vous perdez vos modifications sur ce notebook}.
 Python}\label{tuxe9luxe9charger-au-format-python}}
 
     Vous pouvez télécharger un notebook au format Python sur votre
-ordinateur grâce au menu \emph{File~→~Download~as~→~Python}
+ordinateur grâce au menu \emph{File~→~Download~as~→~Python}\\
 
     Les cellules de texte sont préservées dans le résultat sous forme de
 commentaires Python.
@@ -230,6 +232,6 @@ bouton \textbf{+} de la barre de boutons.\\
 
 Aussi, lorsque vous arrivez à la fin du document, une nouvelle cellule
 est créée chaque fois que vous évaluez la dernière cellule~; de cette
-façon vous disposez d'un brouillon pour vos propres essais.\\
+façon vous disposez d'un brouillon pour vos propres essais.
 
 À vous de jouer.
