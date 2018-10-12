@@ -133,6 +133,8 @@ utile, voyons le code suivant~:
             \PY{k}{if} \PY{n}{n} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{0}\PY{p}{:}
                 \PY{k}{return}
             \PY{c+c1}{\PYZsh{} traiter le cas singulier}
+            \PY{c+c1}{\PYZsh{} (NB elif est un raccourci pour else if, utile pour éviter}
+            \PY{c+c1}{\PYZsh{} une indentation excessive)}
             \PY{k}{elif} \PY{n}{n} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
                 \PY{k}{return} \PY{k+kc}{False}
             \PY{c+c1}{\PYZsh{} chercher un diviseur dans [2..n\PYZhy{}1]}
@@ -173,7 +175,7 @@ premier(35) = False
 
     \hypertarget{return-sans-valeur}{%
 \subparagraph{\texorpdfstring{\texttt{return} sans
-valeur}{return sans valeur}}\label{return-sans-valeur}}
+valeur}{return sans valeur}\\\\}\label{return-sans-valeur}}
 
     Pour les besoins de cette discussion, nous avons choisi de retourner
 \texttt{None} pour les entiers négatifs ou nuls, une manière comme une
@@ -185,7 +187,7 @@ Python retourne \texttt{None}.
 
     \hypertarget{return-interrompt-la-fonction}{%
 \subparagraph{\texorpdfstring{\texttt{return} interrompt la
-fonction}{return interrompt la fonction}}\label{return-interrompt-la-fonction}}
+fonction}{return interrompt la fonction}\\\\}\label{return-interrompt-la-fonction}}
 
     Comme on peut s'en convaincre en instrumentant le code - ce que vous
 pouvez faire à titre d'exercice en ajoutant des fonctions \texttt{print}
@@ -249,7 +251,7 @@ pour n = 35 : premier → False
 
     \hypertarget{digression-sur-les-chauxeenes}{%
 \subparagraph{Digression sur les
-chaînes}\label{digression-sur-les-chauxeenes}}
+chaînes\\\\}\label{digression-sur-les-chauxeenes}}
 
     Vous remarquerez dans cette dernière cellule, si vous regardez bien le
 paramètre de \texttt{print}, qu'on peut accoler deux chaînes (ici deux

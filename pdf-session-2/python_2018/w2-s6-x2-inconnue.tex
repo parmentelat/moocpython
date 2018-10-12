@@ -21,32 +21,25 @@ bien souvent il existe un module pour faire ce que vous souhaitez.\\
 Ici en particulier nous utilisons le module \texttt{string}.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{string}
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{string}
+        \PY{c+c1}{\PYZsh{} NB: string.ascii\PYZus{}lowercase est une constante qui contient}
+        \PY{c+c1}{\PYZsh{} la chaine \PYZdq{}abcdefghijklmnopqrstuvwxyz\PYZdq{}}
         \PY{n}{chaine} \PY{o}{=} \PY{n}{string}\PY{o}{.}\PY{n}{ascii\PYZus{}lowercase}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{chaine}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-abcdefghijklmnopqrstuvwxyz
-
-    \end{Verbatim}
-
     Pour chacune des sous-chaînes ci-dessous, écrire une expression de
 slicing sur \texttt{chaine} qui renvoie la sous-chaîne. La cellule de
-code doit retourner \texttt{True}.
+code doit retourner \texttt{True}.\\
 
     Par exemple, pour obtenir ``def''~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{chaine}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{:}\PY{l+m+mi}{6}\PY{p}{]} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{def}\PY{l+s+s2}{\PYZdq{}}
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{chaine}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{:}\PY{l+m+mi}{6}\PY{p}{]} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{def}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}2}]:} True
-\end{Verbatim}
-            
     \begin{enumerate}
 \def\labelenumi{\arabic{enumi})}
 \tightlist
@@ -151,14 +144,10 @@ vide, c'est-à-dire qu'elle contient au moins un caractère.\\
 qui retourne la longueur d'une chaîne~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}3}]:} \PY{n+nb}{len}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abcd}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor} }]:} \PY{n+nb}{len}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abcd}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}3}]:} 4
-\end{Verbatim}
-            
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} à vous de jouer}
         \PY{k}{def} \PY{n+nf}{inconnue}\PY{p}{(}\PY{n}{composite}\PY{p}{,} \PY{n}{connue}\PY{p}{)}\PY{p}{:}
@@ -188,7 +177,7 @@ vérifier votre résultat.
 \end{itemize}
 
 Si toutes les lignes sont \textbf{en vert} c'est que vous avez réussi
-cet exercice.
+cet exercice.\\
 
     Vous pouvez essayer autant de fois que vous voulez, mais il vous faut
 alors à chaque itération~:

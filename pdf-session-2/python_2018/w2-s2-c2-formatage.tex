@@ -18,7 +18,7 @@ ultérieur.
 
     Nous avons jusqu'à maintenant presque toujours utilisé la fonction
 \texttt{print} pour afficher nos résultats. Comme on l'a vu, celle-ci
-réalise un formatage sommaire~: elle insère une espace entre les valeurs
+réalise un formatage sommaire~: elle insère un espace entre les valeurs
 qui lui sont passées.
 
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -97,7 +97,7 @@ semaine ultérieure ce que sont les classes et les instances).
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-<\_\_main\_\_.Personne object at 0x04A2C990>
+<\_\_main\_\_.Personne object at 0x04B94EF0>
 
     \end{Verbatim}
 
@@ -153,7 +153,7 @@ essentiellement obsolète).\\
 {\color{outcolor}Out[{\color{outcolor}8}]:} 'Jean Dupont a 35 ans'
 \end{Verbatim}
             
-    Vous remarquez d'abord que le string commence par \texttt{f"}, c'est
+    Vous remarquez d'abord que la chaine commence par \texttt{f"}, c'est
 bien sûr pour cela qu'on l'appelle un \emph{f-string}.\\
 
 On peut bien entendu ajouter le \texttt{f} devant toutes les formes de
@@ -193,12 +193,12 @@ pour remplir le \texttt{\{\}}.\\
             
     Nous allons en rester là pour la partie en niveau basique. Il nous reste
 à étudier comment chaque \texttt{\{\}} est formaté (par exemple comment
-choisir le nombre de chiffres significatifs sur un flottant), voyez plus
-bas pour plus de détails sur ce point.\\
+choisir le nombre de chiffres significatifs sur un flottant), ce point
+est expliqué plus bas.\\
 
 Comme vous le voyez, les \emph{f-strings} fournissent une méthode très
 simple et expressive pour formater des données dans des chaînes de
-caractères. Redisons-le pour être bien clair~: un \emph{f-string}
+caractère. Redisons-le pour être bien clair~: un \emph{f-string}
 \textbf{ne réalise pas d'impression}, il faut donc le passer à
 \texttt{print} si l'impression est souhaitée.
 
@@ -286,7 +286,7 @@ caractères est le f-string.\\
     Le principe de l'opérateur \texttt{\%} est le suivant. On élabore comme
 ci-dessus un ``format'' c'est-à-dire le patron de ce qui doit être
 rendu, auquel on passe des arguments pour ``remplir'' les trous. Voyons
-les exemples de tout à l'heure rendus avec l'opérateur \texttt{\%}~:
+les exemples de tout à l'heure avec l'opérateur \texttt{\%}~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} l\PYZsq{}ancienne façon de formater les chaînes avec \PYZpc{}}
@@ -302,7 +302,7 @@ les exemples de tout à l'heure rendus avec l'opérateur \texttt{\%}~:
     On pouvait également avec cet opérateur recourir à un mécanisme de
 liaison par nommage, en passant par un dictionnaire. Pour anticiper un
 tout petit peu sur cette notion que nous verrons très bientôt, voici
-comment~:
+comment
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}16}]:} \PY{n}{variables} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{le\PYZus{}nom}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{nom}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{le\PYZus{}prenom}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{prenom}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l\PYZus{}age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{age}\PY{p}{\PYZcb{}}
