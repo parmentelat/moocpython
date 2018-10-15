@@ -25,7 +25,7 @@ elle-même
 
     on peut se demander quelle est exactement la nature de la relation entre
 l'appelant et l'appelé, c'est-à-dire ici \texttt{dans\_appelant} et
-\texttt{dans\_fonction}.\\
+\texttt{dans\_fonction}.
 
 C'est l'objet de ce complément.
 
@@ -37,14 +37,15 @@ référence}\label{passage-par-valeur---passage-par-ruxe9fuxe9rence}}
 on a pu vous parler de deux modes de passage de paramètres~:
 
 \begin{itemize}
-	\item 
-	par valeur~: cela signifie qu'on communique à la fonction, non pas l'entité
-	dans l'appelant, mais seulement \textbf{sa valeur}~; en clair,
-	\textbf{une copie}~;
-	\item
-	par référence~: cela signifie qu'on passe à la
-	fonction une \textbf{référence} à l'argument dans l'appelant, donc
-	essentiellement les deux codes \textbf{partagent} la même mémoire.
+\tightlist
+\item
+  par valeur~: cela signifie qu'on communique à la fonction, non pas
+  l'entité dans l'appelant, mais seulement \textbf{sa valeur}~; en
+  clair, \textbf{une copie}~;
+\item
+  par référence~: cela signifie qu'on passe à la fonction une
+  \textbf{référence} à l'argument dans l'appelant, donc essentiellement
+  les deux codes \textbf{partagent} la même mémoire.
 \end{itemize}
 
     \hypertarget{python-fait-du-passage-par-ruxe9fuxe9rence}{%
@@ -56,7 +57,7 @@ modes. En Python, tous les passages de paramètres se font \textbf{par
 référence}.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} chargeons la magie pour pythontutor}
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} chargeons la magie pour pythontutor}
         \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} ipythontutor
 \end{Verbatim}
 
@@ -75,7 +76,7 @@ référence}.
 simplifier - équivalent à ceci~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{dans\PYZus{}appelant} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{texte}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{dans\PYZus{}appelant} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{texte}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
         
         \PY{c+c1}{\PYZsh{} ma\PYZus{}fonction (dans\PYZus{}appelant)}
         \PY{c+c1}{\PYZsh{} → on entre dans la fonction}
@@ -94,7 +95,7 @@ ceci -- on rappelle que la fonction built-in \texttt{id} retourne
 l'adresse mémoire d'un objet~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{def} \PY{n+nf}{ma\PYZus{}fonction}\PY{p}{(}\PY{n}{dans\PYZus{}fonction}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{def} \PY{n+nf}{ma\PYZus{}fonction}\PY{p}{(}\PY{n}{dans\PYZus{}fonction}\PY{p}{)}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dans ma\PYZus{}fonction}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{dans\PYZus{}fonction} \PY{p}{,} \PY{n+nb}{id}\PY{p}{(}\PY{n}{dans\PYZus{}fonction}\PY{p}{)}\PY{p}{)}
             
         \PY{n}{dans\PYZus{}appelant} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{texte}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
@@ -104,8 +105,8 @@ l'adresse mémoire d'un objet~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-dans appelant    ['texte'] 69872896
-dans ma\_fonction ['texte'] 69872896
+dans appelant    ['texte'] 4486041480
+dans ma\_fonction ['texte'] 4486041480
 
     \end{Verbatim}
 
@@ -118,7 +119,7 @@ exactement comme l'affectation, et que tout ce que nous avons vu au
 sujet des références partagées s'applique exactement à l'identique~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} on ne peut pas modifier un immuable dans une fonction}
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} on ne peut pas modifier un immuable dans une fonction}
         \PY{k}{def} \PY{n+nf}{increment}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
             \PY{n}{n} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
         
@@ -134,7 +135,7 @@ sujet des références partagées s'applique exactement à l'identique~:
     \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} on peut par contre ajouter dans une liste}
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} on peut par contre ajouter dans une liste}
         \PY{k}{def} \PY{n+nf}{insert}\PY{p}{(}\PY{n}{liste}\PY{p}{,} \PY{n}{valeur}\PY{p}{)}\PY{p}{:}
             \PY{n}{liste}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{valeur}\PY{p}{)}
             
@@ -154,7 +155,9 @@ documentez une fonction, si elle fait des effets de bord sur ses
 arguments (c'est-à-dire qu'elle modifie ses arguments), ou si elle
 produit une copie. Rappelez-vous par exemple le cas de la méthode
 \texttt{sort} sur les listes, et de la fonction de commodité
-\texttt{sorted}, que nous avions vues en semaine 2.\\
+\texttt{sorted}, que nous avions vues en semaine 2.
 
 De cette façon, on saura s'il faut ou non copier l'argument avant de le
 passer à votre fonction.
+
+
