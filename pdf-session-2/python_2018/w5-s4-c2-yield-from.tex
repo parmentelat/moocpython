@@ -1,0 +1,167 @@
+    \hypertarget{yield-from-pour-cascader-deux-guxe9nuxe9rateurs}{%
+\section{\texorpdfstring{\texttt{yield\ from} pour cascader deux
+générateurs}{yield from pour cascader deux générateurs}}\label{yield-from-pour-cascader-deux-guxe9nuxe9rateurs}}
+
+    Dans ce notebook nous allons voir comment fabriquer une fonction
+génératrice qui appelle elle-même une autre fonction génératrice.
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    \hypertarget{une-fonction-guxe9nuxe9ratrice}{%
+\subsubsection{Une fonction
+génératrice}\label{une-fonction-guxe9nuxe9ratrice}}
+
+    Commençons à nous définir une fonction génératrice ; par exemple ici
+nous listons les diviseurs d'un entier, en excluant 1 et l'entier
+lui-même~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k}{def} \PY{n+nf}{divs}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{verbose}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{p}{:}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{n}\PY{p}{)}\PY{p}{:}
+                \PY{k}{if} \PY{n}{n} \PY{o}{\PYZpc{}} \PY{n}{i} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+                    \PY{k}{if} \PY{n}{verbose}\PY{p}{:} 
+                        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{trouvé diviseur }\PY{l+s+si}{\PYZob{}i\PYZcb{}}\PY{l+s+s1}{ de }\PY{l+s+si}{\PYZob{}n\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                    \PY{k}{yield} \PY{n}{i}
+\end{Verbatim}
+
+
+    Comme attendu, l'appel direct à cette fonction ne donne rien d'utile :
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{divs}\PY{p}{(}\PY{l+m+mi}{28}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} <generator object divs at 0x04F34660>
+\end{Verbatim}
+            
+    Mais lorsqu'on l'utilise dans une boucle \texttt{for}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{for} \PY{n}{d} \PY{o+ow}{in} \PY{n}{divs}\PY{p}{(}\PY{l+m+mi}{28}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{d}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+2
+4
+7
+14
+
+    \end{Verbatim}
+
+    \hypertarget{une-fonction-guxe9nuxe9ratrice-qui-appelle-une-autre-fonction-guxe9nuxe9ratrice}{%
+\subsubsection{Une fonction génératrice qui appelle une autre fonction
+génératrice}\label{une-fonction-guxe9nuxe9ratrice-qui-appelle-une-autre-fonction-guxe9nuxe9ratrice}}
+
+    Bien, jusqu'ici c'est clair. Maintenant supposons que je veuille écrire
+une fonction génératrice qui énumère tous les diviseurs de tous les
+diviseurs d'un entier. Il s'agit donc, en sorte, d'écrire une fonction
+génératrice qui en appelle une autre - ici elle même.
+
+    \hypertarget{premiuxe8re-iduxe9e}{%
+\subparagraph{Première idée\\\\}\label{premiuxe8re-iduxe9e}}
+
+    Première idée naïve pour faire cela, mais qui ne marche pas~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k}{def} \PY{n+nf}{divdivs}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{divs}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+                \PY{n}{divs}\PY{p}{(}\PY{n}{i}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{try}\PY{p}{:}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{divdivs}\PY{p}{(}\PY{l+m+mi}{28}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{i}\PY{p}{)}
+        \PY{k}{except} \PY{n+ne}{Exception} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS }\PY{l+s+si}{\PYZob{}e\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+OOPS 'NoneType' object is not iterable
+
+    \end{Verbatim}
+
+    Ce qui se passe ici, c'est que \texttt{divdivs} est perçue comme une
+fonction normale, lorsqu'on l'appelle elle ne retourne rien, donc
+\texttt{None} ; et c'est sur ce \texttt{None} qu'on essaie de faire la
+boucle \texttt{for} (à l'interieur du \texttt{try}), qui donc échoue.
+
+    \hypertarget{deuxiuxe8me-iduxe9e}{%
+\subparagraph{Deuxième idée\\\\}\label{deuxiuxe8me-iduxe9e}}
+
+    Si on utilise juste \texttt{yield}, ça ne fait pas du tout ce qu'on
+veut~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{def} \PY{n+nf}{divdivs}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{divs}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+                \PY{k}{yield} \PY{n}{divs}\PY{p}{(}\PY{n}{i}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{k}{try}\PY{p}{:}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{divdivs}\PY{p}{(}\PY{l+m+mi}{28}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{i}\PY{p}{)}
+        \PY{k}{except} \PY{n+ne}{Exception} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS }\PY{l+s+si}{\PYZob{}e\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+<generator object divs at 0x051F8330>
+<generator object divs at 0x051F8360>
+<generator object divs at 0x051F8330>
+<generator object divs at 0x051F8360>
+
+    \end{Verbatim}
+
+    En effet, c'est logique, chaque \texttt{yield} dans \texttt{divdivs()}
+correspond à une itération de la boucle. Bref, il nous manque quelque
+chose dans le langage pour arriver à faire ce qu'on veut.
+
+    \hypertarget{yield-from}{%
+\subparagraph{\texorpdfstring{\texttt{yield\ from}}{yield from}\\\\}\label{yield-from}}
+
+    La construction du langage qui permet de faire ceci s'appelle
+\texttt{yield\ from};
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{k}{def} \PY{n+nf}{divdivs}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{divs}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+                \PY{k}{yield from} \PY{n}{divs}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{verbose}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k}{try}\PY{p}{:}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{divdivs}\PY{p}{(}\PY{l+m+mi}{28}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{i}\PY{p}{)}
+        \PY{k}{except} \PY{n+ne}{Exception} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS }\PY{l+s+si}{\PYZob{}e\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+trouvé diviseur 2 de 4
+2
+trouvé diviseur 2 de 14
+2
+trouvé diviseur 7 de 14
+7
+
+    \end{Verbatim}
+
+    Avec \texttt{yield\ from}, on peut indiquer que \texttt{divdivs} est une
+fonction génératrice, et qu'il faut évaluer \texttt{divs(..)} comme un
+générateur; ici l'interpréteur va empiler un second appel à
+\texttt{divdivs}, et énumérer tous les résultats que cette fonction va
+énumérer avec \texttt{yield}.

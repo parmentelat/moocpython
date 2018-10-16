@@ -1,0 +1,300 @@
+    \hypertarget{pruxe9cisions-sur-limportation}{%
+\section{Précisions sur
+l'importation}\label{pruxe9cisions-sur-limportation}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    \hypertarget{importations-multiples---rechargement}{%
+\subsubsection{Importations multiples -
+rechargement}\label{importations-multiples---rechargement}}
+
+    \hypertarget{un-module-nest-charguxe9-quune-fois}{%
+\subparagraph{Un module n'est chargé qu'une
+fois\\\\}\label{un-module-nest-charguxe9-quune-fois}}
+
+    De manière générale, à l'intérieur d'un interpréteur python, un module
+donné n'est chargé qu'une seule fois. L'idée est naturellement que si
+plusieurs modules différents importent le même module, (ou si un même
+module en importe un autre plusieurs fois) on ne paie le prix du
+chargement du module qu'une seule fois.\\
+
+Voyons cela sur un exemple simpliste, importons un module pour la
+première fois~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{multiple\PYZus{}import}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+chargement de multiple\_import
+
+    \end{Verbatim}
+
+    Ce module est très simple, comme vous pouvez le voir
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{modtools} \PY{k}{import} \PY{n}{show\PYZus{}module}
+        \PY{n}{show\PYZus{}module}\PY{p}{(}\PY{n}{multiple\PYZus{}import}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Fichier E:\textbackslash{}python\_pdf\_wip\textbackslash{}flotpython\textbackslash{}w5\textbackslash{}multiple\_import.py
+----------------------------------------
+1|"""
+2|Ce module est conçu pour illustrer le mécanisme de
+3|chargement / rechargement 
+4|"""
+5|
+6|print("chargement de", \_\_name\_\_)
+
+    \end{Verbatim}
+
+    Si on le charge une deuxième fois (peu importe où, dans le même module,
+un autre module, une fonction..), vous remarquez qu'il ne produit aucune
+impression
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k+kn}{import} \PY{n+nn}{multiple\PYZus{}import} 
+\end{Verbatim}
+
+
+    Ce qui confirme que le module a déjà été chargé, donc cette instruction
+\texttt{import} n'a aucun effet autre qu'affecter la variable
+\texttt{multiple\_import} de nouveau à l'objet module déjà chargé. En
+résumé, l'instruction \texttt{import} fait l'opération d'affectation
+autant de fois qu'on appelle \texttt{import}, mais elle ne charge le
+module qu'une seule fois à la première importation.\\
+
+    Une autre façon d'illustrer ce trait est d'importer plusieurs fois le
+module \texttt{this}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} la première fois le chargement a vraiment lieu}
+        \PY{k+kn}{import} \PY{n+nn}{this}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} la deuxième fois il ne se passe plus rien}
+        \PY{k+kn}{import} \PY{n+nn}{this}
+\end{Verbatim}
+
+
+    \hypertarget{les-raisons-de-ce-choix}{%
+\subparagraph{Les raisons de ce choix\\\\}\label{les-raisons-de-ce-choix}}
+
+    Le choix de ne charger le module qu'une seule fois est motivé par
+plusieurs considérations.
+
+    \begin{itemize}
+\tightlist
+\item
+  D'une part, cela permet à deux modules de dépendre l'un de l'autre (ou
+  plus généralement à avoir des cycles de dépendances), sans avoir à
+  prendre de précaution particulière.
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  D'autre part, naturellement, cette stratégie améliore considérablement
+  les performances.
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  Marginalement, \texttt{import} est une instruction comme une autre, et
+  vous trouverez occasionnellement un avantage à l'utiliser à
+  l'intérieur d'une fonction, \textbf{sans aucun surcoût} puisque vous
+  ne payez le prix de l'import qu'au premier appel et non à chaque appel
+  de la fonction.
+\end{itemize}
+
+\begin{verbatim}
+    def ma_fonction():
+        import un_module_improbable
+        ....
+\end{verbatim}
+
+Cet usage n'est pas recommandé en général, mais de temps en temps peut
+s'avérer très pratique pour alléger les dépendances entre modules dans
+des contextes particuliers, comme du code multi-plateformes.
+
+    \hypertarget{les-inconvuxe9nients-de-ce-choix---la-fonction-reload}{%
+\subparagraph{\texorpdfstring{Les inconvénients de ce choix - la
+fonction
+\texttt{reload}}{Les inconvénients de ce choix - la fonction reload}\\\\}\label{les-inconvuxe9nients-de-ce-choix---la-fonction-reload}}
+
+    L'inconvénient majeur de cette stratégie de chargement unique est
+perceptible dans l'interpréteur interactif pendant le développement.
+Nous avons vu comment IDLE traite le problème en remettant
+l'interpréteur dans un état vierge lorsqu'on utilise la touche F5. Mais
+dans l'interpréteur ``de base'', on n'a pas cette possibilité.\\
+
+    Pour cette raison, python fournit dans le module \texttt{importlib} une
+fonction \texttt{reload}, qui permet comme son nom l'indique de forcer
+le rechargement d'un module, comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k+kn}{from} \PY{n+nn}{importlib} \PY{k}{import} \PY{n}{reload}
+        \PY{n}{reload}\PY{p}{(}\PY{n}{multiple\PYZus{}import}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+chargement de multiple\_import
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} <module 'multiple\_import' from 'E:\textbackslash{}\textbackslash{}python\_pdf\_wip\textbackslash{}\textbackslash{}flotpython\textbackslash{}\textbackslash{}w5\textbackslash{}\textbackslash{}multiple\_import.py'>
+\end{Verbatim}
+            
+    Remarquez bien que \texttt{importlib.reload} est une fonction et non une
+instruction comme \texttt{import} - d'où la syntaxe avec les parenthèses
+qui n'est pas celle de \texttt{import}.\\
+
+Notez également que la fonction \texttt{importlib.reload} a été
+introduite en python3.4, avant, il fallait utiliser la fonction
+\texttt{imp.reload} qui est dépréciée depuis python3.4 mais qui existe
+toujours. Évidemment, vous devez maintenant exlusivement utiliser la
+fonction \texttt{importlib.reload}.\\
+
+
+    \textbf{NOTE} spécifique à l'environnement des \textbf{notebooks} (en
+fait, à l'utilisation de ipython)~:\\
+
+À l'intérieur d'un notebook, vous
+\href{https://ipython.org/ipython-doc/3/config/extensions/autoreload.html}{pouvez
+faire comme ceci} pour recharger le code importé automatiquement~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} charger le magic \PYZsq{}autoreload\PYZsq{}}
+        \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} autoreload
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} activer autoreload}
+        \PY{o}{\PYZpc{}}\PY{k}{autoreload} 2
+\end{Verbatim}
+
+
+    À partir de cet instant, et si le code d'un module importé est modifié
+par ailleurs (ce qui est difficile à simuler dans notre environnement),
+alors le module en question sera effectivement rechargé lors du prochain
+import. Voyez le lien ci-dessus pour plus de détails.
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    Revenons à python standard. Pour ceux qui sont intéressés par les
+détails, signalons enfin les deux variables suivantes.
+
+    \hypertarget{sys.modules}{%
+\subsubsection{\texorpdfstring{\texttt{sys.modules}}{sys.modules}}\label{sys.modules}}
+
+    L'interpréteur utilise cette variable pour conserver la trace des
+modules actuellement chargés.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k+kn}{import} \PY{n+nn}{sys}
+        \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{csv}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{sys}\PY{o}{.}\PY{n}{modules}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} False
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{k+kn}{import} \PY{n+nn}{csv}
+         \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{csv}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{sys}\PY{o}{.}\PY{n}{modules}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:} True
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{csv} \PY{o+ow}{is} \PY{n}{sys}\PY{o}{.}\PY{n}{modules}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} True
+\end{Verbatim}
+            
+    La
+\href{https://docs.python.org/3/library/sys.html\#sys.modules}{documentation
+sur \texttt{sys.modules}} indique qu'il est possible de forcer le
+rechargement d'un module en l'enlevant de cette variable
+\texttt{sys.modules}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{k}{del} \PY{n}{sys}\PY{o}{.}\PY{n}{modules}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{multiple\PYZus{}import}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{k+kn}{import} \PY{n+nn}{multiple\PYZus{}import}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+chargement de multiple\_import
+
+    \end{Verbatim}
+
+    \hypertarget{sys.builtin_module_names}{%
+\subsubsection{\texorpdfstring{\texttt{sys.builtin\_module\_names}}{sys.builtin\_module\_names}}\label{sys.builtin_module_names}}
+
+    Signalons enfin
+\href{https://docs.python.org/3/library/sys.html\#sys.builtin_module_names}{la
+variable \texttt{sys.builtin\_module\_names}} qui contient le nom des
+modules, comme par exemple le garbage collector \texttt{gc}, qui sont
+implémentés en C et font partie intégrante de l'interpréteur.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gc}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{sys}\PY{o}{.}\PY{n}{builtin\PYZus{}module\PYZus{}names}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}13}]:} True
+\end{Verbatim}
+            
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+    Pour aller plus loin, vous pouvez lire
+\href{https://docs.python.org/3/reference/simple_stmts.html\#the-import-statement}{la
+documentation sur l'instruction \texttt{import}}

@@ -177,142 +177,142 @@
 \contentsline {subsection}{\numberline {2.5.2}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{69}{subsection.2.5.2}
 \contentsline {subsubsection}{Avertissement}{69}{section*.120}
 \contentsline {subsubsection}{Un exemple simple}{70}{section*.121}
-\contentsline {subparagraph}{\texttt {findall}}{70}{section*.122}
-\contentsline {subparagraph}{\texttt {split}}{70}{section*.123}
-\contentsline {subparagraph}{\texttt {sub}}{71}{section*.124}
-\contentsline {subparagraph}{Pourquoi un \emph {raw-string} ?\\\\}{71}{section*.125}
+\contentsline {subparagraph}{\texttt {findall}\\\\}{70}{section*.122}
+\contentsline {subparagraph}{\texttt {split}\\\\}{71}{section*.123}
+\contentsline {subparagraph}{\texttt {sub}\\\\}{71}{section*.124}
+\contentsline {subparagraph}{Pourquoi un \emph {raw-string} ?\\\\}{72}{section*.125}
 \contentsline {subsubsection}{Un deuxi\IeC {\`e}me exemple}{72}{section*.126}
-\contentsline {subparagraph}{\texttt {match}}{72}{section*.127}
+\contentsline {subparagraph}{\texttt {match}\\\\}{72}{section*.127}
 \contentsline {subparagraph}{Nommer un morceau (un groupe)}{73}{section*.128}
-\contentsline {subsubsection}{Un troisi\IeC {\`e}me exemple}{73}{section*.129}
-\contentsline {subsubsection}{Comment utiliser la librairie}{74}{section*.130}
-\contentsline {subparagraph}{Fonctions de commodit\IeC {\'e} et \emph {workflow}\\\\}{74}{section*.131}
-\contentsline {subparagraph}{Les m\IeC {\'e}thodes sur la classe \texttt {RegexObject}\\\\}{75}{section*.132}
-\contentsline {subparagraph}{Exploiter le r\IeC {\'e}sultat\\\\}{75}{section*.133}
-\contentsline {subparagraph}{Les diff\IeC {\'e}rents modes (\emph {flags})}{77}{section*.134}
-\contentsline {subsubsection}{Comment construire une expression r\IeC {\'e}guli\IeC {\`e}re}{77}{section*.135}
-\contentsline {subparagraph}{La brique de base : le caract\IeC {\`e}re\\\\}{77}{section*.136}
-\contentsline {subparagraph}{En s\IeC {\'e}rie ou en parall\IeC {\`e}le\\\\}{78}{section*.137}
-\contentsline {subparagraph}{Fin(s) de chaine\\\\}{79}{section*.138}
-\contentsline {subparagraph}{Parenth\IeC {\'e}ser - (grouper)\\\\}{79}{section*.139}
-\contentsline {subparagraph}{Compter les r\IeC {\'e}p\IeC {\'e}titions\\\\}{80}{section*.140}
-\contentsline {subparagraph}{Groupes et contraintes\\\\}{81}{section*.141}
-\contentsline {subparagraph}{Greedy \emph {vs} non-greedy\\\\}{81}{section*.142}
-\contentsline {subparagraph}{S'agissant du traitement des fins de ligne}{82}{section*.143}
-\contentsline {subsubsection}{Conclusion}{83}{section*.144}
-\contentsline {subsubsection}{Pour en savoir plus}{83}{section*.145}
-\contentsline {section}{\numberline {2.6}Expressions r\IeC {\'e}guli\IeC {\`e}res}{84}{section.2.6}
-\contentsline {subparagraph}{Liens utiles}{84}{section*.146}
-\contentsline {subsection}{\numberline {2.6.1}Exercice - niveau interm\IeC {\'e}diaire (1)}{84}{subsection.2.6.1}
-\contentsline {subparagraph}{Identificateurs Python}{84}{section*.147}
-\contentsline {subsection}{\numberline {2.6.2}Exercice - niveau interm\IeC {\'e}diaire (2)}{84}{subsection.2.6.2}
-\contentsline {subparagraph}{Lignes avec nom et pr\IeC {\'e}nom}{84}{section*.148}
-\contentsline {subsection}{\numberline {2.6.3}Exercice - niveau interm\IeC {\'e}diaire (3)}{85}{subsection.2.6.3}
-\contentsline {subparagraph}{Num\IeC {\'e}ros de t\IeC {\'e}l\IeC {\'e}phone}{85}{section*.149}
-\contentsline {subsection}{\numberline {2.6.4}Exercice - niveau avanc\IeC {\'e}}{85}{subsection.2.6.4}
-\contentsline {subsubsection}{D\IeC {\'e}cortiquer une URL}{86}{section*.150}
-\contentsline {section}{\numberline {2.7}Les slices en Python}{88}{section.2.7}
-\contentsline {subsection}{\numberline {2.7.1}Compl\IeC {\'e}ment - niveau basique}{88}{subsection.2.7.1}
-\contentsline {subsubsection}{Slice sans pas}{88}{section*.151}
-\contentsline {subsubsection}{Conventions de d\IeC {\'e}but et fin}{88}{section*.152}
-\contentsline {paragraph}{Bornes omises\\\\}{89}{section*.154}
-\contentsline {paragraph}{Indices n\IeC {\'e}gatifs\\\\}{89}{section*.155}
-\contentsline {subsubsection}{Slice avec pas}{89}{section*.156}
-\contentsline {subsubsection}{Pas n\IeC {\'e}gatif}{90}{section*.157}
-\contentsline {subsubsection}{Conclusion}{90}{section*.158}
-\contentsline {paragraph}{Listes}{90}{section*.159}
-\contentsline {subsection}{\numberline {2.7.2}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{90}{subsection.2.7.2}
-\contentsline {paragraph}{\texttt {numpy}}{90}{section*.160}
-\contentsline {section}{\numberline {2.8}M\IeC {\'e}thodes sp\IeC {\'e}cifiques aux listes}{92}{section.2.8}
-\contentsline {subsection}{\numberline {2.8.1}Compl\IeC {\'e}ment - niveau basique}{92}{subsection.2.8.1}
-\contentsline {subsubsection}{Trouver l'information}{92}{section*.161}
-\contentsline {subsubsection}{\textbf {append}}{95}{section*.162}
-\contentsline {subsubsection}{\textbf {extend}}{95}{section*.163}
-\contentsline {subsubsection}{\textbf {append} \emph {vs} \textbf {+}}{95}{section*.164}
-\contentsline {subsubsection}{\textbf {insert}}{96}{section*.165}
-\contentsline {subsubsection}{\textbf {remove}}{97}{section*.166}
-\contentsline {subsubsection}{\textbf {pop}}{97}{section*.167}
-\contentsline {subsubsection}{\textbf {reverse}}{97}{section*.168}
-\contentsline {subsubsection}{Pour en savoir plus}{98}{section*.169}
-\contentsline {subsubsection}{Note sp\IeC {\'e}cifique aux notebooks}{98}{section*.170}
-\contentsline {paragraph}{\texttt {help} avec \texttt {?}}{98}{section*.171}
-\contentsline {paragraph}{Compl\IeC {\'e}tion avec \texttt {Tab}\\\\}{98}{section*.172}
-\contentsline {section}{\numberline {2.9}Objets mutables et objets immuables}{99}{section.2.9}
-\contentsline {subsection}{\numberline {2.9.1}Compl\IeC {\'e}ment - niveau basique}{99}{subsection.2.9.1}
-\contentsline {subsubsection}{Les cha\IeC {\^\i }nes sont des objets immuables}{99}{section*.173}
-\contentsline {subsubsection}{Les listes sont des objets mutables}{99}{section*.174}
-\contentsline {subsubsection}{Conclusion}{99}{section*.175}
-\contentsline {section}{\numberline {2.10}Tris de listes}{100}{section.2.10}
-\contentsline {subsection}{\numberline {2.10.1}Compl\IeC {\'e}ment - niveau basique}{100}{subsection.2.10.1}
-\contentsline {subsubsection}{La m\IeC {\'e}thode \texttt {sort}}{100}{section*.176}
-\contentsline {subsubsection}{La fonction \texttt {sorted}}{100}{section*.177}
-\contentsline {subsubsection}{Tri d\IeC {\'e}croissant}{100}{section*.178}
-\contentsline {subsubsection}{Cha\IeC {\^\i }nes de caract\IeC {\`e}res}{101}{section*.179}
-\contentsline {subsubsection}{\IeC {\`A} suivre}{102}{section*.180}
-\contentsline {section}{\numberline {2.11}Indentations en Python}{103}{section.2.11}
-\contentsline {subsection}{\numberline {2.11.1}Compl\IeC {\'e}ment - niveau basique}{103}{subsection.2.11.1}
-\contentsline {subsubsection}{Imbrications}{103}{section*.181}
-\contentsline {subsection}{\numberline {2.11.2}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{104}{subsection.2.11.2}
-\contentsline {subsubsection}{Espaces \emph {vs} tabulations}{104}{section*.182}
-\contentsline {paragraph}{Version courte\\\\}{104}{section*.183}
-\contentsline {paragraph}{Version longue\\\\}{104}{section*.184}
-\contentsline {subsection}{\numberline {2.11.3}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{105}{subsection.2.11.3}
-\contentsline {paragraph}{Version courte\\\\}{105}{section*.185}
-\contentsline {paragraph}{Version longue\\\\}{105}{section*.186}
-\contentsline {section}{\numberline {2.12}Bonnes pratiques de pr\IeC {\'e}sentation de code}{107}{section.2.12}
-\contentsline {subsection}{\numberline {2.12.1}Compl\IeC {\'e}ment - niveau basique}{107}{subsection.2.12.1}
-\contentsline {subsubsection}{La PEP-008}{107}{section*.187}
-\contentsline {subsubsection}{Un peu de lecture : le module \texttt {pprint}}{107}{section*.188}
-\contentsline {subsubsection}{Espaces}{107}{section*.189}
-\contentsline {subsubsection}{Coupures de ligne}{108}{section*.190}
-\contentsline {subparagraph}{Coupure de ligne sans \emph {backslash} (\textbackslash {})}{108}{section*.191}
-\contentsline {subparagraph}{Coupure de ligne avec \emph {backslash} (\textbackslash {})\\\\}{109}{section*.192}
-\contentsline {subparagraph}{Coupures de lignes - \IeC {\'e}pilogue\\\\}{109}{section*.193}
-\contentsline {subsection}{\numberline {2.12.2}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{109}{subsection.2.12.2}
-\contentsline {subsubsection}{Outils li\IeC {\'e}s \IeC {\`a} PEP008}{109}{section*.194}
-\contentsline {subsubsection}{Les deux-points `: '}{109}{section*.195}
-\contentsline {section}{\numberline {2.13}L'instruction \texttt {pass}}{110}{section.2.13}
-\contentsline {subsection}{\numberline {2.13.1}Compl\IeC {\'e}ment - niveau basique}{110}{subsection.2.13.1}
-\contentsline {subsubsection}{Une fonction vide}{110}{section*.196}
-\contentsline {subsubsection}{Une boucle vide}{110}{section*.197}
-\contentsline {subsection}{\numberline {2.13.2}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{110}{subsection.2.13.2}
-\contentsline {subsubsection}{Un \texttt {if} sans \texttt {then}}{110}{section*.198}
-\contentsline {subsubsection}{Une classe vide}{111}{section*.199}
-\contentsline {section}{\numberline {2.14}Fonctions avec ou sans valeur de retour}{112}{section.2.14}
-\contentsline {subsection}{\numberline {2.14.1}Compl\IeC {\'e}ment - niveau basique}{112}{subsection.2.14.1}
-\contentsline {subsubsection}{Le style proc\IeC {\'e}dural}{112}{section*.200}
-\contentsline {subsubsection}{Le style fonctionnel}{112}{section*.201}
-\contentsline {subsubsection}{L'instruction \texttt {return}}{112}{section*.202}
-\contentsline {subsubsection}{Le singleton \texttt {None}}{112}{section*.203}
-\contentsline {subsubsection}{Un exemple un peu plus r\IeC {\'e}aliste}{113}{section*.204}
-\contentsline {subparagraph}{\texttt {return} sans valeur}{114}{section*.205}
-\contentsline {subparagraph}{\texttt {return} interrompt la fonction}{114}{section*.206}
-\contentsline {subparagraph}{Digression sur les cha\IeC {\^\i }nes}{115}{section*.207}
-\contentsline {section}{\numberline {2.15}Formatage des chaines de caract\IeC {\`e}res}{116}{section.2.15}
-\contentsline {subsection}{\numberline {2.15.1}Exercice - niveau basique}{116}{subsection.2.15.1}
-\contentsline {section}{\numberline {2.16}S\IeC {\'e}quences}{117}{section.2.16}
-\contentsline {subsection}{\numberline {2.16.1}Exercice - niveau basique}{117}{subsection.2.16.1}
-\contentsline {subsubsection}{Slicing}{117}{section*.208}
-\contentsline {subsection}{\numberline {2.16.2}Exercice - niveau interm\IeC {\'e}diaire}{117}{subsection.2.16.2}
-\contentsline {subsubsection}{Longueur}{117}{section*.209}
-\contentsline {section}{\numberline {2.17}Listes}{119}{section.2.17}
-\contentsline {subsection}{\numberline {2.17.1}Exercice - niveau basique}{119}{subsection.2.17.1}
-\contentsline {section}{\numberline {2.18}Instruction \texttt {if} et fonction \texttt {def}}{120}{section.2.18}
-\contentsline {subsection}{\numberline {2.18.1}Exercice - niveau basique}{120}{subsection.2.18.1}
-\contentsline {subsubsection}{Fonction de divisibilit\IeC {\'e}}{120}{section*.210}
-\contentsline {subsection}{\numberline {2.18.2}Exercice - niveau basique}{120}{subsection.2.18.2}
-\contentsline {subparagraph}{Fonction d\IeC {\'e}finie par morceaux}{120}{section*.211}
-\contentsline {subparagraph}{Repr\IeC {\'e}sentation graphique}{120}{section*.212}
-\contentsline {section}{\numberline {2.19}Comptage dans les chaines}{122}{section.2.19}
-\contentsline {subsection}{\numberline {2.19.1}Exercice - niveau basique}{122}{subsection.2.19.1}
-\contentsline {subsection}{\numberline {2.19.2}La commande UNIX wc(1)}{122}{subsection.2.19.2}
-\contentsline {section}{\numberline {2.20}Compr\IeC {\'e}hensions (1)}{123}{section.2.20}
-\contentsline {subsection}{\numberline {2.20.1}Exercice - niveau basique}{123}{subsection.2.20.1}
-\contentsline {subsubsection}{Liste des valeurs d'une fonction}{123}{section*.213}
-\contentsline {subsection}{\numberline {2.20.2}R\IeC {\'e}cr\IeC {\'e}ation}{123}{subsection.2.20.2}
-\contentsline {section}{\numberline {2.21}Compr\IeC {\'e}hensions (2)}{124}{section.2.21}
-\contentsline {subsection}{\numberline {2.21.1}Exercice - niveau interm\IeC {\'e}diaire}{124}{subsection.2.21.1}
-\contentsline {subsubsection}{Mise au carr\IeC {\'e}}{124}{section*.214}
+\contentsline {subsubsection}{Un troisi\IeC {\`e}me exemple}{74}{section*.129}
+\contentsline {subsubsection}{Comment utiliser la librairie - Compilation des expressions r\IeC {\'e}guli\IeC {\`e}res}{74}{section*.130}
+\contentsline {subparagraph}{Fonctions de commodit\IeC {\'e} et \emph {workflow}\\\\}{75}{section*.131}
+\contentsline {subparagraph}{Les m\IeC {\'e}thodes sur la classe \texttt {RegexObject}\\\\}{76}{section*.132}
+\contentsline {subparagraph}{Exploiter le r\IeC {\'e}sultat\\\\}{76}{section*.133}
+\contentsline {subparagraph}{Les diff\IeC {\'e}rents modes (\emph {flags})\\\\}{77}{section*.134}
+\contentsline {subsubsection}{Comment construire une expression r\IeC {\'e}guli\IeC {\`e}re}{78}{section*.135}
+\contentsline {subparagraph}{La brique de base : le caract\IeC {\`e}re\\\\}{78}{section*.136}
+\contentsline {subparagraph}{En s\IeC {\'e}rie ou en parall\IeC {\`e}le\\\\}{79}{section*.137}
+\contentsline {subparagraph}{Fin(s) de cha\IeC {\^\i }ne\\\\}{79}{section*.138}
+\contentsline {subparagraph}{Parenth\IeC {\'e}ser - (grouper)\\\\}{80}{section*.139}
+\contentsline {subparagraph}{Compter les r\IeC {\'e}p\IeC {\'e}titions\\\\}{81}{section*.140}
+\contentsline {subparagraph}{Groupes et contraintes\\\\}{82}{section*.141}
+\contentsline {subparagraph}{Greedy \emph {vs} non-greedy\\\\}{82}{section*.142}
+\contentsline {subparagraph}{S'agissant du traitement des fins de ligne\\\\}{83}{section*.143}
+\contentsline {subsubsection}{Conclusion}{84}{section*.144}
+\contentsline {subsubsection}{Pour en savoir plus}{84}{section*.145}
+\contentsline {section}{\numberline {2.6}Expressions r\IeC {\'e}guli\IeC {\`e}res}{85}{section.2.6}
+\contentsline {subparagraph}{Liens utiles}{85}{section*.146}
+\contentsline {subsection}{\numberline {2.6.1}Exercice - niveau interm\IeC {\'e}diaire (1)}{85}{subsection.2.6.1}
+\contentsline {subparagraph}{Identificateurs Python}{85}{section*.147}
+\contentsline {subsection}{\numberline {2.6.2}Exercice - niveau interm\IeC {\'e}diaire (2)}{85}{subsection.2.6.2}
+\contentsline {subparagraph}{Lignes avec nom et pr\IeC {\'e}nom}{85}{section*.148}
+\contentsline {subsection}{\numberline {2.6.3}Exercice - niveau interm\IeC {\'e}diaire (3)}{86}{subsection.2.6.3}
+\contentsline {subparagraph}{Num\IeC {\'e}ros de t\IeC {\'e}l\IeC {\'e}phone}{86}{section*.149}
+\contentsline {subsection}{\numberline {2.6.4}Exercice - niveau avanc\IeC {\'e}}{86}{subsection.2.6.4}
+\contentsline {subsubsection}{D\IeC {\'e}cortiquer une URL}{87}{section*.150}
+\contentsline {section}{\numberline {2.7}Les slices en Python}{89}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}Compl\IeC {\'e}ment - niveau basique}{89}{subsection.2.7.1}
+\contentsline {subsubsection}{Slice sans pas}{89}{section*.151}
+\contentsline {subsubsection}{Conventions de d\IeC {\'e}but et fin}{89}{section*.152}
+\contentsline {paragraph}{Bornes omises\\\\}{90}{section*.154}
+\contentsline {paragraph}{Indices n\IeC {\'e}gatifs\\\\}{90}{section*.155}
+\contentsline {subsubsection}{Slice avec pas}{90}{section*.156}
+\contentsline {subsubsection}{Pas n\IeC {\'e}gatif}{91}{section*.157}
+\contentsline {subsubsection}{Conclusion}{91}{section*.158}
+\contentsline {paragraph}{Listes}{91}{section*.159}
+\contentsline {subsection}{\numberline {2.7.2}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{91}{subsection.2.7.2}
+\contentsline {paragraph}{\texttt {numpy}}{91}{section*.160}
+\contentsline {section}{\numberline {2.8}M\IeC {\'e}thodes sp\IeC {\'e}cifiques aux listes}{93}{section.2.8}
+\contentsline {subsection}{\numberline {2.8.1}Compl\IeC {\'e}ment - niveau basique}{93}{subsection.2.8.1}
+\contentsline {subsubsection}{Trouver l'information}{93}{section*.161}
+\contentsline {subsubsection}{\texttt {append}}{93}{section*.162}
+\contentsline {subsubsection}{\texttt {extend}}{94}{section*.163}
+\contentsline {subsubsection}{\texttt {append} \emph {vs} \texttt {+}}{94}{section*.164}
+\contentsline {subsubsection}{\texttt {insert}}{95}{section*.165}
+\contentsline {subsubsection}{\texttt {remove}}{96}{section*.166}
+\contentsline {subsubsection}{\texttt {pop}}{96}{section*.167}
+\contentsline {subsubsection}{\texttt {reverse}}{96}{section*.168}
+\contentsline {subsubsection}{Pour en savoir plus}{96}{section*.169}
+\contentsline {subsubsection}{Note sp\IeC {\'e}cifique aux notebooks}{97}{section*.170}
+\contentsline {paragraph}{\texttt {help} avec \texttt {?}\\\\}{97}{section*.171}
+\contentsline {paragraph}{Compl\IeC {\'e}tion avec \texttt {Tab}\\\\}{97}{section*.172}
+\contentsline {section}{\numberline {2.9}Objets mutables et objets immuables}{98}{section.2.9}
+\contentsline {subsection}{\numberline {2.9.1}Compl\IeC {\'e}ment - niveau basique}{98}{subsection.2.9.1}
+\contentsline {subsubsection}{Les cha\IeC {\^\i }nes sont des objets immuables}{98}{section*.173}
+\contentsline {subsubsection}{Les listes sont des objets mutables}{98}{section*.174}
+\contentsline {subsubsection}{Conclusion}{98}{section*.175}
+\contentsline {section}{\numberline {2.10}Tris de listes}{99}{section.2.10}
+\contentsline {subsection}{\numberline {2.10.1}Compl\IeC {\'e}ment - niveau basique}{99}{subsection.2.10.1}
+\contentsline {subsubsection}{La m\IeC {\'e}thode \texttt {sort}}{99}{section*.176}
+\contentsline {subsubsection}{La fonction \texttt {sorted}}{99}{section*.177}
+\contentsline {subsubsection}{Tri d\IeC {\'e}croissant}{99}{section*.178}
+\contentsline {subsubsection}{Cha\IeC {\^\i }nes de caract\IeC {\`e}res}{100}{section*.179}
+\contentsline {subsubsection}{\IeC {\`A} suivre}{101}{section*.180}
+\contentsline {section}{\numberline {2.11}Indentations en Python}{102}{section.2.11}
+\contentsline {subsection}{\numberline {2.11.1}Compl\IeC {\'e}ment - niveau basique}{102}{subsection.2.11.1}
+\contentsline {subsubsection}{Imbrications}{102}{section*.181}
+\contentsline {subsection}{\numberline {2.11.2}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{103}{subsection.2.11.2}
+\contentsline {subsubsection}{Espaces \emph {vs} tabulations}{103}{section*.182}
+\contentsline {paragraph}{Version courte\\\\}{103}{section*.183}
+\contentsline {paragraph}{Version longue\\\\}{103}{section*.184}
+\contentsline {subsection}{\numberline {2.11.3}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{104}{subsection.2.11.3}
+\contentsline {paragraph}{Version courte\\\\}{104}{section*.185}
+\contentsline {paragraph}{Version longue\\\\}{104}{section*.186}
+\contentsline {section}{\numberline {2.12}Bonnes pratiques de pr\IeC {\'e}sentation de code}{106}{section.2.12}
+\contentsline {subsection}{\numberline {2.12.1}Compl\IeC {\'e}ment - niveau basique}{106}{subsection.2.12.1}
+\contentsline {subsubsection}{La PEP-008}{106}{section*.187}
+\contentsline {subsubsection}{Un peu de lecture : le module \texttt {pprint}}{106}{section*.188}
+\contentsline {subsubsection}{Espaces}{106}{section*.189}
+\contentsline {subsubsection}{Coupures de ligne}{107}{section*.190}
+\contentsline {subparagraph}{Coupure de ligne sans \emph {backslash} (\textbackslash {})}{107}{section*.191}
+\contentsline {subparagraph}{Coupure de ligne avec \emph {backslash} (\textbackslash {})\\\\}{108}{section*.192}
+\contentsline {subparagraph}{Coupures de lignes - \IeC {\'e}pilogue\\\\}{108}{section*.193}
+\contentsline {subsection}{\numberline {2.12.2}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{108}{subsection.2.12.2}
+\contentsline {subsubsection}{Outils li\IeC {\'e}s \IeC {\`a} PEP008}{108}{section*.194}
+\contentsline {subsubsection}{Les deux-points `: '}{108}{section*.195}
+\contentsline {section}{\numberline {2.13}L'instruction \texttt {pass}}{109}{section.2.13}
+\contentsline {subsection}{\numberline {2.13.1}Compl\IeC {\'e}ment - niveau basique}{109}{subsection.2.13.1}
+\contentsline {subsubsection}{Une fonction vide}{109}{section*.196}
+\contentsline {subsubsection}{Une boucle vide}{109}{section*.197}
+\contentsline {subsection}{\numberline {2.13.2}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{109}{subsection.2.13.2}
+\contentsline {subsubsection}{Un \texttt {if} sans \texttt {then}}{109}{section*.198}
+\contentsline {subsubsection}{Une classe vide}{110}{section*.199}
+\contentsline {section}{\numberline {2.14}Fonctions avec ou sans valeur de retour}{111}{section.2.14}
+\contentsline {subsection}{\numberline {2.14.1}Compl\IeC {\'e}ment - niveau basique}{111}{subsection.2.14.1}
+\contentsline {subsubsection}{Le style proc\IeC {\'e}dural}{111}{section*.200}
+\contentsline {subsubsection}{Le style fonctionnel}{111}{section*.201}
+\contentsline {subsubsection}{L'instruction \texttt {return}}{111}{section*.202}
+\contentsline {subsubsection}{Le singleton \texttt {None}}{111}{section*.203}
+\contentsline {subsubsection}{Un exemple un peu plus r\IeC {\'e}aliste}{112}{section*.204}
+\contentsline {subparagraph}{\texttt {return} sans valeur\\\\}{113}{section*.205}
+\contentsline {subparagraph}{\texttt {return} interrompt la fonction\\\\}{113}{section*.206}
+\contentsline {subparagraph}{Digression sur les cha\IeC {\^\i }nes\\\\}{114}{section*.207}
+\contentsline {section}{\numberline {2.15}Formatage des chaines de caract\IeC {\`e}res}{115}{section.2.15}
+\contentsline {subsection}{\numberline {2.15.1}Exercice - niveau basique}{115}{subsection.2.15.1}
+\contentsline {section}{\numberline {2.16}S\IeC {\'e}quences}{116}{section.2.16}
+\contentsline {subsection}{\numberline {2.16.1}Exercice - niveau basique}{116}{subsection.2.16.1}
+\contentsline {subsubsection}{Slicing}{116}{section*.208}
+\contentsline {subsection}{\numberline {2.16.2}Exercice - niveau interm\IeC {\'e}diaire}{116}{subsection.2.16.2}
+\contentsline {subsubsection}{Longueur}{116}{section*.209}
+\contentsline {section}{\numberline {2.17}Listes}{118}{section.2.17}
+\contentsline {subsection}{\numberline {2.17.1}Exercice - niveau basique}{118}{subsection.2.17.1}
+\contentsline {section}{\numberline {2.18}Instruction \texttt {if} et fonction \texttt {def}}{119}{section.2.18}
+\contentsline {subsection}{\numberline {2.18.1}Exercice - niveau basique}{119}{subsection.2.18.1}
+\contentsline {subsubsection}{Fonction de divisibilit\IeC {\'e}}{119}{section*.210}
+\contentsline {subsection}{\numberline {2.18.2}Exercice - niveau basique}{119}{subsection.2.18.2}
+\contentsline {subparagraph}{Fonction d\IeC {\'e}finie par morceaux}{119}{section*.211}
+\contentsline {subparagraph}{Repr\IeC {\'e}sentation graphique\\\\}{119}{section*.212}
+\contentsline {section}{\numberline {2.19}Comptage dans les chaines}{121}{section.2.19}
+\contentsline {subsection}{\numberline {2.19.1}Exercice - niveau basique}{121}{subsection.2.19.1}
+\contentsline {subsection}{\numberline {2.19.2}La commande UNIX wc(1)}{121}{subsection.2.19.2}
+\contentsline {section}{\numberline {2.20}Compr\IeC {\'e}hensions (1)}{122}{section.2.20}
+\contentsline {subsection}{\numberline {2.20.1}Exercice - niveau basique}{122}{subsection.2.20.1}
+\contentsline {subsubsection}{Liste des valeurs d'une fonction}{122}{section*.213}
+\contentsline {subsection}{\numberline {2.20.2}R\IeC {\'e}cr\IeC {\'e}ation}{122}{subsection.2.20.2}
+\contentsline {section}{\numberline {2.21}Compr\IeC {\'e}hensions (2)}{123}{section.2.21}
+\contentsline {subsection}{\numberline {2.21.1}Exercice - niveau interm\IeC {\'e}diaire}{123}{subsection.2.21.1}
+\contentsline {subsubsection}{Mise au carr\IeC {\'e}}{123}{section*.214}
 \contentsline {chapter}{\numberline {3}Renforcement des notions de base, r\IeC {\'e}f\IeC {\'e}rences partag\IeC {\'e}es}{125}{chapter.3}
 \contentsline {section}{\numberline {3.1}Les fichiers}{126}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Compl\IeC {\'e}ment - niveau basique}{126}{subsection.3.1.1}
@@ -665,3 +665,144 @@
 \contentsline {section}{\numberline {4.21}Passage d'arguments}{263}{section.4.21}
 \contentsline {subsection}{\numberline {4.21.1}Exercice - niveau basique}{263}{subsection.4.21.1}
 \contentsline {subsection}{\numberline {4.21.2}Exercice - niveau interm\IeC {\'e}diaire}{263}{subsection.4.21.2}
+\contentsline {chapter}{\numberline {5}It\IeC {\'e}ration, importation et espace de nommage}{265}{chapter.5}
+\contentsline {section}{\numberline {5.1}Les instructions \texttt {break} et \texttt {continue}}{266}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Compl\IeC {\'e}ment - niveau basique}{266}{subsection.5.1.1}
+\contentsline {subsubsection}{\texttt {break} et \texttt {continue}}{266}{section*.449}
+\contentsline {section}{\numberline {5.2}Une limite de la boucle \texttt {for}}{267}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Compl\IeC {\'e}ment - niveau basique}{267}{subsection.5.2.1}
+\contentsline {subsubsection}{Comment faire alors~?}{267}{section*.450}
+\contentsline {subsubsection}{Avertissement}{268}{section*.451}
+\contentsline {subsubsection}{Pr\IeC {\'e}cisons bien la limite}{268}{section*.452}
+\contentsline {subsection}{\numberline {5.2.2}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{268}{subsection.5.2.2}
+\contentsline {subsubsection}{Difficult\IeC {\'e} d'ordre s\IeC {\'e}mantique}{269}{section*.453}
+\contentsline {subsubsection}{Difficult\IeC {\'e} d'impl\IeC {\'e}mentation}{269}{section*.454}
+\contentsline {section}{\numberline {5.3}It\IeC {\'e}rateurs}{270}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{270}{subsection.5.3.1}
+\contentsline {subsubsection}{Le module \texttt {itertools}}{270}{section*.455}
+\contentsline {section}{\numberline {5.4}Programmation fonctionnelle}{272}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Compl\IeC {\'e}ment - niveau basique}{272}{subsection.5.4.1}
+\contentsline {subsubsection}{Pour r\IeC {\'e}sumer}{272}{section*.456}
+\contentsline {subsection}{\numberline {5.4.2}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{272}{subsection.5.4.2}
+\contentsline {subsubsection}{\texttt {reduce}}{272}{section*.457}
+\contentsline {subparagraph}{Cas fr\IeC {\'e}quents de \texttt {reduce}\\\\}{273}{section*.458}
+\contentsline {section}{\numberline {5.5}Tri de listes}{274}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{274}{subsection.5.5.1}
+\contentsline {subsubsection}{Cas g\IeC {\'e}n\IeC {\'e}ral}{274}{section*.459}
+\contentsline {subsubsection}{Fonction de commodit\IeC {\'e}~: \texttt {sorted}}{275}{section*.460}
+\contentsline {subsubsection}{Pour en savoir plus}{275}{section*.461}
+\contentsline {subsection}{\numberline {5.5.2}Exercice - niveau basique}{276}{subsection.5.5.2}
+\contentsline {subsubsection}{Tri de plusieurs listes}{276}{section*.462}
+\contentsline {subsection}{\numberline {5.5.3}Exercice - niveau interm\IeC {\'e}diaire}{276}{subsection.5.5.3}
+\contentsline {subsubsection}{Tri de plusieurs listes, dans des directions diff\IeC {\'e}rentes}{276}{section*.463}
+\contentsline {subsection}{\numberline {5.5.4}Exercice - niveau interm\IeC {\'e}diaire}{277}{subsection.5.5.4}
+\contentsline {subsection}{\numberline {5.5.5}Exercice - niveau interm\IeC {\'e}diaire}{277}{subsection.5.5.5}
+\contentsline {section}{\numberline {5.6}Comparaison de fonctions}{279}{section.5.6}
+\contentsline {subsection}{\numberline {5.6.1}Exercice - niveau avanc\IeC {\'e}}{279}{subsection.5.6.1}
+\contentsline {subsection}{\numberline {5.6.2}Exercice optionnel - niveau avanc\IeC {\'e}}{280}{subsection.5.6.2}
+\contentsline {subsubsection}{\texttt {compare} revisit\IeC {\'e}e}{280}{section*.464}
+\contentsline {section}{\numberline {5.7}Construction de liste par compr\IeC {\'e}hension}{281}{section.5.7}
+\contentsline {subsection}{\numberline {5.7.1}R\IeC {\'e}vision - niveau basique}{281}{subsection.5.7.1}
+\contentsline {subsubsection}{Cas le plus simple}{281}{section*.465}
+\contentsline {subparagraph}{Digression}{281}{section*.466}
+\contentsline {subsubsection}{Restriction \IeC {\`a} certains \IeC {\'e}l\IeC {\'e}ments}{282}{section*.467}
+\contentsline {subsubsection}{Autres types}{282}{section*.468}
+\contentsline {subsubsection}{Autres types (2)}{282}{section*.469}
+\contentsline {subsubsection}{Pour en savoir plus}{282}{section*.470}
+\contentsline {section}{\numberline {5.8}Compr\IeC {\'e}hensions imbriqu\IeC {\'e}es}{283}{section.5.8}
+\contentsline {subsection}{\numberline {5.8.1}Compl\IeC {\'e}ments - niveau interm\IeC {\'e}diaire}{283}{subsection.5.8.1}
+\contentsline {subsubsection}{Imbrications}{283}{section*.471}
+\contentsline {subsubsection}{Ordre d'\IeC {\'e}valuation de \texttt {{[}{[}\ ..\ for\ ..\ {]}\ ..\ for\ ..\ {]}}}{283}{section*.472}
+\contentsline {subsubsection}{Avec \texttt {if}}{284}{section*.473}
+\contentsline {subsection}{\numberline {5.8.2}Compl\IeC {\'e}ments - niveau avanc\IeC {\'e}}{285}{subsection.5.8.2}
+\contentsline {subsubsection}{Les variables de boucle \emph {fuient}}{285}{section*.474}
+\contentsline {subsubsection}{Ordre d'\IeC {\'e}valuation de \texttt {{[}\ ..\ for\ ..\ for\ ..\ {]}}}{285}{section*.475}
+\contentsline {subsubsection}{Conclusion}{286}{section*.476}
+\contentsline {section}{\numberline {5.9}Compr\IeC {\'e}hensions}{287}{section.5.9}
+\contentsline {subsection}{\numberline {5.9.1}Exercice - niveau basique}{287}{subsection.5.9.1}
+\contentsline {subsection}{\numberline {5.9.2}Exercice - niveau interm\IeC {\'e}diaire}{287}{subsection.5.9.2}
+\contentsline {subsection}{\numberline {5.9.3}Exercice - niveau interm\IeC {\'e}diaire}{287}{subsection.5.9.3}
+\contentsline {section}{\numberline {5.10}Expressions g\IeC {\'e}n\IeC {\'e}ratrices}{288}{section.5.10}
+\contentsline {subsection}{\numberline {5.10.1}Compl\IeC {\'e}ment - niveau basique}{288}{subsection.5.10.1}
+\contentsline {subsubsection}{Comment transformer une compr\IeC {\'e}hension de liste en it\IeC {\'e}rateur~?}{288}{section*.477}
+\contentsline {subsection}{\numberline {5.10.2}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{289}{subsection.5.10.2}
+\contentsline {subsubsection}{Compr\IeC {\'e}hension \emph {vs} expression g\IeC {\'e}n\IeC {\'e}ratrice}{289}{section*.478}
+\contentsline {paragraph}{Digression~: liste \emph {vs} it\IeC {\'e}rateur\\\\}{289}{section*.479}
+\contentsline {paragraph}{Compr\IeC {\'e}hension et expression g\IeC {\'e}n\IeC {\'e}ratrice\\\\}{290}{section*.480}
+\contentsline {subsubsection}{Pour aller plus loin}{291}{section*.481}
+\contentsline {section}{\numberline {5.11}\texttt {yield\ from} pour cascader deux g\IeC {\'e}n\IeC {\'e}rateurs}{292}{section.5.11}
+\contentsline {subsection}{\numberline {5.11.1}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{292}{subsection.5.11.1}
+\contentsline {subsubsection}{Une fonction g\IeC {\'e}n\IeC {\'e}ratrice}{292}{section*.482}
+\contentsline {subsubsection}{Une fonction g\IeC {\'e}n\IeC {\'e}ratrice qui appelle une autre fonction g\IeC {\'e}n\IeC {\'e}ratrice}{292}{section*.483}
+\contentsline {subparagraph}{Premi\IeC {\`e}re id\IeC {\'e}e\\\\}{292}{section*.484}
+\contentsline {subparagraph}{Deuxi\IeC {\`e}me id\IeC {\'e}e\\\\}{293}{section*.485}
+\contentsline {subparagraph}{\texttt {yield\ from}\\\\}{293}{section*.486}
+\contentsline {section}{\numberline {5.12}Les boucles \texttt {for}}{294}{section.5.12}
+\contentsline {subsection}{\numberline {5.12.1}Exercice - niveau interm\IeC {\'e}diaire}{294}{subsection.5.12.1}
+\contentsline {subsubsection}{Produit scalaire}{294}{section*.487}
+\contentsline {section}{\numberline {5.13}Pr\IeC {\'e}cisions sur l'importation}{295}{section.5.13}
+\contentsline {subsection}{\numberline {5.13.1}Compl\IeC {\'e}ment - niveau basique}{295}{subsection.5.13.1}
+\contentsline {subsubsection}{Importations multiples - rechargement}{295}{section*.488}
+\contentsline {subparagraph}{Un module n'est charg\IeC {\'e} qu'une fois\\\\}{295}{section*.489}
+\contentsline {subparagraph}{Les raisons de ce choix\\\\}{296}{section*.490}
+\contentsline {subparagraph}{Les inconv\IeC {\'e}nients de ce choix - la fonction \texttt {reload}\\\\}{296}{section*.491}
+\contentsline {subsection}{\numberline {5.13.2}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{297}{subsection.5.13.2}
+\contentsline {subsubsection}{\texttt {sys.modules}}{297}{section*.492}
+\contentsline {subsubsection}{\texttt {sys.builtin\_module\_names}}{298}{section*.493}
+\contentsline {subsubsection}{Pour en savoir plus}{298}{section*.494}
+\contentsline {section}{\numberline {5.14}O\IeC {\`u} sont cherch\IeC {\'e}s les modules~?}{299}{section.5.14}
+\contentsline {subsection}{\numberline {5.14.1}Compl\IeC {\'e}ment - niveau basique}{299}{subsection.5.14.1}
+\contentsline {subsection}{\numberline {5.14.2}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{299}{subsection.5.14.2}
+\contentsline {subsubsection}{Distribuer sa propre librairie avec \texttt {setuptools}}{301}{section*.495}
+\contentsline {section}{\numberline {5.15}La clause \texttt {import\ as}}{302}{section.5.15}
+\contentsline {subsection}{\numberline {5.15.1}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{302}{subsection.5.15.1}
+\contentsline {subsubsection}{Rappel}{302}{section*.496}
+\contentsline {subparagraph}{Importer tout un module}{302}{section*.497}
+\contentsline {subparagraph}{Importer un symbole dans un module}{302}{section*.498}
+\contentsline {subsubsection}{\texttt {import\_module}}{302}{section*.499}
+\contentsline {subsubsection}{Reprenons}{303}{section*.500}
+\contentsline {subsubsection}{\texttt {import} \texttt {as}}{303}{section*.501}
+\contentsline {subparagraph}{Tout un module\\\\}{303}{section*.502}
+\contentsline {subparagraph}{Un symbole dans un module\\\\}{304}{section*.503}
+\contentsline {subsubsection}{Quelques exemples}{304}{section*.504}
+\contentsline {subsubsection}{Pour en savoir plus}{304}{section*.505}
+\contentsline {section}{\numberline {5.16}R\IeC {\'e}capitulatif sur \texttt {import}}{305}{section.5.16}
+\contentsline {subsection}{\numberline {5.16.1}Compl\IeC {\'e}ment - niveau basique}{305}{subsection.5.16.1}
+\contentsline {subsubsection}{Importer tout un module}{305}{section*.506}
+\contentsline {subsubsection}{Importer une variable sp\IeC {\'e}cifique d'un module}{305}{section*.507}
+\contentsline {subsection}{\numberline {5.16.2}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{306}{subsection.5.16.2}
+\contentsline {subsubsection}{\texttt {import} .. \texttt {as}}{306}{section*.508}
+\contentsline {subsubsection}{\texttt {import\ *}}{307}{section*.509}
+\contentsline {subsubsection}{Quand utiliser telle ou telle forme}{307}{section*.510}
+\contentsline {subsection}{\numberline {5.16.3}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{308}{subsection.5.16.3}
+\contentsline {subsubsection}{\texttt {import} de mani\IeC {\`e}re ``programmative''}{308}{section*.511}
+\contentsline {subsubsection}{Imports relatifs}{309}{section*.512}
+\contentsline {section}{\numberline {5.17}La notion de package}{310}{section.5.17}
+\contentsline {subsection}{\numberline {5.17.1}Compl\IeC {\'e}ment - niveau basique}{310}{subsection.5.17.1}
+\contentsline {subsubsection}{Rappel sur les modules}{310}{section*.513}
+\contentsline {subsubsection}{La notion de package}{311}{section*.514}
+\contentsline {subsubsection}{\IeC {\`A} quoi sert \texttt {\_\_init\_\_.py}~?}{312}{section*.515}
+\contentsline {subsubsection}{Pour en savoir plus}{313}{section*.516}
+\contentsline {section}{\numberline {5.18}Usage avan\IeC {\c c}\IeC {\'e}s de \texttt {import}}{314}{section.5.18}
+\contentsline {subsection}{\numberline {5.18.1}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{314}{subsection.5.18.1}
+\contentsline {subsubsection}{Attributs sp\IeC {\'e}ciaux}{314}{section*.517}
+\contentsline {subparagraph}{\texttt {\_\_name\_\_}\\\\}{314}{section*.518}
+\contentsline {subparagraph}{\texttt {\_\_file\_\_}\\\\}{314}{section*.519}
+\contentsline {subparagraph}{\texttt {\_\_all\_\_}\\\\}{314}{section*.520}
+\contentsline {subsubsection}{Import absolu}{315}{section*.521}
+\contentsline {subsubsection}{Import relatif}{315}{section*.522}
+\contentsline {subparagraph}{Pour remonter dans l'arborescence\\\\}{316}{section*.523}
+\contentsline {subsubsection}{Avantages de l'import relatif}{317}{section*.524}
+\contentsline {subsubsection}{Frustrations li\IeC {\'e}es \IeC {\`a} l'import relatif}{317}{section*.525}
+\contentsline {paragraph}{Se base sur \texttt {\_\_name\_\_} et non sur \texttt {\_\_file\_\_}\\\\}{317}{section*.526}
+\contentsline {paragraph}{Digression sur l'attribut \texttt {\_\_name\_\_}\\\\}{318}{section*.527}
+\contentsline {paragraph}{L'attribut \texttt {\_\_package\_\_}}{318}{section*.528}
+\contentsline {paragraph}{Ce qu'il faut retenir\\\\}{319}{section*.529}
+\contentsline {subsubsection}{Pour en savoir plus}{319}{section*.530}
+\contentsline {section}{\numberline {5.19}D\IeC {\'e}coder le module \texttt {this}}{320}{section.5.19}
+\contentsline {subsection}{\numberline {5.19.1}Exercice - niveau avanc\IeC {\'e}}{320}{subsection.5.19.1}
+\contentsline {subsubsection}{Le module \texttt {this} et le \emph {Zen de Python}}{320}{section*.531}
+\contentsline {subsubsection}{But de l'exercice}{320}{section*.532}
+\contentsline {subsubsection}{Indices}{320}{section*.533}
+\contentsline {subsubsection}{\IeC {\`A} vous de jouer}{321}{section*.534}
+\contentsline {subsubsection}{Correction}{321}{section*.535}

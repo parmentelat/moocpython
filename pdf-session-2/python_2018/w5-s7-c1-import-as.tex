@@ -1,0 +1,259 @@
+    \hypertarget{la-clause-import-as}{%
+\section{\texorpdfstring{La clause
+\texttt{import\ as}}{La clause import as}}\label{la-clause-import-as}}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{rappel}{%
+\subsubsection{Rappel}\label{rappel}}
+
+    Jusqu'ici nous avons vu les formes d'importation suivantes~:
+
+    \hypertarget{importer-tout-un-module}{%
+\subparagraph{Importer tout un module}\label{importer-tout-un-module}}
+
+    D'abord pour importer tout un module
+
+    \begin{verbatim}
+import monmodule
+\end{verbatim}
+
+    \hypertarget{importer-un-symbole-dans-un-module}{%
+\subparagraph{Importer un symbole dans un
+module}\label{importer-un-symbole-dans-un-module}}
+
+    Dans la vidéo nous venons de voir qu'on peut aussi faire~:
+
+    \begin{verbatim}
+from monmodule import monsymbole
+\end{verbatim}
+
+    Pour mémoire, le langage permet de faire aussi des \texttt{import\ *},
+qui est d'un usage déconseillé en dehors de l'interpréteur interactif,
+car cela crée évidemment un risque de collisions non contrôlées des
+espaces de nommage.
+
+    \hypertarget{import_module}{%
+\subsubsection{\texorpdfstring{\texttt{import\_module}}{import\_module}}\label{import_module}}
+
+    Comme vous pouvez le voir, avec \texttt{import} on ne peut importer
+qu'un nom fixe. On ne peut pas calculer le nom d'un module, et le
+charger ensuite~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} si on calcule un nom de module}
+        \PY{n}{modulename} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ma}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{th}\PY{l+s+s2}{\PYZdq{}} 
+\end{Verbatim}
+
+
+    on ne peut pas ensuite charger le module math avec import puisque
+
+\begin{verbatim}
+import modulename
+\end{verbatim}
+
+cherche un module dont le nom est ``modulename''\\
+
+    Sachez que vous pourriez utiliser dans ce cas la fonction
+\texttt{import\_module} du module \texttt{importlib}, qui cette fois
+permet d'importer un module dont vous avez calculé le nom~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{importlib} \PY{k}{import} \PY{n}{import\PYZus{}module}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{loaded} \PY{o}{=} \PY{n}{import\PYZus{}module}\PY{p}{(}\PY{n}{modulename}\PY{p}{)}
+        \PY{n+nb}{type}\PY{p}{(}\PY{n}{loaded}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} module
+\end{Verbatim}
+            
+    Nous avons maintenant bien chargé le module \texttt{math}, et on l'a
+rangé dans la variable \texttt{loaded}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} loaded référence le même objet module que si on avait fait }
+        \PY{c+c1}{\PYZsh{} import math}
+        \PY{k+kn}{import} \PY{n+nn}{math}
+        \PY{n}{math} \PY{o+ow}{is} \PY{n}{loaded}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} True
+\end{Verbatim}
+            
+    La fonction \texttt{import\_module} n'est pas d'un usage très courant,
+dans la pratique on utilise une des formes de \texttt{import} que nous
+allons voir maintenant, mais \texttt{import\_module} va me servir à bien
+illustrer ce que font, précisément, les différentes formes de
+\texttt{import}.
+
+    \hypertarget{reprenons}{%
+\subsubsection{Reprenons}\label{reprenons}}
+
+    Maintenant que nous savons ce que fait \texttt{import\_module}, on peut
+récrire les deux formes d'\texttt{import} de cette façon~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} un import simple}
+        \PY{k+kn}{import} \PY{n+nn}{math}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} peut se récrire}
+        \PY{n}{math} \PY{o}{=} \PY{n}{import\PYZus{}module}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{math}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    Et~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} et un import from}
+        \PY{k+kn}{from} \PY{n+nn}{pathlib} \PY{k}{import} \PY{n}{Path}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} est en gros équivalent à}
+        \PY{n}{tmp} \PY{o}{=} \PY{n}{import\PYZus{}module}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pathlib}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{Path} \PY{o}{=} \PY{n}{tmp}\PY{o}{.}\PY{n}{Path}
+        \PY{k}{del} \PY{n}{tmp}
+\end{Verbatim}
+
+
+    \hypertarget{import-as}{%
+\subsubsection{\texorpdfstring{\texttt{import}
+\texttt{as}}{import as}}\label{import-as}}
+
+    \hypertarget{tout-un-module}{%
+\subparagraph{Tout un module\\\\}\label{tout-un-module}}
+
+    Dans chacun de ces deux cas, on n'a pas le choix du nom de l'entité
+importée, et cela pose parfois problème.\\
+
+Il peut arriver d'écrire un module sous un nom qui semble bien choisi,
+mais on se rend compte au bout d'un moment qu'il entre en conflit avec
+un autre symbole.\\
+
+Par exemple, vous écrivez un module dans un fichier \texttt{globals.py}
+et vous l'importez dans votre code
+
+    \begin{verbatim}
+import globals
+\end{verbatim}
+
+    Puis un moment après pour débugger vous voulez utiliser la fonction
+\emph{built-in} \texttt{globals}. Sauf que, en vertu de la règle LEGB,
+le symbole \texttt{globals} se trouve maintenant désigner votre module,
+et non la fonction.\\
+
+    À ce stade évidemment vous pouvez (devriez) renommer votre module, mais
+cela peut prendre du temps parce qu'il y a de nombreuses dépendances. En
+attendant vous pouvez tirer profit de la clause \texttt{import\ as} dont
+la forme générale est~:
+
+    \begin{verbatim}
+import monmodule as autremodule
+\end{verbatim}
+
+    ce qui, toujours à la grosse louche, est équivalent à~:
+
+    \begin{verbatim}
+autremodule = import_module('monmodule')
+\end{verbatim}
+
+    \hypertarget{un-symbole-dans-un-module}{%
+\subparagraph{Un symbole dans un
+module\\\\}\label{un-symbole-dans-un-module}}
+
+    On peut aussi importer un symbole spécifique d'un module, sous un autre
+nom que celui qu'il a dans le module. Ainsi~:
+
+    \begin{verbatim}
+from monmodule import monsymbole as autresymbole
+\end{verbatim}
+
+    qui fait quelque chose comme~:
+
+    \begin{verbatim}
+temporaire = import_module('monmodule')
+autresymbole = temporaire.monsymbole
+del temporaire
+\end{verbatim}
+
+    \hypertarget{quelques-exemples}{%
+\subsubsection{Quelques exemples}\label{quelques-exemples}}
+
+    J'ai écrit des modules jouets~:
+    
+\begin{itemize}
+	\item 
+	\texttt{un\_deux} qui définit des fonctions \texttt{un} et \texttt{deux}~;
+	\item
+	 \texttt{un\_deux\_trois} qui définit des fonctions \texttt{un}, \texttt{deux} et \texttt{trois}~;
+	 \item
+	\texttt{un\_deux\_trois\_quatre} qui définit, eh oui, des fonctions
+	\texttt{un}, \texttt{deux}, \texttt{trois} et \texttt{quatre}.
+\end{itemize}    
+
+Toutes ces fonctions se contentent d'écrire leur nom et leur module.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} changer le nom du module importé}
+        \PY{k+kn}{import} \PY{n+nn}{un\PYZus{}deux} \PY{k}{as} \PY{n+nn}{one\PYZus{}two}
+        \PY{n}{one\PYZus{}two}\PY{o}{.}\PY{n}{un}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+la fonction un dans le module un\_deux
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} changer le nom d\PYZsq{}un symbole importé du module}
+         \PY{k+kn}{from} \PY{n+nn}{un\PYZus{}deux\PYZus{}trois} \PY{k}{import} \PY{n}{un} \PY{k}{as} \PY{n}{one}
+         \PY{n}{one}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+la fonction un dans le module un\_deux\_trois
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} on peut mélanger tout ça}
+         \PY{k+kn}{from} \PY{n+nn}{un\PYZus{}deux\PYZus{}trois\PYZus{}quatre} \PY{k}{import} \PY{n}{un} \PY{k}{as} \PY{n}{one}\PY{p}{,} \PY{n}{deux}\PY{p}{,} \PY{n}{trois} \PY{k}{as} \PY{n}{three}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{one}\PY{p}{(}\PY{p}{)}
+         \PY{n}{deux}\PY{p}{(}\PY{p}{)}
+         \PY{n}{three}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+la fonction un dans le module un\_deux\_trois\_quatre
+la fonction deux dans le module un\_deux\_trois\_quatre
+la fonction trois dans le module un\_deux\_trois\_quatre
+
+    \end{Verbatim}
+
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+    Vous pouvez vous reporter à
+\href{https://docs.python.org/3/reference/simple_stmts.html\#the-import-statement}{la
+section sur l'instruction \texttt{import}} dans la documentation python.

@@ -1,0 +1,251 @@
+    \hypertarget{expressions-guxe9nuxe9ratrices}{%
+\section{Expressions
+génératrices}\label{expressions-guxe9nuxe9ratrices}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    \hypertarget{comment-transformer-une-compruxe9hension-de-liste-en-ituxe9rateur}{%
+\subsubsection{Comment transformer une compréhension de liste en
+itérateur~?}\label{comment-transformer-une-compruxe9hension-de-liste-en-ituxe9rateur}}
+
+    Nous venons de voir les fonctions génératrices qui sont un puissant
+outil pour créer facilement des itérateurs. Nous verrons prochainement
+comment utiliser ces fonctions génératrices pour transformer en quelques
+lignes de code vos propres objets en itérateurs.\\
+
+Vous savez maintenant qu'en Python on favorise la notion d'itérateurs
+puisqu'ils se manipulent comme des objets itérables et qu'ils sont en
+général beaucoup plus compacts en mémoire que l'itérable correspondant.\\
+
+Comme les compréhensions de listes sont fréquemment utilisées en Python,
+mais qu'elles sont des itérables potentiellement gourmands en ressources
+mémoire, on souhaiterait pouvoir créer un itérateur directement à partir
+d'une compréhension de liste. C'est possible et très facile en Python.
+Il suffit de remplacer les crochets par des parenthèses, regardons cela.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} c\PYZsq{}est une compréhension de liste}
+        \PY{n}{comprehension} \PY{o}{=} \PY{p}{[}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{)} \PY{k}{if} \PY{n}{x}\PY{o}{\PYZpc{}}\PY{k}{17} == 0] 
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{comprehension}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[0, 289, 1156, 2601, 4624, 7225]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} c\PYZsq{}est une expression génératrice}
+        \PY{n}{generator} \PY{o}{=} \PY{p}{(}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{)} \PY{k}{if} \PY{n}{x}\PY{o}{\PYZpc{}}\PY{k}{17} == 0) 
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{generator}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+<generator object <genexpr> at 0x04AF0D50>
+
+    \end{Verbatim}
+
+    Ensuite pour utiliser une expression génératrice, c'est très simple, on
+l'utilise comme n'importe quel itérateur.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{generator} \PY{o+ow}{is} \PY{n+nb}{iter}\PY{p}{(}\PY{n}{generator}\PY{p}{)} \PY{c+c1}{\PYZsh{} generator est bien un itérateur}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} True
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} affiche les premiers carrés des multiples de 17}
+        \PY{k}{for} \PY{n}{count}\PY{p}{,} \PY{n}{carre} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{generator}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Contenu de generator après }\PY{l+s+si}{\PYZob{}count\PYZcb{}}\PY{l+s+s1}{ itérations : }\PY{l+s+si}{\PYZob{}carre\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Contenu de generator après 1 itérations : 0
+Contenu de generator après 2 itérations : 289
+Contenu de generator après 3 itérations : 1156
+Contenu de generator après 4 itérations : 2601
+Contenu de generator après 5 itérations : 4624
+Contenu de generator après 6 itérations : 7225
+
+    \end{Verbatim}
+
+    Avec une expression génératrice on n'est plus limité comme avec les
+compréhensions par le nombre d'éléments~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} trop grand pour une compréhension,}
+        \PY{c+c1}{\PYZsh{} mais on peut créer le générateur sans souci}
+        \PY{n}{generator} \PY{o}{=} \PY{p}{(}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{18}\PY{p}{)} \PY{k}{if} \PY{n}{x}\PY{o}{\PYZpc{}}\PY{k}{17}==0) 
+        
+        \PY{c+c1}{\PYZsh{} on va calculer tous les carrés de multiples de 17 }
+        \PY{c+c1}{\PYZsh{} plus petits que 10**10 et dont les 4 derniers chiffres sont 1316}
+        \PY{n}{recherche} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} le point important, c\PYZsq{}est qu\PYZsq{}on n\PYZsq{}a pas besoin de }
+        \PY{c+c1}{\PYZsh{} créer une liste de 10**18 éléments }
+        \PY{c+c1}{\PYZsh{} qui serait beaucoup trop grosse pour la mettre dans la mémoire vive}
+        
+        \PY{c+c1}{\PYZsh{} avec un générateur, on ne paie que ce qu\PYZsq{}on utilise...}
+        \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{generator}\PY{p}{:}
+            \PY{k}{if} \PY{n}{x} \PY{o}{\PYZgt{}} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{10}\PY{p}{:}
+                \PY{k}{break}
+            \PY{k}{elif} \PY{n+nb}{str}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{4}\PY{p}{:}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{1316}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+                \PY{n}{recherche}\PY{o}{.}\PY{n}{add}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{recherche}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\{617721316, 311381316, 3617541316, 4536561316\}
+
+    \end{Verbatim}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{compruxe9hension-vs-expression-guxe9nuxe9ratrice}{%
+\subsubsection{\texorpdfstring{Compréhension \emph{vs} expression
+génératrice}{Compréhension vs expression génératrice}}\label{compruxe9hension-vs-expression-guxe9nuxe9ratrice}}
+
+    \hypertarget{digression-liste-vs-ituxe9rateur}{%
+\paragraph{\texorpdfstring{Digression~: liste \emph{vs}
+itérateur}{Digression~: liste vs itérateur}\\\\}\label{digression-liste-vs-ituxe9rateur}}
+
+    En Python 3, nous avons déjà rencontré la fonction \texttt{range} qui
+retourne les premiers entiers.\\
+
+Ou plutôt, c'est \textbf{comme si} elle retournait les premiers entiers
+lorsqu'on fait une boucle \texttt{for}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} on peut parcourir un range comme si c\PYZsq{}était une liste}
+        \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{i}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+0
+1
+2
+3
+
+    \end{Verbatim}
+
+    mais en réalité le résultat de \texttt{range} exhibe un comportement un
+peu étrange, en ce sens que~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} mais en fait la fonction range ne renvoie PAS une liste (depuis Python 3)}
+        \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} range(0, 4)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} et en effet ce n\PYZsq{}est pas une liste}
+        \PY{n+nb}{isinstance}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{n+nb}{list}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} False
+\end{Verbatim}
+            
+    La raison de fond pour ceci, c'est que \textbf{le fait de construire une
+liste} est une opération relativement coûteuse - toutes proportions
+gardées - car il est nécessaire d'allouer de la mémoire pour
+\textbf{stocker tous les éléments} de la liste à un instant donné~;
+alors qu'en fait dans l'immense majorité des cas, on n'a \textbf{pas
+réellement besoin} de cette place mémoire, tout ce dont on a besoin
+c'est d'itérer sur un certain nombre de valeurs mais \textbf{qui peuvent
+être calculées} au fur et à mesure que l'on parcourt la liste.
+
+    \hypertarget{compruxe9hension-et-expression-guxe9nuxe9ratrice}{%
+\paragraph{Compréhension et expression
+génératrice\\\\}\label{compruxe9hension-et-expression-guxe9nuxe9ratrice}}
+
+    À la lumière de ce qui vient d'être dit, on peut voir qu'une
+compréhension n'est \textbf{pas toujours le bon choix}, car par
+définition elle \textbf{construit une liste} de résultats - de la
+fonction appliquée successivement aux entrées.\\
+
+Or dans les cas où, comme pour \texttt{range}, on n'a pas réellement
+besoin de cette liste \textbf{en temps que telle} mais seulement de cet
+artefact pour pouvoir itérer sur la liste des résultats, il est
+préférable d'utiliser une \textbf{expression génératrice}.\\
+
+Voyons tout de suite sur un exemple à quoi cela ressemblerait.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{depart} \PY{o}{=} \PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} dans le premier calcul de arrivee }
+        \PY{c+c1}{\PYZsh{} pour rappel, la compréhension est entre []}
+        \PY{c+c1}{\PYZsh{} arrivee = [x**2 for x in depart]}
+        
+        \PY{c+c1}{\PYZsh{} on peut écrire presque la même chose avec des () à la place }
+        \PY{n}{arrivee2} \PY{o}{=} \PY{p}{(}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{depart}\PY{p}{)}
+        \PY{n}{arrivee2}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} <generator object <genexpr> at 0x04B014B0>
+\end{Verbatim}
+            
+    Comme pour \texttt{range}, le résultat de l'expression génératrice ne se
+laisse pas regarder avec \texttt{print}, mais comme pour \texttt{range},
+on peut itérer sur le résultat~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{k}{for} \PY{n}{x}\PY{p}{,} \PY{n}{y} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n}{depart}\PY{p}{,} \PY{n}{arrivee2}\PY{p}{)}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{x=}\PY{l+s+si}{\PYZob{}x\PYZcb{}}\PY{l+s+s2}{ =\PYZgt{} y=}\PY{l+s+si}{\PYZob{}y\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+x=-5 => y=25
+x=-3 => y=9
+x=0 => y=0
+x=3 => y=9
+x=5 => y=25
+x=10 => y=100
+
+    \end{Verbatim}
+
+    Il n'est pas \textbf{toujours} possible de remplacer une compréhension
+par une expression génératrice, mais c'est \textbf{souvent souhaitable},
+car de cette façon on peut faire de substantielles économies en matière
+de performances. On peut le faire dès lors que l'on a seulement besoin
+d'itérer sur les résultats.\\
+
+    Il faut juste un peu se méfier, car comme on parle ici d'itérateurs,
+comme toujours si on essaie de faire plusieurs fois une boucle sur le
+même itérateur, il ne se passe plus rien, car l'itérateur a été épuisé~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{k}{for} \PY{n}{x}\PY{p}{,} \PY{n}{y} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n}{depart}\PY{p}{,} \PY{n}{arrivee2}\PY{p}{)}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{x=}\PY{l+s+si}{\PYZob{}x\PYZcb{}}\PY{l+s+s2}{ =\PYZgt{} y=}\PY{l+s+si}{\PYZob{}y\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{pour-aller-plus-loin}{%
+\subsubsection{Pour aller plus loin}\label{pour-aller-plus-loin}}
+
+    Vous pouvez regarder
+\href{http://python-history.blogspot.fr/2010/06/from-list-comprehensions-to-generator.html}{cette
+intéressante discussion de Guido van Rossum} sur les compréhensions et
+les expressions génératrices.

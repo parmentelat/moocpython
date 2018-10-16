@@ -1,0 +1,129 @@
+    \hypertarget{programmation-fonctionnelle}{%
+\section{Programmation
+fonctionnelle}\label{programmation-fonctionnelle}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    \hypertarget{pour-ruxe9sumer}{%
+\subsubsection{Pour résumer}\label{pour-ruxe9sumer}}
+
+    La notion de programmation fonctionnelle consiste essentiellement à
+pouvoir manipuler les fonctions comme des objets à part entière, et à
+les passer en argument à d'autres fonctions, comme cela est illustré
+dans la vidéo.\\
+
+    On peut créer une fonction par l'intermédiaire de~:
+
+\begin{itemize}
+	\item 
+	l'\emph{expression} \texttt{lambda:}, on obtient alors une fonction
+	\emph{anonyme}~;
+	\item
+	l'\emph{instruction} \texttt{def} et dans ce cas on
+	peut accéder à l'objet fonction par son nom.
+\end{itemize}
+
+Pour des raisons de syntaxe surtout, on a davantage de puissance avec
+\texttt{def}.\\
+
+    On peut calculer la liste des résultats d'une fonction sur une liste
+(plus généralement un itérable) d'entrées par~:
+
+\begin{itemize}
+	\item 
+	\texttt{map}, éventuellement combiné à \texttt{filter}~;
+	\item
+	une compréhension de liste,
+	éventuellement assortie d'un \texttt{if}.
+\end{itemize}
+
+Nous allons revoir les compréhensions dans la prochaine vidéo.
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    Pour les curieux qui ont entendu le terme de \emph{map - reduce} , voici
+la logique derrière l'opération \texttt{reduce}, qui est également
+disponible en Python au travers du module \texttt{functools}.
+
+    \hypertarget{reduce}{%
+\subsubsection{\texorpdfstring{\texttt{reduce}}{reduce}}\label{reduce}}
+
+    La fonction \texttt{reduce} permet d'appliquer une opération associative
+à une liste d'entrées. Pour faire simple, étant donné un opérateur
+binaire \(\otimes\) on veut pouvoir calculer\\
+
+\(x_1 \otimes x_2 ... \otimes x_n\)\\
+
+De manière un peu moins abstraite, on suppose qu'on dispose d'une
+\textbf{fonction binaire} \texttt{f} qui implémente l'opérateur
+\(\otimes\), et alors\\
+
+\texttt{reduce}
+\(( f, [x_1, .. x_n] ) = f ( ... f(f(x_1,x_2), x_3), .. , x_n)\)\\
+
+    En fait \texttt{reduce} accepte un troisième argument - qu'il faut
+comprendre comme l'élément neutre de l'opérateur/fonction en question -
+et qui est retourné lorsque la liste en entrée est vide.\\
+
+    Par exemple voici - encore - une autre implémentation possible de la
+fonction \texttt{factoriel}.\\
+
+On utilise ici \href{https://docs.python.org/3/library/operator.html}{le
+module \texttt{operator}}, qui fournit sous forme de fonctions la
+plupart des opérateurs du langage, et notamment, dans notre cas,
+\texttt{operator.mul}~; cette fonction retourne tout simplement le
+produit de ses deux arguments.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} la fonction reduce dans Python 3 n\PYZsq{}est plus une built\PYZhy{}in comme en Python 2}
+        \PY{c+c1}{\PYZsh{} elle fait partie du module functools}
+        \PY{k+kn}{from} \PY{n+nn}{functools} \PY{k}{import} \PY{n}{reduce}
+        
+        \PY{c+c1}{\PYZsh{} la multiplication, mais sous forme de fonction et non d\PYZsq{}opérateur}
+        \PY{k+kn}{from} \PY{n+nn}{operator} \PY{k}{import} \PY{n}{mul}
+        
+        \PY{k}{def} \PY{n+nf}{factoriel}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{n}{reduce}\PY{p}{(}\PY{n}{mul}\PY{p}{,} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{n}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} ceci fonctionne aussi pour factoriel (0)}
+        \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}i\PYZcb{}}\PY{l+s+s2}{ \PYZhy{}\PYZgt{} }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{factoriel(i)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+0 -> 1
+1 -> 1
+2 -> 2
+3 -> 6
+4 -> 24
+
+    \end{Verbatim}
+
+    \hypertarget{cas-fruxe9quents-de-reduce}{%
+\subparagraph{\texorpdfstring{Cas fréquents de
+\texttt{reduce}\\\\}{Cas fréquents de reduce}}\label{cas-fruxe9quents-de-reduce}}
+
+    Par commodité, Python fournit des fonctions built-in qui correspondent
+en fait à des \texttt{reduce} fréquents, comme la somme, et les
+opérations \texttt{min} et \texttt{max}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{entrees} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{45}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{]}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sum}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n+nb}{sum}\PY{p}{(}\PY{n}{entrees}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{min}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n+nb}{min}\PY{p}{(}\PY{n}{entrees}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{max}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n+nb}{max}\PY{p}{(}\PY{n}{entrees}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+sum 81
+min 4
+max 45
+
+    \end{Verbatim}

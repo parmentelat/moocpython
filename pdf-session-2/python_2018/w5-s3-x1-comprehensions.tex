@@ -1,0 +1,104 @@
+    \hypertarget{compruxe9hensions}{%
+\section{Compréhensions}\label{compruxe9hensions}}
+
+    \hypertarget{exercice---niveau-basique}{%
+\subsection{Exercice - niveau basique}\label{exercice---niveau-basique}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour charger l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}aplatir} \PY{k}{import} \PY{n}{exo\PYZus{}aplatir}
+\end{Verbatim}
+
+
+    Il vous est demandé d'écrire une fonction \texttt{aplatir} qui prend
+\emph{un unique} argument \texttt{l\_conteneurs} qui est une liste (ou
+plus généralement un itérable) de conteneurs (ou plus généralement
+d'itérables), et qui retourne la liste de tous les éléments de tous les
+conteneurs.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} par exemple}
+        \PY{n}{exo\PYZus{}aplatir}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{aplatir}\PY{p}{(}\PY{n}{conteneurs}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre\PYZus{}code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} vérifier votre code}
+        \PY{n}{exo\PYZus{}aplatir}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{aplatir}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{exercice---niveau-intermuxe9diaire}{%
+\subsection{Exercice - niveau
+intermédiaire}\label{exercice---niveau-intermuxe9diaire}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} chargement de l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}alternat} \PY{k}{import} \PY{n}{exo\PYZus{}alternat}
+\end{Verbatim}
+
+
+    À présent, on passe en argument deux conteneurs (deux itérables)
+\texttt{c1} et \texttt{c2} de même taille à la fonction
+\texttt{alternat}, qui doit construire une liste contenant les éléments
+pris alternativement dans \texttt{c1} et dans \texttt{c2}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} exemple}
+        \PY{n}{exo\PYZus{}alternat}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \textbf{Indice} pour cet exercice il peut être pertinent de recourir à
+la fonction \emph{built-in} \texttt{zip}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{alternat}\PY{p}{(}\PY{n}{c1}\PY{p}{,} \PY{n}{c2}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre\PYZus{}code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour vérifier votre code}
+        \PY{n}{exo\PYZus{}alternat}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{alternat}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{exercice---niveau-intermuxe9diaire}{%
+\subsection{Exercice - niveau
+intermédiaire}\label{exercice---niveau-intermuxe9diaire}}
+
+    On se donne deux ensembles A et B de tuples de la forme
+
+\begin{verbatim}
+(entier, valeur)
+\end{verbatim}
+
+On vous demande d'écrire une fonction \texttt{intersect} qui retourne
+l'ensemble des objets \texttt{valeur} associés (dans A ou dans B) à un
+entier qui soit présent dans (un tuple de) A \emph{et} dans (un tuple
+de) B.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} un exemple}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}intersect} \PY{k}{import} \PY{n}{exo\PYZus{}intersect}
+        \PY{n}{exo\PYZus{}intersect}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{intersect}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{n}{B}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre\PYZus{}code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour vérifier votre code}
+        \PY{n}{exo\PYZus{}intersect}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{intersect}\PY{p}{)}
+\end{Verbatim}

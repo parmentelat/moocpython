@@ -1,0 +1,56 @@
+    \hypertarget{les-instructions-break-et-continue}{%
+\section{\texorpdfstring{Les instructions \texttt{break} et
+\texttt{continue}}{Les instructions break et continue}}\label{les-instructions-break-et-continue}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    \hypertarget{break-et-continue}{%
+\subsubsection{\texorpdfstring{\texttt{break} et
+\texttt{continue}}{break et continue}}\label{break-et-continue}}
+
+    En guise de rappel de ces deux notions que nous avons déjà rencontrées
+dans la séquence consacrée aux boucles \texttt{while} la semaine passée,
+python propose deux instructions très pratiques permettant de contrôler
+l'exécution à l'intérieur des boucles de répétition, et ceci s'applique
+indifféremment aux boucles \texttt{for} ou \texttt{while}~:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{continue}~: pour abandonner l'itération courante, et passer à
+  la suivante, en \textbf{restant dans la boucle}~;
+\item
+  \texttt{break}~: pour abandonner \textbf{complètement} la boucle.
+\end{itemize}
+
+Voici un exemple simple d'utilisation de ces deux instructions~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k}{for} \PY{n}{entier} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1000}\PY{p}{)}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} on ignore les nombres non multiples de 10}
+            \PY{k}{if} \PY{n}{entier} \PY{o}{\PYZpc{}} \PY{l+m+mi}{10} \PY{o}{!=} \PY{l+m+mi}{0}\PY{p}{:}
+                \PY{k}{continue}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{on traite l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{entier }\PY{l+s+si}{\PYZob{}entier\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{c+c1}{\PYZsh{} on s\PYZsq{}arrête à 50}
+            \PY{k}{if} \PY{n}{entier} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{50}\PY{p}{:}
+                \PY{k}{break}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{on est sorti de la boucle}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+on traite l'entier 0
+on traite l'entier 10
+on traite l'entier 20
+on traite l'entier 30
+on traite l'entier 40
+on traite l'entier 50
+on est sorti de la boucle
+
+    \end{Verbatim}
+
+    Pour aller plus loin, vous pouvez lire
+\href{https://docs.python.org/3/tutorial/controlflow.html?highlight=break\#break-and-continue-statements-and-else-clauses-on-loops}{cette
+documentation}.

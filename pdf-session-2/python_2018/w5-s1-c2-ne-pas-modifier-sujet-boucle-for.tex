@@ -1,0 +1,199 @@
+    \hypertarget{une-limite-de-la-boucle-for}{%
+\section{\texorpdfstring{Une limite de la boucle
+\texttt{for}}{Une limite de la boucle for}}\label{une-limite-de-la-boucle-for}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    Pour ceux qui veulent suivre le cours au niveau basique, retenez
+seulement que dans une boucle \texttt{for} sur un objet mutable,
+\textbf{il ne faut pas modifier le sujet} de la boucle.\\
+
+Ainsi par exemple il ne \textbf{faut pas faire} quelque chose comme
+ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} on veut enlever de l\PYZsq{}ensemble toutes les chaînes }
+        \PY{c+c1}{\PYZsh{} qui ne contiennent pas \PYZsq{}bert\PYZsq{}}
+        \PY{n}{ensemble} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{marc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{albert}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}
+        
+        \PY{c+c1}{\PYZsh{} ceci semble une bonne idée mais ne fonctionne pas}
+        \PY{k}{for} \PY{n}{valeur} \PY{o+ow}{in} \PY{n}{ensemble}\PY{p}{:}
+            \PY{k}{if} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bert}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{not} \PY{o+ow}{in} \PY{n}{valeur}\PY{p}{:}
+                \PY{n}{ensemble}\PY{o}{.}\PY{n}{discard}\PY{p}{(}\PY{n}{valeur}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+
+        RuntimeError                              Traceback (most recent call last)
+
+        <ipython-input-1-966b4462b0c4> in <module>()
+          4 
+          5 \# ceci semble une bonne idée mais ne fonctionne pas
+    ----> 6 for valeur in ensemble:
+          7     if 'bert' not in valeur:
+          8         ensemble.discard(valeur)
+    
+
+        RuntimeError: Set changed size during iteration
+
+    \end{Verbatim}
+
+    \hypertarget{comment-faire-alors}{%
+\subsubsection{Comment faire alors~?}\label{comment-faire-alors}}
+
+    Première remarque, votre premier réflexe pourrait être de penser à une
+compréhension d'ensemble~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{ensemble2} \PY{o}{=} \PY{p}{\PYZob{}}\PY{n}{valeur} \PY{k}{for} \PY{n}{valeur} \PY{o+ow}{in} \PY{n}{ensemble} \PY{k}{if} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bert}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{valeur}\PY{p}{\PYZcb{}}
+        \PY{n}{ensemble2}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} \{'albert'\}
+\end{Verbatim}
+            
+    C'est sans doute la meilleure solution. Par contre, évidemment, on n'a
+pas modifié l'objet ensemble initial, on a créé un nouvel objet. En
+supposant que l'on veuille modifier l'objet initial, il nous faut faire
+la boucle sur une \emph{shallow copy} de cet objet. Notez qu'ici, il ne
+s'agit d'économiser de la mémoire, puisque l'on fait une \emph{shallow
+copy}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k+kn}{from} \PY{n+nn}{copy} \PY{k}{import} \PY{n}{copy}
+        \PY{c+c1}{\PYZsh{} on veut enlever de l\PYZsq{}ensemble toutes les chaînes }
+        \PY{c+c1}{\PYZsh{} qui ne contiennent pas \PYZsq{}bert\PYZsq{}}
+        \PY{n}{ensemble} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{marc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{albert}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}
+        
+        \PY{c+c1}{\PYZsh{} si on fait d\PYZsq{}abord une copie tout va bien}
+        \PY{k}{for} \PY{n}{valeur} \PY{o+ow}{in} \PY{n}{copy}\PY{p}{(}\PY{n}{ensemble}\PY{p}{)}\PY{p}{:}
+            \PY{k}{if} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bert}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{not} \PY{o+ow}{in} \PY{n}{valeur}\PY{p}{:}
+                \PY{n}{ensemble}\PY{o}{.}\PY{n}{discard}\PY{p}{(}\PY{n}{valeur}\PY{p}{)}
+                
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{ensemble}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\{'albert'\}
+
+    \end{Verbatim}
+
+    \hypertarget{avertissement}{%
+\subsubsection{Avertissement}\label{avertissement}}
+
+    Dans l'exemple ci-dessus, on voit que l'interpréteur se rend compte que
+l'on est en train de modifier l'objet de la boucle, et nous le signifie.\\
+
+Ne vous fiez pas forcément à cet exemple, il existe des cas -- nous en
+verrons plus loin dans ce document -- où l'interpréteur peut accepter
+votre code alors qu'il n'obéit pas à cette règle, et du coup
+essentiellement se mettre à faire n'importe quoi.
+
+    \hypertarget{pruxe9cisons-bien-la-limite}{%
+\subsubsection{Précisons bien la
+limite}\label{pruxe9cisons-bien-la-limite}}
+
+    Pour être tout à fait clair, lorsqu'on dit qu'il ne faut pas modifier
+l'objet de la boucle \texttt{for}, il ne s'agit que du premier niveau.\\
+
+On ne doit pas modifier la \textbf{composition de l'objet en tant
+qu'itérable}, mais on peut sans souci modifier chacun des objets qui
+constitue l'itération.\\
+
+Ainsi cette construction par contre est tout à fait valide~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{avant}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+avant [[1], [2], [3]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{for} \PY{n}{sous\PYZus{}liste} \PY{o+ow}{in} \PY{n}{liste}\PY{p}{:}
+            \PY{n}{sous\PYZus{}liste}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{après}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+après [[1, 100], [2, 100], [3, 100]]
+
+    \end{Verbatim}
+
+    Dans cet exemple, les modifications ont lieu sur les éléments de
+\texttt{liste}, et non sur l'objet \texttt{liste} lui-même, c'est donc
+tout à fait légal.
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    Pour bien comprendre la nature de cette limitation, il faut bien voir
+que cela soulève deux types de problèmes distincts.
+
+    \hypertarget{difficultuxe9-dordre-suxe9mantique}{%
+\subsubsection{Difficulté d'ordre
+sémantique}\label{difficultuxe9-dordre-suxe9mantique}}
+
+    D'un point de vue sémantique, si l'on voulait autoriser ce genre de
+choses, il faudrait définir très précisément le comportement attendu.\\
+
+Considérons par exemple la situation d'une liste qui a 10 éléments, sur
+laquelle on ferait une boucle et que, par exemple au 5ème élément, on
+enlève le 8ème élément. Quel serait le comportement attendu dans ce
+cas~? Faut-il ou non que la boucle envisage alors le 8-ème élément~?\\
+
+La situation serait encore pire pour les dictionnaires et ensembles pour
+lesquels l'ordre de parcours n'est pas spécifié~; ainsi on pourrait
+écrire du code totalement indéterministe si le parcours d'un ensemble
+essayait~:
+
+\begin{itemize}
+	\item 
+	d'enlever l'élément \emph{b} lorsqu'on parcourt l'élément
+	\emph{a}~;
+	\item
+	d'enlever l'élément \emph{a} lorsqu'on parcourt l'élément
+	\emph{b}.
+\end{itemize}
+
+On le voit, il n'est déjà pas très simple d'expliciter sans ambiguïté le
+comportement attendu d'une boucle \texttt{for} qui serait autorisée à
+modifier son propre sujet.
+
+    \hypertarget{difficultuxe9-dimpluxe9mentation}{%
+\subsubsection{Difficulté
+d'implémentation}\label{difficultuxe9-dimpluxe9mentation}}
+
+    Voyons maintenant un exemple de code qui ne respecte pas la règle, et
+qui modifie le sujet de la boucle en lui ajoutant des valeurs
+
+    \begin{verbatim}
+# cette boucle ne termine pas
+liste = [1, 2, 3]
+for c in liste:
+    if c == 3:
+        liste.append(c)
+\end{verbatim}
+
+    Nous avons volontairement mis ce code \textbf{dans une cellule de texte}
+et non de code~: vous \textbf{ne pouvez pas l'exécuter} dans le
+notebook. Si vous essayez de l'exécuter sur votre ordinateur vous
+constaterez que la boucle ne termine pas : en fait à chaque itération on
+ajoute un nouvel élément dans la liste, et du coup la boucle a un
+élément de plus à balayer~; ce programme ne termine théoriquement
+jamais. En pratique, ce sera le cas quand votre système n'aura plus de
+mémoire disponible (sauvegardez vos documents avant d'essayer !).

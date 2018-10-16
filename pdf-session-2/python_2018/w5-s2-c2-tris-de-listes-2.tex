@@ -1,0 +1,142 @@
+    \hypertarget{tri-de-listes}{%
+\section{Tri de listes}\label{tri-de-listes}}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    Nous avons vu durant une semaine précédente comment faire le tri simple
+d'une liste, en utilisant éventuellement le paramètre \texttt{reverse}
+de la méthode \texttt{sort} sur les listes. Maintenant que nous sommes
+familiers avec la notion de fonction, nous pouvons approfondir ce sujet.
+
+    \hypertarget{cas-guxe9nuxe9ral}{%
+\subsubsection{Cas général}\label{cas-guxe9nuxe9ral}}
+
+    Dans le cas général, on est souvent amené à trier des objets selon un
+critère propre à l'application. Imaginons par exemple que l'on dispose
+d'une liste de tuples à deux éléments, dont le premier est la latitude
+et le second la longitude~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{n}{coordonnees} \PY{o}{=} \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{43}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{46}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{7}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{46}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{]}
+\end{Verbatim}
+
+
+    Il est possible d'utiliser la méthode \texttt{sort} pour faire cela,
+mais il va falloir l'aider un peu plus, et lui expliquer comment
+comparer deux éléments de la liste.\\
+
+Voyons comment on pourrait procéder pour trier par longitude~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k}{def} \PY{n+nf}{longitude}\PY{p}{(}\PY{n}{element}\PY{p}{)}\PY{p}{:} 
+            \PY{k}{return} \PY{n}{element}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+        
+        \PY{n}{coordonnees}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{n}{key}\PY{o}{=}\PY{n}{longitude}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{coordonnées triées par longitude}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{coordonnees}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+coordonnées triées par longitude [(46, -7), (46, 0), (43, 7)]
+
+    \end{Verbatim}
+
+    Comme on le devine, le procédé ici consiste à indiquer à \texttt{sort}
+comment calculer, à partir de chaque élément, une valeur numérique qui
+sert de base au tri.\\
+
+Pour cela on passe à la méthode \texttt{sort} un argument \texttt{key}
+qui désigne \textbf{une fonction}, qui lorsqu'elle est appliquée à un
+élément de la liste, retourne la valeur qui doit servir de base au tri~:
+dans notre exemple, la fonction \texttt{longitude}, qui renvoie le
+second élément du tuple.\\
+
+    On aurait pu utiliser de manière équivalente une fonction lambda ou la
+méthode \texttt{itemgetter} to module \texttt{operator}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} fonction lambda }
+        \PY{n}{coordonnees} \PY{o}{=} \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{43}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{46}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{7}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{46}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{]}
+        \PY{n}{coordonnees}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{n}{key}\PY{o}{=}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{coordonnées triées par longitude}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{coordonnees}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} méthode operator.getitem}
+        \PY{k+kn}{import} \PY{n+nn}{operator}
+        \PY{n}{coordonnees} \PY{o}{=} \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{43}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{46}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{7}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{46}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{]}
+        \PY{n}{coordonnees}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{n}{key}\PY{o}{=}\PY{n}{operator}\PY{o}{.}\PY{n}{itemgetter}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{coordonnées triées par longitude}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{coordonnees}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+coordonnées triées par longitude [(46, -7), (46, 0), (43, 7)]
+coordonnées triées par longitude [(46, -7), (46, 0), (43, 7)]
+
+    \end{Verbatim}
+
+    \hypertarget{fonction-de-commodituxe9-sorted}{%
+\subsubsection{\texorpdfstring{Fonction de commodité~:
+\texttt{sorted}}{Fonction de commodité~: sorted}}\label{fonction-de-commodituxe9-sorted}}
+
+    On a vu que \texttt{sort} réalise le tri de la liste ``en place''. Pour
+les cas où une copie est nécessaire, python fournit également une
+fonction de commodité, qui permet précisément de renvoyer la
+\textbf{copie} triée d'une liste d'entrée. Cette fonction est baptisée
+\texttt{sorted}, elle s'utilise par exemple comme ceci, sachant que les
+arguments \texttt{reverse} et \texttt{key} peuvent être mentionnés comme
+avec \texttt{sort}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}
+        \PY{c+c1}{\PYZsh{} on peut passer à sorted les mêmes arguments que pour sort}
+        \PY{n}{triee} \PY{o}{=} \PY{n+nb}{sorted}\PY{p}{(}\PY{n}{liste}\PY{p}{,} \PY{n}{reverse}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} nous avons maintenant deux objets distincts}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{la liste triée est une copie }\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{triee}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{la liste initiale est intacte}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+la liste triée est une copie  [9, 8, 7, 6, 5, 4, 3, 2, 1]
+la liste initiale est intacte [8, 7, 4, 3, 2, 9, 1, 5, 6]
+
+    \end{Verbatim}
+
+    Nous avons qualifié \texttt{sorted} de fonction de commodité car il est
+très facile de s'en passer~; en effet on aurait pu écrire à la place du
+fragment précédent~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}
+        \PY{c+c1}{\PYZsh{} ce qu\PYZsq{}on a fait dans la cellule précédente est équivalent à}
+        \PY{n}{triee} \PY{o}{=} \PY{n}{liste}\PY{p}{[}\PY{p}{:}\PY{p}{]}
+        \PY{n}{triee}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{n}{reverse}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} }
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{la liste triée est une copie }\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{triee}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{la liste initiale est intacte}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+la liste triée est une copie  [9, 8, 7, 6, 5, 4, 3, 2, 1]
+la liste initiale est intacte [8, 7, 4, 3, 2, 9, 1, 5, 6]
+
+    \end{Verbatim}
+
+    Alors que \texttt{sort} est une fonction sur les listes, \texttt{sorted}
+peut trier n'importe quel itérable et retourne le résultat dans une
+liste. Cependant, au final, le coût mémoire est le même. Pour utiliser
+\texttt{sort} on va créer une liste des éléments de l'itérable, puis on
+fait un tri en place avec \texttt{sort}. Avec \texttt{sorted} on
+applique directement le tri sur l'itérable, mais on crée une liste pour
+stocker le résultat. Dans les deux cas, on a une liste à la fin et
+aucune structure de données temporaire créée.
+
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+    Pour avoir plus d'informations sur \texttt{sort} et \texttt{sorted} vous
+pouvez \href{https://docs.python.org/3/howto/sorting.html}{lire cette
+section de la documentation python sur le tri.}

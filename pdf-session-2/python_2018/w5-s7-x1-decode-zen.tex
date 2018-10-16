@@ -1,0 +1,109 @@
+    \hypertarget{duxe9coder-le-module-this}{%
+\section{\texorpdfstring{Décoder le module
+\texttt{this}}{Décoder le module this}}\label{duxe9coder-le-module-this}}
+
+    \hypertarget{exercice---niveau-avancuxe9}{%
+\subsection{Exercice - niveau
+avancé}\label{exercice---niveau-avancuxe9}}
+
+    \hypertarget{le-module-this-et-le-zen-de-python}{%
+\subsubsection{\texorpdfstring{Le module \texttt{this} et le \emph{Zen
+de
+Python}}{Le module this et le Zen de Python}}\label{le-module-this-et-le-zen-de-python}}
+
+    Nous avons déjà eu l'occasion de parler du \emph{Zen de Python}~; on
+peut lire ce texte en important le module \texttt{this} comme ceci
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{this}
+\end{Verbatim}
+
+
+    Il suit du cours qu'une fois cet import effectué nous avons accès à une
+variable \texttt{this}, de type module~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{this}
+\end{Verbatim}
+
+
+    \hypertarget{but-de-lexercice}{%
+\subsubsection{But de l'exercice}\label{but-de-lexercice}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} chargement de l\PYZsq{}exercice}
+        \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}decode\PYZus{}zen} \PY{k}{import} \PY{n}{exo\PYZus{}decode\PYZus{}zen}
+\end{Verbatim}
+
+
+    Constatant que le texte du manifeste doit se trouver quelque part dans
+le module, le but de l'exercice est de deviner le contenu du module, et
+d'écrire une fonction \texttt{decode\_zen}, qui retourne le texte du
+manifeste.
+
+    \hypertarget{indices}{%
+\subsubsection{Indices}\label{indices}}
+
+    Cet exercice peut paraître un peu déconcertant~; voici quelques indices
+optionnels~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} on rappelle que dir() renvoie les noms des attributs }
+        \PY{c+c1}{\PYZsh{} accessibles à partir de l\PYZsq{}objet}
+        \PY{n+nb}{dir}\PY{p}{(}\PY{n}{this}\PY{p}{)}
+\end{Verbatim}
+
+
+    Vous pouvez ignorer \texttt{this.c} et \texttt{this.i}, les deux autres
+variables du module sont importantes pour nous.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} ici on calcule le résultat attendu}
+        \PY{n}{resultat} \PY{o}{=} \PY{n}{exo\PYZus{}decode\PYZus{}zen}\PY{o}{.}\PY{n}{resultat}\PY{p}{(}\PY{n}{this}\PY{p}{)}
+\end{Verbatim}
+
+
+    Ceci devrait vous donner une idée de comment utiliser une des deux
+variables du module~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} ces deux quantités sont égales}
+        \PY{n+nb}{len}\PY{p}{(}\PY{n}{this}\PY{o}{.}\PY{n}{s}\PY{p}{)} \PY{o}{==} \PY{n+nb}{len}\PY{p}{(}\PY{n}{resultat}\PY{p}{)}
+\end{Verbatim}
+
+
+    À quoi peut bien servir l'autre variable~?
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} se pourrait\PYZhy{}il que d agisse comme un code simple ?}
+        \PY{n}{this}\PY{o}{.}\PY{n}{d}\PY{p}{[}\PY{n}{this}\PY{o}{.}\PY{n}{s}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]} \PY{o}{==} \PY{n}{resultat}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+\end{Verbatim}
+
+
+    Le texte comporte certes des caractères alphabétiques
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} si on ignore les accents, }
+        \PY{c+c1}{\PYZsh{} il y a 26 caractères minuscules}
+        \PY{c+c1}{\PYZsh{} et 26 caractères majuscules}
+        \PY{n+nb}{len}\PY{p}{(}\PY{n}{this}\PY{o}{.}\PY{n}{d}\PY{p}{)}
+\end{Verbatim}
+
+
+    mais pas seulement~; les autres sont préservés.
+
+    \hypertarget{uxe0-vous-de-jouer}{%
+\subsubsection{À vous de jouer}\label{uxe0-vous-de-jouer}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{decode\PYZus{}zen}\PY{p}{(}\PY{n}{this}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \hypertarget{correction}{%
+\subsubsection{Correction}\label{correction}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}decode\PYZus{}zen}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{decode\PYZus{}zen}\PY{p}{)}
+\end{Verbatim}
