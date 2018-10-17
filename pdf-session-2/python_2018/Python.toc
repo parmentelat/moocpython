@@ -806,3 +806,196 @@
 \contentsline {subsubsection}{Indices}{320}{section*.533}
 \contentsline {subsubsection}{\IeC {\`A} vous de jouer}{321}{section*.534}
 \contentsline {subsubsection}{Correction}{321}{section*.535}
+\contentsline {chapter}{\numberline {6}Conception des classes}{323}{chapter.6}
+\contentsline {section}{\numberline {6.1}Introduction aux classes}{324}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Compl\IeC {\'e}ment - niveau basique}{324}{subsection.6.1.1}
+\contentsline {subsubsection}{Un exemple simpliste}{324}{section*.536}
+\contentsline {subsubsection}{La premi\IeC {\`e}re version de \texttt {Matrix2}}{324}{section*.537}
+\contentsline {subparagraph}{Une classe peut avoir un \emph {docstring}\\\\}{324}{section*.538}
+\contentsline {subparagraph}{La m\IeC {\'e}thode \texttt {\_\_init\_\_}\\\\}{325}{section*.539}
+\contentsline {subparagraph}{La m\IeC {\'e}thode \texttt {determinant}\\\\}{326}{section*.540}
+\contentsline {subsection}{\numberline {6.1.2}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{326}{subsection.6.1.2}
+\contentsline {subsubsection}{\IeC {\`A} quoi \IeC {\c c}a sert~?}{326}{section*.541}
+\contentsline {subparagraph}{Encapsulation}{326}{section*.542}
+\contentsline {subparagraph}{R\IeC {\'e}solution dynamique de m\IeC {\'e}thode\\\\}{327}{section*.543}
+\contentsline {subparagraph}{H\IeC {\'e}ritage\\\\}{327}{section*.544}
+\contentsline {subsubsection}{Illustration}{327}{section*.545}
+\contentsline {subsubsection}{La convention d'utiliser \texttt {self}}{329}{section*.546}
+\contentsline {section}{\numberline {6.2}Enregistrements et instances}{330}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Compl\IeC {\'e}ment - niveau basique}{330}{subsection.6.2.1}
+\contentsline {subsubsection}{Un enregistrement impl\IeC {\'e}ment\IeC {\'e} comme une instance de classe}{330}{section*.547}
+\contentsline {subsubsection}{Un dictionnaire pour indexer les enregistrements}{331}{section*.548}
+\contentsline {subsubsection}{Encapsulation}{331}{section*.549}
+\contentsline {subsection}{\numberline {6.2.2}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{331}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}Les \emph {property}}{333}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{333}{subsection.6.3.1}
+\contentsline {subparagraph}{Impl\IeC {\'e}mentation na\IeC {\"\i }ve\\\\}{333}{section*.550}
+\contentsline {subparagraph}{Interface \emph {getter/setter}\\\\}{334}{section*.551}
+\contentsline {subparagraph}{Impl\IeC {\'e}mentation pythonique\\\\}{334}{section*.552}
+\contentsline {subsection}{\numberline {6.3.2}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{335}{subsection.6.3.2}
+\contentsline {subparagraph}{Pour en savoir plus\\\\}{337}{section*.553}
+\contentsline {section}{\numberline {6.4}Un exemple de classes de la biblioth\IeC {\`e}que standard}{338}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}Compl\IeC {\'e}ment - niveau basique}{338}{subsection.6.4.1}
+\contentsline {subsubsection}{Le module \texttt {time}}{338}{section*.554}
+\contentsline {subsubsection}{Le module datetime}{339}{section*.555}
+\contentsline {subsubsection}{Conclusion}{339}{section*.556}
+\contentsline {subsection}{\numberline {6.4.2}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{340}{subsection.6.4.2}
+\contentsline {subsubsection}{Fuseaux horaires et temps local}{340}{section*.557}
+\contentsline {subsection}{\numberline {6.4.3}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{340}{subsection.6.4.3}
+\contentsline {subsubsection}{Classes et \emph {marshalling}}{340}{section*.558}
+\contentsline {subsubsection}{Conclusion}{341}{section*.559}
+\contentsline {section}{\numberline {6.5}Manipuler des ensembles d'instances}{342}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{342}{subsection.6.5.1}
+\contentsline {subsubsection}{Instance mutable dans un ensemble}{342}{section*.560}
+\contentsline {subsubsection}{Hachage par d\IeC {\'e}faut~: bas\IeC {\'e} sur \texttt {id()}}{342}{section*.561}
+\contentsline {subsection}{\numberline {6.5.2}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{343}{subsection.6.5.2}
+\contentsline {subsubsection}{Ce n'est pas ce que vous voulez ?}{343}{section*.562}
+\contentsline {subsubsection}{Le protocole \emph {hashable}: \texttt {\_\_hash\_\_} et \texttt {\_\_eq\_\_}}{344}{section*.563}
+\contentsline {subsubsection}{Attention !}{345}{section*.564}
+\contentsline {subsubsection}{Conclusion}{346}{section*.565}
+\contentsline {section}{\numberline {6.6}Surcharge d'op\IeC {\'e}rateurs (1)}{347}{section.6.6}
+\contentsline {subsection}{\numberline {6.6.1}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{347}{subsection.6.6.1}
+\contentsline {subsubsection}{Rappels}{347}{section*.566}
+\contentsline {subsubsection}{Affichage~: \texttt {\_\_repr\_\_} et \texttt {\_\_str\_\_}}{347}{section*.567}
+\contentsline {subparagraph}{Quand est utilis\IeC {\'e}e \texttt {repr()}~?\\\\}{348}{section*.568}
+\contentsline {subparagraph}{Deux exemples\\\\}{348}{section*.569}
+\contentsline {subsubsection}{\texttt {\_\_bool\_\_}}{349}{section*.570}
+\contentsline {subsubsection}{\texttt {\_\_add\_\_} et apparent\IeC {\'e}s (\texttt {\_\_mul\_\_}, \texttt {\_\_sub\_\_}, \texttt {\_\_div\_\_}, \texttt {\_\_and\_\_}, etc.)}{350}{section*.571}
+\contentsline {subsubsection}{Une nouvelle version de la classe \texttt {Matrix2}}{350}{section*.572}
+\contentsline {subparagraph}{Utiliser un tuple\\\\}{351}{section*.573}
+\contentsline {subparagraph}{Cr\IeC {\'e}er un nouvel objet}{351}{section*.574}
+\contentsline {subparagraph}{Du code qui ne d\IeC {\'e}pend que des 4 op\IeC {\'e}rations\\\\}{352}{section*.575}
+\contentsline {subparagraph}{On peut aussi red\IeC {\'e}finir un ordre\\\\}{352}{section*.576}
+\contentsline {subsection}{\numberline {6.6.2}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{352}{subsection.6.6.2}
+\contentsline {subparagraph}{Le produit avec un scalaire\\\\}{352}{section*.577}
+\contentsline {section}{\numberline {6.7}M\IeC {\'e}thodes sp\IeC {\'e}ciales (2/3)}{354}{section.6.7}
+\contentsline {subsection}{\numberline {6.7.1}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{354}{subsection.6.7.1}
+\contentsline {subsubsection}{\texttt {\_\_contains\_\_}, \texttt {\_\_len\_\_}, \texttt {\_\_getitem\_\_} et apparent\IeC {\'e}s}{354}{section*.578}
+\contentsline {subparagraph}{La classe \texttt {DualQueue}\\\\}{354}{section*.579}
+\contentsline {subparagraph}{Longueur et appartenance\\\\}{355}{section*.580}
+\contentsline {subparagraph}{Acc\IeC {\`e}s s\IeC {\'e}quentiel (acc\IeC {\`e}s par un index entier)\\\\}{355}{section*.581}
+\contentsline {subparagraph}{Am\IeC {\'e}lioration~: acc\IeC {\`e}s par slice\\\\}{356}{section*.582}
+\contentsline {subparagraph}{L'objet est it\IeC {\'e}rable (m\IeC {\^e}me sans avoir \texttt {\_\_iter\_\_})\\\\}{357}{section*.583}
+\contentsline {subparagraph}{On peut faire un test sur l'objet\\\\}{358}{section*.584}
+\contentsline {subsubsection}{\texttt {\_\_call\_\_} et les \emph {callables}}{358}{section*.585}
+\contentsline {section}{\numberline {6.8}M\IeC {\'e}thodes sp\IeC {\'e}ciales (3/3)}{360}{section.6.8}
+\contentsline {subsection}{\numberline {6.8.1}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{360}{subsection.6.8.1}
+\contentsline {subsubsection}{\texttt {\_\_getattr\_\_} et apparent\IeC {\'e}s}{360}{section*.586}
+\contentsline {subparagraph}{Un exemple~: la classe \texttt {RPCProxy}\\\\}{360}{section*.587}
+\contentsline {subparagraph}{Une approche na\IeC {\"\i }ve\\\\}{361}{section*.588}
+\contentsline {subparagraph}{Discussion\\\\}{362}{section*.589}
+\contentsline {subparagraph}{Une approche plus subtile\\\\}{362}{section*.590}
+\contentsline {section}{\numberline {6.9}H\IeC {\'e}ritage}{364}{section.6.9}
+\contentsline {subsection}{\numberline {6.9.1}Compl\IeC {\'e}ment - niveau basique}{364}{subsection.6.9.1}
+\contentsline {subsubsection}{Plusieurs formes d'h\IeC {\'e}ritage}{364}{section*.591}
+\contentsline {subparagraph}{La fonction \emph {built-in} \texttt {super()}\\\\}{365}{section*.592}
+\contentsline {subsubsection}{H\IeC {\'e}ritage \emph {vs} Composition}{366}{section*.593}
+\contentsline {subparagraph}{Comment choisir~?\\\\}{367}{section*.594}
+\contentsline {subsection}{\numberline {6.9.2}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{367}{subsection.6.9.2}
+\contentsline {subsubsection}{Des exemples de code}{367}{section*.595}
+\contentsline {subparagraph}{Le module \texttt {calendar}\\\\}{367}{section*.596}
+\contentsline {subparagraph}{Le module \texttt {SocketServer}\\\\}{368}{section*.597}
+\contentsline {section}{\numberline {6.10}H\IeC {\'e}riter des types \emph {built-in}~?}{369}{section.6.10}
+\contentsline {subsection}{\numberline {6.10.1}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{369}{subsection.6.10.1}
+\contentsline {subsubsection}{La notion de \emph {record}}{369}{section*.598}
+\contentsline {subparagraph}{un dictionnaire}{369}{section*.599}
+\contentsline {subparagraph}{ou une classe}{369}{section*.600}
+\contentsline {subparagraph}{\texttt {namedtuple}}{369}{section*.601}
+\contentsline {subsubsection}{\IeC {\`A} quoi \IeC {\c c}a sert}{370}{section*.602}
+\contentsline {subsubsection}{Nom}{371}{section*.603}
+\contentsline {subsubsection}{M\IeC {\'e}moire}{371}{section*.604}
+\contentsline {subsubsection}{D\IeC {\'e}finir des m\IeC {\'e}thodes sur un \texttt {namedtuple}}{371}{section*.605}
+\contentsline {section}{\numberline {6.11}Pour en savoir plus}{372}{section.6.11}
+\contentsline {section}{\numberline {6.12}\texttt {dataclasses}}{375}{section.6.12}
+\contentsline {subsubsection}{Aper\IeC {\c c}u}{375}{section*.606}
+\contentsline {subsubsection}{Instances non mutables}{375}{section*.607}
+\contentsline {subsubsection}{Pour aller plus loin}{376}{section*.608}
+\contentsline {section}{\numberline {6.13}\IeC {\'E}num\IeC {\'e}rations}{377}{section.6.13}
+\contentsline {subsection}{\numberline {6.13.1}Compl\IeC {\'e}ment - niveau basique}{377}{subsection.6.13.1}
+\contentsline {subsubsection}{\texttt {IntEnum}}{378}{section*.609}
+\contentsline {subsubsection}{Pour en savoir plus}{378}{section*.610}
+\contentsline {section}{\numberline {6.14}H\IeC {\'e}ritage, typage}{379}{section.6.14}
+\contentsline {subsection}{\numberline {6.14.1}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{379}{subsection.6.14.1}
+\contentsline {subsubsection}{Type concret et type abstrait}{379}{section*.611}
+\contentsline {subsubsection}{\emph {Duck typing}}{379}{section*.612}
+\contentsline {subsubsection}{L'exemple des it\IeC {\'e}rables}{379}{section*.613}
+\contentsline {subsubsection}{Un autre exemple}{380}{section*.614}
+\contentsline {subsubsection}{H\IeC {\'e}ritage et type abstrait}{380}{section*.615}
+\contentsline {subsubsection}{\texttt {isinstance} sur st\IeC {\'e}ro\IeC {\"\i }des}{380}{section*.616}
+\contentsline {subsubsection}{python et les classes abstraites}{381}{section*.617}
+\contentsline {subsubsection}{Pour aller plus loin}{382}{section*.618}
+\contentsline {subsubsection}{Avertissement}{382}{section*.619}
+\contentsline {section}{\numberline {6.15}H\IeC {\'e}ritage multiple}{383}{section.6.15}
+\contentsline {subsection}{\numberline {6.15.1}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{383}{subsection.6.15.1}
+\contentsline {subsubsection}{La classe \texttt {object}}{383}{section*.620}
+\contentsline {subsection}{\numberline {6.15.2}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{383}{subsection.6.15.2}
+\contentsline {subsubsection}{Rappels}{383}{section*.621}
+\contentsline {subsubsection}{Ordre sur les super-classes}{384}{section*.622}
+\contentsline {subsubsection}{Les bonnes propri\IeC {\'e}t\IeC {\'e}s attendues}{384}{section*.623}
+\contentsline {subparagraph}{Priorit\IeC {\'e} au sp\IeC {\'e}cifique\\\\}{384}{section*.624}
+\contentsline {subparagraph}{Priorit\IeC {\'e} \IeC {\`a} gauche\\\\}{384}{section*.625}
+\contentsline {section}{\numberline {6.16}La Method Resolution Order (MRO)}{384}{section.6.16}
+\contentsline {subparagraph}{De mani\IeC {\`e}re un peu plus formelle\\\\}{384}{section*.626}
+\contentsline {subparagraph}{Limitations~: toutes les hi\IeC {\'e}rarchies ne peuvent pas \IeC {\^e}tre trait\IeC {\'e}es\\\\}{384}{section*.627}
+\contentsline {subsubsection}{Un exemple tr\IeC {\`e}s simple}{385}{section*.628}
+\contentsline {subparagraph}{Si cela ne vous convient pas\\\\}{386}{section*.629}
+\contentsline {subsubsection}{Un exemple un peu plus compliqu\IeC {\'e}}{386}{section*.630}
+\contentsline {subsubsection}{Un exemple qui ne peut pas \IeC {\^e}tre trait\IeC {\'e}}{387}{section*.631}
+\contentsline {subsubsection}{Pour en savoir plus}{388}{section*.632}
+\contentsline {section}{\numberline {6.17}Les attributs}{389}{section.6.17}
+\contentsline {subsection}{\numberline {6.17.1}Compl\IeC {\'e}ments - niveau basique}{389}{subsection.6.17.1}
+\contentsline {subsubsection}{La notation \texttt {.} et les attributs}{389}{section*.633}
+\contentsline {subsubsection}{Les fonctions de gestion des attributs}{389}{section*.634}
+\contentsline {subparagraph}{Lire un attribut}{389}{section*.635}
+\contentsline {subparagraph}{\IeC {\'E}crire un attribut}{390}{section*.636}
+\contentsline {subparagraph}{Liste des attributs\\\\}{390}{section*.637}
+\contentsline {subsubsection}{Sur quels objets}{390}{section*.638}
+\contentsline {section}{\numberline {6.18}Espaces de nommage}{392}{section.6.18}
+\contentsline {subsection}{\numberline {6.18.1}Compl\IeC {\'e}ment - niveau basique}{392}{subsection.6.18.1}
+\contentsline {subparagraph}{Attributs\\\\}{392}{section*.639}
+\contentsline {subparagraph}{Variables\\\\}{392}{section*.640}
+\contentsline {subparagraph}{En r\IeC {\'e}sum\IeC {\'e}}{393}{section*.641}
+\contentsline {subsection}{\numberline {6.18.2}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{393}{subsection.6.18.2}
+\contentsline {subparagraph}{La documentation officielle est fausse\\\\}{393}{section*.642}
+\contentsline {subsection}{\numberline {6.18.3}Compl\IeC {\'e}ment - niveau avanc\IeC {\'e}}{395}{subsection.6.18.3}
+\contentsline {subsubsection}{Impl\IeC {\'e}menter un it\IeC {\'e}rateur de permutations}{395}{section*.643}
+\contentsline {subparagraph}{C'est quoi d\IeC {\'e}j\IeC {\`a} les permutations~?}{395}{section*.644}
+\contentsline {subparagraph}{Une impl\IeC {\'e}mentation\\\\}{395}{section*.645}
+\contentsline {subparagraph}{Discussion\\\\}{397}{section*.646}
+\contentsline {subparagraph}{Ultimes am\IeC {\'e}liorations\\\\}{398}{section*.647}
+\contentsline {section}{\numberline {6.19}\emph {Context managers} et exceptions}{403}{section.6.19}
+\contentsline {subsection}{\numberline {6.19.1}Compl\IeC {\'e}ment - niveau interm\IeC {\'e}diaire}{403}{subsection.6.19.1}
+\contentsline {subsubsection}{Les param\IeC {\`e}tres de \texttt {\_\_exit\_\_}}{403}{section*.648}
+\contentsline {subsubsection}{La biblioth\IeC {\`e}que \texttt {contextlib}}{405}{section*.649}
+\contentsline {section}{\numberline {6.20}Exercice sur l'utilisation des classes}{406}{section.6.20}
+\contentsline {subsubsection}{Introduction}{406}{section*.650}
+\contentsline {subparagraph}{Objectifs de l'exercice\\\\}{406}{section*.651}
+\contentsline {subparagraph}{Objectifs de l'application\\\\}{406}{section*.652}
+\contentsline {subparagraph}{Choix d'impl\IeC {\'e}mentation\\\\}{407}{section*.653}
+\contentsline {subparagraph}{Principe de l'exercice\\\\}{407}{section*.654}
+\contentsline {subparagraph}{Correction\\\\}{407}{section*.655}
+\contentsline {subsubsection}{Mise en place}{408}{section*.656}
+\contentsline {subparagraph}{Partez d'un r\IeC {\'e}pertoire vierge\\\\}{408}{section*.657}
+\contentsline {subparagraph}{Les donn\IeC {\'e}es\\\\}{408}{section*.658}
+\contentsline {subparagraph}{Les r\IeC {\'e}sultats de r\IeC {\'e}f\IeC {\'e}rence\\\\}{408}{section*.659}
+\contentsline {subparagraph}{Le code\\\\}{408}{section*.660}
+\contentsline {subsubsection}{Fonctionnement de l'application}{409}{section*.661}
+\contentsline {subparagraph}{Comment est structur\IeC {\'e}e l'application\\\\}{409}{section*.662}
+\contentsline {subparagraph}{Lancement\\\\}{409}{section*.663}
+\contentsline {subparagraph}{Mode bavard (verbose)\\\\}{409}{section*.664}
+\contentsline {subparagraph}{\texttt {merger.py\ -\/-help}}{410}{section*.665}
+\contentsline {subparagraph}{Un mot sur les donn\IeC {\'e}es\\\\}{410}{section*.666}
+\contentsline {subsection}{\numberline {6.20.1}Niveaux pour l'exercice}{411}{subsection.6.20.1}
+\contentsline {subparagraph}{Classe \texttt {Position}}{411}{section*.667}
+\contentsline {subparagraph}{Classe \texttt {Ship}}{412}{section*.668}
+\contentsline {subparagraph}{Classe \texttt {Shipdict}}{412}{section*.669}
+\contentsline {subparagraph}{Un dernier indice\\\\}{413}{section*.670}
+\contentsline {section}{\numberline {6.21}Outils p\IeC {\'e}riph\IeC {\'e}riques}{414}{section.6.21}
+\contentsline {subsection}{\numberline {6.21.1}Compl\IeC {\'e}ments - niveau interm\IeC {\'e}diaire}{414}{subsection.6.21.1}
+\contentsline {subsubsection}{Distribution et packaging}{414}{section*.671}
+\contentsline {subsubsection}{Debugging}{414}{section*.672}
+\contentsline {subsubsection}{Tests}{415}{section*.673}
+\contentsline {subsubsection}{Documentation}{415}{section*.674}
+\contentsline {subsubsection}{Linter}{415}{section*.675}
+\contentsline {subsubsection}{Type hints}{415}{section*.676}
+\contentsline {subsubsection}{Conclusion}{416}{section*.677}

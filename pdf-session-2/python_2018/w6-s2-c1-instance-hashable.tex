@@ -1,0 +1,395 @@
+    \hypertarget{manipuler-des-ensembles-dinstances}{%
+\section{Manipuler des ensembles
+d'instances}\label{manipuler-des-ensembles-dinstances}}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    Souvenez-vous de ce qu'on avait dit en semaine 3 séquence 4, concernant
+les clés dans un dictionnaire ou les éléments dans un ensemble. Nous
+avions vu alors que, pour les types \emph{built-in}, les clés devaient
+être des objets immuables et même globalement immuables.\\
+
+    Nous allons voir dans ce complément quelles sont les règles qui
+s'appliquent aux instances de classe.
+
+    \hypertarget{instance-mutable-dans-un-ensemble}{%
+\subsubsection{Instance mutable dans un
+ensemble}\label{instance-mutable-dans-un-ensemble}}
+
+    Une instance de classe est par défaut un objet mutable. Malgré cela, le
+langage vous permet d'insérer une instance dans un ensemble - ou de
+l'utiliser comme clé dans un dictionnaire. Nous allons voir ce mécanisme
+en action.
+
+    \hypertarget{hachage-par-duxe9faut-basuxe9-sur-id}{%
+\subsubsection{\texorpdfstring{Hachage par défaut~: basé sur
+\texttt{id()}}{Hachage par défaut~: basé sur id()}}\label{hachage-par-duxe9faut-basuxe9-sur-id}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} une classe Point}
+        \PY{k}{class} \PY{n+nc}{Point1}\PY{p}{:}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{x} \PY{o}{=} \PY{n}{x}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{y} \PY{o}{=} \PY{n}{y}
+                
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Pt[}\PY{l+s+si}{\PYZob{}self.x\PYZcb{}}\PY{l+s+s2}{, }\PY{l+s+si}{\PYZob{}self.y\PYZcb{}}\PY{l+s+s2}{]}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    Avec ce code, les instances de \texttt{Point} sont mutables~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} deux instances }
+        \PY{n}{p1} \PY{o}{=} \PY{n}{Point1}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+        \PY{n}{p2} \PY{o}{=} \PY{n}{Point1}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} objets mutables}
+        \PY{n}{p1}\PY{o}{.}\PY{n}{y} \PY{o}{=} \PY{l+m+mi}{3}
+\end{Verbatim}
+
+
+    Mais par contre soyez attentifs, car il faut savoir que pour la classe
+\texttt{Point1}, où nous n'avons rien redéfini, la fonction de hachage
+sur une instance de \texttt{Point1} ne dépend que de la valeur de
+\texttt{id()} sur cet objet.\\
+
+Ce qui, dit autrement, signifie que deux objets qui sont distincts au
+sens de \texttt{id()} sont considérés comme différents, et donc peuvent
+coexister dans un ensemble (ou dans un dictionnaire)~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} nos deux objets se ressemblent}
+        \PY{n}{p1}\PY{p}{,} \PY{n}{p2}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} (Pt[2, 3], Pt[2, 3])
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} mais peuvent coexister }
+        \PY{c+c1}{\PYZsh{} dans un ensemble}
+        \PY{c+c1}{\PYZsh{} qui a alors 2 éléments}
+        \PY{n}{s} \PY{o}{=} \PY{p}{\PYZob{}} \PY{n}{p1}\PY{p}{,} \PY{n}{p2} \PY{p}{\PYZcb{}}
+        \PY{n+nb}{len}\PY{p}{(}\PY{n}{s}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} 2
+\end{Verbatim}
+            
+    Si on recherche un de ces deux objets on le trouve~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{p1} \PY{o+ow}{in} \PY{n}{s}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} True
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} mais pas un troisième}
+        \PY{n}{p3} \PY{o}{=} \PY{n}{Point1}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}
+        \PY{n}{p3} \PY{o+ow}{in} \PY{n}{s}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} False
+\end{Verbatim}
+            
+    Cette possibilité de gérer des ensembles d'objets selon cette stratégie
+est très commode et peut apporter de gros gains de performance,
+notamment lorsqu'on a souvent besoin de faire des tests d'appartenance.\\
+
+En pratique, lorsqu'un modèle de données définit une relation de type
+``1-n'', je vous recommande d'envisager d'utiliser un ensemble plutôt
+qu'une liste.
+
+    Par exemple envisagez :
+
+\begin{verbatim}
+class Animal:
+    # blabla
+   
+class Zoo:
+    def __init__(self):
+        self.animals = set()
+\end{verbatim}
+
+    Plutôt que :
+
+\begin{verbatim}
+class Animal:
+    # blabla
+   
+class Zoo:
+    def __init__(self):
+        self.animals = []
+\end{verbatim}
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    \hypertarget{ce-nest-pas-ce-que-vous-voulez}{%
+\subsubsection{Ce n'est pas ce que vous voulez
+?}\label{ce-nest-pas-ce-que-vous-voulez}}
+
+    Le comportement qu'on vient de voir pour les instances de
+\texttt{Point1} dans les tables de hachage est raisonnable, si on admet
+que deux points ne sont égaux que s'ils sont \textbf{le même objet} au
+sens de \texttt{is}.\\
+
+    Mais imaginons que vous voulez au contraire considérer que deux points
+son égaux lorsqu'ils coincident sur le plan. Avec ce modèle de données,
+vous voudriez que~:
+
+\begin{itemize}
+\tightlist
+\item
+  un ensemble dans lequel on insère \texttt{p1} et \texttt{p2} ne
+  contienne qu'un élément,
+\item
+  et qu'on trouve \texttt{p3} quand on le cherche dans cet ensemble.
+\end{itemize}
+
+    \hypertarget{le-protocole-hashable-__hash__-et-__eq__}{%
+\subsubsection{\texorpdfstring{Le protocole \emph{hashable}:
+\texttt{\_\_hash\_\_} et
+\texttt{\_\_eq\_\_}}{Le protocole hashable: \_\_hash\_\_ et \_\_eq\_\_}}\label{le-protocole-hashable-__hash__-et-__eq__}}
+
+    Le langage nous permet de faire cela, grâce au protocole
+\emph{hashable}; pour cela il nous faut définir deux méthodes~:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{\_\_eq\_\_} qui, sans grande surprise, va servir à évaluer
+  \texttt{p\ ==\ q}~;
+\item
+  \texttt{\_\_hash\_\_} qui va retourner la clé de hachage sur un objet.
+\end{itemize}
+
+La subtilité étant bien entendu que ces deux méthodes doivent être
+cohérentes, si deux objets sont égaux, il faut que leurs hashs soient
+égaux~; de bon sens, si l'égalité se base sur nos deux attributs
+\texttt{x} et \texttt{y}, il faudra bien entendu que la fonction de
+hachage utilise elle aussi ces deux attributs. Voir la documentation de
+\href{https://docs.python.org/3/reference/datamodel.html?highlight=__hash__\#object.__hash__}{\texttt{\_\_hash\_\_}}.\\
+
+    Voyons cela sur une sous-classe de \texttt{Point1}, dans laquelle nous
+définissons ces deux méthodes~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{k}{class} \PY{n+nc}{Point2}\PY{p}{(}\PY{n}{Point1}\PY{p}{)}\PY{p}{:}
+        
+            \PY{c+c1}{\PYZsh{} l\PYZsq{}égalité va se baser naturellement sur x et y}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}eq\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{other}\PY{p}{)}\PY{p}{:}
+                \PY{k}{return} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{x} \PY{o}{==} \PY{n}{other}\PY{o}{.}\PY{n}{x} \PY{o+ow}{and} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{y} \PY{o}{==} \PY{n}{other}\PY{o}{.}\PY{n}{y}
+        
+            \PY{c+c1}{\PYZsh{} du coup la fonction de hachage }
+            \PY{c+c1}{\PYZsh{} dépend aussi de x et de y}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}hash\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{k}{return} \PY{p}{(}\PY{l+m+mi}{11} \PY{o}{*} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{x} \PY{o}{+} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{y}\PY{p}{)} \PY{o}{/}\PY{o}{/} \PY{l+m+mi}{16}
+\end{Verbatim}
+
+
+    On peut vérifier que cette fois les choses fonctionnent correctement~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{q1} \PY{o}{=} \PY{n}{Point2}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+        \PY{n}{q2} \PY{o}{=} \PY{n}{Point2}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+\end{Verbatim}
+
+
+    Nos deux objets sont distincts pour \texttt{id()}/\texttt{is}, mais
+égaux pour \texttt{==}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{is → }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{q1 is q2\PYZcb{} }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{== → }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{q1 == q2\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+is → False 
+== → True
+
+    \end{Verbatim}
+
+    Et un ensemble contenant les deux points n'en contient qu'un~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{s} \PY{o}{=} \PY{p}{\PYZob{}}\PY{n}{q1}\PY{p}{,} \PY{n}{q2}\PY{p}{\PYZcb{}}
+         \PY{n+nb}{len}\PY{p}{(}\PY{n}{s}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} 1
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{q3} \PY{o}{=} \PY{n}{Point2}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+         \PY{n}{q3} \PY{o+ow}{in} \PY{n}{s}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} True
+\end{Verbatim}
+            
+    Comme les ensembles et les dictionnaires reposent sur le même mécanisme
+de table de hachage, on peut aussi indifféremment utiliser n'importe
+lequel de nos 3 points pour indexer un dictionnaire~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{d} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+         \PY{n}{d}\PY{p}{[}\PY{n}{q1}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{1}
+         \PY{n}{d}\PY{p}{[}\PY{n}{q2}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}13}]:} 1
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} les clés q1, q2 et q3 sont}
+         \PY{c+c1}{\PYZsh{} les mêmes pour le dictionnaire}
+         \PY{n}{d}\PY{p}{[}\PY{n}{q3}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{10000}
+         \PY{n}{d}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}14}]:} \{Pt[2, 3]: 10000\}
+\end{Verbatim}
+            
+    \hypertarget{attention}{%
+\subsubsection{Attention !}\label{attention}}
+
+    Tout ceci semble très bien fonctionner; sauf qu'en fait, il y a une
+\textbf{grosse faille}, c'est que nos objets \texttt{Point2} sont
+\textbf{mutables}. Du coup on peut maintenant imaginer un scénario comme
+celui-ci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{t1}\PY{p}{,} \PY{n}{t2} \PY{o}{=} \PY{n}{Point2}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{Point2}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}
+         \PY{n}{s} \PY{o}{=} \PY{p}{\PYZob{}}\PY{n}{t1}\PY{p}{,} \PY{n}{t2}\PY{p}{\PYZcb{}}
+         \PY{n}{s}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}15}]:} \{Pt[10, 10]\}
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{t1} \PY{o+ow}{in} \PY{n}{s}\PY{p}{,} \PY{n}{t2} \PY{o+ow}{in} \PY{n}{s}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}16}]:} (True, True)
+\end{Verbatim}
+            
+    Mais si maintenant je change un des deux objets:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{t1}\PY{o}{.}\PY{n}{x} \PY{o}{=} \PY{l+m+mi}{100}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{s}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}18}]:} \{Pt[100, 10]\}
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n}{t1} \PY{o+ow}{in} \PY{n}{s}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}19}]:} False
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{t2} \PY{o+ow}{in} \PY{n}{s}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}20}]:} False
+\end{Verbatim}
+            
+    Évidemment cela n'est pas correct. Ce qui se passe ici c'est qu'on a
+
+\begin{itemize}
+\tightlist
+\item
+  d'abord inséré \texttt{t1} dans \texttt{s}, avec un indice de hachage
+  calculé à partir de \texttt{10,\ 10}
+\item
+  pas inséré \texttt{t2} dans \texttt{s} parce qu'on a déterminé qu'il
+  existait déjà.
+\end{itemize}
+
+Après avoir modifié \texttt{t1} qui est le seul élément de \texttt{s}: À
+ce stade:
+
+\begin{itemize}
+\tightlist
+\item
+  lorsqu'on cherche \texttt{t1} dans \texttt{s}, on le fait avec un
+  indice de hachage calculé à partir de \texttt{100,\ 10} et du coup on
+  ne le trouve pas,
+\item
+  lorsqu'on cherche \texttt{t2} dans \texttt{s}, on utilise le bon
+  indice de hachage, mais ensuite le seul élément qui pourrait faire
+  l'affaire n'est pas égal à \texttt{t2}.
+\end{itemize}
+
+    \hypertarget{conclusion}{%
+\subsubsection{Conclusion}\label{conclusion}}
+
+    La
+\href{https://docs.python.org/3/reference/datamodel.html\#object.__hash__}{documentation
+de Python sur ce sujet} indique ceci~:
+
+\begin{quote}
+If a class defines mutable objects and implements an
+\texttt{\_\_eq\_\_}() method, it should not implement
+\texttt{\_\_hash\_\_}(), since the implementation of hashable
+collections requires that a key's hash value is immutable (if the
+object's hash value changes, it will be in the wrong hash bucket).
+\end{quote}
+
+    Notre classe \texttt{Point2} illustre bien cette limitation. Pour
+qu'elle soit utilisable en pratique, il faut \textbf{rendre ses
+instances immutables}. Cela peut se faire de plusieurs façons, dont deux
+que nous aborderons dans la prochaine séquence et qui sont - entre
+autres~:
+
+\begin{itemize}
+\tightlist
+\item
+  le \texttt{namedtuple}
+\item
+  et la \texttt{dataclass} (nouveau en 3.7).
+\end{itemize}

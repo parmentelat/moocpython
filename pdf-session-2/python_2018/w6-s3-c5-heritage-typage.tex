@@ -1,0 +1,307 @@
+    \hypertarget{huxe9ritage-typage}{%
+\section{Héritage, typage}\label{huxe9ritage-typage}}
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    Dans ce complément, nous allons revenir sur la notion de \emph{duck
+typing}, et attirer votre attention sur cette différence assez
+essentielle entre python et les langages statiquement typés. On
+s'adresse ici principalement à ceux d'entre vous qui sont habitués à C++
+et/ou Java.
+
+    \hypertarget{type-concret-et-type-abstrait}{%
+\subsubsection{Type concret et type
+abstrait}\label{type-concret-et-type-abstrait}}
+
+    Revenons sur la notion de type et remarquons que les types peuvent jouer
+plusieurs rôles, comme on l'a évoqué rapidement en première semaine~; et
+pour reprendre des notions standard en langages de programmation nous
+allons distinguer deux types.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{type concret~:} d'une part, la notion de type a bien entendu à
+  voir avec l'implémentation~; par exemple, un compilateur C a besoin de
+  savoir très précisément quel espace allouer à une variable, et
+  l'interpréteur python sous-traite à la classe le soin d'initialiser un
+  objet~;
+\item
+  \textbf{type abstrait~:} d'autre part, les types sont cruciaux dans
+  les systèmes de vérification statique, au sens large, dont le but est
+  de trouver un maximum de défauts à la seule lecture du code (par
+  opposition aux techniques qui nécessitent de le faire tourner).
+\end{enumerate}
+
+    \hypertarget{duck-typing}{%
+\subsubsection{\texorpdfstring{\emph{Duck
+typing}}{Duck typing}}\label{duck-typing}}
+
+    En python, ces deux aspects du typage sont relativement décorrélés.\\
+
+    Pour la seconde dimension du typage, le système de types abstraits de
+python est connu sous le nom de
+\href{http://en.wikipedia.org/wiki/Duck_typing}{\emph{duck typing}}, une
+appellation qui fait référence à cette phrase~:
+
+\begin{verbatim}
+When I see a bird that walks like a duck and swims like a duck and quacks like
+a duck, I call that bird a duck.
+\end{verbatim}
+
+    \hypertarget{lexemple-des-ituxe9rables}{%
+\subsubsection{L'exemple des
+itérables}\label{lexemple-des-ituxe9rables}}
+
+    Pour prendre l'exemple sans doute le plus représentatif, la notion
+d'\emph{itérable} est un type abstrait, en ce sens que, pour que le
+fragment~:
+
+\begin{verbatim}
+for item in container:
+    do_something(item)
+    
+\end{verbatim}
+
+ait un sens, il faut et il suffit que \texttt{container} soit un
+itérable. Et vous connaissez maintenant plein d'exemples très différents
+d'objets itérables, a minima parmi les \emph{built-in} \texttt{str},
+\texttt{list}, \texttt{tuple}, \texttt{range}\ldots{}\\
+
+    Dans un langage typé statiquement, pour pouvoir donner un type à cette
+construction, on serait \textbf{obligé} de définir un type - qu'on
+appellerait logiquement une classe abstraite - dont ces trois types
+seraient des descendants.\\
+
+    En python, et c'est le point que nous voulons souligner dans ce
+complément, il n'existe pas dans le système python d'objet de type
+\texttt{type} qui matérialise l'ensemble des \texttt{iterable}s. Si on
+regarde les superclasses de nos types concrets itérables, on voit que
+leur seul ancêtre commun est la classe \texttt{object}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{n+nb}{str}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}bases\PYZus{}\PYZus{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}1}]:} (object,)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n+nb}{list}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}bases\PYZus{}\PYZus{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} (object,)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n+nb}{tuple}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}bases\PYZus{}\PYZus{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} (object,)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n+nb}{range}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}bases\PYZus{}\PYZus{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} (object,)
+\end{Verbatim}
+            
+    \hypertarget{un-autre-exemple}{%
+\subsubsection{Un autre exemple}\label{un-autre-exemple}}
+
+    Pour prendre un exemple plus simple, si je considère~:
+
+\begin{verbatim}
+def foo(graphic):
+    ...
+    graphic.draw()
+\end{verbatim}
+
+pour que l'expression \texttt{graphic.draw()} ait un sens, il faut et il
+suffit que l'objet \texttt{graphic} ait une méthode \texttt{draw}.\\
+
+    À nouveau, dans un langage typé statiquement, on serait amené à définir
+une classe abstraite \texttt{Graphic}. En python ce n'est \textbf{pas
+requis}~; vous pouvez utiliser ce code tel quel avec deux classes
+\texttt{Rectangle} et \texttt{Texte} qui n'ont pas de rapport entre
+elles - autres que, à nouveau, d'avoir \texttt{object} comme ancêtre
+commun - pourvu qu'elles aient toutes les deux une méthode
+\texttt{draw}.
+
+    \hypertarget{huxe9ritage-et-type-abstrait}{%
+\subsubsection{Héritage et type
+abstrait}\label{huxe9ritage-et-type-abstrait}}
+
+    Pour résumer, en python comme dans les langages typés statiquement, on a
+bien entendu la bonne propriété que si, par exemple, la classe
+\texttt{Spam} est itérable, alors la classe \texttt{Eggs} qui hérite de
+\texttt{Spam} est itérable.\\
+
+Mais dans l'autre sens, si \texttt{Foo} et \texttt{Bar} sont itérables,
+il n'y a pas forcément une superclasse commune qui représente l'ensemble
+des objets itérables.
+
+    \hypertarget{isinstance-sur-stuxe9rouxefdes}{%
+\subsubsection{\texorpdfstring{\texttt{isinstance} sur
+stéroïdes}{isinstance sur stéroïdes}}\label{isinstance-sur-stuxe9rouxefdes}}
+
+    D'un autre côté, c'est très utile d'exposer au programmeur un moyen de
+vérifier si un objet a un \emph{type} donné - dans un sens
+volontairement vague ici.\\
+
+On a déjà parlé en Semaine 4 de l'intérêt qu'il peut y avoir à tester le
+type d'un argument avec \texttt{isinstance} dans une fonction, pour
+parvenir à faire l'équivalent de la surcharge en C++ (la surcharge en
+C++, c'est quand vous définissez plusieurs fonctions qui ont le même nom
+mais des types d'arguments différents).\\
+
+C'est pourquoi, quand on a cherché à exposer au programmeur des
+propriétés comme ``cet objet est-il iterable~?'', on a choisi d'étendre
+\emph{isinstance} au travers de
+\href{http://legacy.python.org/dev/peps/pep-3119/}{cette initiative}.
+C'est ainsi qu'on peut faire par exemple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k+kn}{from} \PY{n+nn}{collections}\PY{n+nn}{.}\PY{n+nn}{abc} \PY{k}{import} \PY{n}{Iterable}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n+nb}{isinstance}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ab}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{Iterable}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} True
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n+nb}{isinstance}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} \PY{n}{Iterable}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} True
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} comme on l\PYZsq{}a vu, un objet qui a des méthodes}
+        \PY{c+c1}{\PYZsh{} \PYZus{}\PYZus{}iter\PYZus{}\PYZus{}() et \PYZus{}\PYZus{}next\PYZus{}\PYZus{}() }
+        \PY{c+c1}{\PYZsh{} est considéré comme un itérable}
+        \PY{k}{class} \PY{n+nc}{Foo}\PY{p}{:}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}iter\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{k}{return} \PY{n+nb+bp}{self}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}next\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{c+c1}{\PYZsh{} ceci naturellement est bidon}
+                \PY{k}{return} 
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{foo} \PY{o}{=} \PY{n}{Foo}\PY{p}{(}\PY{p}{)}
+        \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{foo}\PY{p}{,} \PY{n}{Iterable}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} True
+\end{Verbatim}
+            
+    L'implémentation du module \texttt{abc} donne l'\textbf{illusion} que
+\texttt{Iterable} est un objet dans la hiérarchie de classes, et que
+tous ces \emph{classes} \texttt{str}, \texttt{list}, et \texttt{Foo} lui
+sont asujetties, mais ce n'est pas le cas en réalité~; comme on l'a vu
+plus tôt, ces trois types ne sont pas comparables dans la hiérarchie de
+classes, ils n'ont pas de plus petit (ou plus grand) élément à part
+\texttt{object}.\\
+
+    Je signale pour finir, à propos de \texttt{isinstance} et du module
+\texttt{collections}, que la définition du symbole \texttt{Hashable} est
+à mon avis beaucoup moins convaincante que \texttt{Iterable}~; si vous
+vous souvenez qu'en Semaine 3, Séquence ``les dictionnaires'', on avait
+vu que les clés doivent être globalement immuables. C'est une
+caractéristique qui est assez difficile à écrire, et en tous cas ceci de
+mon point de vue ne remplit pas la fonction~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{k+kn}{from} \PY{n+nn}{collections}\PY{n+nn}{.}\PY{n+nn}{abc} \PY{k}{import} \PY{n}{Hashable}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} un tuple qui contient une liste ne convient }
+         \PY{c+c1}{\PYZsh{} pas comme clé dans un dictionnaire}
+         \PY{c+c1}{\PYZsh{} et pourtant}
+         \PY{n+nb}{isinstance} \PY{p}{(}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{Hashable}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} True
+\end{Verbatim}
+            
+    \hypertarget{python-et-les-classes-abstraites}{%
+\subsubsection{python et les classes
+abstraites}\label{python-et-les-classes-abstraites}}
+
+    Les points à retenir de ce complément un peu digressif sont~:
+
+\begin{itemize}
+\tightlist
+\item
+  en python, on hérite des \textbf{implémentations} et pas des
+  \textbf{spécifications}~;
+\item
+  et le langage n'est pas taillé pour tirer profit de \textbf{classes
+  abstraites} - même si rien ne vous interdit d'écrire, pour des raisons
+  documentaires, une classe qui résume l'interface qui est attendue par
+  tel ou tel système de plugin.
+\end{itemize}
+
+    Venant de C++ ou de Java, cela peut prendre du temps d'arriver à se
+débarrasser de l'espèce de réflexe qui fait qu'on pense d'abord classe
+abstraite, puis implémentations.
+
+    \hypertarget{pour-aller-plus-loin}{%
+\subsubsection{Pour aller plus loin}\label{pour-aller-plus-loin}}
+
+    La
+\href{https://docs.python.org/3/library/collections.abc.html}{documentation
+du module \texttt{collections.abc}} contient la liste de tous les
+symboles exposés par ce module, dont par exemple en vrac~:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{Iterable}
+\item
+  \texttt{Iterator}
+\item
+  \texttt{Hashable}
+\item
+  \texttt{Generator}
+\item
+  \texttt{Coroutine} (rendez-vous semaine 8)
+\end{itemize}
+
+et de nombreux autres.
+
+    \hypertarget{avertissement}{%
+\subsubsection{Avertissement}\label{avertissement}}
+
+    Prenez garde enfin que ces symboles n'ont - à ce stade du moins - pas de
+relation forte avec ceux
+\href{https://docs.python.org/3/library/typing.html}{du module
+\texttt{typing}} dont on a parlé lorsqu'on a vu les \emph{type hints}.

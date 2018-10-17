@@ -1,0 +1,139 @@
+    \hypertarget{uxe9numuxe9rations}{%
+\section{Énumérations}\label{uxe9numuxe9rations}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    On trouve dans d'autres langages la notion de types énumérés.
+
+    L'usage habituel, c'est typiquement un code d'erreur qui peut prendre
+certaines valeurs précises. Pensez par exemple aux
+\href{https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP}{codes prévus
+par le protocole HTTP}. Le protocole prévoit un code de retour qui peut
+prendre un ensemble fini de valeurs, comme par exemple 200, 301, 302,
+404, 500, mais pas 90 ni 110.\\
+
+    On veut pouvoir utiliser des noms parlants dans les programmes qui
+gèrent ce type de valeurs, c'est une application typique des types
+énumérés.\\
+
+    La bibliothèque standard offre depuis Python-3.4 un module qui s'appelle
+sans grande surprise \texttt{enum}, et qui expose entre autres une
+classe \texttt{Enum}. On l'utiliserait comme ceci, dans un cas d'usage
+plus simple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{enum} \PY{k}{import} \PY{n}{Enum}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k}{class} \PY{n+nc}{Flavour}\PY{p}{(}\PY{n}{Enum}\PY{p}{)}\PY{p}{:}
+            \PY{n}{CHOCOLATE} \PY{o}{=} \PY{l+m+mi}{1}
+            \PY{n}{VANILLA} \PY{o}{=} \PY{l+m+mi}{2}
+            \PY{n}{PEAR} \PY{o}{=} \PY{l+m+mi}{3}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{vanilla} \PY{o}{=} \PY{n}{Flavour}\PY{o}{.}\PY{n}{VANILLA}
+\end{Verbatim}
+
+
+    Un premier avantage est que les représentations textuelles sont plus
+parlantes~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n+nb}{str}\PY{p}{(}\PY{n}{vanilla}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} 'Flavour.VANILLA'
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n+nb}{repr}\PY{p}{(}\PY{n}{vanilla}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} '<Flavour.VANILLA: 2>'
+\end{Verbatim}
+            
+    Vous pouvez aussi retrouver une valeur par son nom~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{chocolate} \PY{o}{=} \PY{n}{Flavour}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{CHOCOLATE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        \PY{n}{chocolate}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} <Flavour.CHOCOLATE: 1>
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{Flavour}\PY{o}{.}\PY{n}{CHOCOLATE}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} <Flavour.CHOCOLATE: 1>
+\end{Verbatim}
+            
+    Et réciproquement~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{chocolate}\PY{o}{.}\PY{n}{name}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} 'CHOCOLATE'
+\end{Verbatim}
+            
+    \hypertarget{intenum}{%
+\subsubsection{\texorpdfstring{\texttt{IntEnum}}{IntEnum}}\label{intenum}}
+
+    En fait, le plus souvent on préfère utiliser \texttt{IntEnum}, une
+sous-classe de \texttt{Enum} qui permet également de faire des
+comparaisons. Pour reprendre le cas des codes d'erreur HTTP~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k+kn}{from} \PY{n+nn}{enum} \PY{k}{import} \PY{n}{IntEnum}
+        
+        \PY{k}{class} \PY{n+nc}{HttpError}\PY{p}{(}\PY{n}{IntEnum}\PY{p}{)}\PY{p}{:}
+        
+            \PY{n}{OK} \PY{o}{=} \PY{l+m+mi}{200}
+            \PY{n}{REDIRECT} \PY{o}{=} \PY{l+m+mi}{301}
+            \PY{n}{REDIRECT\PYZus{}TMP} \PY{o}{=} \PY{l+m+mi}{302}
+            \PY{n}{NOT\PYZus{}FOUND} \PY{o}{=} \PY{l+m+mi}{404}
+            \PY{n}{INTERNAL\PYZus{}ERROR} \PY{o}{=} \PY{l+m+mi}{500}
+        
+            \PY{c+c1}{\PYZsh{} avec un IntEnum on peut faire des comparaisons}
+            \PY{k}{def} \PY{n+nf}{is\PYZus{}redirect}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{k}{return} \PY{l+m+mi}{300} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{value} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{399}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{code} \PY{o}{=} \PY{n}{HttpError}\PY{o}{.}\PY{n}{REDIRECT\PYZus{}TMP}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{code}\PY{o}{.}\PY{n}{is\PYZus{}redirect}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} True
+\end{Verbatim}
+            
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+Consultez \href{https://docs.python.org/3/library/enum.html}{la
+documentation officielle du module \texttt{enum}}.

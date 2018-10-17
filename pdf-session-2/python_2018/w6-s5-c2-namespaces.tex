@@ -1,0 +1,210 @@
+    \hypertarget{espaces-de-nommage}{%
+\section{Espaces de nommage}\label{espaces-de-nommage}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    Nous venons de voir les règles pour l'affectation (ou l'assignation) et
+le référencement des variables et des attributs~; en particulier, on
+doit faire une distinction entre les attributs et les variables.
+
+    \begin{itemize}
+\tightlist
+\item
+  Les attributs sont résolus de manière \textbf{dynamique}, c'est-à-dire
+  au moment de l'exécution (\emph{run-time})~;
+\item
+  alors que la liaison des variables est par contre \textbf{statique}
+  (\emph{compile-time}) et \textbf{lexicale}, en ce sens qu'elle se base
+  uniquement sur les imbrications de code.
+\end{itemize}
+
+    Vous voyez donc que la différence entre attributs et variables est
+fondamentale. Dans ce complément, nous allons reprendre et résumer les
+différentes règles qui régissent l'affectation et le référencement des
+attributs et des variables.
+
+    \hypertarget{attributs}{%
+\subparagraph{Attributs\\\\}\label{attributs}}
+
+    Un attribut est un symbole \texttt{x} utilisé dans la notation
+\texttt{obj.x} où \texttt{obj} est l'objet qui définit l'espace de
+nommage sur lequel \texttt{x} existe.\\
+
+L'\textbf{affectation} (explicite ou implicite) d'un attribut \texttt{x}
+sur un objet \texttt{obj} va créer (ou altérer) un symbole \texttt{x}
+\textbf{directement} dans l'espace de nommage de \texttt{obj}, symbole
+qui va référencer l'objet affecté, typiquement l'objet à droite du signe
+\texttt{=}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k}{class} \PY{n+nc}{MaClasse}\PY{p}{:}
+            \PY{k}{pass}
+        
+        \PY{c+c1}{\PYZsh{} affectation explicite}
+        \PY{n}{MaClasse}\PY{o}{.}\PY{n}{x} \PY{o}{=} \PY{l+m+mi}{10} 
+        
+        \PY{c+c1}{\PYZsh{} le symbole x est défini dans l\PYZsq{}espace de nommage de MaClasse}
+        \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{MaClasse}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}dict\PYZus{}\PYZus{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}1}]:} True
+\end{Verbatim}
+            
+    Le \textbf{référencement} (la lecture) d'un attribut va chercher cet
+attribut \textbf{le long de l'arbre d'héritage} en commençant par
+l'instance, puis la classe qui a créé l'instance, puis les super-classes
+et suivant la MRO (voir le complément sur l'héritage multiple).
+
+    \hypertarget{variables}{%
+\subparagraph{Variables\\\\}\label{variables}}
+
+    Une variable est un symbole qui n'est pas précédé de la notation
+\texttt{obj.} et l'affectation d'une variable rend cette variable locale
+au bloc de code dans lequel elle est définie, un bloc de code pouvant
+être~:
+
+\begin{itemize}
+\tightlist
+\item
+  une fonction, dans ce cas la variable est locale à la fonction~;
+\item
+  une classe, dans ce cas la variable est locale à la classe~;
+\item
+  un module, dans ce cas la variable est locale au module, on dit
+  également que la variable est globale.
+\end{itemize}
+
+Une variable référencée est toujours cherchée suivant la règle LEGB~:
+
+\begin{itemize}
+\tightlist
+\item
+  localement au bloc de code dans lequel elle est référencée~;
+\item
+  puis dans les blocs de code des \textbf{fonctions ou méthodes}
+  englobantes, s'il y en a, de la plus proche à la plus eloignée~;
+\item
+  puis dans le bloc de code du module.
+\end{itemize}
+
+Si la variable n'est toujours pas trouvée, elle est cherchée dans le
+module \texttt{builtins} et si elle n'est toujours pas trouvée, une
+exception est levée.\\
+
+Par exemple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{var} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dans le module}\PY{l+s+s1}{\PYZsq{}}
+        
+        \PY{k}{class} \PY{n+nc}{A}\PY{p}{:}
+            \PY{n}{var} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dans la classe A}\PY{l+s+s1}{\PYZsq{}}
+            \PY{k}{def} \PY{n+nf}{f}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{n}{var} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dans la fonction f}\PY{l+s+s1}{\PYZsq{}}
+                \PY{k}{class} \PY{n+nc}{B}\PY{p}{:}
+                    \PY{n+nb}{print}\PY{p}{(}\PY{n}{var}\PY{p}{)}
+                \PY{n}{B}\PY{p}{(}\PY{p}{)}
+        \PY{n}{A}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{f}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+dans la fonction f
+
+    \end{Verbatim}
+
+    \hypertarget{en-ruxe9sumuxe9}{%
+\subparagraph{En résumé}\label{en-ruxe9sumuxe9}}
+
+    Dans la vidéo et dans ce complément basique, on a couvert tous les cas
+standards, et même si python est un langage plutôt mieux fait, avec
+moins de cas particuliers que d'autres langages, il a également ses cas
+étranges entre raisons historiques et bugs qui ne seront jamais corrigés
+(parce que ça casserait plus de choses que ça n'en réparerait). Pour
+éviter de tomber dans ces cas spéciaux, c'est simple, vous n'avez qu'à
+suivre ces règles~:
+
+\begin{itemize}
+\tightlist
+\item
+  ne jamais affecter dans un bloc de code local une variable de même nom
+  qu'une variable globale~;
+\item
+  éviter d'utiliser les directives \texttt{global} et \texttt{nonlocal},
+  et les réserver pour du code avancé comme les décorateurs et les
+  métaclasses~;
+\item
+  et lorsque vous devez vraiment les utiliser, toujours mettre les
+  directives \texttt{global} et \texttt{nonlocal} comme premières
+  instructions du bloc de code où elle s'appliquent.
+\end{itemize}
+
+Si vous ne suivez pas ces règles, vous risquez de tomber dans un cas
+particulier que nous détaillons ci-dessous dans la partie avancée.
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    \hypertarget{la-documentation-officielle-est-fausse}{%
+\subparagraph{La documentation officielle est
+fausse\\\\}\label{la-documentation-officielle-est-fausse}}
+
+    Oui, vous avez bien lu, la documentation officielle est fausse sur un
+point subtil. Regardons le
+\href{https://docs.python.org/3/reference/executionmodel.html}{modèle
+d'exécution}, on trouve la phrase suivante ``If a name binding operation
+occurs anywhere within a code block, all uses of the name within the
+block are treated as references to the current block.'' qui est fausse,
+il faut lire ``If a name binding operation occurs anywhere within a code
+block \textbf{of a function}, all uses of the name within the block are
+treated as references to the current block.''\\
+
+En effet, les classes se comportent différemment des fonctions~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{x} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{x du module}\PY{l+s+s2}{\PYZdq{}}
+        \PY{k}{class} \PY{n+nc}{A}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dans classe A: }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{x}\PY{p}{)}
+            \PY{n}{x} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{x dans A}\PY{l+s+s2}{\PYZdq{}}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dans classe A: }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{x}\PY{p}{)}
+            \PY{k}{del} \PY{n}{x}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dans classe A: }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+dans classe A: x du module
+dans classe A: x dans A
+dans classe A: x du module
+
+    \end{Verbatim}
+
+    Alors pourquoi si c'est une mauvaise idée de mélanger variables globales
+et locales de même nom dans une fonction, c'est possible dans une
+classe~?\\
+
+Cela vient de la manière dont sont implémentés les espaces de nommage.
+Normalement, un objet a pour espace de nommage un dictionnaire qui
+s'appelle \texttt{\_\_dict\_\_}. D'un côté un dictionnaire est un objet
+python qui offre beaucoup de flexibilité, mais d'un autre côté, il
+induit un petit surcoût pour chaque recherche d'éléments. Comme les
+fonctions sont des objets qui par définition peuvent être appelés très
+souvent, il a été décidé de mettre toutes les variables locales à la
+fonction dans un objet écrit en C qui n'est pas dynamique (on ne peut
+pas ajouter des éléments à l'exécution), mais qui est un peu plus rapide
+qu'un dictionnaire lors de l'accès aux variables. Mais pour faire cela,
+il faut déterminer la portée de la variable dans la phase de
+précompilation. Donc si le précompilateur trouve une affectation
+(explicite ou implicite) dans une fonction, il considère la variable
+comme locale pour tout le bloc de code. Donc si on référence une
+variable définie comme étant locale avant une affectation dans la
+fonction, on ne va pas la chercher globalement, on a une erreur
+\texttt{UnboundLocalError}.\\
+
+Cette optimisation n'a pas été faite pour les classes, parce que dans
+l'évaluation du compromis souplesse contre efficacité pour les classes,
+c'est la souplesse, donc le dictionnaire qui a gagné.

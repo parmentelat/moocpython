@@ -1,0 +1,219 @@
+    \hypertarget{enregistrements-et-instances}{%
+\section{Enregistrements et
+instances}\label{enregistrements-et-instances}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    \hypertarget{un-enregistrement-impluxe9mentuxe9-comme-une-instance-de-classe}{%
+\subsubsection{Un enregistrement implémenté comme une instance de
+classe}\label{un-enregistrement-impluxe9mentuxe9-comme-une-instance-de-classe}}
+
+    Nous reprenons ici la discussion commencée en semaine 3, où nous avions
+vu comment implémenter un enregistrement comme un dictionnaire. Un
+enregistrement est l'équivalent, selon les langages, de \emph{struct} ou
+\emph{record}.\\
+
+    Notre exemple était celui des personnes, et nous avions alors écrit
+quelque chose comme~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{n}{pierre} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{nom}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pierre}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{25}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{email}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pierre@foo.com}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{pierre}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\{'nom': 'pierre', 'age': 25, 'email': 'pierre@foo.com'\}
+
+    \end{Verbatim}
+
+    Cette fois-ci nous allons implémenter la même abstraction, mais avec une
+classe \texttt{Personne} comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k}{class} \PY{n+nc}{Personne}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Une personne possède un nom, un âge et une adresse e\PYZhy{}mail\PYZdq{}\PYZdq{}\PYZdq{}}
+            
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{nom}\PY{p}{,} \PY{n}{age}\PY{p}{,} \PY{n}{email}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{nom} \PY{o}{=} \PY{n}{nom}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{age} \PY{o}{=} \PY{n}{age}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{email} \PY{o}{=} \PY{n}{email}
+                
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{c+c1}{\PYZsh{} comme nous avons la chance de disposer de python\PYZhy{}3.6}
+                \PY{c+c1}{\PYZsh{} utilisons un f\PYZhy{}string}
+                \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}\PYZlt{}}\PY{l+s+si}{\PYZob{}self.nom\PYZcb{}}\PY{l+s+s2}{, }\PY{l+s+si}{\PYZob{}self.age\PYZcb{}}\PY{l+s+s2}{ ans, email:}\PY{l+s+si}{\PYZob{}self.email\PYZcb{}}\PY{l+s+s2}{\PYZgt{}\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    Le code de cette classe devrait être limpide à présent~; voyons comment
+on l'utiliserait - en guise de rappel sur le passage d'arguments aux
+fonctions~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{personnes} \PY{o}{=} \PY{p}{[}
+        
+            \PY{c+c1}{\PYZsh{} on se fie à l\PYZsq{}ordre des arguments dans le créateur}
+            \PY{n}{Personne}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pierre}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pierre@foo.com}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{,}
+        
+            \PY{c+c1}{\PYZsh{} ou bien on peut être explicite}
+            \PY{n}{Personne}\PY{p}{(}\PY{n}{nom}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{paul}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{age}\PY{o}{=}\PY{l+m+mi}{18}\PY{p}{,} \PY{n}{email}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{paul@bar.com}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{,}
+        
+            \PY{c+c1}{\PYZsh{} ou bien on mélange}
+            \PY{n}{Personne}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{jacques}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{52}\PY{p}{,} \PY{n}{email}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{jacques@cool.com}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{,}
+        \PY{p}{]}
+        \PY{k}{for} \PY{n}{personne} \PY{o+ow}{in} \PY{n}{personnes}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{personne}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+<<pierre, 25 ans, email:pierre@foo.com>>
+<<paul, 18 ans, email:paul@bar.com>>
+<<jacques, 52 ans, email:jacques@cool.com>>
+
+    \end{Verbatim}
+
+    \hypertarget{un-dictionnaire-pour-indexer-les-enregistrements}{%
+\subsubsection{Un dictionnaire pour indexer les
+enregistrements}\label{un-dictionnaire-pour-indexer-les-enregistrements}}
+
+    Nous pouvons appliquer exactement la même technique d'indexation qu'avec
+les dictionnaires~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} on crée un index pour pouvoir rechercher efficacement}
+        \PY{c+c1}{\PYZsh{} une personne par son nom}
+        \PY{n}{index\PYZus{}par\PYZus{}nom} \PY{o}{=} \PY{p}{\PYZob{}}\PY{n}{personne}\PY{o}{.}\PY{n}{nom}\PY{p}{:} \PY{n}{personne} \PY{k}{for} \PY{n}{personne} \PY{o+ow}{in} \PY{n}{personnes}\PY{p}{\PYZcb{}}
+\end{Verbatim}
+
+
+    De façon à pouvoir facilement localiser une personne~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{pierre} \PY{o}{=} \PY{n}{index\PYZus{}par\PYZus{}nom}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pierre}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{pierre}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+<<pierre, 25 ans, email:pierre@foo.com>>
+
+    \end{Verbatim}
+
+    \hypertarget{encapsulation}{%
+\subsubsection{Encapsulation}\label{encapsulation}}
+
+    Pour marquer l'anniversaire d'une personne, nous pourrions faire~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{pierre}\PY{o}{.}\PY{n}{age} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+        \PY{n}{pierre}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} <<pierre, 26 ans, email:pierre@foo.com>>
+\end{Verbatim}
+            
+    À ce stade, surtout si vous venez de C++ ou de Java, vous devriez vous
+dire que ça ne va pas du tout~!\\
+
+En effet, on a parlé dans le complément précédent des mérites de
+l'encapsulation, et vous vous dites que là, la classe n'est pas du tout
+encapsulée car le code utilisateur a besoin de connaître
+l'implémentation.\\
+
+    En réalité, avec les classes python on a la possibilité, grâce aux
+\emph{properties}, de conserver ce style de programmation qui a
+l'avantage d'être très simple, tout en préservant une bonne
+encapsulation, comme on va le voir dans le prochain complément.
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    Illustrons maintenant qu'en Python on peut ajouter des méthodes à une
+classe \emph{à la volée} - c'est-à-dire en dehors de l'instruction
+\texttt{class}.\\
+
+Pour cela on tire simplement profit du fait que \textbf{les méthodes
+sont implémentées comme des attributs de l'objet classe}.\\
+
+    Ainsi, on peut étendre l'objet \texttt{classe} lui-même dynamiquement~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} pour une implémentation réelle voyez la bibliothèque smtplib}
+        \PY{c+c1}{\PYZsh{} https://docs.python.org/3/library/smtplib.html}
+        
+        \PY{k}{def} \PY{n+nf}{sendmail}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{subject}\PY{p}{,} \PY{n}{body}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Envoie un mail à la personne}\PY{l+s+s2}{\PYZdq{}}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{To: }\PY{l+s+si}{\PYZob{}self.email\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Subject: }\PY{l+s+si}{\PYZob{}subject\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Body: }\PY{l+s+si}{\PYZob{}body\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            
+        \PY{n}{Personne}\PY{o}{.}\PY{n}{sendmail} \PY{o}{=} \PY{n}{sendmail}
+\end{Verbatim}
+
+
+    Ce code commence par définir une fonction en utilisant \texttt{def} et
+la signature de la méthode. La fonction accepte un premier argument
+\texttt{self}~; exactement comme si on avait défini la méthode dans
+l'instruction \texttt{class}.\\
+
+Ensuite, il suffit d'affecter la fonction ainsi définie à
+\textbf{l'attribut \texttt{sendmail}} de l'objet classe.\\
+
+Vous voyez que c'est très simple, et à présent la classe a connaissance
+de cette méthode exactement comme si on l'avait définie dans la clause
+\texttt{class}, comme le montre l'aide~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{help}\PY{p}{(}\PY{n}{Personne}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Help on class Personne in module \_\_main\_\_:
+
+class Personne(builtins.object)
+ |  Une personne possède un nom, un âge et une adresse e-mail
+ |  
+ |  Methods defined here:
+ |  
+ |  \_\_init\_\_(self, nom, age, email)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  \_\_repr\_\_(self)
+ |      Return repr(self).
+ |  
+ |  sendmail(self, subject, body)
+ |      Envoie un mail à la personne
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  \_\_dict\_\_
+ |      dictionary for instance variables (if defined)
+ |  
+ |  \_\_weakref\_\_
+ |      list of weak references to the object (if defined)
+
+
+    \end{Verbatim}
+
+    Et on peut à présent utiliser cette méthode~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{pierre}\PY{o}{.}\PY{n}{sendmail}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Coucou}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Salut ça va ?}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+To: pierre@foo.com
+Subject: Coucou
+Body: Salut ça va ?
+
+    \end{Verbatim}

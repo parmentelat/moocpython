@@ -1,0 +1,363 @@
+    \hypertarget{huxe9ritage}{%
+\section{Héritage}\label{huxe9ritage}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    La notion d'héritage, qui fait partie intégrante de la Programmation
+Orientée Objet, permet principalement de maximiser la
+\textbf{réutilisabilité}.\\
+
+Nous avons vu dans la vidéo les mécanismes d'héritage \emph{in
+abstracto}. Pour résumer très brièvement, on recherche un attribut (pour
+notre propos, disons une méthode) à partir d'une instance en cherchant~:
+
+\begin{itemize}
+\tightlist
+\item
+  d'abord dans l'instance elle-même~;
+\item
+  puis dans la classe de l'instance~;
+\item
+  puis dans les super-classes de la classe.
+\end{itemize}
+
+    L'objet de ce complément est de vous donner, d'un point de vue plus
+appliqué, des idées de ce que l'on peut faire ou non avec ce mécanisme.
+Le sujet étant assez rabâché par ailleurs, nous nous concentrerons sur
+deux points~:
+
+\begin{itemize}
+\tightlist
+\item
+  les pratiques de base utilisées pour la conception de classes, et
+  notamment pour bien distinguer \textbf{héritage} et
+  \textbf{composition}~;
+\item
+  nous verrons ensuite, sur des \textbf{exemples extraits de code réel},
+  comment ces mécanismes permettent en effet de contribuer à la
+  réutilisabilité du code.
+\end{itemize}
+
+    \hypertarget{plusieurs-formes-dhuxe9ritage}{%
+\subsubsection{Plusieurs formes
+d'héritage}\label{plusieurs-formes-dhuxe9ritage}}
+
+    Une méthode héritée peut être rangée dans une de ces trois catégories~:
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{implicite}~: si la classe fille ne définit pas du tout la
+  méthode~;
+\item
+  \emph{redéfinie}~: si on récrit la méthode entièrement~;
+\item
+  \emph{modifiée}~: si on récrit la méthode dans la classe fille, mais
+  en utilisant le code de la classe mère.
+\end{itemize}
+
+    Commençons par illustrer tout ceci sur un petit exemple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} Une classe mère}
+        \PY{k}{class} \PY{n+nc}{Fleur}\PY{p}{:}
+            \PY{k}{def} \PY{n+nf}{implicite}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fleur.implicite}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{k}{def} \PY{n+nf}{redefinie}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fleur.redéfinie}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{k}{def} \PY{n+nf}{modifiee}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fleur.modifiée}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Une classe fille}
+        \PY{k}{class} \PY{n+nc}{Rose}\PY{p}{(}\PY{n}{Fleur}\PY{p}{)}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} on ne définit pas implicite}
+            \PY{c+c1}{\PYZsh{} on rédéfinit complètement redefinie}
+            \PY{k}{def} \PY{n+nf}{redefinie}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Rose.redefinie}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{c+c1}{\PYZsh{} on change un peu le comportement de modifiee}
+            \PY{k}{def} \PY{n+nf}{modifiee}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{n}{Fleur}\PY{o}{.}\PY{n}{modifiee}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Rose.modifiee apres Fleur}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    On peut à présent créer une instance de Rose et appeler sur cette
+instance les trois méthodes.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} fille est une instance de Rose}
+        \PY{n}{fille} \PY{o}{=} \PY{n}{Rose}\PY{p}{(}\PY{p}{)}
+        
+        \PY{n}{fille}\PY{o}{.}\PY{n}{implicite}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Fleur.implicite
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{fille}\PY{o}{.}\PY{n}{redefinie}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Rose.redefinie
+
+    \end{Verbatim}
+
+    S'agissant des deux premières méthodes, le comportement qu'on observe
+est simplement la conséquence de l'algorithme de recherche d'attributs~:
+\texttt{implicite} est trouvée dans la classe Fleur et
+\texttt{redefinie} est trouvée dans la classe Rose.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{fille}\PY{o}{.}\PY{n}{modifiee}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Fleur.modifiée
+Rose.modifiee apres Fleur
+
+    \end{Verbatim}
+
+    Pour la troisième méthode, attardons-nous un peu car on voit ici comment
+\emph{combiner} facilement le code de la classe mère avec du code
+spécifique à la classe fille, en appelant explicitement la méthode de la
+classe mère lorsqu'on fait~:
+
+\begin{verbatim}
+Fleur.modifiee(self)
+\end{verbatim}
+
+    \hypertarget{la-fonction-built-in-super}{%
+\subparagraph{\texorpdfstring{La fonction \emph{built-in}
+\texttt{super()}\\\\}{La fonction built-in super()}}\label{la-fonction-built-in-super}}
+
+    Signalons à ce sujet, pour être exhaustif, l'existence de la
+\href{https://docs.python.org/3/library/functions.html\#super}{fonction
+\emph{built-in} \texttt{super()}} qui permet de réaliser la même chose
+sans nommer explicitement la classe mère, comme on le fait ici~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} Une version allégée de la classe fille, qui utilise super()}
+        \PY{k}{class} \PY{n+nc}{Rose}\PY{p}{(}\PY{n}{Fleur}\PY{p}{)}\PY{p}{:}
+            \PY{k}{def} \PY{n+nf}{modifiee}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb}{super}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{modifiee}\PY{p}{(}\PY{p}{)}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Rose.modifiee apres Fleur}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{fille} \PY{o}{=} \PY{n}{Rose}\PY{p}{(}\PY{p}{)}
+        
+        \PY{n}{fille}\PY{o}{.}\PY{n}{modifiee}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Fleur.modifiée
+Rose.modifiee apres Fleur
+
+    \end{Verbatim}
+
+    On peut envisager d'utiliser \texttt{super()} dans du code très abstrait
+où on ne sait pas déterminer statiquement le nom de la classe dont il
+est question. Mais, c'est une question de goût évidemment, je recommande
+personnellement la première forme, où on qualifie la méthode avec le nom
+de la classe mère qu'on souhaite utiliser. En effet, assez souvent~:
+
+\begin{itemize}
+\tightlist
+\item
+  on sait déterminer le nom de la classe dont il est question~;
+\item
+  ou alors on veut mélanger plusieurs méthodes héritées (via l'héritage
+  multiple, dont on va parler dans un prochain complément) et dans ce
+  cas \texttt{super()} ne peut rien pour nous.
+\end{itemize}
+
+    \hypertarget{huxe9ritage-vs-composition}{%
+\subsubsection{\texorpdfstring{Héritage \emph{vs}
+Composition}{Héritage vs Composition}}\label{huxe9ritage-vs-composition}}
+
+    Dans le domaine de la conception orientée objet, on fait la différence
+entre deux constructions, l'héritage et la composition, qui à une
+analyse superficielle peuvent paraître procurer des résultats
+similaires, mais qu'il est important de bien distinguer.\\
+
+Voyons d'abord en quoi consiste la composition et pourquoi le résultat
+est voisin~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} Une classe avec qui on n\PYZsq{}aura pas de relation d\PYZsq{}héritage}
+        \PY{k}{class} \PY{n+nc}{Tige}\PY{p}{:}
+            \PY{k}{def} \PY{n+nf}{implicite}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Tige.implicite}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{k}{def} \PY{n+nf}{redefinie}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Tige.redefinie}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{k}{def} \PY{n+nf}{modifiee}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Tige.modifiee}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} on n\PYZsq{}hérite pas}
+        \PY{c+c1}{\PYZsh{} mais on fait ce qu\PYZsq{}on appelle une composition}
+        \PY{c+c1}{\PYZsh{} avec la classe Tige}
+        \PY{k}{class} \PY{n+nc}{Rose}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} mais pour chaque objet de la classe Rose}
+            \PY{c+c1}{\PYZsh{} on va créer un objet de la classe Tige}
+            \PY{c+c1}{\PYZsh{} et le conserver dans un champ}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{externe} \PY{o}{=} \PY{n}{Tige}\PY{p}{(}\PY{p}{)}
+        
+            \PY{c+c1}{\PYZsh{} le reste est presque comme tout à l\PYZsq{}heure}
+            \PY{c+c1}{\PYZsh{} sauf qu\PYZsq{}il faut definir implicite}
+            \PY{k}{def} \PY{n+nf}{implicite}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{externe}\PY{o}{.}\PY{n}{implicite}\PY{p}{(}\PY{p}{)}
+                
+            \PY{c+c1}{\PYZsh{} on redéfinit complètement redefinie}
+            \PY{k}{def} \PY{n+nf}{redefinie}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Rose.redefinie}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                
+            \PY{k}{def} \PY{n+nf}{modifiee}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{externe}\PY{o}{.}\PY{n}{modifiee}\PY{p}{(}\PY{p}{)}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Rose.modifiee apres Tige}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} on obtient ici exactement le même comportement pour les trois sortes de méthodes}
+        \PY{n}{fille} \PY{o}{=} \PY{n}{Rose}\PY{p}{(}\PY{p}{)}
+        
+        \PY{n}{fille}\PY{o}{.}\PY{n}{implicite}\PY{p}{(}\PY{p}{)}
+        \PY{n}{fille}\PY{o}{.}\PY{n}{redefinie}\PY{p}{(}\PY{p}{)}
+        \PY{n}{fille}\PY{o}{.}\PY{n}{modifiee}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Tige.implicite
+Rose.redefinie
+Tige.modifiee
+Rose.modifiee apres Tige
+
+    \end{Verbatim}
+
+    \hypertarget{comment-choisir}{%
+\subparagraph{Comment choisir~?\\\\}\label{comment-choisir}}
+
+    Alors, quand faut-il utiliser l'héritage et quand faut-il utiliser la
+composition~?\\
+On arrive ici à la limite de notre cours, il s'agit plus de conception
+que de codage à proprement parler, mais pour donner une réponse très
+courte à cette question~:
+
+\begin{itemize}
+\tightlist
+\item
+  on utilise l'héritage lorsqu'un objet de la sous-classe \textbf{est
+  aussi un} objet de la super-classe (une rose est aussi une fleur)~;
+\item
+  on utilise la composition lorsqu'un objet de la sous-classe \textbf{a
+  une relation avec} un objet de la super-classe (une rose possède une
+  tige, mais c'est un autre objet).
+\end{itemize}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{des-exemples-de-code}{%
+\subsubsection{Des exemples de code}\label{des-exemples-de-code}}
+
+    Sans transition, dans cette section un peu plus prospective, nous vous
+avons signalé quelques morceaux de code de la bibliothèque standard qui
+utilisent l'héritage. Sans aller nécessairement jusqu'à la lecture de
+ces codes, il nous a semblé intéressant de commenter spécifiquement
+l'usage qui est fait de l'héritage dans ces bibliothèques.
+
+    \hypertarget{le-module-calendar}{%
+\subparagraph{\texorpdfstring{Le module
+\texttt{calendar}\\\\}{Le module calendar}}\label{le-module-calendar}}
+
+    On trouve dans la bibliothèque standard
+\href{https://docs.python.org/3/library/calendar.html}{le module
+\texttt{calendar}}. Ce module expose deux classes \texttt{TextCalendar}
+et \texttt{HTMLCalendar}. Sans entrer du tout dans le détail, ces deux
+classes permettent d'imprimer dans des formats différents le même type
+d'informations.\\
+
+Le point ici est que les concepteurs ont choisi un graphe d'héritage
+comme ceci~:
+
+\begin{verbatim}
+Calendar
+|-- TextCalendar
+|-- HTMLCalendar
+\end{verbatim}
+
+qui permet de grouper le code concernant la logique dans la classe
+\texttt{Calendar}, puis dans les deux sous-classes d'implémenter le type
+de sortie qui va bien.\\
+
+C'est l'utilisateur qui choisit la classe qui lui convient le mieux, et
+de cette manière, le maximum de code est partagé entre les deux
+classes~; et de plus si vous avez besoin d'une sortie au format, disons
+PDF, vous pouvez envisager d'hériter de \texttt{Calendar} et de
+n'implémenter que la partie spécifique au format PDF.\\
+
+C'est un peu le niveau élémentaire de l'héritage.
+
+    \hypertarget{le-module-socketserver}{%
+\subparagraph{\texorpdfstring{Le module
+\texttt{SocketServer}\\\\}{Le module SocketServer}}\label{le-module-socketserver}}
+
+    Toujours dans la bibliothèque standard, le
+\href{https://docs.python.org/3/library/socketserver.html}{module
+\texttt{SocketServer}} fait un usage beaucoup plus sophistiqué de
+l'héritage.\\
+
+Le module propose une hiérarchie de classes comme ceci~:
+
+    \begin{verbatim}
++------------+
+| BaseServer |
++------------+
+      |
+      v
++-----------+        +------------------+
+| TCPServer |------->| UnixStreamServer |
++-----------+        +------------------+
+      |
+      v
++-----------+        +--------------------+
+| UDPServer |------->| UnixDatagramServer |
++-----------+        +--------------------+
+\end{verbatim}
+
+    Ici encore notre propos n'est pas d'entrer dans les détails, mais
+d'observer le fait que les différents \emph{niveaux d'intelligence} sont
+ajoutés les uns aux les autres au fur et à mesure que l'on descend le
+graphe d'héritage.\\
+
+Cette hiérarchie est par ailleurs étendue par le
+\href{https://docs.python.org/3/library/http.server.html}{module
+\texttt{http.server}} et notamment au travers de la classe
+\href{https://docs.python.org/3/library/http.server.html\#http.server.HTTPServer}{\texttt{HTTPServer}}
+qui hérite de \texttt{TCPServer}.\\
+
+    Pour revenir au module \texttt{SocketServer}, j'attire votre attention
+dans
+\href{https://docs.python.org/3/library/socketserver.html\#examples}{la
+page d'exemples} sur
+\href{https://docs.python.org/3/library/socketserver.html\#asynchronous-mixins}{cet
+exemple en particuler}, où on crée une classe de serveurs multi-threads
+(la classe \texttt{ThreadedTCPServer}) par simple héritage multiple
+entre \texttt{ThreadingMixIn} et \texttt{TCPServer}. La notion de
+\texttt{Mixin} est \href{http://en.wikipedia.org/wiki/Mixin}{décrite
+dans cette page Wikipédia} dans laquelle vous pouvez accéder directement
+\href{http://en.wikipedia.org/wiki/Mixin\#In_Python}{à la section
+consacrée à Python}.

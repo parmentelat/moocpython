@@ -1,0 +1,192 @@
+    \hypertarget{outils-puxe9riphuxe9riques}{%
+\section{Outils périphériques}\label{outils-puxe9riphuxe9riques}}
+
+    \hypertarget{compluxe9ments---niveau-intermuxe9diaire}{%
+\subsection{Compléments - niveau
+intermédiaire}\label{compluxe9ments---niveau-intermuxe9diaire}}
+
+    Pour conclure le tronc commun de ce cours Python, nous allons très
+rapidement citer quelques outils qui ne sont pas nécessairement dans la
+bibliothèque standard, mais qui sont très largement utilisés dans
+l'écosystème python.\\○
+
+Il s'agit d'une liste non exhaustive bien entendu.
+
+    \hypertarget{distribution-et-packaging}{%
+\subsubsection{Distribution et
+packaging}\label{distribution-et-packaging}}
+
+    On l'a rapidement mentionné, il existe une infrastructure globale pour
+la distribution de librairies écrites en python. Celle-ci repose sur
+
+\begin{itemize}
+\tightlist
+\item
+  un site web \url{https://pypi.org/} où l'on peut consulter les - très
+  nombreuses - bibliothèques diffusées, avec leurs historiques et
+  révisions,
+\item
+  un outil en ligne de commande \texttt{pip}, pour installer et mettre à
+  jour ces bibliothèques (utiliser \texttt{pip3} comme \texttt{python3}
+  si vous avez python2 installé en parallèle),
+\item
+  et enfin un système de packaging à destination des éditeurs.
+\end{itemize}
+
+Je vous signale, par rapport à ce dernier point, que la bibliothèque
+standard vient avec un outil qui s'appelle \texttt{distutils}, qui est
+essentiellement obsolète, et qui n'est conservé que pour des questions
+de compatibilité. Si vous devez commencer depuis une feuille blanche le
+packaging d'une nouvelle librairie, je vous recommande d'utiliser plutôt
+\texttt{setuptools} qui est le standard de fait dans le domaine.\\
+
+    Dans une domaine très voisin, l'outil \texttt{virtualenv} est très
+populaire également ; il permet de créer sur une seul machine, plusieurs
+environnements python avec des versions et contenus différents.\\
+
+C'est très utile si vous travaillez sur plusieurs projets, dont l'un a
+besoin de python-3.5 avec numpy et sans pandas, et Django-1.11, et un
+second avec python-3.6 sans numpy et avec Django-2.0.\\
+
+    Pour finir, on ne peut pas parler de packaging sans citer
+\texttt{conda}, l'outil de référence pour la packaging et les
+environnements virtuels en data science. Quelques références sur conda :
+
+\begin{itemize}
+\tightlist
+\item
+  une documentation complète de conda \url{https://conda.io/docs/}
+\item
+  une excellente discussion (en anglais) sur le positionnement de
+  \texttt{pip} et \texttt{conda}
+  \url{http://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/}
+\end{itemize}
+
+    \hypertarget{debugging}{%
+\subsubsection{Debugging}\label{debugging}}
+
+    Pour le debugging, la bibliothèque standard s'appelle \texttt{pdb}.
+Typiquement pour mettre un \emph{breakpoint} on écrit~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ foo(n):}
+\NormalTok{    n }\OperatorTok{=}\NormalTok{ n }\OperatorTok{**} \DecValTok{2}
+    \CommentTok{# pour mettre un point d'arrêt}
+    \ImportTok{import}\NormalTok{ pdb}
+\NormalTok{    pdb.set_trace()}
+    \CommentTok{# la suite de foo()}
+    \ControlFlowTok{return}\NormalTok{ n }\OperatorTok{/} \DecValTok{10}
+\end{Highlighting}
+\end{Shaded}
+
+    Je vous signale d'ailleurs qu'à partir de Python 3.7, il est recommandé
+d'utiliser la nouvelle fonction \emph{built-in} \emph{breakpoint()} qui
+rend le même service.
+
+    \hypertarget{tests}{%
+\subsubsection{Tests}\label{tests}}
+
+    Le module \texttt{unittest} de la bibliothèque standard fournit des
+fonctionnalités de base pour écrire des tests unitaires.\\
+
+Je vous signale par ailleurs des outils comme \texttt{nosetests} et
+\texttt{pytest}, qui ne sont pas dans la distribution standard, mais qui
+enrichissent les capacités de \texttt{unittest} pour en rendre
+l'utilisation quotidienne plus fluide.
+
+    \hypertarget{documentation}{%
+\subsubsection{Documentation}\label{documentation}}
+
+    Le standard de fait dans ce domaine est clairement une combinaison basée
+sur
+
+\begin{itemize}
+\tightlist
+\item
+  l'outil \texttt{sphinx}, qui permet de générer la documentation à
+  partir du source, avec
+
+  \begin{itemize}
+  \tightlist
+  \item
+    des plugins pour divers sous-formats dans les docstrings,
+  \item
+    un système de templating,
+  \item
+    et de nombreuses autres possibilités ;
+  \end{itemize}
+\item
+  \texttt{readthedocs.io} qui est une plateforme ouverte pour
+  l'hébergement des documentations ; elle-même facilement intégrable
+  avec un repository type \texttt{github.io},
+\end{itemize}
+
+Pour vous donner une idée du résultat, je vous invite à consulter un
+module de ma facture~:
+
+\begin{itemize}
+\tightlist
+\item
+  les sources sur github sur
+  \url{https://github.com/parmentelat/asynciojobs}, et notamment le
+  sous-répertoire \texttt{sphinx},
+\item
+  et la documentation en ligne sur
+  \url{http://asynciojobs.readthedocs.io/}.
+\end{itemize}
+
+    \hypertarget{linter}{%
+\subsubsection{Linter}\label{linter}}
+
+    Au delà de la vérification automatique de la présentation du code
+(PEP8), il existe un outil \texttt{pylint} qui fait de l'analyse de code
+source en vue de détecter des erreurs le plus tôt possible dans le cycle
+de développement.\\
+
+En quelques mots, ma recommandation à ce sujet est que~:
+
+\begin{itemize}
+\tightlist
+\item
+  tout d'abord, et comme dans tous les langages en fait, il est
+  \textbf{très utile} de faire passer systématiquement son code dans un
+  linter de ce genre ;
+\item
+  idéalement on ne devrait commiter que du code qui passe cette étape ;
+\item
+  cependant, il y a un petit travail de filtrage à faire au démarrage,
+  car pylint détecte plusieurs centaines de sortes d'erreurs, du coup il
+  convient de passer un moment à configurer l'outil pour qu'il en ignore
+  certaines.
+\end{itemize}
+
+    Dès que vous commencez à travailler sur des projets sérieux, vous devez
+utiliser un éditeur qui intègre et exécute automatiquement
+\texttt{pylint}. On peut notamment recommander
+\href{https://www.jetbrains.com/pycharm/}{PyCharm}.
+
+    \hypertarget{type-hints}{%
+\subsubsection{Type hints}\label{type-hints}}
+
+    Je voudrais citer enfin l'outil \texttt{mypy} qui est un complément
+crucial dans la mise en oeuvre des \emph{type hints}.\\
+
+Comme on l'a vu en Semaine 4 dans la séquence consacrée aux type hints,
+et en tous cas jusque Python-3.6, les annotations de typage que vous
+insérez éventuellement dans votre code sont complètement ignorées de
+l'interpréteur.\\
+
+Elles sont par contre analysées par l'outil \texttt{mypy} qui fournit
+une sorte de couche supplémentaire de \emph{linter} et permet de
+détecter, ici encore, les éventuelles erreurs qui peuvent résulter
+notamment d'une mauvaise utilisation de telle ou telle librairie.
+
+    \hypertarget{conclusion}{%
+\subsubsection{Conclusion}\label{conclusion}}
+
+    À nouveau cette liste n'est pas exhaustive, elle s'efforce simplement de
+guider vos premiers pas dans cet écosystème.\\
+
+Je vous invite à creuser de votre coté les différents aspects qui, parmi
+cette liste, vous semblent les plus intéressants pour votre usage.

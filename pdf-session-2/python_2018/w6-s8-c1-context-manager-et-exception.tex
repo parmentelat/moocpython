@@ -1,0 +1,232 @@
+    \hypertarget{context-managers-et-exceptions}{%
+\section{\texorpdfstring{\emph{Context managers} et
+exceptions}{Context managers et exceptions}}\label{context-managers-et-exceptions}}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    On a vu jusqu'ici dans la vidéo comment écrire un context manager; on a
+vu notamment qu'il était bon pour la méthode \texttt{\_\_exit\_\_()} de
+retourner \texttt{False}, de façon à ce que l'exception soit propagée à
+l'instruction \texttt{with}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{time}
+        
+        \PY{k}{class} \PY{n+nc}{Timer1}\PY{p}{:}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}enter\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Entering Timer1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{start} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+                \PY{k}{return} \PY{n+nb+bp}{self}
+            
+            \PY{c+c1}{\PYZsh{} en règle générale on se contente de propager l\PYZsq{}exception }
+            \PY{c+c1}{\PYZsh{} à l\PYZsq{}instruction with englobante}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}exit\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Total duration }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{time.time()\PYZhy{}self.start:2f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+                \PY{c+c1}{\PYZsh{} et pour cela il suffit que \PYZus{}\PYZus{}exit\PYZus{}\PYZus{} retourne False}
+                \PY{k}{return} \PY{k+kc}{False}
+\end{Verbatim}
+
+
+    Ainsi si le corps de l'instruction lève une exception, celle-ci est
+propagée :
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{import} \PY{n+nn}{time}
+        \PY{k}{try}\PY{p}{:}
+            \PY{k}{with} \PY{n}{Timer1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+                \PY{n}{time}\PY{o}{.}\PY{n}{sleep}\PY{p}{(}\PY{l+m+mf}{0.5}\PY{p}{)}
+                \PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{0}
+        \PY{k}{except} \PY{n+ne}{Exception} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} on va bien recevoir cette exception}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS \PYZhy{}\PYZgt{} }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{type(e)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Entering Timer1
+Total duration 0.514807
+OOPS -> <class 'ZeroDivisionError'>
+
+    \end{Verbatim}
+
+    À la toute première itération de la boucle, on fait une division par 0
+qui lève l'exception \texttt{ZeroDivisionError}, qui passe bien à
+l'appelant.\\
+
+Il est important, lorsqu'on conçoit un context manager, de bien
+\textbf{propager} les exceptions qui ne sont pas liées au fonctionnement
+attendu du context manager. Par exemple un objet de type fichier va par
+exemple devoir attraper les exceptions liées à la fin du fichier, mais
+doit par contre laisser passer une exception comme
+\texttt{ZeroDivisionError}.
+
+    \hypertarget{les-paramuxe8tres-de-__exit__}{%
+\subsubsection{\texorpdfstring{Les paramètres de
+\texttt{\_\_exit\_\_}}{Les paramètres de \_\_exit\_\_}}\label{les-paramuxe8tres-de-__exit__}}
+
+    Si on a besoin de filtrer entre les exceptions - c'est-à-dire en laisser
+passer certaines et pas d'autres - il nous faut quelque chose de plus
+pour pouvoir faire le tri. Comme
+\href{https://docs.python.org/3/reference/datamodel.html\#with-statement-context-managers}{vous
+pouvez le retrouver ici}, la méthode \texttt{\_\_exit\_\_} reçoit trois
+arguments~:
+
+\begin{verbatim}
+def __exit__(self, exc_type, exc_value, traceback):
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  si l'on sort du bloc \texttt{with} sans qu'une exception soit levée,
+  ces trois arguments valent \texttt{None};
+\item
+  par contre si une exception est levée, ils permettent d'accéder
+  respectivement au type, à la valeur de l'exception, et à l'état de la
+  pile lorsque l'exception est levée.
+\end{itemize}
+
+    Pour illustrer cela, écrivons une nouvelle version de \texttt{Timer} qui
+filtre, disons, l'exception \texttt{ZeroDivisionError} que je choisis au
+hasard, c'est uniquement pour illustrer le mécanisme.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} une deuxième version de Timer}
+        \PY{c+c1}{\PYZsh{} qui propage toutes les exceptions sauf \PYZsq{}OSError\PYZsq{}}
+        
+        \PY{k}{class} \PY{n+nc}{Timer2}\PY{p}{:}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}enter\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Entering Timer1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{start} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+                \PY{c+c1}{\PYZsh{} rappel : le retour de \PYZus{}\PYZus{}enter\PYZus{}\PYZus{} est ce qui est passé}
+                \PY{c+c1}{\PYZsh{} à la clause `as` du `with`}
+                \PY{k}{return} \PY{n+nb+bp}{self}
+            
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}exit\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{exc\PYZus{}type}\PY{p}{,} \PY{n}{exc\PYZus{}value}\PY{p}{,} \PY{n}{traceback}\PY{p}{)}\PY{p}{:}
+                \PY{k}{if} \PY{n}{exc\PYZus{}type} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                    \PY{c+c1}{\PYZsh{} pas d\PYZsq{}exception levée dans le corps du \PYZsq{}with\PYZsq{}}
+                    \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Total duration }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{time.time()\PYZhy{}self.start:2f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                    \PY{c+c1}{\PYZsh{} dans ce cas la valeur de retour n\PYZsq{}est pas utilisée}
+                \PY{k}{else}\PY{p}{:}
+                    \PY{c+c1}{\PYZsh{} il y a eu une exception de type \PYZsq{}exc\PYZus{}type\PYZsq{}}
+                    \PY{k}{if} \PY{n}{exc\PYZus{}type} \PY{o+ow}{in} \PY{p}{(}\PY{n+ne}{ZeroDivisionError}\PY{p}{,}\PY{p}{)} \PY{p}{:}
+                        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{on étouffe}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                        \PY{c+c1}{\PYZsh{} on peut l\PYZsq{}étouffer en retournant True}
+                        \PY{k}{return} \PY{k+kc}{True}
+                    \PY{k}{else}\PY{p}{:}
+                        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS : on propage l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{exception }\PY{l+s+si}{\PYZob{}exc\PYZus{}type\PYZcb{}}\PY{l+s+s2}{ \PYZhy{} }\PY{l+s+si}{\PYZob{}exc\PYZus{}value\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                        \PY{c+c1}{\PYZsh{} et pour ça il suffit... de ne rien faire du tout}
+                        \PY{c+c1}{\PYZsh{} ce qui renverra None }
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} commençons avec un code sans souci}
+        \PY{k}{try}\PY{p}{:}
+            \PY{k}{with} \PY{n}{Timer2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+                \PY{n}{time}\PY{o}{.}\PY{n}{sleep}\PY{p}{(}\PY{l+m+mf}{0.5}\PY{p}{)}
+        \PY{k}{except} \PY{n+ne}{Exception} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} on va bien recevoir cette exception}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS \PYZhy{}\PYZgt{} }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{type(e)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Entering Timer1
+Total duration 0.514807
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} avec une exception filtrée}
+        \PY{k}{try}\PY{p}{:}
+            \PY{k}{with} \PY{n}{Timer2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+                \PY{n}{time}\PY{o}{.}\PY{n}{sleep}\PY{p}{(}\PY{l+m+mf}{0.5}\PY{p}{)}
+                \PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{0}
+        \PY{k}{except} \PY{n+ne}{Exception} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} on va bien recevoir cette exception}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS \PYZhy{}\PYZgt{} }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{type(e)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Entering Timer1
+on étouffe
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} avec une autre exception }
+        \PY{k}{try}\PY{p}{:}
+            \PY{k}{with} \PY{n}{Timer2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+                \PY{n}{time}\PY{o}{.}\PY{n}{sleep}\PY{p}{(}\PY{l+m+mf}{0.5}\PY{p}{)}
+                \PY{k}{raise} \PY{n+ne}{OSError}\PY{p}{(}\PY{p}{)}
+        \PY{k}{except} \PY{n+ne}{Exception} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} on va bien recevoir cette exception}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS \PYZhy{}\PYZgt{} }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{type(e)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Entering Timer1
+OOPS : on propage l'exception <class 'OSError'> - 
+OOPS -> <class 'OSError'>
+
+    \end{Verbatim}
+
+    \hypertarget{la-bibliothuxe8que-contextlib}{%
+\subsubsection{\texorpdfstring{La bibliothèque
+\texttt{contextlib}}{La bibliothèque contextlib}}\label{la-bibliothuxe8que-contextlib}}
+
+    Je vous signale aussi
+\href{https://docs.python.org/3/library/contextlib.html}{la bibliothèque
+\texttt{contextlib}} qui offre quelques utilitaires pour se définir un
+contextmanager.\\
+
+Notamment, elle permet d'implémenter un context manager sous une forme
+compacte à l'aide d'une fonction génératrice - et du décorateur
+\texttt{contextmanager}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{k+kn}{from} \PY{n+nn}{contextlib} \PY{k}{import} \PY{n}{contextmanager}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} l\PYZsq{}objet compact\PYZus{}timer est un context manager !}
+        \PY{n+nd}{@contextmanager}
+        \PY{k}{def} \PY{n+nf}{compact\PYZus{}timer}\PY{p}{(}\PY{n}{message}\PY{p}{)}\PY{p}{:}
+            \PY{n}{start} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+            \PY{k}{yield}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}message\PYZcb{}}\PY{l+s+s2}{: duration = }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{time.time() \PYZhy{} start\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k}{with} \PY{n}{compact\PYZus{}timer}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Squares sum}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{sum}\PY{p}{(}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+333328333350000
+Squares sum: duration = 0.031200408935546875
+
+    \end{Verbatim}
+
+    Un peu comme on peut implémenter un itérateur à partir d'une fonction
+génératrice qui fait (n'importe quel nombre de) \texttt{yield}, ici on
+implémente un context manager compact sous la forme d'une fonction
+génératrice.\\
+
+Comme vous l'avez sans doute deviné sur la base de cet exemple, il faut
+que la fonction fasse \textbf{exactement un \texttt{yield}}: ce qui se
+passe avant le \texttt{yield} est du ressort de \texttt{\_\_enter\_\_},
+et la fin est du ressort de \texttt{\_\_exit\_\_()}.\\
+
+Bien entendu on n'a pas la même puissance d'expression avec cette
+méthode par rapport à une vraie classe, mais cela permet de créer des
+context managers avec le minimum de code.

@@ -1,0 +1,317 @@
+    \hypertarget{un-exemple-de-classes-de-la-bibliothuxe8que-standard}{%
+\section{Un exemple de classes de la bibliothèque
+standard}\label{un-exemple-de-classes-de-la-bibliothuxe8que-standard}}
+
+    Notez que ce complément, bien qu'un peu digressif par rapport au sujet
+principal qui est les classes et instances, a pour objectif de vous
+montrer l'intérêt de la programmation objet avec un module de la
+bibliothèque standard.
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    \hypertarget{le-module-time}{%
+\subsubsection{\texorpdfstring{Le module
+\texttt{time}}{Le module time}}\label{le-module-time}}
+
+    Pour les accès à l'horloge, python fournit un module \texttt{time} -
+très ancien~; il s'agit d'une interface de très bas niveau avec l'OS,
+qui s'utilise comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{time}
+        
+        \PY{c+c1}{\PYZsh{} on obtient l\PYZsq{}heure courante sous la forme d\PYZsq{}un flottant}
+        \PY{c+c1}{\PYZsh{} qui représente le nombre de secondes depuis le 1er Janvier 1970}
+        \PY{n}{t\PYZus{}now} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+        \PY{n}{t\PYZus{}now}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}1}]:} 1539774899.2159433
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} et pour calculer l\PYZsq{}heure qu\PYZsq{}il sera dans trois heures on fait}
+        \PY{n}{t\PYZus{}later} \PY{o}{=} \PY{n}{t\PYZus{}now} \PY{o}{+} \PY{l+m+mi}{3} \PY{o}{*} \PY{l+m+mi}{3600}
+\end{Verbatim}
+
+
+    Nous sommes donc ici clairement dans une approche non orientée objet~;
+on manipule des types de base, ici le type flottant~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n+nb}{type}\PY{p}{(}\PY{n}{t\PYZus{}later}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} float
+\end{Verbatim}
+            
+    Et comme on le voit, les calculs se font sous une forme pas très
+lisible. Pour rendre ce nombre de secondes plus lisible, on utilise des
+conversions, pas vraiment explicites non plus~; voici par exemple un
+appel à \texttt{gmtime} qui convertit le flottant obtenu par la méthode
+\texttt{time()} en heure UTC (\texttt{gm} est pour Greenwich Meridian)~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{struct\PYZus{}later} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{gmtime}\PY{p}{(}\PY{n}{t\PYZus{}later}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{struct\PYZus{}later}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+time.struct\_time(tm\_year=2018, tm\_mon=10, tm\_mday=17, tm\_hour=14, tm\_min=14,
+tm\_sec=59, tm\_wday=2, tm\_yday=290, tm\_isdst=0)
+
+    \end{Verbatim}
+
+    Et on met en forme ce résultat en utilisant des méthodes comme, par
+exemple, \texttt{strftime()} pour afficher l'heure UTC dans 3 heures~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{heure UTC dans trois heures }\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{time.strftime(}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{Y\PYZhy{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{m\PYZhy{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{ at }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{H:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{M}\PY{l+s+s1}{\PYZdq{} \textbackslash}
+\PY{l+s+s1}{, struct\PYZus{}later)\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+heure UTC dans trois heures 2018-10-17 at 14:14
+
+    \end{Verbatim}
+
+
+    \hypertarget{le-module-datetime}{%
+\subsubsection{Le module datetime}\label{le-module-datetime}}
+
+    Voyons à présent, par comparaison, comment ce genre de calculs se
+présente lorsqu'on utilise la programmation par objets.\\
+
+Le \href{https://docs.python.org/3/library/datetime.html}{module
+\texttt{datetime}} expose un certain nombre de classes, que nous
+illustrons brièvement avec les classes \texttt{datetime} (qui modélise
+la date et l'heure d'un instant) et \texttt{timedelta} (qui modélise une
+durée).\\
+
+La première remarque qu'on peut faire, c'est qu'avec le module
+\texttt{time} on manipulait un flottant pour représenter ces deux sortes
+d'objets (instant et durée)~; avec deux classes différentes notre code
+va être plus clair quant à ce qui est réellement représenté.\\
+
+    Le code ci-dessus s'écrirait alors, en utilisant le module
+\texttt{datetime}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k+kn}{from} \PY{n+nn}{datetime} \PY{k}{import} \PY{n}{datetime}\PY{p}{,} \PY{n}{timedelta}
+        
+        \PY{n}{dt\PYZus{}now} \PY{o}{=} \PY{n}{datetime}\PY{o}{.}\PY{n}{now}\PY{p}{(}\PY{p}{)}
+        \PY{n}{dt\PYZus{}later} \PY{o}{=} \PY{n}{dt\PYZus{}now} \PY{o}{+} \PY{n}{timedelta}\PY{p}{(}\PY{n}{hours}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{)}
+\end{Verbatim}
+
+
+    Vous remarquez que c'est déjà un peu plus expressif.\\
+
+Voyez aussi qu'on a déjà moins besoin de s'escrimer pour en avoir un
+aperçu lisible~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} on peut imprimer simplement un objet date\PYZus{}time}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{maintenant }\PY{l+s+si}{\PYZob{}dt\PYZus{}now\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+maintenant 2018-10-17 13:14:59.309541
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} et si on veut un autre format, on peut toujours appeler strftime}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dans trois heures }\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{dt\PYZus{}later.strftime(}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{Y\PYZhy{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{m\PYZhy{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{ at }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{H:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{M}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{)\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+dans trois heures 2018-10-17 at 16:14
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} mais ce n\PYZsq{}est même pas nécessaire, on peut passer le format directement}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dans trois heures }\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{dt\PYZus{}later:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{Y\PYZhy{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{m\PYZhy{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{ at }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{H:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{M\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+dans trois heures 2018-10-17 at 16:14
+
+    \end{Verbatim}
+
+    Je vous renvoie à la documentation du module, et
+\href{https://docs.python.org/3/library/datetime.html\#strftime-and-strptime-behavior}{notamment
+ici}, pour le détail des options de formatage disponibles.
+
+    \hypertarget{conclusion}{%
+\subsubsection{Conclusion}\label{conclusion}}
+
+    Une partie des inconvénients du module \texttt{time} vient certainement
+du parti-pris de l'efficacité. De plus, c'est un module très ancien,
+mais auquel on ne peut guère toucher pour des raisons de compatibilité
+ascendante.\\
+
+Par contre, le module \texttt{datetime}, tout en vous procurant un
+premier exemple de classes exposées par la bibliothèque standard, vous
+montre certains des avantages de la programmation orientée objet en
+général, et des classes de Python en particulier.\\
+
+Si vous devez manipuler des dates ou des heures, le module
+\texttt{datetime} constitue très certainement un bon candidat~; voyez la
+\href{https://docs.python.org/3/library/datetime.html}{documentation
+complète du module} pour plus de précisions sur ses possibilités.
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{fuseaux-horaires-et-temps-local}{%
+\subsubsection{Fuseaux horaires et temps
+local}\label{fuseaux-horaires-et-temps-local}}
+
+    Le temps nous manque pour traiter ce sujet dans toute sa profondeur.\\
+
+En substance, c'est un sujet assez voisin de celui des accents, en ce
+sens que lors d'échanges d'informations de type \emph{timestamp} entre
+deux ordinateurs, il faut échanger d'une part une valeur (l'heure et la
+date), et d'autre part le référentiel (s'agit-il de temps UTC, ou bien
+de l'heure dans un fuseau horaire, et si oui lequel).\\
+
+La complexité est tout de même moindre que dans le cas des accents~; on
+s'en sort en général en convenant d'échanger systématiquement des heures
+UTC. Par contre, il existe une réelle diversité quant au format utilisé
+pour échanger ce type d'information, et cela reste une source d'erreurs
+assez fréquente.
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    \hypertarget{classes-et-marshalling}{%
+\subsubsection{\texorpdfstring{Classes et
+\emph{marshalling}}{Classes et marshalling}}\label{classes-et-marshalling}}
+
+    Ceci nous procure une transition pour un sujet beaucoup plus général.\\
+
+Nous avons évoqué en semaine 4 les formats comme JSON pour échanger les
+données entre applications, au travers de fichiers ou d'un réseau.\\
+
+On a vu, par exemple, que JSON est un format ``proche des langages'' en
+ce sens qu'il est capable d'échanger des objets de base comme des listes
+ou des dictionnaires entre plusieurs langages comme, par exemple,
+JavaScript, Python ou Ruby. En XML, on a davantage de flexibilité
+puisqu'on peut définir une syntaxe sur les données échangées.\\
+
+Mais il faut être bien lucide sur le fait que, aussi bien pour JSON que
+pour XML, il n'est \textbf{pas possible} d'échanger entre applications
+des \textbf{objets} en tant que tel. Ce que nous voulons dire, c'est que
+ces technologies de \emph{marshalling} prennent bien en charge le
+\emph{contenu} en termes de données, mais pas les informations de type,
+et \emph{a fortiori} pas non plus le code qui appartient à la classe.\\
+
+Il est important d'être conscient de cette limitation lorsqu'on fait des
+choix de conception, notamment lorsqu'on est amené à choisir entre
+classe et dictionnaire pour l'implémentation de telle ou telle
+abstraction.\\
+
+    Voyons cela sur un exemple inspiré de notre fichier de données liées au
+trafic maritime. En version simplifiée, un bateau est décrit par trois
+valeurs, son identité (\texttt{id}), son nom et son pays d'attachement.\\
+
+Nous allons voir comment on peut échanger ces informations entre,
+disons, deux programmes dont l'un est en Python, via un support réseau
+ou disque.\\
+
+    Si on choisit de simplement manipuler un dictionnaire standard~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{bateau1} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Toccata}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{id}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+m+mi}{1000}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{country}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{France}\PY{l+s+s2}{\PYZdq{}}\PY{p}{\PYZcb{}}
+\end{Verbatim}
+
+
+    alors on peut utiliser tels quels les mécanismes d'encodage et décodage
+de, disons, JSON. En effet c'est exactement ce genre d'informations que
+sait gérer la couche JSON.\\
+
+    Si au contraire on choisit de manipuler les données sous forme d'une
+classe on pourrait avoir envie d'écrire quelque chose comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{k}{class} \PY{n+nc}{Bateau}\PY{p}{:}
+             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n+nb}{id}\PY{p}{,} \PY{n}{name}\PY{p}{,} \PY{n}{country}\PY{p}{)}\PY{p}{:}
+                 \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{id} \PY{o}{=} \PY{n+nb}{id}
+                 \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{name} \PY{o}{=} \PY{n}{name}
+                 \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{country} \PY{o}{=} \PY{n}{country}
+                 
+         \PY{n}{bateau2} \PY{o}{=} \PY{n}{Bateau}\PY{p}{(}\PY{l+m+mi}{1000}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Toccata}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{FRA}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    Maintenant, si vous avez besoin d'échanger cet objet avec le reste du
+monde, en utilisant par exemple JSON, tout ce que vous allez pouvoir
+faire passer par ce médium, c'est la valeur des trois champs, dans un
+dictionnaire. Vous pouvez facilement obtenir le dictionnaire en question
+pour le passer à la couche d'encodage~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n+nb}{vars}\PY{p}{(}\PY{n}{bateau2}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} \{'country': 'FRA', 'id': 1000, 'name': 'Toccata'\}
+\end{Verbatim}
+            
+    Mais à l'autre bout de la communication il va vous falloir~:
+
+\begin{itemize}
+\tightlist
+\item
+  déterminer d'une manière ou d'une autre que les données échangées sont
+  en rapport avec la classe \texttt{Bateau}~;
+\item
+  construire vous même un objet de cette classe, par exemple avec un
+  code comme~:
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} du côté du récepteur de la donnée}
+         \PY{k}{class} \PY{n+nc}{Bateau}\PY{p}{:}
+             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{:}
+                 \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{args}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{1} \PY{o+ow}{and} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{args}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n+nb}{dict}\PY{p}{)}\PY{p}{:}
+                     \PY{n+nb+bp}{self}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}dict\PYZus{}\PYZus{}} \PY{o}{=} \PY{n}{args}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+                 \PY{k}{elif} \PY{n+nb}{len}\PY{p}{(}\PY{n}{args}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{3}\PY{p}{:}
+                     \PY{n+nb}{id}\PY{p}{,} \PY{n}{name}\PY{p}{,} \PY{n}{country} \PY{o}{=} \PY{n}{args}
+                     \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{id} \PY{o}{=} \PY{n+nb}{id}
+                     \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{name} \PY{o}{=} \PY{n}{name}
+                     \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{country} \PY{o}{=} \PY{n}{country}
+         
+         \PY{n}{bateau3} \PY{o}{=} \PY{n}{Bateau}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{id}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{1000}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Leon}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{country}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{France}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}\PY{p}{)}
+         \PY{n}{bateau4} \PY{o}{=} \PY{n}{Bateau}\PY{p}{(}\PY{l+m+mi}{1001}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Maluba}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{SUI}\PY{l+s+s1}{\PYZsq{}} \PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{conclusion}{%
+\subsubsection{Conclusion}\label{conclusion}}
+
+    Pour reformuler ce dernier point, il n'y a pas en Python l'équivalent de
+\href{https://en.wikipedia.org/wiki/Java_Metadata_Interface}{jmi (Java
+Metadata Interface)} intégré à la distribution standard.\\
+
+De plus on peut écrire du code en dehors des classes, et on n'est pas
+forcément obligé d'écrire une classe pour tout - à l'inverse ici encore
+de Java. Chaque situation doit être jugée dans son contexte
+naturellement, mais, de manière générale, la classe n'est pas la
+solution universelle~; il peut y avoir des mérites dans le fait de
+manipuler certaines données sous une forme allégée comme un type natif.

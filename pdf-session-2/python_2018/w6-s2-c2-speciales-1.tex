@@ -1,0 +1,505 @@
+    \hypertarget{surcharge-dopuxe9rateurs-1}{%
+\section{Surcharge d'opérateurs (1)}\label{surcharge-dopuxe9rateurs-1}}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    Ce complément vise à illustrer certaines des possibilités de surcharge
+d'opérateurs, ou plus généralement les mécanismes disponibles pour
+étendre le langage et donner un sens à des fragments de code comme~:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{objet1\ +\ objet2}
+\item
+  \texttt{item\ in\ objet}
+\item
+  \texttt{objet{[}key{]}}
+\item
+  \texttt{objet.key}
+\item
+  \texttt{for\ i\ in\ objet:}
+\item
+  \texttt{if\ objet:}
+\item
+  \texttt{objet(arg1,\ arg2)} (et non pas \texttt{classe(arg1,\ arg2)})
+\item
+  etc..
+\end{itemize}
+
+que jusqu'ici, sauf pour la boucle \texttt{for} et pour le hachage, on
+n'a expliqués que pour des objets de type prédéfini.\\
+
+    Le mécanisme général pour cela consiste à définir des \textbf{méthodes
+spéciales}, avec un nom en \texttt{\_\_nom\_\_}. Il existe un total de
+près de 80 méthodes dans ce système de surcharges, aussi il n'est pas
+question ici d'être exhaustif. Vous trouverez
+\href{https://docs.python.org/3/reference/datamodel.html\#specialnames}{dans
+ce document une liste complète de ces possibilités}.\\
+
+    Il nous faut également signaler que les mécanismes mis en jeu ici sont
+\textbf{de difficultés assez variables}. Dans le cas le plus simple il
+suffit de définir une méthode sur la classe pour obtenir le résultat
+(par exemple, définir \texttt{\_\_call\_\_} pour rendre un objet
+callable). Mais parfois on parle d'un ensemble de méthodes qui doivent
+être cohérentes, voyez par exemple les
+\href{https://docs.python.org/3/reference/datamodel.html\#invoking-descriptors}{descriptors}
+qui mettent en jeu les méthodes \texttt{\_\_get\_\_},
+\texttt{\_\_set\_\_} et \texttt{\_\_delete\_\_}, et qui peuvent sembler
+particulièrement cryptiques. On aura d'ailleurs l'occasion d'approfondir
+les descriptors en semaine 9 avec les sujets avancés.\\
+
+    Nous vous conseillons de commencer par des choses simples, et surtout de
+n'utiliser ces techniques que lorsqu'elles apportent vraiment quelque
+chose. Le constructeur et l'affichage sont pratiquement toujours
+définis, mais pour tout le reste il convient d'utiliser ces traits avec
+le plus grand discernement. Dans tous les cas écrivez votre code avec la
+documentation sous les yeux, c'est plus prudent :)\\
+
+    Nous avons essayé de présenter cette sélection par difficulté
+croissante. Par ailleurs, et pour alléger la présentation, cet exposé a
+été coupé en trois notebooks différents.
+
+
+    \hypertarget{rappels}{%
+\subsubsection{Rappels}\label{rappels}}
+
+    Pour rappel, on a vu dans la vidéo~:
+
+\begin{itemize}
+\tightlist
+\item
+  la méthode \texttt{\_\_init\_\_} pour définir un
+  \textbf{constructeur}~;
+\item
+  la méthode \texttt{\_\_str\_\_} pour définir comment une instance
+  s'imprime avec \texttt{print}.
+\end{itemize}
+
+    \hypertarget{affichage-__repr__-et-__str__}{%
+\subsubsection{\texorpdfstring{Affichage~: \texttt{\_\_repr\_\_} et
+\texttt{\_\_str\_\_}}{Affichage~: \_\_repr\_\_ et \_\_str\_\_}}\label{affichage-__repr__-et-__str__}}
+
+    Nous commençons par signaler la méthode \texttt{\_\_repr\_\_} qui est
+assez voisine de \texttt{\_\_str\_\_}, et qui donc doit retourner un
+objet de type chaîne de caractères, sauf que~:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{\_\_str\_\_} est utilisée par \texttt{print} (affichage
+  orienté utilisateur du programme, priorité au confort visuel)~;
+\item
+  alors que \texttt{\_\_repr\_\_} est utilisée par la fonction
+  \texttt{repr()} (affichage orienté programmeur, aussi peu ambigu que
+  possible)~;
+\item
+  enfin il faut savoir que \texttt{\_\_repr\_\_} est utilisée
+  \textbf{aussi} par \texttt{print} si \texttt{\_\_str\_\_} n'est pas
+  définie.
+\end{itemize}
+
+    Pour cette dernière raison, on trouve dans la nature
+\texttt{\_\_repr\_\_} plutôt plus souvent que \texttt{\_\_str\_\_}~;
+voyez
+\href{https://docs.python.org/3/reference/datamodel.html\#object.__repr__}{ce
+lien} pour davantage de détails.
+
+    \hypertarget{quand-est-utilisuxe9e-repr}{%
+\subparagraph{\texorpdfstring{Quand est utilisée
+\texttt{repr()}~?\\\\}{Quand est utilisée repr()~?}}\label{quand-est-utilisuxe9e-repr}}
+
+    La fonction \texttt{repr()} est utilisée massivement dans les
+informations de debugging comme les traces de pile lorsqu'une exception
+est levée. Elle est aussi utilisée lorsque vous affichez un objet sans
+passer par \texttt{print}, c'est-à-dire par exemple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k}{class} \PY{n+nc}{Foo}\PY{p}{:} 
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{k}{return} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{custom repr}\PY{l+s+s1}{\PYZsq{}}
+            
+        \PY{n}{foo} \PY{o}{=} \PY{n}{Foo}\PY{p}{(}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} lorsque vous affichez un objet comme ceci}
+        \PY{n}{foo}
+        \PY{c+c1}{\PYZsh{} en fait vous utilisez repr()}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}1}]:} custom repr
+\end{Verbatim}
+            
+    \hypertarget{deux-exemples}{%
+\subparagraph{Deux exemples\\\\}\label{deux-exemples}}
+
+    Voici deux exemples simples de classes~; dans le premier on n'a défini
+que \texttt{\_\_repr\_\_}, dans le second on a redéfini les deux
+méthodes~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} une classe qui ne définit que \PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}
+        \PY{k}{class} \PY{n+nc}{Point}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{première version de Point \PYZhy{} on ne définit que \PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}\PY{l+s+s2}{\PYZdq{}}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{x} \PY{o}{=} \PY{n}{x}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{y} \PY{o}{=} \PY{n}{y}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Point(}\PY{l+s+si}{\PYZob{}self.x\PYZcb{}}\PY{l+s+s2}{,}\PY{l+s+si}{\PYZob{}self.y\PYZcb{}}\PY{l+s+s2}{)}\PY{l+s+s2}{\PYZdq{}}
+            
+        \PY{n}{point} \PY{o}{=} \PY{n}{Point} \PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{100}\PY{p}{)}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{avec print}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{point}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} si vous affichez un objet sans passer par print}
+        \PY{c+c1}{\PYZsh{} vous utilisez repr()}
+        \PY{n}{point}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+avec print Point(0,100)
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} Point(0,100)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} la même chose mais où on redéfinit \PYZus{}\PYZus{}str\PYZus{}\PYZus{} et \PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}
+        \PY{k}{class} \PY{n+nc}{Point2}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{seconde version de Point \PYZhy{} on définit \PYZus{}\PYZus{}repr\PYZus{}\PYZus{} et \PYZus{}\PYZus{}str\PYZus{}\PYZus{}}\PY{l+s+s2}{\PYZdq{}}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{x} \PY{o}{=} \PY{n}{x}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{y} \PY{o}{=} \PY{n}{y}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Point2(}\PY{l+s+si}{\PYZob{}self.x\PYZcb{}}\PY{l+s+s2}{,}\PY{l+s+si}{\PYZob{}self.y\PYZcb{}}\PY{l+s+s2}{)}\PY{l+s+s2}{\PYZdq{}}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}str\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{(}\PY{l+s+si}{\PYZob{}self.x\PYZcb{}}\PY{l+s+s2}{,}\PY{l+s+si}{\PYZob{}self.y\PYZcb{}}\PY{l+s+s2}{)}\PY{l+s+s2}{\PYZdq{}}
+            
+        \PY{n}{point2} \PY{o}{=} \PY{n}{Point2} \PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{100}\PY{p}{)}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{avec print}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{point2}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} les f\PYZhy{}strings (ou format) utilisent aussi \PYZus{}\PYZus{}str\PYZus{}\PYZus{}}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{avec format }\PY{l+s+si}{\PYZob{}point2\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} et si enfin vous affichez un objet sans passer par print}
+        \PY{c+c1}{\PYZsh{} vous utilisez repr()}
+        \PY{n}{point2}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+avec print (0,100)
+avec format (0,100)
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} Point2(0,100)
+\end{Verbatim}
+            
+
+    \hypertarget{bool__}{%
+\subsubsection{\texorpdfstring{\texttt{\_\_bool\_\_}}{\_\_bool\_\_}}\label{bool__}}
+
+    Vous vous souvenez que la condition d'un test dans un \texttt{if} peut
+ne pas retourner un booléen (nous avons vu cela en Semaine 4, Séquence
+``Test if/elif/else et opérateurs booléens''). Nous avions noté que pour
+les types prédéfinis, sont considérés comme \emph{faux} les objets~:
+\texttt{None}, la liste vide, un tuple vide, etc.\\
+
+Avec \texttt{\_\_bool\_\_} on peut redéfinir le comportement des objets
+d'une classe vis-à-vis des conditions - ou si l'on préfère, quel doit
+être le résultat de \texttt{bool(instance)}.\\
+
+\textbf{Attention} pour éviter les comportements imprévus, comme on est
+en train de redéfinir le comportement des conditions, il \textbf{faut}
+renvoyer un \textbf{booléen} (ou à la rigueur 0 ou 1), on ne peut pas
+dans ce contexte retourner d'autres types d'objet.\\
+
+Nous allons \textbf{illustrer} cette méthode dans un petit moment avec
+une nouvelle implémentation de la classe \textbf{\texttt{Matrix2}}.\\
+
+Remarquez enfin qu'en l'absence de méthode \texttt{\_\_bool\_\_}, on
+cherche aussi la méthode \texttt{\_\_len\_\_} pour déterminer le
+résultat du test~; une instance de longueur nulle est alors considéré
+comme \texttt{False}, en cohérence avec ce qui se passe avec les types
+\emph{built-in} \texttt{list}, \texttt{dict}, \texttt{tuple}, etc.\\
+
+Ce genre de \emph{protocole}, qui cherche d'abord une méthode
+(\texttt{\_\_bool\_\_}), puis une autre (\texttt{\_\_len\_\_}) en cas
+d'absence de la première, est relativement fréquent dans la mécanique de
+surcharge des opérateurs~; c'est entre autres pourquoi la documentation
+est indispensable lorsqu'on surcharge les opérateurs.
+
+    \hypertarget{add__-et-apparentuxe9s-__mul__-__sub__-__div__-__and__-etc.}{%
+\subsubsection{\texorpdfstring{\texttt{\_\_add\_\_} et apparentés
+(\texttt{\_\_mul\_\_}, \texttt{\_\_sub\_\_}, \texttt{\_\_div\_\_},
+\texttt{\_\_and\_\_},
+etc.)}{\_\_add\_\_ et apparentés (\_\_mul\_\_, \_\_sub\_\_, \_\_div\_\_, \_\_and\_\_, etc.)}}\label{add__-et-apparentuxe9s-__mul__-__sub__-__div__-__and__-etc.}}
+
+    On peut également redéfinir les opérateurs arithmétiques et logiques.
+Dans l'exemple qui suit, nous allons l'illustrer sur l'addition de
+matrices. On rappelle pour mémoire que~:\\
+
+\(\left( \begin{array}{cc} a_{11} & a_{12} \\ a_{21} & a_{22}\end{array} \right) + \left( \begin{array}{cc} b_{11} & b_{12} \\ b_{21} & b_{22}\end{array} \right) = \left( \begin{array}{cc} a_{11}+b_{11} & a_{12}+b_{12} \\ a_{21}+b_{21} & a_{22}+b_{22}\end{array} \right)\)
+
+    \hypertarget{une-nouvelle-version-de-la-classe-matrix2}{%
+\subsubsection{\texorpdfstring{Une nouvelle version de la classe
+\texttt{Matrix2}}{Une nouvelle version de la classe Matrix2}}\label{une-nouvelle-version-de-la-classe-matrix2}}
+
+    Voici (encore) une nouvelle implémentation de la classe de matrices 2x2,
+qui illustre cette fois~:
+
+\begin{itemize}
+\tightlist
+\item
+  la possibilité d'ajouter deux matrices~;
+\item
+  la possibilité de faire un test sur une matrice - le test sera faux si
+  la matrice a tous ses coefficients nuls~;
+\item
+  et, bien que ce ne soit pas le sujet immédiat, cette implémentation
+  illustre aussi la possibilité de construire la matrice à partir~:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    soit des 4 coefficients, comme par exemple~:
+    \texttt{Matrix2(a,\ b,\ c,\ d)}
+  \item
+    soit d'une séquence, comme par exemple~: \texttt{Matrix2(range(4))}
+  \end{itemize}
+\end{itemize}
+
+Cette dernière possibilité va nous permettre de simplifier le code de
+l'addition, comme on va le voir.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} notre classe Matrix2 avec encore une autre implémentation}
+        \PY{k}{class} \PY{n+nc}{Matrix2}\PY{p}{:}
+        
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{:}
+                \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{        le constructeur accepte }
+        \PY{l+s+sd}{        (*) soit les 4 coefficients individuellement}
+        \PY{l+s+sd}{        (*) soit une liste \PYZhy{} ou + généralement une séquence \PYZhy{} des mêmes}
+        \PY{l+s+sd}{        \PYZdq{}\PYZdq{}\PYZdq{}}
+                \PY{c+c1}{\PYZsh{} on veut pouvoir créer l\PYZsq{}objet à partir des 4 coefficients}
+                \PY{c+c1}{\PYZsh{} souvenez\PYZhy{}vous qu\PYZsq{}avec la forme *args, args est toujours un tuple}
+                \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{args}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{4}\PY{p}{:}
+                    \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{coefs} \PY{o}{=} \PY{n}{args}
+                \PY{c+c1}{\PYZsh{} ou bien d\PYZsq{}une séquence de 4 coefficients}
+                \PY{k}{elif} \PY{n+nb}{len}\PY{p}{(}\PY{n}{args}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
+                    \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{coefs} \PY{o}{=} \PY{n+nb}{tuple}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}
+        
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{affichage}\PY{l+s+s2}{\PYZdq{}}
+                \PY{k}{return} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{[}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{p}{[}\PY{n+nb}{str}\PY{p}{(}\PY{n}{c}\PY{p}{)} \PY{k}{for} \PY{n}{c} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{coefs}\PY{p}{]}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{]}\PY{l+s+s2}{\PYZdq{}}
+        
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}add\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{other}\PY{p}{)}\PY{p}{:}
+                \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{        l\PYZsq{}addition de deux matrices retourne un nouvel objet}
+        \PY{l+s+sd}{        la possibilité de créer une matrice à partir}
+        \PY{l+s+sd}{        d\PYZsq{}une liste rend ce code beaucoup plus facile à écrire}
+        \PY{l+s+sd}{        \PYZdq{}\PYZdq{}\PYZdq{}}
+                \PY{k}{return} \PY{n}{Matrix2}\PY{p}{(}\PY{p}{[}\PY{n}{a} \PY{o}{+} \PY{n}{b} \PY{k}{for} \PY{n}{a}\PY{p}{,} \PY{n}{b} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{coefs}\PY{p}{,} \PY{n}{other}\PY{o}{.}\PY{n}{coefs}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+        
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}bool\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{        on considère que la matrice est non nulle }
+        \PY{l+s+sd}{        si un au moins de ses coefficients est non nul}
+        \PY{l+s+sd}{        \PYZdq{}\PYZdq{}\PYZdq{}}
+                \PY{c+c1}{\PYZsh{} ATTENTION le retour doit être un booléen }
+                \PY{c+c1}{\PYZsh{} ou à la rigueur 0 ou 1}
+                \PY{k}{for} \PY{n}{c} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{coefs}\PY{p}{:}
+                    \PY{k}{if} \PY{n}{c}\PY{p}{:}
+                        \PY{k}{return} \PY{k+kc}{True}
+                \PY{k}{return} \PY{k+kc}{False}
+\end{Verbatim}
+
+
+    On peut à présent créer deux objets, les ajouter, et vérifier que la
+matrice nulle se comporte bien comme attendu~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{zero}     \PY{o}{=} \PY{n}{Matrix2} \PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+        
+        \PY{n}{matrice1} \PY{o}{=} \PY{n}{Matrix2} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}
+        \PY{n}{matrice2} \PY{o}{=} \PY{n}{Matrix2} \PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{50}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{avant matrice1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{matrice1}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{avant matrice2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{matrice2}\PY{p}{)}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{somme}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{matrice1} \PY{o}{+} \PY{n}{matrice2}\PY{p}{)}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{après matrice1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{matrice1}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{après matrice2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{matrice2}\PY{p}{)}
+        
+        \PY{k}{if} \PY{n}{matrice1}\PY{p}{:} 
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{matrice1}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{n}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{est pas nulle}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{k}{if} \PY{o+ow}{not} \PY{n}{zero}\PY{p}{:} 
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{zero}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{est nulle}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+avant matrice1 [1, 2, 3, 4]
+avant matrice2 [10, 20, 30, 40]
+somme [11, 22, 33, 44]
+après matrice1 [1, 2, 3, 4]
+après matrice2 [10, 20, 30, 40]
+[1, 2, 3, 4] n'est pas nulle
+[0, 0, 0, 0] est nulle
+
+    \end{Verbatim}
+
+    Voici en vrac quelques commentaires sur cet exemple.
+
+    \hypertarget{utiliser-un-tuple}{%
+\subparagraph{Utiliser un tuple\\\\}\label{utiliser-un-tuple}}
+
+    Avant de parler de la surcharge des opérateurs \emph{per se}, vous
+remarquerez que l'on range les coefficients dans un \textbf{tuple}, de
+façon à ce que notre objet \texttt{Matrix2} soit indépendant de l'objet
+qu'on a utilisé pour le créer (et qui peut être ensuite modifié par
+l'appelant).
+
+    \hypertarget{cruxe9er-un-nouvel-objet}{%
+\subparagraph{Créer un nouvel objet}\label{cruxe9er-un-nouvel-objet}}
+
+    Vous remarquez que l'addition \texttt{\_\_add\_\_} renvoie un
+\textbf{nouvel objet}, au lieu de modifier \texttt{self} en place. C'est
+la bonne façon de procéder tout simplement parce que lorsqu'on écrit~:
+
+\begin{verbatim}
+print('somme', matrice1 + matrice2)
+\end{verbatim}
+
+on ne s'attend pas du tout à ce que \texttt{matrice1} soit modifiée
+après cet appel.
+
+    \hypertarget{du-code-qui-ne-duxe9pend-que-des-4-opuxe9rations}{%
+\subparagraph{Du code qui ne dépend que des 4
+opérations\\\\}\label{du-code-qui-ne-duxe9pend-que-des-4-opuxe9rations}}
+
+    Le fait d'avoir défini l'addition nous permet par exemple de bénéficier
+de la fonction \emph{built-in} \texttt{sum}. En effet le code de
+\texttt{sum} fait lui-même des additions, il n'y a donc aucune raison de
+ne pas pouvoir l'exécuter avec en entrée une liste de matrices puisque
+maintenant on sait les additionner, (mais on a dû toutefois passer à
+\texttt{sum} comme élément neutre \texttt{zero})~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n+nb}{sum}\PY{p}{(}\PY{p}{[}\PY{n}{matrice1}\PY{p}{,} \PY{n}{matrice2}\PY{p}{,} \PY{n}{matrice1}\PY{p}{]} \PY{p}{,} \PY{n}{zero}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} [12, 24, 36, 48]
+\end{Verbatim}
+            
+    C'est un effet de bord du typage dynamique. On ne vérifie pas \emph{a
+priori} que tous les arguments passés à \texttt{sum} savent faire une
+addition~; \emph{a contrario}, s'ils savent s'additionner on peut
+exécuter le code de \texttt{sum}.\\
+
+De manière plus générale, si vous écrivez par exemple un morceau de code
+qui travaille sur les éléments d'un anneau (au sens anneau des entiers
+\(\mathbb{Z}\)) - imaginez un code qui factorise des polynômes - vous
+pouvez espérer utiliser ce code avec n'importe quel anneau, c'est à dire
+avec une classe qui implémente les 4 opérations (pourvu bien sûr que cet
+ensemble soit effectivement un anneau).
+
+    \hypertarget{on-peut-aussi-reduxe9finir-un-ordre}{%
+\subparagraph{On peut aussi redéfinir un
+ordre\\\\}\label{on-peut-aussi-reduxe9finir-un-ordre}}
+
+    La place nous manque pour illustrer la possibilité, avec les opérateurs
+\texttt{\_\_eq\_\_}, \texttt{\_\_ne\_\_}, \texttt{\_\_lt\_\_},
+\texttt{\_\_le\_\_}, \texttt{\_\_gt\_\_}, et \texttt{\_\_ge\_\_}, de
+redéfinir un ordre sur les instances d'une classe.\\
+
+Signalons à cet égard qu'il existe un mécanisme ``intelligent'' qui
+permet de définir un ordre à partir d'un sous-ensemble seulement de ces
+méthodes, l'idée étant que si vous savez faire \texttt{\textgreater{}}
+et \texttt{=}, vous savez sûrement faire tout le reste. Ce mécanisme est
+\href{https://docs.python.org/3/library/functools.html\#functools.total_ordering}{documenté
+ici}~; il repose sur \textbf{un décorateur} (\texttt{@total\_ordering}),
+un mécanisme que nous étudierons en semaine 9, mais que vous pouvez
+utiliser dès à présent.\\
+
+    De manière analogue à \texttt{sum} qui fonctionne sur une liste de
+matrices, si on avait défini un ordre sur les matrices, on aurait pu
+alors utiliser les \emph{built-in} \texttt{min} et \texttt{max} pour
+calculer une borne supérieure ou inférieure dans une séquence de
+matrices.
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    \hypertarget{le-produit-avec-un-scalaire}{%
+\subparagraph{Le produit avec un
+scalaire\\\\}\label{le-produit-avec-un-scalaire}}
+
+    On implémenterait la multiplication de deux matrices d'une façon
+identique (quoique plus fastidieuse naturellement).\\
+
+La multiplication d'une matrice par un scalaire (un réel ou complexe
+pour fixer les idées), comme ici~:
+
+\begin{verbatim}
+matrice2 = reel * matrice1
+\end{verbatim}
+
+peut être également réalisée par surcharge de l'opérateur
+\texttt{\_\_rmul\_\_}.\\
+
+Il s'agit d'une astuce, destinée précisément à ce genre de situations,
+où on veut étendre la classe de l'opérande de \textbf{droite}, sachant
+que dans ce cas précis l'opérande de gauche est un type de base, qu'on
+ne peut pas étendre (les classes \emph{built-in} sont non mutables, pour
+garantir la stabilité de l'interpréteur).\\
+
+Voici donc comment on s'y prendrait. Pour éviter de reproduire tout le
+code de la classe, on va l'étendre à la volée.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} remarquez que les opérandes sont apparemment inversés}
+        \PY{c+c1}{\PYZsh{} dans le sens où pour evaluer }
+        \PY{c+c1}{\PYZsh{}     reel * matrice}
+        \PY{c+c1}{\PYZsh{} on écrit une méthode qui prend en argument}
+        \PY{c+c1}{\PYZsh{}   la matrice, puis le réel}
+        \PY{c+c1}{\PYZsh{} mais n\PYZsq{}oubliez pas qu\PYZsq{}on est en fait en train}
+        \PY{c+c1}{\PYZsh{} d\PYZsq{}écrire une méthode sur la classe `Matrix2`}
+        \PY{k}{def} \PY{n+nf}{multiplication\PYZus{}scalaire}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{alpha}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{n}{Matrix2}\PY{p}{(}\PY{p}{[}\PY{n}{alpha} \PY{o}{*} \PY{n}{coef} \PY{k}{for} \PY{n}{coef} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{coefs}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} on ajoute la méthode spéciale \PYZus{}\PYZus{}rmul\PYZus{}\PYZus{}}
+        \PY{n}{Matrix2}\PY{o}{.}\PY{n+nf+fm}{\PYZus{}\PYZus{}rmul\PYZus{}\PYZus{}} \PY{o}{=} \PY{n}{multiplication\PYZus{}scalaire}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{matrice1}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} [1, 2, 3, 4]
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{l+m+mi}{12} \PY{o}{*} \PY{n}{matrice1}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} [12, 24, 36, 48]
+\end{Verbatim}

@@ -1,0 +1,200 @@
+    \hypertarget{les-attributs}{%
+\section{Les attributs}\label{les-attributs}}
+
+    \hypertarget{compluxe9ments---niveau-basique}{%
+\subsection{Compléments - niveau
+basique}\label{compluxe9ments---niveau-basique}}
+
+    \hypertarget{la-notation-.-et-les-attributs}{%
+\subsubsection{\texorpdfstring{La notation \texttt{.} et les
+attributs}{La notation . et les attributs}}\label{la-notation-.-et-les-attributs}}
+
+    La notation \texttt{module.variable} que nous avons vue dans la vidéo
+est un cas particulier de la notion d'attribut, qui permet d'étendre un
+objet, ou si on préfère de lui accrocher des données.\\
+
+Nous avons déjà rencontré ceci de nombreuses fois à présent, c'est
+exactement le même mécanisme d'attribut qui est utilisé pour les
+méthodes~; pour le système d'attribut il n'y a pas de différence entre
+\texttt{module.variable}, \texttt{module.fonction},
+\texttt{objet.methode}, etc.\\
+
+Nous verrons très bientôt que ce mécanisme est massivement utilisé
+également dans les instances de classe.
+
+    \hypertarget{les-fonctions-de-gestion-des-attributs}{%
+\subsubsection{Les fonctions de gestion des
+attributs}\label{les-fonctions-de-gestion-des-attributs}}
+
+    Pour accéder programmativement aux attributs d'un objet, on dispose des
+3 fonctions \emph{built-in} \texttt{getattr}, \texttt{setattr}, et
+\texttt{hasattr}, que nous allons illustrer tout de suite.
+
+    \hypertarget{lire-un-attribut}{%
+\subparagraph{Lire un attribut}\label{lire-un-attribut}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{math}
+        \PY{c+c1}{\PYZsh{} nous savons lire un attribut comme ceci }
+        \PY{c+c1}{\PYZsh{} qui lit l\PYZsq{}attribut de nom \PYZsq{}pi\PYZsq{} dans le module math}
+        \PY{n}{math}\PY{o}{.}\PY{n}{pi}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}1}]:} 3.141592653589793
+\end{Verbatim}
+            
+    La
+\href{https://docs.python.org/3/library/functions.html\#getattr}{fonction
+\emph{built-in} \texttt{getattr}} permet de lire un attribut
+programmativement~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} si on part d\PYZsq{}une chaîne qui désigne le nom de l\PYZsq{}attribut}
+        \PY{c+c1}{\PYZsh{} la formule équivalente est alors}
+        \PY{n+nb}{getattr}\PY{p}{(}\PY{n}{math}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pi}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} 3.141592653589793
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} on peut utiliser les attributs avec la plupart des objets}
+        \PY{c+c1}{\PYZsh{} ici nous allons le faire sur une fonction}
+        \PY{k}{def} \PY{n+nf}{foo}\PY{p}{(}\PY{p}{)}\PY{p}{:} 
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{une fonction vide}\PY{l+s+s2}{\PYZdq{}}
+            \PY{k}{pass}
+        
+        \PY{c+c1}{\PYZsh{} on a déjà vu certains attributs des fonctions}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{nom=}\PY{l+s+si}{\PYZob{}foo.\PYZus{}\PYZus{}name\PYZus{}\PYZus{}\PYZcb{}}\PY{l+s+s2}{, docstring=`}\PY{l+s+si}{\PYZob{}foo.\PYZus{}\PYZus{}doc\PYZus{}\PYZus{}\PYZcb{}}\PY{l+s+s2}{`}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+nom=foo, docstring=`une fonction vide`
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} on peut préciser une valeur par défaut pour le cas où l\PYZsq{}attribut}
+        \PY{c+c1}{\PYZsh{} n\PYZsq{}existe pas}
+        \PY{n+nb}{getattr}\PY{p}{(}\PY{n}{foo}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{attribut\PYZus{}inexistant}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{valeur\PYZus{}par\PYZus{}defaut}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} 'valeur\_par\_defaut'
+\end{Verbatim}
+            
+    \hypertarget{uxe9crire-un-attribut}{%
+\subparagraph{Écrire un attribut}\label{uxe9crire-un-attribut}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} on peut ajouter un attribut arbitraire (toujours sur l\PYZsq{}objet fonction)}
+        \PY{n}{foo}\PY{o}{.}\PY{n}{hauteur} \PY{o}{=} \PY{l+m+mi}{100}
+        
+        \PY{n}{foo}\PY{o}{.}\PY{n}{hauteur}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} 100
+\end{Verbatim}
+            
+    Comme pour la lecture on peut écrire un attribut programmativement avec
+la
+\href{https://docs.python.org/3/library/functions.html\#setattr}{fonction
+\emph{built-in} \texttt{setattr}}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} écrire un attribut avec setattr}
+        \PY{n+nb}{setattr}\PY{p}{(}\PY{n}{foo}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{largeur}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+m+mi}{200}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} on peut bien sûr le lire indifféremment}
+        \PY{c+c1}{\PYZsh{} directement comme ici, ou avec getattr}
+        \PY{n}{foo}\PY{o}{.}\PY{n}{largeur}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} 200
+\end{Verbatim}
+            
+    \hypertarget{liste-des-attributs}{%
+\subparagraph{Liste des attributs\\\\}\label{liste-des-attributs}}
+
+    La
+\href{https://docs.python.org/3/library/functions.html\#hasattr}{fonction
+\emph{built-in} \texttt{hasattr}} permet de savoir si un objet possède
+ou pas un attribut~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} pour savoir si un attribut existe}
+        \PY{n+nb}{hasattr}\PY{p}{(}\PY{n}{math}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pi}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} True
+\end{Verbatim}
+            
+    Ce qui peut aussi être retrouvé autrement, avec la
+\href{https://docs.python.org/3/library/functions.html\#vars}{fonction
+\emph{built-in} \texttt{vars}}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n+nb}{vars}\PY{p}{(}\PY{n}{foo}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} \{'hauteur': 100, 'largeur': 200\}
+\end{Verbatim}
+            
+    \hypertarget{sur-quels-objets}{%
+\subsubsection{Sur quels objets}\label{sur-quels-objets}}
+
+    Il n'est pas possible d'ajouter des attributs sur les types de base, car
+ce sont des classes immuables~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k}{for} \PY{n}{builtin\PYZus{}type} \PY{o+ow}{in} \PY{p}{(}\PY{n+nb}{int}\PY{p}{,} \PY{n+nb}{str}\PY{p}{,} \PY{n+nb}{float}\PY{p}{,} \PY{n+nb}{complex}\PY{p}{,} \PY{n+nb}{tuple}\PY{p}{,} \PY{n+nb}{dict}\PY{p}{,} \PY{n+nb}{set}\PY{p}{,} \PY{n+nb}{frozenset}\PY{p}{)}\PY{p}{:}
+            \PY{n}{obj} \PY{o}{=} \PY{n}{builtin\PYZus{}type}\PY{p}{(}\PY{p}{)}
+            \PY{k}{try}\PY{p}{:} 
+                \PY{n}{obj}\PY{o}{.}\PY{n}{foo} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bar}\PY{l+s+s1}{\PYZsq{}}
+            \PY{k}{except} \PY{n+ne}{AttributeError} \PY{k}{as} \PY{n}{e}\PY{p}{:} 
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}builtin\PYZus{}type.\PYZus{}\PYZus{}name\PYZus{}\PYZus{}:\PYZgt{}10\PYZcb{}}\PY{l+s+s2}{ → exception }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{type(e)\PYZcb{} \PYZhy{} }\PY{l+s+si}{\PYZob{}e\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+       int → exception <class 'AttributeError'> - 'int' object has no attribute 'foo'
+       str → exception <class 'AttributeError'> - 'str' object has no attribute 'foo'
+     float → exception <class 'AttributeError'> - 'float' object has no attribute 'foo'
+   complex → exception <class 'AttributeError'> - 'complex' object has no attribute 'foo'
+     tuple → exception <class 'AttributeError'> - 'tuple' object has no attribute 'foo'
+      dict → exception <class 'AttributeError'> - 'dict' object has no attribute 'foo'
+       set → exception <class 'AttributeError'> - 'set' object has no attribute 'foo'
+ frozenset → exception <class 'AttributeError'> - 'frozenset' object has no attribute 'foo'
+
+    \end{Verbatim}
+
+    C'est par contre possible sur virtuellement tout le reste, et notamment
+là où c'est très utile, c'est-à-dire pour ce qui nous concerne sur les~:
+
+\begin{itemize}
+\tightlist
+\item
+  modules
+\item
+  packages
+\item
+  fonctions
+\item
+  classes
+\item
+  instances
+\end{itemize}

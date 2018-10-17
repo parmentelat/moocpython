@@ -1,0 +1,363 @@
+    \hypertarget{les-property}{%
+\section{\texorpdfstring{Les
+\emph{property}}{Les property}}\label{les-property}}
+
+    \textbf{Note}~: nous reviendrons largement sur cette notion de property
+lorsque nous parlerons des \emph{property et descripteurs} en semaine 9.
+Cependant, cette notion est suffisamment importante pour que nous vous
+proposions un complément dès maintenant dessus.
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    Comme on l'a vu dans le complément précédent, il est fréquent en Python
+qu'une classe expose dans sa documentation un ou plusieurs attributs~;
+c'est une pratique qui, en apparence seulement, paraît casser l'idée
+d'une bonne encapsulation.\\
+
+En réalité, grâce au mécanisme de \emph{property}, il n'en est rien.
+Nous allons voir dans ce complément comment une classe peut en quelque
+sorte intercepter les accès à ses attributs, et par là fournir une
+encapsulation forte.\\
+
+    Pour être concret, on va parler d'une classe \texttt{Temperature}. Au
+lieu de proposer, comme ce serait l'usage dans d'autres langages, une
+interface avec \texttt{get\_kelvin()} et \texttt{set\_kelvin()}, on va
+se contenter d'exposer l'attribut \texttt{kelvin}, et malgré cela on va
+pouvoir faire diverses vérifications et autres.
+
+    \hypertarget{impluxe9mentation-nauxefve}{%
+\subparagraph{Implémentation naïve\\\\}\label{impluxe9mentation-nauxefve}}
+
+    Je vais commencer par une implémentation naïve, qui ne tire pas profit
+des \emph{properties}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} dans sa version la plus épurée, une classe}
+        \PY{c+c1}{\PYZsh{} température pourrait ressembler à ça :}
+        
+        \PY{k}{class} \PY{n+nc}{Temperature1}\PY{p}{:}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{kelvin}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{kelvin} \PY{o}{=} \PY{n}{kelvin}
+                
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}self.kelvin\PYZcb{}}\PY{l+s+s2}{K}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} créons une instance}
+        \PY{n}{t1} \PY{o}{=} \PY{n}{Temperature1}\PY{p}{(}\PY{l+m+mi}{20}\PY{p}{)}
+        \PY{n}{t1}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} 20K
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} et pour accéder à la valeur numérique je peux faire}
+        \PY{n}{t1}\PY{o}{.}\PY{n}{kelvin}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} 20
+\end{Verbatim}
+            
+    Avec cette implémentation il est très facile de créer une température
+négative, qui n'a bien sûr pas de sens physique, ce n'est pas bon.
+
+    \hypertarget{interface-gettersetter}{%
+\subparagraph{\texorpdfstring{Interface
+\emph{getter/setter}\\\\}{Interface getter/setter}}\label{interface-gettersetter}}
+
+    Si vous avez été déjà exposés à des langages orientés objet comme C++,
+Java ou autre, vous avez peut-être l'habitude d'accéder aux données
+internes des instances par des \textbf{méthodes} de type
+\emph{getter\textbf{ ou }setter}, de façon à contrôler les accès et,
+dans une optique d'encapsulation, de préserver des invariants, comme ici
+le fait que la température doit être positive.\\
+
+C'est-à-dire que vous vous dites peut-être, ça ne devrait pas être fait
+comme ça, on devrait plutôt proposer une interface pour accéder à
+l'implémentation interne~; quelque chose comme~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k}{class} \PY{n+nc}{Temperature2}\PY{p}{:}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{kelvin}\PY{p}{)}\PY{p}{:}
+                \PY{c+c1}{\PYZsh{} au lieu d\PYZsq{}écrire l\PYZsq{}attribut il est plus sûr}
+                \PY{c+c1}{\PYZsh{} d\PYZsq{}utiliser le setter}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{set\PYZus{}kelvin}\PY{p}{(}\PY{n}{kelvin}\PY{p}{)}
+                
+            \PY{k}{def} \PY{n+nf}{set\PYZus{}kelvin}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{kelvin}\PY{p}{)}\PY{p}{:}
+                \PY{c+c1}{\PYZsh{} je m\PYZsq{}assure que \PYZus{}kelvin est toujours positif}
+                \PY{c+c1}{\PYZsh{} et j\PYZsq{}utilise un nom d\PYZsq{}attribut avec un \PYZus{} pour signifier}
+                \PY{c+c1}{\PYZsh{} que l\PYZsq{}attribut est privé et qu\PYZsq{}il ne faut pas y toucher directement}
+                \PY{c+c1}{\PYZsh{} on pourrait aussi bien sûr lever une exception }
+                \PY{c+c1}{\PYZsh{} mais ce n\PYZsq{}est pas mon sujet ici}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{\PYZus{}kelvin} \PY{o}{=} \PY{n+nb}{max}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{kelvin}\PY{p}{)}
+                
+            \PY{k}{def} \PY{n+nf}{get\PYZus{}kelvin}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{k}{return} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{\PYZus{}kelvin}
+                
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}self.\PYZus{}kelvin\PYZcb{}}\PY{l+s+s2}{K}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    Bon c'est vrai que d'un coté, c'est mieux parce que je garantis un
+invariant, la température est toujours positive~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{t2} \PY{o}{=} \PY{n}{Temperature2}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{30}\PY{p}{)}
+        \PY{n}{t2}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} 0K
+\end{Verbatim}
+            
+    Mais par contre, d'un autre coté, c'est très lourd, parce que chaque
+fois que je veux utiliser mon objet, je dois faire pour y accéder~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{t2}\PY{o}{.}\PY{n}{get\PYZus{}kelvin}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} 0
+\end{Verbatim}
+            
+    et aussi, si j'avais déjà du code qui utilisait \texttt{t.kelvin} il va
+falloir le modifier entièrement.
+
+    \hypertarget{impluxe9mentation-pythonique}{%
+\subparagraph{Implémentation
+pythonique\\\\}\label{impluxe9mentation-pythonique}}
+
+    La façon de s'en sortir ici consiste à définir une property. Comme on va
+le voir ce mécanisme permet d'écrire du code qui fait référence à
+l'attribut \texttt{kelvin} de l'instance, mais qui passe tout de même
+par une couche de logique.\\
+
+Ça ressemblerait à ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{k}{class} \PY{n+nc}{Temperature3}\PY{p}{:}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{kelvin}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{kelvin} \PY{o}{=} \PY{n}{kelvin}
+        
+            \PY{c+c1}{\PYZsh{} je définis bel et bien mes accesseurs de type getter et setter}
+            \PY{c+c1}{\PYZsh{} mais \PYZus{}get\PYZus{}kelvin commence avec un \PYZus{} }
+            \PY{c+c1}{\PYZsh{} car il n\PYZsq{}est pas censé être appelé par l\PYZsq{}extérieur}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}get\PYZus{}kelvin}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{k}{return} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{\PYZus{}kelvin}
+        
+            \PY{c+c1}{\PYZsh{} idem}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}set\PYZus{}kelvin}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{kelvin}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{\PYZus{}kelvin} \PY{o}{=} \PY{n+nb}{max}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{kelvin}\PY{p}{)}
+                
+            \PY{c+c1}{\PYZsh{} une fois que j\PYZsq{}ai ces deux éléments je peux créer une property}
+            \PY{n}{kelvin} \PY{o}{=} \PY{n+nb}{property}\PY{p}{(}\PY{n}{\PYZus{}get\PYZus{}kelvin}\PY{p}{,} \PY{n}{\PYZus{}set\PYZus{}kelvin}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{} et toujours la façon d\PYZsq{}imprimer}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}self.\PYZus{}kelvin\PYZcb{}}\PY{l+s+s2}{K}\PY{l+s+s2}{\PYZdq{}}    
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{t3} \PY{o}{=} \PY{n}{Temperature3}\PY{p}{(}\PY{l+m+mi}{200}\PY{p}{)}
+        \PY{n}{t3}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} 200K
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} par contre ici on va le mettre à zéro}
+        \PY{c+c1}{\PYZsh{} à nouveau, une exception serait préférable sans doute}
+        \PY{n}{t3}\PY{o}{.}\PY{n}{kelvin} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{l+m+mi}{30}
+        \PY{n}{t3}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} 0K
+\end{Verbatim}
+            
+    Comme vous pouvez le voir, cette technique a plusieurs avantages~:
+
+\begin{itemize}
+\tightlist
+\item
+  on a ce qu'on cherchait, c'est-à-dire une façon d'ajouter une couche
+  de logique lors des accès en lecture et en écriture à l'intérieur de
+  l'objet,
+\item
+  mais \textbf{sans toutefois} demander à l'utilisateur de passer son
+  temps à envoyer des méthodes \texttt{get\_} et \texttt{set()} sur
+  l'objet, ce qui a tendance à alourdir considérablement le code.
+\end{itemize}
+
+C'est pour cette raison que vous ne rencontrerez presque jamais en
+Python une bibliothèque qui offre une interface à base de méthodes
+\texttt{get\_something} et \texttt{set\_something}, mais au contraire
+les API vous exposeront directement des attributs que vous devez
+utiliser directement.
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    À titre d'exemple d'utilisation, voici une dernière implémentation de
+\texttt{Temperature} qui donne l'illusion d'avoir 3 attributs
+(\texttt{kelvin}, \texttt{celsius} et \texttt{fahrenheit}), alors qu'en
+réalité le seul attribut de donnée est \texttt{\_kelvin}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{k}{class} \PY{n+nc}{Temperature}\PY{p}{:}
+         
+             \PY{c+c1}{\PYZsh{}\PYZsh{} les constantes de conversion}
+             \PY{c+c1}{\PYZsh{} kelvin / celsius}
+             \PY{n}{K} \PY{o}{=} \PY{l+m+mf}{273.16}
+             \PY{c+c1}{\PYZsh{} fahrenheit / celsius}
+             \PY{n}{RF} \PY{o}{=} \PY{l+m+mi}{5} \PY{o}{/} \PY{l+m+mi}{9}
+             \PY{n}{KF} \PY{o}{=} \PY{p}{(}\PY{n}{K} \PY{o}{/} \PY{n}{RF}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{32}
+         
+             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{kelvin}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{celsius}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{fahrenheit}\PY{o}{=}\PY{k+kc}{None}\PY{p}{)}\PY{p}{:}
+                 \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+         \PY{l+s+sd}{        Création à partir de n\PYZsq{}importe quelle unité}
+         \PY{l+s+sd}{        Il faut préciser exactement une des trois unités}
+         \PY{l+s+sd}{        \PYZdq{}\PYZdq{}\PYZdq{}}
+                 \PY{c+c1}{\PYZsh{} on passe par les properties pour initialiser}
+                 \PY{k}{if} \PY{n}{kelvin} \PY{o+ow}{is} \PY{o+ow}{not} \PY{k+kc}{None}\PY{p}{:}
+                     \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{kelvin} \PY{o}{=} \PY{n}{kelvin}
+                 \PY{k}{elif} \PY{n}{celsius} \PY{o+ow}{is} \PY{o+ow}{not} \PY{k+kc}{None}\PY{p}{:}
+                     \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{celsius} \PY{o}{=} \PY{n}{celsius}
+                 \PY{k}{elif} \PY{n}{fahrenheit} \PY{o+ow}{is} \PY{o+ow}{not} \PY{k+kc}{None}\PY{p}{:}
+                     \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{fahrenheit} \PY{o}{=} \PY{n}{fahrenheit}
+                 \PY{k}{else}\PY{p}{:}
+                     \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{kelvin} \PY{o}{=} \PY{l+m+mi}{0}
+                     \PY{k}{raise} \PY{n+ne}{ValueError}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{need to specify at least one unit}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         
+             \PY{c+c1}{\PYZsh{} pour le confort}
+             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                 \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}}\PY{l+s+si}{\PYZob{}self.kelvin:g\PYZcb{}}\PY{l+s+s2}{K == }\PY{l+s+si}{\PYZob{}self.celsius:g\PYZcb{}}\PY{l+s+s2}{\textdegree{C} }\PY{l+s+s2}{\PYZdq{}} \PYZbs{}
+                        \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{== }\PY{l+s+si}{\PYZob{}self.fahrenheit:g\PYZcb{}}\PY{l+s+s2}{\textdegree{F}\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+         
+             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}str\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                 \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}self.kelvin:g\PYZcb{}}\PY{l+s+s2}{K}\PY{l+s+s2}{\PYZdq{}}
+         
+         
+             \PY{c+c1}{\PYZsh{} l\PYZsq{}attribut \PYZsq{}kelvin\PYZsq{} n\PYZsq{}a pas de conversion à faire,}
+             \PY{c+c1}{\PYZsh{} mais il vérifie que la valeur est positive}
+             \PY{k}{def} \PY{n+nf}{\PYZus{}get\PYZus{}kelvin}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                 \PY{k}{return} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{\PYZus{}kelvin}
+         
+             \PY{k}{def} \PY{n+nf}{\PYZus{}set\PYZus{}kelvin}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{kelvin}\PY{p}{)}\PY{p}{:}
+                 \PY{k}{if} \PY{n}{kelvin} \PY{o}{\PYZlt{}} \PY{l+m+mi}{0}\PY{p}{:}
+                     \PY{k}{raise} \PY{n+ne}{ValueError}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Kelvin }\PY{l+s+si}{\PYZob{}kelvin\PYZcb{}}\PY{l+s+s2}{ must be positive}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                 \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{\PYZus{}kelvin} \PY{o}{=} \PY{n}{kelvin}
+         
+             \PY{c+c1}{\PYZsh{} la property qui définit l\PYZsq{}attribut `kelvin`}
+             \PY{n}{kelvin} \PY{o}{=} \PY{n+nb}{property}\PY{p}{(}\PY{n}{\PYZus{}get\PYZus{}kelvin}\PY{p}{,} \PY{n}{\PYZus{}set\PYZus{}kelvin}\PY{p}{)}
+         
+         
+             \PY{c+c1}{\PYZsh{} les deux autres properties font la conversion, puis }
+             \PY{c+c1}{\PYZsh{} sous\PYZhy{}traitent à la property kelvin pour le contrôle de borne}
+             \PY{k}{def} \PY{n+nf}{\PYZus{}set\PYZus{}celsius}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{celsius}\PY{p}{)}\PY{p}{:}
+                 \PY{c+c1}{\PYZsh{} using .kelvin instead of .\PYZus{}kelvin to enforce}
+                 \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{kelvin} \PY{o}{=} \PY{n}{celsius} \PY{o}{+} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{K}
+         
+             \PY{k}{def} \PY{n+nf}{\PYZus{}get\PYZus{}celsius}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                 \PY{k}{return} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{\PYZus{}kelvin} \PY{o}{\PYZhy{}} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{K}
+             
+             \PY{n}{celsius} \PY{o}{=} \PY{n+nb}{property}\PY{p}{(}\PY{n}{\PYZus{}get\PYZus{}celsius}\PY{p}{,} \PY{n}{\PYZus{}set\PYZus{}celsius}\PY{p}{)}
+         
+             \PY{k}{def} \PY{n+nf}{\PYZus{}set\PYZus{}fahrenheit}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{fahrenheit}\PY{p}{)}\PY{p}{:}
+                 \PY{c+c1}{\PYZsh{} using .kelvin instead of .\PYZus{}kelvin to enforce}
+                 \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{kelvin} \PY{o}{=} \PY{p}{(}\PY{n}{fahrenheit} \PY{o}{+} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{KF}\PY{p}{)} \PY{o}{*} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{RF}
+         
+             \PY{k}{def} \PY{n+nf}{\PYZus{}get\PYZus{}fahrenheit}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                 \PY{k}{return} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{\PYZus{}kelvin} \PY{o}{/} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{RF} \PY{o}{\PYZhy{}} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{KF}
+             
+             \PY{n}{fahrenheit} \PY{o}{=} \PY{n+nb}{property}\PY{p}{(}\PY{n}{\PYZus{}get\PYZus{}fahrenheit}\PY{p}{,} \PY{n}{\PYZus{}set\PYZus{}fahrenheit}\PY{p}{)}
+\end{Verbatim}
+
+
+    Et voici ce qu'on peut en faire~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{t} \PY{o}{=} \PY{n}{Temperature}\PY{p}{(}\PY{n}{celsius}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+         \PY{n}{t}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} <273.16K == 0\textdegree{C} == 32\textdegree[F]>
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{t}\PY{o}{.}\PY{n}{fahrenheit}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} 32.0
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{t}\PY{o}{.}\PY{n}{celsius} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{100}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{t}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+373.16K
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{k}{try}\PY{p}{:}
+             \PY{n}{t} \PY{o}{=} \PY{n}{Temperature}\PY{p}{(}\PY{n}{fahrenheit} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1000}\PY{p}{)}
+         \PY{k}{except} \PY{n+ne}{Exception} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS, }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{type(e)\PYZcb{}, }\PY{l+s+si}{\PYZob{}e\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+OOPS, <class 'ValueError'>, Kelvin -300.1733333333333 must be positive
+
+    \end{Verbatim}
+
+    \hypertarget{pour-en-savoir-plus}{%
+\subparagraph{Pour en savoir plus\\\\}\label{pour-en-savoir-plus}}
+
+    Voir aussi
+\href{https://docs.python.org/3.6/library/functions.html\#property}{la
+documentation officielle}.\\
+
+    Vous pouvez notamment aussi, en option, ajouter un \emph{deleter} pour
+intercepter les instructions du type~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} comme on n\PYZsq{}a pas défini de deleter, on ne peut pas faire ceci}
+         \PY{k}{try}\PY{p}{:}
+             \PY{k}{del} \PY{n}{t}\PY{o}{.}\PY{n}{kelvin}
+         \PY{k}{except} \PY{n+ne}{Exception} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{type(e)\PYZcb{} }\PY{l+s+si}{\PYZob{}e\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+OOPS <class 'AttributeError'> can't delete attribute
+
+    \end{Verbatim}

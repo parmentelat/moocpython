@@ -1,0 +1,427 @@
+    \hypertarget{muxe9thodes-spuxe9ciales-23}{%
+\section{Méthodes spéciales (2/3)}\label{muxe9thodes-spuxe9ciales-23}}
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    Nous poursuivons dans ce complément la sélection de méthodes spéciales
+entreprise en première partie.
+
+
+    \hypertarget{contains__-__len__-__getitem__-et-apparentuxe9s}{%
+\subsubsection{\texorpdfstring{\texttt{\_\_contains\_\_},
+\texttt{\_\_len\_\_}, \texttt{\_\_getitem\_\_} et
+apparentés}{\_\_contains\_\_, \_\_len\_\_, \_\_getitem\_\_ et apparentés}}\label{contains__-__len__-__getitem__-et-apparentuxe9s}}
+
+    La méthode \texttt{\_\_contains\_\_} permet de donner un sens à~:
+
+\begin{verbatim}
+item in objet
+\end{verbatim}
+
+Sans grande surprise, elle prend en argument un objet et un item, et
+doit renvoyer un booléen. Nous l'illustrons ci-dessous avec la classe
+\texttt{DualQueue}.\\
+
+    La méthode \texttt{\_\_len\_\_} est utilisée par la fonction
+\emph{built-in} \texttt{len} pour retourner la longueur d'un objet.
+
+    \hypertarget{la-classe-dualqueue}{%
+\subparagraph{\texorpdfstring{La classe
+\texttt{DualQueue}}{La classe DualQueue}\\\\}\label{la-classe-dualqueue}}
+
+    Nous allons illustrer ceci avec un exemple de classe, un peu artificiel,
+qui implémente une queue de type FIFO. Les objets sont d'abord admis
+dans la file d'entrée (\texttt{add\_input}), puis déplacés dans la file
+de sortie (\texttt{move\_input\_to\_output}), et enfin sortis
+(\texttt{emit\_output}).\\
+
+Clairement, cet exemple est à but uniquement pédagogique~; on veut
+montrer comment une implémentation qui repose sur deux listes séparées
+peut donner l'illusion d'une continuité, et se présenter comme un
+container unique. De plus cette implémentation ne fait aucun contrôle
+pour ne pas obscurcir le code.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k}{class} \PY{n+nc}{DualQueue}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Une double file d\PYZsq{}attente FIFO\PYZdq{}\PYZdq{}\PYZdq{}}
+        
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{constructeur, sans argument}\PY{l+s+s2}{\PYZdq{}}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{inputs} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{outputs} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+        
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}repr\PYZus{}\PYZus{}} \PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{affichage}\PY{l+s+s2}{\PYZdq{}}
+                \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}DualQueue, inputs=}\PY{l+s+si}{\PYZob{}self.inputs\PYZcb{}}\PY{l+s+s2}{, outputs=}\PY{l+s+si}{\PYZob{}self.outputs\PYZcb{}}\PY{l+s+s2}{\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+        
+            \PY{c+c1}{\PYZsh{} la partie qui nous intéresse ici}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}contains\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{item}\PY{p}{)}\PY{p}{:}
+                \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{appartenance d}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{un objet à la queue}\PY{l+s+s2}{\PYZdq{}}
+                \PY{k}{return} \PY{n}{item} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{inputs} \PY{o+ow}{or} \PY{n}{item} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{outputs}
+            
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}len\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{longueur de la queue}\PY{l+s+s2}{\PYZdq{}}
+                \PY{k}{return} \PY{n+nb}{len}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{inputs}\PY{p}{)} \PY{o}{+} \PY{n+nb}{len}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{outputs}\PY{p}{)}        
+        
+            \PY{c+c1}{\PYZsh{} l\PYZsq{}interface publique de la classe}
+            \PY{c+c1}{\PYZsh{} le plus simple possible et sans aucun contrôle}
+            \PY{k}{def} \PY{n+nf}{add\PYZus{}input}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{item}\PY{p}{)}\PY{p}{:}
+                \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{faire entrer un objet dans la queue d}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{entrée}\PY{l+s+s2}{\PYZdq{}}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{inputs}\PY{o}{.}\PY{n}{insert}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{item}\PY{p}{)}
+                
+            \PY{k}{def} \PY{n+nf}{move\PYZus{}input\PYZus{}to\PYZus{}output} \PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{objet le plus ancien de la queue d}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{entrée est promu}
+                 \PY{l+s+s2}{dans la queue de sortie}\PY{l+s+s2}{\PYZdq{}}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{outputs}\PY{o}{.}\PY{n}{insert}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{inputs}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+                
+            \PY{k}{def} \PY{n+nf}{emit\PYZus{}output} \PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{objet le plus ancien de la queue de sortie est émis}\PY{l+s+s2}{\PYZdq{}}
+                \PY{k}{return} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{outputs}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} on construit une instance pour nos essais}
+        \PY{n}{queue} \PY{o}{=} \PY{n}{DualQueue}\PY{p}{(}\PY{p}{)}
+        \PY{n}{queue}\PY{o}{.}\PY{n}{add\PYZus{}input}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{zero}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{queue}\PY{o}{.}\PY{n}{add\PYZus{}input}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{un}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{queue}\PY{o}{.}\PY{n}{move\PYZus{}input\PYZus{}to\PYZus{}output}\PY{p}{(}\PY{p}{)}
+        \PY{n}{queue}\PY{o}{.}\PY{n}{move\PYZus{}input\PYZus{}to\PYZus{}output}\PY{p}{(}\PY{p}{)}
+        \PY{n}{queue}\PY{o}{.}\PY{n}{add\PYZus{}input}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{deux}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{queue}\PY{o}{.}\PY{n}{add\PYZus{}input}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{trois}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{queue}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+<DualQueue, inputs=['trois', 'deux'], outputs=['un', 'zero']>
+
+    \end{Verbatim}
+
+    \hypertarget{longueur-et-appartenance}{%
+\subparagraph{Longueur et appartenance\\\\}\label{longueur-et-appartenance}}
+
+    Avec cette première version de la classe \texttt{DualQueue} on peut
+utiliser \texttt{len} et le test d'appartenance~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{len() = }\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{len(queue)\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{deux appartient\PYZhy{}il ? }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{deux}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{ in queue\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{1 appartient\PYZhy{}il ? }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{1 in queue\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+len() = 4
+deux appartient-il ? True
+1 appartient-il ? False
+
+    \end{Verbatim}
+
+    \hypertarget{accuxe8s-suxe9quentiel-accuxe8s-par-un-index-entier}{%
+\subparagraph{Accès séquentiel (accès par un index
+entier)\\\\}\label{accuxe8s-suxe9quentiel-accuxe8s-par-un-index-entier}}
+
+    Lorsqu'on a la notion de longueur de l'objet avec \texttt{\_\_len\_\_},
+il peut être opportun - quoique cela n'est pas imposé par le langage,
+comme on vient de le voir - de proposer également un accès indexé par un
+entier pour pouvoir faire~:
+
+\begin{verbatim}
+queue[1]
+\end{verbatim}
+
+\textbf{Pour ne pas répéter tout le code de la classe}, nous allons
+étendre \texttt{DualQueue}~; pour cela nous définissons une fonction,
+que nous affectons ensuite à \texttt{DualQueue.\_\_getitem\_\_}, comme
+nous avons déjà eu l'occasion de le faire~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} une première version de DualQueue.\PYZus{}\PYZus{}getitem\PYZus{}\PYZus{}}
+        \PY{c+c1}{\PYZsh{} pour uniquement l\PYZsq{}accès par index}
+        
+        \PY{c+c1}{\PYZsh{} on définit une fonction}
+        \PY{k}{def} \PY{n+nf}{dual\PYZus{}queue\PYZus{}getitem} \PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{index}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{redéfinit l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{accès [] séquentiel}\PY{l+s+s2}{\PYZdq{}}
+        
+            \PY{c+c1}{\PYZsh{} on vérifie que l\PYZsq{}index a un sens}
+            \PY{k}{if} \PY{o+ow}{not} \PY{p}{(}\PY{l+m+mi}{0} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{index} \PY{o}{\PYZlt{}} \PY{n+nb}{len}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                \PY{k}{raise} \PY{n+ne}{IndexError}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Mauvais indice }\PY{l+s+si}{\PYZob{}index\PYZcb{}}\PY{l+s+s2}{ pour DualQueue}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{c+c1}{\PYZsh{} on décide que l\PYZsq{}index 0 correspond à l\PYZsq{}élément le plus ancien}
+            \PY{c+c1}{\PYZsh{} ce qui oblige à une petite gymnastique}
+            \PY{n}{li} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{inputs}\PY{p}{)}
+            \PY{n}{lo} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{outputs}\PY{p}{)}
+            \PY{k}{if} \PY{n}{index} \PY{o}{\PYZlt{}} \PY{n}{lo}\PY{p}{:}
+                \PY{k}{return} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{outputs}\PY{p}{[}\PY{n}{lo} \PY{o}{\PYZhy{}} \PY{n}{index} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{]}
+            \PY{k}{else}\PY{p}{:}
+                \PY{k}{return} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{inputs}\PY{p}{[}\PY{n}{li} \PY{o}{\PYZhy{}} \PY{p}{(}\PY{n}{index}\PY{o}{\PYZhy{}}\PY{n}{lo}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{} et on affecte cette fonction à l\PYZsq{}intérieur de la classe}
+        \PY{n}{DualQueue}\PY{o}{.}\PY{n+nf+fm}{\PYZus{}\PYZus{}getitem\PYZus{}\PYZus{}} \PY{o}{=} \PY{n}{dual\PYZus{}queue\PYZus{}getitem}
+\end{Verbatim}
+
+
+    À présent, on peut \textbf{accéder} aux objets de la queue
+\textbf{séquentiellement}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{queue}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+zero
+
+    \end{Verbatim}
+
+    ce qui lève la même exception qu'avec une vraie liste si on utilise un
+mauvais index~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{try}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{queue}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)}
+        \PY{k}{except} \PY{n+ne}{IndexError} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ERREUR}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{n}{e}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+ERREUR Mauvais indice 5 pour DualQueue
+
+    \end{Verbatim}
+
+    \hypertarget{amuxe9lioration-accuxe8s-par-slice}{%
+\subparagraph{Amélioration~: accès par
+slice\\\\}\label{amuxe9lioration-accuxe8s-par-slice}}
+
+    Si on veut aussi supporter l'accès par slice comme ceci~:
+
+\begin{verbatim}
+queue[1:3]
+\end{verbatim}
+
+il nous faut modifier la méthode \texttt{\_\_getitem\_\_}.\\
+
+    Le second argument de \texttt{\_\_getitem\_\_} correspond naturellement
+au contenu des crochets \texttt{{[}{]}}, on utilise donc
+\texttt{isinstance} pour écrire un code qui s'adapte au type
+d'indexation, comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} une deuxième version de DualQueue.\PYZus{}\PYZus{}getitem\PYZus{}\PYZus{}}
+        \PY{c+c1}{\PYZsh{} pour l\PYZsq{}accès par index et/ou par slice}
+        
+        \PY{k}{def} \PY{n+nf}{dual\PYZus{}queue\PYZus{}getitem} \PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{key}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{redéfinit l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{accès par [] pour entiers, slices, et autres}\PY{l+s+s2}{\PYZdq{}}
+        
+            \PY{c+c1}{\PYZsh{} l\PYZsq{}accès par slice queue[1:3] }
+            \PY{c+c1}{\PYZsh{} nous donne pour key un objet de type slice}
+            \PY{k}{if} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{key}\PY{p}{,} \PY{n+nb}{slice}\PY{p}{)}\PY{p}{:}
+                \PY{c+c1}{\PYZsh{} key.indices donne les indices qui vont bien}
+                \PY{k}{return} \PY{p}{[}\PY{n+nb+bp}{self}\PY{p}{[}\PY{n}{index}\PY{p}{]} \PY{k}{for} \PY{n}{index} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{o}{*}\PY{n}{key}\PY{o}{.}\PY{n}{indices}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{]}
+        
+            \PY{c+c1}{\PYZsh{} queue[3] nous donne pour key un entier}
+            \PY{k}{elif} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{key}\PY{p}{,} \PY{n+nb}{int}\PY{p}{)}\PY{p}{:}
+                \PY{n}{index} \PY{o}{=} \PY{n}{key}
+                \PY{c+c1}{\PYZsh{} on vérifie que l\PYZsq{}index a un sens}
+                \PY{k}{if} \PY{n}{index} \PY{o}{\PYZlt{}} \PY{l+m+mi}{0} \PY{o+ow}{or} \PY{n}{index} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                    \PY{k}{raise} \PY{n+ne}{IndexError}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Mauvais indice }\PY{l+s+si}{\PYZob{}index\PYZcb{}}\PY{l+s+s2}{ pour DualQueue}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                \PY{c+c1}{\PYZsh{} on décide que l\PYZsq{}index 0 correspond à l\PYZsq{}élément le plus ancien}
+                \PY{c+c1}{\PYZsh{} ce qui oblige à une petite gymnastique}
+                \PY{n}{li} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{inputs}\PY{p}{)}
+                \PY{n}{lo} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{outputs}\PY{p}{)}
+                \PY{k}{if} \PY{n}{index} \PY{o}{\PYZlt{}} \PY{n}{lo}\PY{p}{:}
+                    \PY{k}{return} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{outputs}\PY{p}{[}\PY{n}{lo}\PY{o}{\PYZhy{}}\PY{n}{index}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+                \PY{k}{else}\PY{p}{:}
+                    \PY{k}{return} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{inputs}\PY{p}{[}\PY{n}{li}\PY{o}{\PYZhy{}}\PY{p}{(}\PY{n}{index}\PY{o}{\PYZhy{}}\PY{n}{lo}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+            \PY{c+c1}{\PYZsh{} queue [\PYZsq{}foo\PYZsq{}] n\PYZsq{}a pas de sens pour nous}
+            \PY{k}{else}\PY{p}{:}
+                \PY{k}{raise} \PY{n+ne}{KeyError}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{[] avec type non reconnu }\PY{l+s+si}{\PYZob{}key\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} et on affecte cette fonction à l\PYZsq{}intérieur de la classe}
+        \PY{n}{DualQueue}\PY{o}{.}\PY{n+nf+fm}{\PYZus{}\PYZus{}getitem\PYZus{}\PYZus{}} \PY{o}{=} \PY{n}{dual\PYZus{}queue\PYZus{}getitem}
+\end{Verbatim}
+
+
+    Maintenant on peut accéder par slice~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{queue}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{3}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} ['un', 'deux']
+\end{Verbatim}
+            
+    Et on reçoit bien une exception si on essaie d'accéder par clé~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k}{try}\PY{p}{:}
+            \PY{n}{queue}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{key}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        \PY{k}{except} \PY{n+ne}{KeyError} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS: }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{type(e).\PYZus{}\PYZus{}name\PYZus{}\PYZus{}\PYZcb{}: }\PY{l+s+si}{\PYZob{}e\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+OOPS: KeyError: '[] avec type non reconnu key'
+
+    \end{Verbatim}
+
+    \hypertarget{lobjet-est-ituxe9rable-muxeame-sans-avoir-__iter__}{%
+\subparagraph{\texorpdfstring{L'objet est itérable (même sans avoir
+\texttt{\_\_iter\_\_})}{L'objet est itérable (même sans avoir \_\_iter\_\_)}\\\\}\label{lobjet-est-ituxe9rable-muxeame-sans-avoir-__iter__}}
+
+    Avec seulement \texttt{\_\_getitem\_\_}, on peut \textbf{faire une
+boucle} sur l'objet queue. On l'a mentionné rapidement dans la séquence
+sur les itérateurs, mais la \textbf{méthode \texttt{\_\_iter\_\_} n'est
+pas la seule façon} de rendre un objet itérable~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} grâce à \PYZus{}\PYZus{}getitem\PYZus{}\PYZus{} on a rendu les }
+         \PY{c+c1}{\PYZsh{} objets de type DualQueue itérables}
+         \PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{queue}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{item}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+zero
+un
+deux
+trois
+
+    \end{Verbatim}
+
+    \hypertarget{on-peut-faire-un-test-sur-lobjet}{%
+\subparagraph{On peut faire un test sur
+l'objet\\\\}\label{on-peut-faire-un-test-sur-lobjet}}
+
+    De manière similaire, même sans la méthode \texttt{\_\_bool\_\_}, cette
+classe sait \textbf{faire des tests de manière correcte} grâce
+uniquement à la méthode \texttt{\_\_len\_\_}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} un test fait directement sur la queue}
+         \PY{k}{if} \PY{n}{queue}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{La queue }\PY{l+s+si}{\PYZob{}queue\PYZcb{}}\PY{l+s+s2}{ est considérée comme True}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+La queue <DualQueue, inputs=['trois', 'deux'], outputs=['un', 'zero']> est considérée
+comme True
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} le même test sur une queue vide}
+         \PY{n}{empty} \PY{o}{=} \PY{n}{DualQueue}\PY{p}{(}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} maintenant le test est négatif (notez bien le *not* ici)}
+         \PY{k}{if} \PY{o+ow}{not} \PY{n}{empty}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{La queue }\PY{l+s+si}{\PYZob{}empty\PYZcb{}}\PY{l+s+s2}{ est considérée comme False}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+La queue <DualQueue, inputs=[], outputs=[]> est considérée comme False
+
+    \end{Verbatim}
+
+
+    \hypertarget{call__-et-les-callables}{%
+\subsubsection{\texorpdfstring{\texttt{\_\_call\_\_} et les
+\emph{callables}}{\_\_call\_\_ et les callables}}\label{call__-et-les-callables}}
+
+    Le langage introduit de manière similaire la notion de
+\textbf{\emph{callable}} - littéralement, qui peut être appelé. L'idée
+est très simple, on cherche à donner un sens à un fragment de code du
+genre de~:
+
+    \begin{verbatim}
+# on crée une instance
+objet = Classe(arguments)
+\end{verbatim}
+
+et c'est l'objet (Attention~: \textbf{l'objet, pas la classe}) qu'on
+utilise comme une fonction
+
+\begin{verbatim}
+objet(arg1, arg2)
+\end{verbatim}
+
+    Le protocole ici est très simple~; cette dernière ligne a un sens en
+Python dès lors que~:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{objet} possède une méthode \texttt{\_\_call\_\_}~;
+\item
+  et que celle-ci peut être envoyée à \texttt{objet} avec les arguments
+  \texttt{arg1,\ arg2}~;
+\item
+  et c'est ce résultat qui sera alors retourné par
+  \texttt{objet(arg1,\ arg2)}~:
+\end{itemize}
+
+    \begin{verbatim}
+objet(arg1, arg2) ⟺ objet.__call__(arg1, arg2)
+\end{verbatim}
+
+    Voyons cela sur un exemple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{k}{class} \PY{n+nc}{PlusClosure}\PY{p}{:}
+             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Une classe callable qui permet de faire un peu comme la }
+         \PY{l+s+sd}{    fonction built\PYZhy{}in sum mais en ajoutant une valeur initiale\PYZdq{}\PYZdq{}\PYZdq{}}
+             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{initial}\PY{p}{)}\PY{p}{:}
+                 \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{initial} \PY{o}{=} \PY{n}{initial}
+             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}call\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{:}
+                 \PY{k}{return} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{initial} \PY{o}{+} \PY{n+nb}{sum}\PY{p}{(}\PY{n}{args}\PY{p}{)}
+             
+         \PY{c+c1}{\PYZsh{} on crée une instance avec une valeur initiale 2 pour la somme}
+         \PY{n}{plus2} \PY{o}{=} \PY{n}{PlusClosure} \PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} on peut maintenant utiliser cet objet }
+         \PY{c+c1}{\PYZsh{} comme une fonction qui fait sum(*arg)+2}
+         \PY{n}{plus2}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}14}]:} 2
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{plus2}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}15}]:} 3
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{plus2}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}16}]:} 5
+\end{Verbatim}
+            
+    Pour ceux qui connaissent, nous avons choisi à dessein un exemple qui
+s'apparente à
+\href{http://en.wikipedia.org/wiki/Closure_\%28computer_programming\%29}{une
+clôture}. Nous reviendrons sur cette notion de \emph{callable} lorsque
+nous verrons les décorateurs en semaine 9.

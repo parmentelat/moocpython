@@ -1,0 +1,101 @@
+    \hypertarget{dataclasses}{%
+\section{\texorpdfstring{\texttt{dataclasses}}{dataclasses}}\label{dataclasses}}
+
+\textbf{\emph{Nouveauté de la version 3.7}}
+
+Python 3.7 apporte un nouveauté pour simplifier la définition de classes
+dites ``de données''~; ce type de classes s'applique pour des objets qui
+sont essentiellement un assemblage de quelques champs de données.\\
+
+    Comme cette capacité n'est disponible qu'à partir de Python 3.7 et que
+le cours est basé sur Python 3.6, nous n'aurons pas la possibilité de
+manipuler directement ce nouveau concept. Voici toutefois quelques
+exemples pour vous donner un aperçu de ce qu'on peut faire de cette
+notion.
+
+    \hypertarget{aperuxe7u}{%
+\subsubsection{Aperçu}\label{aperuxe7u}}
+
+    La raison d'être de \texttt{dataclass} est de fournir - encore un -
+moyen de définir des classes d'enregistrements.\\
+
+Voici par exemple comment on pourrait définir une classe
+\texttt{Personne}:
+
+    \begin{verbatim}
+>>> from dataclasses import dataclass
+>>>
+>>> @dataclass
+... class Personne:
+...     nom: str
+...     age: int
+...     email: str = ""
+...
+>>> personne = Personne(nom='jean', age=12)
+>>>
+>>> print(personne)
+Personne(nom='jean', age=12, email='')
+>>>
+\end{verbatim}
+
+    \hypertarget{instances-non-mutables}{%
+\subsubsection{Instances non mutables}\label{instances-non-mutables}}
+
+    Le décorateur \texttt{dataclass} accepte divers arguments pour choisir
+le comportement de certains aspects de la classe. Reportez-vous à la
+documentation pour une liste complète, mais voici un exemple qui utilise
+\texttt{frozen=True} et qui illustre la possibilité de créer des
+instances non mutables. Nous retrouvons ici le même scénario d'ensemble
+de points que nous avons déjà rencontré plusieurs fois~:
+
+    \begin{verbatim}
+>>> import sys; print(sys.version)
+3.7.0 (default, Jun 29 2018, 20:14:27)
+[Clang 9.0.0 (clang-900.0.39.2)]
+\end{verbatim}
+
+    \begin{verbatim}
+>>> from dataclasses import dataclass
+>>>
+>>> @dataclass(frozen=True)
+... class Point:
+...     x: float
+...     y: float
+...
+...     def __eq__(self, other):
+...         return self.x == other.x and self.y == other.y
+...
+...     def __hash__(self):
+...         return (11 * self.x + self.y) // 16
+...
+>>> p1, p2, p3 = Point(1, 1), Point(1, 1), Point(1, 1)
+>>>
+>>> s = {p1, p2}
+>>> len(s)
+1
+>>>
+>>> p3 in s
+True
+>>>
+>>> try:
+...     p1.x = 10
+... except Exception as e:
+...     print(f"OOPS {type(e)}")
+...
+OOPS <class 'dataclasses.FrozenInstanceError'>
+\end{verbatim}
+
+    \hypertarget{pour-aller-plus-loin}{%
+\subsubsection{Pour aller plus loin}\label{pour-aller-plus-loin}}
+
+    Vous pouvez vous rapporter
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://www.python.org/dev/peps/pep-0557/}{au PEP 557} qui a
+  abouti au consensus, et
+\item
+  \href{https://docs.python.org/3/library/dataclasses.html}{à la
+  documentation officielle du module}.
+\end{itemize}

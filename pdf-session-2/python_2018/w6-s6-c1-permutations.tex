@@ -1,0 +1,519 @@
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    \hypertarget{impluxe9menter-un-ituxe9rateur-de-permutations}{%
+\subsubsection{Implémenter un itérateur de
+permutations}\label{impluxe9menter-un-ituxe9rateur-de-permutations}}
+
+    Dans ce complément nous allons nous amuser à implémenter une
+fonctionnalité qui est déjà disponible dans le module
+\texttt{itertools}.
+
+    \hypertarget{cest-quoi-duxe9juxe0-les-permutations}{%
+\subparagraph{C'est quoi déjà les
+permutations~?}\label{cest-quoi-duxe9juxe0-les-permutations}}
+
+    En guise de rappel, l'ensemble des permutations d'un ensemble fini
+correspond à toutes les façons d'ordonner ses éléments~; si l'ensemble
+est de cardinal \(n\), il possède \(n!\) permutations~: on a \(n\)
+façons de choisir le premier élément, \(n-1\) façons de choisir le
+second, etc.\\
+
+    Un itérateur sur les permutations est disponible au travers du module
+standard \texttt{itertools}. Cependant il nous a semblé intéressant de
+vous montrer comment nous pourrions écrire nous-mêmes cette
+fonctionnalité, de manière relativement simple.\\
+
+    Pour illustrer le concept, voici à quoi ressemblent les 6 permutations
+d'un ensemble à trois éléments~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{itertools} \PY{k}{import} \PY{n}{permutations}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n+nb}{set} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{\PYZcb{}}
+        
+        \PY{k}{for} \PY{n}{p} \PY{o+ow}{in} \PY{n}{permutations}\PY{p}{(}\PY{n+nb}{set}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{p}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+(1, 2, 3)
+(1, 3, 2)
+(2, 1, 3)
+(2, 3, 1)
+(3, 1, 2)
+(3, 2, 1)
+
+    \end{Verbatim}
+
+    \hypertarget{une-impluxe9mentation}{%
+\subparagraph{Une implémentation\\\\}\label{une-impluxe9mentation}}
+
+    Voici une implémentation possible pour un itérateur de permutations~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{class} \PY{n+nc}{Permutations}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    Un itérateur qui énumère les permutations de n}
+        \PY{l+s+sd}{    sous la forme d\PYZsq{}une liste d\PYZsq{}indices commençant à 0}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{n}\PY{p}{)}\PY{p}{:}
+                \PY{c+c1}{\PYZsh{} le constructeur bien sûr ne fait (presque) rien}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{n} \PY{o}{=} \PY{n}{n}
+                \PY{c+c1}{\PYZsh{} au fur et à mesure des itérations}
+                \PY{c+c1}{\PYZsh{} le compteur va aller de 0 à n\PYZhy{}1}
+                \PY{c+c1}{\PYZsh{} puis retour à 0 et comme ça en boucle sans fin}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{counter} \PY{o}{=} \PY{l+m+mi}{0}
+                \PY{c+c1}{\PYZsh{} on se contente d\PYZsq{}allouer un iterateur de rang n\PYZhy{}1}
+                \PY{c+c1}{\PYZsh{} si bien qu\PYZsq{}une fois qu\PYZsq{}on a fini de construire}
+                \PY{c+c1}{\PYZsh{} l\PYZsq{}objet d\PYZsq{}ordre n on a n objets Permutations en tout}
+                \PY{k}{if} \PY{n}{n} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{2}\PY{p}{:}
+                    \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{subiterator} \PY{o}{=} \PY{n}{Permutations}\PY{p}{(}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
+        
+            \PY{c+c1}{\PYZsh{} pour satisfaire le protocole d\PYZsq{}itération}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}iter\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{k}{return} \PY{n+nb+bp}{self}
+        
+            \PY{c+c1}{\PYZsh{} c\PYZsq{}est ici bien sûr que se fait tout le travail}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}next\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{c+c1}{\PYZsh{} pour n == 1}
+                \PY{c+c1}{\PYZsh{} le travail est très simple}
+                \PY{k}{if} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{n} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
+                    \PY{c+c1}{\PYZsh{} on doit renvoyer une fois la liste [0]}
+                    \PY{c+c1}{\PYZsh{} car les indices commencent à 0}
+                    \PY{k}{if} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{counter} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:} 
+                        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{counter} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+                        \PY{k}{return} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+                    \PY{c+c1}{\PYZsh{} et ensuite c\PYZsq{}est terminé}
+                    \PY{k}{else}\PY{p}{:}
+                        \PY{k}{raise} \PY{n+ne}{StopIteration}
+        
+                \PY{c+c1}{\PYZsh{} pour n \PYZgt{}= 2}
+                \PY{c+c1}{\PYZsh{} lorsque counter est nul,}
+                \PY{c+c1}{\PYZsh{} on traite la permutation d\PYZsq{}ordre n\PYZhy{}1 suivante}
+                \PY{c+c1}{\PYZsh{} si next() lève StopIteration on n\PYZsq{}a qu\PYZsq{}à laisser passer}
+                \PY{c+c1}{\PYZsh{} car en effet c\PYZsq{}est qu\PYZsq{}on a terminé}
+                \PY{k}{if} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{counter} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+                    \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{subsequence} \PY{o}{=} \PY{n+nb}{next}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{subiterator}\PY{p}{)}
+                \PY{c+c1}{\PYZsh{}}
+                \PY{c+c1}{\PYZsh{} on insère alors n\PYZhy{}1 (car les indices commencent à 0)}
+                \PY{c+c1}{\PYZsh{} successivement dans la sous\PYZhy{}sequence}
+                \PY{c+c1}{\PYZsh{}}
+                \PY{c+c1}{\PYZsh{} naivement on écrirait}
+                \PY{c+c1}{\PYZsh{} result = self.subsequence[0:self.counter] \PYZbs{}}
+                \PY{c+c1}{\PYZsh{}    + [self.n \PYZhy{} 1] \PYZbs{}}
+                \PY{c+c1}{\PYZsh{}    + self.subsequence[self.counter:self.n\PYZhy{}1]}
+                \PY{c+c1}{\PYZsh{} mais c\PYZsq{}est mettre le nombre le plus élevé en premier}
+                \PY{c+c1}{\PYZsh{} et donc à itérer les permutations dans le mauvais ordre,}
+                \PY{c+c1}{\PYZsh{} en commençant par la fin}
+                \PY{c+c1}{\PYZsh{}}
+                \PY{c+c1}{\PYZsh{} donc on fait plutôt une symétrie}
+                \PY{c+c1}{\PYZsh{} pour insérer en commençant par la fin}
+                \PY{n}{cutter} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{counter}
+                \PY{n}{result} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{subsequence}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{:}\PY{n}{cutter}\PY{p}{]} \PY{o}{+} \PY{p}{[}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{n} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{]} \PYZbs{}
+                         \PY{o}{+} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{subsequence}\PY{p}{[}\PY{n}{cutter}\PY{p}{:}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+                \PY{c+c1}{\PYZsh{} }
+                \PY{c+c1}{\PYZsh{} on n\PYZsq{}oublie pas de maintenir le compteur et de}
+                \PY{c+c1}{\PYZsh{} le remettre à zéro tous les n tours}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{counter} \PY{o}{=} \PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{counter}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)} \PY{o}{\PYZpc{}} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{n}
+                \PY{k}{return} \PY{n}{result}
+        
+            \PY{c+c1}{\PYZsh{} la longeur de cet itérateur est connue}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}len\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{k+kn}{import} \PY{n+nn}{math}
+                \PY{k}{return} \PY{n}{math}\PY{o}{.}\PY{n}{factorial}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{n}\PY{p}{)}
+\end{Verbatim}
+
+
+    Ce qu'on a essayé d'expliquer dans les commentaires, c'est qu'on procède
+en fin de compte par récurrence. Un objet \texttt{Permutations} de rang
+\texttt{n} possède un sous-itérateur de rang \texttt{n-1} qu'on crée
+dans le constructeur. Ensuite l'objet de rang \texttt{n} va faire
+successivement (c'est-à-dire à chaque appel de \texttt{next()})~:
+
+\begin{itemize}
+\item
+  appel \emph{0}~:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    demander à son sous-itérateur une permutation de rang \texttt{n-1}
+    (en lui envoyant \texttt{next}),
+  \item
+    la stocker dans l'objet de rang \texttt{n}, ce sera utilisé par les
+    \emph{n} premier appels,
+  \item
+    et construire une liste de taille \texttt{n} en insérant
+    \texttt{n-1} à la fin de la séquence de taille \texttt{n-1},
+  \end{itemize}
+\item
+  appel \emph{1}~:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    insérer \texttt{n-1} dans la même séquence de rang \texttt{n-1} mais
+    cette fois 1 cran avant la fin,
+  \end{itemize}
+\item
+  \ldots{}
+\item
+  appel \emph{n-1}~:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    insérer \texttt{n-1} au début de la séquence de rang \texttt{n-1},
+  \end{itemize}
+\item
+  appel \emph{n}~:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    refaire \texttt{next()} sur le sous-itérateur pour traiter une
+    nouvelle sous-séquence,
+  \item
+    la stocker dans l'objet de rang \texttt{n}, comme à l'appel
+    \emph{0}, pour ce bloc de n appels,
+  \item
+    et construire la permutation en insérant \emph{n-1} à la fin, comme
+    à l'appel 0,
+  \end{itemize}
+\item
+  \ldots{}
+\end{itemize}
+
+    On voit donc le caractère cyclique d'ordre \emph{n} qui est matérialisé
+par \texttt{counter}, que l'on incrémente à chaque boucle mais modulo
+\emph{n} - notez d'ailleurs que pour ce genre de comportement on dispose
+aussi de \texttt{itertools.cycle} comme on le verra dans une deuxième
+version, mais pour l'instant j'ai préféré ne pas l'utiliser pour ne pas
+tout embrouiller ;)\\
+
+La terminaison se gère très simplement, car une fois que l'on a traité
+toutes les séquences d'ordre \emph{n-1} eh bien on a fini, on n'a même
+pas besoin de lever StopIteration explicitement, sauf bien sûr dans le
+cas \emph{n=1}.\\
+
+Le seul point un peu délicat, si on veut avoir les permutations dans le
+``bon'' ordre, consiste à commencer à insérer \texttt{n-1} par la droite
+(la fin de la sous-séquence).
+
+    \hypertarget{discussion}{%
+\subparagraph{Discussion\\\\}\label{discussion}}
+
+    Il existe certainement des tas d'autres façons de faire bien entendu. Le
+point important ici, et qui donne toute sa puissance à la notion
+d'itérateur, c'est \textbf{qu'à aucun moment on ne construit} une liste
+ou une séquence quelconque de \textbf{n! termes}.
+
+C'est une erreur fréquente chez les débutants que de calculer une telle
+liste dans le constructeur, mais procéder de cette façon c'est aller
+exactement à l'opposé de ce pourquoi les itérateurs ont été conçus~; au
+contraire, on veut éviter à tout prix le coût d'une telle construction.
+
+On peut le voir sur un code qui n'utiliserait que les 20 premières
+valeurs de l'itérateur, vous constatez que ce code est immédiat~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k}{def} \PY{n+nf}{show\PYZus{}first\PYZus{}items}\PY{p}{(}\PY{n}{iterable}\PY{p}{,} \PY{n}{nb\PYZus{}items}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    montre les \PYZlt{}nb\PYZus{}items\PYZgt{} premiers items de iterable}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Il y a }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{len(iterable)\PYZcb{} items dans l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{itérable}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{k}{for} \PY{n}{i}\PY{p}{,} \PY{n}{item} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{iterable}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{item}\PY{p}{)}
+                \PY{k}{if} \PY{n}{i} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{n}{nb\PYZus{}items}\PY{p}{:}
+                    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{....}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                    \PY{k}{break}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{show\PYZus{}first\PYZus{}items}\PY{p}{(}\PY{n}{Permutations}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Il y a 479001600 items dans l'itérable
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 10]
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 11, 9, 10]
+[0, 1, 2, 3, 4, 5, 6, 7, 11, 8, 9, 10]
+[0, 1, 2, 3, 4, 5, 6, 11, 7, 8, 9, 10]
+[0, 1, 2, 3, 4, 5, 11, 6, 7, 8, 9, 10]
+[0, 1, 2, 3, 4, 11, 5, 6, 7, 8, 9, 10]
+[0, 1, 2, 3, 11, 4, 5, 6, 7, 8, 9, 10]
+[0, 1, 2, 11, 3, 4, 5, 6, 7, 8, 9, 10]
+[0, 1, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+[0, 11, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+[11, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 9, 11]
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 9]
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 11, 10, 9]
+[0, 1, 2, 3, 4, 5, 6, 7, 11, 8, 10, 9]
+[0, 1, 2, 3, 4, 5, 6, 11, 7, 8, 10, 9]
+[0, 1, 2, 3, 4, 5, 11, 6, 7, 8, 10, 9]
+[0, 1, 2, 3, 4, 11, 5, 6, 7, 8, 10, 9]
+[0, 1, 2, 3, 11, 4, 5, 6, 7, 8, 10, 9]
+[0, 1, 2, 11, 3, 4, 5, 6, 7, 8, 10, 9]
+{\ldots}
+
+    \end{Verbatim}
+
+    Ce tableau vous montre par ailleurs sous un autre angle comment
+fonctionne l'algorithme, si vous observez le \texttt{11} qui balaie en
+diagonale les 12 premières lignes, puis les 12 suivantes, etc..
+
+    \hypertarget{ultimes-amuxe9liorations}{%
+\subparagraph{Ultimes améliorations\\\\}\label{ultimes-amuxe9liorations}}
+
+    Dernières remarques, sur des améliorations possibles - mais tout à fait
+optionnelles~:
+
+\begin{itemize}
+\tightlist
+\item
+  le lecteur attentif aura remarqué qu'au lieu d'un entier
+  \texttt{counter} on aurait pu profitablement utiliser une instance de
+  \texttt{itertools.cycle}, ce qui aurait eu l'avantage d'être plus
+  clair sur le propos de ce compteur~;
+\item
+  aussi dans le même mouvement, au lieu de se livrer à la gymnastique
+  qui calcule \texttt{cutter} à partir de \texttt{counter}, on pourrait
+  dès le départ créer dans le cycle les bonnes valeurs en commençant à
+  \texttt{n-1}.
+\end{itemize}
+
+    C'est ce qu'on a fait dans cette deuxième version~; après avoir enlevé
+la logorrhée de commentaires ça redevient presque lisible ;)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k+kn}{import} \PY{n+nn}{itertools}
+        
+        \PY{k}{class} \PY{n+nc}{Permutations2}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    Un itérateur qui énumère les permutations de n}
+        \PY{l+s+sd}{    sous la forme d\PYZsq{}une liste d\PYZsq{}indices commençant à 0}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{n}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{n} \PY{o}{=} \PY{n}{n}
+                \PY{c+c1}{\PYZsh{} on commence à insérer à la fin }
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{cycle} \PY{o}{=} \PY{n}{itertools}\PY{o}{.}\PY{n}{cycle}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+                \PY{k}{if} \PY{n}{n} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{2}\PY{p}{:}
+                    \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{subiterator} \PY{o}{=} \PY{n}{Permutations2}\PY{p}{(}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
+                \PY{c+c1}{\PYZsh{} pour savoir quand terminer le cas n==1}
+                \PY{k}{if} \PY{n}{n} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
+                    \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{done} \PY{o}{=} \PY{k+kc}{False}
+        
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}iter\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{k}{return} \PY{n+nb+bp}{self}
+        
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}next\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{n}{cutter} \PY{o}{=} \PY{n+nb}{next}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{cycle}\PY{p}{)}
+        
+                \PY{c+c1}{\PYZsh{} quand n==1 on a toujours la même valeur 0}
+                \PY{k}{if} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{n} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
+                    \PY{k}{if} \PY{o+ow}{not} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{done}\PY{p}{:}
+                        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{done} \PY{o}{=} \PY{k+kc}{True}
+                        \PY{k}{return} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+                    \PY{k}{else}\PY{p}{:}
+                        \PY{k}{raise} \PY{n+ne}{StopIteration}
+        
+                \PY{c+c1}{\PYZsh{} au début de chaque séquence de n appels}
+                \PY{c+c1}{\PYZsh{} il faut appeler une nouvelle sous\PYZhy{}séquence}
+                \PY{k}{if} \PY{n}{cutter} \PY{o}{==} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{:}
+                    \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{subsequence} \PY{o}{=} \PY{n+nb}{next}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{subiterator}\PY{p}{)}
+                \PY{c+c1}{\PYZsh{} dans laquelle on insére n\PYZhy{}1}
+                \PY{k}{return} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{subsequence}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{:}\PY{n}{cutter}\PY{p}{]} \PY{o}{+} \PY{p}{[}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]} \PYZbs{}
+                         \PY{o}{+} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{subsequence}\PY{p}{[}\PY{n}{cutter}\PY{p}{:}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+        
+            \PY{c+c1}{\PYZsh{} la longeur de cet itérateur est connue}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}len\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{k+kn}{import} \PY{n+nn}{math}
+                \PY{k}{return} \PY{n}{math}\PY{o}{.}\PY{n}{factorial}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{n}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{show\PYZus{}first\PYZus{}items}\PY{p}{(}\PY{n}{Permutations2}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Il y a 120 items dans l'itérable
+[0, 1, 2, 3, 4]
+[0, 1, 2, 4, 3]
+[0, 1, 4, 2, 3]
+[0, 4, 1, 2, 3]
+[4, 0, 1, 2, 3]
+[0, 1, 3, 2, 4]
+[0, 1, 3, 4, 2]
+[0, 1, 4, 3, 2]
+[0, 4, 1, 3, 2]
+[4, 0, 1, 3, 2]
+[0, 3, 1, 2, 4]
+[0, 3, 1, 4, 2]
+[0, 3, 4, 1, 2]
+[0, 4, 3, 1, 2]
+[4, 0, 3, 1, 2]
+[3, 0, 1, 2, 4]
+[3, 0, 1, 4, 2]
+[3, 0, 4, 1, 2]
+[3, 4, 0, 1, 2]
+[4, 3, 0, 1, 2]
+[0, 2, 1, 3, 4]
+{\ldots}
+
+    \end{Verbatim}
+
+
+    Il me semble intéressant de montrer une autre façon, plus simple,
+d'écrire un itérateur de permutations, à base cette fois de générateurs;
+c'est un tout petit peu une digression par rapport au cours qui est sur
+la conception d'itérateurs et d'itérables. Ça va nous permettre surtout
+de réviser la notion de \texttt{yield\ from}.
+
+    On commence par une version très rustique qui fait des impressions~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} pour simplifier ici on suppose que l\PYZsq{}entrée est une vraie liste}
+        \PY{c+c1}{\PYZsh{} que l\PYZsq{}on va ainsi pouvoir modifier par effets de bord}
+        \PY{k}{def} \PY{n+nf}{gen\PYZus{}perm1}\PY{p}{(}\PY{n}{subject}\PY{p}{,} \PY{n}{k}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}\PY{p}{:}
+            \PY{k}{if} \PY{n}{k} \PY{o}{==} \PY{n+nb}{len}\PY{p}{(}\PY{n}{subject}\PY{p}{)}\PY{p}{:}
+                \PY{c+c1}{\PYZsh{} cette version hyper rustique se contente de faire une impression}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{subject}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}
+                \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{k}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{subject}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                    \PY{c+c1}{\PYZsh{} on échange }
+                    \PY{n}{subject}\PY{p}{[}\PY{n}{k}\PY{p}{]}\PY{p}{,} \PY{n}{subject}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{n}{subject}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{,} \PY{n}{subject}\PY{p}{[}\PY{n}{k}\PY{p}{]}
+                    \PY{n}{gen\PYZus{}perm1}\PY{p}{(}\PY{n}{subject}\PY{p}{,} \PY{n}{k}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}
+                    \PY{c+c1}{\PYZsh{} on remet comme c\PYZsq{}était pour le prochain échange}
+                    \PY{n}{subject}\PY{p}{[}\PY{n}{k}\PY{p}{]}\PY{p}{,} \PY{n}{subject}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{n}{subject}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{,} \PY{n}{subject}\PY{p}{[}\PY{n}{k}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{gen\PYZus{}perm1}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+['a', 'b', 'c', 'd']
+['a', 'b', 'd', 'c']
+['a', 'c', 'b', 'd']
+['a', 'c', 'd', 'b']
+['a', 'd', 'c', 'b']
+['a', 'd', 'b', 'c']
+['b', 'a', 'c', 'd']
+['b', 'a', 'd', 'c']
+['b', 'c', 'a', 'd']
+['b', 'c', 'd', 'a']
+['b', 'd', 'c', 'a']
+['b', 'd', 'a', 'c']
+['c', 'b', 'a', 'd']
+['c', 'b', 'd', 'a']
+['c', 'a', 'b', 'd']
+['c', 'a', 'd', 'b']
+['c', 'd', 'a', 'b']
+['c', 'd', 'b', 'a']
+['d', 'b', 'c', 'a']
+['d', 'b', 'a', 'c']
+['d', 'c', 'b', 'a']
+['d', 'c', 'a', 'b']
+['d', 'a', 'c', 'b']
+['d', 'a', 'b', 'c']
+
+    \end{Verbatim}
+
+    Très bien, mais on ne veut pas imprimer, on veut itérer. On pourrait se
+dire, il me suffit de remplacer \texttt{print} par \texttt{yield}.
+Essayons cela~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} pour simplifier ici on suppose que l\PYZsq{}entrée est une vraie liste}
+         \PY{c+c1}{\PYZsh{} que l\PYZsq{}on va ainsi pouvoir modifier par effets de bord}
+         \PY{k}{def} \PY{n+nf}{gen\PYZus{}perm2}\PY{p}{(}\PY{n}{subject}\PY{p}{,} \PY{n}{k}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}\PY{p}{:}
+             \PY{k}{if} \PY{n}{k} \PY{o}{==} \PY{n+nb}{len}\PY{p}{(}\PY{n}{subject}\PY{p}{)}\PY{p}{:}
+                 \PY{c+c1}{\PYZsh{} cette version hyper rustique se contente de faire une impression}
+                 \PY{k}{yield} \PY{n}{subject}
+             \PY{k}{else}\PY{p}{:}
+                 \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{k}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{subject}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                     \PY{c+c1}{\PYZsh{} on échange }
+                     \PY{n}{subject}\PY{p}{[}\PY{n}{k}\PY{p}{]}\PY{p}{,} \PY{n}{subject}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{n}{subject}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{,} \PY{n}{subject}\PY{p}{[}\PY{n}{k}\PY{p}{]}
+                     \PY{n}{gen\PYZus{}perm2}\PY{p}{(}\PY{n}{subject}\PY{p}{,} \PY{n}{k}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}
+                     \PY{c+c1}{\PYZsh{} on remet comme c\PYZsq{}était pour le prochain échange}
+                     \PY{n}{subject}\PY{p}{[}\PY{n}{k}\PY{p}{]}\PY{p}{,} \PY{n}{subject}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{n}{subject}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{,} \PY{n}{subject}\PY{p}{[}\PY{n}{k}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{k}{for} \PY{n}{perm} \PY{o+ow}{in} \PY{n}{gen\PYZus{}perm2}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{perm}\PY{p}{)}
+\end{Verbatim}
+
+
+    On est exactement dans le cas où il nous faut utiliser
+\texttt{yield\ from}. En effet lorsqu'on appelle
+\texttt{gen\_perm(subject,\ k+1)} ici, ce qu'on obtient en retour c'est
+maintenant un objet générateur. Pour faire ce qu'on cherche à faire il
+nous faut bien utiliser cet objet générateur, et pour cela on utilise
+\texttt{yield\ from}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} pour simplifier ici on suppose que l\PYZsq{}entrée est une vraie liste}
+         \PY{c+c1}{\PYZsh{} que l\PYZsq{}on va ainsi pouvoir modifier par effets de bord}
+         \PY{k}{def} \PY{n+nf}{gen\PYZus{}perm3}\PY{p}{(}\PY{n}{subject}\PY{p}{,} \PY{n}{k}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}\PY{p}{:}
+             \PY{k}{if} \PY{n}{k} \PY{o}{==} \PY{n+nb}{len}\PY{p}{(}\PY{n}{subject}\PY{p}{)}\PY{p}{:}
+                 \PY{c+c1}{\PYZsh{} cette version hyper rustique se contente de faire une impression}
+                 \PY{k}{yield} \PY{n}{subject}
+             \PY{k}{else}\PY{p}{:}
+                 \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{k}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{subject}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                     \PY{c+c1}{\PYZsh{} on échange }
+                     \PY{n}{subject}\PY{p}{[}\PY{n}{k}\PY{p}{]}\PY{p}{,} \PY{n}{subject}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{n}{subject}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{,} \PY{n}{subject}\PY{p}{[}\PY{n}{k}\PY{p}{]}
+                     \PY{k}{yield from} \PY{n}{gen\PYZus{}perm3}\PY{p}{(}\PY{n}{subject}\PY{p}{,} \PY{n}{k}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}
+                     \PY{c+c1}{\PYZsh{} on remet comme c\PYZsq{}était pour le prochain échange}
+                     \PY{n}{subject}\PY{p}{[}\PY{n}{k}\PY{p}{]}\PY{p}{,} \PY{n}{subject}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{n}{subject}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{,} \PY{n}{subject}\PY{p}{[}\PY{n}{k}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{k}{for} \PY{n}{perm} \PY{o+ow}{in} \PY{n}{gen\PYZus{}perm3}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{perm}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+['a', 'b', 'c', 'd']
+['a', 'b', 'd', 'c']
+['a', 'c', 'b', 'd']
+['a', 'c', 'd', 'b']
+['a', 'd', 'c', 'b']
+['a', 'd', 'b', 'c']
+['b', 'a', 'c', 'd']
+['b', 'a', 'd', 'c']
+['b', 'c', 'a', 'd']
+['b', 'c', 'd', 'a']
+['b', 'd', 'c', 'a']
+['b', 'd', 'a', 'c']
+['c', 'b', 'a', 'd']
+['c', 'b', 'd', 'a']
+['c', 'a', 'b', 'd']
+['c', 'a', 'd', 'b']
+['c', 'd', 'a', 'b']
+['c', 'd', 'b', 'a']
+['d', 'b', 'c', 'a']
+['d', 'b', 'a', 'c']
+['d', 'c', 'b', 'a']
+['d', 'c', 'a', 'b']
+['d', 'a', 'c', 'b']
+['d', 'a', 'b', 'c']
+
+    \end{Verbatim}
