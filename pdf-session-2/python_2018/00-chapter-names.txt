@@ -1,0 +1,9 @@
+1: Introduction au MOOC et aux outils Python
+2: Notions de base, premier programme en Python
+3: Renforcement des notions de base, références partagées
+4: Fonctions et portée des variables
+5: Itération, importation et espace de nommage
+6: Conception des classes
+7: L'écosystème data science Python
+8: Programmation asynchrone avec asyncio
+9: Sujets avancés

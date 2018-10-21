@@ -1,7 +1,7 @@
 
 % Default to the notebook output style
 
-    
+
 
 
 % Inherit from the specified cell style.
@@ -9,16 +9,16 @@
 
 
 
-    
+
 \documentclass[11pt, a4paper, french
 ]{book}
 
-    
-    
+
+
     \usepackage[T1]{fontenc}
     % Nicer default font (+ math font) than Computer Modern for most use cases
     \usepackage{mathpazo}
-    \usepackage[frenchb]{babel} 
+    \usepackage[frenchb]{babel}
 
     % Basic figure setup, for now with no caption control since it's done
     % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
@@ -40,7 +40,7 @@
     \DeclareCaptionLabelFormat{nolabel}{}
     \captionsetup{labelformat=nolabel}
 
-    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{adjustbox} % Used to constrain images to a maximum size
     \usepackage{xcolor} % Allow colors to be defined
     \usepackage{enumerate} % Needed for markdown enumerations to work
     \usepackage{geometry} % Used to adjust the document margins
@@ -57,8 +57,8 @@
     \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
     \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
     \usepackage{fancyvrb} % verbatim replacement that allows latex
-    \usepackage{grffile} % extends the file name processing of package graphics 
-                         % to support a larger range 
+    \usepackage{grffile} % extends the file name processing of package graphics
+                         % to support a larger range
     % The hyperref package gives us a pdf with properly built
     % internal navigation ('pdf bookmarks' for the table of contents,
     % internal cross-reference links, web links for URLs, etc.)
@@ -68,10 +68,10 @@
     \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
     \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
                                 % normalem makes italics be italics, not underlines
-    
 
-    
-    
+
+
+
     % Colors for the hyperref package
     \definecolor{urlcolor}{rgb}{0,.145,.698}
     \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
@@ -116,7 +116,7 @@
     \newcommand{\RegionMarkerTok}[1]{{#1}}
     \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
     \newcommand{\NormalTok}[1]{{#1}}
-    
+
     % Additional commands for more recent versions of Pandoc
     \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
     \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
@@ -135,8 +135,8 @@
     \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
     \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
     \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
-    
-    
+
+
     % Define a nice break command that doesn't care if a line doesn't already
     % exist.
     \def\br{\hspace*{\fill} \\* }
@@ -145,13 +145,13 @@
     \def\lt{<}
     % Document parameters
  %   \title{Python 3}
-    
-   \usepackage[Lenny]{fncychap} 
+
+   \usepackage[Lenny]{fncychap}
    \DeclareTextSymbol{\degre}{T1}{6}
 
 
     % Pygments definitions
-    
+
 \makeatletter
 \def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
     \let\PY@ul=\relax \let\PY@tc=\relax%
@@ -259,9 +259,9 @@
 
 
 
-    
+
     % Prevent overflowing lines due to hard-to-break entities
-    \sloppy 
+    \sloppy
     % Setup hyperref package
     \hypersetup{
       breaklinks=true,  % so long urls are correctly broken across lines
@@ -271,22 +271,22 @@
       citecolor=citecolor,
       }
     % Slightly bigger margins than the latex defaults
-    
+
     \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
-    
-    
+
+
 
     \begin{document}
-     
 
-    
+
+
  %   \maketitle
   \begin{titlepage}
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
 
 \center % Center everything on the page
- 
+
 
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
@@ -338,8 +338,8 @@ Arnaud \textsc{Legout}
 %	LOGO SECTION
 %----------------------------------------------------------------------------------------
 
-%\includegraphics{medias/logo.png}\\[1cm] 
- 
+%\includegraphics{medias/logo.png}\\[1cm]
+
 %----------------------------------------------------------------------------------------
 
 \vfill % Fill the rest of the page with whitespace
@@ -349,200 +349,23 @@ Arnaud \textsc{Legout}
 \pagestyle{empty}
 \addtocontents{toc}{\protect\thispagestyle{empty}}
 \tableofcontents
-\thispagestyle{empty}   
+\thispagestyle{empty}
 
-
-
-    \chapter{Introduction au MOOC et aux outils Python}
-    \pagestyle{plain}
-    \setcounter{page}{1}    
-	\include{w1-s1-c1-versions-python}
-    \include{w1-s2-c1-installer-python}
-    \include{w1-s2-c2-lecture}
-    \include{w1-s4-c1-utiliser-les-notebooks}
-    \include{w1-s4-c2-interpreteur-et-notebooks}
-    \include{w1-s4-c3-fibonacci-prompt}
-    \include{w1-s4-c4-fibonacci}
-    \include{w1-s4-c5-shebang}
-    \include{w1-s4-x1-turtle}
-    \include{w1-s5-c1-noms-de-variables}
-    \include{w1-s5-c2-mots-cles}
-    \include{w1-s5-c3-introduction-types}
-    \include{w1-s5-c4-garbage-collector}
-    \include{w1-s5-c5-type-checking}
-    \include{w1-s6-c1-calculette}
-    \include{w1-s6-c2-affectation-operateurs}
-    \include{w1-s6-c3-precision-flottants}
-    \include{w1-s6-c4-entiers-bit-a-bit}
-    \include{w1-s6-x1-flottants}
-
-    \chapter{Notions de base, premier programme en Python}
-
-    \include{w2-s1-c1-accents}   
-    \include{w2-s2-c1-outils-chaines}
-    \include{w2-s2-c2-formatage}
-    \include{w2-s2-c3-la-fonction-input}   
-    \include{w2-s2-c4-expressions-regulieres}
-    \include{w2-s2-x1-expressions-regulieres}
-    \include{w2-s3-c1-slices}
-    \include{w2-s4-c1-listes}
-    \include{w2-s4-c2-listes-mutables}
-    \include{w2-s4-c3-tris-de-liste-1}
-    \include{w2-s5-c1-indentations}
-    \include{w2-s5-c2-presentation}
-    \include{w2-s5-c3-pass}
-    \include{w2-s6-c1-valeur-de-retour}
-    \include{w2-s6-x1-label}
-    \include{w2-s6-x2-inconnue}
-    \include{w2-s6-x3-laccess}
-    \include{w2-s6-x4-if-et-def}
-    \include{w2-s6-x5-wc}
-    \include{w2-s7-x1-liste-p}
-    \include{w2-s7-x2-carre}
-    
-    \chapter{Renforcement des notions de base, références partagées}
-
-    \include{w3-s1-c1-fichiers}    
-    \include{w3-s1-c2-utilitaires-sur-fichiers}
-    \include{w3-s1-c3-format-json-et-autres}
-    \include{w3-s1-c4-fichiers-systeme}   
-    \include{w3-s2-c1-tuple-et-virgule}
-    \include{w3-s2-c2-sequence-unpacking}
-    \include{w3-s2-c3-for-sur-plusieurs-variables}
-    \include{w3-s2-x1-comptage}
-    \include{w3-s2-x2-surgery}
-    \include{w3-s4-c1-dictionnaires}
-    \include{w3-s4-c2-cles-immuables}
-    \include{w3-s4-c3-record-et-dictionnaire}
-    \include{w3-s4-x1-graph-dict}
-    \include{w3-s4-x2-marine-dict}
-    \include{w3-s5-c1-ensembles}
-    \include{w3-s5-x1-read-set}
-    \include{w3-s5-x2-marine-set}
-    \include{w3-s6-c1-try-finally}
-    \include{w3-s7-c1-operateur-is-et-fonction-id}
-    \include{w3-s7-c2-references-circulaires}
-    \include{w3-s7-c3-les-differentes-copies}
-    \include{w3-s7-c4-instruction-del}
-    \include{w3-s7-c5-affectation-simultanee}
-    \include{w3-s7-c6-affectation-operateurs-2}
-    \include{w3-s8-x1-fifo}
-    
-    \chapter{Fonctions et portée des variables}
-   
-    \include{w4-s1-c1-passage-par-reference}
-    \include{w4-s1-c2-docstring}
-    \include{w4-s1-c3-isinstance}
-    \include{w4-s1-c4-type-hints}
-    \include{w4-s2-c1-conditions-1}
-    \include{w4-s2-c2-evaluation-conditions}
-    \include{w4-s2-c3-if-comme-expression}
-    \include{w4-s2-c4-conditions-2}
-    \include{w4-s2-x1-dispatch}
-    \include{w4-s2-x2-libelle}
-    \include{w4-s3-c2-boucle-while}
-    \include{w4-s3-x1-pgcd}
-    \include{w4-s3-x2-taxes}
-    \include{w4-s4-c1-scope-builtin}
-    \include{w4-s4-c2-variable-de-boucle}
-    \include{w4-s4-c3-unboundlocalerror}
-    \include{w4-s5-c1-fonctions-globals-et-locals}
-    \include{w4-s6-c1-passage-arguments}
-    \include{w4-s6-c2-pas-de-valeur-par-defaut-mutable}
-    \include{w4-s6-c3-keyword-only}
-    \include{w4-s6-x1-passage-arguments}
- 
-    \chapter{Itération, importation et espace de nommage}
-    
-    \include{w5-s1-c1-break-et-continue}
-    \include{w5-s1-c2-ne-pas-modifier-sujet-boucle-for}
-    \include{w5-s1-c3-itertools}
-    \include{w5-s2-c1-fonctions}
-    \include{w5-s2-c2-tris-de-listes-2}
-    \include{w5-s2-x1-multi-tri}
-    \include{w5-s2-x2-doubler-premier}
-    \include{w5-s2-x3-compare}
-    \include{w5-s3-c1-comprehensions}
-    \include{w5-s3-c2-comprehensions-imbriquees}
-    \include{w5-s3-x1-comprehensions}
-    \include{w5-s4-c1-expressions-generatrices}
-	\include{w5-s4-c2-yield-from}
-    \include{w5-s4-x1-produit-scalaire}
-    \include{w5-s6-c1-import-once}
-    \include{w5-s6-c2-modules-et-chemins}
-    \include{w5-s7-c1-import-as}
-    \include{w5-s7-c2-recapitulatif-import}
-    \include{w5-s7-c3-packages}
-    \include{w5-s7-c4-import-advanced}
-    \include{w5-s7-x1-decode-zen}
-
-    \chapter{Conception des classes}
-    
-    \include{w6-s1-c1-introduction-classes}
-    \include{w6-s1-c2-record-et-classe}
-    \include{w6-s1-c3-property}
-    \include{w6-s1-c4-datetime}
-    \include{w6-s2-c1-instance-hashable}
-    \include{w6-s2-c2-speciales-1}
-    \include{w6-s2-c3-speciales-2}
-    \include{w6-s2-c4-speciales-3}
-    \include{w6-s3-c1-heritage}
-    \include{w6-s3-c2-namedtuple}
-    \include{w6-s3-c3-dataclasses}
-    \include{w6-s3-c4-enums}
-    \include{w6-s3-c5-heritage-typage}
-    \include{w6-s4-c1-heritage-multiple}
-    \include{w6-s5-c1-attributs}
-    \include{w6-s5-c2-namespaces}
-    \include{w6-s6-c1-permutations}
-    \include{w6-s8-c1-context-manager-et-exception}
-    \include{w6-s8-x1-classes-merger}
-    \include{w6-s9-c1-outils-annexes}
-    
-%    \chapter{L'écosystème data science Python}
-	
-%	\include{w7-s1-c1-installation}
-%	\include{w7-s2-c00-intro-numpy}
-%	\include{w7-s2-c01-dimension1}
-%	\include{w7-s2-c02-dtype}
-%	\include{w7-s2-c03-shape}
-%	\include{w7-s2-c04-initialisation}
-%	\include{w7-s2-c05-broadcasting}
-%	\include{w7-s2-c05-x1-stairs}
-%	\include{w7-s2-c06-indexing-slicing}
-%	\include{w7-s2-c07-operations-logiques}
-%	\include{w7-s2-c08-algebre-lineaire}
-%	\include{w7-s2-c09-indexation-evoluee}
-%	\include{w7-s2-c10-divers}
-%	\include{w7-s3-c01-data-science}
-%	\include{w7-s3-c02-Series}
-%	\include{w7-s3-c03-DataFrame}
-%	\include{w7-s3-c04-operations-avancee-pandas}
-%	\include{w7-s4-c01-matplotlib-2d}
-%	\include{w7-s4-c02-matplotlib-3d}
-%	\include{w7-s4-c04-bokeh-et-al}
-
-%    \chapter{Programmation asynchrone-asyncio}
-	
-%	\include{w8-s4-c1-async-http}
-%	\include{w8-s8-c1-players}
-%	\include{w8-s8-c2-game}
-
-%    \chapter{Sujets avancés}
-    
-%    \include{w9-s2-c1-decorateurs}
+% utilisez contenu.py pour recréer contenu.tex en fonction des semaines
+% pertinentes
+\input{contenu}
 
 %    \chapter{Corrigés}
-    
+
 %    \include{corriges-w2}
 %    \include{corriges-w3}
 %    \include{corriges-w4}
 %    \include{corriges-w5}
 %    \include{corriges-w6}
-    
-    
+
+
     % Add a bibliography block to the postdoc
-    
-    
-    
+
+
+
     \end{document}
