@@ -1,7 +1,15 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{les-boucles-for}{%
 \section{\texorpdfstring{Les boucles
 \texttt{for}}{Les boucles for}}\label{les-boucles-for}}
 
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
     \hypertarget{exercice---niveau-intermuxe9diaire}{%
 \subsection{Exercice - niveau
@@ -11,42 +19,56 @@ intermédiaire}\label{exercice---niveau-intermuxe9diaire}}
 \subsubsection{Produit scalaire}\label{produit-scalaire}}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} Pour charger l\PYZsq{}exercice}
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} Pour charger l\PYZsq{}exercice}
         \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}produit\PYZus{}scalaire} \PY{k}{import} \PY{n}{exo\PYZus{}produit\PYZus{}scalaire}
 \end{Verbatim}
 
 
     On veut écrire une fonction qui retourne le produit scalaire de deux
 vecteurs. Pour ceci on va matérialiser les deux vecteurs en entrée par
-deux listes que l'on suppose de même taille.\\
+deux listes que l'on suppose de même taille.
 
-On rappelle que le produit de X et Y vaut~\(\sum_{i} X_i * Y_i\).\\
+On rappelle que le produit de X et Y vaut~\(\sum_{i} X_i * Y_i\).
 
-On posera que le produit scalaire de deux listes vides vaut \texttt{0}.\\
+On posera que le produit scalaire de deux listes vides vaut \texttt{0}.
 
     Naturellement puisque le sujet de la séquence est les expressions
 génératrices, on vous demande d'utiliser ce trait pour résoudre cet
-exercice.\\
+exercice.
 
 \textbf{NOTE} remarquez bien qu'on a dit \textbf{expression} génératrice
 et pas nécessairement \textbf{fonction génératrice}.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} un petit exemple}
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} un petit exemple}
         \PY{n}{exo\PYZus{}produit\PYZus{}scalaire}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
     Vous devez donc écrire~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{produit\PYZus{}scalaire}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{)}\PY{p}{:} 
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{def} \PY{n+nf}{produit\PYZus{}scalaire}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{)}\PY{p}{:} 
             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}retourne le produit scalaire de deux listes de même taille\PYZdq{}\PYZdq{}\PYZdq{}}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre\PYZus{}code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour vérifier votre code}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{c+c1}{\PYZsh{} pour vérifier votre code}
         \PY{n}{exo\PYZus{}produit\PYZus{}scalaire}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{produit\PYZus{}scalaire}\PY{p}{)}
 \end{Verbatim}
+
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

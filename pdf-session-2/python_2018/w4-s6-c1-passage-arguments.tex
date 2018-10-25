@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{passage-darguments}{%
 \section{Passage d'arguments}\label{passage-darguments}}
 
@@ -13,7 +20,7 @@ les langages de programmation, à savoir qu'une fonction a un nombre
 fixe, supposé connu, d'arguments. Ce modèle a cependant quelques
 limitations~; les mécanismes de passage d'arguments que propose python,
 et que nous venons de voir dans les vidéos, visent à lever ces
-limitations.\\
+limitations.
 
 Voyons de quelles limitations il s'agit.
 
@@ -23,7 +30,7 @@ l'avance}\label{nombre-darguments-non-connu-uxe0-lavance}}
 
     \hypertarget{ou-encore-introduction-uxe0-la-forme-arguments}{%
 \subparagraph{\texorpdfstring{Ou encore~: introduction à la forme
-\texttt{*arguments}}{Ou encore~: introduction à la forme *arguments}\\\\}\label{ou-encore-introduction-uxe0-la-forme-arguments}}
+\texttt{*arguments}}{Ou encore~: introduction à la forme *arguments}}\label{ou-encore-introduction-uxe0-la-forme-arguments}}
 
     Pour prendre un exemple aussi simple que possible, considérons la
 fonction \texttt{print}, qui nous l'avons vu, accepte un nombre
@@ -42,17 +49,18 @@ la fonction print peut prendre plein d'arguments
     Imaginons maintenant que nous voulons implémenter une variante de
 \texttt{print}, c'est-à-dire une fonction \texttt{error}, qui se
 comporte exactement comme \texttt{print} sauf qu'elle ajoute en début de
-ligne une balise \texttt{ERROR}.\\
+ligne une balise \texttt{ERROR}.
 
 Se posent alors deux problèmes~:
 
 \begin{itemize}
-	\item 
-	D'une part il nous faut un moyen de
-	spécifier que notre fonction prend un nombre quelconque d'arguments.
-	\item
-	D'autre part il faut une syntaxe pour repasser tous ces arguments à la
-	fonction \texttt{print}.
+\tightlist
+\item
+  D'une part il nous faut un moyen de spécifier que notre fonction prend
+  un nombre quelconque d'arguments.
+\item
+  D'autre part il faut une syntaxe pour repasser tous ces arguments à la
+  fonction \texttt{print}.
 \end{itemize}
 
 On peut faire tout cela avec la notation en \texttt{*} comme ceci~:
@@ -80,19 +88,20 @@ ERROR
 \subsubsection{Légère variation}\label{luxe9guxe8re-variation}}
 
     Pour sophistiquer un peu cet exemple, on veut maintenant imposer à la
-fonction erreur qu'elle reçoive un argument obligatoire de type entier
-qui représente un code d'erreur, plus à nouveau un nombre quelconque
-d'arguments pour \texttt{print}.\\
+fonction \texttt{erreur} qu'elle reçoive un argument obligatoire de type
+entier qui représente un code d'erreur, plus à nouveau un nombre
+quelconque d'arguments pour \texttt{print}.
 
 Pour cela, on peut définir une signature (les paramètres de la fonction)
 qui
 
 \begin{itemize}
-	\item 
-	prévoit un argument traditionnel en première position, qui sera
-	obligatoire lors de l'appel,
-	\item
-	et le tuple des arguments pour \texttt{print}, comme ceci~:
+\tightlist
+\item
+  prévoit un argument traditionnel en première position, qui sera
+  obligatoire lors de l'appel,
+\item
+  et le tuple des arguments pour \texttt{print}, comme ceci~:
 \end{itemize}
 
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -121,7 +130,7 @@ fonctionnalités}\label{ajout-de-fonctionnalituxe9s}}
 
     \hypertarget{ou-encore-la-forme-argumentvaleur_par_defaut}{%
 \subparagraph{\texorpdfstring{Ou encore~: la forme
-\texttt{argument=valeur\_par\_defaut}}{Ou encore~: la forme argument=valeur\_par\_defaut}\\\\}\label{ou-encore-la-forme-argumentvaleur_par_defaut}}
+\texttt{argument=valeur\_par\_defaut}}{Ou encore~: la forme argument=valeur\_par\_defaut}}\label{ou-encore-la-forme-argumentvaleur_par_defaut}}
 
     Nous envisageons à présent le cas - tout à fait indépendant de ce qui
 précède - où vous avez écrit une librairie graphique, dans laquelle vous
@@ -141,7 +150,7 @@ segment~:
     Vous publiez cette librairie en version 1, vous avez des utilisateurs~;
 et quelque temps plus tard vous écrivez une version 2 qui prend en
 compte la couleur. Ce qui vous conduit à ajouter un paramètre pour
-\texttt{ligne}.\\
+\texttt{ligne}.
 
     Si vous le faites en déclarant
 
@@ -154,7 +163,7 @@ def ligne(x1, y1, x2, y2, couleur):
 alors tous les utilisateurs de la version 1 vont \textbf{devoir changer
 leur code} - pour rester à fonctionnalité égale - en ajoutant un
 cinquième argument \texttt{\textquotesingle{}noir\textquotesingle{}} à
-leurs appels à \texttt{ligne}.\\
+leurs appels à \texttt{ligne}.
 
     Vous pouvez éviter cet inconvénient en définissant la deuxième version
 de \texttt{ligne} comme ceci~:
@@ -186,19 +195,19 @@ la ligne (0, 100) -> (100, 0) en rouge
 
     \hypertarget{les-paramuxe8tres-par-duxe9faut-sont-truxe8s-utiles}{%
 \subparagraph{Les paramètres par défaut sont très
-utiles\\\\}\label{les-paramuxe8tres-par-duxe9faut-sont-truxe8s-utiles}}
+utiles}\label{les-paramuxe8tres-par-duxe9faut-sont-truxe8s-utiles}}
 
     Notez bien que ce genre de situation peut tout aussi bien se produire
 sans que vous ne publiiez de librairie, à l'intérieur d'une seule
 application. Par exemple, vous pouvez être amené à ajouter un argument à
 une fonction parce qu'elle doit faire face à de nouvelles situations
-imprévues, et que vous n'avez pas le temps de modifier tout le code.\\
+imprévues, et que vous n'avez pas le temps de modifier tout le code.
 
     Ou encore plus simplement, vous pouvez choisir d'utiliser ce passage de
 paramètres dès le début de la conception~; une fonction \texttt{ligne}
 réaliste présentera une interface qui précise les points concernés, la
 couleur du trait, l'épaisseur du trait, le style du trait, le niveau de
-transparence, etc.~Il n'est vraiment pas utile que tous les appels à
+transparence, etc. Il n'est vraiment pas utile que tous les appels à
 \texttt{ligne} reprécisent tout ceci intégralement, aussi une bonne
 partie de ces paramètres seront très constructivement déclarés avec une
 valeur par défaut.
@@ -212,22 +221,22 @@ avancé}\label{compluxe9ment---niveau-avancuxe9}}
 
     \hypertarget{ou-encore-la-forme-keywords}{%
 \subparagraph{\texorpdfstring{Ou encore~: la forme
-\texttt{**keywords}\\\\}{Ou encore~: la forme **keywords}}\label{ou-encore-la-forme-keywords}}
+\texttt{**keywords}}{Ou encore~: la forme **keywords}}\label{ou-encore-la-forme-keywords}}
 
     La notion de \emph{wrapper} - emballage, en anglais - est très répandue
 en informatique, et consiste, à partir d'un morceau de code souche
 existant (fonction ou classe) à définir une variante qui se comporte
-comme la souche, mais avec quelques légères différences.\\
+comme la souche, mais avec quelques légères différences.
 
 La fonction \texttt{error} était déjà un premier exemple de
 \emph{wrapper}. Maintenant nous voulons définir un \emph{wrapper}
 \texttt{ligne\_rouge}, qui sous-traite à la fonction \texttt{ligne} mais
-toujours avec la couleur rouge.\\
+toujours avec la couleur rouge.
 
 Maintenant que l'on a injecté la notion de paramètre par défaut dans le
 système de signature des fonctions, se repose la question de savoir
 comment passer à l'identique les arguments de \texttt{ligne\_rouge} à
-\texttt{ligne}.\\
+\texttt{ligne}.
 
     Évidemment, une première option consiste à regarder la signature de
 \texttt{ligne}~:
@@ -299,36 +308,37 @@ la ligne (0, 100) -> (100, 0) en rouge - ep. 4
 générale}\label{pour-en-savoir-plus---la-forme-guxe9nuxe9rale}}
 
     Une fois assimilé ce qui précède, vous avez de quoi comprendre une
-énorme majorité (99\% au moins) du code Python.\\
+énorme majorité (99\% au moins) du code Python.
 
 Dans le cas général, il est possible de combiner les 4 formes
-d'arguments:
+d'arguments~:
 
 \begin{itemize}
-	\item 
-	arguments ``normaux'', dits positionnels
-	\item
-	arguments nommés, comme \texttt{nom=\textless{}valeur\textgreater{}}
-	\item
-	forme \texttt{*args}
-	\item
-	forme \texttt{**dargs}
+\tightlist
+\item
+  arguments ``normaux'', dits positionnels
+\item
+  arguments nommés, comme \texttt{nom=\textless{}valeur\textgreater{}}
+\item
+  forme \texttt{*args}
+\item
+  forme \texttt{**dargs}
 \end{itemize}
 
 Vous pouvez
 \href{https://docs.python.org/3/reference/expressions.html\#calls}{vous
-reporter à cette page} pour une description détaillée de ce cas général.\\
+reporter à cette page} pour une description détaillée de ce cas général.
 
     À l'appel d'une fonction, il faut résoudre les arguments, c'est-à-dire
 associer une valeur à chaque paramètre formel (ceux qui apparaissent
-dans le \texttt{def}) à partir des valeurs figurant dans l'appel.\\
+dans le \texttt{def}) à partir des valeurs figurant dans l'appel.
 
 L'idée est que pour faire cela, les arguments de l'appel ne sont pas
 pris dans l'ordre où ils apparaissent, mais les arguments positionnels
 sont utilisés en premier. La logique est que, naturellement les
 arguments positionnels (ou ceux qui proviennent d'une
 \texttt{*expression}) viennent sans nom, et donc ne peuvent pas être
-utilisés pour résoudre des arguments nommés.\\
+utilisés pour résoudre des arguments nommés.
 
     Voici un tout petit exemple pour vous donner une idée de la complexité
 de ce mécanisme lorsqu'on mélange toutes les 4 formes d'arguments à
@@ -370,3 +380,9 @@ OOPS, <class 'TypeError'>, foo() got multiple values for argument 'b'
     Si le problème ne vous semble pas clair, vous pouvez regarder la
 \href{https://docs.python.org/3/reference/expressions.html\#calls}{documentation
 python décrivant ce problème}.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

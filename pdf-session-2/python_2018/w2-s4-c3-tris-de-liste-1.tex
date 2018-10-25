@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{tris-de-listes}{%
 \section{Tris de listes}\label{tris-de-listes}}
 
@@ -30,19 +37,22 @@ apres tri [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
     On retrouve ici, avec l'instruction \texttt{liste.sort()} un cas d'appel
 de méthode (ici \texttt{sort}) sur un objet (ici \texttt{liste}), comme
-on l'avait vu dans la vidéo.\\
+on l'avait vu dans la vidéo.
 
     La première chose à remarquer est que la liste d'entrée a été modifiée,
 on dit ``en place'', ou encore ``par effet de bord''. Voyons cela sous
 pythontutor~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} ipythontutor
+{\color{incolor}In [{\color{incolor}2}]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} ipythontutor
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{ipythontutor} height=200 ratio=0.8
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{ipythontutor} height=200 ratio=0.8
         liste = [3, 2, 9, 1]
         liste.sort()
 \end{Verbatim}
@@ -61,7 +71,10 @@ mémoire autant que possible et d'accélérer sensiblement le tri.
 fonction \texttt{sorted} vous permet de le faire~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{ipythontutor} height=200 ratio=0.8
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{ipythontutor} height=200 ratio=0.8
         liste1 = [3, 2, 9, 1]
         liste2 = sorted(liste1)
 \end{Verbatim}
@@ -75,7 +88,7 @@ défaut la liste est triée par ordre croissant, si au contraire vous
 voulez l'ordre décroissant, faites comme ceci~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{avant tri}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
         \PY{n}{liste}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{n}{reverse}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{apres tri décroissant}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
@@ -102,7 +115,7 @@ caractères}\label{chauxeenes-de-caractuxe8res}}
 ainsi que sur les chaînes de caractères~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{spam}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{egg}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bacon}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{beef}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{spam}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{egg}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bacon}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{beef}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
         \PY{n}{liste}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{après tri}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
 \end{Verbatim}
@@ -123,22 +136,9 @@ l'alphabet.
     Ainsi par exemple~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} deux caractères minuscules se comparent}
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} deux caractères minuscules se comparent}
         \PY{c+c1}{\PYZsh{} comme on s\PYZsq{}y attend}
         \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}} \PY{o}{\PYZlt{}} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{z}\PY{l+s+s1}{\PYZsq{}}
-\end{Verbatim}
-
-
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}4}]:} True
-\end{Verbatim}
-            
-    Bon, mais par contre~:
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} si l\PYZsq{}un est en minuscule et l\PYZsq{}autre en majuscule,}
-        \PY{c+c1}{\PYZsh{} ce n\PYZsq{}est plus le cas}
-        \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Z}\PY{l+s+s1}{\PYZsq{}} \PY{o}{\PYZlt{}} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}
 \end{Verbatim}
 
 
@@ -146,10 +146,23 @@ l'alphabet.
 {\color{outcolor}Out[{\color{outcolor}5}]:} True
 \end{Verbatim}
             
+    Bon, mais par contre~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} si l\PYZsq{}un est en minuscule et l\PYZsq{}autre en majuscule,}
+        \PY{c+c1}{\PYZsh{} ce n\PYZsq{}est plus le cas}
+        \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Z}\PY{l+s+s1}{\PYZsq{}} \PY{o}{\PYZlt{}} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} True
+\end{Verbatim}
+            
     Ce qui à son tour explique ceci~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} la conséquence de \PYZsq{}Z\PYZsq{} \PYZlt{} \PYZsq{}a\PYZsq{}, c\PYZsq{}est que}
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} la conséquence de \PYZsq{}Z\PYZsq{} \PYZlt{} \PYZsq{}a\PYZsq{}, c\PYZsq{}est que}
         \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Zoo}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
         \PY{n}{liste}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{liste}\PY{p}{)}
@@ -165,7 +178,7 @@ l'alphabet.
 le résultat du tri peut paraître surprenant~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} attention ici notre premiere chaîne commence par une espace}
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} attention ici notre premiere chaîne commence par une espace}
         \PY{c+c1}{\PYZsh{} et le caractère \PYZsq{}Espace\PYZsq{} est plus petit}
         \PY{c+c1}{\PYZsh{} que tous les autres caractères imprimables}
         \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ zoo}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ane}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
@@ -185,3 +198,9 @@ le résultat du tri peut paraître surprenant~:
     Il est possible de définir soi-même le critère à utiliser pour trier une
 liste, et nous verrons cela bientôt, une fois que nous aurons introduit
 la notion de fonction.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

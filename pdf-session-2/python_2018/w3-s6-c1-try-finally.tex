@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{try-else-finally}{%
 \section{\texorpdfstring{\texttt{try} \ldots{} \texttt{else} \ldots{}
 \texttt{finally}}{try \ldots{} else \ldots{} finally}}\label{try-else-finally}}
@@ -7,17 +14,19 @@
 intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
 
     L'instruction \texttt{try} est généralement assortie d'une une ou
-plusieurs clauses \texttt{except}, comme on l'a vu dans la vidéo.\\
+plusieurs clauses \texttt{except}, comme on l'a vu dans la vidéo.
 
 Sachez que l'on peut aussi utiliser - après toutes les clauses
 \texttt{except}~:
 
 \begin{itemize}
-	\item 
-	une clause \texttt{else}, qui va être exécutée si
-	aucune exception n'est attrapée~;
-	\item 
-	ou une clause \texttt{finally} qui sera alors exécutée quoi qu'il arrive.
+\tightlist
+\item
+  une clause \texttt{else}, qui va être exécutée si aucune exception
+  n'est attrapée~;
+\item
+  et/ou une clause \texttt{finally} qui sera alors exécutée quoi qu'il
+  arrive.
 \end{itemize}
 
     Voyons cela sur des exemples.
@@ -28,7 +37,7 @@ Sachez que l'on peut aussi utiliser - après toutes les clauses
     C'est sans doute \texttt{finally} qui est la plus utile de ces deux
 clauses, car elle permet de faire un nettoyage \textbf{dans tous les cas
 de figure} - de ce point de vue, cela rappelle un peu les \emph{context
-managers}.\\
+managers}.
 
 Et par exemple, comme avec les \emph{context managers}, une fonction
 peut faire des choses même après un \texttt{return}.
@@ -81,11 +90,11 @@ on passe ici même si on a vu un return
 \subsubsection{\texorpdfstring{\texttt{else}}{else}}\label{else}}
 
     La logique ici est assez similaire, sauf que le code du \texttt{else}
-n'est exécuté que dans le cas où aucune exception n'est attrapée.\\
+n'est exécuté que dans le cas où aucune exception n'est attrapée.
 
     En première approximation, on pourrait penser que c'est équivalent de
 mettre du code dans la clause \texttt{else} ou à la fin de la clause
-\texttt{try}. En fait il y a une différence subtile~:\\
+\texttt{try}. En fait il y a une différence subtile~:
 
 \begin{quote}
 \emph{The use of the \texttt{else} clause is better than adding
@@ -96,7 +105,7 @@ protected by the \texttt{try} \ldots{} \texttt{except} statement.}
 
 Dit autrement, si le code dans la clause \texttt{else} lève une
 exception, celle-ci ne \textbf{sera pas attrapée} par le \texttt{try}
-courant, et sera donc propagée.\\
+courant, et sera donc propagée.
 
     Voici un exemple rapide, en pratique on rencontre assez peu souvent une
 clause \texttt{else} dans un \texttt{try}~:
@@ -191,3 +200,9 @@ OOPS, <class 'ZeroDivisionError'>, division by zero
     Voyez
 \href{https://docs.python.org/3/tutorial/errors.html\#handling-exceptions}{le
 tutorial sur les exceptions} dans la documentation officielle.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

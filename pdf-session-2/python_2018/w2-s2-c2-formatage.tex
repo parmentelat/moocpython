@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{formatage-de-chauxeenes-de-caractuxe8res}{%
 \section{Formatage de chaînes de
 caractères}\label{formatage-de-chauxeenes-de-caractuxe8res}}
@@ -72,7 +79,7 @@ les tuples, voici par exemple un module~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-le module math est <module 'math' (built-in)>
+le module math est <module 'math' from '/usr/local/Cellar/python/3.7.0/Frameworks/Python.framework/Versions/3.7/lib/python3.7/lib-dynload/math.cpython-37m-darwin.so'>
 
     \end{Verbatim}
 
@@ -97,7 +104,7 @@ semaine ultérieure ce que sont les classes et les instances).
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-<\_\_main\_\_.Personne object at 0x04B94EF0>
+<\_\_main\_\_.Personne object at 0x10a536ba8>
 
     \end{Verbatim}
 
@@ -128,12 +135,12 @@ complément.
 
     Depuis la version 3.6 de Python, on peut utiliser les f-strings, le
 premier mécanisme de formatage que nous étudierons. C'est le mécanisme
-de formatage le plus simple et le plus agréable à utiliser.\\
+de formatage le plus simple et le plus agréable à utiliser.
 
 Je vous recommande tout de même de lire les sections à propos de
 \texttt{format} et de \texttt{\%}, qui sont encore massivement utilisées
 dans le code existant (surtout \texttt{\%} d'ailleurs, bien que
-essentiellement obsolète).\\
+essentiellement obsolète).
 
     Mais définissons d'abord quelques données à afficher~:
 
@@ -154,18 +161,18 @@ essentiellement obsolète).\\
 \end{Verbatim}
             
     Vous remarquez d'abord que la chaine commence par \texttt{f"}, c'est
-bien sûr pour cela qu'on l'appelle un \emph{f-string}.\\
+bien sûr pour cela qu'on l'appelle un \emph{f-string}.
 
 On peut bien entendu ajouter le \texttt{f} devant toutes les formes de
 strings, qu'ils commencent par \texttt{\textquotesingle{}} ou \texttt{"}
 ou \texttt{\textquotesingle{}\textquotesingle{}\textquotesingle{}} ou
-\texttt{"""}.\\
+\texttt{"""}.
 
     Ensuite vous remarquez que les zones délimitées entre \texttt{\{\}} sont
 remplacées. La logique d'un \emph{f-string}, c'est tout simplement de
 considérer l'intérieur d'un \texttt{\{\}} comme du code Python (une
 expression pour être précis), de l'évaluer, et d'utiliser le résultat
-pour remplir le \texttt{\{\}}.\\
+pour remplir le \texttt{\{\}}.
 
     Ça veut dire, en clair, que je peux faire des calculs à l'intérieur des
 \texttt{\{\}}.
@@ -194,7 +201,7 @@ pour remplir le \texttt{\{\}}.\\
     Nous allons en rester là pour la partie en niveau basique. Il nous reste
 à étudier comment chaque \texttt{\{\}} est formaté (par exemple comment
 choisir le nombre de chiffres significatifs sur un flottant), ce point
-est expliqué plus bas.\\
+est expliqué plus bas.
 
 Comme vous le voyez, les \emph{f-strings} fournissent une méthode très
 simple et expressive pour formater des données dans des chaînes de
@@ -220,7 +227,7 @@ définie sur les objets \texttt{str} et qui s'utilise comme ceci~:
 \end{Verbatim}
             
     Dans cet exemple le plus simple, les données sont affichées en lieu et
-place des \texttt{\{\}}, dans l'ordre où elles sont fournies.\\
+place des \texttt{\{\}}, dans l'ordre où elles sont fournies.
 
     Cela convient bien lorsqu'on a peu de données. Si par la suite on veut
 changer l'ordre par exemple des nom et prénom, on peut bien sûr échanger
@@ -240,7 +247,8 @@ l'ordre des arguments passés à format, ou encore utiliser la
 préfère souvent la \textbf{liaison par nom} qui se présente comme ceci~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}13}]:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}le\PYZus{}prenom\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZob{}le\PYZus{}nom\PYZcb{}}\PY{l+s+s2}{ a }\PY{l+s+si}{\PYZob{}l\PYZus{}age\PYZcb{}}\PY{l+s+s2}{ ans}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{le\PYZus{}nom}\PY{o}{=}\PY{n}{nom}\PY{p}{,} \PY{n}{le\PYZus{}prenom}\PY{o}{=}\PY{n}{prenom}\PY{p}{,} \PY{n}{l\PYZus{}age}\PY{o}{=}\PY{n}{age}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}13}]:} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}le\PYZus{}prenom\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZob{}le\PYZus{}nom\PYZcb{}}\PY{l+s+s2}{ a }\PY{l+s+si}{\PYZob{}l\PYZus{}age\PYZcb{}}\PY{l+s+s2}{ ans}\PY{l+s+s2}{\PYZdq{}}
+            \PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{le\PYZus{}nom}\PY{o}{=}\PY{n}{nom}\PY{p}{,} \PY{n}{le\PYZus{}prenom}\PY{o}{=}\PY{n}{prenom}\PY{p}{,} \PY{n}{l\PYZus{}age}\PY{o}{=}\PY{n}{age}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -248,10 +256,16 @@ préfère souvent la \textbf{liaison par nom} qui se présente comme ceci~:
 {\color{outcolor}Out[{\color{outcolor}13}]:} 'Jean Dupont a 35 ans'
 \end{Verbatim}
             
-    Dans ce premier exemple de liaison par nom, nous avons délibérément
-utilisé des noms différents pour les données externes et pour les noms
-apparaissant dans le format, pour bien illustrer comment la liaison est
-résolue, mais on peut aussi bien faire tout simplement~:
+    \emph{Petite digression}: remarquez l'usage des parenthèses, qui me
+permettent de couper ma ligne en deux, car sinon ce code serait trop
+long pour la PEP8; on s'efforce toujours de ne pas dépasser 80
+caractères de large, dans notre cas c'est utile notamment pour l'édition
+du cours au format PDF.
+
+    Reprenons: dans ce premier exemple de liaison par nom, nous avons
+délibérément utilisé des noms différents pour les données externes et
+pour les noms apparaissant dans le format, pour bien illustrer comment
+la liaison est résolue, mais on peut aussi bien faire tout simplement~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}prenom\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZob{}nom\PYZcb{}}\PY{l+s+s2}{ a }\PY{l+s+si}{\PYZob{}age\PYZcb{}}\PY{l+s+s2}{ ans}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{nom}\PY{o}{=}\PY{n}{nom}\PY{p}{,} \PY{n}{prenom}\PY{o}{=}\PY{n}{prenom}\PY{p}{,} \PY{n}{age}\PY{o}{=}\PY{n}{age}\PY{p}{)}
@@ -275,13 +289,13 @@ l'opérateur
 \texttt{\%}}{La toute première version du formatage~: l'opérateur \%}}\label{la-toute-premiuxe8re-version-du-formatage-lopuxe9rateur}}
 
     \texttt{format} a été en fait introduite assez tard dans Python, pour
-remplacer la technique que nous allons présenter maintenant.\\
+remplacer la technique que nous allons présenter maintenant.
 
 Étant donné le volume de code qui a été écrit avec l'opérateur
 \texttt{\%}, il nous a semblé important d'introduire brièvement cette
 construction ici. Vous ne devez cependant pas utiliser cet opérateur
 dans du code moderne, la manière pythonique de formater les chaînes de
-caractères est le f-string.\\
+caractères est le f-string.
 
     Le principe de l'opérateur \texttt{\%} est le suivant. On élabore comme
 ci-dessus un ``format'' c'est-à-dire le patron de ce qui doit être
@@ -346,7 +360,8 @@ formes équivalentes pour obtenir une valeur de pi arrondie~:
             
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} avec format() et liaison par nom}
-         \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{pi avec seulement 2 chiffres apres la virgule }\PY{l+s+si}{\PYZob{}flottant:.2f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{flottant}\PY{o}{=}\PY{n}{pi}\PY{p}{)}
+         \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{pi avec seulement 2 chiffres apres la virgule }\PY{l+s+si}{\PYZob{}flottant:.2f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}
+              \PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{flottant}\PY{o}{=}\PY{n}{pi}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -421,3 +436,9 @@ pour plus de détails
 les formats disponibles}, et notamment aux
 \href{https://docs.python.org/3/library/string.html\#format-examples}{nombreux
 exemples} qui y figurent.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

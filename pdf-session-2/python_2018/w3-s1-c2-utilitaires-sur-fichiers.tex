@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{fichiers-et-utilitaires}{%
 \section{Fichiers et utilitaires}\label{fichiers-et-utilitaires}}
 
@@ -37,7 +44,7 @@ conjonction d'outils pour ce type de fonctionnalités:
     Cet ensemble un peu disparate a été remplacé par une \textbf{librairie
 unique \texttt{pathlib}}, qui fournit toutes ces fonctionnalités sous un
 interface unique et moderne, que nous \textbf{recommandons} évidemment
-d'utiliser pour \textbf{du nouveau code}.\\
+d'utiliser pour \textbf{du nouveau code}.
 
 Avant d'aborder \texttt{pathlib}, voici un très bref aperçu de ces trois
 anciens modules, pour le cas - assez probable - où vous les
@@ -105,14 +112,14 @@ orientée objet:
 fichiers et répertoires.
 
     \hypertarget{orientuxe9-objet}{%
-\subparagraph{Orienté Objet\\\\}\label{orientuxe9-objet}}
+\subparagraph{Orienté Objet}\label{orientuxe9-objet}}
 
     Comme on l'a mentionné \texttt{pathlib} offre une interface orientée
 objet; mais qu'est-ce que ça veut dire au juste ?
 
 Ceci nous donne un prétexte pour une première application pratique des
 notions de module (que nous avons introduits en fin de semaine 2) et de
-classe (que nous allons voir en fin de semaine).\\
+classe (que nous allons voir en fin de semaine).
 
     De même que le langage nous propose les types \emph{builtin}
 \texttt{int} et \texttt{str}, le module \texttt{pathlib} nous expose
@@ -152,7 +159,7 @@ la classe \texttt{Path}, comme ceci:
 
 
     en ce sens que le type (\texttt{int} ou \texttt{Path}) se comporte comme
-une usine pour créer des objets du type en question.\\
+une usine pour créer des objets du type en question.
 
     Quoi qu'il en soit, cet objet \texttt{path} offre un certain nombre de
 méthodes; pour les voir puisque nous sommes dans un notebook, je vous
@@ -173,7 +180,7 @@ et le notebook vous montrera la liste des méthodes disponibles.
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}5}]:} WindowsPath('fichier-temoin')
+{\color{outcolor}Out[{\color{outcolor}5}]:} PosixPath('fichier-temoin')
 \end{Verbatim}
             
     Ainsi par exemple on peut savoir si le fichier existe avec la méthode
@@ -207,7 +214,7 @@ et le notebook vous montrera la liste des méthodes disponibles.
 \end{Verbatim}
             
     \hypertarget{muxe9tadonnuxe9es}{%
-\subparagraph{Métadonnées\\\\}\label{muxe9tadonnuxe9es}}
+\subparagraph{Métadonnées}\label{muxe9tadonnuxe9es}}
 
     Voici quelques exemples qui montrent comment accéder aux métadonnées de
 ce fichier:
@@ -219,13 +226,11 @@ ce fichier:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}9}]:} os.stat\_result(st\_mode=33206, st\_ino=3659174697725158, st\_dev=571766744,
-        st\_nlink=1, st\_uid=0, st\_gid=0, st\_size=12, st\_atime=1538841704,
-        st\_mtime=1538841704, st\_ctime=1538841704)
+{\color{outcolor}Out[{\color{outcolor}9}]:} os.stat\_result(st\_mode=33188, st\_ino=17070019, st\_dev=16777220, st\_nlink=1, st\_uid=501, st\_gid=20, st\_size=11, st\_atime=1540404632, st\_mtime=1540404632, st\_ctime=1540404632)
 \end{Verbatim}
             
     Pour ceux que ça intéresse, l'objet retourné par cette méthode
-\texttt{stat} est un \texttt{namedtuple}, que l'on va voir très bientôt.\\
+\texttt{stat} est un \texttt{namedtuple}, que l'on va voir très bientôt.
 
 On accède aux différentes informations comme ceci:
 
@@ -237,7 +242,7 @@ On accède aux différentes informations comme ceci:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}10}]:} 12
+{\color{outcolor}Out[{\color{outcolor}10}]:} 11
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -249,7 +254,7 @@ On accède aux différentes informations comme ceci:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}11}]:} 1538841704.208089
+{\color{outcolor}Out[{\color{outcolor}11}]:} 1540404632.0
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -262,7 +267,7 @@ On accède aux différentes informations comme ceci:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}12}]:} datetime.datetime(2018, 10, 6, 18, 1, 44, 208089)
+{\color{outcolor}Out[{\color{outcolor}12}]:} datetime.datetime(2018, 10, 24, 20, 10, 32)
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -273,7 +278,7 @@ On accède aux différentes informations comme ceci:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}13}]:} '18:01'
+{\color{outcolor}Out[{\color{outcolor}13}]:} '20:10'
 \end{Verbatim}
             
     \hypertarget{duxe9truire-un-fichier}{%
@@ -323,10 +328,10 @@ no need to remove
 \end{Verbatim}
             
     \hypertarget{recherche-de-fichiers}{%
-\subparagraph{Recherche de fichiers\\\\}\label{recherche-de-fichiers}}
+\subparagraph{Recherche de fichiers}\label{recherche-de-fichiers}}
 
     Maintenant je voudrais connaître la liste des fichiers de nom
-\texttt{*.json} dans le directory \texttt{data}.\\
+\texttt{*.json} dans le directory \texttt{data}.
 
 La méthode la plus naturelle consiste à créer une instance de
 \texttt{Path} associée au directory lui-même:
@@ -346,8 +351,27 @@ contient ce qu'on veut:
 \end{Verbatim}
 
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+data/cities\_europe.json
+data/cities\_foo.json
+data/cities\_france.json
+data/cities\_idf.json
+data/cities\_nice.json
+data/cities\_world.json
+data/marine-abb.json
+data/marine-e1-abb.json
+data/marine-e1-ext.json
+data/marine-e2-abb.json
+data/marine-e2-ext.json
+data/marine-ext.json
+data/meteo\_europe.json
+data/meteo\_france.json
+data/meteo\_world.json
+
+    \end{Verbatim}
+
     \hypertarget{documentation-compluxe8te}{%
-\subparagraph{Documentation complète\\\\}\label{documentation-compluxe8te}}
+\subparagraph{Documentation complète}\label{documentation-compluxe8te}}
 
     Voyez \href{https://docs.python.org/3/library/pathlib.html}{la
 documentation complète ici}
@@ -365,7 +389,7 @@ vous faire remarquer le type de notre objet path
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}20}]:} pathlib.WindowsPath
+{\color{outcolor}Out[{\color{outcolor}20}]:} pathlib.PosixPath
 \end{Verbatim}
             
     qui n'est pas \texttt{Path}, mais en fait une sous-classe de
@@ -397,3 +421,9 @@ sous-classe de \texttt{Path}, comme vous pouvez le voir:
             
     ce qui est heureux puisqu'on avait utilisé \texttt{Path()} pour
 construire l'objet \texttt{path} au départ :)
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

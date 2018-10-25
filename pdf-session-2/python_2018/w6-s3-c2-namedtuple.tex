@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{huxe9riter-des-types-built-in}{%
 \section{\texorpdfstring{Hériter des types
 \emph{built-in}~?}{Hériter des types built-in~?}}\label{huxe9riter-des-types-built-in}}
@@ -7,7 +14,7 @@
 avancé}\label{compluxe9ment---niveau-avancuxe9}}
 
     Vous vous demandez peut-être s'il est possible d'hériter des types
-\emph{built-in}.\\
+\emph{built-in}.
 
     La réponse est oui, et nous allons voir un exemple qui est parfois très
 utile en pratique, c'est le type - ou plus exactement la famille de
@@ -166,9 +173,7 @@ déjà rencontré un exemple dans le notebook sur le module
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}12}]:} os.stat\_result(st\_mode=16895, st\_ino=844424930203143, st\_dev=369767116,
-         st\_nlink=1, st\_uid=0, st\_gid=0, st\_size=28672, st\_atime=1539778506,
-         st\_mtime=1539778506, st\_ctime=1539334282)
+{\color{outcolor}Out[{\color{outcolor}12}]:} os.stat\_result(st\_mode=16877, st\_ino=1808553, st\_dev=16777220, st\_nlink=77, st\_uid=501, st\_gid=20, st\_size=2618, st\_atime=1540404776, st\_mtime=1540404643, st\_ctime=1540404643)
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -230,9 +235,9 @@ attractif par rapport à une instance~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-136
-32
-36
+240
+56
+64
 
     \end{Verbatim}
 
@@ -244,7 +249,7 @@ attractif par rapport à une instance~:
 \emph{``Manipuler des ensembles d'instances''}, nous avions vu comment
 redéfinir le protocole \emph{hashable} sur des instances, en mettant en
 évidence la nécessité de disposer d'instances non mutables lorsqu'on
-veut redéfinir \texttt{\_\_hash\_\_()}.\\
+veut redéfinir \texttt{\_\_hash\_\_()}.
 
 Voyons ici comment on pourrait tirer parti d'un \texttt{namedtuple} pour
 refaire proprement notre classe \texttt{Point2} - souvenez-vous, il
@@ -344,13 +349,13 @@ OOPS <class 'AttributeError'>
 
     Vous pouvez vous reporter
 \href{https://docs.python.org/3/library/collections.html\#collections.namedtuple}{à
-la documentation officielle}.\\
+la documentation officielle}.
 
     Si vous êtes intéressés de savoir comment on peut bien arriver à rendre
 les objets d'une classe immuable, vous pouvez commencer par regarder le
 code utilisé par \texttt{namedtuple} pour créer son résultat, en
-l'invoquant avec le mode bavard (cette possibilité a disparu
-malheureusement dans python-3.7).\\
+l'invoquant avec le mode bavard (cette possibilité a disparu,
+malheureusement, dans python-3.7).
 
 Vous y remarquerez notamment~:
 
@@ -365,58 +370,16 @@ Vous y remarquerez notamment~:
 \end{itemize}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}26}]:} \PY{c+c1}{\PYZsh{} exécuter ceci pour voir le détail de ce que fait `namedtuple` }
-         \PY{n}{Point} \PY{o}{=} \PY{n}{namedtuple}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Point}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{verbose}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{c+c1}{\PYZsh{} exécuter ceci pour voir le détail de ce que fait `namedtuple` }
+        \PY{n}{Point} \PY{o}{=} \PY{n}{namedtuple}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Point}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{verbose}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-from builtins import property as \_property, tuple as \_tuple
-from operator import itemgetter as \_itemgetter
-from collections import OrderedDict
 
-class Point(tuple):
-    'Point(x, y)'
-
-    \_\_slots\_\_ = ()
-
-    \_fields = ('x', 'y')
-
-    def \_\_new\_\_(\_cls, x, y):
-        'Create new instance of Point(x, y)'
-        return \_tuple.\_\_new\_\_(\_cls, (x, y))
-
-    @classmethod
-    def \_make(cls, iterable, new=tuple.\_\_new\_\_, len=len):
-        'Make a new Point object from a sequence or iterable'
-        result = new(cls, iterable)
-        if len(result) != 2:
-            raise TypeError('Expected 2 arguments, got \%d' \% len(result))
-        return result
-
-    def \_replace(\_self, **kwds):
-        'Return a new Point object replacing specified fields with new values'
-        result = \_self.\_make(map(kwds.pop, ('x', 'y'), \_self))
-        if kwds:
-            raise ValueError('Got unexpected field names: \%r' \% list(kwds))
-        return result
-
-    def \_\_repr\_\_(self):
-        'Return a nicely formatted representation string'
-        return self.\_\_class\_\_.\_\_name\_\_ + '(x=\%r, y=\%r)' \% self
-
-    def \_asdict(self):
-        'Return a new OrderedDict which maps field names to their values.'
-        return OrderedDict(zip(self.\_fields, self))
-
-    def \_\_getnewargs\_\_(self):
-        'Return self as a plain tuple.  Used by copy and pickle.'
-        return tuple(self)
-
-    x = \_property(\_itemgetter(0), doc='Alias for field number 0')
-
-    y = \_property(\_itemgetter(1), doc='Alias for field number 1')
-
-
-
-    \end{Verbatim}
+    % Add a bibliography block to the postdoc
+    
+    
+    

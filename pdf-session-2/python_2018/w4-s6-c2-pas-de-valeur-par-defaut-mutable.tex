@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{un-piuxe8ge-courant}{%
 \section{Un piège courant}\label{un-piuxe8ge-courant}}
 
@@ -12,7 +19,7 @@ défaut}\label{nutilisez-pas-dobjet-mutable-pour-les-valeurs-par-duxe9faut}}
     En Python il existe un piège dans lequel il est très facile de tomber.
 Aussi si vous voulez aller à l'essentiel~: \textbf{n'utilisez pas
 d'objet mutable pour les valeurs par défaut} lors de la définition d'une
-fonction.\\
+fonction.
 
 Si vous avez besoin d'écrire une fonction qui prend en argument par
 défaut une liste ou un dictionnaire vide, voici comment faire
@@ -43,7 +50,7 @@ fait~?}\label{que-se-passe-t-il-si-on-le-fait}}
 
     Considérons le cas relativement simple d'une fonction qui calcule une
 valeur - ici un entier aléatoire entre 0 et 10 -, et l'ajoute à une
-liste passée par l'appelant.\\
+liste passée par l'appelant.
 
     Et pour rendre la vie de l'appelant plus facile, on se dit qu'il peut
 être utile de faire en sorte que si l'appelant n'a pas de liste sous la
@@ -68,7 +75,7 @@ main, on va créer pour lui une liste vide. Et pour ça on fait~:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}4}]:} [6]
+{\color{outcolor}Out[{\color{outcolor}4}]:} [4]
 \end{Verbatim}
             
     Sauf que, si on appelle la fonction une deuxième fois, on a une
@@ -80,7 +87,7 @@ surprise~!
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}5}]:} [6, 9]
+{\color{outcolor}Out[{\color{outcolor}5}]:} [4, 5]
 \end{Verbatim}
             
     \hypertarget{pourquoi}{%
@@ -88,15 +95,21 @@ surprise~!
 
     Le problème ici est qu'une valeur par défaut - ici l'expression
 \texttt{{[}{]}} - est évaluée \textbf{une fois} au moment de la
-\textbf{définition} de la fonction.\\
+\textbf{définition} de la fonction.
 
 Toutes les fois où la fonction est appelée avec cet argument manquant,
 on va utiliser comme valeur par défaut \textbf{le même objet}, qui la
 première fois est bien une liste vide, mais qui se fait modifier par le
-premier appel.\\
+premier appel.
 
 Si bien que la deuxième fois on réutilise la même liste \textbf{qui
 n'est plus vide}. Pour aller plus loin, vous pouvez regarder la
 documentation Python sur
 \href{https://docs.python.org/3/faq/programming.html\#why-are-default-values-shared-between-objects}{ce
 problème}.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

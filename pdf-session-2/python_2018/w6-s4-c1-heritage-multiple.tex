@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{huxe9ritage-multiple}{%
 \section{Héritage multiple}\label{huxe9ritage-multiple}}
 
@@ -50,7 +57,7 @@ héritage n'est spécifié~:
             
     L'attribut spécial \texttt{\_\_bases\_\_}, comme on le devine, nous
 permet d'accéder aux superclasses directes, ici de la classe
-\texttt{Foo}.\\
+\texttt{Foo}.
 
     En Python moderne, on n'a \textbf{jamais besoin de mentionner}
 \texttt{object} dans le code. La raison de sa présence dans les symboles
@@ -97,12 +104,12 @@ super-classes}\label{ordre-sur-les-super-classes}}
 \textbf{ordre} sur l'ensemble des \textbf{super-classes}. On parle bien,
 naturellement, de \textbf{toutes} les super-classes, pas seulement
 celles dont on hérite directement - en termes savants on dirait qu'on
-s'intéresse à la fermeture transitive de la relation d'héritage.\\
+s'intéresse à la fermeture transitive de la relation d'héritage.
 
 L'algorithme utilisé pour cela depuis la version 2.3 est connu sous le
 nom de \textbf{linéarisation C3}. Cet algorithme n'est pas propre à
 python, comme vous pourrez le lire dans les références citées dans la
-dernière section.\\
+dernière section.
 
 Nous ne décrirons pas ici l'algorithme lui-même dans le détail~; par
 contre nous allons~:
@@ -131,14 +138,14 @@ algorithme.
 
     \hypertarget{priorituxe9-au-spuxe9cifique}{%
 \subparagraph{Priorité au
-spécifique\\\\}\label{priorituxe9-au-spuxe9cifique}}
+spécifique}\label{priorituxe9-au-spuxe9cifique}}
 
     Lorsqu'une classe A hérite d'une classe B, on s'attend à ce que les
 méthodes définies sur A, qui sont en principe plus spécifiques, soient
 utilisées de préférence à celles définies sur B.
 
     \hypertarget{priorituxe9-uxe0-gauche}{%
-\subparagraph{Priorité à gauche\\\\}\label{priorituxe9-uxe0-gauche}}
+\subparagraph{Priorité à gauche}\label{priorituxe9-uxe0-gauche}}
 
     Lorsqu'on utilise l'héritage multiple, on mentionne les classes mères
 dans un certain ordre, qui n'est pas anodin. Les classes mentionnées en
@@ -150,7 +157,7 @@ premier sont bien entendu celles desquelles on veut hériter en priorité.
 
     \hypertarget{de-maniuxe8re-un-peu-plus-formelle}{%
 \subparagraph{De manière un peu plus
-formelle\\\\}\label{de-maniuxe8re-un-peu-plus-formelle}}
+formelle}\label{de-maniuxe8re-un-peu-plus-formelle}}
 
     Pour reformuler les deux points ci-dessus, on s'intéresse à la
 \texttt{mro} d'une classe O, et on veut avoir les deux bonnes propriétés
@@ -169,10 +176,10 @@ suivantes~:
 
     \hypertarget{limitations-toutes-les-hiuxe9rarchies-ne-peuvent-pas-uxeatre-traituxe9es}{%
 \subparagraph{Limitations~: toutes les hiérarchies ne peuvent pas être
-traitées\\\\}\label{limitations-toutes-les-hiuxe9rarchies-ne-peuvent-pas-uxeatre-traituxe9es}}
+traitées}\label{limitations-toutes-les-hiuxe9rarchies-ne-peuvent-pas-uxeatre-traituxe9es}}
 
     L'algorithme C3 permet de calculer un ordre sur \(\cal{S}\) qui respecte
-toutes ces contraintes, lorsqu'il en existe un.\\
+toutes ces contraintes, lorsqu'il en existe un.
 
 En effet, dans certains cas on ne peut pas trouver un tel ordre, on le
 verra plus bas, mais dans la pratique, il est assez rare de tomber sur
@@ -215,9 +222,7 @@ les deux définitions de la méthode \texttt{attribut}~:
     Les deux règles, telles que nous les avons énoncées en premier lieu
 (priorité à gauche, priorité au spécifique) sont un peu contradictoires
 ici. En fait, c'est la méthode de \texttt{LeftTop} qui est héritée dans
-\texttt{Class}, comme on le voit ici~:\\
-
-\includegraphics{medias/heritage-multiple01.png}
+\texttt{Class}, comme on le voit ici~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{instance}\PY{o}{.}\PY{n}{attribut}\PY{p}{(}\PY{p}{)} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{attribut(LeftTop)}\PY{l+s+s1}{\PYZsq{}}
@@ -236,7 +241,7 @@ de quelle classe d'après vous est-ce que \texttt{Class} hérite
 
     \hypertarget{si-cela-ne-vous-convient-pas}{%
 \subparagraph{Si cela ne vous convient
-pas\\\\}\label{si-cela-ne-vous-convient-pas}}
+pas}\label{si-cela-ne-vous-convient-pas}}
 
     C'est une évidence, mais cela va peut-être mieux en le rappelant~: si la
 méthode que vous obtenez ``gratuitement'' avec l'héritage n'est pas
@@ -272,8 +277,9 @@ vous pouvez le faire aussi, par exemple comme ceci~:
             \PY{c+c1}{\PYZsh{} pour faire un composite des deux méthodes}
             \PY{c+c1}{\PYZsh{} trouvées dans les classes mères}
             \PY{k}{def} \PY{n+nf}{attribut}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{,} \PY{o}{*}\PY{o}{*}\PY{n}{kwds}\PY{p}{)}\PY{p}{:}
-                \PY{k}{return} \PY{n}{LeftTop}\PY{o}{.}\PY{n}{attribut}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{,} \PY{o}{*}\PY{o}{*}\PY{n}{kwds}\PY{p}{)} \PY{o}{+}
-                 \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ ** }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{Right}\PY{o}{.}\PY{n}{attribut}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{,} \PY{o}{*}\PY{o}{*}\PY{n}{kwds}\PY{p}{)} 
+                \PY{k}{return} \PY{p}{(}  \PY{n}{LeftTop}\PY{o}{.}\PY{n}{attribut}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{,} \PY{o}{*}\PY{o}{*}\PY{n}{kwds}\PY{p}{)} 
+                        \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ ** }\PY{l+s+s2}{\PYZdq{}} 
+                        \PY{o}{+} \PY{n}{Right}\PY{o}{.}\PY{n}{attribut}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{,} \PY{o}{*}\PY{o}{*}\PY{n}{kwds}\PY{p}{)}\PY{p}{)}
             
         \PY{n}{instance3} \PY{o}{=} \PY{n}{Class}\PY{p}{(}\PY{p}{)}
         \PY{n}{instance3}\PY{o}{.}\PY{n}{attribut}\PY{p}{(}\PY{p}{)}
@@ -353,9 +359,7 @@ traité}\label{un-exemple-qui-ne-peut-pas-uxeatre-traituxe9}}
     Voici enfin un exemple de hiérarchie pour laquelle on ne \textbf{peut
 pas trouver d'ordre} qui respecte les bonnes propriétés que l'on a vues
 tout à l'heure, et qui pour cette raison sera \textbf{rejetée par
-l'interpréteur python}. D'abord en version dessinée~:\\
-
-\includegraphics{medias/heritage-multiple02.png}
+l'interpréteur python}. D'abord en version dessinée~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} puis en version code}
@@ -399,3 +403,9 @@ order (MRO) for bases X, Y
   L'\href{http://en.wikipedia.org/wiki/C3_linearization}{article de
   Wikipedia} sur l'algorithme C3.
 \end{enumerate}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

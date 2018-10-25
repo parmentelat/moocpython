@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{une-limite-de-la-boucle-for}{%
 \section{\texorpdfstring{Une limite de la boucle
 \texttt{for}}{Une limite de la boucle for}}\label{une-limite-de-la-boucle-for}}
@@ -8,7 +15,7 @@ basique}\label{compluxe9ment---niveau-basique}}
 
     Pour ceux qui veulent suivre le cours au niveau basique, retenez
 seulement que dans une boucle \texttt{for} sur un objet mutable,
-\textbf{il ne faut pas modifier le sujet} de la boucle.\\
+\textbf{il ne faut pas modifier le sujet} de la boucle.
 
 Ainsi par exemple il ne \textbf{faut pas faire} quelque chose comme
 ceci~:
@@ -17,31 +24,21 @@ ceci~:
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} on veut enlever de l\PYZsq{}ensemble toutes les chaînes }
         \PY{c+c1}{\PYZsh{} qui ne contiennent pas \PYZsq{}bert\PYZsq{}}
         \PY{n}{ensemble} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{marc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{albert}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
         
         \PY{c+c1}{\PYZsh{} ceci semble une bonne idée mais ne fonctionne pas}
+        \PY{c+c1}{\PYZsh{} provoque RuntimeError: Set changed size during iteration}
+        
         \PY{k}{for} \PY{n}{valeur} \PY{o+ow}{in} \PY{n}{ensemble}\PY{p}{:}
             \PY{k}{if} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bert}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{not} \PY{o+ow}{in} \PY{n}{valeur}\PY{p}{:}
                 \PY{n}{ensemble}\PY{o}{.}\PY{n}{discard}\PY{p}{(}\PY{n}{valeur}\PY{p}{)}
 \end{Verbatim}
 
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-
-        ---------------------------------------------------------------------------
-
-        RuntimeError                              Traceback (most recent call last)
-
-        <ipython-input-1-966b4462b0c4> in <module>()
-          4 
-          5 \# ceci semble une bonne idée mais ne fonctionne pas
-    ----> 6 for valeur in ensemble:
-          7     if 'bert' not in valeur:
-          8         ensemble.discard(valeur)
-    
-
-        RuntimeError: Set changed size during iteration
-
-    \end{Verbatim}
 
     \hypertarget{comment-faire-alors}{%
 \subsubsection{Comment faire alors~?}\label{comment-faire-alors}}
@@ -90,7 +87,7 @@ copy}.
 \subsubsection{Avertissement}\label{avertissement}}
 
     Dans l'exemple ci-dessus, on voit que l'interpréteur se rend compte que
-l'on est en train de modifier l'objet de la boucle, et nous le signifie.\\
+l'on est en train de modifier l'objet de la boucle, et nous le signifie.
 
 Ne vous fiez pas forcément à cet exemple, il existe des cas -- nous en
 verrons plus loin dans ce document -- où l'interpréteur peut accepter
@@ -102,11 +99,11 @@ essentiellement se mettre à faire n'importe quoi.
 limite}\label{pruxe9cisons-bien-la-limite}}
 
     Pour être tout à fait clair, lorsqu'on dit qu'il ne faut pas modifier
-l'objet de la boucle \texttt{for}, il ne s'agit que du premier niveau.\\
+l'objet de la boucle \texttt{for}, il ne s'agit que du premier niveau.
 
 On ne doit pas modifier la \textbf{composition de l'objet en tant
 qu'itérable}, mais on peut sans souci modifier chacun des objets qui
-constitue l'itération.\\
+constitue l'itération.
 
 Ainsi cette construction par contre est tout à fait valide~:
 
@@ -149,12 +146,12 @@ que cela soulève deux types de problèmes distincts.
 sémantique}\label{difficultuxe9-dordre-suxe9mantique}}
 
     D'un point de vue sémantique, si l'on voulait autoriser ce genre de
-choses, il faudrait définir très précisément le comportement attendu.\\
+choses, il faudrait définir très précisément le comportement attendu.
 
 Considérons par exemple la situation d'une liste qui a 10 éléments, sur
 laquelle on ferait une boucle et que, par exemple au 5ème élément, on
 enlève le 8ème élément. Quel serait le comportement attendu dans ce
-cas~? Faut-il ou non que la boucle envisage alors le 8-ème élément~?\\
+cas~? Faut-il ou non que la boucle envisage alors le 8-ème élément~?
 
 La situation serait encore pire pour les dictionnaires et ensembles pour
 lesquels l'ordre de parcours n'est pas spécifié~; ainsi on pourrait
@@ -162,12 +159,11 @@ lesquels l'ordre de parcours n'est pas spécifié~; ainsi on pourrait
 essayait~:
 
 \begin{itemize}
-	\item 
-	d'enlever l'élément \emph{b} lorsqu'on parcourt l'élément
-	\emph{a}~;
-	\item
-	d'enlever l'élément \emph{a} lorsqu'on parcourt l'élément
-	\emph{b}.
+\tightlist
+\item
+  d'enlever l'élément \emph{b} lorsqu'on parcourt l'élément \emph{a}~;
+\item
+  d'enlever l'élément \emph{a} lorsqu'on parcourt l'élément \emph{b}.
 \end{itemize}
 
 On le voit, il n'est déjà pas très simple d'expliciter sans ambiguïté le
@@ -197,3 +193,9 @@ ajoute un nouvel élément dans la liste, et du coup la boucle a un
 élément de plus à balayer~; ce programme ne termine théoriquement
 jamais. En pratique, ce sera le cas quand votre système n'aura plus de
 mémoire disponible (sauvegardez vos documents avant d'essayer !).
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

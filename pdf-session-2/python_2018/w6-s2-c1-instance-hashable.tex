@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{manipuler-des-ensembles-dinstances}{%
 \section{Manipuler des ensembles
 d'instances}\label{manipuler-des-ensembles-dinstances}}
@@ -9,7 +16,7 @@ intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
     Souvenez-vous de ce qu'on avait dit en semaine 3 séquence 4, concernant
 les clés dans un dictionnaire ou les éléments dans un ensemble. Nous
 avions vu alors que, pour les types \emph{built-in}, les clés devaient
-être des objets immuables et même globalement immuables.\\
+être des objets immuables et même globalement immuables.
 
     Nous allons voir dans ce complément quelles sont les règles qui
 s'appliquent aux instances de classe.
@@ -57,7 +64,7 @@ en action.
     Mais par contre soyez attentifs, car il faut savoir que pour la classe
 \texttt{Point1}, où nous n'avons rien redéfini, la fonction de hachage
 sur une instance de \texttt{Point1} ne dépend que de la valeur de
-\texttt{id()} sur cet objet.\\
+\texttt{id()} sur cet objet.
 
 Ce qui, dit autrement, signifie que deux objets qui sont distincts au
 sens de \texttt{id()} sont considérés comme différents, et donc peuvent
@@ -110,7 +117,7 @@ coexister dans un ensemble (ou dans un dictionnaire)~:
             
     Cette possibilité de gérer des ensembles d'objets selon cette stratégie
 est très commode et peut apporter de gros gains de performance,
-notamment lorsqu'on a souvent besoin de faire des tests d'appartenance.\\
+notamment lorsqu'on a souvent besoin de faire des tests d'appartenance.
 
 En pratique, lorsqu'un modèle de données définit une relation de type
 ``1-n'', je vous recommande d'envisager d'utiliser un ensemble plutôt
@@ -149,7 +156,7 @@ avancé}\label{compluxe9ment---niveau-avancuxe9}}
     Le comportement qu'on vient de voir pour les instances de
 \texttt{Point1} dans les tables de hachage est raisonnable, si on admet
 que deux points ne sont égaux que s'ils sont \textbf{le même objet} au
-sens de \texttt{is}.\\
+sens de \texttt{is}.
 
     Mais imaginons que vous voulez au contraire considérer que deux points
 son égaux lorsqu'ils coincident sur le plan. Avec ce modèle de données,
@@ -186,7 +193,7 @@ cohérentes, si deux objets sont égaux, il faut que leurs hashs soient
 égaux~; de bon sens, si l'égalité se base sur nos deux attributs
 \texttt{x} et \texttt{y}, il faudra bien entendu que la fonction de
 hachage utilise elle aussi ces deux attributs. Voir la documentation de
-\href{https://docs.python.org/3/reference/datamodel.html?highlight=__hash__\#object.__hash__}{\texttt{\_\_hash\_\_}}.\\
+\href{https://docs.python.org/3/reference/datamodel.html?highlight=__hash__\#object.__hash__}{\texttt{\_\_hash\_\_}}.
 
     Voyons cela sur une sous-classe de \texttt{Point1}, dans laquelle nous
 définissons ces deux méthodes~:
@@ -393,3 +400,9 @@ autres~:
 \item
   et la \texttt{dataclass} (nouveau en 3.7).
 \end{itemize}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

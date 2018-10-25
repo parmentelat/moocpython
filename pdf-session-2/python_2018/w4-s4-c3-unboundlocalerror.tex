@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{lexception-unboundlocalerror}{%
 \section{\texorpdfstring{L'exception
 \texttt{UnboundLocalError}}{L'exception UnboundLocalError}}\label{lexception-unboundlocalerror}}
@@ -13,7 +20,7 @@ intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
 
     Les \textbf{arguments} attendus par la fonction sont considérés comme
 des variables \textbf{locales}, c'est-à-dire dans l'espace de noms de la
-fonction.\\
+fonction.
 
 Pour définir une autre variable locale, il suffit de la définir
 (l'affecter), elle devient alors accessible en lecture~:
@@ -112,7 +119,7 @@ locales et globales de même nom dans une même fonction. On voit bien que
 peut être \textbf{ou bien} locale si elle est affectée dans la fonction
 \textbf{ou bien} globale, mais \textbf{pas les deux à la fois}. Si vous
 avez une erreur \texttt{UnboundLocalError}, c'est qu'à un moment donné
-vous avez fait cette confusion.\\
+vous avez fait cette confusion.
 
     Vous vous demandez peut-être à ce stade, mais comment fait-on alors pour
 modifier une variable globale depuis une fonction~? Pour cela il faut
@@ -148,14 +155,14 @@ la prochaine vidéo.
 \subsubsection{Bonnes pratiques}\label{bonnes-pratiques}}
 
     Cela étant dit, l'utilisation de variables globales est généralement
-considérée comme une mauvaise pratique.\\
+considérée comme une mauvaise pratique.
 
 Le fait d'utiliser une variable globale en \emph{lecture seule} peut
 rester acceptable, lorsqu'il s'agit de matérialiser une constante qu'il
 est facile de changer. Mais dans une application aboutie, ces constantes
 elles-mêmes peuvent être modifiées par l'utilisateur via un système de
 configuration, donc on préférera passer en argument un objet
-\emph{config}.\\
+\emph{config}.
 
 Et dans les cas où votre code doit recourir à l'utilisation de
 l'instruction \texttt{global}, c'est très probablement que quelque chose
@@ -164,4 +171,10 @@ peut être amélioré au niveau de la conception de votre code.
 Il est recommandé, au contraire, de passer en argument à une fonction
 tout le contexte dont elle a besoin pour travailler~; et à l'inverse
 d'utiliser le résultat d'une fonction plutôt que de modifier une
-variable globale.\\
+variable globale.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

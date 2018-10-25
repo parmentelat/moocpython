@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{noms-de-variables}{%
 \section{Noms de variables}\label{noms-de-variables}}
 
@@ -5,7 +12,7 @@
 \subsection{Complément - niveau
 basique}\label{compluxe9ment---niveau-basique}}
 
-    Revenons sur les noms de variables autorisés ou non.\\
+    Revenons sur les noms de variables autorisés ou non.
 
     Les noms les plus simples sont constitués de lettres. Par exemple~:
 
@@ -38,10 +45,10 @@ valeur. Si les variables ont la même valeur, le test retournera
 désigner les variables simples (ainsi d'ailleurs que pour les noms de
 fonctions), les majuscules sont réservées en principe pour d'autres
 sortes de variables, comme les noms de classe, que nous verrons
-ultérieurement.\\
+ultérieurement.
 
 Notons qu'il s'agit uniquement d'une convention, ceci n'est pas imposé
-par le langage lui-même.\\
+par le langage lui-même.
 
     Pour des raisons de lisibilité, il est également possible d'utiliser le
 tiret bas \texttt{\_} dans les noms de variables. On préfèrera ainsi~:
@@ -70,19 +77,12 @@ par exemple~:
 un chiffre, cette affectation est donc refusée~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}6}]:} \PY{l+m+mi}{75}\PY{n}{\PYZus{}age\PYZus{}moyen} \PY{o}{=} \PY{l+m+mi}{80} \PY{c+c1}{\PYZsh{} erreur de syntaxe}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{l+m+mi}{75}\PY{n}{\PYZus{}age\PYZus{}moyen} \PY{o}{=} \PY{l+m+mi}{80} \PY{c+c1}{\PYZsh{} erreur de syntaxe}
 \end{Verbatim}
 
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-
-          File "<ipython-input-6-823fed77034a>", line 1
-        75\_age\_moyen = 80 \# erreur de syntaxe
-          \^{}
-    SyntaxError: invalid token
-
-
-    \end{Verbatim}
 
     \hypertarget{le-tiret-bas-comme-premier-caractuxe8re}{%
 \subsubsection{Le tiret bas comme premier
@@ -94,7 +94,7 @@ déconseillons d'utiliser cette pratique qui est réservée à des
 conventions de nommage bien spécifiques.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{\PYZus{}autorise\PYZus{}mais\PYZus{}deconseille} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Voir le PEP 008}\PY{l+s+s1}{\PYZsq{}}
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{\PYZus{}autorise\PYZus{}mais\PYZus{}deconseille} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Voir le PEP 008}\PY{l+s+s1}{\PYZsq{}}
 \end{Verbatim}
 
 
@@ -105,12 +105,12 @@ cette variable que nous n'avons définie nulle part mais qui pourtant
 existe bel et bien~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}8}]:} \PY{n+nv+vm}{\PYZus{}\PYZus{}name\PYZus{}\PYZus{}}  \PY{c+c1}{\PYZsh{} ne définissez pas vous\PYZhy{}même de variables de ce genre}
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n+nv+vm}{\PYZus{}\PYZus{}name\PYZus{}\PYZus{}}  \PY{c+c1}{\PYZsh{} ne définissez pas vous\PYZhy{}même de variables de ce genre}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}8}]:} '\_\_main\_\_'
+{\color{outcolor}Out[{\color{outcolor}7}]:} '\_\_main\_\_'
 \end{Verbatim}
             
     \hypertarget{ponctuation}{%
@@ -122,19 +122,12 @@ tiret bas. Notamment le tiret haut \texttt{-} est interprété comme
 l'opération de soustraction. Attention donc à cette erreur fréquente~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{age}\PY{o}{\PYZhy{}}\PY{n}{moyen} \PY{o}{=} \PY{l+m+mi}{75}  \PY{c+c1}{\PYZsh{} erreur : en fait python l\PYZsq{}interprète comme \PYZsq{}age \PYZhy{} moyen = 75\PYZsq{}}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{n}{age}\PY{o}{\PYZhy{}}\PY{n}{moyen} \PY{o}{=} \PY{l+m+mi}{75}  \PY{c+c1}{\PYZsh{} erreur : en fait python l\PYZsq{}interprète comme \PYZsq{}age \PYZhy{} moyen = 75\PYZsq{}}
 \end{Verbatim}
 
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-
-          File "<ipython-input-9-78de3a1bfc60>", line 1
-        age-moyen = 75  \# erreur : en fait python l'interprète comme 'age - moyen = 75'
-                                                                                       \^{}
-    SyntaxError: can't assign to operator
-
-
-    \end{Verbatim}
 
     \hypertarget{caractuxe8res-exotiques}{%
 \subsubsection{Caractères exotiques}\label{caractuxe8res-exotiques}}
@@ -143,21 +136,21 @@ l'opération de soustraction. Attention donc à cette erreur fréquente~:
 Unicode dans les identificateurs~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} les caractères accentués sont permis}
-         \PY{n}{nom\PYZus{}élève} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Jules Maigret}\PY{l+s+s2}{\PYZdq{}}
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} les caractères accentués sont permis}
+        \PY{n}{nom\PYZus{}élève} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Jules Maigret}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} ainsi que l\PYZsq{}alphabet grec}
-         \PY{k+kn}{from} \PY{n+nn}{math} \PY{k}{import} \PY{n}{cos}\PY{p}{,} \PY{n}{pi} \PY{k}{as} \PY{n}{π}
-         \PY{n}{θ} \PY{o}{=} \PY{n}{π} \PY{o}{/} \PY{l+m+mi}{4}
-         \PY{n}{cos}\PY{p}{(}\PY{n}{θ}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} ainsi que l\PYZsq{}alphabet grec}
+        \PY{k+kn}{from} \PY{n+nn}{math} \PY{k}{import} \PY{n}{cos}\PY{p}{,} \PY{n}{pi} \PY{k}{as} \PY{n}{π}
+        \PY{n}{θ} \PY{o}{=} \PY{n}{π} \PY{o}{/} \PY{l+m+mi}{4}
+        \PY{n}{cos}\PY{p}{(}\PY{n}{θ}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}11}]:} 0.7071067811865476
+{\color{outcolor}Out[{\color{outcolor}9}]:} 0.7071067811865476
 \end{Verbatim}
             
     Tous les caractères Unicode ne sont pas permis - heureusement car cela
@@ -165,46 +158,26 @@ serait source de confusion. Nous citons dans les références les
 documents qui précisent quels sont exactement les caractères autorisés.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} ce caractère n\PYZsq{}est pas autorisé, car il}
-         \PY{c+c1}{\PYZsh{} est considéré comme un signe mathématique (produit)}
-         \PY{err}{∏} \PY{o}{=} \PY{l+m+mi}{10}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{c+c1}{\PYZsh{} ce caractère n\PYZsq{}est pas autorisé, car il}
+        \PY{c+c1}{\PYZsh{} est considéré comme un signe mathématique (produit)}
+        \PY{err}{∏} \PY{o}{=} \PY{l+m+mi}{10}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-
-          File "<ipython-input-12-4b0589d77bdc>", line 3
-        ∏ = 10
-        \^{}
-    SyntaxError: invalid character in identifier
-
-
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} ce caractère est encore différent, c\PYZsq{}est aussi}
-         \PY{c+c1}{\PYZsh{} un pi grec mais pas le même, cette fois\PYZhy{}ci}
-         \PY{c+c1}{\PYZsh{} c\PYZsq{}est un nom de variable acceptable mais }
-         \PY{c+c1}{\PYZsh{} il n\PYZsq{}est pas défini}
-         \PY{n}{∏}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{c+c1}{\PYZsh{} ce caractère est encore différent, c\PYZsq{}est aussi}
+        \PY{c+c1}{\PYZsh{} un pi grec mais pas le même, cette fois\PYZhy{}ci}
+        \PY{c+c1}{\PYZsh{} c\PYZsq{}est un nom de variable acceptable mais }
+        \PY{c+c1}{\PYZsh{} il n\PYZsq{}est pas défini}
+        \PY{n}{𝞟}
 \end{Verbatim}
 
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-
-        ---------------------------------------------------------------------------
-
-        NameError                                 Traceback (most recent call last)
-
-        <ipython-input-13-42996045225e> in <module>()
-          3 \# c'est un nom de variable acceptable mais
-          4 \# il n'est pas défini
-    ----> 5 Π
-    
-
-        NameError: name 'Π' is not defined
-
-    \end{Verbatim}
 
     \hypertarget{conseil}{%
 \paragraph{Conseil}\label{conseil}}
@@ -219,7 +192,7 @@ Il est \textbf{très vivement} recommandé~:
   ensuite de \textbf{ne pas} définir des identificateurs avec des
   caractères non ASCII, dans toute la mesure du possible~, voyez par
   exemple la confusion que peut créer le fait de nommer un
-  identificateur π ou Π ou ∏~;
+  identificateur π ou 𝞟 ou ∏~;
 \item
   enfin si vous utilisez un encodage autre que UTF-8, vous
   \textbf{devez} bien \textbf{spécifier l'encodage} utilisé dans votre
@@ -233,19 +206,25 @@ Il est \textbf{très vivement} recommandé~:
 le co-auteur d'un document qui décrit les conventions de codage à
 utiliser dans la bibliothèque standard Python. Ces règles sont plus
 restrictives que ce que le langage permet de faire, mais constituent une
-lecture intéressante si vous projetez d'écrire beaucoup de Python.\\
+lecture intéressante si vous projetez d'écrire beaucoup de Python.
 
 Voir dans le PEP 008
 \href{http://legacy.python.org/dev/peps/pep-0008/\#descriptive-naming-styles}{la
-section consacrée aux règles de nommage - (en anglais)}\\
+section consacrée aux règles de nommage - (en anglais)}
 
     Voir enfin, au sujet des caractères exotiques dans les identificateurs~:
 
 \begin{itemize}
 \tightlist
 \item
-  \href{https://www.python.org/dev/peps/pep-3131/}{https://www.python.org/dev/peps/pep-3131/} qui définit les caractères
+  https://www.python.org/dev/peps/pep-3131/ qui définit les caractères
   exotiques autorisés, et qui repose à son tour sur
 \item
-  \href{http://www.unicode.org/reports/tr31/}{http://www.unicode.org/reports/tr31/} (très technique~!)
+  http://www.unicode.org/reports/tr31/ (très technique~!)
 \end{itemize}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

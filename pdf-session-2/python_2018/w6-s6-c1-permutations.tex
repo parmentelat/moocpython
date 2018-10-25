@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{compluxe9ment---niveau-avancuxe9}{%
 \subsection{Complément - niveau
 avancé}\label{compluxe9ment---niveau-avancuxe9}}
@@ -18,12 +25,12 @@ permutations~?}\label{cest-quoi-duxe9juxe0-les-permutations}}
 correspond à toutes les façons d'ordonner ses éléments~; si l'ensemble
 est de cardinal \(n\), il possède \(n!\) permutations~: on a \(n\)
 façons de choisir le premier élément, \(n-1\) façons de choisir le
-second, etc.\\
+second, etc.
 
     Un itérateur sur les permutations est disponible au travers du module
 standard \texttt{itertools}. Cependant il nous a semblé intéressant de
 vous montrer comment nous pourrions écrire nous-mêmes cette
-fonctionnalité, de manière relativement simple.\\
+fonctionnalité, de manière relativement simple.
 
     Pour illustrer le concept, voici à quoi ressemblent les 6 permutations
 d'un ensemble à trois éléments~:
@@ -52,7 +59,7 @@ d'un ensemble à trois éléments~:
     \end{Verbatim}
 
     \hypertarget{une-impluxe9mentation}{%
-\subparagraph{Une implémentation\\\\}\label{une-impluxe9mentation}}
+\subparagraph{Une implémentation}\label{une-impluxe9mentation}}
 
     Voici une implémentation possible pour un itérateur de permutations~:
 
@@ -195,19 +202,19 @@ par \texttt{counter}, que l'on incrémente à chaque boucle mais modulo
 \emph{n} - notez d'ailleurs que pour ce genre de comportement on dispose
 aussi de \texttt{itertools.cycle} comme on le verra dans une deuxième
 version, mais pour l'instant j'ai préféré ne pas l'utiliser pour ne pas
-tout embrouiller ;)\\
+tout embrouiller ;)
 
 La terminaison se gère très simplement, car une fois que l'on a traité
 toutes les séquences d'ordre \emph{n-1} eh bien on a fini, on n'a même
 pas besoin de lever StopIteration explicitement, sauf bien sûr dans le
-cas \emph{n=1}.\\
+cas \emph{n=1}.
 
 Le seul point un peu délicat, si on veut avoir les permutations dans le
 ``bon'' ordre, consiste à commencer à insérer \texttt{n-1} par la droite
 (la fin de la sous-séquence).
 
     \hypertarget{discussion}{%
-\subparagraph{Discussion\\\\}\label{discussion}}
+\subparagraph{Discussion}\label{discussion}}
 
     Il existe certainement des tas d'autres façons de faire bien entendu. Le
 point important ici, et qui donne toute sa puissance à la notion
@@ -273,7 +280,7 @@ fonctionne l'algorithme, si vous observez le \texttt{11} qui balaie en
 diagonale les 12 premières lignes, puis les 12 suivantes, etc..
 
     \hypertarget{ultimes-amuxe9liorations}{%
-\subparagraph{Ultimes améliorations\\\\}\label{ultimes-amuxe9liorations}}
+\subparagraph{Ultimes améliorations}\label{ultimes-amuxe9liorations}}
 
     Dernières remarques, sur des améliorations possibles - mais tout à fait
 optionnelles~:
@@ -374,6 +381,9 @@ Il y a 120 items dans l'itérable
 
     \end{Verbatim}
 
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
     Il me semble intéressant de montrer une autre façon, plus simple,
 d'écrire un itérateur de permutations, à base cette fois de générateurs;
@@ -517,3 +527,9 @@ nous faut bien utiliser cet objet générateur, et pour cela on utilise
 ['d', 'a', 'b', 'c']
 
     \end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

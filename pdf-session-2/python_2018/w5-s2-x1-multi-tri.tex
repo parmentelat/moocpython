@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{exercice---niveau-basique}{%
 \subsection{Exercice - niveau basique}\label{exercice---niveau-basique}}
 
@@ -5,37 +12,45 @@
 \subsubsection{Tri de plusieurs listes}\label{tri-de-plusieurs-listes}}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour charger l\PYZsq{}exercice}
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} pour charger l\PYZsq{}exercice}
         \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}multi\PYZus{}tri} \PY{k}{import} \PY{n}{exo\PYZus{}multi\PYZus{}tri}
 \end{Verbatim}
 
 
     Écrivez une fonction qui~:
-    
+
 \begin{itemize}
-	\item 
-	accepte en argument une liste de listes,
-	\item
-	et qui retourne \textbf{la même liste}, mais avec toutes les sous-listes
-	\textbf{triées en place}.
+\tightlist
+\item
+  accepte en argument une liste de listes,
+\item
+  et qui retourne \textbf{la même liste}, mais avec toutes les
+  sous-listes \textbf{triées en place}.
 \end{itemize}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} voici un exemple de ce qui est attendu}
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} voici un exemple de ce qui est attendu}
         \PY{n}{exo\PYZus{}multi\PYZus{}tri}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
     Écrivez votre code ici~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{multi\PYZus{}tri}\PY{p}{(}\PY{n}{listes}\PY{p}{)}\PY{p}{:} 
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{def} \PY{n+nf}{multi\PYZus{}tri}\PY{p}{(}\PY{n}{listes}\PY{p}{)}\PY{p}{:} 
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre\PYZus{}code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour vérifier votre code}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{c+c1}{\PYZsh{} pour vérifier votre code}
         \PY{n}{exo\PYZus{}multi\PYZus{}tri}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{multi\PYZus{}tri}\PY{p}{)}
 \end{Verbatim}
 
@@ -49,40 +64,54 @@ intermédiaire}\label{exercice---niveau-intermuxe9diaire}}
 différentes}\label{tri-de-plusieurs-listes-dans-des-directions-diffuxe9rentes}}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour charger l\PYZsq{}exercice}
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} pour charger l\PYZsq{}exercice}
         \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}multi\PYZus{}tri\PYZus{}reverse} \PY{k}{import} \PY{n}{exo\PYZus{}multi\PYZus{}tri\PYZus{}reverse}
 \end{Verbatim}
 
 
     Modifiez votre code pour qu'il accepte cette fois \textbf{deux}
-arguments listes que l'on suppose de tailles égales.\\
+arguments listes que l'on suppose de tailles égales.
 
 Comme tout à l'heure le premier argument est une liste de listes à
-trier.\\
+trier.
 
 À présent le second argument est une liste (ou un tuple) de booléens, de
 même cardinal que le premier argument, et qui indiquent l'ordre dans
 lequel on veut trier la liste d'entrée de même rang. \texttt{True}
-signifie un tri descendant, \texttt{False} un tri ascendant.\\
+signifie un tri descendant, \texttt{False} un tri ascendant.
 
 Comme dans l'exercice \texttt{multi\_tri}, il s'agit de modifier en
 place les données en entrée, et de retourner la liste de départ.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} Pour être un peu plus clair, voici à quoi on s\PYZsq{}attend}
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} Pour être un peu plus clair, voici à quoi on s\PYZsq{}attend}
         \PY{n}{exo\PYZus{}multi\PYZus{}tri\PYZus{}reverse}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
     À vous de jouer~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{multi\PYZus{}tri\PYZus{}reverse}\PY{p}{(}\PY{n}{listes}\PY{p}{,} \PY{n}{reverses}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{def} \PY{n+nf}{multi\PYZus{}tri\PYZus{}reverse}\PY{p}{(}\PY{n}{listes}\PY{p}{,} \PY{n}{reverses}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre\PYZus{}code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} et pour vérifier votre code}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{c+c1}{\PYZsh{} et pour vérifier votre code}
         \PY{n}{exo\PYZus{}multi\PYZus{}tri\PYZus{}reverse}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{multi\PYZus{}tri\PYZus{}reverse}\PY{p}{)}
 \end{Verbatim}
+
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

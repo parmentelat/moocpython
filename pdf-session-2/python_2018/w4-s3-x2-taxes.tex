@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{exercice}{%
 \section{Exercice}\label{exercice}}
 
@@ -5,17 +12,17 @@
 \subsection{Niveau basique}\label{niveau-basique}}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}taxes} \PY{k}{import} \PY{n}{exo\PYZus{}taxes}
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}taxes} \PY{k}{import} \PY{n}{exo\PYZus{}taxes}
 \end{Verbatim}
 
 
     On se propose d'écrire une fonction \texttt{taxes} qui calcule le
-montant de l'impôt sur le revenu au Royaume-Uni.\\
+montant de l'impôt sur le revenu au Royaume-Uni.
 
     Le barème est \href{https://www.gov.uk/income-tax-rates}{publié ici par
 le gouvernement anglais}, voici les données utilisées pour l'exercice~:
 
-    \begin{longtable}[]{@{}rrr@{}}
+    \begin{longtable}[]{@{}lll@{}}
 \toprule
 Tranche & Revenu imposable & Taux\tabularnewline
 \midrule
@@ -32,10 +39,14 @@ le revenu imposable, et retourne le montant de l'impôt, \textbf{arrondi
 à l'entier inférieur}.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}taxes}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{exo\PYZus{}taxes}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
     \textbf{Indices}
 
 \begin{itemize}
@@ -48,14 +59,17 @@ le revenu imposable, et retourne le montant de l'impôt, \textbf{arrondi
 \end{itemize}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{taxes}\PY{p}{(}\PY{n}{income}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{def} \PY{n+nf}{taxes}\PY{p}{(}\PY{n}{income}\PY{p}{)}\PY{p}{:}
             \PY{c+c1}{\PYZsh{} ce n\PYZsq{}est pas la bonne réponse}
             \PY{k}{return} \PY{p}{(}\PY{n}{income}\PY{o}{\PYZhy{}}\PY{l+m+mi}{11}\PY{n}{\PYZus{}500}\PY{p}{)} \PY{o}{*} \PY{p}{(}\PY{l+m+mi}{20}\PY{o}{/}\PY{l+m+mi}{100}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}taxes}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{taxes}\PY{p}{)}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{n}{exo\PYZus{}taxes}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{taxes}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -67,26 +81,43 @@ graphique}\label{repruxe9sentation-graphique}}
 fonction~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
         \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+{\color{incolor}In [{\color{incolor}5}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
         \PY{n}{plt}\PY{o}{.}\PY{n}{ion}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{200}\PY{n}{\PYZus{}000}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{200}\PY{n}{\PYZus{}000}\PY{p}{)}
         \PY{n}{Y} \PY{o}{=} \PY{p}{[}\PY{n}{taxes}\PY{p}{(}\PY{n}{x}\PY{p}{)} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{X}\PY{p}{]}
         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{)}\PY{p}{;}
 \end{Verbatim}
 
 
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w4-s3-x2-taxes_files/w4-s3-x2-taxes_16_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} et pour changer la taille de la figure}
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} et pour changer la taille de la figure}
         \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{)}\PY{p}{;}
 \end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w4-s3-x2-taxes_files/w4-s3-x2-taxes_17_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

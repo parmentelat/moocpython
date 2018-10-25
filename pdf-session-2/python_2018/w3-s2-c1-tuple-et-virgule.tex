@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{la-construction-de-tuples}{%
 \section{La construction de tuples}\label{la-construction-de-tuples}}
 
@@ -35,19 +42,19 @@ terminale}\label{les-tuples-et-la-virgule-terminale}}
 \end{Verbatim}
             
     Comme on le voit~:
-    
+
 \begin{itemize}
-	\item 
-	en réalité la \textbf{parenthèse est parfois
-	superflue}~; mais il se trouve qu'elle est \textbf{largement utilisée}
-	pour améliorer la lisibilité des programmes, sauf dans le cas du
-	\emph{tuple unpacking}~; nous verrons aussi plus bas qu'elle est
-	\textbf{parfois nécessaire} selon l'endroit où le tuple apparaît dans le
-	programme~;
-	\item
-	la \textbf{dernière virgule est optionnelle} aussi, c'est
-	le cas pour les tuples à au moins 2 éléments - nous verrons plus bas le
-	cas des tuples à un seul élément.
+\tightlist
+\item
+  en réalité la \textbf{parenthèse est parfois superflue}~; mais il se
+  trouve qu'elle est \textbf{largement utilisée} pour améliorer la
+  lisibilité des programmes, sauf dans le cas du \emph{tuple
+  unpacking}~; nous verrons aussi plus bas qu'elle est \textbf{parfois
+  nécessaire} selon l'endroit où le tuple apparaît dans le programme~;
+\item
+  la \textbf{dernière virgule est optionnelle} aussi, c'est le cas pour
+  les tuples à au moins 2 éléments - nous verrons plus bas le cas des
+  tuples à un seul élément.
 \end{itemize}
 
     \hypertarget{conseil-pour-la-pruxe9sentation-sur-plusieurs-lignes}{%
@@ -72,7 +79,7 @@ préfère mettre un élément du tuple par ligne~:
 virgule terminale), c'est d'abord qu'il n'est pas nécessaire de mettre
 un backslash à la fin de chaque ligne~; parce que l'on est à l'intérieur
 d'une zone parenthésée, l'interpréteur Python ``sait'' que l'instruction
-n'est pas terminée et va se continuer sur la ligne suivante.\\
+n'est pas terminée et va se continuer sur la ligne suivante.
 
 Deuxièmement, si on doit ultérieurement ajouter ou enlever un élément
 dans le tuple, il suffira d'enlever ou d'ajouter toute une ligne, sans
@@ -81,7 +88,7 @@ figurer la virgule terminale, alors pour ajouter un élément dans le
 tuple après le dernier, il ne faut pas oublier d'ajouter une virgule à
 la ligne précédente. Cette simplicité se répercute au niveau du
 gestionnaire de code source, où les différences dans le code sont plus
-faciles à visualiser.\\
+faciles à visualiser.
 
 Signalons enfin que ceci n'est pas propre aux tuples. La virgule
 terminale est également optionnelle pour les listes, ainsi d'ailleurs
@@ -171,20 +178,13 @@ obligatoire. Par exemple on peut écrire~:
     Mais si on essaie d'écrire le même test sans les parenthèses~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} ceci provoque une SyntaxError}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{c+c1}{\PYZsh{} ceci provoque une SyntaxError}
         \PY{l+m+mi}{1}\PY{p}{,} \PY{o}{==} \PY{n}{x}
 \end{Verbatim}
 
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-
-          File "<ipython-input-9-219921aa55c4>", line 2
-        1, == x
-            \^{}
-    SyntaxError: invalid syntax
-    
-
-    \end{Verbatim}
 
     Python lève une erreur de syntaxe~; encore une bonne raison pour
 utiliser les parenthèses.
@@ -197,9 +197,9 @@ d'additionner deux tuples, et l'addition va produire un \textbf{nouveau}
 tuple~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{tuple1} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,}\PY{p}{)}
-         \PY{n}{tuple2} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,}\PY{p}{)}
-         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{addition}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{tuple1} \PY{o}{+} \PY{n}{tuple2}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{tuple1} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,}\PY{p}{)}
+        \PY{n}{tuple2} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{addition}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{tuple1} \PY{o}{+} \PY{n}{tuple2}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -212,7 +212,7 @@ addition (1, 2, 3, 4)
 qui va créer, comme précédemment, un nouvel objet tuple~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{tuple1} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{tuple1} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,}\PY{p}{)}
          \PY{n}{tuple1} \PY{o}{+}\PY{o}{=} \PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,}\PY{p}{)}
          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{apres ajout}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{tuple1}\PY{p}{)}
 \end{Verbatim}
@@ -228,14 +228,14 @@ apres ajout (1, 2, 3, 4)
 élaborés}\label{construire-des-tuples-uxe9laboruxe9s}}
 
     Malgré la possibilité de procéder par additions successives, la
-construction d'un tuple peut s'avérer fastidieuse.\\
+construction d'un tuple peut s'avérer fastidieuse.
 
     Une astuce utile consiste à penser aux fonctions de conversion, pour
 construire un tuple à partir de - par exemple - une liste. Ainsi on peut
 faire par exemple ceci~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} on fabrique une liste pas à pas}
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} on fabrique une liste pas à pas}
          \PY{n}{liste} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
          \PY{n}{liste}\PY{p}{[}\PY{l+m+mi}{9}\PY{p}{]} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Inconnu}\PY{l+s+s1}{\PYZsq{}}
          \PY{k}{del} \PY{n}{liste} \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{:}\PY{l+m+mi}{5}\PY{p}{]}
@@ -244,18 +244,18 @@ faire par exemple ceci~:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}12}]:} [0, 1, 5, 6, 7, 8, 'Inconnu']
+{\color{outcolor}Out[{\color{outcolor}11}]:} [0, 1, 5, 6, 7, 8, 'Inconnu']
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} on convertit le résultat en tuple}
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} on convertit le résultat en tuple}
          \PY{n}{mon\PYZus{}tuple} \PY{o}{=} \PY{n+nb}{tuple}\PY{p}{(}\PY{n}{liste}\PY{p}{)}
          \PY{n}{mon\PYZus{}tuple}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}13}]:} (0, 1, 5, 6, 7, 8, 'Inconnu')
+{\color{outcolor}Out[{\color{outcolor}12}]:} (0, 1, 5, 6, 7, 8, 'Inconnu')
 \end{Verbatim}
             
     \hypertarget{digression-sur-les-noms-de-fonctions-pruxe9duxe9finies}{%
@@ -265,14 +265,14 @@ prédéfinies}\label{digression-sur-les-noms-de-fonctions-pruxe9duxe9finies}}
     \textbf{Remarque}~: Vous avez peut-être observé que nous avons choisi de
 ne pas appeler notre tuple simplement \texttt{tuple}. C'est une bonne
 pratique en général d'éviter les noms de fonctions prédéfinies par
-Python.\\
+Python.
 
 Ces variables en effet sont des variables ``comme les autres''. Imaginez
 qu'on ait en fait deux tuples à construire comme ci-dessus, voici ce
 qu'on obtiendrait si on n'avait pas pris cette précaution~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{liste} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{liste} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
          \PY{c+c1}{\PYZsh{} ATTENTION : ceci redéfinit le symbole tuple}
          \PY{n+nb}{tuple} \PY{o}{=} \PY{n+nb}{tuple}\PY{p}{(}\PY{n}{liste}\PY{p}{)}
          \PY{n+nb}{tuple}
@@ -280,40 +280,27 @@ qu'on obtiendrait si on n'avait pas pris cette précaution~:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}14}]:} (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+{\color{outcolor}Out[{\color{outcolor}13}]:} (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} si bien que maintenant on ne peut plus faire ceci}
-         \PY{c+c1}{\PYZsh{} car à ce point, tuple ne désigne plus le type tuple}
-         \PY{c+c1}{\PYZsh{} mais l\PYZsq{}objet qu\PYZsq{}on vient de créer}
-         \PY{n}{autre\PYZus{}liste} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{)}
-         \PY{n}{autre\PYZus{}tuple} \PY{o}{=} \PY{n+nb}{tuple}\PY{p}{(}\PY{n}{autre\PYZus{}liste}\PY{p}{)}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{c+c1}{\PYZsh{} si bien que maintenant on ne peut plus faire ceci}
+        \PY{c+c1}{\PYZsh{} car à ce point, tuple ne désigne plus le type tuple}
+        \PY{c+c1}{\PYZsh{} mais l\PYZsq{}objet qu\PYZsq{}on vient de créer}
+        \PY{n}{autre\PYZus{}liste} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{)}
+        \PY{n}{autre\PYZus{}tuple} \PY{o}{=} \PY{n+nb}{tuple}\PY{p}{(}\PY{n}{autre\PYZus{}liste}\PY{p}{)}
 \end{Verbatim}
 
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-
-        ---------------------------------------------------------------------------
-
-        TypeError                                 Traceback (most recent call last)
-
-        <ipython-input-15-15ef2d1e6804> in <module>()
-          3 \# mais l'objet qu'on vient de créer
-          4 autre\_liste = range(100)
-    ----> 5 autre\_tuple = tuple(autre\_liste)
-    
-
-        TypeError: 'tuple' object is not callable
-
-    \end{Verbatim}
 
     Il y a une erreur parce que nous avons remplacé (ligne 2) la valeur de
 la variable \texttt{tuple}, qui au départ référençait le \textbf{type}
 tuple (ou si on préfère la fonction de conversion), par un
 \textbf{objet} tuple. Ainsi en ligne 5, lorsqu'on appelle à nouveau
 \texttt{tuple}, on essaie d'exécuter un objet qui n'est pas `appelable'
-(\emph{not callable} en anglais).\\
+(\emph{not callable} en anglais).
 
 D'un autre côté, l'erreur est relativement facile à trouver dans ce cas.
 En cherchant toutes les occurrences de \texttt{tuple} dans notre propre
@@ -323,3 +310,9 @@ toutes les fonctions built-in (dont \texttt{tuple} et \texttt{list} font
 partie) sont colorées spécifiquement (par exemple, en violet sous IDLE).
 En pratique, avec un bon éditeur de texte et un peu d'expérience, cette
 erreur est très rare.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

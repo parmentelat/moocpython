@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{expressions-guxe9nuxe9ratrices}{%
 \section{Expressions
 génératrices}\label{expressions-guxe9nuxe9ratrices}}
@@ -13,11 +20,11 @@ itérateur~?}\label{comment-transformer-une-compruxe9hension-de-liste-en-ituxe9r
     Nous venons de voir les fonctions génératrices qui sont un puissant
 outil pour créer facilement des itérateurs. Nous verrons prochainement
 comment utiliser ces fonctions génératrices pour transformer en quelques
-lignes de code vos propres objets en itérateurs.\\
+lignes de code vos propres objets en itérateurs.
 
 Vous savez maintenant qu'en Python on favorise la notion d'itérateurs
 puisqu'ils se manipulent comme des objets itérables et qu'ils sont en
-général beaucoup plus compacts en mémoire que l'itérable correspondant.\\
+général beaucoup plus compacts en mémoire que l'itérable correspondant.
 
 Comme les compréhensions de listes sont fréquemment utilisées en Python,
 mais qu'elles sont des itérables potentiellement gourmands en ressources
@@ -45,7 +52,7 @@ Il suffit de remplacer les crochets par des parenthèses, regardons cela.
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-<generator object <genexpr> at 0x04AF0D50>
+<generator object <genexpr> at 0x106405ed0>
 
     \end{Verbatim}
 
@@ -105,7 +112,7 @@ compréhensions par le nombre d'éléments~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-\{617721316, 311381316, 3617541316, 4536561316\}
+\{617721316, 4536561316, 3617541316, 311381316\}
 
     \end{Verbatim}
 
@@ -119,10 +126,10 @@ génératrice}{Compréhension vs expression génératrice}}\label{compruxe9hensi
 
     \hypertarget{digression-liste-vs-ituxe9rateur}{%
 \paragraph{\texorpdfstring{Digression~: liste \emph{vs}
-itérateur}{Digression~: liste vs itérateur}\\\\}\label{digression-liste-vs-ituxe9rateur}}
+itérateur}{Digression~: liste vs itérateur}}\label{digression-liste-vs-ituxe9rateur}}
 
     En Python 3, nous avons déjà rencontré la fonction \texttt{range} qui
-retourne les premiers entiers.\\
+retourne les premiers entiers.
 
 Ou plutôt, c'est \textbf{comme si} elle retournait les premiers entiers
 lorsqu'on fait une boucle \texttt{for}
@@ -176,17 +183,17 @@ c'est d'itérer sur un certain nombre de valeurs mais \textbf{qui peuvent
 
     \hypertarget{compruxe9hension-et-expression-guxe9nuxe9ratrice}{%
 \paragraph{Compréhension et expression
-génératrice\\\\}\label{compruxe9hension-et-expression-guxe9nuxe9ratrice}}
+génératrice}\label{compruxe9hension-et-expression-guxe9nuxe9ratrice}}
 
     À la lumière de ce qui vient d'être dit, on peut voir qu'une
 compréhension n'est \textbf{pas toujours le bon choix}, car par
 définition elle \textbf{construit une liste} de résultats - de la
-fonction appliquée successivement aux entrées.\\
+fonction appliquée successivement aux entrées.
 
 Or dans les cas où, comme pour \texttt{range}, on n'a pas réellement
-besoin de cette liste \textbf{en temps que telle} mais seulement de cet
+besoin de cette liste \textbf{en tant que telle} mais seulement de cet
 artefact pour pouvoir itérer sur la liste des résultats, il est
-préférable d'utiliser une \textbf{expression génératrice}.\\
+préférable d'utiliser une \textbf{expression génératrice}.
 
 Voyons tout de suite sur un exemple à quoi cela ressemblerait.
 
@@ -203,7 +210,7 @@ Voyons tout de suite sur un exemple à quoi cela ressemblerait.
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}9}]:} <generator object <genexpr> at 0x04B014B0>
+{\color{outcolor}Out[{\color{outcolor}9}]:} <generator object <genexpr> at 0x106490138>
 \end{Verbatim}
             
     Comme pour \texttt{range}, le résultat de l'expression génératrice ne se
@@ -230,7 +237,7 @@ x=10 => y=100
 par une expression génératrice, mais c'est \textbf{souvent souhaitable},
 car de cette façon on peut faire de substantielles économies en matière
 de performances. On peut le faire dès lors que l'on a seulement besoin
-d'itérer sur les résultats.\\
+d'itérer sur les résultats.
 
     Il faut juste un peu se méfier, car comme on parle ici d'itérateurs,
 comme toujours si on essaie de faire plusieurs fois une boucle sur le
@@ -249,3 +256,9 @@ même itérateur, il ne se passe plus rien, car l'itérateur a été épuisé~:
 \href{http://python-history.blogspot.fr/2010/06/from-list-comprehensions-to-generator.html}{cette
 intéressante discussion de Guido van Rossum} sur les compréhensions et
 les expressions génératrices.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

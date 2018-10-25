@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{ensembles}{%
 \section{Ensembles}\label{ensembles}}
 
@@ -5,7 +12,7 @@
 \subsection{Exercice - niveau basique}\label{exercice---niveau-basique}}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} charger l\PYZsq{}exercice}
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} charger l\PYZsq{}exercice}
         \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}read\PYZus{}set} \PY{k}{import} \PY{n}{exo\PYZus{}read\PYZus{}set}
 \end{Verbatim}
 
@@ -15,9 +22,18 @@ ensemble à partir du contenu d'un fichier. Voici par exemple un fichier
 d'entrée~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{o}{!}cat data/setref1.txt
+{\color{incolor}In [{\color{incolor}2}]:} \PY{o}{!}cat data/setref1.txt
 \end{Verbatim}
 
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+4615
+ 12
+ 9228
+6158
+12
+
+    \end{Verbatim}
 
     \texttt{read\_set} va prendre en argument un nom de fichier (vous pouvez
 supposer qu'il existe), enlever les espaces éventuelles au début et à la
@@ -25,29 +41,38 @@ fin de chaque ligne, et construire un ensemble de toutes les lignes~;
 par exemple~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}read\PYZus{}set}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{exo\PYZus{}read\PYZus{}set}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} écrivez votre code ici}
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} écrivez votre code ici}
         \PY{k}{def} \PY{n+nf}{read\PYZus{}set}\PY{p}{(}\PY{n}{filename}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{votre code}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} vérifiez votre code ici}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{c+c1}{\PYZsh{} vérifiez votre code ici}
         \PY{n}{exo\PYZus{}read\PYZus{}set}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{read\PYZus{}set}\PY{p}{)}
 \end{Verbatim}
 
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
     \hypertarget{deuxiuxe8me-partie---niveau-basique}{%
 \subsection{Deuxième partie - niveau
 basique}\label{deuxiuxe8me-partie---niveau-basique}}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} la définition de l\PYZsq{}exercice}
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} la définition de l\PYZsq{}exercice}
         \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}read\PYZus{}set} \PY{k}{import} \PY{n}{exo\PYZus{}search\PYZus{}in\PYZus{}set}
 \end{Verbatim}
 
@@ -80,28 +105,67 @@ pour chaque ligne du fichier \texttt{filename} un tuple avec~:
 Par exemple~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{o}{!}cat data/setref1.txt
+{\color{incolor}In [{\color{incolor}6}]:} \PY{o}{!}cat data/setref1.txt
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{o}{!}cat data/setsample1.txt
+4615
+ 12
+ 9228
+6158
+12
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{o}{!}cat data/setsample1.txt
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}search\PYZus{}in\PYZus{}set}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+2048
+8192
+ 9228
+2049
+3
+4
+2053
+2054
+6158  
+4099
+8
+    12
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{exo\PYZus{}search\PYZus{}in\PYZus{}set}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} à vous}
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} à vous}
         \PY{k}{def} \PY{n+nf}{search\PYZus{}in\PYZus{}set}\PY{p}{(}\PY{n}{filename\PYZus{}reference}\PY{p}{,} \PY{n}{filename}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{votre code}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} vérifiez}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{c+c1}{\PYZsh{} vérifiez}
         \PY{n}{exo\PYZus{}search\PYZus{}in\PYZus{}set}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{search\PYZus{}in\PYZus{}set}\PY{p}{)}
 \end{Verbatim}
+
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

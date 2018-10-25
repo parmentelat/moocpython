@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{expression-conditionnelle}{%
 \section{Expression conditionnelle}\label{expression-conditionnelle}}
 
@@ -9,34 +16,34 @@
 forme}\label{analyse-et-mise-en-forme}}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} Pour charger l\PYZsq{}exercice}
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} Pour charger l\PYZsq{}exercice}
         \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}libelle} \PY{k}{import} \PY{n}{exo\PYZus{}libelle}
 \end{Verbatim}
 
 
     Un fichier contient, dans chaque ligne, des informations (champs)
 séparées par des virgules. Les espaces et tabulations présentes dans la
-ligne ne sont pas significatives et doivent être ignorées.\\
+ligne ne sont pas significatives et doivent être ignorées.
 
 Dans cet exercice de niveau basique, on suppose que chaque ligne a
 exactement 3 champs, qui représentent respectivement le prénom, le nom,
 et le rang d'une personne dans un classement. Une fois les espaces et
 tabulations ignorées, on ne fait pas de vérification sur le contenu des
-3 champs.\\
+3 champs.
 
 On vous demande d'écrire la fonction \texttt{libelle}, qui sera appelée
 pour chaque ligne du fichier. Cette fonction:
 
 \begin{itemize}
-	\item 
-	prend en argument une ligne (chaîne de caractères)
-	\item
-	retourne une chaîne de caractères mise en forme (voir plus bas)
-	\item
-	ou bien retourne \texttt{None} si la ligne n'a
-	pas pu être analysée, parce qu'elle ne vérifie pas les hypothèses
-	ci-dessus (c'est notamment le cas si on ne trouve pas exactement les 3
-	champs)
+\tightlist
+\item
+  prend en argument une ligne (chaîne de caractères)
+\item
+  retourne une chaîne de caractères mise en forme (voir plus bas)
+\item
+  ou bien retourne \texttt{None} si la ligne n'a pas pu être analysée,
+  parce qu'elle ne vérifie pas les hypothèses ci-dessus (c'est notamment
+  le cas si on ne trouve pas exactement les 3 champs)
 \end{itemize}
 
     La mise en forme consiste à retourner
@@ -51,19 +58,33 @@ afficher `1er', `2nd' ou `\emph{n}-ème' selon le cas. Voici quelques
 exemples
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} voici quelques exemples de ce qui est attendu}
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} voici quelques exemples de ce qui est attendu}
         \PY{n}{exo\PYZus{}libelle}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} écrivez votre code ici}
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} écrivez votre code ici}
         \PY{k}{def} \PY{n+nf}{libelle}\PY{p}{(}\PY{n}{ligne}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre\PYZus{}code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour le vérifier}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{c+c1}{\PYZsh{} pour le vérifier}
         \PY{n}{exo\PYZus{}libelle}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{libelle}\PY{p}{)}
 \end{Verbatim}
+
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

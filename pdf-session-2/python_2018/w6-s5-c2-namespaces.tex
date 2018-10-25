@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{espaces-de-nommage}{%
 \section{Espaces de nommage}\label{espaces-de-nommage}}
 
@@ -26,11 +33,11 @@ différentes règles qui régissent l'affectation et le référencement des
 attributs et des variables.
 
     \hypertarget{attributs}{%
-\subparagraph{Attributs\\\\}\label{attributs}}
+\subparagraph{Attributs}\label{attributs}}
 
     Un attribut est un symbole \texttt{x} utilisé dans la notation
 \texttt{obj.x} où \texttt{obj} est l'objet qui définit l'espace de
-nommage sur lequel \texttt{x} existe.\\
+nommage sur lequel \texttt{x} existe.
 
 L'\textbf{affectation} (explicite ou implicite) d'un attribut \texttt{x}
 sur un objet \texttt{obj} va créer (ou altérer) un symbole \texttt{x}
@@ -60,7 +67,7 @@ l'instance, puis la classe qui a créé l'instance, puis les super-classes
 et suivant la MRO (voir le complément sur l'héritage multiple).
 
     \hypertarget{variables}{%
-\subparagraph{Variables\\\\}\label{variables}}
+\subparagraph{Variables}\label{variables}}
 
     Une variable est un symbole qui n'est pas précédé de la notation
 \texttt{obj.} et l'affectation d'une variable rend cette variable locale
@@ -93,7 +100,7 @@ Une variable référencée est toujours cherchée suivant la règle LEGB~:
 
 Si la variable n'est toujours pas trouvée, elle est cherchée dans le
 module \texttt{builtins} et si elle n'est toujours pas trouvée, une
-exception est levée.\\
+exception est levée.
 
 Par exemple~:
 
@@ -151,7 +158,7 @@ avancé}\label{compluxe9ment---niveau-avancuxe9}}
 
     \hypertarget{la-documentation-officielle-est-fausse}{%
 \subparagraph{La documentation officielle est
-fausse\\\\}\label{la-documentation-officielle-est-fausse}}
+fausse}\label{la-documentation-officielle-est-fausse}}
 
     Oui, vous avez bien lu, la documentation officielle est fausse sur un
 point subtil. Regardons le
@@ -161,7 +168,7 @@ occurs anywhere within a code block, all uses of the name within the
 block are treated as references to the current block.'' qui est fausse,
 il faut lire ``If a name binding operation occurs anywhere within a code
 block \textbf{of a function}, all uses of the name within the block are
-treated as references to the current block.''\\
+treated as references to the current block.''
 
 En effet, les classes se comportent différemment des fonctions~:
 
@@ -185,7 +192,7 @@ dans classe A: x du module
 
     Alors pourquoi si c'est une mauvaise idée de mélanger variables globales
 et locales de même nom dans une fonction, c'est possible dans une
-classe~?\\
+classe~?
 
 Cela vient de la manière dont sont implémentés les espaces de nommage.
 Normalement, un objet a pour espace de nommage un dictionnaire qui
@@ -203,8 +210,14 @@ précompilation. Donc si le précompilateur trouve une affectation
 comme locale pour tout le bloc de code. Donc si on référence une
 variable définie comme étant locale avant une affectation dans la
 fonction, on ne va pas la chercher globalement, on a une erreur
-\texttt{UnboundLocalError}.\\
+\texttt{UnboundLocalError}.
 
 Cette optimisation n'a pas été faite pour les classes, parce que dans
 l'évaluation du compromis souplesse contre efficacité pour les classes,
 c'est la souplesse, donc le dictionnaire qui a gagné.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{compruxe9hensions-imbriquuxe9es}{%
 \section{Compréhensions
 imbriquées}\label{compruxe9hensions-imbriquuxe9es}}
@@ -46,7 +53,7 @@ profondeur 1), à comparer avec~:
 \end{Verbatim}
             
     qui est de profondeur 2, et où les résultats atomiques apparaissent dans
-un ordre différent.\\
+un ordre différent.
 
     Un moyen mnémotechnique pour se souvenir dans quel ordre les
 compréhensions imbriquées produisent leur résultat, est de penser à la
@@ -213,40 +220,35 @@ donne~:
             
     \textbf{Avertissement} méfiez-vous toutefois, car il est facile de ne
 pas voir du premier coup d'oeil qu'ici on évalue les deux clauses
-\texttt{for} \textbf{dans un ordre différent}.\\
+\texttt{for} \textbf{dans un ordre différent}.
 
     Pour mieux le voir, essayons de reprendre la logique de notre tout
 premier exemple, mais avec une forme de double compréhension \emph{à
 plat}~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}13}]:} \PY{p}{[} \PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{j}\PY{p}{)} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{j} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)} \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{n} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)} \PY{p}{]}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{c+c1}{\PYZsh{} ceci ne fonctionne pas}
+        \PY{c+c1}{\PYZsh{} NameError: name \PYZsq{}j\PYZsq{} is not defined}
+        
+        \PY{p}{[} \PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{j}\PY{p}{)} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{j} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)} \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{n} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)} \PY{p}{]}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-
-        ---------------------------------------------------------------------------
-
-        NameError                                 Traceback (most recent call last)
-
-        <ipython-input-13-ab78d593de5b> in <module>()
-    ----> 1 [ (i, j) for i in range(1, j + 1) for j in range(1, n + 1) ]
-    
-
-        NameError: name 'j' is not defined
-
-    \end{Verbatim}
-
     On obtient une erreur, l'interpréteur se plaint à propos de la variable
 \texttt{j} (c'est pourquoi nous l'avons effacée de l'environnement au
-préalable).\\
+préalable).
 
     Ce qui se passe ici, c'est que, comme nous l'avons déjà mentionné en
 semaine 3, le code que nous avons écrit est en fait équivalent à~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} la version bavarde de cette imbrication à plat, à nouveau :}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{c+c1}{\PYZsh{} la version bavarde de cette imbrication à plat, à nouveau :}
         \PY{c+c1}{\PYZsh{} [ (i, j) for i in range(1, j + 1) for j in range(1, n + 1) ]}
         \PY{c+c1}{\PYZsh{} serait}
         \PY{n}{resultat} \PY{o}{=} \PY{p}{[}\PY{p}{]}
@@ -266,10 +268,16 @@ semaine 3, le code que nous avons écrit est en fait équivalent à~:
 \texttt{for} dans la même compréhension est un trait qui peut rendre
 service, car c'est une manière de simplifier la structure des entrées
 (on passe essentiellement d'une liste de profondeur 2 à une liste de
-profondeur 1).\\
+profondeur 1).
 
 Mais il faut savoir ne pas en abuser, et rester conscient de la
 confusion qui peut en résulter, et en particulier être prudent et
 prendre le temps de bien se relire. N'oublions pas non plus ces deux
 phrases du Zen de Python~: ``\emph{Flat is better than nested}'' et
 surtout ``\emph{Readability counts}''.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

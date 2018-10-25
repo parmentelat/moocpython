@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{la-clause-import-as}{%
 \section{\texorpdfstring{La clause
 \texttt{import\ as}}{La clause import as}}\label{la-clause-import-as}}
@@ -54,7 +61,7 @@ charger ensuite~:
 import modulename
 \end{verbatim}
 
-cherche un module dont le nom est ``modulename''\\
+cherche un module dont le nom est ``modulename''
 
     Sachez que vous pourriez utiliser dans ce cas la fonction
 \texttt{import\_module} du module \texttt{importlib}, qui cette fois
@@ -135,14 +142,14 @@ récrire les deux formes d'\texttt{import} de cette façon~:
 \texttt{as}}{import as}}\label{import-as}}
 
     \hypertarget{tout-un-module}{%
-\subparagraph{Tout un module\\\\}\label{tout-un-module}}
+\subparagraph{Tout un module}\label{tout-un-module}}
 
     Dans chacun de ces deux cas, on n'a pas le choix du nom de l'entité
-importée, et cela pose parfois problème.\\
+importée, et cela pose parfois problème.
 
 Il peut arriver d'écrire un module sous un nom qui semble bien choisi,
 mais on se rend compte au bout d'un moment qu'il entre en conflit avec
-un autre symbole.\\
+un autre symbole.
 
 Par exemple, vous écrivez un module dans un fichier \texttt{globals.py}
 et vous l'importez dans votre code
@@ -152,9 +159,10 @@ import globals
 \end{verbatim}
 
     Puis un moment après pour débugger vous voulez utiliser la fonction
-\emph{built-in} \texttt{globals}. Sauf que, en vertu de la règle LEGB,
-le symbole \texttt{globals} se trouve maintenant désigner votre module,
-et non la fonction.\\
+\emph{built-in} \texttt{globals}. Sauf que, en vertu de la règle de
+visibilité des variables (rappelez-vous de la règle ``LEGB'', que l'on a
+vue dans une vidéo de la Semaine 4), le symbole \texttt{globals} se
+trouve maintenant désigner votre module, et non la fonction.
 
     À ce stade évidemment vous pouvez (devriez) renommer votre module, mais
 cela peut prendre du temps parce qu'il y a de nombreuses dépendances. En
@@ -173,7 +181,7 @@ autremodule = import_module('monmodule')
 
     \hypertarget{un-symbole-dans-un-module}{%
 \subparagraph{Un symbole dans un
-module\\\\}\label{un-symbole-dans-un-module}}
+module}\label{un-symbole-dans-un-module}}
 
     On peut aussi importer un symbole spécifique d'un module, sous un autre
 nom que celui qu'il a dans le module. Ainsi~:
@@ -194,16 +202,19 @@ del temporaire
 \subsubsection{Quelques exemples}\label{quelques-exemples}}
 
     J'ai écrit des modules jouets~:
-    
+
 \begin{itemize}
-	\item 
-	\texttt{un\_deux} qui définit des fonctions \texttt{un} et \texttt{deux}~;
-	\item
-	 \texttt{un\_deux\_trois} qui définit des fonctions \texttt{un}, \texttt{deux} et \texttt{trois}~;
-	 \item
-	\texttt{un\_deux\_trois\_quatre} qui définit, eh oui, des fonctions
-	\texttt{un}, \texttt{deux}, \texttt{trois} et \texttt{quatre}.
-\end{itemize}    
+\tightlist
+\item
+  \texttt{un\_deux} qui définit des fonctions \texttt{un} et
+  \texttt{deux}~;
+\item
+  \texttt{un\_deux\_trois} qui définit des fonctions \texttt{un},
+  \texttt{deux} et \texttt{trois}~;
+\item
+  \texttt{un\_deux\_trois\_quatre} qui définit, eh oui, des fonctions
+  \texttt{un}, \texttt{deux}, \texttt{trois} et \texttt{quatre}.
+\end{itemize}
 
 Toutes ces fonctions se contentent d'écrire leur nom et leur module.
 
@@ -257,3 +268,9 @@ la fonction trois dans le module un\_deux\_trois\_quatre
     Vous pouvez vous reporter à
 \href{https://docs.python.org/3/reference/simple_stmts.html\#the-import-statement}{la
 section sur l'instruction \texttt{import}} dans la documentation python.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

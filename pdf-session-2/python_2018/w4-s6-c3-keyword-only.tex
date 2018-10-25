@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{arguments-keyword-only}{%
 \section{\texorpdfstring{Arguments
 \emph{keyword-only}}{Arguments keyword-only}}\label{arguments-keyword-only}}
@@ -20,7 +27,7 @@ qu'on peut déclarer dans une fonction~:
 \item
   paramètres nommés (forme \emph{name=default})
 \item
-  paramètres *\emph{args} qui attrape dans un tuple le reliquat des arguments
+  paramètres **args* qui attrape dans un tuple le reliquat des arguments
   positionnels
 \item
   paramètres **\emph{kwds} qui attrape dans un dictionnaire le reliquat
@@ -107,17 +114,17 @@ devait impérativement les déclarer dans cet ordre~:
 positionnels, nommés, forme \texttt{*}, forme \texttt{**}
 \end{quote}
 
-comme dans notre fonction \texttt{foo}.\\
+comme dans notre fonction \texttt{foo}.
 
     Ça reste une bonne approximation, mais depuis Python-3, les choses ont
 un petit peu changé suite à
 \href{https://www.python.org/dev/peps/pep-3102/}{l'adoption du PEP
 3102}, qui vise à introduire la notion de paramètre qu'il faut
 impérativement nommer lors de l'appel (en anglais~: \emph{keyword-only}
-argument)\\
+argument)
 
     Pour résumer, il est maintenant possible de déclarer des
-\textbf{paramètres nommés après la forme \texttt{*}}\\
+\textbf{paramètres nommés après la forme \texttt{*}}
 
 Voyons cela sur un exemple
 
@@ -176,3 +183,9 @@ cela peut être utile de le savoir~:
   en tant que concepteur d'une fonction, car cela vous permet de
   manifester qu'un paramètre optionnel joue un rôle particulier.
 \end{itemize}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

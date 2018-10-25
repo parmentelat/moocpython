@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{muxe9thodes-spuxe9ciales-33}{%
 \section{Méthodes spéciales (3/3)}\label{muxe9thodes-spuxe9ciales-33}}
 
@@ -23,7 +30,7 @@ objet.attribut
 que, pour l'essentiel, le mécanisme d'héritage repose
 \textbf{précisément} sur la façon d'évaluer les attributs d'un objet,
 aussi nous vous recommandons d'utiliser ce trait avec précaution, car il
-vous donne la possibilité de ``faire muter le langage'' comme on dit.\\
+vous donne la possibilité de ``faire muter le langage'' comme on dit.
 
     \textbf{Remarque~:} on verra en toute dernière semaine que
 \texttt{\_\_getattr\_\_} est \emph{une} façon d'agir sur la façon dont
@@ -33,18 +40,18 @@ profondément si nécessaire.
 
     \hypertarget{un-exemple-la-classe-rpcproxy}{%
 \subparagraph{\texorpdfstring{Un exemple~: la classe
-\texttt{RPCProxy}}{Un exemple~: la classe RPCProxy}\\\\}\label{un-exemple-la-classe-rpcproxy}}
+\texttt{RPCProxy}}{Un exemple~: la classe RPCProxy}}\label{un-exemple-la-classe-rpcproxy}}
 
     Pour illustrer \texttt{\_\_getattr\_\_}, nous allons considérer le
 problème suivant. Une application utilise un service distant, avec
-laquelle elle interagit au travers d'une API.\\
+laquelle elle interagit au travers d'une API.
 
 C'est une situation très fréquente~: lorsqu'on utilise un service météo,
 ou de géolocalisation, ou de réservation, le prestataire vous propose
 une \textbf{API} (Application Programming Interface) qui se présente
 bien souvent comme une \textbf{liste de fonctions}, que votre fonction
 peut appeler à distance au travers d'un mécanisme de \textbf{RPC}
-(Remote Procedure Call).\\
+(Remote Procedure Call).
 
 Imaginez pour fixer les idées que vous utilisez un service de
 réservation de ressources dans un Cloud, qui vous permet d'appeler les
@@ -79,9 +86,7 @@ voulons illustrer ici est que le dialogue avec le service distant~:
     Pour ces raisons il est naturel de concevoir une classe
 \texttt{RPCProxy} dans laquelle on va rassembler à la fois ces données
 et cette logique, pour soulager toute l'application de ces détails,
-comme on l'a illustré ci-dessous~:\\
-
-\includegraphics{medias/rpcproxy.png}\\
+comme on l'a illustré ci-dessous~:
 
     Pour implémenter la plomberie liée à RPC, à l'encodage et décodage des
 données, et qui sera interne à la classe \texttt{RPCProxy}, on pourra en
@@ -103,7 +108,7 @@ Cela n'est toutefois pas notre sujet ici, et nous nous contenterons,
 dans notre code simplifié, d'imprimer un message.
 
     \hypertarget{une-approche-nauxefve}{%
-\subparagraph{Une approche naïve\\\\}\label{une-approche-nauxefve}}
+\subparagraph{Une approche naïve}\label{une-approche-nauxefve}}
 
     Se pose donc la question de savoir quelle interface la classe
 \texttt{RPCProxy} doit offrir au reste du monde. Dans une première
@@ -168,7 +173,7 @@ de la fonction BookNode -- args= (\{'id': 1002, 'phy\_mem': '32G'\},)
     \end{Verbatim}
 
     \hypertarget{discussion}{%
-\subparagraph{Discussion\\\\}\label{discussion}}
+\subparagraph{Discussion}\label{discussion}}
 
     Quelques commentaires en vrac au sujet de cette approche~:
 
@@ -196,7 +201,7 @@ de la fonction BookNode -- args= (\{'id': 1002, 'phy\_mem': '32G'\},)
 
     \hypertarget{une-approche-plus-subtile}{%
 \subparagraph{Une approche plus
-subtile\\\\}\label{une-approche-plus-subtile}}
+subtile}\label{une-approche-plus-subtile}}
 
     Pour obtenir une implémentation qui conserve toutes les qualités de la
 version naïve, mais sans la nécessité de définir une à une toutes les
@@ -219,7 +224,8 @@ comme dans cette deuxième version~:
         \PY{l+s+sd}{        à la fonction distante \PYZsq{}function\PYZsq{}}
         \PY{l+s+sd}{        \PYZdq{}\PYZdq{}\PYZdq{}}
                 \PY{k}{def} \PY{n+nf}{forwarder}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{:}
-                    \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Envoi à }\PY{l+s+si}{\PYZob{}self.url\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{de la fonction }\PY{l+s+si}{\PYZob{}function\PYZcb{}}\PY{l+s+s2}{ \PYZhy{}\PYZhy{} args= }\PY{l+s+si}{\PYZob{}args\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                    \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Envoi à }\PY{l+s+si}{\PYZob{}self.url\PYZcb{}}\PY{l+s+s2}{...}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                    \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{de la fonction }\PY{l+s+si}{\PYZob{}function\PYZcb{}}\PY{l+s+s2}{ \PYZhy{}\PYZhy{} args= }\PY{l+s+si}{\PYZob{}args\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
                     \PY{k}{return} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{retour de la fonction }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{function}
                 \PY{k}{return} \PY{n}{forwarder}
 \end{Verbatim}
@@ -249,9 +255,15 @@ et qu'on peut utiliser exactement comme tout à l'heure~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-Envoi à http://cloud.provider.com/JSONAPI
+Envoi à http://cloud.provider.com/JSONAPI{\ldots}
 de la fonction GetNodes -- args= ([('phy\_mem', '>=', '32G')],)
-Envoi à http://cloud.provider.com/JSONAPI
+Envoi à http://cloud.provider.com/JSONAPI{\ldots}
 de la fonction BookNode -- args= (\{'id': 1002, 'phy\_mem': '32G'\},)
 
     \end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

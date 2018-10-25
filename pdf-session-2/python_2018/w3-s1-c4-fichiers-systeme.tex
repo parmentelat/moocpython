@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{fichiers-systuxe8mes}{%
 \section{Fichiers systèmes}\label{fichiers-systuxe8mes}}
 
@@ -17,21 +24,22 @@ etc.) comprend un noyau (\emph{kernel}) qui est un logiciel qui a
 l'exclusivité pour interagir physiquement avec le matériel
 (processeur(s), mémoire, disque(s), périphériques, etc.)~; il offre aux
 programmes utilisateur (\emph{userspace}) des abstractions pour
-interagir avec ce matériel.\\
+interagir avec ce matériel.
 
 La notion de fichier, telle qu'on l'a vue dans la vidéo, correspond à
 une de ces abstractions~; elle repose principalement sur les quatre
 opérations élémentaires~suivantes~:
 
 \begin{itemize}
-	\item 
-	\texttt{open}~;
-	\item
-	\texttt{close}~;
-	\item
-	\texttt{read}~;
-	\item
-	\texttt{write}.
+\tightlist
+\item
+  \texttt{open}~;
+\item
+  \texttt{close}~;
+\item
+  \texttt{read}~;
+\item
+  \texttt{write}.
 \end{itemize}
 
     Parmi les autres conventions d'interaction entre le système (pour être
@@ -40,12 +48,13 @@ précis~: le
 une application, il y a les notions de~:
 
 \begin{itemize}
-	\item 
-	entrée standard	(\emph{standard input}, en abrégé \texttt{stdin})~;
-	\item
-	sortie standard (\emph{standard output}, en abrégé \texttt{stdout})~;
-	\item
-	erreur standard (\emph{standard error}, en abrégé \texttt{stderr}).
+\tightlist
+\item
+  entrée standard (\emph{standard input}, en abrégé \texttt{stdin})~;
+\item
+  sortie standard (\emph{standard output}, en abrégé \texttt{stdout})~;
+\item
+  erreur standard (\emph{standard error}, en abrégé \texttt{stderr}).
 \end{itemize}
 
 Ceci est principalement pertinent dans le contexte d'un terminal. L'idée
@@ -55,7 +64,7 @@ les entrées-sorties} d'un programme sans avoir à le modifier. De la
 sorte, on peut également \emph{chaîner} des traitements
 \href{http://en.wikipedia.org/wiki/Redirection_\%28computing\%29\#Piping}{à
 l'aide de \emph{pipes}}, sans avoir besoin de sauver les résultats
-intermédiaires sur disque.\\
+intermédiaires sur disque.
 
     Ainsi par exemple lorsque l'on écrit~:
 
@@ -83,9 +92,9 @@ d'attributs du module \texttt{sys}~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-<\_io.TextIOWrapper name='<stdin>' mode='r' encoding='cp1252'>
-<ipykernel.iostream.OutStream object at 0x041774F0>
-<ipykernel.iostream.OutStream object at 0x04177CF0>
+<\_io.TextIOWrapper name='<stdin>' mode='r' encoding='UTF-8'>
+<ipykernel.iostream.OutStream object at 0x105dff550>
+<ipykernel.iostream.OutStream object at 0x105d03630>
 
     \end{Verbatim}
 
@@ -104,7 +113,7 @@ obtenir quelque chose comme~:
 
     On n'a pas extrêmement souvent besoin d'utiliser ces variables en règle
 générale, mais elles peuvent s'avérer utiles dans des contextes
-spécifiques.\\
+spécifiques.
 
 Par exemple, l'instruction \texttt{print} écrit dans \texttt{sys.stdout}
 (c'est-à-dire la sortie standard). Et comme \texttt{sys.stdout} est une
@@ -156,3 +165,9 @@ dans le fichier
 
 
     \end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

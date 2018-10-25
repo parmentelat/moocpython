@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{suxe9quences}{%
 \section{Séquences}\label{suxe9quences}}
 
@@ -9,37 +16,48 @@
 
     Commençons par créer une chaîne de caractères. Ne vous inquiétez pas si
 vous ne comprenez pas encore le code d'initialisation utilisé
-ci-dessous.\\
+ci-dessous.
 
 Pour les plus curieux, l'instruction \texttt{import} permet de charger
 dans votre programme une boîte à outils que l'on appelle un module.
 Python vient avec de nombreux modules qui forment la bibliothèque
 standard. Le plus difficile avec les modules de la bibliothèque standard
 est de savoir qu'ils existent. En effet, il y en a un grand nombre et
-bien souvent il existe un module pour faire ce que vous souhaitez.\\
+bien souvent il existe un module pour faire ce que vous souhaitez.
 
 Ici en particulier nous utilisons le module \texttt{string}.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{string}
-        \PY{c+c1}{\PYZsh{} NB: string.ascii\PYZus{}lowercase est une constante qui contient}
-        \PY{c+c1}{\PYZsh{} la chaine \PYZdq{}abcdefghijklmnopqrstuvwxyz\PYZdq{}}
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} nous allons tirer profit ici d\PYZsq{}une }
+        \PY{c+c1}{\PYZsh{} constante définie dans le module string}
+        \PY{k+kn}{import} \PY{n+nn}{string}
         \PY{n}{chaine} \PY{o}{=} \PY{n}{string}\PY{o}{.}\PY{n}{ascii\PYZus{}lowercase}
+        
+        \PY{c+c1}{\PYZsh{} et voici sa valeur}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{chaine}\PY{p}{)}
 \end{Verbatim}
 
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+abcdefghijklmnopqrstuvwxyz
+
+    \end{Verbatim}
+
     Pour chacune des sous-chaînes ci-dessous, écrire une expression de
 slicing sur \texttt{chaine} qui renvoie la sous-chaîne. La cellule de
-code doit retourner \texttt{True}.\\
+code doit retourner \texttt{True}.
 
     Par exemple, pour obtenir ``def''~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{chaine}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{:}\PY{l+m+mi}{6}\PY{p}{]} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{def}\PY{l+s+s2}{\PYZdq{}}
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{chaine}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{:}\PY{l+m+mi}{6}\PY{p}{]} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{def}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} True
+\end{Verbatim}
+            
     \begin{enumerate}
 \def\labelenumi{\arabic{enumi})}
 \tightlist
@@ -49,7 +67,10 @@ code doit retourner \texttt{True}.\\
 \end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{chaine}\PY{p}{[} \PY{o}{\PYZlt{}}\PY{n}{votre\PYZus{}code}\PY{o}{\PYZgt{}} \PY{p}{]} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{vwx}\PY{l+s+s2}{\PYZdq{}}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{n}{chaine}\PY{p}{[} \PY{o}{\PYZlt{}}\PY{n}{votre\PYZus{}code}\PY{o}{\PYZgt{}} \PY{p}{]} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{vwx}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
@@ -62,7 +83,10 @@ code doit retourner \texttt{True}.\\
 \end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{chaine}\PY{p}{[} \PY{o}{\PYZlt{}}\PY{n}{votre\PYZus{}code}\PY{o}{\PYZgt{}} \PY{p}{]} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{wxyz}\PY{l+s+s2}{\PYZdq{}}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{n}{chaine}\PY{p}{[} \PY{o}{\PYZlt{}}\PY{n}{votre\PYZus{}code}\PY{o}{\PYZgt{}} \PY{p}{]} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{wxyz}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
@@ -75,7 +99,10 @@ code doit retourner \texttt{True}.\\
 \end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{chaine}\PY{p}{[} \PY{o}{\PYZlt{}}\PY{n}{votre\PYZus{}code}\PY{o}{\PYZgt{}} \PY{p}{]} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dfhjlnprtvxz}\PY{l+s+s2}{\PYZdq{}}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{n}{chaine}\PY{p}{[} \PY{o}{\PYZlt{}}\PY{n}{votre\PYZus{}code}\PY{o}{\PYZgt{}} \PY{p}{]} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dfhjlnprtvxz}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
@@ -88,7 +115,10 @@ code doit retourner \texttt{True}.\\
 \end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{chaine}\PY{p}{[} \PY{o}{\PYZlt{}}\PY{n}{votre\PYZus{}code}\PY{o}{\PYZgt{}} \PY{p}{]} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{xurolifc}\PY{l+s+s2}{\PYZdq{}}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{n}{chaine}\PY{p}{[} \PY{o}{\PYZlt{}}\PY{n}{votre\PYZus{}code}\PY{o}{\PYZgt{}} \PY{p}{]} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{xurolifc}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
@@ -100,7 +130,7 @@ intermédiaire}\label{exercice---niveau-intermuxe9diaire}}
 \subsubsection{Longueur}\label{longueur}}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} il vous faut évaluer cette cellule magique}
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} il vous faut évaluer cette cellule magique}
         \PY{c+c1}{\PYZsh{} pour charger l\PYZsq{}exercice qui suit}
         \PY{c+c1}{\PYZsh{} et autoévaluer votre réponse}
         \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}inconnue} \PY{k}{import} \PY{n}{exo\PYZus{}inconnue}
@@ -138,18 +168,22 @@ alors, dans ce cas~:
     L'exercice consiste à écrire une fonction qui retourne la valeur de
 \texttt{inconnue} à partir de celles de \texttt{composite} et
 \texttt{connue}. Vous pouvez admettre que \texttt{connue} n'est pas
-vide, c'est-à-dire qu'elle contient au moins un caractère.\\
+vide, c'est-à-dire qu'elle contient au moins un caractère.
 
     Vous pouvez utiliser du \emph{slicing}, et la fonction \texttt{len()},
 qui retourne la longueur d'une chaîne~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n+nb}{len}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abcd}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n+nb}{len}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abcd}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} 4
+\end{Verbatim}
+            
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} à vous de jouer}
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} à vous de jouer}
         \PY{k}{def} \PY{n+nf}{inconnue}\PY{p}{(}\PY{n}{composite}\PY{p}{,} \PY{n}{connue}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{votre code}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
@@ -159,7 +193,10 @@ qui retourne la longueur d'une chaîne~:
 vérifier votre résultat.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} correction}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{c+c1}{\PYZsh{} correction}
         \PY{n}{exo\PYZus{}inconnue}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{inconnue}\PY{p}{)}
 \end{Verbatim}
 
@@ -177,7 +214,7 @@ vérifier votre résultat.
 \end{itemize}
 
 Si toutes les lignes sont \textbf{en vert} c'est que vous avez réussi
-cet exercice.\\
+cet exercice.
 
     Vous pouvez essayer autant de fois que vous voulez, mais il vous faut
 alors à chaque itération~:
@@ -190,3 +227,9 @@ alors à chaque itération~:
 \item
   et ensuite évaluer la cellule correction pour la mettre à jour.
 \end{itemize}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

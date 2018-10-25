@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{cluxe9s-immuables}{%
 \section{Clés immuables}\label{cluxe9s-immuables}}
 
@@ -18,19 +25,19 @@ immuable}\label{une-cluxe9-doit-uxeatre-immuable}}
 
     Si vous vous souvenez de la vidéo sur les tables de hash, la mécanique
 interne du dictionnaire repose sur le calcul, à partir de chaque clé,
-d'une fonction de hachage.\\
+d'une fonction de hachage.
 
 C'est-à-dire que, pour simplifier, on localise la présence d'une clé en
 calculant d'abord
 
-\(f(clé) = hash\)\\
+\(f(clé) = hash\)
 
 puis on poursuit la recherche en utilisant \(hash\) comme indice dans le
-tableau contenant les couples (clé, valeur).\\
+tableau contenant les couples (clé, valeur).
 
 On le rappelle, c'est cette astuce qui permet de réaliser les opérations
 sur les dictionnaires en temps constant - c'est-à-dire indépendamment du
-nombre d'éléments.\\
+nombre d'éléments.
 
     Cependant, pour que ce mécanisme fonctionne, il est indispensable que
 \textbf{la valeur de la clé reste inchangée} pendant la durée de vie du
@@ -38,15 +45,15 @@ dictionnaire. Sinon, bien entendu, on pourrait avoir le scénario
 suivant~:
 
 \begin{itemize}
-	\item 
-	on range un tuple \texttt{(clef,\ valeur)} à un premier
-	indice \(f(clef) = hash_1\)~;
-	\item
-	on modifie la valeur de \(clef\) qui
-	devient \(clef'\)~;
-	\item
-	on recherche notre valeur à l'indice
-	\(f(clef') = hash_2 \neq hash_1\).
+\tightlist
+\item
+  on range un tuple \texttt{(clef,\ valeur)} à un premier indice
+  \(f(clef) = hash_1\)~;
+\item
+  on modifie la valeur de \(clef\) qui devient \(clef'\)~;
+\item
+  on recherche notre valeur à l'indice
+  \(f(clef') = hash_2 \neq hash_1\).
 \end{itemize}
 
 et donc, avec ces hypothèses, on n'a plus la garantie de bon
@@ -60,7 +67,7 @@ immuable}\label{une-cluxe9-doit-uxeatre-globalement-immuable}}
 mutable ou immuable des différents types prédéfinis de Python. Vous
 devez donc à présent avoir au moins en partie ce tableau en tête~:
 
-\begin{longtable}[]{@{}rr@{}}
+\begin{longtable}[]{@{}ll@{}}
 \toprule
 Type & Mutable~?\tabularnewline
 \midrule
@@ -76,7 +83,7 @@ Type & Mutable~?\tabularnewline
 \end{longtable}
 
     Le point important ici, est qu'il \textbf{ne suffit pas}, pour une clé,
-d'être \textbf{de type immuable}.\\
+d'être \textbf{de type immuable}.
 
 On peut le voir sur un exemple très simple~; donnons-nous donc un
 dictionnaire~:
@@ -134,29 +141,17 @@ liste~:
 dictionnaire~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} provoque une exception}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{c+c1}{\PYZsh{} provoque une exception}
         \PY{n}{d}\PY{p}{[}\PY{n}{mauvaise\PYZus{}cle}\PY{p}{]} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{on ne peut pas faire ceci}\PY{l+s+s1}{\PYZsq{}}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-
-        ---------------------------------------------------------------------------
-
-        TypeError                                 Traceback (most recent call last)
-
-        <ipython-input-6-08a3625a4eed> in <module>()
-          1 \# provoque une exception
-    ----> 2 d[mauvaise\_cle] = 'on ne peut pas faire ceci'
-    
-
-        TypeError: unhashable type: 'list'
-
-    \end{Verbatim}
-
     Pour conclure, il faut retenir qu'un objet n'est éligible pour être
 utilisé comme clé que s'il est \textbf{composé de types immuables de
-haut en bas} de la structure de données.\\
+haut en bas} de la structure de données.
 
     La raison d'être principale du type \texttt{tuple}, que nous avons vu la
 semaine passée, et du type \texttt{frozenset}, que nous verrons très
@@ -171,3 +166,9 @@ pour les types définis par l'utilisateur - les classes donc - que nous
 effleurons à la fin de cette semaine et que nous étudions plus en
 profondeur en semaine 6, c'est un autre mécanisme qui est utilisé pour
 calculer la clé de hachage d'une instance de classe.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

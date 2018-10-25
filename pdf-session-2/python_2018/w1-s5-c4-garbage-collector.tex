@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{gestion-de-la-muxe9moire}{%
 \section{Gestion de la mémoire}\label{gestion-de-la-muxe9moire}}
 
@@ -21,24 +28,25 @@ intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
 
     Dans un langage traditionnel de bas niveau comme C ou C++, le
 programmeur est en charge de l'allocation - et donc de la libération -
-de la mémoire.\\
+de la mémoire.
 
 Ce qui signifie que, sauf pour les valeurs stockées dans la pile, le
 programmeur est amené~:
+
 \begin{itemize}
-	\item 
-	à réclamer de la mémoire au système
-	d'exploitation en appelant explicitement \texttt{malloc} (C) ou
-	\texttt{new} (C++)~;
-	\item
-	et réciproquement à rendre cette mémoire au
-	système d'exploitation lorsqu'elle n'est plus utilisée, en appelant
-	\texttt{free} (C) ou \texttt{delete} (C++).
+\tightlist
+\item
+  à réclamer de la mémoire au système d'exploitation en appelant
+  explicitement \texttt{malloc} (C) ou \texttt{new} (C++)~;
+\item
+  et réciproquement à rendre cette mémoire au système d'exploitation
+  lorsqu'elle n'est plus utilisée, en appelant \texttt{free} (C) ou
+  \texttt{delete} (C++).
 \end{itemize}
 
     Avec ce genre de langage, la gestion de la mémoire est un aspect
 important de la programmation. Ce modèle offre une grande flexibilité,
-mais au prix d'un coût élevé en matière de vitesse de développement.\\
+mais au prix d'un coût élevé en matière de vitesse de développement.
 
 En effet, il est assez facile d'oublier de libérer la mémoire après
 usage, ce qui peut conduire à épuiser les ressources disponibles. À
@@ -51,13 +59,14 @@ l'exploitation d'erreurs de gestion de la mémoire.
 \subsubsection{Langages de haut niveau}\label{langages-de-haut-niveau}}
 
     Pour toutes ces raisons, avec un langage de plus haut niveau comme
-Python, le programmeur est libéré de cet aspect de la programmation.\\
+Python, le programmeur est libéré de cet aspect de la programmation.
 
 Pour anticiper un peu sur le cours des semaines suivantes, voici ce que
 vous pouvez garder en tête s'agissant de la gestion mémoire en Python~:
-* vous créez vos objets au fur et à mesure de vos besoins~;
 
 \begin{itemize}
+\item
+  vous créez vos objets au fur et à mesure de vos besoins~;
 \item
   vous n'avez pas besoin de les libérer explicitement, le
   ``\emph{Garbage Collector}'' de Python va s'en charger pour recycler
@@ -89,3 +98,9 @@ vous pouvez garder en tête s'agissant de la gestion mémoire en Python~:
   caractéristique de singleton, de manière à optimiser la mémoire
   nécessaire pour exécuter un programme.
 \end{itemize}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

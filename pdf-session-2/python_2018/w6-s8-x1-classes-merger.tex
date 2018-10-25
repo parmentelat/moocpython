@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{exercice-sur-lutilisation-des-classes}{%
 \section{Exercice sur l'utilisation des
 classes}\label{exercice-sur-lutilisation-des-classes}}
@@ -6,15 +13,15 @@ classes}\label{exercice-sur-lutilisation-des-classes}}
 \subsubsection{Introduction}\label{introduction}}
 
     \hypertarget{objectifs-de-lexercice}{%
-\subparagraph{Objectifs de l'exercice\\\\}\label{objectifs-de-lexercice}}
+\subparagraph{Objectifs de l'exercice}\label{objectifs-de-lexercice}}
 
     Maintenant que vous avez un bagage qui couvre toutes les bases du
 langage, cette semaine nous ne ferons qu'un seul exercice de taille un
 peu plus réaliste. Vous devez écrire quelques classes, que vous intégrez
-ensuite dans un code écrit pas nos soins.\\
+ensuite dans un code écrit pas nos soins.
 
 L'exercice comporte donc à la fois une part lecture et une part
-écriture.\\
+écriture.
 
 Par ailleurs, cette fois-ci l'exercice n'est plus à faire dans un
 notebook~; vous êtes donc également incités à améliorer autant que
@@ -22,7 +29,7 @@ possible l'environnement de travail sur votre propre ordinateur.
 
     \hypertarget{objectifs-de-lapplication}{%
 \subparagraph{Objectifs de
-l'application\\\\}\label{objectifs-de-lapplication}}
+l'application}\label{objectifs-de-lapplication}}
 
     Dans le prolongement des exercices de la semaine 3 sur les données
 maritimes, l'application dont il est question ici fait principalement
@@ -69,15 +76,13 @@ suivant~:
     Voici à quoi ressemble le fichier KML obtenu avec les données que nous
 fournissons, une fois ouvert sous Google Earth~:
 
-\includegraphics{medias/ships-in-earth.png}
-
     \hypertarget{choix-dimpluxe9mentation}{%
-\subparagraph{Choix d'implémentation\\\\}\label{choix-dimpluxe9mentation}}
+\subparagraph{Choix d'implémentation}\label{choix-dimpluxe9mentation}}
 
     En particulier, dans cet exercice nous allons voir comment on peut gérer
 des données sous forme d'instances de classes plutôt que de types de
 base. Cela résonne avec la discussion commencée en Semaine 3, Séquence
-``Les dictionnaires'', dans le complément ``record-et-dictionnaire''.\\
+``Les dictionnaires'', dans le complément ``record-et-dictionnaire''.
 
 Dans les exercices de cette semaine-là nous avions uniquement utilisé
 des types ``standard'' comme listes, tuples et dictionnaires pour
@@ -85,37 +90,38 @@ modéliser les données, cette semaine nous allons faire le choix inverse
 et utiliser plus souvent des (instances de) classes.
 
     \hypertarget{principe-de-lexercice}{%
-\subparagraph{Principe de l'exercice\\\\}\label{principe-de-lexercice}}
+\subparagraph{Principe de l'exercice}\label{principe-de-lexercice}}
 
     On a écrit une application complète, constituée de 4 modules~; on vous
 donne le code de trois de ces modules et vous devez écrire le module
 manquant.
 
     \hypertarget{correction}{%
-\subparagraph{Correction\\\\}\label{correction}}
+\subparagraph{Correction}\label{correction}}
 
     Tout d'abord nous fournissons un jeu de données d'entrées. De plus,
 l'application vient avec son propre système de vérification, qui est
 très rustique. Il consiste à comparer, une fois les sorties produites,
 leur contenu avec les sorties de référence, qui ont été obtenues avec
-notre version de l'application.\\
+notre version de l'application.
 
 Du coup, le fait de disposer de Google Earth sur votre ordinateur n'est
 pas strictement nécessaire, on ne s'en sert pas à proprement parler pour
 l'exercice.
 
-\newpage
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
     \hypertarget{mise-en-place}{%
 \subsubsection{Mise en place}\label{mise-en-place}}
 
     \hypertarget{partez-dun-ruxe9pertoire-vierge}{%
 \subparagraph{Partez d'un répertoire
-vierge\\\\}\label{partez-dun-ruxe9pertoire-vierge}}
+vierge}\label{partez-dun-ruxe9pertoire-vierge}}
 
     Pour commencer, créez-vous un répertoire pour travailler à cet exercice.
 
     \hypertarget{les-donnuxe9es}{%
-\subparagraph{Les données\\\\}\label{les-donnuxe9es}}
+\subparagraph{Les données}\label{les-donnuxe9es}}
 
     Commencez par y installer les données que nous publions dans les formats
 suivants~:
@@ -151,7 +157,7 @@ dans la plupart des cas il s'agit de données abrégées.
 
     \hypertarget{les-ruxe9sultats-de-ruxe9fuxe9rence}{%
 \subparagraph{Les résultats de
-référence\\\\}\label{les-ruxe9sultats-de-ruxe9fuxe9rence}}
+référence}\label{les-ruxe9sultats-de-ruxe9fuxe9rence}}
 
     De même il vous faut installer les résultats de référence que vous
 trouvez ici~:
@@ -180,7 +186,7 @@ trois fichiers~:
 \end{itemize}
 
     \hypertarget{le-code}{%
-\subparagraph{Le code\\\\}\label{le-code}}
+\subparagraph{Le code}\label{le-code}}
 
     Vous pouvez à présent aller chercher les 3 modules suivants~:
 
@@ -194,16 +200,17 @@ trois fichiers~:
   \href{data/kml.py}{\texttt{kml.py}}
 \end{itemize}
 
-et les sauver dans le même répertoire.\\
+et les sauver dans le même répertoire.
 
 Vous remarquerez que le code est cette fois entièrement rédigé en
 anglais, ce que nous vous conseillons de faire aussi souvent que
-possible.\\
+possible.
 
 Votre but dans cet exercice est d'écrire le module manquant
 \texttt{shipdict.py} qui permettra à l'application de fonctionner comme
 attendu.
 
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
     \hypertarget{fonctionnement-de-lapplication}{%
 \subsubsection{Fonctionnement de
@@ -211,7 +218,7 @@ l'application}\label{fonctionnement-de-lapplication}}
 
     \hypertarget{comment-est-structuruxe9e-lapplication}{%
 \subparagraph{Comment est structurée
-l'application\\\\}\label{comment-est-structuruxe9e-lapplication}}
+l'application}\label{comment-est-structuruxe9e-lapplication}}
 
     Le point d'entrée s'appelle \texttt{merger.py}
 
@@ -256,7 +263,7 @@ Il utilise trois modules annexes, qui sont~:
 \end{itemize}
 
     \hypertarget{lancement}{%
-\subparagraph{Lancement\\\\}\label{lancement}}
+\subparagraph{Lancement}\label{lancement}}
 
     Lorsque le programme est complet et qu'il fonctionne correctement, on le
 lance comme ceci~:
@@ -282,7 +289,7 @@ qui comme on le voit produit~:
 \end{itemize}
 
     \hypertarget{mode-bavard-verbose}{%
-\subparagraph{Mode bavard (verbose)\\\\}\label{mode-bavard-verbose}}
+\subparagraph{Mode bavard (verbose)}\label{mode-bavard-verbose}}
 
     On peut également lancer l'application avec l'option
 \texttt{-\/-verbose} ou simplement \texttt{-v} sur la ligne de commande,
@@ -334,19 +341,18 @@ optional arguments:
 \end{verbatim}
 
     \hypertarget{un-mot-sur-les-donnuxe9es}{%
-\subparagraph{Un mot sur les données\\\\}\label{un-mot-sur-les-donnuxe9es}}
+\subparagraph{Un mot sur les données}\label{un-mot-sur-les-donnuxe9es}}
 
     \textbf{Attention}, le contenu détaillé des champs \texttt{extended} et
 \texttt{abbreviated} peut être légèrement différent de ce qu'on avait
 pour les exercices de la semaine 3, dans lesquels certaines
-simplifications ont été apportées.\\
+simplifications ont été apportées.
 
 Voici ce avec quoi on travaille cette fois-ci~:
 
 \begin{verbatim}
 >>> extended[0]
-[228317000, 48.76829, -4.334262, 75, 333, u'2013-09-30T21:54:00', u'MA GONDOLE',
-30, 0, u'FGSA', u'FR', u'', u'', u'', u'CLASS B', u'', 13, 3, 0, u'', u'', u'']
+[228317000, 48.76829, -4.334262, 75, 333, u'2013-09-30T21:54:00', u'MA GONDOLE', 30, 0, u'FGSA', u'FR', u'', u'', u'', u'CLASS B', u'', 13, 3, 0, u'', u'', u'']
 \end{verbatim}
 
 c'est-à-dire~:
@@ -369,7 +375,7 @@ c'est-à-dire~:
 \end{verbatim}
 
     Il y a unicité des \texttt{id} bien entendu (deux relevés qui portent le
-même \texttt{id} concernent le même bateau).\\
+même \texttt{id} concernent le même bateau).
 
 \textbf{Note historique} Dans une première version de cet exercice, on
 avait laissé des doublons, c'est-à-dire des bateaux différents mais de
@@ -379,6 +385,9 @@ dans la présente version ces doublons ont été enlevés. Sachez toutefois
 que cette unicité est artificielle, aussi efforcez-vous de ne pas écrire
 de code qui reposerait sur cette hypothèse.
 
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
     \hypertarget{niveaux-pour-lexercice}{%
 \subsection{Niveaux pour l'exercice}\label{niveaux-pour-lexercice}}
@@ -402,13 +411,14 @@ sont à votre disposition, dans l'ordre~:
   contextes également.
 \end{itemize}
 
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
     En \textbf{niveau avancé}, l'énoncé pourrait s'arrêter là~; vous lisez
 le code qui est fourni et vous en déduisez ce qui manque pour faire
 fonctionner le tout. En cas de difficulté liée aux arrondis avec le mode
 bavard, vous pouvez toutefois vous inspirer du code qui est donné dans
 la toute dernière section de cet énoncé (section ``Un dernier indice''),
-pour traduire un flottant en représentation textuelle.\\
+pour traduire un flottant en représentation textuelle.
 
     Vous pouvez considérer que vous avez achevé l'exercice lorsque les deux
 appels suivants affichent les deux dernières lignes avec OK~:
@@ -430,7 +440,7 @@ Comparing ALL_SHIPS.kml and ALL_SHIPS.kml.ref -> OK
     Le cas où on lance \texttt{merger.py} avec l'option bavarde est
 facultatif.
 
-
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
     En \textbf{niveau intermédiaire}, nous vous donnons ci-dessous un
 extrait de ce que donne \texttt{help} sur les classes manquantes de
@@ -555,7 +565,7 @@ class ShipDict(__builtin__.dict)
 \end{verbatim}
 
     \hypertarget{un-dernier-indice}{%
-\subparagraph{Un dernier indice\\\\}\label{un-dernier-indice}}
+\subparagraph{Un dernier indice}\label{un-dernier-indice}}
 
     Pour éviter de la confusion, voici le code que nous utilisons pour
 transformer un flottant en coordonnées lisibles dans le résumé généré en
@@ -573,3 +583,9 @@ def d_m_s(f):
     s = int( (f-d)*3600 - 60*m)
     return f"{d:02d}.{m:02d}'{s:02d}''"
 \end{verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

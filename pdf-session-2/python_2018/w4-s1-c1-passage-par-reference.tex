@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{passage-darguments-par-ruxe9fuxe9rence}{%
 \section{Passage d'arguments par
 référence}\label{passage-darguments-par-ruxe9fuxe9rence}}
@@ -63,7 +70,10 @@ référence}.
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{ipythontutor} curInstr=4
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{ipythontutor} curInstr=4
         def ma\PYZus{}fonction(dans\PYZus{}fonction):
             print(dans\PYZus{}fonction)
             
@@ -76,7 +86,7 @@ référence}.
 simplifier - équivalent à ceci~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{dans\PYZus{}appelant} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{texte}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{dans\PYZus{}appelant} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{texte}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
         
         \PY{c+c1}{\PYZsh{} ma\PYZus{}fonction (dans\PYZus{}appelant)}
         \PY{c+c1}{\PYZsh{} → on entre dans la fonction}
@@ -95,7 +105,7 @@ ceci -- on rappelle que la fonction built-in \texttt{id} retourne
 l'adresse mémoire d'un objet~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{def} \PY{n+nf}{ma\PYZus{}fonction}\PY{p}{(}\PY{n}{dans\PYZus{}fonction}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k}{def} \PY{n+nf}{ma\PYZus{}fonction}\PY{p}{(}\PY{n}{dans\PYZus{}fonction}\PY{p}{)}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dans ma\PYZus{}fonction}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{dans\PYZus{}fonction} \PY{p}{,} \PY{n+nb}{id}\PY{p}{(}\PY{n}{dans\PYZus{}fonction}\PY{p}{)}\PY{p}{)}
             
         \PY{n}{dans\PYZus{}appelant} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{texte}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
@@ -105,8 +115,8 @@ l'adresse mémoire d'un objet~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-dans appelant    ['texte'] 4486041480
-dans ma\_fonction ['texte'] 4486041480
+dans appelant    ['texte'] 4404466312
+dans ma\_fonction ['texte'] 4404466312
 
     \end{Verbatim}
 
@@ -119,7 +129,7 @@ exactement comme l'affectation, et que tout ce que nous avons vu au
 sujet des références partagées s'applique exactement à l'identique~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} on ne peut pas modifier un immuable dans une fonction}
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} on ne peut pas modifier un immuable dans une fonction}
         \PY{k}{def} \PY{n+nf}{increment}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
             \PY{n}{n} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
         
@@ -135,7 +145,7 @@ sujet des références partagées s'applique exactement à l'identique~:
     \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} on peut par contre ajouter dans une liste}
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} on peut par contre ajouter dans une liste}
         \PY{k}{def} \PY{n+nf}{insert}\PY{p}{(}\PY{n}{liste}\PY{p}{,} \PY{n}{valeur}\PY{p}{)}\PY{p}{:}
             \PY{n}{liste}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{valeur}\PY{p}{)}
             
@@ -161,3 +171,7 @@ De cette façon, on saura s'il faut ou non copier l'argument avant de le
 passer à votre fonction.
 
 
+    % Add a bibliography block to the postdoc
+    
+    
+    

@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{fonctions-avec-ou-sans-valeur-de-retour}{%
 \section{Fonctions avec ou sans valeur de
 retour}\label{fonctions-avec-ou-sans-valeur-de-retour}}
@@ -82,7 +89,7 @@ utiliser cette valeur comme n'importe quelle expression.
     Le terme même de fonction, si vous vous rappelez vos souvenirs de
 mathématiques, suggère qu'on calcule un résultat à partir de valeurs
 d'entrée. Dans la pratique il est assez rare qu'on définisse une
-fonction qui ne retourne rien.\\
+fonction qui ne retourne rien.
 
     En fait \textbf{toutes} les fonctions retournent quelque chose. Lorsque
 le programmeur n'a pas prévu d'instruction \texttt{return}, Python
@@ -133,8 +140,8 @@ utile, voyons le code suivant~:
             \PY{k}{if} \PY{n}{n} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{0}\PY{p}{:}
                 \PY{k}{return}
             \PY{c+c1}{\PYZsh{} traiter le cas singulier}
-            \PY{c+c1}{\PYZsh{} (NB elif est un raccourci pour else if, utile pour éviter}
-            \PY{c+c1}{\PYZsh{} une indentation excessive)}
+            \PY{c+c1}{\PYZsh{} NB: elif est un raccourci pour else if}
+            \PY{c+c1}{\PYZsh{} c\PYZsq{}est utile pour éviter une indentation excessive}
             \PY{k}{elif} \PY{n}{n} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
                 \PY{k}{return} \PY{k+kc}{False}
             \PY{c+c1}{\PYZsh{} chercher un diviseur dans [2..n\PYZhy{}1]}
@@ -175,11 +182,11 @@ premier(35) = False
 
     \hypertarget{return-sans-valeur}{%
 \subparagraph{\texorpdfstring{\texttt{return} sans
-valeur}{return sans valeur}\\\\}\label{return-sans-valeur}}
+valeur}{return sans valeur}}\label{return-sans-valeur}}
 
     Pour les besoins de cette discussion, nous avons choisi de retourner
 \texttt{None} pour les entiers négatifs ou nuls, une manière comme une
-autre de signaler que la valeur en entrée n'est pas valide.\\
+autre de signaler que la valeur en entrée n'est pas valide.
 
 Ceci n'est pas forcément une bonne pratique, mais elle nous permet ici
 d'illustrer que dans le cas où on ne mentionne pas de valeur de retour,
@@ -187,12 +194,12 @@ Python retourne \texttt{None}.
 
     \hypertarget{return-interrompt-la-fonction}{%
 \subparagraph{\texorpdfstring{\texttt{return} interrompt la
-fonction}{return interrompt la fonction}\\\\}\label{return-interrompt-la-fonction}}
+fonction}{return interrompt la fonction}}\label{return-interrompt-la-fonction}}
 
     Comme on peut s'en convaincre en instrumentant le code - ce que vous
 pouvez faire à titre d'exercice en ajoutant des fonctions \texttt{print}
 - dans le cas d'un nombre qui n'est pas premier la boucle \texttt{for}
-ne va pas jusqu'à son terme.\\
+ne va pas jusqu'à son terme.
 
     On aurait pu d'ailleurs tirer profit de cette propriété pour écrire la
 fonction de manière légèrement différente comme ceci~:
@@ -251,7 +258,7 @@ pour n = 35 : premier → False
 
     \hypertarget{digression-sur-les-chauxeenes}{%
 \subparagraph{Digression sur les
-chaînes\\\\}\label{digression-sur-les-chauxeenes}}
+chaînes}\label{digression-sur-les-chauxeenes}}
 
     Vous remarquerez dans cette dernière cellule, si vous regardez bien le
 paramètre de \texttt{print}, qu'on peut accoler deux chaînes (ici deux
@@ -268,3 +275,9 @@ d'alourdir le code~:
 \begin{Verbatim}[commandchars=\\\{\}]
 {\color{outcolor}Out[{\color{outcolor}10}]:} 'abcdef'
 \end{Verbatim}
+            
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{dictionnaires}{%
 \section{Dictionnaires}\label{dictionnaires}}
 
@@ -181,7 +188,7 @@ bob, age 42
     On remarque d'abord que les entrées sont listées dans le désordre, plus
 précisément, il n'y a pas de notion d'ordre dans un dictionnaire~; ceci
 est dû à l'action de la fonction de hachage, que nous avons vue dans la
-vidéo précédente.\\
+vidéo précédente.
 
     On peut obtenir séparément la liste des clés et des valeurs avec~:
 
@@ -235,8 +242,9 @@ fonction \texttt{len}~:
     Pour une liste exhaustive reportez-vous à la page de la documentation
 Python ici~:
 
-\href{https://docs.python.org/3/library/stdtypes.html\#mapping-types-dict}{https://docs.python.org/3/library/stdtypes.html\#mapping-types-dict}
+https://docs.python.org/3/library/stdtypes.html\#mapping-types-dict
 
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
     \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
 \subsection{Complément - niveau
@@ -280,20 +288,22 @@ C'était particulièrement visible dans les versions de Python jusque
 3.5~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}16}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{python2}
-         \PYZsh{} coding: utf\PYZhy{}8
+{\color{incolor}In [{\color{incolor}16}]:} \PY{o}{\PYZpc{}\PYZpc{}python}2
+         \PY{c+c1}{\PYZsh{} coding: utf\PYZhy{}8}
          
-         \PYZsh{} cette cellule utilise python\PYZhy{}2.7 pour illustrer le fait
-         \PYZsh{} que les dictionnaires ne sont pas ordonnés
+         \PY{c+c1}{\PYZsh{} cette cellule utilise python\PYZhy{}2.7 pour illustrer le fait}
+         \PY{c+c1}{\PYZsh{} que les dictionnaires ne sont pas ordonnés}
          
-         d = \PYZob{}\PYZsq{}c\PYZsq{} : 3, \PYZsq{}b\PYZsq{} : 1, \PYZsq{}a\PYZsq{} : 2\PYZcb{}
-         for k, v in d.items():
-             print k, v
+         \PY{n}{d} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+m+mi}{2}\PY{p}{\PYZcb{}}
+         \PY{k}{for} \PY{n}{k}\PY{p}{,} \PY{n}{v} \PY{o+ow}{in} \PY{n}{d}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+             \PY{n+nb}{print} \PY{n}{k}\PY{p}{,} \PY{n}{v}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-Couldn't find program: 'python2'
+a 2
+c 3
+b 1
 
     \end{Verbatim}
 
@@ -318,7 +328,7 @@ a 2
 
     Il faut insister sur le fait qu'il s'agit d'un \textbf{détail
 d'implémentation}, et que vous ne devez pas écrire du code qui suppose
-que les dictionnaires sont ordonnés.\\
+que les dictionnaires sont ordonnés.
 
     Si vous avez besoin de dictionnaires qui sont \textbf{garantis}
 ordonnés, voyez dans
@@ -353,7 +363,7 @@ automatique}{collections.defaultdict~: initialisation automatique}}\label{collec
 
     Imaginons que vous devez gérer un dictionnaire dont les valeurs sont des
 listes, et que votre programme ajoute des valeurs au fur et à mesure
-dans ces listes.\\
+dans ces listes.
 
 Avec un dictionnaire de base, cela peut vous amener à écrire un code qui
 ressemble à ceci~:
@@ -467,7 +477,7 @@ c'est-à-dire si elle n'est pas encore présente~:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}23}]:} \{'alice': 30, 'bob': 42, 'eric': 70, 'jean': 25\}
+{\color{outcolor}Out[{\color{outcolor}23}]:} \{'alice': 30, 'eric': 70, 'bob': 42, 'jean': 25\}
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -497,7 +507,7 @@ c'est-à-dire si elle n'est pas encore présente~:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}26}]:} \{'alice': 30, 'bob': 42, 'eric': 70, 'inconnu': 50, 'jean': 25\}
+{\color{outcolor}Out[{\color{outcolor}26}]:} \{'alice': 30, 'eric': 70, 'bob': 42, 'jean': 25, 'inconnu': 50\}
 \end{Verbatim}
             
     Notez bien que \texttt{setdefault} peut éventuellement créer une entrée
@@ -514,7 +524,7 @@ comme \texttt{items()}, \texttt{keys()} et \texttt{values()}.
 
     \hypertarget{ce-sont-des-objets-ituxe9rables}{%
 \paragraph{Ce sont des objets
-itérables\\\\}\label{ce-sont-des-objets-ituxe9rables}}
+itérables}\label{ce-sont-des-objets-ituxe9rables}}
 
     Les méthodes \texttt{items()}, \texttt{keys()} et \texttt{values()} ne
 retournent pas des listes (comme c'était le cas en Python 2), mais des
@@ -594,14 +604,14 @@ de temps à construire~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}33}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{timeit} \PYZhy{}n 10000
-         \PYZsh{} créer un objet vue est très rapide
-         big\PYZus{}keys = big\PYZus{}dict.keys()
+{\color{incolor}In [{\color{incolor}33}]:} \PY{o}{\PYZpc{}\PYZpc{}time}it \PYZhy{}n 10000
+         \PY{c+c1}{\PYZsh{} créer un objet vue est très rapide}
+         \PY{n}{big\PYZus{}keys} \PY{o}{=} \PY{n}{big\PYZus{}dict}\PY{o}{.}\PY{n}{keys}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-194 ns ± 92.9 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+80.1 ns ± 10.5 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 
     \end{Verbatim}
 
@@ -613,20 +623,20 @@ de temps à construire~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}35}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{timeit} \PYZhy{}n 20
-         \PYZsh{} si on devait vraiment construire la liste ce serait beaucoup plus long
-         big\PYZus{}lkeys = list(big\PYZus{}keys)
+{\color{incolor}In [{\color{incolor}35}]:} \PY{o}{\PYZpc{}\PYZpc{}time}it \PYZhy{}n 20
+         \PY{c+c1}{\PYZsh{} si on devait vraiment construire la liste ce serait beaucoup plus long}
+         \PY{n}{big\PYZus{}lkeys} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n}{big\PYZus{}keys}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-19.4 ms ± 333 µs per loop (mean ± std. dev. of 7 runs, 20 loops each)
+15.2 ms ± 276 µs per loop (mean ± std. dev. of 7 runs, 20 loops each)
 
     \end{Verbatim}
 
     \hypertarget{en-fait-ce-sont-des-vues}{%
 \paragraph{\texorpdfstring{En fait ce sont des
-\emph{vues}}{En fait ce sont des vues}\\\\}\label{en-fait-ce-sont-des-vues}}
+\emph{vues}}{En fait ce sont des vues}}\label{en-fait-ce-sont-des-vues}}
 
     Une autre propriété un peu inattendue de ces objets, c'est que
 \textbf{ce sont des vues}~; ce qu'on veut dire par là (pour ceux qui
@@ -681,3 +691,9 @@ section sur les vues de dictionnaires} pour plus de détails.
 Python 2, où l'on avait des méthodes distinctes, par exemple
 \texttt{keys()}, \texttt{iterkeys()} et \texttt{viewkeys()}, selon le
 type d'objets que l'on souhaitait construire.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{muxe9thodes-spuxe9ciales-23}{%
 \section{Méthodes spéciales (2/3)}\label{muxe9thodes-spuxe9ciales-23}}
 
@@ -8,6 +15,7 @@ avancé}\label{compluxe9ment---niveau-avancuxe9}}
     Nous poursuivons dans ce complément la sélection de méthodes spéciales
 entreprise en première partie.
 
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
     \hypertarget{contains__-__len__-__getitem__-et-apparentuxe9s}{%
 \subsubsection{\texorpdfstring{\texttt{\_\_contains\_\_},
@@ -22,20 +30,20 @@ item in objet
 
 Sans grande surprise, elle prend en argument un objet et un item, et
 doit renvoyer un booléen. Nous l'illustrons ci-dessous avec la classe
-\texttt{DualQueue}.\\
+\texttt{DualQueue}.
 
     La méthode \texttt{\_\_len\_\_} est utilisée par la fonction
 \emph{built-in} \texttt{len} pour retourner la longueur d'un objet.
 
     \hypertarget{la-classe-dualqueue}{%
 \subparagraph{\texorpdfstring{La classe
-\texttt{DualQueue}}{La classe DualQueue}\\\\}\label{la-classe-dualqueue}}
+\texttt{DualQueue}}{La classe DualQueue}}\label{la-classe-dualqueue}}
 
     Nous allons illustrer ceci avec un exemple de classe, un peu artificiel,
 qui implémente une queue de type FIFO. Les objets sont d'abord admis
 dans la file d'entrée (\texttt{add\_input}), puis déplacés dans la file
 de sortie (\texttt{move\_input\_to\_output}), et enfin sortis
-(\texttt{emit\_output}).\\
+(\texttt{emit\_output}).
 
 Clairement, cet exemple est à but uniquement pédagogique~; on veut
 montrer comment une implémentation qui repose sur deux listes séparées
@@ -72,8 +80,10 @@ pour ne pas obscurcir le code.
                 \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{inputs}\PY{o}{.}\PY{n}{insert}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{item}\PY{p}{)}
                 
             \PY{k}{def} \PY{n+nf}{move\PYZus{}input\PYZus{}to\PYZus{}output} \PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
-                \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{objet le plus ancien de la queue d}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{entrée est promu}
-                 \PY{l+s+s2}{dans la queue de sortie}\PY{l+s+s2}{\PYZdq{}}
+                \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{        l\PYZsq{}objet le plus ancien de la queue d\PYZsq{}entrée}
+        \PY{l+s+sd}{        est promu dans la queue de sortie}
+        \PY{l+s+sd}{        \PYZdq{}\PYZdq{}\PYZdq{}}
                 \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{outputs}\PY{o}{.}\PY{n}{insert}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{inputs}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{p}{)}\PY{p}{)}
                 
             \PY{k}{def} \PY{n+nf}{emit\PYZus{}output} \PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
@@ -102,7 +112,7 @@ pour ne pas obscurcir le code.
     \end{Verbatim}
 
     \hypertarget{longueur-et-appartenance}{%
-\subparagraph{Longueur et appartenance\\\\}\label{longueur-et-appartenance}}
+\subparagraph{Longueur et appartenance}\label{longueur-et-appartenance}}
 
     Avec cette première version de la classe \texttt{DualQueue} on peut
 utiliser \texttt{len} et le test d'appartenance~:
@@ -124,7 +134,7 @@ deux appartient-il ? True
 
     \hypertarget{accuxe8s-suxe9quentiel-accuxe8s-par-un-index-entier}{%
 \subparagraph{Accès séquentiel (accès par un index
-entier)\\\\}\label{accuxe8s-suxe9quentiel-accuxe8s-par-un-index-entier}}
+entier)}\label{accuxe8s-suxe9quentiel-accuxe8s-par-un-index-entier}}
 
     Lorsqu'on a la notion de longueur de l'objet avec \texttt{\_\_len\_\_},
 il peut être opportun - quoique cela n'est pas imposé par le langage,
@@ -196,7 +206,7 @@ ERREUR Mauvais indice 5 pour DualQueue
 
     \hypertarget{amuxe9lioration-accuxe8s-par-slice}{%
 \subparagraph{Amélioration~: accès par
-slice\\\\}\label{amuxe9lioration-accuxe8s-par-slice}}
+slice}\label{amuxe9lioration-accuxe8s-par-slice}}
 
     Si on veut aussi supporter l'accès par slice comme ceci~:
 
@@ -204,7 +214,7 @@ slice\\\\}\label{amuxe9lioration-accuxe8s-par-slice}}
 queue[1:3]
 \end{verbatim}
 
-il nous faut modifier la méthode \texttt{\_\_getitem\_\_}.\\
+il nous faut modifier la méthode \texttt{\_\_getitem\_\_}.
 
     Le second argument de \texttt{\_\_getitem\_\_} correspond naturellement
 au contenu des crochets \texttt{{[}{]}}, on utilise donc
@@ -275,7 +285,7 @@ OOPS: KeyError: '[] avec type non reconnu key'
 
     \hypertarget{lobjet-est-ituxe9rable-muxeame-sans-avoir-__iter__}{%
 \subparagraph{\texorpdfstring{L'objet est itérable (même sans avoir
-\texttt{\_\_iter\_\_})}{L'objet est itérable (même sans avoir \_\_iter\_\_)}\\\\}\label{lobjet-est-ituxe9rable-muxeame-sans-avoir-__iter__}}
+\texttt{\_\_iter\_\_})}{L'objet est itérable (même sans avoir \_\_iter\_\_)}}\label{lobjet-est-ituxe9rable-muxeame-sans-avoir-__iter__}}
 
     Avec seulement \texttt{\_\_getitem\_\_}, on peut \textbf{faire une
 boucle} sur l'objet queue. On l'a mentionné rapidement dans la séquence
@@ -300,7 +310,7 @@ trois
 
     \hypertarget{on-peut-faire-un-test-sur-lobjet}{%
 \subparagraph{On peut faire un test sur
-l'objet\\\\}\label{on-peut-faire-un-test-sur-lobjet}}
+l'objet}\label{on-peut-faire-un-test-sur-lobjet}}
 
     De manière similaire, même sans la méthode \texttt{\_\_bool\_\_}, cette
 classe sait \textbf{faire des tests de manière correcte} grâce
@@ -314,8 +324,7 @@ uniquement à la méthode \texttt{\_\_len\_\_}~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-La queue <DualQueue, inputs=['trois', 'deux'], outputs=['un', 'zero']> est considérée
-comme True
+La queue <DualQueue, inputs=['trois', 'deux'], outputs=['un', 'zero']> est considérée comme True
 
     \end{Verbatim}
 
@@ -334,6 +343,7 @@ La queue <DualQueue, inputs=[], outputs=[]> est considérée comme False
 
     \end{Verbatim}
 
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
     \hypertarget{call__-et-les-callables}{%
 \subsubsection{\texorpdfstring{\texttt{\_\_call\_\_} et les
@@ -425,3 +435,9 @@ s'apparente à
 \href{http://en.wikipedia.org/wiki/Closure_\%28computer_programming\%29}{une
 clôture}. Nous reviendrons sur cette notion de \emph{callable} lorsque
 nous verrons les décorateurs en semaine 9.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{huxe9ritage-typage}{%
 \section{Héritage, typage}\label{huxe9ritage-typage}}
 
@@ -40,7 +47,7 @@ allons distinguer deux types.
 \subsubsection{\texorpdfstring{\emph{Duck
 typing}}{Duck typing}}\label{duck-typing}}
 
-    En python, ces deux aspects du typage sont relativement décorrélés.\\
+    En python, ces deux aspects du typage sont relativement décorrélés.
 
     Pour la seconde dimension du typage, le système de types abstraits de
 python est connu sous le nom de
@@ -48,8 +55,7 @@ python est connu sous le nom de
 appellation qui fait référence à cette phrase~:
 
 \begin{verbatim}
-When I see a bird that walks like a duck and swims like a duck and quacks like
-a duck, I call that bird a duck.
+When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck.
 \end{verbatim}
 
     \hypertarget{lexemple-des-ituxe9rables}{%
@@ -69,12 +75,12 @@ for item in container:
 ait un sens, il faut et il suffit que \texttt{container} soit un
 itérable. Et vous connaissez maintenant plein d'exemples très différents
 d'objets itérables, a minima parmi les \emph{built-in} \texttt{str},
-\texttt{list}, \texttt{tuple}, \texttt{range}\ldots{}\\
+\texttt{list}, \texttt{tuple}, \texttt{range}\ldots{}
 
     Dans un langage typé statiquement, pour pouvoir donner un type à cette
 construction, on serait \textbf{obligé} de définir un type - qu'on
 appellerait logiquement une classe abstraite - dont ces trois types
-seraient des descendants.\\
+seraient des descendants.
 
     En python, et c'est le point que nous voulons souligner dans ce
 complément, il n'existe pas dans le système python d'objet de type
@@ -130,7 +136,7 @@ def foo(graphic):
 \end{verbatim}
 
 pour que l'expression \texttt{graphic.draw()} ait un sens, il faut et il
-suffit que l'objet \texttt{graphic} ait une méthode \texttt{draw}.\\
+suffit que l'objet \texttt{graphic} ait une méthode \texttt{draw}.
 
     À nouveau, dans un langage typé statiquement, on serait amené à définir
 une classe abstraite \texttt{Graphic}. En python ce n'est \textbf{pas
@@ -147,7 +153,7 @@ abstrait}\label{huxe9ritage-et-type-abstrait}}
     Pour résumer, en python comme dans les langages typés statiquement, on a
 bien entendu la bonne propriété que si, par exemple, la classe
 \texttt{Spam} est itérable, alors la classe \texttt{Eggs} qui hérite de
-\texttt{Spam} est itérable.\\
+\texttt{Spam} est itérable.
 
 Mais dans l'autre sens, si \texttt{Foo} et \texttt{Bar} sont itérables,
 il n'y a pas forcément une superclasse commune qui représente l'ensemble
@@ -159,13 +165,13 @@ stéroïdes}{isinstance sur stéroïdes}}\label{isinstance-sur-stuxe9rouxefdes}}
 
     D'un autre côté, c'est très utile d'exposer au programmeur un moyen de
 vérifier si un objet a un \emph{type} donné - dans un sens
-volontairement vague ici.\\
+volontairement vague ici.
 
 On a déjà parlé en Semaine 4 de l'intérêt qu'il peut y avoir à tester le
 type d'un argument avec \texttt{isinstance} dans une fonction, pour
 parvenir à faire l'équivalent de la surcharge en C++ (la surcharge en
 C++, c'est quand vous définissez plusieurs fonctions qui ont le même nom
-mais des types d'arguments différents).\\
+mais des types d'arguments différents).
 
 C'est pourquoi, quand on a cherché à exposer au programmeur des
 propriétés comme ``cet objet est-il iterable~?'', on a choisi d'étendre
@@ -225,7 +231,7 @@ tous ces \emph{classes} \texttt{str}, \texttt{list}, et \texttt{Foo} lui
 sont asujetties, mais ce n'est pas le cas en réalité~; comme on l'a vu
 plus tôt, ces trois types ne sont pas comparables dans la hiérarchie de
 classes, ils n'ont pas de plus petit (ou plus grand) élément à part
-\texttt{object}.\\
+\texttt{object}.
 
     Je signale pour finir, à propos de \texttt{isinstance} et du module
 \texttt{collections}, que la définition du symbole \texttt{Hashable} est
@@ -305,3 +311,9 @@ et de nombreux autres.
 relation forte avec ceux
 \href{https://docs.python.org/3/library/typing.html}{du module
 \texttt{typing}} dont on a parlé lorsqu'on a vu les \emph{type hints}.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{formats-de-fichiers-json-et-autres}{%
 \section{Formats de fichiers~: JSON et
 autres}\label{formats-de-fichiers-json-et-autres}}
@@ -16,17 +23,17 @@ fichiers.
     Les données dans un programme Python sont stockées en mémoire (la RAM),
 sous une forme propice aux calculs. Par exemple un petit entier est
 fréquemment stocké en binaire dans un mot de 64 bits, qui est prêt à
-être soumis au processeur pour faire une opération arithmétique.\\
+être soumis au processeur pour faire une opération arithmétique.
 
     Ce format ne se prête pas forcément toujours à être transposé tel quel
 lorsqu'on doit écrire des données sur un support plus pérenne, comme un
 disque dur, ou encore sur un réseau pour transmission distante - ces
-deux supports étant à ce point de vue très voisins.\\
+deux supports étant à ce point de vue très voisins.
 
 Ainsi par exemple il pourra être plus commode d'écrire notre entier sur
 disque, ou de le transmettre à un programme distant, sous une forme
 décimale qui sera plus lisible, sachant que par ailleurs toutes les
-machines ne codent pas un entier de la même façon.\\
+machines ne codent pas un entier de la même façon.
 
     Il convient donc de faire de la traduction dans les deux sens entre
 représentations d'une part en mémoire, et d'autre part sur disque ou sur
@@ -38,13 +45,13 @@ usages).
 
     Le format sans aucun doute le plus populaire à l'heure actuelle est
 \href{http://fr.wikipedia.org/wiki/JavaScript_Object_Notation}{le format
-JSON} pour \emph{JavaScript Object Notation}.\\
+JSON} pour \emph{JavaScript Object Notation}.
 
 Sans trop nous attarder nous dirons que JSON est un encodage - en
 anglais
 \href{http://en.wikipedia.org/wiki/Marshalling_\%28computer_science\%29}{marshalling}
 - qui se prête bien à la plupart des types de base que l'on trouve dans
-les langages modernes comme Python, Ruby ou JavaScript.\\
+les langages modernes comme Python, Ruby ou JavaScript.
 
 La bibliothèque standard de Python contient
 \href{https://docs.python.org/3/library/json.html}{le module json} que
@@ -72,17 +79,18 @@ nous illustrons très rapidement ici~:
 
 
     \hypertarget{limitations-de-json}{%
-\subparagraph{Limitations de json\\\\}\label{limitations-de-json}}
+\subparagraph{Limitations de json}\label{limitations-de-json}}
 
     Certains types de base ne sont pas supportés par le format JSON (car ils
 ne sont pas natifs en JavaScript), c'est le cas notamment pour~:
 
 \begin{itemize}
-	\item 
-	\texttt{tuple}, qui se fait encoder comme une liste~;
-	\item
-	\texttt{complex}, \texttt{set} et \texttt{frozenset}, que l'on ne peut
-	pas encoder du tout (sans étendre la bibliothèque).
+\tightlist
+\item
+  \texttt{tuple}, qui se fait encoder comme une liste~;
+\item
+  \texttt{complex}, \texttt{set} et \texttt{frozenset}, que l'on ne peut
+  pas encoder du tout (sans étendre la bibliothèque).
 \end{itemize}
 
     C'est ce qui explique ce qui suit~:
@@ -134,7 +142,7 @@ monde des tableurs, peut rendre service à l'occasion, il est proposé
     Le format \texttt{pickle} remplit une fonctionnalité très voisine de
 \texttt{JSON}, mais est spécifique à Python. C'est pourquoi, malgré des
 limites un peu moins sévères, son usage tend à rester plutôt marginal
-pour l'échange de données, on lui préfère en général le format JSON.\\
+pour l'échange de données, on lui préfère en général le format JSON.
 
 Par contre, pour la sauvegarde locale d'objets Python (pour, par
 exemple, faire des points de reprises d'un programme), il est très
@@ -146,11 +154,11 @@ utile. Il est implémenté
 \subsubsection{Le format XML}\label{le-format-xml}}
 
     Vous avez aussi très probablement entendu parler de XML, qui est un
-format assez populaire également.\\
+format assez populaire également.
 
 Cela dit, la puissance, et donc le coût, de XML et JSON ne sont pas du
 tout comparables, XML étant beaucoup plus flexible mais au prix d'une
-complexité de mise en œuvre très supérieure.\\
+complexité de mise en œuvre très supérieure.
 
 Il existe plusieurs souches différentes de bibliothèques prenant en
 charge le format XML,
@@ -163,3 +171,9 @@ ici}.
     Voyez la page sur
 \href{https://docs.python.org/3/library/fileformats.html}{les formats de
 fichiers} dans la documentation Python.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

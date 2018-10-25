@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{ensembles}{%
 \section{Ensembles}\label{ensembles}}
 
@@ -22,7 +29,7 @@ sans utiliser le caractère \texttt{:}, et cela donne par exemple~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-\{'pierre', 12, 'marc', (1, 2, 3)\}
+\{'marc', 12, (1, 2, 3), 'pierre'\}
 
     \end{Verbatim}
 
@@ -41,7 +48,7 @@ aussi bien pu faire~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-\{'pierre', 12, 'marc', (1, 2, 3)\}
+\{'marc', 12, (1, 2, 3), 'pierre'\}
 
     \end{Verbatim}
 
@@ -129,13 +136,13 @@ ensemble d'ensembles~:
 
     Un \texttt{frozenset} est un ensemble qu'on ne peut pas modifier, et qui
 donc peut servir de clé dans un dictionnaire, ou être inclus dans un
-autre ensemble (mutable ou pas).\\
+autre ensemble (mutable ou pas).
 
     Il n'existe pas de raccourci syntaxique comme les \texttt{\{\}} pour
 créer un ensemble immuable, qui doit être créé avec la fonction
 \texttt{frozenset}. Toutes les opérations documentées dans ce notebook,
 et qui n'ont pas besoin de modifier l'ensemble, sont disponibles sur un
-\texttt{frozenset}.\\
+\texttt{frozenset}.
 
 Parmi les fonctions exclues sur un \texttt{frozenset}, on peut citer~:
 \texttt{update}, \texttt{pop}, \texttt{clear}, \texttt{remove} ou
@@ -320,16 +327,17 @@ A3 \{0, 3, 6\}
     \end{Verbatim}
 
     N'oubliez pas que les ensembles, comme les dictionnaires, ne sont
-\textbf{pas ordonnés}.\\
+\textbf{pas ordonnés}.
 
     \textbf{Remarques}~:
-    
+
 \begin{itemize}
-	\item 
-    les notations des opérateurs sur les ensembles
-	rappellent les opérateurs ``bit-à-bit'' sur les entiers~;
-	\item
-	ces opérateurs sont également disponibles sous la forme de méthodes.
+\tightlist
+\item
+  les notations des opérateurs sur les ensembles rappellent les
+  opérateurs ``bit-à-bit'' sur les entiers~;
+\item
+  ces opérateurs sont également disponibles sous la forme de méthodes.
 \end{itemize}
 
     \hypertarget{union}{%
@@ -470,3 +478,9 @@ subset \{1, 3\}
     Reportez vous à
 \href{https://docs.python.org/3/library/stdtypes.html\#set-types-set-frozenset}{la
 section sur les ensembles} dans la documentation Python.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

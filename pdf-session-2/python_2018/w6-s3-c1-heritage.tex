@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{huxe9ritage}{%
 \section{Héritage}\label{huxe9ritage}}
 
@@ -7,7 +14,7 @@ basique}\label{compluxe9ment---niveau-basique}}
 
     La notion d'héritage, qui fait partie intégrante de la Programmation
 Orientée Objet, permet principalement de maximiser la
-\textbf{réutilisabilité}.\\
+\textbf{réutilisabilité}.
 
 Nous avons vu dans la vidéo les mécanismes d'héritage \emph{in
 abstracto}. Pour résumer très brièvement, on recherche un attribut (pour
@@ -136,7 +143,7 @@ Fleur.modifiee(self)
 
     \hypertarget{la-fonction-built-in-super}{%
 \subparagraph{\texorpdfstring{La fonction \emph{built-in}
-\texttt{super()}\\\\}{La fonction built-in super()}}\label{la-fonction-built-in-super}}
+\texttt{super()}}{La fonction built-in super()}}\label{la-fonction-built-in-super}}
 
     Signalons à ce sujet, pour être exhaustif, l'existence de la
 \href{https://docs.python.org/3/library/functions.html\#super}{fonction
@@ -188,7 +195,7 @@ Composition}{Héritage vs Composition}}\label{huxe9ritage-vs-composition}}
     Dans le domaine de la conception orientée objet, on fait la différence
 entre deux constructions, l'héritage et la composition, qui à une
 analyse superficielle peuvent paraître procurer des résultats
-similaires, mais qu'il est important de bien distinguer.\\
+similaires, mais qu'il est important de bien distinguer.
 
 Voyons d'abord en quoi consiste la composition et pourquoi le résultat
 est voisin~:
@@ -229,7 +236,8 @@ est voisin~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} on obtient ici exactement le même comportement pour les trois sortes de méthodes}
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} on obtient ici exactement le même comportement }
+        \PY{c+c1}{\PYZsh{} pour les trois sortes de méthodes}
         \PY{n}{fille} \PY{o}{=} \PY{n}{Rose}\PY{p}{(}\PY{p}{)}
         
         \PY{n}{fille}\PY{o}{.}\PY{n}{implicite}\PY{p}{(}\PY{p}{)}
@@ -247,7 +255,7 @@ Rose.modifiee apres Tige
     \end{Verbatim}
 
     \hypertarget{comment-choisir}{%
-\subparagraph{Comment choisir~?\\\\}\label{comment-choisir}}
+\subparagraph{Comment choisir~?}\label{comment-choisir}}
 
     Alors, quand faut-il utiliser l'héritage et quand faut-il utiliser la
 composition~?\\
@@ -281,14 +289,14 @@ l'usage qui est fait de l'héritage dans ces bibliothèques.
 
     \hypertarget{le-module-calendar}{%
 \subparagraph{\texorpdfstring{Le module
-\texttt{calendar}\\\\}{Le module calendar}}\label{le-module-calendar}}
+\texttt{calendar}}{Le module calendar}}\label{le-module-calendar}}
 
     On trouve dans la bibliothèque standard
 \href{https://docs.python.org/3/library/calendar.html}{le module
 \texttt{calendar}}. Ce module expose deux classes \texttt{TextCalendar}
 et \texttt{HTMLCalendar}. Sans entrer du tout dans le détail, ces deux
 classes permettent d'imprimer dans des formats différents le même type
-d'informations.\\
+d'informations.
 
 Le point ici est que les concepteurs ont choisi un graphe d'héritage
 comme ceci~:
@@ -301,24 +309,24 @@ Calendar
 
 qui permet de grouper le code concernant la logique dans la classe
 \texttt{Calendar}, puis dans les deux sous-classes d'implémenter le type
-de sortie qui va bien.\\
+de sortie qui va bien.
 
 C'est l'utilisateur qui choisit la classe qui lui convient le mieux, et
 de cette manière, le maximum de code est partagé entre les deux
 classes~; et de plus si vous avez besoin d'une sortie au format, disons
 PDF, vous pouvez envisager d'hériter de \texttt{Calendar} et de
-n'implémenter que la partie spécifique au format PDF.\\
+n'implémenter que la partie spécifique au format PDF.
 
 C'est un peu le niveau élémentaire de l'héritage.
 
     \hypertarget{le-module-socketserver}{%
 \subparagraph{\texorpdfstring{Le module
-\texttt{SocketServer}\\\\}{Le module SocketServer}}\label{le-module-socketserver}}
+\texttt{SocketServer}}{Le module SocketServer}}\label{le-module-socketserver}}
 
     Toujours dans la bibliothèque standard, le
 \href{https://docs.python.org/3/library/socketserver.html}{module
 \texttt{SocketServer}} fait un usage beaucoup plus sophistiqué de
-l'héritage.\\
+l'héritage.
 
 Le module propose une hiérarchie de classes comme ceci~:
 
@@ -341,13 +349,13 @@ Le module propose une hiérarchie de classes comme ceci~:
     Ici encore notre propos n'est pas d'entrer dans les détails, mais
 d'observer le fait que les différents \emph{niveaux d'intelligence} sont
 ajoutés les uns aux les autres au fur et à mesure que l'on descend le
-graphe d'héritage.\\
+graphe d'héritage.
 
 Cette hiérarchie est par ailleurs étendue par le
 \href{https://docs.python.org/3/library/http.server.html}{module
 \texttt{http.server}} et notamment au travers de la classe
 \href{https://docs.python.org/3/library/http.server.html\#http.server.HTTPServer}{\texttt{HTTPServer}}
-qui hérite de \texttt{TCPServer}.\\
+qui hérite de \texttt{TCPServer}.
 
     Pour revenir au module \texttt{SocketServer}, j'attire votre attention
 dans
@@ -361,3 +369,9 @@ entre \texttt{ThreadingMixIn} et \texttt{TCPServer}. La notion de
 dans cette page Wikipédia} dans laquelle vous pouvez accéder directement
 \href{http://en.wikipedia.org/wiki/Mixin\#In_Python}{à la section
 consacrée à Python}.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

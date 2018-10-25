@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{la-suite-de-fibonacci-suite}{%
 \section{La suite de Fibonacci
 (suite)}\label{la-suite-de-fibonacci-suite}}
@@ -33,14 +40,14 @@ nous permettre d'interpréter les arguments passés sur la ligne de
 commande.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{from} \PY{n+nn}{argparse} \PY{k}{import} \PY{n}{ArgumentParser}
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{argparse} \PY{k}{import} \PY{n}{ArgumentParser}
 \end{Verbatim}
 
 
     Puis nous répétons la fonction \texttt{fibonacci}~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{fibonacci}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k}{def} \PY{n+nf}{fibonacci}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{retourne le nombre de fibonacci pour l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{entier n}\PY{l+s+s2}{\PYZdq{}}
             \PY{c+c1}{\PYZsh{} pour les petites valeurs de n il n\PYZsq{}y a rien à calculer}
             \PY{k}{if} \PY{n}{n} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{1}\PY{p}{:}
@@ -74,21 +81,32 @@ code utilisable tout de suite, pour jouer avec votre interpréteur
 Python.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} à nouveau : ceci n\PYZsq{}est pas conçu pour être exécuté dans le notebook !}
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} à nouveau : ceci n\PYZsq{}est pas conçu pour être exécuté dans le notebook !}
         \PY{n}{parser} \PY{o}{=} \PY{n}{ArgumentParser}\PY{p}{(}\PY{p}{)}
         \PY{n}{parser}\PY{o}{.}\PY{n}{add\PYZus{}argument}\PY{p}{(}\PY{n}{dest}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{entier}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{type}\PY{o}{=}\PY{n+nb}{int}\PY{p}{,}
                             \PY{n}{help}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{entier d}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{entrée}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
         \PY{n}{input\PYZus{}args} \PY{o}{=} \PY{n}{parser}\PY{o}{.}\PY{n}{parse\PYZus{}args}\PY{p}{(}\PY{p}{)}
         \PY{n}{entier} \PY{o}{=} \PY{n}{input\PYZus{}args}\PY{o}{.}\PY{n}{entier}
+        
+        \PY{c+c1}{\PYZsh{} NOTE:}
+        \PY{c+c1}{\PYZsh{} automatic execution has used instead:}
+        \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+        \PY{n}{entier} \PY{o}{=} \PY{l+m+mi}{8}
+        \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
 \end{Verbatim}
 
 
     Nous pouvons à présent afficher le résultat~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fibonacci(}\PY{l+s+si}{\PYZob{}entier\PYZcb{}}\PY{l+s+s2}{) = }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{fibonacci(entier)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fibonacci(}\PY{l+s+si}{\PYZob{}entier\PYZcb{}}\PY{l+s+s2}{) = }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{fibonacci(entier)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+fibonacci(8) = 34
+
+    \end{Verbatim}
 
     Vous pouvez donc à présent~:
 
@@ -102,3 +120,9 @@ Python.
 
   \$ python3 fibonacci.py 56
 \end{itemize}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

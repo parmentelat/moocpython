@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{pruxe9cisions-sur-limportation}{%
 \section{Précisions sur
 l'importation}\label{pruxe9cisions-sur-limportation}}
@@ -12,13 +19,13 @@ rechargement}\label{importations-multiples---rechargement}}
 
     \hypertarget{un-module-nest-charguxe9-quune-fois}{%
 \subparagraph{Un module n'est chargé qu'une
-fois\\\\}\label{un-module-nest-charguxe9-quune-fois}}
+fois}\label{un-module-nest-charguxe9-quune-fois}}
 
     De manière générale, à l'intérieur d'un interpréteur python, un module
 donné n'est chargé qu'une seule fois. L'idée est naturellement que si
 plusieurs modules différents importent le même module, (ou si un même
 module en importe un autre plusieurs fois) on ne paie le prix du
-chargement du module qu'une seule fois.\\
+chargement du module qu'une seule fois.
 
 Voyons cela sur un exemple simpliste, importons un module pour la
 première fois~:
@@ -42,7 +49,7 @@ chargement de multiple\_import
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-Fichier E:\textbackslash{}python\_pdf\_wip\textbackslash{}flotpython\textbackslash{}w5\textbackslash{}multiple\_import.py
+Fichier /Users/tparment/git/flotpython/modules/multiple\_import.py
 ----------------------------------------
 1|"""
 2|Ce module est conçu pour illustrer le mécanisme de
@@ -67,7 +74,7 @@ impression
 \texttt{multiple\_import} de nouveau à l'objet module déjà chargé. En
 résumé, l'instruction \texttt{import} fait l'opération d'affectation
 autant de fois qu'on appelle \texttt{import}, mais elle ne charge le
-module qu'une seule fois à la première importation.\\
+module qu'une seule fois à la première importation.
 
     Une autre façon d'illustrer ce trait est d'importer plusieurs fois le
 module \texttt{this}
@@ -110,7 +117,7 @@ Namespaces are one honking great idea -- let's do more of those!
 
 
     \hypertarget{les-raisons-de-ce-choix}{%
-\subparagraph{Les raisons de ce choix\\\\}\label{les-raisons-de-ce-choix}}
+\subparagraph{Les raisons de ce choix}\label{les-raisons-de-ce-choix}}
 
     Le choix de ne charger le module qu'une seule fois est motivé par
 plusieurs considérations.
@@ -153,13 +160,13 @@ des contextes particuliers, comme du code multi-plateformes.
     \hypertarget{les-inconvuxe9nients-de-ce-choix---la-fonction-reload}{%
 \subparagraph{\texorpdfstring{Les inconvénients de ce choix - la
 fonction
-\texttt{reload}}{Les inconvénients de ce choix - la fonction reload}\\\\}\label{les-inconvuxe9nients-de-ce-choix---la-fonction-reload}}
+\texttt{reload}}{Les inconvénients de ce choix - la fonction reload}}\label{les-inconvuxe9nients-de-ce-choix---la-fonction-reload}}
 
     L'inconvénient majeur de cette stratégie de chargement unique est
 perceptible dans l'interpréteur interactif pendant le développement.
 Nous avons vu comment IDLE traite le problème en remettant
 l'interpréteur dans un état vierge lorsqu'on utilise la touche F5. Mais
-dans l'interpréteur ``de base'', on n'a pas cette possibilité.\\
+dans l'interpréteur ``de base'', on n'a pas cette possibilité.
 
     Pour cette raison, python fournit dans le module \texttt{importlib} une
 fonction \texttt{reload}, qui permet comme son nom l'indique de forcer
@@ -177,22 +184,23 @@ chargement de multiple\_import
     \end{Verbatim}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}6}]:} <module 'multiple\_import' from 'E:\textbackslash{}\textbackslash{}python\_pdf\_wip\textbackslash{}\textbackslash{}flotpython\textbackslash{}\textbackslash{}w5\textbackslash{}\textbackslash{}multiple\_import.py'>
+{\color{outcolor}Out[{\color{outcolor}6}]:} <module 'multiple\_import' from '/Users/tparment/git/flotpython/modules/multiple\_import.py'>
 \end{Verbatim}
             
     Remarquez bien que \texttt{importlib.reload} est une fonction et non une
 instruction comme \texttt{import} - d'où la syntaxe avec les parenthèses
-qui n'est pas celle de \texttt{import}.\\
+qui n'est pas celle de \texttt{import}.
 
 Notez également que la fonction \texttt{importlib.reload} a été
 introduite en python3.4, avant, il fallait utiliser la fonction
 \texttt{imp.reload} qui est dépréciée depuis python3.4 mais qui existe
 toujours. Évidemment, vous devez maintenant exlusivement utiliser la
-fonction \texttt{importlib.reload}.\\
+fonction \texttt{importlib.reload}.
 
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
     \textbf{NOTE} spécifique à l'environnement des \textbf{notebooks} (en
-fait, à l'utilisation de ipython)~:\\
+fait, à l'utilisation de ipython)~:
 
 À l'intérieur d'un notebook, vous
 \href{https://ipython.org/ipython-doc/3/config/extensions/autoreload.html}{pouvez
@@ -298,3 +306,9 @@ implémentés en C et font partie intégrante de l'interpréteur.
     Pour aller plus loin, vous pouvez lire
 \href{https://docs.python.org/3/reference/simple_stmts.html\#the-import-statement}{la
 documentation sur l'instruction \texttt{import}}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

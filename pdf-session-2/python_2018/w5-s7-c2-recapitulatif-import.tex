@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{ruxe9capitulatif-sur-import}{%
 \section{\texorpdfstring{Récapitulatif sur
 \texttt{import}}{Récapitulatif sur import}}\label{ruxe9capitulatif-sur-import}}
@@ -34,7 +41,7 @@ au contenu du module en utilisant un nom de variable complet~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-<function un at 0x048C6540>
+<function un at 0x1072f6d90>
 la fonction un dans le module un\_deux
 
     \end{Verbatim}
@@ -50,7 +57,7 @@ donc \texttt{un\_deux}~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-<module 'un\_deux' from 'E:\textbackslash{}\textbackslash{}python\_pdf\_wip\textbackslash{}\textbackslash{}flotpython\textbackslash{}\textbackslash{}w5\textbackslash{}\textbackslash{}un\_deux.py'>
+<module 'un\_deux' from '/Users/tparment/git/flotpython/modules/un\_deux.py'>
 
     \end{Verbatim}
 
@@ -130,8 +137,8 @@ désignent la fonction \texttt{un} dans le module~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-<function un at 0x048C6BB8>
-<function un at 0x048C6BB8>
+<function un at 0x10730e400>
+<function un at 0x10730e400>
 ce sont deux façons d'accéder au même objet True
 
     \end{Verbatim}
@@ -148,7 +155,7 @@ ce sont deux façons d'accéder au même objet True
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-<function un at 0x048C6BB8>
+<function un at 0x10730e400>
 1
 
     \end{Verbatim}
@@ -252,7 +259,7 @@ forme}\label{quand-utiliser-telle-ou-telle-forme}}
     Les deux premières formes - import d'un module ou de variables
 spécifiques - peuvent être utilisées indifféremment~; souvent lorsqu'une
 variable est utilisée très souvent dans le code on pourra préférer la
-deuxième forme pour raccourcir le code.\\
+deuxième forme pour raccourcir le code.
 
     À cet égard, citons des variantes de ces deux formes qui permettent
 d'utiliser des noms plus courts. Vous trouverez par exemple très souvent
@@ -263,24 +270,24 @@ import numpy as np
 
 qui permet d'importer le module numpy mais de l'utiliser sous un nom
 plus court - car avec \texttt{numpy} on ne cesse d'utiliser des symboles
-dans le module.\\
+dans le module.
 
     \textbf{Avertissement~:} nous vous recommandons de \textbf{ne pas
 utiliser la dernière forme \texttt{import\ *}} - sauf dans
 l'interpréteur interactif - car cela peut gravement nuire à la
-lisibilité de votre code.\\
+lisibilité de votre code.
 
     python est un langage à liaison statique~; cela signifie que lorsque
 vous concentrez votre attention sur un (votre) module, et que vous voyez
 une référence en lecture à une variable \texttt{spam} disons à la ligne
 201, vous devez forcément trouver dans les deux cents premières lignes
 quelque chose comme une déclaration de \texttt{spam}, qui vous indique
-en gros d'où elle vient.\\
+en gros d'où elle vient.
 
 \texttt{import\ *} est une construction qui casse cette bonne propriété
 (pour être tout à fait exhaustif, cette bonne propriété n'est pas non
 plus remplie avec les fonctions \emph{built-in} comme \texttt{len}, mais
-il faut vivre avec\ldots{})\\
+il faut vivre avec\ldots{})
 
 Mais le point important est ceci~: imaginez que dans un module vous
 faites plusieurs \texttt{import\ *} comme par exemple
@@ -291,7 +298,7 @@ from django.conf.urls import *
 \end{verbatim}
 
 Peu importe le contenu exact de ces deux modules, il nous suffit de
-savoir qu'un des deux modules expose la variable \texttt{patterns}.\\
+savoir qu'un des deux modules expose la variable \texttt{patterns}.
 
 Dans ce cas de figure vécu, le module utilise cette variable
 \texttt{patterns} sans avoir besoin de la déclarer explicitement, si
@@ -309,12 +316,12 @@ avancé}\label{compluxe9ment---niveau-avancuxe9}}
 
     Étant donné la façon dont est conçue l'instruction \texttt{import}, on
 rencontre une limitation lorsqu'on veut, par exemple, \textbf{calculer
-le nom d'un module} avant de l'importer.\\
+le nom d'un module} avant de l'importer.
 
 Si vous êtes dans ce genre de situation, reportez-vous au module
 \href{https://docs.python.org/3/library/importlib.html}{\texttt{importlib}}
 et notamment sa fonction \texttt{import\_module} qui, cette fois,
-accepte en argument une chaîne.\\
+accepte en argument une chaîne.
 
     Voici une illustration dans un cas simple. Nous allons importer le
 module \texttt{modtools} (qui fait partie de ce MOOC) de deux façons
@@ -346,3 +353,9 @@ différentes et montrer que le résultat est le même~:
 directement en cherchant depuis \texttt{sys.path}, mais en cherchant à
 partir du module où se trouve la clause \texttt{import}. Nous détaillons
 ce trait dans un complément ultérieur.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

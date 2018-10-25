@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{ouxf9-sont-cherchuxe9s-les-modules}{%
 \section{Où sont cherchés les
 modules~?}\label{ouxf9-sont-cherchuxe9s-les-modules}}
@@ -13,11 +20,15 @@ python. Si vous n'êtes pas sûr de cet emplacement vous pouvez le savoir
 en faisant~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{from} \PY{n+nn}{pathlib} \PY{k}{import} \PY{n}{Path}
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{pathlib} \PY{k}{import} \PY{n}{Path}
         \PY{n}{Path}\PY{o}{.}\PY{n}{cwd}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}1}]:} PosixPath('/Users/tparment/git/flotpython')
+\end{Verbatim}
+            
     \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
 \subsection{Complément - niveau
 intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
@@ -25,38 +36,40 @@ intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
     Dans ce complément nous allons voir, de manière générale, comment sont
 localisés (sur le disque dur) les modules que vous chargez dans python
 grâce à l'instruction \texttt{import}~; nous verrons aussi où placer vos
-propres fichiers pour qu'ils soient accessibles à python.\\
+propres fichiers pour qu'ils soient accessibles à python.
 
     \href{https://docs.python.org/3/tutorial/modules.html\#the-module-search-path}{Comme
 expliqué ici}, lorsque vous importez le module \texttt{spam}, python
 cherche dans cet ordre~:
 
 \begin{itemize}
-	\item 
-	un module \emph{built-in} de nom
-	\texttt{spam} - possiblement/probablement écrit en C,
-	\item
-	ou sinon un
-	fichier \texttt{spam.py} (ou \texttt{spam/\_\_init.py\_\_} s'il s'agit
-	d'un package)~; pour le localiser on utilise la variable
-	\texttt{sys.path} (c'est-à-dire l'attribut \texttt{path} dans le module
-	\texttt{sys}), qui est une liste de répertoires, et qui est initialisée
-	avec, dans cet ordre~:
-	\begin{itemize}
-		\item 
-		le répertoire où se trouve le point d'entrée~;
-		\item
-		la variable d'environnement \texttt{PYTHONPATH}~;
-		\item
-		un certain nombre
-		d'emplacements définis au moment de la compilation de python.
-	\end{itemize}
+\tightlist
+\item
+  un module \emph{built-in} de nom \texttt{spam} -
+  possiblement/probablement écrit en C,
+\item
+  ou sinon un fichier \texttt{spam.py} (ou \texttt{spam/\_\_init.py\_\_}
+  s'il s'agit d'un package)~; pour le localiser on utilise la variable
+  \texttt{sys.path} (c'est-à-dire l'attribut \texttt{path} dans le
+  module \texttt{sys}), qui est une liste de répertoires, et qui est
+  initialisée avec, dans cet ordre~:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    le répertoire où se trouve le point d'entrée~;
+  \item
+    la variable d'environnement \texttt{PYTHONPATH}~;
+  \item
+    un certain nombre d'emplacements définis au moment de la compilation
+    de python.
+  \end{itemize}
 \end{itemize}
 
     Ainsi sans action particulière de l'utilisateur, python trouve
 l'intégralité de la librairie standard, ainsi que les modules et
 packages installés dans le même répertoire que le fichier passé à
-l'interpréteur.\\
+l'interpréteur.
 
     La façon dont cela se présente dans l'interpréteur des notebooks~peut
 vous induire en erreur. Aussi je vous engage à exécuter plutôt, et sur
@@ -103,7 +116,7 @@ la variable sys.path contient
 <snip>
 \end{verbatim}
 
-\emph{le reste dépend de votre installation}\\
+\emph{le reste dépend de votre installation}
 
     C'est-à-dire que~:
 
@@ -122,10 +135,10 @@ d'environnement} PYTHONPATH est définie de façon à donner la possibilité
 d'étendre ces listes depuis l'extérieur, et sans recompiler
 l'interpréteur, ni modifier les sources. Cette possibilité s'adresse
 donc à l'utilisateur final - ou à son administrateur système - plutôt
-qu'au programmeur.\\
+qu'au programmeur.
 
     En tant que programmeur par contre, vous avez la possibilité d'étendre
-\texttt{sys.path} avant de faire vos \texttt{import}.\\
+\texttt{sys.path} avant de faire vos \texttt{import}.
 
 Imaginons par exemple que vous avez écrit un petit outil utilitaire qui
 se compose d'un point d'entrée \texttt{main.py}, et de plusieurs modules
@@ -134,7 +147,7 @@ packager proprement cet outil, vous voudriez pouvoir distribuer un
 \emph{tar} avec ces trois fichiers python, qui puissent s'installer
 n'importe où (pourvu qu'ils soient tous les trois au même endroit), et
 que le point d'entrée trouve ses deux modules sans que l'utilisateur ait
-à s'en soucier.\\
+à s'en soucier.
 
 Imaginons donc ces trois fichiers installés sur machine de l'utilisateur
 dans~:
@@ -179,7 +192,7 @@ import spam, eggs
 
     Notez bien que l'exemple précédent est \textbf{uniquement donné à titre
 d'illustration} pour décortiquer la mécanique d'utilisation de
-\texttt{sys.path}.\\
+\texttt{sys.path}.
 
 Ce n'est pas une technique recommandée dans le cas général. On préfère
 en effet de beaucoup diffuser une application python, ou une librairie,
@@ -188,23 +201,24 @@ sous forme de packaging en utilisant le
 s'agit d'un outil qui \textbf{ne fait pas partie de la librairie
 standard}, et qui supplante \texttt{distutils} qui lui, fait partie de
 la distribution standard mais qui est tombé en déshérence au fil du
-temps.\\
+temps.
 
     \texttt{setuptools} permet au programmeur d'écrire - dans un fichier
 qu'on appelle traditionnellement \texttt{setup.py} - le contenu de son
 application~; grâce à quoi on peut ensuite de manière unifiée~:
 
 \begin{itemize}
-	\item 
-	installer l'application sur une machine à partir des sources~;
-	\item
-	préparer un package de l'application~;
-	\item
-	diffuser le package dans
-	\href{https://pypi.python.org/pypi}{l'infrastructure PyPI}~;
-	\item
-	installer le package depuis PyPI en utilisant
-	\href{http://pip.readthedocs.org/en/latest/installing.html}{\texttt{pip3}}.
+\tightlist
+\item
+  installer l'application sur une machine à partir des sources~;
+\item
+  préparer un package de l'application~;
+\item
+  diffuser le package dans
+  \href{https://pypi.python.org/pypi}{l'infrastructure PyPI}~;
+\item
+  installer le package depuis PyPI en utilisant
+  \href{http://pip.readthedocs.org/en/latest/installing.html}{\texttt{pip3}}.
 \end{itemize}
 
     Pour installer \texttt{setuptools}, comme d'habitude vous pouvez faire
@@ -213,3 +227,9 @@ simplement~:
 \begin{verbatim}
 pip3 install setuptools
 \end{verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

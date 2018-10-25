@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{expressions-ruxe9guliuxe8res-et-le-module-re}{%
 \section{\texorpdfstring{Expressions régulières et le module
 \texttt{re}}{Expressions régulières et le module re}}\label{expressions-ruxe9guliuxe8res-et-le-module-re}}
@@ -11,23 +18,23 @@ basique}\label{compluxe9ment---niveau-basique}}
 
 Après avoir joué ce cours plusieurs années de suite, l'expérience nous
 montre qu'il est difficile de trouver le bon moment pour appréhender les
-expressions régulières.\\
+expressions régulières.
 
 D'un côté il s'agit de manipulations de chaînes de caractères, mais d'un
 autre cela nécessite de créer des instances de classes, et donc d'avoir
 vu la programmation orientée objet. Du coup, les premières années nous
 les avions étudiées tout à la fin du cours, ce qui avait pu créer une
-certaine frustration.\\
+certaine frustration.
 
 C'est pourquoi nous avons décidé à présent de les étudier très tôt, dans
 cette séquence consacrée aux chaines de caractères. Les étudiants qui
 seraient décontenancés par ce contenu sont invités à y retourner après
-la semaine 6, consacrée à la programmation objet.\\
+la semaine 6, consacrée à la programmation objet.
 
 Il nous semble important de savoir que ces fonctionnalités existent dans
 le langage, le détail de leur utilisation n'est toutefois pas critique,
 et on peut parfaitement faire l'impasse sur ce complément en première
-lecture.\\
+lecture.
 
     Une expression régulière est un objet mathématique permettant de décrire
 un ensemble de textes qui possèdent des propriétés communes. Par
@@ -41,7 +48,7 @@ $ dir *.txt
 régulière \texttt{*.txt} qui désigne tous les fichiers dont le nom se
 termine par \texttt{.txt}. On dit que l'expression régulière
 \emph{filtre} toutes les chaînes qui se terminent par \texttt{.txt}
-(l'expression anglaise consacrée est le \emph{pattern matching}).\\
+(l'expression anglaise consacrée est le \emph{pattern matching}).
 
     Le langage Perl a été le premier à populariser l'utilisation des
 expressions régulières en les supportant nativement dans le langage, et
@@ -136,7 +143,7 @@ régulières.
 \subsection{Complément - niveau
 intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
 
-    Approfondissons à présent:\\
+    Approfondissons à présent:
 
     Dans un terminal, \texttt{*.txt} est une expression régulière très
 simple. Le module \texttt{re} fournit le moyen de construire des
@@ -145,7 +152,7 @@ supporte le terminal. C'est pourquoi la syntaxe des regexps de
 \texttt{re} est un peu différente. Par exemple comme on vient de le
 voir, pour filtrer la même famille de chaînes que \texttt{*-*.txt} avec
 le module \texttt{re}, il nous a fallu écrire l'expression régulière
-sous une forme légèrement différente.\\
+sous une forme légèrement différente.
 
     Je vous conseille d'avoir sous la main la
 \href{https://docs.python.org/3/library/re.html}{documentation du module
@@ -156,7 +163,7 @@ sous une forme légèrement différente.\\
 
     Dans ce complément nous serons amenés à utiliser des traits qui
 dépendent du LOCALE, c'est-à-dire, pour faire simple, de la
-configuration de l'ordinateur vis-à-vis de la langue.\\
+configuration de l'ordinateur vis-à-vis de la langue.
 
 Tant que vous exécutez ceci dans le notebook sur la plateforme, en
 principe tout le monde verra exactement la même chose. Par contre, si
@@ -167,7 +174,7 @@ vous obteniez des résultats légèrement différents.
 \subsubsection{Un exemple simple}\label{un-exemple-simple}}
 
     \hypertarget{findall}{%
-\subparagraph{\texorpdfstring{\texttt{findall}}{findall}\\\\}\label{findall}}
+\subparagraph{\texorpdfstring{\texttt{findall}}{findall}}\label{findall}}
 
     On se donne deux exemples de chaînes
 
@@ -204,27 +211,27 @@ r"\w*[am]\W"
 
 (On rappelle qu'un \emph{raw-string} est une chaine précédée par la
 lettre \texttt{r}, et que c'est utile surtout lorsqu'on veut insérer un
-backslash \texttt{\textbackslash{}} dans la chaine.)\\
+backslash \texttt{\textbackslash{}} dans la chaine.)
 
 Nous verrons tout à l'heure comment fabriquer des expressions régulières
 plus en détail, mais pour démystifier au moins celle-ci, on a mis bout à
 bout les morceaux suivants.
 
 \begin{itemize}
-	\item 
-	\texttt{\textbackslash{}w*} : on veut
-	trouver une sous-chaîne qui commence par un nombre quelconque, y compris
-	nul (\texttt{*}) de caractères alphanumériques
-	(\texttt{\textbackslash{}w}). Ceci est défini en fonction de votre
-	LOCALE, on y reviendra.
-	\item
-	\texttt{{[}am{]}} : immédiatement après, il
-	nous faut trouver un caratère \texttt{a} ou \texttt{m}.
-	\item
-	\texttt{\textbackslash{}W} : et enfin, il nous faut un caractère qui ne
-	soit \textbf{pas} alphanumérique. Ceci est important puisqu'on cherche
-	les mots qui \textbf{se terminent} par un \texttt{a} ou un \texttt{m},
-	si on ne le mettait pas on obtiendrait ceci
+\tightlist
+\item
+  \texttt{\textbackslash{}w*} : on veut trouver une sous-chaîne qui
+  commence par un nombre quelconque, y compris nul (\texttt{*}) de
+  caractères alphanumériques (\texttt{\textbackslash{}w}). Ceci est
+  défini en fonction de votre LOCALE, on y reviendra.
+\item
+  \texttt{{[}am{]}} : immédiatement après, il nous faut trouver un
+  caratère \texttt{a} ou \texttt{m}.
+\item
+  \texttt{\textbackslash{}W} : et enfin, il nous faut un caractère qui
+  ne soit \textbf{pas} alphanumérique. Ceci est important puisqu'on
+  cherche les mots qui \textbf{se terminent} par un \texttt{a} ou un
+  \texttt{m}, si on ne le mettait pas on obtiendrait ceci
 \end{itemize}
 
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -248,7 +255,7 @@ bout les morceaux suivants.
     \end{Verbatim}
 
     \hypertarget{split}{%
-\subparagraph{\texorpdfstring{\texttt{split}}{split}\\\\}\label{split}}
+\subparagraph{\texorpdfstring{\texttt{split}}{split}}\label{split}}
 
     Une autre forme simple d'utilisation des regexps est \texttt{re.split},
 qui fournit une fonctionnalité voisine de \texttt{str.split}, mais ou
@@ -274,13 +281,13 @@ les séparateurs sont exprimés comme une expression régulière
 
     Ici l'expression régulière, qui bien sûr décrit le séparateur, est
 simplement \texttt{\textbackslash{}W+} c'est-à-dire toute suite d'au
-moins un caractère non alphanumérique.\\
+moins un caractère non alphanumérique.
 
 Nous avons donc là un moyen simple, et plus puissant que
 \texttt{str.split}, de couper un texte en mots.
 
     \hypertarget{sub}{%
-\subparagraph{\texorpdfstring{\texttt{sub}}{sub}\\\\}\label{sub}}
+\subparagraph{\texorpdfstring{\texttt{sub}}{sub}}\label{sub}}
 
     Une troisième méthode utilitaire est \texttt{re.sub} qui permet de
 remplacer les occurrences d'une \emph{regexp}, comme par exemple
@@ -308,14 +315,14 @@ XNequeY XipsumY! XrhoncusY XcrasY XquamY.
 \texttt{\textbackslash{}w+}. Le second argument est la chaîne de
 remplacement, dans laquelle on a fait \textbf{référence au groupe} en
 écrivant \texttt{\textbackslash{}1}, qui veut dire tout simplement ``le
-premier groupe''.\\
+premier groupe''.
 
 Donc au final, l'effet de cet appel est d'entourer toutes les suites de
 caractères alphanumériques par \texttt{X} et \texttt{Y}.
 
     \hypertarget{pourquoi-un-raw-string}{%
 \subparagraph{\texorpdfstring{Pourquoi un \emph{raw-string}
-?}{Pourquoi un raw-string ?}\\\\}\label{pourquoi-un-raw-string}}
+?}{Pourquoi un raw-string ?}}\label{pourquoi-un-raw-string}}
 
     En guise de digression, il n'y a aucune obligation à utiliser un
 \emph{raw-string}, d'ailleurs on rappelle qu'il n'y a pas de différence
@@ -354,11 +361,11 @@ d'interprétation.
     Nous allons maintenant voir comment on peut d'abord vérifier si une
 chaîne est conforme au critère défini par l'expression régulière, mais
 aussi \emph{extraire} les morceaux de la chaîne qui correspondent aux
-différentes parties de l'expression.\\
+différentes parties de l'expression.
 
 Pour cela, supposons qu'on s'intéresse aux chaînes qui comportent 5
 parties, une suite de chiffres, une suite de lettres, des chiffres à
-nouveau, des lettres et enfin de nouveau des chiffres.\\
+nouveau, des lettres et enfin de nouveau des chiffres.
 
     Pour cela on considère ces trois chaines en entrée
 
@@ -371,7 +378,7 @@ nouveau, des lettres et enfin de nouveau des chiffres.\\
 
 
     \hypertarget{match}{%
-\subparagraph{\texorpdfstring{\texttt{match}}{match}\\\\}\label{match}}
+\subparagraph{\texorpdfstring{\texttt{match}}{match}}\label{match}}
 
     Pour commencer, voyons que l'on peut facilement \textbf{vérifier si une
 chaîne vérifie} ou non le critère.
@@ -391,8 +398,8 @@ chaîne vérifie} ou non le critère.
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-890hj000nnm890   → <\_sre.SRE\_Match object; span=(0, 14), match='890hj000nnm890'>
-123abc456def789  → <\_sre.SRE\_Match object; span=(0, 15), match='123abc456def789'>
+890hj000nnm890   → <re.Match object; span=(0, 14), match='890hj000nnm890'>
+123abc456def789  → <re.Match object; span=(0, 15), match='123abc456def789'>
 8090abababab879  → None
 
     \end{Verbatim}
@@ -435,12 +442,14 @@ indépendant du LOCALE si c'est ce qu'on veut faire. Il y a deux morceaux
 qui interviennent tour à tour~:
 
 \begin{itemize}
-	\item 
-	\texttt{{[}0-9{]}+} signifie une suite
-	de au moins un caractère dans l'intervalle \texttt{{[}0-9{]}},
-	\item	
-	\texttt{{[}A-Za-z{]}+} pour une suite d'au moins un caractère dans
-	l'intervalle \texttt{{[}A-Z{]}} ou dans l'intervalle \texttt{{[}a-z{]}}.
+\tightlist
+\item
+  \texttt{{[}0-9{]}+} signifie une suite de au moins un caractère dans
+  l'intervalle \texttt{{[}0-9{]}},
+\item
+  \texttt{{[}A-Za-z{]}+} pour une suite d'au moins un caractère dans
+  l'intervalle \texttt{{[}A-Z{]}} ou dans l'intervalle
+  \texttt{{[}a-z{]}}.
 \end{itemize}
 
 Et comme tout à l'heure on a simplement juxtaposé les morceaux dans le
@@ -485,11 +494,17 @@ milieu.
     \end{Verbatim}
 
     Dans cette expression on a utilisé un \textbf{groupe nommé}
-\texttt{(?P\textless{}needle\textgreater{}{[}0-9{]}+)}, dans lequel~: *
-les parenthèses définissent un groupe, *
-\texttt{?P\textless{}needle\textgreater{}} spécifie que ce groupe pourra
-être référencé sous le nom \texttt{needle} (cette syntaxe très absconse
-est héritée semble-t-il de perl).
+\texttt{(?P\textless{}needle\textgreater{}{[}0-9{]}+)}, dans lequel~:
+
+\begin{itemize}
+\tightlist
+\item
+  les parenthèses définissent un groupe,
+\item
+  \texttt{?P\textless{}needle\textgreater{}} spécifie que ce groupe
+  pourra être référencé sous le nom \texttt{needle} (cette syntaxe très
+  absconse est héritée semble-t-il de perl).
+\end{itemize}
 
     \hypertarget{un-troisiuxe8me-exemple}{%
 \subsubsection{Un troisième exemple}\label{un-troisiuxe8me-exemple}}
@@ -538,10 +553,10 @@ régulières}\label{comment-utiliser-la-librairie---compilation-des-expressions-
 
     Avant d'apprendre à écrire une expression régulière, disons quelques
 mots du mode d'emploi de la librairie.
-\newpage
+
     \hypertarget{fonctions-de-commodituxe9-et-workflow}{%
 \subparagraph{\texorpdfstring{Fonctions de commodité et
-\emph{workflow}\\\\}{Fonctions de commodité et workflow}}\label{fonctions-de-commodituxe9-et-workflow}}
+\emph{workflow}}{Fonctions de commodité et workflow}}\label{fonctions-de-commodituxe9-et-workflow}}
 
     Comme vous le savez peut-être, une expression régulière décrite sous
 forme de chaîne, comme par exemple
@@ -550,31 +565,30 @@ traduite dans un \textbf{automate fini} qui permet de faire le filtrage
 avec une chaîne. C'est ce qui explique le \emph{workflow} que nous avons
 résumé dans cette figure.
 
-\includegraphics{medias/re-workflow.png}\\
-
     La méthode recommandée pour utiliser la librairie, lorsque vous avez le
 même \emph{pattern} à appliquer à un grand nombre de chaînes, est de~:
 
 \begin{itemize}
-	\item 
-	compiler \textbf{une seule fois} votre chaîne en un automate, qui est
-	matérialisé par un objet de la classe \texttt{re.RegexObject}, en
-	utilisant \texttt{re.compile},
-	\item
-	puis d'\textbf{utiliser directement cet
-	objet} autant de fois que vous avez de chaînes.
+\tightlist
+\item
+  compiler \textbf{une seule fois} votre chaîne en un automate, qui est
+  matérialisé par un objet de la classe \texttt{re.RegexObject}, en
+  utilisant \texttt{re.compile},
+\item
+  puis d'\textbf{utiliser directement cet objet} autant de fois que vous
+  avez de chaînes.
 \end{itemize}
 
     Nous avons utilisé dans les exemples plus haut (et nous continuerons
 plus bas pour une meilleure lisibilité) des \textbf{fonctions de
 commodité} du module, qui sont pratiques, par exemple, pour mettre au
 point une expression régulière en mode interactif, mais qui ne
-\textbf{sont pas forcément} adaptées dans tous les cas.\\
+\textbf{sont pas forcément} adaptées dans tous les cas.
 
-Ces fonctions de commodité fonctionnent toutes sur le même principe~:\\
+Ces fonctions de commodité fonctionnent toutes sur le même principe~:
 
 \texttt{re.match(regexp,\ sample)} \(\Longleftrightarrow\)
-\texttt{re.compile(regexp).match(sample)}\\
+\texttt{re.compile(regexp).match(sample)}
 
 Donc à chaque fois qu'on utilise une fonction de commodité, on recompile
 la chaîne en automate, ce qui, dès qu'on a plus d'une chaîne à traiter,
@@ -622,7 +636,7 @@ donc est plus efficace.
 
     \hypertarget{les-muxe9thodes-sur-la-classe-regexobject}{%
 \subparagraph{\texorpdfstring{Les méthodes sur la classe
-\texttt{RegexObject}\\\\}{Les méthodes sur la classe RegexObject}}\label{les-muxe9thodes-sur-la-classe-regexobject}}
+\texttt{RegexObject}}{Les méthodes sur la classe RegexObject}}\label{les-muxe9thodes-sur-la-classe-regexobject}}
 
     Les objets de la classe \texttt{RegexObject} représentent donc
 l'automate à état fini qui est le résultat de la compilation de
@@ -630,22 +644,21 @@ l'expression régulière. Pour résumer ce qu'on a déjà vu, les méthodes
 les plus utiles sur un objet \texttt{RegexObject} sont~:
 
 \begin{itemize}
-	\item 
-	\texttt{match} et \texttt{search}, qui cherchent un \emph{match} soit
-	uniquement au début (\texttt{match}) ou n'importe où dans la chaîne
-	(\texttt{search}),
-	\item
-	\texttt{findall} et \texttt{split} pour chercher
-	toutes les occurences (\texttt{findall}) ou leur négatif
-	(\texttt{split}),
-	\item
-	\texttt{sub} (qui aurait pu sans doute s'appeler
-	\texttt{replace}, mais c'est comme ça) pour remplacer les occurrences de
-	pattern.
+\tightlist
+\item
+  \texttt{match} et \texttt{search}, qui cherchent un \emph{match} soit
+  uniquement au début (\texttt{match}) ou n'importe où dans la chaîne
+  (\texttt{search}),
+\item
+  \texttt{findall} et \texttt{split} pour chercher toutes les occurences
+  (\texttt{findall}) ou leur négatif (\texttt{split}),
+\item
+  \texttt{sub} (qui aurait pu sans doute s'appeler \texttt{replace},
+  mais c'est comme ça) pour remplacer les occurrences de pattern.
 \end{itemize}
 
     \hypertarget{exploiter-le-ruxe9sultat}{%
-\subparagraph{Exploiter le résultat\\\\}\label{exploiter-le-ruxe9sultat}}
+\subparagraph{Exploiter le résultat}\label{exploiter-le-ruxe9sultat}}
 
     Les \textbf{méthodes} disponibles sur la classe
 \textbf{\texttt{re.MatchObject}} sont
@@ -733,7 +746,7 @@ haut avec \texttt{needle}).
             
     Comme on le voit pour l'accès par rang \textbf{les indices commencent à
 1} pour des raisons historiques (on peut déjà référencer
-\texttt{\textbackslash{}1} en sed depuis la fin des années 70).\\
+\texttt{\textbackslash{}1} en sed depuis la fin des années 70).
 
 On peut aussi accéder au \textbf{groupe 0} comme étant la partie de la
 chaîne de départ qui a effectivement été filtrée par l'expression
@@ -778,11 +791,11 @@ groupe donné.
             
     \hypertarget{les-diffuxe9rents-modes-flags}{%
 \subparagraph{\texorpdfstring{Les différents modes
-(\emph{flags})\\\\}{Les différents modes (flags)}}\label{les-diffuxe9rents-modes-flags}}
+(\emph{flags})}{Les différents modes (flags)}}\label{les-diffuxe9rents-modes-flags}}
 
     Enfin il faut noter qu'on peut passer à \texttt{re.compile} un certain
 nombre de \emph{flags} qui modifient globalement l'interprétation de la
-chaîne, et qui peuvent rendre service.\\
+chaîne, et qui peuvent rendre service.
 
     Vous trouverez
 \href{https://docs.python.org/3/library/re.html\#module-contents}{une
@@ -791,23 +804,22 @@ long et parlant, et un alias court sur un seul caractère. Les plus
 utiles sont sans doute~:
 
 \begin{itemize}
-	\item 
-	\texttt{IGNORECASE} (\emph{alias} \texttt{I})
-	pour, eh bien, ne pas faire la différence entre minuscules et
-	majuscules,
-	\item
-	\texttt{UNICODE} (\emph{alias} \texttt{U}) pour rendre les
-	séquences \texttt{\textbackslash{}w} et autres basées sur les propriétés
-	des caractères dans la norme Unicode,
-	\item
-	\texttt{LOCALE} (\emph{alias}
-	\texttt{L}) cette fois \texttt{\textbackslash{}w} dépend du
-	\texttt{locale} courant,
-	\item
-	\texttt{MULTILINE} (\emph{alias} \texttt{M}), et
-	\item
-	\texttt{DOTALL} (\emph{alias} S) - pour ces deux derniers flags,
-	voir la discussion à la fin du complément.
+\tightlist
+\item
+  \texttt{IGNORECASE} (\emph{alias} \texttt{I}) pour, eh bien, ne pas
+  faire la différence entre minuscules et majuscules,
+\item
+  \texttt{UNICODE} (\emph{alias} \texttt{U}) pour rendre les séquences
+  \texttt{\textbackslash{}w} et autres basées sur les propriétés des
+  caractères dans la norme Unicode,
+\item
+  \texttt{LOCALE} (\emph{alias} \texttt{L}) cette fois
+  \texttt{\textbackslash{}w} dépend du \texttt{locale} courant,
+\item
+  \texttt{MULTILINE} (\emph{alias} \texttt{M}), et
+\item
+  \texttt{DOTALL} (\emph{alias} S) - pour ces deux derniers flags, voir
+  la discussion à la fin du complément.
 \end{itemize}
 
     Comme c'est souvent le cas, on doit passer à \texttt{re.compile} un
@@ -825,6 +837,15 @@ MAX\_REPEAT 0 MAXREPEAT
   LITERAL 97
 MAX\_REPEAT 1 MAXREPEAT
   LITERAL 98
+
+ 0. INFO 4 0b0 1 MAXREPEAT (to 5)
+ 5: REPEAT\_ONE 6 0 MAXREPEAT (to 12)
+ 9.   LITERAL\_UNI\_IGNORE 0x61 ('a')
+11.   SUCCESS
+12: REPEAT\_ONE 6 1 MAXREPEAT (to 19)
+16.   LITERAL\_UNI\_IGNORE 0x62 ('b')
+18.   SUCCESS
+19: SUCCESS
 
     \end{Verbatim}
 
@@ -850,59 +871,70 @@ en essayant de rester synthétique (la
 
     \hypertarget{la-brique-de-base-le-caractuxe8re}{%
 \subparagraph{La brique de base : le
-caractère\\\\}\label{la-brique-de-base-le-caractuxe8re}}
+caractère}\label{la-brique-de-base-le-caractuxe8re}}
 
     Au commencement il faut spécifier des caractères.
-    
+
 \begin{itemize}
-	\item 
-	\textbf{un seul} caractère:
-	\begin{itemize}
-		\item 
-		vous le citez tel quel, en le précédent d'un backslash
-		\texttt{\textbackslash{}} s'il a par ailleurs un sens spécial dans le
-		micro-langage de regexps (comme \texttt{+}, \texttt{*}, \texttt{{[}},
-		etc.);
-	\end{itemize}
-	\item
-	l'\textbf{attrape-tout} (\emph{wildcard}):
-	\begin{itemize}
-		\item 
-		un point \texttt{.} signifie ``n'importe quel caractère'';
-	\end{itemize}
-	\item
-	\textbf{un ensemble} de caractères avec la notation \texttt{{[}...{]}} qui permet de décrire par exemple:
-	\begin{itemize}
-		\item 
-		\texttt{{[}a1={]}} un ensemble in extenso, ici un
-		caractère parmi \texttt{a}, \texttt{1}, ou \texttt{=},
-		\item
-		\texttt{{[}a-z{]}} un intervalle de caractères, ici de \texttt{a} à
-		\texttt{z},
-		\item
-		\texttt{{[}15e-g{]}} un mélange des deux, ici un ensemble
-		qui contiendrait \texttt{1}, \texttt{5}, \texttt{e}, \texttt{f} et
-		\texttt{g},
-		\item
-		\texttt{{[}\^{}15e-g{]}} une \textbf{négation}, qui a
-		\texttt{\^{}} comme premier caractère dans les \texttt{{[}{]}}, ici tout
-		sauf l'ensemble précédent;
-	\end{itemize}
-	\item
-	un \textbf{ensemble prédéfini} de caractères, qui peuvent alors dépendre de l'environnement (UNICODE et LOCALE) avec entre autres les notations:
-	\begin{itemize}
-		\item 
-		 \texttt{\textbackslash{}w}
-		les caractères alphanumériques, et \texttt{\textbackslash{}W} (les
-		autres),
-		\item
-		\texttt{\textbackslash{}s} les caractères ``blancs'' -
-		espace, tabulation, saut de ligne, etc., et \texttt{\textbackslash{}S}
-		(les autres),
-		\item
-		\texttt{\textbackslash{}d} pour les chiffres, et
-		\texttt{\textbackslash{}D} (les autres).
-    \end{itemize}
+\tightlist
+\item
+  \textbf{un seul} caractère:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    vous le citez tel quel, en le précédent d'un backslash
+    \texttt{\textbackslash{}} s'il a par ailleurs un sens spécial dans
+    le micro-langage de regexps (comme \texttt{+}, \texttt{*},
+    \texttt{{[}}, etc.);
+  \end{itemize}
+\item
+  l'\textbf{attrape-tout} (\emph{wildcard}):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    un point \texttt{.} signifie ``n'importe quel caractère'';
+  \end{itemize}
+\item
+  \textbf{un ensemble} de caractères avec la notation \texttt{{[}...{]}}
+  qui permet de décrire par exemple:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{{[}a1={]}} un ensemble in extenso, ici un caractère parmi
+    \texttt{a}, \texttt{1}, ou \texttt{=},
+  \item
+    \texttt{{[}a-z{]}} un intervalle de caractères, ici de \texttt{a} à
+    \texttt{z},
+  \item
+    \texttt{{[}15e-g{]}} un mélange des deux, ici un ensemble qui
+    contiendrait \texttt{1}, \texttt{5}, \texttt{e}, \texttt{f} et
+    \texttt{g},
+  \item
+    \texttt{{[}\^{}15e-g{]}} une \textbf{négation}, qui a \texttt{\^{}}
+    comme premier caractère dans les \texttt{{[}{]}}, ici tout sauf
+    l'ensemble précédent;
+  \end{itemize}
+\item
+  un \textbf{ensemble prédéfini} de caractères, qui peuvent alors
+  dépendre de l'environnement (UNICODE et LOCALE) avec entre autres les
+  notations:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{\textbackslash{}w} les caractères alphanumériques, et
+    \texttt{\textbackslash{}W} (les autres),
+  \item
+    \texttt{\textbackslash{}s} les caractères ``blancs'' - espace,
+    tabulation, saut de ligne, etc., et \texttt{\textbackslash{}S} (les
+    autres),
+  \item
+    \texttt{\textbackslash{}d} pour les chiffres, et
+    \texttt{\textbackslash{}D} (les autres).
+  \end{itemize}
 \end{itemize}
 
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -938,13 +970,13 @@ Match!
 
     \hypertarget{en-suxe9rie-ou-en-paralluxe8le}{%
 \subparagraph{En série ou en
-parallèle\\\\}\label{en-suxe9rie-ou-en-paralluxe8le}}
+parallèle}\label{en-suxe9rie-ou-en-paralluxe8le}}
 
     Si je fais une analogie avec les montages électriques, jusqu'ici on a vu
 le montage en série, on met des expressions régulières bout à bout qui
 filtrent (\texttt{match}) la chaine en entrée séquentiellement du début
 à la fin. On a \emph{un peu} de marge pour spécifier des alternatives,
-lorsqu'on fait par exemple\\
+lorsqu'on fait par exemple
 
 \begin{verbatim}
 "ab[cd]ef"
@@ -972,30 +1004,30 @@ aef / abc|def → no
     \end{Verbatim}
 
     \hypertarget{fins-de-chauxeene}{%
-\subparagraph{Fin(s) de chaîne\\\\}\label{fins-de-chauxeene}}
+\subparagraph{Fin(s) de chaîne}\label{fins-de-chauxeene}}
 
     Selon que vous utilisez \texttt{match} ou \texttt{search}, vous précisez
 si vous vous intéressez uniquement à un match en début (\texttt{match})
-ou n'importe où (\texttt{search}) dans la chaîne.\\
+ou n'importe où (\texttt{search}) dans la chaîne.
 
 Mais indépendamment de cela, il peut être intéressant de ``coller''
 l'expression en début ou en fin de ligne, et pour ça il existe des
 caractères spéciaux:
 
 \begin{itemize}
-	\item 
-	\texttt{\^{}} lorsqu'il est utilisé comme un
-	caractère (c'est à dire pas en début de \texttt{{[}{]}}) signifie un
-	début de chaîne;
-	\item
-	\texttt{\textbackslash{}A} a le même sens (sauf en
-	mode MULTILINE), et je le recommande de préférence à \texttt{\^{}} qui
-	est déjà pas mal surchargé;
-	\item
-	\texttt{\$} matche une fin de ligne;
-	\item
-	\texttt{\textbackslash{}Z} est voisin de \texttt{\$} mais pas tout à
-	fait identique.
+\tightlist
+\item
+  \texttt{\^{}} lorsqu'il est utilisé comme un caractère (c'est à dire
+  pas en début de \texttt{{[}{]}}) signifie un début de chaîne;
+\item
+  \texttt{\textbackslash{}A} a le même sens (sauf en mode MULTILINE), et
+  je le recommande de préférence à \texttt{\^{}} qui est déjà pas mal
+  surchargé;
+\item
+  \texttt{\$} matche une fin de ligne;
+\item
+  \texttt{\textbackslash{}Z} est voisin de \texttt{\$} mais pas tout à
+  fait identique.
 \end{itemize}
 
 Reportez-vous à la documentation pour le détails des différences.
@@ -1010,20 +1042,21 @@ caractère ASCII et non un voisin dans la ménagerie Unicode.
                          \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bcd\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bc}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{Z}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bc\PYZdl{}}\PY{l+s+s1}{\PYZsq{}} \PY{p}{]}\PY{p}{:}
              \PY{n}{match} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{n}{regexp}\PY{p}{,} \PY{n}{sample}\PY{p}{)}
              \PY{n}{search} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{search}\PY{p}{(}\PY{n}{regexp}\PY{p}{,} \PY{n}{sample}\PY{p}{)}
-             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}sample\PYZcb{}}\PY{l+s+s2}{ / }\PY{l+s+si}{\PYZob{}regexp:5s\PYZcb{}}\PY{l+s+s2}{ match → }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{nice(match):6s\PYZcb{} search → }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{nice(search)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}sample\PYZcb{}}\PY{l+s+s2}{ / }\PY{l+s+si}{\PYZob{}regexp:5s\PYZcb{}}\PY{l+s+s2}{ match → }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{nice(match):6s\PYZcb{},}\PY{l+s+s2}{\PYZdq{}}
+                   \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ search → }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{nice(search)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-abcd / bc    match → no     search → Match!
-abcd / \textbackslash{}Aabc match → Match! search → Match!
-abcd / \^{}abc  match → Match! search → Match!
-abcd / \textbackslash{}Abc  match → no     search → no
-abcd / \^{}bc   match → no     search → no
-abcd / bcd\textbackslash{}Z match → no     search → Match!
-abcd / bcd\$  match → no     search → Match!
-abcd / bc\textbackslash{}Z  match → no     search → no
-abcd / bc\$   match → no     search → no
+abcd / bc    match → no    , search → Match!
+abcd / \textbackslash{}Aabc match → Match!, search → Match!
+abcd / \^{}abc  match → Match!, search → Match!
+abcd / \textbackslash{}Abc  match → no    , search → no
+abcd / \^{}bc   match → no    , search → no
+abcd / bcd\textbackslash{}Z match → no    , search → Match!
+abcd / bcd\$  match → no    , search → Match!
+abcd / bc\textbackslash{}Z  match → no    , search → no
+abcd / bc\$   match → no    , search → no
 
     \end{Verbatim}
 
@@ -1031,7 +1064,7 @@ abcd / bc\$   match → no     search → no
 il n'est ni au début ni à la fin.
 
     \hypertarget{parenthuxe9ser---grouper}{%
-\subparagraph{Parenthéser - (grouper)\\\\}\label{parenthuxe9ser---grouper}}
+\subparagraph{Parenthéser - (grouper)}\label{parenthuxe9ser---grouper}}
 
     Pour pouvoir faire des montages élaborés, il faut pouvoir parenthéser.
 
@@ -1085,40 +1118,40 @@ groupe retourné par \texttt{MatchObject.group}.
 
     \hypertarget{compter-les-ruxe9puxe9titions}{%
 \subparagraph{Compter les
-répétitions\\\\}\label{compter-les-ruxe9puxe9titions}}
+répétitions}\label{compter-les-ruxe9puxe9titions}}
 
     Vous disposez des opérateurs suivants~:
-    
+
 \begin{itemize}
-	\item 
-	\texttt{*} l'étoile qui
-	signifie n'importe quel nombre, même nul, d'occurrences - par exemple,
-	\texttt{(ab)*} pour indiquer
-	\texttt{\textquotesingle{}\textquotesingle{}} ou
-	\texttt{\textquotesingle{}ab\textquotesingle{}} ou
-	\texttt{\textquotesingle{}abab\textquotesingle{}} ou etc.,
-	\item
-	\texttt{+}
-	le plus qui signifie au moins une occurrence - e.g. \texttt{(ab)+} pour
-	\texttt{ab} ou \texttt{abab} ou \texttt{ababab} ou etc,
-	\item
-	\texttt{?} qui
-	indique une option, c'est-à-dire 0 ou 1 occurence - autrement dit
-	\texttt{(ab)?} matche \texttt{\textquotesingle{}\textquotesingle{}} ou
-	\texttt{ab},
-	\item
-	\texttt{\{n\}} pour exactement n occurrences de
-	\texttt{(ab)} - e.g. \texttt{(ab)\{3\}} qui serait exactement équivalent
-	à \texttt{ababab},
-	\item
-	\texttt{\{m,n\}} entre m et n fois inclusivement.
+\tightlist
+\item
+  \texttt{*} l'étoile qui signifie n'importe quel nombre, même nul,
+  d'occurrences - par exemple, \texttt{(ab)*} pour indiquer
+  \texttt{\textquotesingle{}\textquotesingle{}} ou
+  \texttt{\textquotesingle{}ab\textquotesingle{}} ou
+  \texttt{\textquotesingle{}abab\textquotesingle{}} ou etc.,
+\item
+  \texttt{+} le plus qui signifie au moins une occurrence - e.g.
+  \texttt{(ab)+} pour \texttt{ab} ou \texttt{abab} ou \texttt{ababab} ou
+  etc,
+\item
+  \texttt{?} qui indique une option, c'est-à-dire 0 ou 1 occurence -
+  autrement dit \texttt{(ab)?} matche
+  \texttt{\textquotesingle{}\textquotesingle{}} ou \texttt{ab},
+\item
+  \texttt{\{n\}} pour exactement n occurrences de \texttt{(ab)} - e.g.
+  \texttt{(ab)\{3\}} qui serait exactement équivalent à \texttt{ababab},
+\item
+  \texttt{\{m,n\}} entre m et n fois inclusivement.
 \end{itemize}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}47}]:} \PY{c+c1}{\PYZsh{} NB: la notation [op(e) for e in l] est une compréhension de liste que}
-         \PY{c+c1}{\PYZsh{} nous verrons plus tard.}
-         \PY{c+c1}{\PYZsh{} Elle retourne une liste contenant les résultats de l\PYZsq{}opération op sur}
-         \PY{c+c1}{\PYZsh{} chaque élément e de la liste de départ l }
+{\color{incolor}In [{\color{incolor}47}]:} \PY{c+c1}{\PYZsh{} NB: la construction}
+         \PY{c+c1}{\PYZsh{}   [op(elt) for elt in iterable] }
+         \PY{c+c1}{\PYZsh{} est une compréhension de liste que nous étudierons plus tard.}
+         \PY{c+c1}{\PYZsh{} Elle retourne une liste contenant les résultats}
+         \PY{c+c1}{\PYZsh{} de l\PYZsq{}opération op sur chaque élément de la liste de départ}
+         
          \PY{n}{samples} \PY{o}{=} \PY{p}{[}\PY{n}{n}\PY{o}{*}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ab}\PY{l+s+s1}{\PYZsq{}} \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{]}\PY{p}{]} \PY{o}{+} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{baba}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
          
          \PY{k}{for} \PY{n}{regexp} \PY{o+ow}{in} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{(ab)*}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{(ab)+}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{(ab)}\PY{l+s+si}{\PYZob{}3\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{(ab)}\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{3,4\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{:}
@@ -1155,35 +1188,37 @@ abababab / \textbackslash{}A(ab)\{3,4\}\textbackslash{}Z  → Match!
     \end{Verbatim}
 
     \hypertarget{groupes-et-contraintes}{%
-\subparagraph{Groupes et contraintes\\\\}\label{groupes-et-contraintes}}
+\subparagraph{Groupes et contraintes}\label{groupes-et-contraintes}}
 
     Nous avons déjà vu un exemple de groupe nommé (voir \texttt{needle} plus
 haut), les opérateurs que l'on peut citer dans cette catégorie sont~:
 
 \begin{itemize}
-	\item 
-	\texttt{(...)} les parenthèses définissent un groupe anonyme,
-	\item
-	\texttt{(?P\textless{}name\textgreater{}...)} définit un groupe nommé,
-	\item
-	\texttt{(?:...)} permet de mettre des parenthèses mais sans créer un
-	groupe, pour optimiser l'exécution puisqu'on n'a pas besoin de conserver
-	les liens vers la chaîne d'entrée,
-	\item
-	\texttt{(?P=name)} qui ne matche
-	que si l'on retrouve à cet endroit de l'entrée la même sous-chaîne que
-	celle trouvée pour le groupe \texttt{name} en amont,
-	\item
-	enfin \texttt{(?=...)}, \texttt{(?!...)}et \texttt{(?\textless{}=...)}
-	permettent des contraintes encore plus élaborées, nous vous laissons le
-	soin d'expérimenter avec elles si vous êtes intéressés; sachez toutefois
-	que l'utilisation de telles constructions peut en théorie rendre
-	l'interprétation de votre expression régulière beaucoup moins efficace.
+\tightlist
+\item
+  \texttt{(...)} les parenthèses définissent un groupe anonyme,
+\item
+  \texttt{(?P\textless{}name\textgreater{}...)} définit un groupe nommé,
+\item
+  \texttt{(?:...)} permet de mettre des parenthèses mais sans créer un
+  groupe, pour optimiser l'exécution puisqu'on n'a pas besoin de
+  conserver les liens vers la chaîne d'entrée,
+\item
+  \texttt{(?P=name)} qui ne matche que si l'on retrouve à cet endroit de
+  l'entrée la même sous-chaîne que celle trouvée pour le groupe
+  \texttt{name} en amont,
+\item
+  enfin \texttt{(?=...)}, \texttt{(?!...)}et \texttt{(?\textless{}=...)}
+  permettent des contraintes encore plus élaborées, nous vous laissons
+  le soin d'expérimenter avec elles si vous êtes intéressés; sachez
+  toutefois que l'utilisation de telles constructions peut en théorie
+  rendre l'interprétation de votre expression régulière beaucoup moins
+  efficace.
 \end{itemize}
 
     \hypertarget{greedy-vs-non-greedy}{%
 \subparagraph{\texorpdfstring{Greedy \emph{vs}
-non-greedy}{Greedy vs non-greedy}\\\\}\label{greedy-vs-non-greedy}}
+non-greedy}{Greedy vs non-greedy}}\label{greedy-vs-non-greedy}}
 
     Lorsqu'on stipule une répétition un nombre indéfini de fois, il se peut
 qu'il existe \textbf{plusieurs} façons de filtrer l'entrée avec
@@ -1211,7 +1246,6 @@ de \emph{greedy} - quelque chose comme glouton en français.
 \begin{Verbatim}[commandchars=\\\{\}]
 {\color{outcolor}Out[{\color{outcolor}48}]:} '<h1>Title</h1>'
 \end{Verbatim}
-\newpage
             
     Ça n'est pas forcément ce qu'on voulait faire, aussi on peut spécifier
 l'approche inverse, c'est-à-dire de trouver la \textbf{plus-petite}
@@ -1219,12 +1253,13 @@ chaîne qui matche, dans une approche dite \emph{non-greedy}, avec les
 opérateurs suivants~:
 
 \begin{itemize}
-	\item 
-	\texttt{*?} : \texttt{*} mais \emph{non-greedy},
-	\item
-	\texttt{+?} : \texttt{+} mais \emph{non-greedy},
-	\item
-	\texttt{??} : \texttt{?} mais \emph{non-greedy},
+\tightlist
+\item
+  \texttt{*?} : \texttt{*} mais \emph{non-greedy},
+\item
+  \texttt{+?} : \texttt{+} mais \emph{non-greedy},
+\item
+  \texttt{??} : \texttt{?} mais \emph{non-greedy},
 \end{itemize}
 
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -1244,15 +1279,15 @@ opérateurs suivants~:
             
     \hypertarget{sagissant-du-traitement-des-fins-de-ligne}{%
 \subparagraph{S'agissant du traitement des fins de
-ligne\\\\}\label{sagissant-du-traitement-des-fins-de-ligne}}
+ligne}\label{sagissant-du-traitement-des-fins-de-ligne}}
 
     Il peut être utile, pour conclure cette présentation, de préciser un peu
-le comportement de la librairie vis-à-vis des fins de ligne.\\
+le comportement de la librairie vis-à-vis des fins de ligne.
 
 Historiquement, les expressions régulières telles qu'on les trouve dans
 les librairies C, donc dans \texttt{sed}, \texttt{grep} et autre
 utilitaires Unix, sont associées au modèle mental où on filtre les
-entrées ligne par ligne.\\
+entrées ligne par ligne.
 
 Le module \texttt{re} en garde des traces, puisque
 
@@ -1343,13 +1378,13 @@ ceci
     La mise au point d'expressions régulières est certes un peu exigeante,
 et demande pas mal de pratique, mais permet d'écrire en quelques lignes
 des fonctionnalités très puissantes, c'est un investissement très
-rentable :)\\
+rentable :)
 
     Je vous signale enfin l'existence de \textbf{sites web} qui évaluent une
 expression régulière \textbf{de manière interactive} et qui peuvent
-rendre la mise au point moins fastidieuse.\\
+rendre la mise au point moins fastidieuse.
 
-Je vous signale notamment \ref{https://pythex.org/}{https://pythex.org/}, et il en existe beaucoup
+Je vous signale notamment https://pythex.org/, et il en existe beaucoup
 d'autres.
 
     \hypertarget{pour-en-savoir-plus}{%
@@ -1359,12 +1394,13 @@ d'autres.
 savez qu'on distingue en général
 
 \begin{itemize}
-	\item 
-	l'\textbf{analyse lexicale}, qui
-	découpe le texte en morceaux (qu'on appelle des \emph{tokens}),
-	\item
-	et l'\textbf{analyse syntaxique} qui décrit pour simplifier à l'extrême
-	l'ordre dans lequel on peut trouver les tokens.
+\tightlist
+\item
+  l'\textbf{analyse lexicale}, qui découpe le texte en morceaux (qu'on
+  appelle des \emph{tokens}),
+\item
+  et l'\textbf{analyse syntaxique} qui décrit pour simplifier à
+  l'extrême l'ordre dans lequel on peut trouver les tokens.
 \end{itemize}
 
 Avec les expression régulières, on adresse le niveau de l'analyse
@@ -1373,13 +1409,20 @@ objectifs de ce cours, il existe de nombreuses alternatives, parmi
 lesquelles:
 
 \begin{itemize}
-	\item 
-	\href{http://pyparsing.wikispaces.com/Download+and+Installation}{\texttt{pyparsing}}
-	\item
-	\href{http://www.dabeaz.com/ply/}{\texttt{PLY} (Python Lex-Yacc)}
-	\item
-	\href{http://www.antlr.org}{\texttt{ANTLR}} qui est un outil écrit en
-	Java mais qui peut générer des parsers en python,
-	\item
-	\ldots{}
+\tightlist
+\item
+  \href{http://pyparsing.wikispaces.com/Download+and+Installation}{\texttt{pyparsing}}
+\item
+  \href{http://www.dabeaz.com/ply/}{\texttt{PLY} (Python Lex-Yacc)}
+\item
+  \href{http://www.antlr.org}{\texttt{ANTLR}} qui est un outil écrit en
+  Java mais qui peut générer des parsers en python,
+\item
+  \ldots{}
 \end{itemize}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

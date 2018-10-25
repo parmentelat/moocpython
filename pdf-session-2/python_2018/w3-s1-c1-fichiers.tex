@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{les-fichiers}{%
 \section{Les fichiers}\label{les-fichiers}}
 
@@ -29,18 +36,19 @@ est donc recommandé de faire~:
 \subsubsection{Les modes d'ouverture}\label{les-modes-douverture}}
 
     Les modes d'ouverture les plus utilisés sont~:
-  
+
 \begin{itemize}
-	\item
-	\texttt{\textquotesingle{}r\textquotesingle{}} (la chaîne contenant
-	l'unique caractère \texttt{r}) pour ouvrir un fichier en lecture
-	seulement~;
-	\item
-	\texttt{\textquotesingle{}w\textquotesingle{}} en écriture
-	seulement~; le contenu précédent du fichier, s'il existait, est perdu~;
-	\item
-	\texttt{\textquotesingle{}a\textquotesingle{}} en écriture seulement~;
-	mais pour ajouter du contenu en fin de fichier.
+\tightlist
+\item
+  \texttt{\textquotesingle{}r\textquotesingle{}} (la chaîne contenant
+  l'unique caractère \texttt{r}) pour ouvrir un fichier en lecture
+  seulement~;
+\item
+  \texttt{\textquotesingle{}w\textquotesingle{}} en écriture seulement~;
+  le contenu précédent du fichier, s'il existait, est perdu~;
+\item
+  \texttt{\textquotesingle{}a\textquotesingle{}} en écriture seulement~;
+  mais pour ajouter du contenu en fin de fichier.
 \end{itemize}
 
     Voici par exemple comment on pourrait ajouter deux lignes de texte dans
@@ -57,7 +65,8 @@ entiers~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} maintenant on regarde ce que contient le fichier}
-        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{foo.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{entree}\PY{p}{:} \PY{c+c1}{\PYZsh{} remarquez que sans \PYZsq{}mode\PYZsq{}, on ouvre en lecture seule}
+        \PY{c+c1}{\PYZsh{} remarquez que sans \PYZsq{}mode\PYZsq{}, on ouvre en lecture seule}
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{foo.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{entree}\PY{p}{:} 
             \PY{k}{for} \PY{n}{line} \PY{o+ow}{in} \PY{n}{entree}\PY{p}{:}
                 \PY{c+c1}{\PYZsh{} line contient déjà un retour à la ligne}
                 \PY{n+nb}{print}\PY{p}{(}\PY{n}{line}\PY{p}{,} \PY{n}{end}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
@@ -74,12 +83,13 @@ entiers~:
 
     Il existe de nombreuses variantes au mode d'ouverture, pour par
 exemple~:
+
 \begin{itemize}
-	\item 
-	ouvrir le fichier en lecture \emph{et} en écriture (mode
-	\texttt{+})~;
-	\item
-	ouvrir le fichier en mode binaire (mode \texttt{b}).
+\tightlist
+\item
+  ouvrir le fichier en lecture \emph{et} en écriture (mode \texttt{+})~;
+\item
+  ouvrir le fichier en mode binaire (mode \texttt{b}).
 \end{itemize}
 
 Ces variantes sont décrites dans
@@ -155,7 +165,7 @@ d'exploitation~; nous allons en décrire deux parmi les plus utiles.
 
     \hypertarget{digression---repr}{%
 \subparagraph{\texorpdfstring{Digression -
-\texttt{repr()}}{Digression - repr()}\\\\}\label{digression---repr}}
+\texttt{repr()}}{Digression - repr()}}\label{digression---repr}}
 
     Comme nous allons utiliser maintenant des outils d'assez bas niveau pour
 lire du texte, pour examiner ce texte nous allons utiliser la fonction
@@ -195,7 +205,7 @@ def
 
     \hypertarget{lire-un-contenu---bas-niveau}{%
 \subparagraph{Lire un contenu - bas
-niveau\\\\}\label{lire-un-contenu---bas-niveau}}
+niveau}\label{lire-un-contenu---bas-niveau}}
 
     Revenons aux fichiers~; la méthode \texttt{read()} permet de lire dans
 le fichier un buffer d'une certaine taille~:
@@ -237,7 +247,7 @@ Bloc 1 >>'100\textbackslash{}n'<<
     On voit donc que chaque bloc contient bien quatre caractères en comptant
 les sauts de ligne~:
 
-\begin{longtable}[]{@{}lr@{}}
+\begin{longtable}[]{@{}ll@{}}
 \toprule
 bloc \# & contenu\tabularnewline
 \midrule
@@ -250,13 +260,13 @@ bloc \# & contenu\tabularnewline
 
     \hypertarget{la-muxe9thode-flush}{%
 \subparagraph{\texorpdfstring{La méthode
-\texttt{flush}}{La méthode flush}\\\\}\label{la-muxe9thode-flush}}
+\texttt{flush}}{La méthode flush}}\label{la-muxe9thode-flush}}
 
     Les entrées-sorties sur fichier sont bien souvent \emph{bufferisées} par
 le système d'exploitation. Cela signifie qu'un appel à \texttt{write} ne
 provoque pas forcément une écriture immédiate, car pour des raisons de
 performance on attend d'avoir suffisamment de matière avant d'écrire sur
-le disque.\\
+le disque.
 
 Il y a des cas où ce comportement peut s'avérer gênant, et où on a
 besoin d'écrire immédiatement (et donc de vider le \emph{buffer}), et
@@ -268,7 +278,7 @@ binaires}\label{fichiers-textuels-et-fichiers-binaires}}
 
     De la même façon que le langage propose les deux types \texttt{str} et
 \texttt{bytes}, il est possible d'ouvrir un fichier en mode
-\emph{textuel} ou en mode \emph{binaire}.\\
+\emph{textuel} ou en mode \emph{binaire}.
 
     Les fichiers que nous avons vus jusqu'ici étaient ouverts en mode
 \emph{textuel} (c'est le défaut), et c'est pourquoi nous avons interagi
@@ -291,24 +301,20 @@ on a lu un objet de type <class 'str'>
     \end{Verbatim}
 
     Lorsque ce n'est pas le comportement souhaité, on peut~:
-    
+
 \begin{itemize}
-	\item 
-	ouvrir le fichier en mode \emph{binaire} - pour cela on ajoute le caractère
-	\texttt{b} au mode d'ouverture~;
-	\item
-	et on peut alors interagir avec le fichier avec des objets de type \texttt{bytes}
+\tightlist
+\item
+  ouvrir le fichier en mode \emph{binaire} - pour cela on ajoute le
+  caractère \texttt{b} au mode d'ouverture~;
+\item
+  et on peut alors interagir avec le fichier avec des objets de type
+  \texttt{bytes}
 \end{itemize}
 
-    Pour illustrer ce trait, nous allons~:
-
-\begin{enumerate}
-	\item 
-	créer un fichier en mode texte, et y insérer du texte en UTF-8~;
-	\item
-	relire le fichier en mode
-	binaire, et retrouver le codage des différents caractères.
-\end{enumerate}
+    Pour illustrer ce trait, nous allons~: 0. créer un fichier en mode
+texte, et y insérer du texte en UTF-8~; 0. relire le fichier en mode
+binaire, et retrouver le codage des différents caractères.
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} phase 1 : on écrit un fichier avec du texte en UTF\PYZhy{}8}
@@ -350,19 +356,18 @@ on a lu un objet de type <class 'bytes'>
 11 → 't' [0x74]
 12 → 'Ã' [0xc3]
 13 → '©' [0xa9]
-14 → '\textbackslash{}r' [0xd]
-15 → '\textbackslash{}n' [0xa]
+14 → '\textbackslash{}n' [0xa]
 
     \end{Verbatim}
 
     Vous retrouvez ainsi le fait que l'unique caractère Unicode \texttt{é} a
 été encodé par UTF-8 sous la forme de deux octets de code hexadécimal
-\texttt{0xc3} et \texttt{0xa9}.\\
+\texttt{0xc3} et \texttt{0xa9}.
 
     Vous pouvez également consulter ce site qui visualise l'encodage UTF-8,
-avec notre séquence d'entrée~:\\
+avec notre séquence d'entrée~:
 
-\href{https://mothereff.in/utf-8\#d\%C3\%A9j\%C3\%A0\%20l\%27\%C3\%A9t\%C3\%A9\%0A}{https://mothereff.in/utf-8\#d\%C3\%A9j\%C3\%A0\%20l\%27\%C3\%A9t\%C3\%A9\%0A}
+https://mothereff.in/utf-8\#d\%C3\%A9j\%C3\%A0\%20l\%27\%C3\%A9t\%C3\%A9\%0A
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} on peut comparer le nombre d\PYZsq{}octets et le nombre de caractères}
@@ -375,7 +380,7 @@ avec notre séquence d'entrée~:\\
 
     \begin{Verbatim}[commandchars=\\\{\}]
 en mode texte, 11 caractères
-en mode binaire, 16 octets
+en mode binaire, 15 octets
 
     \end{Verbatim}
 
@@ -389,12 +394,22 @@ octets, comme vous pouvez vous en assurer
 \subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
 
     Pour une description exhaustive vous pouvez vous reporter~:
-    
+
 \begin{itemize}
-	\item 
-	au \href{https://docs.python.org/3/glossary.html\#term-file-object}{glossaire
-	sur la notion de \texttt{object\ file}},
-	\item
-	et aussi et surtout \href{https://docs.python.org/3/library/io.html\#module-io}{au module
-	\texttt{io}} qui décrit plus en détail les fonctionnalités disponibles.
+\tightlist
+\item
+  au
+  \href{https://docs.python.org/3/glossary.html\#term-file-object}{glossaire
+  sur la notion de \texttt{object\ file}},
+\item
+  et aussi et surtout
+  \href{https://docs.python.org/3/library/io.html\#module-io}{au module
+  \texttt{io}} qui décrit plus en détail les fonctionnalités
+  disponibles.
 \end{itemize}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

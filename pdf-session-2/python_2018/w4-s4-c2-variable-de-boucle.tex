@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{visibilituxe9-des-variables-de-boucle}{%
 \section{Visibilité des variables de
 boucle}\label{visibilituxe9-des-variables-de-boucle}}
@@ -65,7 +72,7 @@ OOPS name 'i' is not defined
             
     On dit que la variable \emph{fuite} (en anglais ``\emph{leak}''), dans
 ce sens qu'elle continue d'exister au delà du bloc de la boucle à
-proprement parler.\\
+proprement parler.
 
     On peut être tenté de tirer profit de ce trait, en lisant la valeur de
 la variable après la boucle~; l'objet de ce complément est de vous
@@ -107,31 +114,13 @@ affectée} et donc elle n'est \textbf{pas définie}. C'est évident, mais
     Ça a l'air correct, sauf que~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{length}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{)}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{c+c1}{\PYZsh{} ceci provoque une UnboundLocalError}
+        \PY{n}{length}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-
-        ---------------------------------------------------------------------------
-
-        UnboundLocalError                         Traceback (most recent call last)
-
-        <ipython-input-6-8c0f554916d9> in <module>()
-    ----> 1 length([])
-    
-
-        <ipython-input-5-54c4139d6f55> in length(l)
-          3     for i, x in enumerate(l):
-          4         pass
-    ----> 5     return i + 1
-          6 
-          7 length([1, 2, 3])
-    
-
-        UnboundLocalError: local variable 'i' referenced before assignment
-
-    \end{Verbatim}
 
     Ce résultat mérite une explication. Nous allons voir très bientôt
 l'exception \texttt{UnboundLocalError}, mais pour le moment sachez
@@ -139,7 +128,7 @@ qu'elle se produit lorsqu'on a dans une fonction une variable locale et
 une variable globale de même nom. Alors, pourquoi l'appel
 \texttt{length({[}1,\ 2,\ 3{]})} retourne-t-il sans encombre, alors que
 pour l'appel \texttt{length({[}{]})} il y a une exception~? Cela est lié
-à la manière dont python détermine qu'une variable est locale.\\
+à la manière dont python détermine qu'une variable est locale.
 
 Une variable est locale dans une fonction si elle est assignée dans la
 fonction explicitement (avec une opération d'affectation) ou
@@ -150,7 +139,7 @@ phase de pré-compilation, c'est-à-dire \emph{avant} l'exécution du code.
 Le pré-compilateur ne peut pas savoir quel sera l'argument passé à la
 fonction, il peut simplement savoir qu'il y a une boucle \texttt{for}
 utilisant la variable \texttt{i}, il en conclut que \texttt{i} est
-locale pour toute la fonction.\\
+locale pour toute la fonction.
 
 Lors du premier appel, on passe une liste à la fonction, liste qui est
 parcourue par la boucle \texttt{for}. En sortie de boucle, on a bien une
@@ -169,13 +158,13 @@ provoque l'exception \texttt{UnboundLocalError}.
 
     \hypertarget{utiliser-une-autre-variable}{%
 \subparagraph{Utiliser une autre
-variable\\\\}\label{utiliser-une-autre-variable}}
+variable}\label{utiliser-une-autre-variable}}
 
     La première voie consiste à déclarer une variable externe à la boucle et
 à l'affecter à l'intérieur de la boucle, c'est-à-dire~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} on veut chercher le premier de ces nombres qui vérifie une condition}
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} on veut chercher le premier de ces nombres qui vérifie une condition}
         \PY{n}{candidates} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{15}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{]}
         
         \PY{c+c1}{\PYZsh{} pour fixer les idées disons qu\PYZsq{}on cherche un multiple de 5, peu importe}
@@ -185,7 +174,7 @@ variable\\\\}\label{utiliser-une-autre-variable}}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} plutôt que de faire ceci}
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} plutôt que de faire ceci}
         \PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{candidates}\PY{p}{:}
             \PY{k}{if} \PY{n}{checks}\PY{p}{(}\PY{n}{item}\PY{p}{)}\PY{p}{:}
                 \PY{k}{break}
@@ -199,7 +188,7 @@ trouvé solution -15
     \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} il vaut mieux faire ceci}
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} il vaut mieux faire ceci}
         \PY{n}{solution} \PY{o}{=} \PY{k+kc}{None}
         \PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{candidates}\PY{p}{:}
             \PY{k}{if} \PY{n}{checks}\PY{p}{(}\PY{n}{item}\PY{p}{)}\PY{p}{:}
@@ -217,7 +206,7 @@ trouvé solution -15
 
     \hypertarget{au-minimum-initialiser-la-variable}{%
 \subparagraph{Au minimum initialiser la
-variable\\\\}\label{au-minimum-initialiser-la-variable}}
+variable}\label{au-minimum-initialiser-la-variable}}
 
     Au minimum, si vous utilisez la variable de boucle après la boucle, il
 est vivement conseillé de l'\textbf{initialiser} explicitement
@@ -225,16 +214,16 @@ est vivement conseillé de l'\textbf{initialiser} explicitement
 comme ceci~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} la fonction length de tout à l\PYZsq{}heure}
-         \PY{k}{def} \PY{n+nf}{length1}\PY{p}{(}\PY{n}{l}\PY{p}{)}\PY{p}{:}
-             \PY{k}{for} \PY{n}{i}\PY{p}{,} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{l}\PY{p}{)}\PY{p}{:}
-                 \PY{k}{pass}
-             \PY{k}{return} \PY{n}{i} \PY{o}{+} \PY{l+m+mi}{1}
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} la fonction length de tout à l\PYZsq{}heure}
+        \PY{k}{def} \PY{n+nf}{length1}\PY{p}{(}\PY{n}{l}\PY{p}{)}\PY{p}{:}
+            \PY{k}{for} \PY{n}{i}\PY{p}{,} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{l}\PY{p}{)}\PY{p}{:}
+                \PY{k}{pass}
+            \PY{k}{return} \PY{n}{i} \PY{o}{+} \PY{l+m+mi}{1}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} une version plus robuste }
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} une version plus robuste }
          \PY{k}{def} \PY{n+nf}{length2}\PY{p}{(}\PY{n}{l}\PY{p}{)}\PY{p}{:}
              \PY{c+c1}{\PYZsh{} on initialise i explicitement}
              \PY{c+c1}{\PYZsh{} pour le cas où l est vide}
@@ -247,37 +236,21 @@ comme ceci~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{length1}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{)}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{c+c1}{\PYZsh{} comme ci\PYZhy{}dessus: UnboundLocalError}
+        \PY{n}{length1}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-
-        ---------------------------------------------------------------------------
-
-        UnboundLocalError                         Traceback (most recent call last)
-
-        <ipython-input-12-ebdd61d1db90> in <module>()
-    ----> 1 length1([])
-    
-
-        <ipython-input-10-6a59feac567b> in length1(l)
-          3     for i, x in enumerate(l):
-          4         pass
-    ----> 5     return i + 1
-    
-
-        UnboundLocalError: local variable 'i' referenced before assignment
-
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{length2}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{length2}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}13}]:} 0
+{\color{outcolor}Out[{\color{outcolor}11}]:} 0
 \end{Verbatim}
             
     \hypertarget{les-compruxe9hensions}{%
@@ -287,24 +260,24 @@ comme ceci~:
 fuient pas} (contrairement à ce qui se passait en Python 2)~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} on détruit la variable i si elle existe}
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} on détruit la variable i si elle existe}
          \PY{k}{if} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{i}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{n+nb}{locals}\PY{p}{(}\PY{p}{)}\PY{p}{:} 
              \PY{k}{del} \PY{n}{i}   
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} en Python 3, les variables de compréhension ne fuitent pas}
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} en Python 3, les variables de compréhension ne fuitent pas}
          \PY{p}{[}\PY{n}{i}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{]}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}15}]:} [0, 1, 4]
+{\color{outcolor}Out[{\color{outcolor}13}]:} [0, 1, 4]
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}16}]:} \PY{c+c1}{\PYZsh{} ici i est à nouveau indéfinie}
+{\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} ici i est à nouveau indéfinie}
          \PY{k}{try}\PY{p}{:}
              \PY{n}{i}
          \PY{k}{except} \PY{n+ne}{NameError} \PY{k}{as} \PY{n}{e}\PY{p}{:}
@@ -316,3 +289,9 @@ fuient pas} (contrairement à ce qui se passait en Python 2)~:
 OOPS name 'i' is not defined
 
     \end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

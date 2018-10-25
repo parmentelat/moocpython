@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{yield-from-pour-cascader-deux-guxe9nuxe9rateurs}{%
 \section{\texorpdfstring{\texttt{yield\ from} pour cascader deux
 générateurs}{yield from pour cascader deux générateurs}}\label{yield-from-pour-cascader-deux-guxe9nuxe9rateurs}}
@@ -35,7 +42,7 @@ lui-même~:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}2}]:} <generator object divs at 0x04F34660>
+{\color{outcolor}Out[{\color{outcolor}2}]:} <generator object divs at 0x10a07fde0>
 \end{Verbatim}
             
     Mais lorsqu'on l'utilise dans une boucle \texttt{for}:
@@ -64,7 +71,7 @@ diviseurs d'un entier. Il s'agit donc, en sorte, d'écrire une fonction
 génératrice qui en appelle une autre - ici elle même.
 
     \hypertarget{premiuxe8re-iduxe9e}{%
-\subparagraph{Première idée\\\\}\label{premiuxe8re-iduxe9e}}
+\subparagraph{Première idée}\label{premiuxe8re-iduxe9e}}
 
     Première idée naïve pour faire cela, mais qui ne marche pas~:
 
@@ -95,7 +102,7 @@ fonction normale, lorsqu'on l'appelle elle ne retourne rien, donc
 boucle \texttt{for} (à l'interieur du \texttt{try}), qui donc échoue.
 
     \hypertarget{deuxiuxe8me-iduxe9e}{%
-\subparagraph{Deuxième idée\\\\}\label{deuxiuxe8me-iduxe9e}}
+\subparagraph{Deuxième idée}\label{deuxiuxe8me-iduxe9e}}
 
     Si on utilise juste \texttt{yield}, ça ne fait pas du tout ce qu'on
 veut~:
@@ -117,10 +124,10 @@ veut~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-<generator object divs at 0x051F8330>
-<generator object divs at 0x051F8360>
-<generator object divs at 0x051F8330>
-<generator object divs at 0x051F8360>
+<generator object divs at 0x10a10a048>
+<generator object divs at 0x10a10a0c0>
+<generator object divs at 0x10a10a048>
+<generator object divs at 0x10a10a0c0>
 
     \end{Verbatim}
 
@@ -129,7 +136,7 @@ correspond à une itération de la boucle. Bref, il nous manque quelque
 chose dans le langage pour arriver à faire ce qu'on veut.
 
     \hypertarget{yield-from}{%
-\subparagraph{\texorpdfstring{\texttt{yield\ from}}{yield from}\\\\}\label{yield-from}}
+\subparagraph{\texorpdfstring{\texttt{yield\ from}}{yield from}}\label{yield-from}}
 
     La construction du langage qui permet de faire ceci s'appelle
 \texttt{yield\ from};
@@ -165,3 +172,9 @@ fonction génératrice, et qu'il faut évaluer \texttt{divs(..)} comme un
 générateur; ici l'interpréteur va empiler un second appel à
 \texttt{divdivs}, et énumérer tous les résultats que cette fonction va
 énumérer avec \texttt{yield}.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

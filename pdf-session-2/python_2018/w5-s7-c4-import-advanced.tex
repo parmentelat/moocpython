@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{usage-avanuxe7uxe9s-de-import}{%
 \section{\texorpdfstring{Usage avançés de
 \texttt{import}}{Usage avançés de import}}\label{usage-avanuxe7uxe9s-de-import}}
@@ -19,7 +26,7 @@ avancé}\label{compluxe9ment---niveau-avancuxe9}}
 reconnaît facilement car leur nom est en \emph{\texttt{\_\_truc\_\_}},
 c'est une convention générale dans tous le langage~: on en a déjà vu
 plusieurs exemples avec par exemple les méthodes
-\texttt{\_\_iter\_\_()}.\\
+\texttt{\_\_iter\_\_()}.
 
     Voici pour commencer les attributs spéciaux les plus utilisées ; pour
 cela nous reprenons le package d'un notebook précédent~:
@@ -36,7 +43,7 @@ Chargement du module package\_jouet.module\_jouet dans le package 'package\_joue
     \end{Verbatim}
 
     \hypertarget{name__}{%
-\subparagraph{\texorpdfstring{\texttt{\_\_name\_\_}}{\_\_name\_\_}\\\\}\label{name__}}
+\subparagraph{\texorpdfstring{\texttt{\_\_name\_\_}}{\_\_name\_\_}}\label{name__}}
 
     Le nom canonique du module~:
 
@@ -59,7 +66,7 @@ Chargement du module package\_jouet.module\_jouet dans le package 'package\_joue
 \end{Verbatim}
             
     \hypertarget{file__}{%
-\subparagraph{\texorpdfstring{\texttt{\_\_file\_\_}}{\_\_file\_\_}\\\\}\label{file__}}
+\subparagraph{\texorpdfstring{\texttt{\_\_file\_\_}}{\_\_file\_\_}}\label{file__}}
 
     L'emplacement du fichier duquel a été chargé le module ; pour un package
 ceci dénote un fichier \texttt{\_\_init\_\_.py}~:
@@ -70,7 +77,7 @@ ceci dénote un fichier \texttt{\_\_init\_\_.py}~:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}5}]:} 'E:\textbackslash{}\textbackslash{}python\_pdf\_wip\textbackslash{}\textbackslash{}flotpython\textbackslash{}\textbackslash{}w5\textbackslash{}\textbackslash{}package\_jouet\textbackslash{}\textbackslash{}\_\_init\_\_.py'
+{\color{outcolor}Out[{\color{outcolor}5}]:} '/Users/tparment/git/flotpython/modules/package\_jouet/\_\_init\_\_.py'
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -79,17 +86,17 @@ ceci dénote un fichier \texttt{\_\_init\_\_.py}~:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}6}]:} 'E:\textbackslash{}\textbackslash{}python\_pdf\_wip\textbackslash{}\textbackslash{}flotpython\textbackslash{}\textbackslash{}w5\textbackslash{}\textbackslash{}package\_jouet\textbackslash{}\textbackslash{}module\_jouet.py'
+{\color{outcolor}Out[{\color{outcolor}6}]:} '/Users/tparment/git/flotpython/modules/package\_jouet/module\_jouet.py'
 \end{Verbatim}
             
     \hypertarget{all__}{%
-\subparagraph{\texorpdfstring{\texttt{\_\_all\_\_}}{\_\_all\_\_}\\\\}\label{all__}}
+\subparagraph{\texorpdfstring{\texttt{\_\_all\_\_}}{\_\_all\_\_}}\label{all__}}
 
     Il est possible de redéfinir dans un module la variable
 \texttt{\_\_all\_\_}, de façon à définir les symboles qui sont
 réellement concernés par un \texttt{import\ *},
 \href{https://docs.python.org/3/tutorial/modules.html\#importing-from-a-package}{comme
-c'est décrit ici}.\\
+c'est décrit ici}.
 
 Je rappelle toutefois que l'usage de \texttt{import\ *} est fortement
 déconseillé dans du code de production.
@@ -100,7 +107,7 @@ déconseillé dans du code de production.
     La mécanique des imports telle qu'on l'a vue jusqu'ici est ce qui
 s'appelle un \emph{import} absolu qui est depuis python-2.5 le mécanisme
 par défaut : le module importé est systématiquement cherché à partir de
-\texttt{sys.path}.\\
+\texttt{sys.path}.
 
 Dans ce mode de fonctionnement, si on trouve dans le même répertoire
 deux fichiers \texttt{foo.py} et \texttt{bar.py}, et que dans le premier
@@ -121,7 +128,7 @@ est dans \texttt{sys.path}; en général ce n'est pas le cas).
 par exemple \texttt{random.py}, ne vienne cacher le module
 \texttt{random} de la bibliothèque standard. Mais comment peut-on faire
 alors pour charger le module \texttt{random.py} local ? C'est à cela que
-sert l'import relatif.\\
+sert l'import relatif.
 
 Voyons cela sur un exemple~qui repose sur la hiérarchie suivante~:
 
@@ -141,54 +148,55 @@ deux autres modules~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} le code de main.py}
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} le code de main.py}
         \PY{n}{code} \PY{o}{=} \PY{n}{find\PYZus{}on\PYZus{}disk}\PY{p}{(}\PY{n}{package\PYZus{}relatif}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{main.py}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
         \PY{o}{!}cat \PY{n+nv}{\PYZdl{}code}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour importer un module entier en mode relatif}
-        \PY{k+kn}{from} \PY{n+nn}{.} \PY{k}{import} \PY{n}{random} \PY{k}{as} \PY{n}{local\PYZus{}random\PYZus{}module}
-        
-        
-        \PY{c+c1}{\PYZsh{} la syntaxe pour importer seulement un symbole}
-        \PY{k+kn}{from} \PY{n+nn}{.}\PY{n+nn}{random} \PY{k}{import} \PY{n}{alea}
-        
-        
-        \PY{n+nb}{print}\PY{p}{(}
-            \PY{n}{f}\PY{l+s+s2}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s+s2}{On charge main.py}
-        \PY{l+s+s2}{    \PYZus{}\PYZus{}name\PYZus{}\PYZus{}=}\PY{l+s+si}{\PYZob{}\PYZus{}\PYZus{}name\PYZus{}\PYZus{}\PYZcb{}}
-        \PY{l+s+s2}{    alea=}\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{alea()\PYZcb{}}\PY{l+s+s2}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{)}
-\end{Verbatim}
 
+\# pour importer un module entier en mode relatif
+from . import random as local\_random\_module
+
+
+\# la syntaxe pour importer seulement un symbole
+from .random import alea
+
+
+print(
+    f"""On charge main.py
+    \_\_name\_\_=\{\_\_name\_\_\}
+    alea=\{alea()\}""")
+
+    \end{Verbatim}
 
     Nous avons illustré dans le point d'entrée \texttt{main.py} deux
-exemples d'import relatif~:\\
+exemples d'import relatif~:
 
     Les deux clauses \texttt{as} sont bien sûr optionnelles, on les utilise
-ici uniquement pour bien identifier les différents objets en jeu.\\
+ici uniquement pour bien identifier les différents objets en jeu.
 
     Le module local \texttt{random.py} expose une fonction \texttt{alea} qui
 génére un string aléatoire en se basant sur le module standard
 \texttt{random}~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} le code de random.py}
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} le code de random.py}
         \PY{n}{code} \PY{o}{=} \PY{n}{find\PYZus{}on\PYZus{}disk}\PY{p}{(}\PY{n}{package\PYZus{}relatif}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{random.py}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
         \PY{o}{!}cat \PY{n+nv}{\PYZdl{}code}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{random}
-        
-        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{On charge le module random local }\PY{l+s+si}{\PYZob{}\PYZus{}\PYZus{}name\PYZus{}\PYZus{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        
-        \PY{k}{def} \PY{n+nf}{alea}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-            \PY{k}{return}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{[[}\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{random.randint(0, 10)\PYZcb{}]]}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-\end{Verbatim}
+import random
 
+print(f"On charge le module random local \{\_\_name\_\_\}")
+
+def alea():
+    return(f"[[\{random.randint(0, 10)\}]]")
+
+    \end{Verbatim}
 
     Cet exemple montre comment on peut importer un module local de nom
 \texttt{random} \textbf{et} le module \texttt{random} qui provient de la
@@ -203,7 +211,7 @@ librairie standard~:
 On charge le module random local package\_relatif.random
 On charge main.py
     \_\_name\_\_=package\_relatif.main
-    alea=[[2]]
+    alea=[[4]]
 
     \end{Verbatim}
 
@@ -213,13 +221,13 @@ On charge main.py
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-[[9]]
+[[7]]
 
     \end{Verbatim}
 
     \hypertarget{pour-remonter-dans-larborescence}{%
 \subparagraph{Pour remonter dans
-l'arborescence\\\\}\label{pour-remonter-dans-larborescence}}
+l'arborescence}\label{pour-remonter-dans-larborescence}}
 
     Il faut savoir également qu'on peut ``remonter'' dans l'arborescence de
 fichiers en utilisant plusieurs points \texttt{.} consécutifs. Voici un
@@ -243,22 +251,23 @@ package_relatif/
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} le code de submodule/submodule.py}
-        \PY{n}{code} \PY{o}{=} \PY{n}{find\PYZus{}on\PYZus{}disk}\PY{p}{(}\PY{n}{package\PYZus{}relatif}\PY{o}{.}\PY{n}{subpackage}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{submodule.py}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        \PY{o}{!}cat \PY{n+nv}{\PYZdl{}code}
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} le code de submodule/submodule.py}
+         \PY{n}{code} \PY{o}{=} \PY{n}{find\PYZus{}on\PYZus{}disk}\PY{p}{(}\PY{n}{package\PYZus{}relatif}\PY{o}{.}\PY{n}{subpackage}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{submodule.py}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{o}{!}cat \PY{n+nv}{\PYZdl{}code}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} notez ici la présence des deux points pour remonter}
-        \PY{k+kn}{from} \PY{n+nn}{.}\PY{n+nn}{.}\PY{n+nn}{random} \PY{k}{import} \PY{n}{alea} \PY{k}{as} \PY{n}{imported}
-        
-        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{On charge }\PY{l+s+si}{\PYZob{}\PYZus{}\PYZus{}name\PYZus{}\PYZus{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        
-        \PY{k}{def} \PY{n+nf}{alea}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-            \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}\PYZlt{}}\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{imported()\PYZcb{}\PYZgt{}\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
-\end{Verbatim}
 
+\# notez ici la présence des deux points pour remonter
+from ..random import alea as imported
+
+print(f"On charge \{\_\_name\_\_\}")
+
+def alea():
+    return f"<<\{imported()\}>>"
+
+    \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{k+kn}{import} \PY{n+nn}{package\PYZus{}relatif}\PY{n+nn}{.}\PY{n+nn}{subpackage}\PY{n+nn}{.}\PY{n+nn}{submodule}
@@ -276,11 +285,11 @@ On charge package\_relatif.subpackage.submodule
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-<<[[6]]>>
+<<[[7]]>>
 
     \end{Verbatim}
 
-    \textbf{Ce qu'il faut retenir}\\
+    \textbf{Ce qu'il faut retenir}
 
 Sur cet exemple, on montre comment un import relatif permet à un module
 d'importer un module local qui a le même nom qu'un module standard.
@@ -302,7 +311,7 @@ from . import random
 \end{verbatim}
 
     Mais l'import relatif présente notamment l'avantage d'être insensible
-aux renommages divers à l'intérieur d'une bibliothèque.\\
+aux renommages divers à l'intérieur d'une bibliothèque.
 
     Dit autrement, lorsque deux modules sont situés dans le même répertoire,
 il semble naturel que l'import entre eux se fasse par un import relatif,
@@ -315,12 +324,12 @@ relatif}\label{frustrations-liuxe9es-uxe0-limport-relatif}}
 
     \hypertarget{se-base-sur-__name__-et-non-sur-__file__}{%
 \paragraph{\texorpdfstring{Se base sur \texttt{\_\_name\_\_} et non sur
-\texttt{\_\_file\_\_}\\\\}{Se base sur \_\_name\_\_ et non sur \_\_file\_\_}}\label{se-base-sur-__name__-et-non-sur-__file__}}
+\texttt{\_\_file\_\_}}{Se base sur \_\_name\_\_ et non sur \_\_file\_\_}}\label{se-base-sur-__name__-et-non-sur-__file__}}
 
     Toutefois, l'import relatif ne fonctionne pas toujours comme on pourrait
 s'y attendre. Le point important à garder en tête est que lors d'un
 import relatif, \textbf{c'est l'attribut \texttt{\_\_name\_\_}} qui sert
-à déterminer le point de départ.\\
+à déterminer le point de départ.
 
     Concrètement, lorsque dans \texttt{main.py} on fait~:
 
@@ -331,15 +340,16 @@ from . import random
 l'interpréteur~:
 
 \begin{itemize}
-	\item 
-	détermine que dans \texttt{main.py},
-	\texttt{\_\_name\_\_} vaut \texttt{package\_relatif.main};
-	\item
-	il ``oublie'' le dernier morceau \texttt{main} pour calculer que le package
-	courant est \texttt{package\_relatif}
-	\item
-	et c'est ce nom qui sert à
-	déterminer le point de départ de l'import relatif.
+\tightlist
+\item
+  détermine que dans \texttt{main.py}, \texttt{\_\_name\_\_} vaut
+  \texttt{package\_relatif.main};
+\item
+  il ``oublie'' le dernier morceau \texttt{main} pour calculer que le
+  package courant est \texttt{package\_relatif}
+\item
+  et c'est ce nom qui sert à déterminer le point de départ de l'import
+  relatif.
 \end{itemize}
 
 Aussi cet import est-il retranscrit en
@@ -367,12 +377,12 @@ exemple, il nous faut revenir sur l'attribut \texttt{\_\_name\_\_}.
 
     \hypertarget{digression-sur-lattribut-__name__}{%
 \paragraph{\texorpdfstring{Digression sur l'attribut
-\texttt{\_\_name\_\_}\\\\}{Digression sur l'attribut \_\_name\_\_}}\label{digression-sur-lattribut-__name__}}
+\texttt{\_\_name\_\_}}{Digression sur l'attribut \_\_name\_\_}}\label{digression-sur-lattribut-__name__}}
 
     Il faut savoir en effet que le \textbf{point d'entrée} du programme -
 c'est-à-dire le fichier qui est passé directement à l'interpréteur
 python - est considéré comme un module dont l'attribut
-\texttt{\_\_name\_\_} vaut la chaîne \texttt{"\_\_main\_\_"}.\\
+\texttt{\_\_name\_\_} vaut la chaîne \texttt{"\_\_main\_\_"}.
 
 Concrètement, si vous faites
 
@@ -381,7 +391,7 @@ python3 tests/montest.py
 \end{verbatim}
 
 alors la valeur observée dans l'attribut \texttt{\_\_name\_\_} n'est pas
-\texttt{"tests.montest"}, mais la constante \texttt{"\_\_main\_\_"}.\\
+\texttt{"tests.montest"}, mais la constante \texttt{"\_\_main\_\_"}.
 
     C'est pourquoi d'ailleurs
 \href{https://docs.python.org/3/tutorial/modules.html\#executing-modules-as-scripts}{(et
@@ -398,12 +408,12 @@ if __name__ == "__main__":
 souvent un code de test - qui~:
 
 \begin{itemize}
-	\item 
-	va être exécuté quand on le passe
-	directement à l'interpréteur python, mais
-	\item
-	qui n'\textbf{est pas
-	exécuté} lorsqu'on importe le module.
+\tightlist
+\item
+  va être exécuté quand on le passe directement à l'interpréteur python,
+  mais
+\item
+  qui n'\textbf{est pas exécuté} lorsqu'on importe le module.
 \end{itemize}
 
     \hypertarget{lattribut-__package__}{%
@@ -417,14 +427,14 @@ souvent un code de test - qui~:
 \item
   le point d'entrée - celui qui est donné à \texttt{python} sur la ligne
   de commande - voit comme valeur pour \texttt{\_\_name\_\_} la
-  constante \texttt{"\_\_main\_\_"},\\
+  constante \texttt{"\_\_main\_\_"},
 \item
   et le mécanisme d'import relatif se base sur \texttt{\_\_name\_\_}
   pour localiser les modules importés.
 \end{itemize}
 
     Du coup, par construction, il n'est quasiment pas possible d'utiliser
-les imports relatifs à partir du script de lancement.\\
+les imports relatifs à partir du script de lancement.
 
 Pour pallier à ce type d'inconvénients, il a été introduit ultérieurment
 (voir PEP 366 ci-dessous) la possibilité pour un module de définir
@@ -432,10 +442,10 @@ Pour pallier à ce type d'inconvénients, il a été introduit ultérieurment
 difficulté.
 
     \hypertarget{ce-quil-faut-retenir}{%
-\paragraph{Ce qu'il faut retenir\\\\}\label{ce-quil-faut-retenir}}
+\paragraph{Ce qu'il faut retenir}\label{ce-quil-faut-retenir}}
 
     On voit que tout ceci est rapidement assez scabreux. Cela explique sans
-doute l'usage relativement peu répandu des imports relatifs.\\
+doute l'usage relativement peu répandu des imports relatifs.
 
 De manière générale, une bonne pratique consiste à~:
 
@@ -478,18 +488,24 @@ recourir à l'import relatif.
 \subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
 
     Vous pourrez consulter~:
-    
+
 \begin{itemize}
-	\item 
-	\url{https://www.python.org/dev/peps/pep-0328/} qui date du passage de
-	2.4 à 2.5, dans lequel on décide que tous les imports sans \texttt{.}
-	sont absolus - ce n'était pas le cas au préalable.
-	\item
-	\url{https://www.python.org/dev/peps/pep-0366/} qui introduit la
-	possibilité de définir \texttt{\_\_package\_\_} pour contourner les
-	problèmes liés aux imports relatifs dans un script.
-	\item
-	\url{http://sametmax.com/un-gros-guide-bien-gras-sur-les-tests-unitaires\\
-		-en-python-partie-1/}
-	qui parle des tests unitaires qui est un tout autre et vaste sujet.
+\tightlist
+\item
+  \url{https://www.python.org/dev/peps/pep-0328/} qui date du passage de
+  2.4 à 2.5, dans lequel on décide que tous les imports sans \texttt{.}
+  sont absolus - ce n'était pas le cas au préalable.
+\item
+  \url{https://www.python.org/dev/peps/pep-0366/} qui introduit la
+  possibilité de définir \texttt{\_\_package\_\_} pour contourner les
+  problèmes liés aux imports relatifs dans un script.
+\item
+  \url{http://sametmax.com/un-gros-guide-bien-gras-sur-les-tests-unitaires-en-python-partie-1/}
+  qui parle des tests unitaires qui est un tout autre et vaste sujet.
 \end{itemize}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

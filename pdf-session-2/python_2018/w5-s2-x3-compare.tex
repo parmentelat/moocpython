@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{comparaison-de-fonctions}{%
 \section{Comparaison de fonctions}\label{comparaison-de-fonctions}}
 
@@ -6,15 +13,22 @@
 avancé}\label{exercice---niveau-avancuxe9}}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} Pour charger l\PYZsq{}exercice}
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} Pour charger l\PYZsq{}exercice}
         \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}compare\PYZus{}all} \PY{k}{import} \PY{n}{exo\PYZus{}compare\PYZus{}all}
 \end{Verbatim}
 
 
-    À présent nous allons écrire une version très simplifiée de l'outil qui
+    \hypertarget{note}{%
+\section{NOTE}\label{note}}
+
+\hypertarget{automatic-execution-has-skipped-execution-of-this-cell}{%
+\section{automatic execution has skipped execution of this
+cell}\label{automatic-execution-has-skipped-execution-of-this-cell}}
+
+À présent nous allons écrire une version très simplifiée de l'outil qui
 est utilisé dans ce cours pour corriger les exercices. Vous aurez sans
 doute remarqué que les fonctions de correction prennent en argument la
-fonction à corriger.\\
+fonction à corriger.
 
 Par exemple un peu plus bas, la cellule de correction fait
 
@@ -23,63 +37,72 @@ exo_compare_all.correction(compare_all)
 \end{verbatim}
 
 dans lequel \texttt{compare\_all} est l'objet fonction que vous écrivez
-en réponse à cet exercice.\\
+en réponse à cet exercice.
 
     On vous demande d'écrire une fonction \texttt{compare} qui prend en
 argument~:
 
 \begin{itemize}
-	\item 
-	deux fonctions \texttt{f} et \texttt{g}~; imaginez que
-	l'une d'entre elles fonctionne et qu'on cherche à valider l'autre~; dans
-	cette version simplifiée toutes les fonctions acceptent exactement un
-	argument~;
-	\item
-	une liste d'entrées \texttt{entrees}~; vous pouvez supposer
-	que chacune de ces entrées est dans le domaine de \texttt{f} et de
-	\texttt{g} (dit autrement, on peut appeler \texttt{f} et \texttt{g} sur
-	chacune des entrées sans craindre qu'une exception soit levée).
+\tightlist
+\item
+  deux fonctions \texttt{f} et \texttt{g}~; imaginez que l'une d'entre
+  elles fonctionne et qu'on cherche à valider l'autre~; dans cette
+  version simplifiée toutes les fonctions acceptent exactement un
+  argument~;
+\item
+  une liste d'entrées \texttt{entrees}~; vous pouvez supposer que
+  chacune de ces entrées est dans le domaine de \texttt{f} et de
+  \texttt{g} (dit autrement, on peut appeler \texttt{f} et \texttt{g}
+  sur chacune des entrées sans craindre qu'une exception soit levée).
 \end{itemize}
 
 Le résultat attendu pour le retour de \texttt{compare} est une liste qui
 contient autant de booléens que d'éléments dans \texttt{entrees}, chacun
 indiquant si avec l'entrée correspondante on a pu vérifier que
-\texttt{f(entree)\ ==\ g(entree)}.\\
+\texttt{f(entree)\ ==\ g(entree)}.
 
 Dans cette première version de l'exercice vous pouvez enfin supposer que
-les entrées ne sont pas modifiées par \texttt{f} ou \texttt{g}.\\
+les entrées ne sont pas modifiées par \texttt{f} ou \texttt{g}.
 
     Pour information dans cet exercice~:
-    
+
 \begin{itemize}
-	\item 
-	\texttt{factorial} correspond à \texttt{math.factorial}
-	\item
-	\texttt{fact} et \texttt{broken\_fact} sont
-	des fonctions implémentées par nos soins, la première est correcte alors
-	que la seconde retourne 0 au lieu de 1 pour l'entrée 0.
+\tightlist
+\item
+  \texttt{factorial} correspond à \texttt{math.factorial}
+\item
+  \texttt{fact} et \texttt{broken\_fact} sont des fonctions implémentées
+  par nos soins, la première est correcte alors que la seconde retourne
+  0 au lieu de 1 pour l'entrée 0.
 \end{itemize}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} par exemple}
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} par exemple}
         \PY{n}{exo\PYZus{}compare\PYZus{}all}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
     Ce qui, dit autrement, veut tout simplement dire que \texttt{fact} et
 \texttt{factorial} coïncident sur les entrées 0, 1 et 5, alors que
 \texttt{broken\_fact} et \texttt{factorial} ne renvoient pas la même
 valeur avec l'entrée \texttt{0}.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} c\PYZsq{}est à vous}
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} c\PYZsq{}est à vous}
         \PY{k}{def} \PY{n+nf}{compare\PYZus{}all}\PY{p}{(}\PY{n}{f}\PY{p}{,} \PY{n}{g}\PY{p}{,} \PY{n}{entrees}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} pour vérifier votre code}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{c+c1}{\PYZsh{} pour vérifier votre code}
         \PY{n}{exo\PYZus{}compare\PYZus{}all}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{compare\PYZus{}all}\PY{p}{)}
 \end{Verbatim}
 
@@ -89,7 +112,7 @@ valeur avec l'entrée \texttt{0}.
 avancé}\label{exercice-optionnel---niveau-avancuxe9}}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} Pour charger l\PYZsq{}exercice}
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} Pour charger l\PYZsq{}exercice}
         \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}compare\PYZus{}args} \PY{k}{import} \PY{n}{exo\PYZus{}compare\PYZus{}args}
 \end{Verbatim}
 
@@ -104,53 +127,68 @@ l'hypothèse que les deux fonctions attendent un seul argument. Il faut
 entrée~:
 
 \begin{itemize}
-	\item 
-	deux fonctions \texttt{f} et \texttt{g} comme ci-dessus~;
-	\item
-	mais cette fois une liste (ou un tuple) \texttt{argument\_tuples} de
-	\textbf{tuples} d'arguments d'entrée.
+\tightlist
+\item
+  deux fonctions \texttt{f} et \texttt{g} comme ci-dessus~;
+\item
+  mais cette fois une liste (ou un tuple) \texttt{argument\_tuples} de
+  \textbf{tuples} d'arguments d'entrée.
 \end{itemize}
 
 Comme ci-dessus on attend en retour une liste \texttt{retour} de
 booléens, de même taille que \texttt{argument\_tuples}, telle que, si
-\texttt{len(argument\_tuples)} vaut \(n\)~:\\
+\texttt{len(argument\_tuples)} vaut \(n\)~:
 
 \(\forall i \in \{1,...,n\}\), si \texttt{argument\_tuples{[}i{]}} ==
-{[} \(a_1\),\ldots{},\(a_j\) {]}, alors\\
+{[} \(a_1\),\ldots{},\(a_j\) {]}, alors
 
 \texttt{retour(i)\ ==\ True} \(\Longleftrightarrow\) f
-(\(a_1\),\ldots{},\(a_j\)) == g (\(a_1\),\ldots{},\(a_j\))\\
+(\(a_1\),\ldots{},\(a_j\)) == g (\(a_1\),\ldots{},\(a_j\))
 
     Pour information, dans tout cet exercice~:
 
 \begin{itemize}
-	\item 
-	\texttt{factorial} correspond à \texttt{math.factorial}~;
-	\item
-	\texttt{fact} et
-	\texttt{broken\_fact} sont des fonctions implémentées par nos soins, la
-	première est correcte alors que la seconde retourne 0 au lieu de 1 pour
-	l'entrée 0~;
-	\item
-	\texttt{add} correspond à l'addition binaire \texttt{operator.add}~;
-	\item
-	\texttt{plus} et \texttt{broken\_plus} sont
-	des additions binaires que nous avons écrites, l'une étant correcte et
-	l'autre étant fausse lorsque le premier argument est nul.
+\tightlist
+\item
+  \texttt{factorial} correspond à \texttt{math.factorial}~;
+\item
+  \texttt{fact} et \texttt{broken\_fact} sont des fonctions implémentées
+  par nos soins, la première est correcte alors que la seconde retourne
+  0 au lieu de 1 pour l'entrée 0~;
+\item
+  \texttt{add} correspond à l'addition binaire \texttt{operator.add}~;
+\item
+  \texttt{plus} et \texttt{broken\_plus} sont des additions binaires que
+  nous avons écrites, l'une étant correcte et l'autre étant fausse
+  lorsque le premier argument est nul.
 \end{itemize}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}compare\PYZus{}args}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{exo\PYZus{}compare\PYZus{}args}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} ATTENTION vous devez aussi définir les arguments de la fonction}
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} ATTENTION vous devez aussi définir les arguments de la fonction}
         \PY{k}{def} \PY{n+nf}{compare\PYZus{}args}\PY{p}{(}\PY{n}{votre}\PY{p}{,} \PY{n}{signature}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre\PYZus{}code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}compare\PYZus{}args}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{compare\PYZus{}args}\PY{p}{)}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{n}{exo\PYZus{}compare\PYZus{}args}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{compare\PYZus{}args}\PY{p}{)}
 \end{Verbatim}
+
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

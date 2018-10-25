@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{surcharge-dopuxe9rateurs-1}{%
 \section{Surcharge d'opérateurs (1)}\label{surcharge-dopuxe9rateurs-1}}
 
@@ -30,14 +37,14 @@ d'opérateurs, ou plus généralement les mécanismes disponibles pour
 \end{itemize}
 
 que jusqu'ici, sauf pour la boucle \texttt{for} et pour le hachage, on
-n'a expliqués que pour des objets de type prédéfini.\\
+n'a expliqués que pour des objets de type prédéfini.
 
     Le mécanisme général pour cela consiste à définir des \textbf{méthodes
 spéciales}, avec un nom en \texttt{\_\_nom\_\_}. Il existe un total de
 près de 80 méthodes dans ce système de surcharges, aussi il n'est pas
 question ici d'être exhaustif. Vous trouverez
 \href{https://docs.python.org/3/reference/datamodel.html\#specialnames}{dans
-ce document une liste complète de ces possibilités}.\\
+ce document une liste complète de ces possibilités}.
 
     Il nous faut également signaler que les mécanismes mis en jeu ici sont
 \textbf{de difficultés assez variables}. Dans le cas le plus simple il
@@ -49,19 +56,20 @@ callable). Mais parfois on parle d'un ensemble de méthodes qui doivent
 qui mettent en jeu les méthodes \texttt{\_\_get\_\_},
 \texttt{\_\_set\_\_} et \texttt{\_\_delete\_\_}, et qui peuvent sembler
 particulièrement cryptiques. On aura d'ailleurs l'occasion d'approfondir
-les descriptors en semaine 9 avec les sujets avancés.\\
+les descriptors en semaine 9 avec les sujets avancés.
 
     Nous vous conseillons de commencer par des choses simples, et surtout de
 n'utiliser ces techniques que lorsqu'elles apportent vraiment quelque
 chose. Le constructeur et l'affichage sont pratiquement toujours
 définis, mais pour tout le reste il convient d'utiliser ces traits avec
 le plus grand discernement. Dans tous les cas écrivez votre code avec la
-documentation sous les yeux, c'est plus prudent :)\\
+documentation sous les yeux, c'est plus prudent :)
 
     Nous avons essayé de présenter cette sélection par difficulté
 croissante. Par ailleurs, et pour alléger la présentation, cet exposé a
 été coupé en trois notebooks différents.
 
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
     \hypertarget{rappels}{%
 \subsubsection{Rappels}\label{rappels}}
@@ -109,7 +117,7 @@ lien} pour davantage de détails.
 
     \hypertarget{quand-est-utilisuxe9e-repr}{%
 \subparagraph{\texorpdfstring{Quand est utilisée
-\texttt{repr()}~?\\\\}{Quand est utilisée repr()~?}}\label{quand-est-utilisuxe9e-repr}}
+\texttt{repr()}~?}{Quand est utilisée repr()~?}}\label{quand-est-utilisuxe9e-repr}}
 
     La fonction \texttt{repr()} est utilisée massivement dans les
 informations de debugging comme les traces de pile lorsqu'une exception
@@ -133,7 +141,7 @@ passer par \texttt{print}, c'est-à-dire par exemple~:
 \end{Verbatim}
             
     \hypertarget{deux-exemples}{%
-\subparagraph{Deux exemples\\\\}\label{deux-exemples}}
+\subparagraph{Deux exemples}\label{deux-exemples}}
 
     Voici deux exemples simples de classes~; dans le premier on n'a défini
 que \texttt{\_\_repr\_\_}, dans le second on a redéfini les deux
@@ -203,6 +211,7 @@ avec format (0,100)
 {\color{outcolor}Out[{\color{outcolor}3}]:} Point2(0,100)
 \end{Verbatim}
             
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
     \hypertarget{bool__}{%
 \subsubsection{\texorpdfstring{\texttt{\_\_bool\_\_}}{\_\_bool\_\_}}\label{bool__}}
@@ -211,25 +220,25 @@ avec format (0,100)
 ne pas retourner un booléen (nous avons vu cela en Semaine 4, Séquence
 ``Test if/elif/else et opérateurs booléens''). Nous avions noté que pour
 les types prédéfinis, sont considérés comme \emph{faux} les objets~:
-\texttt{None}, la liste vide, un tuple vide, etc.\\
+\texttt{None}, la liste vide, un tuple vide, etc.
 
 Avec \texttt{\_\_bool\_\_} on peut redéfinir le comportement des objets
 d'une classe vis-à-vis des conditions - ou si l'on préfère, quel doit
-être le résultat de \texttt{bool(instance)}.\\
+être le résultat de \texttt{bool(instance)}.
 
 \textbf{Attention} pour éviter les comportements imprévus, comme on est
 en train de redéfinir le comportement des conditions, il \textbf{faut}
 renvoyer un \textbf{booléen} (ou à la rigueur 0 ou 1), on ne peut pas
-dans ce contexte retourner d'autres types d'objet.\\
+dans ce contexte retourner d'autres types d'objet.
 
 Nous allons \textbf{illustrer} cette méthode dans un petit moment avec
-une nouvelle implémentation de la classe \textbf{\texttt{Matrix2}}.\\
+une nouvelle implémentation de la classe \textbf{\texttt{Matrix2}}.
 
 Remarquez enfin qu'en l'absence de méthode \texttt{\_\_bool\_\_}, on
 cherche aussi la méthode \texttt{\_\_len\_\_} pour déterminer le
 résultat du test~; une instance de longueur nulle est alors considéré
 comme \texttt{False}, en cohérence avec ce qui se passe avec les types
-\emph{built-in} \texttt{list}, \texttt{dict}, \texttt{tuple}, etc.\\
+\emph{built-in} \texttt{list}, \texttt{dict}, \texttt{tuple}, etc.
 
 Ce genre de \emph{protocole}, qui cherche d'abord une méthode
 (\texttt{\_\_bool\_\_}), puis une autre (\texttt{\_\_len\_\_}) en cas
@@ -245,7 +254,7 @@ etc.)}{\_\_add\_\_ et apparentés (\_\_mul\_\_, \_\_sub\_\_, \_\_div\_\_, \_\_an
 
     On peut également redéfinir les opérateurs arithmétiques et logiques.
 Dans l'exemple qui suit, nous allons l'illustrer sur l'addition de
-matrices. On rappelle pour mémoire que~:\\
+matrices. On rappelle pour mémoire que~:
 
 \(\left( \begin{array}{cc} a_{11} & a_{12} \\ a_{21} & a_{22}\end{array} \right) + \left( \begin{array}{cc} b_{11} & b_{12} \\ b_{21} & b_{22}\end{array} \right) = \left( \begin{array}{cc} a_{11}+b_{11} & a_{12}+b_{12} \\ a_{21}+b_{21} & a_{22}+b_{22}\end{array} \right)\)
 
@@ -362,7 +371,7 @@ après matrice2 [10, 20, 30, 40]
     Voici en vrac quelques commentaires sur cet exemple.
 
     \hypertarget{utiliser-un-tuple}{%
-\subparagraph{Utiliser un tuple\\\\}\label{utiliser-un-tuple}}
+\subparagraph{Utiliser un tuple}\label{utiliser-un-tuple}}
 
     Avant de parler de la surcharge des opérateurs \emph{per se}, vous
 remarquerez que l'on range les coefficients dans un \textbf{tuple}, de
@@ -386,7 +395,7 @@ après cet appel.
 
     \hypertarget{du-code-qui-ne-duxe9pend-que-des-4-opuxe9rations}{%
 \subparagraph{Du code qui ne dépend que des 4
-opérations\\\\}\label{du-code-qui-ne-duxe9pend-que-des-4-opuxe9rations}}
+opérations}\label{du-code-qui-ne-duxe9pend-que-des-4-opuxe9rations}}
 
     Le fait d'avoir défini l'addition nous permet par exemple de bénéficier
 de la fonction \emph{built-in} \texttt{sum}. En effet le code de
@@ -407,7 +416,7 @@ maintenant on sait les additionner, (mais on a dû toutefois passer à
     C'est un effet de bord du typage dynamique. On ne vérifie pas \emph{a
 priori} que tous les arguments passés à \texttt{sum} savent faire une
 addition~; \emph{a contrario}, s'ils savent s'additionner on peut
-exécuter le code de \texttt{sum}.\\
+exécuter le code de \texttt{sum}.
 
 De manière plus générale, si vous écrivez par exemple un morceau de code
 qui travaille sur les éléments d'un anneau (au sens anneau des entiers
@@ -418,12 +427,12 @@ ensemble soit effectivement un anneau).
 
     \hypertarget{on-peut-aussi-reduxe9finir-un-ordre}{%
 \subparagraph{On peut aussi redéfinir un
-ordre\\\\}\label{on-peut-aussi-reduxe9finir-un-ordre}}
+ordre}\label{on-peut-aussi-reduxe9finir-un-ordre}}
 
     La place nous manque pour illustrer la possibilité, avec les opérateurs
 \texttt{\_\_eq\_\_}, \texttt{\_\_ne\_\_}, \texttt{\_\_lt\_\_},
 \texttt{\_\_le\_\_}, \texttt{\_\_gt\_\_}, et \texttt{\_\_ge\_\_}, de
-redéfinir un ordre sur les instances d'une classe.\\
+redéfinir un ordre sur les instances d'une classe.
 
 Signalons à cet égard qu'il existe un mécanisme ``intelligent'' qui
 permet de définir un ordre à partir d'un sous-ensemble seulement de ces
@@ -432,7 +441,7 @@ et \texttt{=}, vous savez sûrement faire tout le reste. Ce mécanisme est
 \href{https://docs.python.org/3/library/functools.html\#functools.total_ordering}{documenté
 ici}~; il repose sur \textbf{un décorateur} (\texttt{@total\_ordering}),
 un mécanisme que nous étudierons en semaine 9, mais que vous pouvez
-utiliser dès à présent.\\
+utiliser dès à présent.
 
     De manière analogue à \texttt{sum} qui fonctionne sur une liste de
 matrices, si on avait défini un ordre sur les matrices, on aurait pu
@@ -446,10 +455,10 @@ avancé}\label{compluxe9ment---niveau-avancuxe9}}
 
     \hypertarget{le-produit-avec-un-scalaire}{%
 \subparagraph{Le produit avec un
-scalaire\\\\}\label{le-produit-avec-un-scalaire}}
+scalaire}\label{le-produit-avec-un-scalaire}}
 
     On implémenterait la multiplication de deux matrices d'une façon
-identique (quoique plus fastidieuse naturellement).\\
+identique (quoique plus fastidieuse naturellement).
 
 La multiplication d'une matrice par un scalaire (un réel ou complexe
 pour fixer les idées), comme ici~:
@@ -459,13 +468,13 @@ matrice2 = reel * matrice1
 \end{verbatim}
 
 peut être également réalisée par surcharge de l'opérateur
-\texttt{\_\_rmul\_\_}.\\
+\texttt{\_\_rmul\_\_}.
 
 Il s'agit d'une astuce, destinée précisément à ce genre de situations,
 où on veut étendre la classe de l'opérande de \textbf{droite}, sachant
 que dans ce cas précis l'opérande de gauche est un type de base, qu'on
 ne peut pas étendre (les classes \emph{built-in} sont non mutables, pour
-garantir la stabilité de l'interpréteur).\\
+garantir la stabilité de l'interpréteur).
 
 Voici donc comment on s'y prendrait. Pour éviter de reproduire tout le
 code de la classe, on va l'étendre à la volée.
@@ -503,3 +512,9 @@ code de la classe, on va l'étendre à la volée.
 \begin{Verbatim}[commandchars=\\\{\}]
 {\color{outcolor}Out[{\color{outcolor}9}]:} [12, 24, 36, 48]
 \end{Verbatim}
+            
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

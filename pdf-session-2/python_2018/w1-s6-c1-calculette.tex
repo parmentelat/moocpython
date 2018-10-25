@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{utiliser-python-comme-une-calculette}{%
 \section{Utiliser Python comme une
 calculette}\label{utiliser-python-comme-une-calculette}}
@@ -29,7 +36,7 @@ soustractions~:
             
     De manière générale, il est recommandé de bien parenthéser ses
 expressions. De plus, les parenthèses facilitent la lecture
-d'expressions complexes.\\
+d'expressions complexes.
 
 Par exemple, il vaut mieux écrire ce qui suit, qui est équivalent mais
 plus lisible~:
@@ -56,7 +63,7 @@ plus lisible~:
             
     Rappelez-vous des opérateurs suivants qui sont très pratiques~:
 
-\begin{longtable}[]{@{}lr@{}}
+\begin{longtable}[]{@{}ll@{}}
 \toprule
 code & opération\tabularnewline
 \midrule
@@ -199,7 +206,7 @@ peut écrire~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
 n= 0 racine =  (1+0j)
-n= 1 racine =  (-0.4999999999999998+0.8660254037844387j)
+n= 1 racine =  (-0.4999999999999998+0.8660254037844388j)
 n= 2 racine =  (-0.5000000000000004-0.8660254037844384j)
 
     \end{Verbatim}
@@ -271,13 +278,14 @@ au clavier grâce à la fonction \texttt{input}, comme ceci~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}20}]:} \PY{n}{reponse} \PY{o}{=} \PY{n+nb}{input}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{quel est votre âge ? }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} NOTE:}
+         \PY{c+c1}{\PYZsh{} automatic execution has used instead:}
+         \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+         \PY{n}{reponse} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{25}\PY{l+s+s1}{\PYZsq{}}
+         \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
 \end{Verbatim}
 
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-quel est votre âge ? 42
-
-    \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}21}]:} \PY{c+c1}{\PYZsh{} vous avez entré la chaîne suivante}
@@ -286,7 +294,7 @@ quel est votre âge ? 42
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-42
+25
 
     \end{Verbatim}
 
@@ -311,7 +319,7 @@ multiplier par 2. Si je m'y prends naïvement, ça donne ceci~:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}23}]:} '4242'
+{\color{outcolor}Out[{\color{outcolor}23}]:} '2525'
 \end{Verbatim}
             
     C'est pourquoi il me faut ici d'abord \textbf{convertir} la (valeur de
@@ -338,7 +346,7 @@ un nombre entier)
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}25}]:} 84
+{\color{outcolor}Out[{\color{outcolor}25}]:} 50
 \end{Verbatim}
             
     Ou si on préfère, en une seule fois~:
@@ -349,7 +357,7 @@ un nombre entier)
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-le double de votre age est 84
+le double de votre age est 50
 
     \end{Verbatim}
 
@@ -360,7 +368,7 @@ le double de votre age est 84
 flottant, ou une chaîne de caractères, on peut simplement appeler une
 fonction \emph{built-in} qui porte le même nom que le type cible~:
 
-\begin{longtable}[]{@{}lr@{}}
+\begin{longtable}[]{@{}ll@{}}
 \toprule
 Type & Fonction\tabularnewline
 \midrule
@@ -373,7 +381,7 @@ Chaîne & \texttt{str}\tabularnewline
 \end{longtable}
 
 Ainsi dans l'exemple précédent, \texttt{int(reponse)} représente la
-conversion de \texttt{reponse} en entier.\\
+conversion de \texttt{reponse} en entier.
 
 On a illustré cette même technique dans les exemples suivants~:
 
@@ -439,7 +447,7 @@ ignorés à l'exécution.
 \subsubsection{Entiers et bases}\label{entiers-et-bases}}
 
     Les calculettes scientifiques permettent habituellement d'entrer les
-entiers dans d'autres bases que la base 10.\\
+entiers dans d'autres bases que la base 10.
 
 En Python, on peut aussi entrer un entier sous forme binaire comme
 ceci~:
@@ -503,3 +511,9 @@ mathématiques}\label{fonctions-mathuxe9matiques}}
 mathématiques pour les fonctions exponentielles, trigonométriques et
 autres, mais leur utilisation ne nous est pas encore accessible à ce
 stade et nous les verrons ultérieurement.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

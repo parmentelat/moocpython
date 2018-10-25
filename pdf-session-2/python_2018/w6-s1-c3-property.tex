@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{les-property}{%
 \section{\texorpdfstring{Les
 \emph{property}}{Les property}}\label{les-property}}
@@ -14,12 +21,12 @@ intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
     Comme on l'a vu dans le complément précédent, il est fréquent en Python
 qu'une classe expose dans sa documentation un ou plusieurs attributs~;
 c'est une pratique qui, en apparence seulement, paraît casser l'idée
-d'une bonne encapsulation.\\
+d'une bonne encapsulation.
 
 En réalité, grâce au mécanisme de \emph{property}, il n'en est rien.
 Nous allons voir dans ce complément comment une classe peut en quelque
 sorte intercepter les accès à ses attributs, et par là fournir une
-encapsulation forte.\\
+encapsulation forte.
 
     Pour être concret, on va parler d'une classe \texttt{Temperature}. Au
 lieu de proposer, comme ce serait l'usage dans d'autres langages, une
@@ -28,7 +35,7 @@ se contenter d'exposer l'attribut \texttt{kelvin}, et malgré cela on va
 pouvoir faire diverses vérifications et autres.
 
     \hypertarget{impluxe9mentation-nauxefve}{%
-\subparagraph{Implémentation naïve\\\\}\label{impluxe9mentation-nauxefve}}
+\subparagraph{Implémentation naïve}\label{impluxe9mentation-nauxefve}}
 
     Je vais commencer par une implémentation naïve, qui ne tire pas profit
 des \emph{properties}~:
@@ -72,14 +79,14 @@ négative, qui n'a bien sûr pas de sens physique, ce n'est pas bon.
 
     \hypertarget{interface-gettersetter}{%
 \subparagraph{\texorpdfstring{Interface
-\emph{getter/setter}\\\\}{Interface getter/setter}}\label{interface-gettersetter}}
+\emph{getter/setter}}{Interface getter/setter}}\label{interface-gettersetter}}
 
     Si vous avez été déjà exposés à des langages orientés objet comme C++,
 Java ou autre, vous avez peut-être l'habitude d'accéder aux données
 internes des instances par des \textbf{méthodes} de type
 \emph{getter\textbf{ ou }setter}, de façon à contrôler les accès et,
 dans une optique d'encapsulation, de préserver des invariants, comme ici
-le fait que la température doit être positive.\\
+le fait que la température doit être positive.
 
 C'est-à-dire que vous vous dites peut-être, ça ne devrait pas être fait
 comme ça, on devrait plutôt proposer une interface pour accéder à
@@ -138,12 +145,12 @@ falloir le modifier entièrement.
 
     \hypertarget{impluxe9mentation-pythonique}{%
 \subparagraph{Implémentation
-pythonique\\\\}\label{impluxe9mentation-pythonique}}
+pythonique}\label{impluxe9mentation-pythonique}}
 
     La façon de s'en sortir ici consiste à définir une property. Comme on va
 le voir ce mécanisme permet d'écrire du code qui fait référence à
 l'attribut \texttt{kelvin} de l'instance, mais qui passe tout de même
-par une couche de logique.\\
+par une couche de logique.
 
 Ça ressemblerait à ceci~:
 
@@ -250,8 +257,8 @@ réalité le seul attribut de donnée est \texttt{\_kelvin}.
          
              \PY{c+c1}{\PYZsh{} pour le confort}
              \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
-                 \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}}\PY{l+s+si}{\PYZob{}self.kelvin:g\PYZcb{}}\PY{l+s+s2}{K == }\PY{l+s+si}{\PYZob{}self.celsius:g\PYZcb{}}\PY{l+s+s2}{\textdegree{C} }\PY{l+s+s2}{\PYZdq{}} \PYZbs{}
-                        \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{== }\PY{l+s+si}{\PYZob{}self.fahrenheit:g\PYZcb{}}\PY{l+s+s2}{\textdegree{F}\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+                 \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}}\PY{l+s+si}{\PYZob{}self.kelvin:g\PYZcb{}}\PY{l+s+s2}{K == }\PY{l+s+si}{\PYZob{}self.celsius:g\PYZcb{}}\PY{l+s+s2}{℃ }\PY{l+s+s2}{\PYZdq{}} \PYZbs{}
+                        \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{== }\PY{l+s+si}{\PYZob{}self.fahrenheit:g\PYZcb{}}\PY{l+s+s2}{℉\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
          
              \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}str\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
                  \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}self.kelvin:g\PYZcb{}}\PY{l+s+s2}{K}\PY{l+s+s2}{\PYZdq{}}
@@ -302,7 +309,7 @@ réalité le seul attribut de donnée est \texttt{\_kelvin}.
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}11}]:} <273.16K == 0\textdegree{C} == 32\textdegree[F]>
+{\color{outcolor}Out[{\color{outcolor}11}]:} <273.16K == 0℃ == 32℉>
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -339,11 +346,11 @@ OOPS, <class 'ValueError'>, Kelvin -300.1733333333333 must be positive
     \end{Verbatim}
 
     \hypertarget{pour-en-savoir-plus}{%
-\subparagraph{Pour en savoir plus\\\\}\label{pour-en-savoir-plus}}
+\subparagraph{Pour en savoir plus}\label{pour-en-savoir-plus}}
 
     Voir aussi
 \href{https://docs.python.org/3.6/library/functions.html\#property}{la
-documentation officielle}.\\
+documentation officielle}.
 
     Vous pouvez notamment aussi, en option, ajouter un \emph{deleter} pour
 intercepter les instructions du type~:
@@ -361,3 +368,9 @@ intercepter les instructions du type~:
 OOPS <class 'AttributeError'> can't delete attribute
 
     \end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

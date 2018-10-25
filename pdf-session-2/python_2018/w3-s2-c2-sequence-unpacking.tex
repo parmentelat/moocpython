@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{sequence-unpacking}{%
 \section{Sequence unpacking}\label{sequence-unpacking}}
 
@@ -58,7 +65,7 @@ gauche 100 droite spam
     Cela fonctionne naturellement très bien, mais n'est pas très pythonique
 - comme on dit ;) Vous devez toujours garder en tête qu'il est rare en
 Python de manipuler des indices. Dès que vous voyez des indices dans
-votre code, vous devez vous demander si votre code est pythonique.\\
+votre code, vous devez vous demander si votre code est pythonique.
 
 On préfèrera la formulation équivalente suivante~:
 
@@ -78,7 +85,7 @@ que le tuple \texttt{(gauche,\ droite)} soit égal à \texttt{couple}. On
 voit ici la supériorité de cette notion d'unpacking sur la manipulation
 d'indices~: vous avez maintenant des variables qui expriment la nature
 de l'objet manipulé, votre code devient expressif, c'est-à-dire
-auto-documenté.\\
+auto-documenté.
 
 Remarquons que les parenthèses ici sont optionnelles - comme lorsque
 l'on construit un tuple - et on peut tout aussi bien écrire, et c'est le
@@ -207,7 +214,7 @@ a=1 b=[2, 3, 4] c=5
 \emph{sequence unpacking}~; Python vous autorise à mentionner
 \textbf{une seule fois}, parmi les variables qui apparaissent à gauche
 de l'affectation, une variable \textbf{précédée de \texttt{*}}, ici
-\texttt{*b}.\\
+\texttt{*b}.
 
 Cette variable est interprétée comme une \textbf{liste de longueur
 quelconque} des éléments de \texttt{reference}. On aurait donc aussi
@@ -229,9 +236,13 @@ a=0 b=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18] c=19
 seulement aux premiers éléments d'une structure~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} si on sait que data contient prenom, nom, et un nombre inconnu d\PYZsq{}autres informations}
-         \PY{n}{data} \PY{o}{=} \PY{p}{[} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Jean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Dupont}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{061234567}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{12}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rue du chemin vert}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{57000}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{METZ}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{]}
-         \PY{c+c1}{\PYZsh{} on peut utiliser la variable \PYZus{} qui véhicule l\PYZsq{}idée que l\PYZsq{}on ne s\PYZsq{}y intéresse pas vraiment}
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} si on sait que data contient prenom, nom, }
+         \PY{c+c1}{\PYZsh{} et un nombre inconnu d\PYZsq{}autres informations}
+         \PY{n}{data} \PY{o}{=} \PY{p}{[} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Jean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Dupont}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{061234567}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{12}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rue du four}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{57000}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{METZ}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{]}
+         
+         \PY{c+c1}{\PYZsh{} on peut utiliser la variable \PYZus{}}
+         \PY{c+c1}{\PYZsh{} ce n\PYZsq{}est pas une variable spéciale dans le langage,}
+         \PY{c+c1}{\PYZsh{} mais cela indique au lecteur que l\PYZsq{}on ne va pas s\PYZsq{}en servir}
          \PY{n}{prenom}\PY{p}{,} \PY{n}{nom}\PY{p}{,} \PY{o}{*}\PY{n}{\PYZus{}} \PY{o}{=} \PY{n}{data}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{prenom=}\PY{l+s+si}{\PYZob{}prenom\PYZcb{}}\PY{l+s+s2}{ nom=}\PY{l+s+si}{\PYZob{}nom\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
@@ -279,7 +290,7 @@ s'il faisait l'affectation plusieurs fois de gauche à droite,
 c'est-à-dire comme s'il faisait~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{1}\PY{p}{;} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{2}\PY{p}{;} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{3}
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{1}\PY{p}{;} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{2}\PY{p}{;} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{3}
 \end{Verbatim}
 
 
@@ -291,7 +302,7 @@ manifester le fait que cette partie de la structure ne sera pas
 utilisée, par exemple~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{entree} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{entree} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}
          
          \PY{n}{\PYZus{}}\PY{p}{,} \PY{n}{milieu}\PY{p}{,} \PY{n}{\PYZus{}} \PY{o}{=} \PY{n}{entree}
          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{milieu}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{milieu}\PY{p}{)}
@@ -315,7 +326,7 @@ structures, on peut extraire des données plus profondément imbriquées
 dans la structure de départ~; par exemple avec en entrée la liste~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{structure} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{structure} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{]}
 \end{Verbatim}
 
 
@@ -323,7 +334,7 @@ dans la structure de départ~; par exemple avec en entrée la liste~:
 \texttt{3}, on peut écrire~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}14}]:} \PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{p}{(}\PY{n}{b}\PY{p}{,} \PY{p}{(}\PY{p}{(}\PY{n}{trois}\PY{p}{,}\PY{p}{)}\PY{p}{,} \PY{n}{c}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{d}\PY{p}{)} \PY{o}{=} \PY{n}{structure}
+{\color{incolor}In [{\color{incolor}15}]:} \PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{p}{(}\PY{n}{b}\PY{p}{,} \PY{p}{(}\PY{p}{(}\PY{n}{trois}\PY{p}{,}\PY{p}{)}\PY{p}{,} \PY{n}{c}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{d}\PY{p}{)} \PY{o}{=} \PY{n}{structure}
          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{trois}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{trois}\PY{p}{)}
 \end{Verbatim}
 
@@ -336,7 +347,7 @@ trois 3
     Ou encore, sans doute un peu plus lisible~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}15}]:} \PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{p}{(}\PY{n}{b}\PY{p}{,} \PY{p}{(}\PY{p}{[}\PY{n}{trois}\PY{p}{]}\PY{p}{,} \PY{n}{c}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{d}\PY{p}{)} \PY{o}{=} \PY{n}{structure}
+{\color{incolor}In [{\color{incolor}16}]:} \PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{p}{(}\PY{n}{b}\PY{p}{,} \PY{p}{(}\PY{p}{[}\PY{n}{trois}\PY{p}{]}\PY{p}{,} \PY{n}{c}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{d}\PY{p}{)} \PY{o}{=} \PY{n}{structure}
          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{trois}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{trois}\PY{p}{)}
 \end{Verbatim}
 
@@ -349,7 +360,7 @@ trois 3
     Naturellement on aurait aussi bien pu écrire ici quelque chose comme~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{trois} \PY{o}{=} \PY{n}{structure}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{trois} \PY{o}{=} \PY{n}{structure}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{trois}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{trois}\PY{p}{)}
 \end{Verbatim}
 
@@ -374,8 +385,19 @@ profondeur}{Extended unpacking et profondeur}}\label{extended-unpacking-et-profo
 quel étage d'un \emph{unpacking} imbriqué~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} un exemple très alambiqué avec plusieurs variables *extended}
-         \PY{n}{tree} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{33}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{three}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{thirty\PYZhy{}three}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{p}{(} \PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{44}\PY{p}{,} \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{forty}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{forty\PYZhy{}four}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{} un exemple très alambiqué }
+         \PY{n}{tree} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{33}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{three}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{thirty\PYZhy{}three}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{]}\PY{p}{,}
+                 \PY{p}{(} \PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{44}\PY{p}{,} \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{forty}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{forty\PYZhy{}four}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{p}{]}
+         \PY{n}{tree}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}18}]:} [1, 2, [(3, 33, 'three', 'thirty-three')], [4, 44, ('forty', 'forty-four')]]
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} unpacking avec plusieurs variables *extended}
          \PY{o}{*}\PY{n}{\PYZus{}}\PY{p}{,}  \PY{p}{(}\PY{p}{(}\PY{n}{\PYZus{}}\PY{p}{,} \PY{o}{*}\PY{n}{x3}\PY{p}{,} \PY{n}{\PYZus{}}\PY{p}{)}\PY{p}{,}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{o}{*}\PY{n}{\PYZus{}}\PY{p}{,} \PY{n}{x4}\PY{p}{)} \PY{o}{=} \PY{n}{tree}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{x3=}\PY{l+s+si}{\PYZob{}x3\PYZcb{}}\PY{l+s+s2}{, x4=}\PY{l+s+si}{\PYZob{}x4\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
@@ -399,3 +421,9 @@ niveau dans l'imbrication, comme on le voit sur cet exemple.
   \href{https://www.python.org/dev/peps/pep-3132/}{Le PEP (en anglais)
   qui introduit le \emph{extended unpacking}}.
 \end{itemize}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

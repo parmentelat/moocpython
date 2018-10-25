@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{tri-de-listes}{%
 \section{Tri de listes}\label{tri-de-listes}}
 
@@ -25,7 +32,7 @@ et le second la longitude~:
 
     Il est possible d'utiliser la méthode \texttt{sort} pour faire cela,
 mais il va falloir l'aider un peu plus, et lui expliquer comment
-comparer deux éléments de la liste.\\
+comparer deux éléments de la liste.
 
 Voyons comment on pourrait procéder pour trier par longitude~:
 
@@ -45,16 +52,16 @@ coordonnées triées par longitude [(46, -7), (46, 0), (43, 7)]
 
     Comme on le devine, le procédé ici consiste à indiquer à \texttt{sort}
 comment calculer, à partir de chaque élément, une valeur numérique qui
-sert de base au tri.\\
+sert de base au tri.
 
 Pour cela on passe à la méthode \texttt{sort} un argument \texttt{key}
 qui désigne \textbf{une fonction}, qui lorsqu'elle est appliquée à un
 élément de la liste, retourne la valeur qui doit servir de base au tri~:
 dans notre exemple, la fonction \texttt{longitude}, qui renvoie le
-second élément du tuple.\\
+second élément du tuple.
 
     On aurait pu utiliser de manière équivalente une fonction lambda ou la
-méthode \texttt{itemgetter} to module \texttt{operator}
+méthode \texttt{itemgetter} du module \texttt{operator}
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} fonction lambda }
@@ -140,3 +147,9 @@ aucune structure de données temporaire créée.
     Pour avoir plus d'informations sur \texttt{sort} et \texttt{sorted} vous
 pouvez \href{https://docs.python.org/3/howto/sorting.html}{lire cette
 section de la documentation python sur le tri.}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

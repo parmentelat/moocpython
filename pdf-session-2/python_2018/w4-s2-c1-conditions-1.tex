@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{conditions-expressions-booluxe9ennes}{%
 \section{Conditions \& Expressions
 Booléennes}\label{conditions-expressions-booluxe9ennes}}
@@ -20,7 +27,7 @@ if <expression>:
    <do_something>
 \end{verbatim}
 
-le résultat de l'expression peut \textbf{ne pas être un booléen}.\\
+le résultat de l'expression peut \textbf{ne pas être un booléen}.
 
 Par exemple, pour n'importe quel type numérique, la valeur 0 est
 considérée comme fausse. Cela signifie que
@@ -159,14 +166,19 @@ historiquement et \textbf{seulement en Python 2} on pouvait aussi noter
 ceci dans du code ancien mais il faut éviter de l'utiliser~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}12}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{python2}
-         \PYZsh{} coding: utf\PYZhy{}8
+{\color{incolor}In [{\color{incolor}12}]:} \PY{o}{\PYZpc{}\PYZpc{}python}2
+         \PY{c+c1}{\PYZsh{} coding: utf\PYZhy{}8}
          
-         \PYZsh{} l\PYZsq{}ancienne forme de !=
-         if 12 \PYZlt{}\PYZgt{} 25:
-             print(\PYZdq{}\PYZlt{}\PYZgt{} est obsolete et ne fonctionne qu\PYZsq{}en python2\PYZdq{})
+         \PY{c+c1}{\PYZsh{} l\PYZsq{}ancienne forme de !=}
+         \PY{k}{if} \PY{l+m+mi}{12} \PY{o}{\PYZlt{}}\PY{o}{\PYZgt{}} \PY{l+m+mi}{25}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}\PYZgt{} est obsolete et ne fonctionne qu}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{en python2}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+<> est obsolete et ne fonctionne qu'en python2
+
+    \end{Verbatim}
 
     \hypertarget{les-opuxe9rateurs-de-comparaison}{%
 \subsubsection{Les opérateurs de
@@ -243,7 +255,7 @@ comme par exemple avec les listes
             
     Il est parfois utile de vérifier le sens qui est donné à ces opérateurs
 selon le type~; ainsi par exemple sur les ensembles ils se réfèrent à
-l'\textbf{inclusion}.\\
+l'\textbf{inclusion}.
 
 Il faut aussi se méfier avec les types numériques, si un complexe est
 impliqué, comme dans l'exemple suivant~:
@@ -311,3 +323,9 @@ OK, c'est équivalent et plus clair
     Reportez-vous à la section sur les
 \href{https://docs.python.org/3/library/stdtypes.html\#truth-value-testing}{opérateurs
 booléens} dans la documentation python.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

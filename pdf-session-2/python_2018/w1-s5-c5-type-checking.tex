@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{typages-statique-et-dynamique}{%
 \section{Typages statique et
 dynamique}\label{typages-statique-et-dynamique}}
@@ -14,7 +21,7 @@ ceux qui n'y sont pas familiers.
 \subsubsection{Typage statique}\label{typage-statique}}
 
     À une extrémité du spectre, on trouve les langages compilés, dits à
-typage statique, comme par exemple C ou C++.\\
+typage statique, comme par exemple C ou C++.
 
 En C on écrira, par exemple, une version simpliste de la fonction
 factoriel comme ceci~:
@@ -76,6 +83,7 @@ factoriel comme ceci~:
     \CommentTok{/* calculer son factoriel et afficher le résultat */}
 \NormalTok{    printf(}\StringTok{"Factoriel (%s) = %d}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, input, factoriel(input));}
     \CommentTok{/*                                               ^^^^^}
+
 \CommentTok{     * ici on appelle factoriel avec une entrée de type 'chaîne de caractères' */}
 \NormalTok{\}}
 \end{Highlighting}
@@ -89,7 +97,7 @@ compiler.
 
 On parle alors de \textbf{typage statique}, en ce sens que chaque
 \textbf{variable} a exactement un type qui est défini par le programmeur
-une bonne fois pour toutes.\\
+une bonne fois pour toutes.
 
     C'est ce qu'on appelle le \textbf{contrôle de type}, ou
 \emph{type-checking} en anglais. Si on ignore le point sur le contrôle
@@ -180,35 +188,27 @@ Ainsi, par exemple, on pourrait même faire~:
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} ceci va déclencher une exception à l\PYZsq{}exécution}
         \PY{n}{somme}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} NOTE:}
+        \PY{c+c1}{\PYZsh{} automatic execution has used instead:}
+        \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+        \PY{k}{try}\PY{p}{:}
+            \PY{n}{somme}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
+        \PY{k}{except}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{OOPS}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-
-        ---------------------------------------------------------------------------
-
-        TypeError                                 Traceback (most recent call last)
-
-        <ipython-input-5-1b5269e9e129> in <module>()
-          1 \# ceci va déclencher une exception à l'exécution
-    ----> 2 somme(12, [1, 2, 3])
-    
-
-        <ipython-input-1-29005c25d5bb> in somme(*largs)
-          5     result = largs[0]
-          6     for i in range(1, len(largs)):
-    ----> 7         result += largs[i]
-          8     return result
-    
-
-        TypeError: unsupported operand type(s) for +=: 'int' and 'list'
+OOPS
 
     \end{Verbatim}
 
     Il est utile de remarquer que le typage de Python, qui existe bel et
 bien comme on le verra, est qualifié de dynamique parce que le type est
 attaché \textbf{à un objet} et non à la variable qui le référence. On
-aura bien entendu l'occasion d'approfondir tout ça dans le cours.\\
+aura bien entendu l'occasion d'approfondir tout ça dans le cours.
 
     En Python, on fait souvent référence au typage sous l'appellation
 \emph{duck typing}, de manière imagée~:
@@ -235,22 +235,22 @@ programmeur C/C++, en ce sens que~:
   dérouler correctement.
 \end{itemize}
 
-    Il y a deux points de vue vis-à-vis de la question du typage.\\
+    Il y a deux points de vue vis-à-vis de la question du typage.
 
 Les gens habitués au \emph{typage statique} se plaignent du typage
 dynamique en disant qu'on peut écrire des programmes faux et qu'on s'en
-rend compte trop tard - à l'exécution.\\
+rend compte trop tard - à l'exécution.
 
 À l'inverse les gens habitués au \emph{typage dynamique} font valoir que
 le typage statique est très partiel, par exemple, en C si on essaie
 d'écrire dans un pointeur \texttt{NULL}, le système d'exploitation ne le
-permet pas et le programme sort tout aussi brutalement.\\
+permet pas et le programme sort tout aussi brutalement.
 
     Bref, selon le point de vue, le typage dynamique est vécu comme un
 inconvénient (pas assez de bonnes propriétés détectées par le langage)
 ou comme un avantage (pas besoin de passer du temps à déclarer le type
 des variables, ni à faire des conversions pour satisfaire le
-compilateur).\\
+compilateur).
 
 Vous remarquerez cependant à l'usage, qu'en matière de vitesse de
 développement, les inconvénients du typage dynamique sont très largement
@@ -262,7 +262,7 @@ hints}}{Type hints}}\label{type-hints}}
 
     Signalons enfin que depuis python-3.5, il est \textbf{possible}
 d'ajouter des annotations de type, pour expliciter les suppositions qui
-sont faites par le programmeur pour le bon fonctionnement du code.\\
+sont faites par le programmeur pour le bon fonctionnement du code.
 
 Nous aurons là encore l'occasion de détailler ce point dans le cours,
 signalons simplement que ces annotations sont totalement optionnelles,
@@ -271,3 +271,9 @@ l'exécution par l'interpréteur. L'idée est plutôt de permettre à des
 outils externes, \href{http://www.mypy-lang.org}{comme par exemple
 \texttt{mypy}}, d'effectuer des contrôles plus poussés concernant la
 correction du programme.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

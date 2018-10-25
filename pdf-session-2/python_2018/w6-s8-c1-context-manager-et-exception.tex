@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{context-managers-et-exceptions}{%
 \section{\texorpdfstring{\emph{Context managers} et
 exceptions}{Context managers et exceptions}}\label{context-managers-et-exceptions}}
@@ -39,22 +46,22 @@ propagée :
             \PY{k}{with} \PY{n}{Timer1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
                 \PY{n}{time}\PY{o}{.}\PY{n}{sleep}\PY{p}{(}\PY{l+m+mf}{0.5}\PY{p}{)}
                 \PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{0}
-        \PY{k}{except} \PY{n+ne}{Exception} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+        \PY{k}{except} \PY{n+ne}{Exception} \PY{k}{as} \PY{n}{exc}\PY{p}{:}
             \PY{c+c1}{\PYZsh{} on va bien recevoir cette exception}
-            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS \PYZhy{}\PYZgt{} }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{type(e)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS \PYZhy{}\PYZgt{} }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{type(exc)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
 Entering Timer1
-Total duration 0.514807
+Total duration 0.502001
 OOPS -> <class 'ZeroDivisionError'>
 
     \end{Verbatim}
 
     À la toute première itération de la boucle, on fait une division par 0
 qui lève l'exception \texttt{ZeroDivisionError}, qui passe bien à
-l'appelant.\\
+l'appelant.
 
 Il est important, lorsqu'on conçoit un context manager, de bien
 \textbf{propager} les exceptions qui ne sont pas liées au fonctionnement
@@ -117,7 +124,8 @@ hasard, c'est uniquement pour illustrer le mécanisme.
                         \PY{c+c1}{\PYZsh{} on peut l\PYZsq{}étouffer en retournant True}
                         \PY{k}{return} \PY{k+kc}{True}
                     \PY{k}{else}\PY{p}{:}
-                        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS : on propage l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{exception }\PY{l+s+si}{\PYZob{}exc\PYZus{}type\PYZcb{}}\PY{l+s+s2}{ \PYZhy{} }\PY{l+s+si}{\PYZob{}exc\PYZus{}value\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS : on propage l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{exception }\PY{l+s+s2}{\PYZdq{}}
+                              \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}exc\PYZus{}type\PYZcb{}}\PY{l+s+s2}{ \PYZhy{} }\PY{l+s+si}{\PYZob{}exc\PYZus{}value\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
                         \PY{c+c1}{\PYZsh{} et pour ça il suffit... de ne rien faire du tout}
                         \PY{c+c1}{\PYZsh{} ce qui renverra None }
 \end{Verbatim}
@@ -136,7 +144,7 @@ hasard, c'est uniquement pour illustrer le mécanisme.
 
     \begin{Verbatim}[commandchars=\\\{\}]
 Entering Timer1
-Total duration 0.514807
+Total duration 0.500703
 
     \end{Verbatim}
 
@@ -184,7 +192,7 @@ OOPS -> <class 'OSError'>
     Je vous signale aussi
 \href{https://docs.python.org/3/library/contextlib.html}{la bibliothèque
 \texttt{contextlib}} qui offre quelques utilitaires pour se définir un
-contextmanager.\\
+contextmanager.
 
 Notamment, elle permet d'implémenter un context manager sous une forme
 compacte à l'aide d'une fonction génératrice - et du décorateur
@@ -213,20 +221,26 @@ compacte à l'aide d'une fonction génératrice - et du décorateur
 
     \begin{Verbatim}[commandchars=\\\{\}]
 333328333350000
-Squares sum: duration = 0.031200408935546875
+Squares sum: duration = 0.037673234939575195
 
     \end{Verbatim}
 
     Un peu comme on peut implémenter un itérateur à partir d'une fonction
 génératrice qui fait (n'importe quel nombre de) \texttt{yield}, ici on
 implémente un context manager compact sous la forme d'une fonction
-génératrice.\\
+génératrice.
 
 Comme vous l'avez sans doute deviné sur la base de cet exemple, il faut
 que la fonction fasse \textbf{exactement un \texttt{yield}}: ce qui se
 passe avant le \texttt{yield} est du ressort de \texttt{\_\_enter\_\_},
-et la fin est du ressort de \texttt{\_\_exit\_\_()}.\\
+et la fin est du ressort de \texttt{\_\_exit\_\_()}.
 
 Bien entendu on n'a pas la même puissance d'expression avec cette
 méthode par rapport à une vraie classe, mais cela permet de créer des
 context managers avec le minimum de code.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

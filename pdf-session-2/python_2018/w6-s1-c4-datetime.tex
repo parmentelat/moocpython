@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{un-exemple-de-classes-de-la-bibliothuxe8que-standard}{%
 \section{Un exemple de classes de la bibliothèque
 standard}\label{un-exemple-de-classes-de-la-bibliothuxe8que-standard}}
@@ -30,7 +37,7 @@ qui s'utilise comme ceci~:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}1}]:} 1539774899.2159433
+{\color{outcolor}Out[{\color{outcolor}1}]:} 1540404765.701112
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -64,8 +71,7 @@ appel à \texttt{gmtime} qui convertit le flottant obtenu par la méthode
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-time.struct\_time(tm\_year=2018, tm\_mon=10, tm\_mday=17, tm\_hour=14, tm\_min=14,
-tm\_sec=59, tm\_wday=2, tm\_yday=290, tm\_isdst=0)
+time.struct\_time(tm\_year=2018, tm\_mon=10, tm\_mday=24, tm\_hour=21, tm\_min=12, tm\_sec=45, tm\_wday=2, tm\_yday=297, tm\_isdst=0)
 
     \end{Verbatim}
 
@@ -73,33 +79,34 @@ tm\_sec=59, tm\_wday=2, tm\_yday=290, tm\_isdst=0)
 exemple, \texttt{strftime()} pour afficher l'heure UTC dans 3 heures~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}5}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{heure UTC dans trois heures }\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{time.strftime(}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{Y\PYZhy{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{m\PYZhy{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{ at }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{H:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{M}\PY{l+s+s1}{\PYZdq{} \textbackslash}
-\PY{l+s+s1}{, struct\PYZus{}later)\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{heure UTC dans trois heures }\PY{l+s+s1}{\PYZsq{}}
+              \PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{time.strftime(}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{Y\PYZhy{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{m\PYZhy{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{ at }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{H:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{M}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{, struct\PYZus{}later)\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-heure UTC dans trois heures 2018-10-17 at 14:14
+heure UTC dans trois heures 2018-10-24 at 21:12
 
     \end{Verbatim}
 
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
     \hypertarget{le-module-datetime}{%
 \subsubsection{Le module datetime}\label{le-module-datetime}}
 
     Voyons à présent, par comparaison, comment ce genre de calculs se
-présente lorsqu'on utilise la programmation par objets.\\
+présente lorsqu'on utilise la programmation par objets.
 
 Le \href{https://docs.python.org/3/library/datetime.html}{module
 \texttt{datetime}} expose un certain nombre de classes, que nous
 illustrons brièvement avec les classes \texttt{datetime} (qui modélise
 la date et l'heure d'un instant) et \texttt{timedelta} (qui modélise une
-durée).\\
+durée).
 
 La première remarque qu'on peut faire, c'est qu'avec le module
 \texttt{time} on manipulait un flottant pour représenter ces deux sortes
 d'objets (instant et durée)~; avec deux classes différentes notre code
-va être plus clair quant à ce qui est réellement représenté.\\
+va être plus clair quant à ce qui est réellement représenté.
 
     Le code ci-dessus s'écrirait alors, en utilisant le module
 \texttt{datetime}~:
@@ -112,7 +119,7 @@ va être plus clair quant à ce qui est réellement représenté.\\
 \end{Verbatim}
 
 
-    Vous remarquez que c'est déjà un peu plus expressif.\\
+    Vous remarquez que c'est déjà un peu plus expressif.
 
 Voyez aussi qu'on a déjà moins besoin de s'escrimer pour en avoir un
 aperçu lisible~:
@@ -124,7 +131,7 @@ aperçu lisible~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-maintenant 2018-10-17 13:14:59.309541
+maintenant 2018-10-24 20:12:45.747238
 
     \end{Verbatim}
 
@@ -135,7 +142,7 @@ maintenant 2018-10-17 13:14:59.309541
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-dans trois heures 2018-10-17 at 16:14
+dans trois heures 2018-10-24 at 23:12
 
     \end{Verbatim}
 
@@ -146,7 +153,7 @@ dans trois heures 2018-10-17 at 16:14
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-dans trois heures 2018-10-17 at 16:14
+dans trois heures 2018-10-24 at 23:12
 
     \end{Verbatim}
 
@@ -160,12 +167,12 @@ ici}, pour le détail des options de formatage disponibles.
     Une partie des inconvénients du module \texttt{time} vient certainement
 du parti-pris de l'efficacité. De plus, c'est un module très ancien,
 mais auquel on ne peut guère toucher pour des raisons de compatibilité
-ascendante.\\
+ascendante.
 
 Par contre, le module \texttt{datetime}, tout en vous procurant un
 premier exemple de classes exposées par la bibliothèque standard, vous
 montre certains des avantages de la programmation orientée objet en
-général, et des classes de Python en particulier.\\
+général, et des classes de Python en particulier.
 
 Si vous devez manipuler des dates ou des heures, le module
 \texttt{datetime} constitue très certainement un bon candidat~; voyez la
@@ -180,13 +187,13 @@ intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
 \subsubsection{Fuseaux horaires et temps
 local}\label{fuseaux-horaires-et-temps-local}}
 
-    Le temps nous manque pour traiter ce sujet dans toute sa profondeur.\\
+    Le temps nous manque pour traiter ce sujet dans toute sa profondeur.
 
 En substance, c'est un sujet assez voisin de celui des accents, en ce
 sens que lors d'échanges d'informations de type \emph{timestamp} entre
 deux ordinateurs, il faut échanger d'une part une valeur (l'heure et la
 date), et d'autre part le référentiel (s'agit-il de temps UTC, ou bien
-de l'heure dans un fuseau horaire, et si oui lequel).\\
+de l'heure dans un fuseau horaire, et si oui lequel).
 
 La complexité est tout de même moindre que dans le cas des accents~; on
 s'en sort en général en convenant d'échanger systématiquement des heures
@@ -202,36 +209,36 @@ avancé}\label{compluxe9ment---niveau-avancuxe9}}
 \subsubsection{\texorpdfstring{Classes et
 \emph{marshalling}}{Classes et marshalling}}\label{classes-et-marshalling}}
 
-    Ceci nous procure une transition pour un sujet beaucoup plus général.\\
+    Ceci nous procure une transition pour un sujet beaucoup plus général.
 
 Nous avons évoqué en semaine 4 les formats comme JSON pour échanger les
-données entre applications, au travers de fichiers ou d'un réseau.\\
+données entre applications, au travers de fichiers ou d'un réseau.
 
 On a vu, par exemple, que JSON est un format ``proche des langages'' en
 ce sens qu'il est capable d'échanger des objets de base comme des listes
 ou des dictionnaires entre plusieurs langages comme, par exemple,
 JavaScript, Python ou Ruby. En XML, on a davantage de flexibilité
-puisqu'on peut définir une syntaxe sur les données échangées.\\
+puisqu'on peut définir une syntaxe sur les données échangées.
 
 Mais il faut être bien lucide sur le fait que, aussi bien pour JSON que
 pour XML, il n'est \textbf{pas possible} d'échanger entre applications
 des \textbf{objets} en tant que tel. Ce que nous voulons dire, c'est que
 ces technologies de \emph{marshalling} prennent bien en charge le
 \emph{contenu} en termes de données, mais pas les informations de type,
-et \emph{a fortiori} pas non plus le code qui appartient à la classe.\\
+et \emph{a fortiori} pas non plus le code qui appartient à la classe.
 
 Il est important d'être conscient de cette limitation lorsqu'on fait des
 choix de conception, notamment lorsqu'on est amené à choisir entre
 classe et dictionnaire pour l'implémentation de telle ou telle
-abstraction.\\
+abstraction.
 
     Voyons cela sur un exemple inspiré de notre fichier de données liées au
 trafic maritime. En version simplifiée, un bateau est décrit par trois
-valeurs, son identité (\texttt{id}), son nom et son pays d'attachement.\\
+valeurs, son identité (\texttt{id}), son nom et son pays d'attachement.
 
 Nous allons voir comment on peut échanger ces informations entre,
 disons, deux programmes dont l'un est en Python, via un support réseau
-ou disque.\\
+ou disque.
 
     Si on choisit de simplement manipuler un dictionnaire standard~:
 
@@ -242,7 +249,7 @@ ou disque.\\
 
     alors on peut utiliser tels quels les mécanismes d'encodage et décodage
 de, disons, JSON. En effet c'est exactement ce genre d'informations que
-sait gérer la couche JSON.\\
+sait gérer la couche JSON.
 
     Si au contraire on choisit de manipuler les données sous forme d'une
 classe on pourrait avoir envie d'écrire quelque chose comme ceci~:
@@ -270,7 +277,7 @@ pour le passer à la couche d'encodage~:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}12}]:} \{'country': 'FRA', 'id': 1000, 'name': 'Toccata'\}
+{\color{outcolor}Out[{\color{outcolor}12}]:} \{'id': 1000, 'name': 'Toccata', 'country': 'FRA'\}
 \end{Verbatim}
             
     Mais à l'autre bout de la communication il va vous falloir~:
@@ -307,7 +314,7 @@ pour le passer à la couche d'encodage~:
 
     Pour reformuler ce dernier point, il n'y a pas en Python l'équivalent de
 \href{https://en.wikipedia.org/wiki/Java_Metadata_Interface}{jmi (Java
-Metadata Interface)} intégré à la distribution standard.\\
+Metadata Interface)} intégré à la distribution standard.
 
 De plus on peut écrire du code en dehors des classes, et on n'est pas
 forcément obligé d'écrire une classe pour tout - à l'inverse ici encore
@@ -315,3 +322,9 @@ de Java. Chaque situation doit être jugée dans son contexte
 naturellement, mais, de manière générale, la classe n'est pas la
 solution universelle~; il peut y avoir des mérites dans le fait de
 manipuler certaines données sous une forme allégée comme un type natif.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

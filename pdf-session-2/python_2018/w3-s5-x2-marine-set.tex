@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{exercice-sur-les-ensembles}{%
 \section{Exercice sur les ensembles}\label{exercice-sur-les-ensembles}}
 
@@ -6,7 +13,7 @@
 intermédiaire}\label{exercice---niveau-intermuxe9diaire}}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} chargement de l\PYZsq{}exercice}
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} chargement de l\PYZsq{}exercice}
         \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}marine\PYZus{}set} \PY{k}{import} \PY{n}{exo\PYZus{}diff}
 \end{Verbatim}
 
@@ -18,7 +25,7 @@ intermédiaire}\label{exercice---niveau-intermuxe9diaire}}
 MarineTraffic que nous avons vues dans l'exercice précédent.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}marine\PYZus{}set} \PY{k}{import} \PY{n}{abbreviated}\PY{p}{,} \PY{n}{extended}
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}marine\PYZus{}set} \PY{k}{import} \PY{n}{abbreviated}\PY{p}{,} \PY{n}{extended}
 \end{Verbatim}
 
 
@@ -31,27 +38,37 @@ abrégé: [id, latitude, longitude, date_heure]
 \end{verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{extended}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{extended}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{abbreviated}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+[256712000, 49.87164, -2.631738, '2013-10-08T21:51:00', 'SKY', 'MT', '', 'ALGECIRAS']
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{abbreviated}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[228109000, 48.18373, -5.049758, '2013-10-08T22:58:00']
+
+    \end{Verbatim}
 
     \hypertarget{but-de-lexercice}{%
 \subsubsection{But de l'exercice}\label{but-de-lexercice}}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} chargement de l\PYZsq{}exercice}
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} chargement de l\PYZsq{}exercice}
         \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}marine\PYZus{}set} \PY{k}{import} \PY{n}{exo\PYZus{}diff}
 \end{Verbatim}
 
 
     Notez bien une différence importante avec l'exercice précédent~: cette
 fois \textbf{il n'y a plus correspondance} entre les bateaux rapportés
-dans les données étendues et abrégées.\\
+dans les données étendues et abrégées.
 
 Le but de l'exercice est précisément d'étudier la différence, et pour
 cela on vous demande d'écrire une fonction
@@ -65,21 +82,22 @@ cela on vous demande d'écrire une fonction
 qui retourne un tuple à trois éléments~:
 
 \begin{itemize}
-	\item 
-	l'ensemble (\texttt{set}) des
-	\textbf{noms} des bateaux présents dans \texttt{extended} mais pas dans
-	\texttt{abbreviated}~;
-	\item
-	l'ensemble des \textbf{noms} des bateaux
-	présents dans \texttt{extended} et dans \texttt{abbreviated}~;
-	\item
-	l'ensemble des \textbf{id} des bateaux présents dans
-	\texttt{abbreviated} mais pas dans \texttt{extended} (par construction,
-	les données ne nous permettent pas d'obtenir les noms de ces bateaux).
+\tightlist
+\item
+  l'ensemble (\texttt{set}) des \textbf{noms} des bateaux présents dans
+  \texttt{extended} mais pas dans \texttt{abbreviated}~;
+\item
+  l'ensemble des \textbf{noms} des bateaux présents dans
+  \texttt{extended} et dans \texttt{abbreviated}~;
+\item
+  l'ensemble des \textbf{id} des bateaux présents dans
+  \texttt{abbreviated} mais pas dans \texttt{extended} (par
+  construction, les données ne nous permettent pas d'obtenir les noms de
+  ces bateaux).
 \end{itemize}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} le résultat attendu}
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} le résultat attendu}
         \PY{n}{result} \PY{o}{=} \PY{n}{exo\PYZus{}diff}\PY{o}{.}\PY{n}{resultat}\PY{p}{(}\PY{n}{extended}\PY{p}{,} \PY{n}{abbreviated}\PY{p}{)}
         
         \PY{c+c1}{\PYZsh{} combien de bateaux sont concernés}
@@ -101,12 +119,29 @@ qui retourne un tuple à trois éléments~:
 \end{Verbatim}
 
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+---------- Les entrées
+Dans extended: 4 entrées
+Dans abbreviated: 4 entrées
+---------- Le résultat du diff
+Dans extended mais pas dans abbreviated 2
+Dans les deux 2
+Dans abbreviated mais pas dans extended 2
+
+    \end{Verbatim}
+
     \hypertarget{votre-code}{%
 \subsubsection{Votre code}\label{votre-code}}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{diff}\PY{p}{(}\PY{n}{extended}\PY{p}{,} \PY{n}{abbreviated}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}7}]:} \PY{k}{def} \PY{n+nf}{diff}\PY{p}{(}\PY{n}{extended}\PY{p}{,} \PY{n}{abbreviated}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre\PYZus{}code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+        
+        \PY{c+c1}{\PYZsh{} NOTE:}
+        \PY{c+c1}{\PYZsh{} automatic execution has used instead:}
+        \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+        \PY{n}{diff} \PY{o}{=} \PY{n}{exo\PYZus{}diff}\PY{o}{.}\PY{n}{solution}
+        \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
 \end{Verbatim}
 
 
@@ -114,7 +149,10 @@ qui retourne un tuple à trois éléments~:
 \subsubsection{Validation}\label{validation}}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{exo\PYZus{}diff}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{diff}\PY{p}{,} \PY{n}{extended}\PY{p}{,} \PY{n}{abbreviated}\PY{p}{)}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{n}{exo\PYZus{}diff}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{diff}\PY{p}{,} \PY{n}{extended}\PY{p}{,} \PY{n}{abbreviated}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -128,16 +166,17 @@ données (un peu) plus réalistes en chargeant des fichiers de données
 plus complets~:
 
 \begin{itemize}
-	\item 
-	\url{data/marine-e2-ext.json}
-	\item
-	\url{data/marine-e2-abb.json}
+\tightlist
+\item
+  \url{data/marine-e2-ext.json}
+\item
+  \url{data/marine-e2-abb.json}
 \end{itemize}
 
 Ce qui donnerait en Python~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} load data from files}
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} load data from files}
         \PY{k+kn}{import} \PY{n+nn}{json}
         
         \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{data/marine\PYZhy{}e2\PYZhy{}ext.json}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{utf\PYZhy{}8}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} \PY{k}{as} \PY{n}{feed}\PY{p}{:}
@@ -149,7 +188,7 @@ Ce qui donnerait en Python~:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} le résultat de votre fonction sur des données plus vastes}
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} le résultat de votre fonction sur des données plus vastes}
         \PY{c+c1}{\PYZsh{} attention, show\PYZus{}result fait des hypothèses sur le type de votre résultat}
         \PY{c+c1}{\PYZsh{} aussi si vous essayez d\PYZsq{}exécuter ceci avec comme fonction diff}
         \PY{c+c1}{\PYZsh{} la version vide qui est dans le notebook original}
@@ -159,14 +198,33 @@ Ce qui donnerait en Python~:
 \end{Verbatim}
 
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+---------- Les entrées
+Dans extended: 205 entrées
+Dans abbreviated: 200 entrées
+---------- Le résultat du diff
+Dans extended mais pas dans abbreviated 70
+Dans les deux 132
+Dans abbreviated mais pas dans extended 68
+
+    \end{Verbatim}
+
     Je signale enfin à propos de ces données plus complètes que~:
-    
+
 \begin{itemize}
-	\item 
-	on a supprimé les entrées correspondant à des bateaux différents mais de même
-	nom~; cette situation peut arriver dans la réalité (c'est pourquoi
-	d'ailleurs les bateaux ont un \emph{id}) mais ici ce n'est pas le cas~;
-	\item
-	il se peut par contre qu'un même bateau fasse l'objet de plusieurs
-	mesures dans \texttt{extended} et/ou dans \texttt{abbreviated}.
-\end{itemize}	
+\tightlist
+\item
+  on a supprimé les entrées correspondant à des bateaux différents mais
+  de même nom~; cette situation peut arriver dans la réalité (c'est
+  pourquoi d'ailleurs les bateaux ont un \emph{id}) mais ici ce n'est
+  pas le cas~;
+\item
+  il se peut par contre qu'un même bateau fasse l'objet de plusieurs
+  mesures dans \texttt{extended} et/ou dans \texttt{abbreviated}.
+\end{itemize}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{le-module-builtins}{%
 \section{\texorpdfstring{Le module
 \texttt{builtins}}{Le module builtins}}\label{le-module-builtins}}
@@ -19,7 +26,9 @@ part}\label{ces-noms-qui-viennent-de-nulle-part}}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}1}]:} (<function io.open>, <function len>, zip)
+{\color{outcolor}Out[{\color{outcolor}1}]:} (<function io.open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None)>,
+         <function len(obj, /)>,
+         zip)
 \end{Verbatim}
             
     Ces noms font partie du \textbf{module \texttt{builtins}}. Il est
@@ -76,7 +85,7 @@ SyntaxError: invalid syntax
 \texttt{builtins} ; un bon éditeur de texte vous signalera les fonctions
 \emph{built-in} avec une coloration syntaxique spécifique. Cependant, on
 peut vouloir redéfinir un nom \emph{built-in} pour changer un
-comportement par défaut, puis vouloir revenir au comportement original.\\
+comportement par défaut, puis vouloir revenir au comportement original.
 
 Sachez que vous pouvez toujours ``retrouver'' alors la fonction
 \emph{built-in} en l'important explicitement du module
@@ -207,7 +216,6 @@ fonctions prédéfinies}~:
          'UserWarning',
          'ValueError',
          'Warning',
-         'WindowsError',
          'ZeroDivisionError',
          '\_\_IPYTHON\_\_',
          '\_\_build\_class\_\_',
@@ -224,6 +232,7 @@ fonctions prédéfinies}~:
          'ascii',
          'bin',
          'bool',
+         'breakpoint',
          'bytearray',
          'bytes',
          'callable',
@@ -295,3 +304,9 @@ fonctions prédéfinies}~:
     Vous remarquez que les exceptions (les symboles qui commencent par des
 majuscules) représentent à elles seules une proportion substantielle de
 cet espace de noms.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

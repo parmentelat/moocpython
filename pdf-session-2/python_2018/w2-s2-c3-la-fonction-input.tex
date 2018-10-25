@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{obtenir-une-ruxe9ponse-de-lutilisateur}{%
 \section{Obtenir une réponse de
 l'utilisateur}\label{obtenir-une-ruxe9ponse-de-lutilisateur}}
@@ -17,13 +24,22 @@ l'utilisateur.
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{n}{nom\PYZus{}ville} \PY{o}{=} \PY{n+nb}{input}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Entrez le nom de la ville : }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{nom\PYZus{}ville=}\PY{l+s+si}{\PYZob{}nom\PYZus{}ville\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} NOTE:}
+        \PY{c+c1}{\PYZsh{} automatic execution has used instead:}
+        \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+        \PY{n}{nom\PYZus{}ville} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Paris}\PY{l+s+s1}{\PYZsq{}}
+        \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-Entrez le nom de la ville : Metropolis
-nom\_ville=Metropolis
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{nom\PYZus{}ville=}\PY{l+s+si}{\PYZob{}nom\PYZus{}ville\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+nom\_ville=Paris
 
     \end{Verbatim}
 
@@ -51,30 +67,30 @@ choses se passent mal~:
 résultat en un entier~:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}2}]:} \PY{n+nb}{int}\PY{p}{(}\PY{n+nb}{input}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Nombre de lignes ? }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{3}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} automatic execution has skipped execution of this cell}
+        
+        \PY{n+nb}{int}\PY{p}{(}\PY{n+nb}{input}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Nombre de lignes ? }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{3}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-Nombre de lignes ? 42
-
-    \end{Verbatim}
-
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}2}]:} 45
-\end{Verbatim}
-            
     \hypertarget{limitations}{%
 \subsubsection{Limitations}\label{limitations}}
 
-    Cette fonction peut être utile pour vos premiers pas en Python.\\
+    Cette fonction peut être utile pour vos premiers pas en Python.
 
 En pratique toutefois, on utilise assez peu cette fonction, car les
 applications ``réelles'' viennent avec leur propre interface
 utilisateur, souvent graphique, et disposent donc d'autres moyens que
-celui-ci pour interagir avec l'utilisateur.\\
+celui-ci pour interagir avec l'utilisateur.
 
 Les applications destinées à fonctionner dans un terminal, quant à
 elles, reçoivent traditionnellement leurs données de la ligne de
 commande. C'est le propos du module \texttt{argparse} que nous avons
 déjà rencontré en première semaine.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

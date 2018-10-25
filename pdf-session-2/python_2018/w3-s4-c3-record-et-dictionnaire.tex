@@ -1,3 +1,10 @@
+    
+    
+    
+    
+
+    
+
     \hypertarget{guxe9rer-des-enregistrements}{%
 \section{Gérer des enregistrements}\label{guxe9rer-des-enregistrements}}
 
@@ -12,11 +19,11 @@ dictionnaire}\label{impluxe9menter-un-enregistrement-comme-un-dictionnaire}}
     Il nous faut faire le lien entre dictionnaire Python et la notion
 d'enregistrement, c'est-à-dire une donnée composite qui contient
 plusieurs champs. (À cette notion correspond, selon les langages, ce
-qu'on appelle un \texttt{struct} ou un \texttt{record}.)\\
+qu'on appelle un \texttt{struct} ou un \texttt{record}.)
 
 Imaginons qu'on veuille manipuler un ensemble de données concernant des
 personnes~; chaque personne est supposée avoir un nom, un âge et une
-adresse mail.\\
+adresse mail.
 
 Il est possible, et assez fréquent, d'utiliser le dictionnaire comme
 support pour modéliser ces données comme ceci~:
@@ -30,7 +37,7 @@ support pour modéliser ces données comme ceci~:
 \end{Verbatim}
 
 
-    Bon, très bien, nous avons nos données, il est facile de les utiliser.\\
+    Bon, très bien, nous avons nos données, il est facile de les utiliser.
 
 Par exemple, pour l'anniversaire de Pierre on fera~:
 
@@ -73,12 +80,12 @@ enregistrements}\label{un-dictionnaire-pour-indexer-les-enregistrements}}
 pratique~; pour marquer l'anniversaire de Pierre on ne sait bien entendu
 pas que son enregistrement est le premier dans la liste. C'est pourquoi
 il est plus adapté, pour modéliser ces informations, d'utiliser non pas
-une liste, mais à nouveau\ldots{} un dictionnaire.\\
+une liste, mais à nouveau\ldots{} un dictionnaire.
 
 Si on imagine qu'on a commencé par lire ces données séquentiellement
 dans un fichier, et qu'on a calculé l'objet \texttt{personnes} comme la
 liste qu'on a vue ci-dessus, alors il est possible de construire un
-index de ces dictionnaires, (un dictionnaire de dictionnaires, donc).\\
+index de ces dictionnaires, (un dictionnaire de dictionnaires, donc).
 
 C'est-à-dire, en anticipant un peu sur la construction de dictionnaires
 par compréhension~:
@@ -92,9 +99,9 @@ par compréhension~:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}4}]:} \{'Jacques': \{'age': 52, 'email': 'jacques@example.com', 'nom': 'Jacques'\},
-         'Paul': \{'age': 18, 'email': 'paul@example.com', 'nom': 'Paul'\},
-         'Pierre': \{'age': 26, 'email': 'pierre@example.com', 'nom': 'Pierre'\}\}
+{\color{outcolor}Out[{\color{outcolor}4}]:} \{'Pierre': \{'nom': 'Pierre', 'age': 26, 'email': 'pierre@example.com'\},
+         'Paul': \{'nom': 'Paul', 'age': 18, 'email': 'paul@example.com'\},
+         'Jacques': \{'nom': 'Jacques', 'age': 52, 'email': 'jacques@example.com'\}\}
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -104,14 +111,14 @@ par compréhension~:
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}5}]:} \{'age': 26, 'email': 'pierre@example.com', 'nom': 'Pierre'\}
+{\color{outcolor}Out[{\color{outcolor}5}]:} \{'nom': 'Pierre', 'age': 26, 'email': 'pierre@example.com'\}
 \end{Verbatim}
             
     Attardons-nous un tout petit peu~; nous avons construit un dictionnaire
 par compréhension, en créant autant d'entrées que de personnes. Nous
 aborderons en détail la notion de compréhension de sets et de
 dictionnaires en semaine 5, donc si cette notation vous paraît étrange
-pour le moment, pas d'inquiétude.\\
+pour le moment, pas d'inquiétude.
 
 Le résultat est donc un dictionnaire qu'on peut afficher comme ceci~:
 
@@ -149,13 +156,13 @@ avancé}\label{compluxe9ment---niveau-avancuxe9}}
 
     \hypertarget{la-muxeame-iduxe9e-mais-avec-une-classe-personne}{%
 \paragraph{\texorpdfstring{La même idée, mais avec une classe
-\texttt{Personne}}{La même idée, mais avec une classe Personne}\\\\}\label{la-muxeame-iduxe9e-mais-avec-une-classe-personne}}
+\texttt{Personne}}{La même idée, mais avec une classe Personne}}\label{la-muxeame-iduxe9e-mais-avec-une-classe-personne}}
 
     Je vais donner ici une implémentation du code ci-dessus, qui utilise une
 classe pour modéliser les personnes. Naturellement je n'entre pas dans
 les détails, que l'on verra en semaine 6, mais j'espère vous donner un
 aperçu des classes dans un usage réaliste, et vous montrer les avantages
-de cette approche.\\
+de cette approche.
 
     Pour commencer je définis la classe \texttt{Personne}, qui va me servir
 à modéliser chaque personne~:
@@ -211,7 +218,7 @@ accès rapide~:
 
     Le principe ici est exactement identique à ce qu'on a fait avec le
 dictionnaire de dictionnaires, mais on a construit un dictionnaire
-d'instances.\\
+d'instances.
 
 Et de cette façon~:
 
@@ -227,3 +234,9 @@ Pierre (25 ans) sur pierre@example.com
 
     Rendez-vous en semaine 6 pour approfondir la notion de classes et
 d'instances.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
