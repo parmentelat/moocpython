@@ -10,10 +10,7 @@
 
 
 
-\documentclass[11pt, a4paper, french
-]{book}
-
-
+\documentclass[11pt, a4paper, french]{book}
 
     \usepackage[T1]{fontenc}
     % Nicer default font (+ math font) than Computer Modern for most use cases
@@ -47,7 +44,7 @@
     \usepackage{amsmath} % Equations
     \usepackage{amssymb} % Equations
     \usepackage{textcomp} % defines textquotesingle
-    \usepackage{textcomp}
+
     % Hack from http://tex.stackexchange.com/a/47451/13684:
     \AtBeginDocument{%
         \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
@@ -70,7 +67,10 @@
                                 % normalem makes italics be italics, not underlines
 
 
+% Modification subparagraph
 
+	\usepackage{titlesec}
+% -------------------------
 
     % Colors for the hyperref package
     \definecolor{urlcolor}{rgb}{0,.145,.698}
@@ -274,7 +274,11 @@
 
     \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
 
+\setlength{\parskip}{1em}
 
+\titleformat{\subparagraph}
+{\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
+\titlespacing*{\subparagraph}{\parindent}{3.25ex plus 1ex minus .2ex}{.75ex plus .1ex}
 
     \begin{document}
 
@@ -293,7 +297,7 @@
 %----------------------------------------------------------------------------------------
 
 \HRule \\[0.4cm]
-\includegraphics{medias/logo1.png}
+\includegraphics{media/logo1.png}
 
  \textsc{\Large Des fondamentaux au concepts avancés du langage}\\
  \textsc{Session 2 - 17 septembre 2018}
@@ -322,9 +326,9 @@ Arnaud \textsc{Legout}
 %	HEADING SECTIONS
 %----------------------------------------------------------------------------------------
 %\textsc{\Large Major Heading}\\ % Major heading
-\includegraphics{medias/mooc2.png}\\
+\includegraphics{media/mooc2.png}\\
 \vskip100pt
-\includegraphics{medias/mooc.png}\\
+\includegraphics{media/mooc.png}\\
 \large https://www.fun-mooc.fr\\[0.5cm] % Minor heading
 \large Licence CC BY-NC-ND Thierry Parmentelat et Arnaud Legout\\[0.5cm] % Minor heading
 
