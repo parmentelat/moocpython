@@ -1,0 +1,140 @@
+    
+    
+    
+    
+
+    
+
+    \hypertarget{suxe9ries-temporelles-en-pandas}{%
+\section{\texorpdfstring{Séries temporelles en
+\texttt{pandas}}{Séries temporelles en pandas}}\label{suxe9ries-temporelles-en-pandas}}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{parsing-des-dates-et-gestion-des-erreurs}{%
+\subsubsection{Parsing des dates et gestion des
+erreurs}\label{parsing-des-dates-et-gestion-des-erreurs}}
+
+    Lorsqu'il y a des erreurs de parsing des dates, pandas offre la
+possibilité de lancer une exception ou de produire un objet \texttt{NaT}
+pour \emph{Not a Number} qui se manipule ensuite comme un \texttt{NaN}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+        \PY{n}{date} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{100/06/2018}\PY{l+s+s1}{\PYZsq{}} \PY{c+c1}{\PYZsh{} cette date ne peut pas être parsée}
+        
+        \PY{k}{try}\PY{p}{:}
+            \PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{n}{date}\PY{p}{)} \PY{c+c1}{\PYZsh{} comportement pas défaut qui lance une exception}
+        \PY{k}{except} \PY{n+ne}{ValueError} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{e}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+('Unknown string format:', '100/06/2018')
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} retourne l\PYZsq{}input en cas d\PYZsq{}erreur}
+        \PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{n}{date}\PY{p}{,} \PY{n}{errors}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ignore}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} '100/06/2018'
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} retourne NaT en cas d\PYZsq{}erreur}
+        \PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{n}{date}\PY{p}{,} \PY{n}{errors}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{coerce}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} NaT
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} la dernière date n\PYZsq{}est pas valide}
+        \PY{n}{d} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{jun 2018}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{10/12/1980}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{25 january 2000}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{100 june 1900}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{errors}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{coerce}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{d}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+DatetimeIndex(['2018-06-01', '1980-10-12', '2000-01-25', 'NaT'], dtype='datetime64[ns]', freq=None)
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} on peut utiliser les méthodes pour les NaN directement sur un NaT}
+        \PY{n}{d}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{10 june 1980}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} DatetimeIndex(['2018-06-01', '1980-10-12', '2000-01-25', '1980-06-10'], dtype='datetime64[ns]', freq=None)
+\end{Verbatim}
+            
+    \hypertarget{pour-aller-plus-loin}{%
+\subsubsection{Pour aller plus loin}\label{pour-aller-plus-loin}}
+
+    Vous trouverez de nombreux exemples dans la documentation officielle de
+pandas : * https://pandas.pydata.org/pandas-docs/stable/timeseries.html
+
+    \hypertarget{conclusion}{%
+\subsection{Conclusion}\label{conclusion}}
+
+    Ce notebook clôt notre survol de \texttt{numpy} et \texttt{pandas}.
+C'est un sujet vaste que nous avons déjà largement dégrossi. Pour aller
+plus loin vous avez évidemment la documentation officielle de
+\texttt{numpy} et \texttt{pandas}~:
+
+\begin{itemize}
+\tightlist
+\item
+  https://docs.scipy.org/doc/numpy-1.13.0/reference/
+\item
+  http://pandas.pydata.org/pandas-docs/stable/index.html
+\end{itemize}
+
+    Mais vous avez aussi l'excellent livre de Jake VanderPlas ``Python Data
+Science Handbook'' qui est entièrement disponible sous forme de
+notebooks en ligne~:
+
+https://github.com/jakevdp/PythonDataScienceHandbook
+
+Il s'agit d'un très beau travail (c'est rare) utilisant les dernières
+versions de Python, \texttt{pandas} and \texttt{numpy} (c'est encore
+plus rare), fait par un physicien qui fait de la data science et qui a
+contribué au développement de nombreux modules de data science en
+Python.
+
+Je vous conseille par ailleurs, pour ceux qui sont à l'aise en anglais,
+\href{https://www.youtube.com/watch?v=_ZEWDGpM-vM}{une série de 10
+vidéos sur YouTube} publiées par le même Jake VanderPlas, où il étudie
+un jeu de données du début (chargement des données) à la fin
+(classification).
+
+    Pour finir, si vous voulez faire de la data science, il y a un livre
+incontournable~: ``An Introduction de Statistical Learning'' de G.
+James, D. Witten, T. Hastie, R. Tibshirani. Ce livre utilise R, mais
+vous pouvez facilement l'appliquer en utilisant \texttt{pandas}.
+
+Les auteurs mettent à disposition gratuitement le PDF du livre ici~:
+
+http://www-bcf.usc.edu/\textasciitilde{}gareth/ISL/
+
+    N'oubliez pas, si ces ressources vous sont utiles, d'acheter ces livres
+pour supporter ces auteurs. Les ressources de grande qualité sont rares,
+elles demandent un travail énorme à produire, elles doivent être
+encouragées et recompensées.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

@@ -1,0 +1,442 @@
+    
+    
+    
+    
+
+    
+
+    \hypertarget{forme-dun-tableau-numpy}{%
+\section{\texorpdfstring{Forme d'un tableau
+\texttt{numpy}}{Forme d'un tableau numpy}}\label{forme-dun-tableau-numpy}}
+
+    Nous allons voir dans ce complément comment créer des tableaux en
+plusieurs dimensions et manipuler la forme (\texttt{shape}) des
+tableaux.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+\end{Verbatim}
+
+
+    \hypertarget{un-exemple}{%
+\subsubsection{Un exemple}\label{un-exemple}}
+
+    Nous avons vu précédemment comment créer un tableau \texttt{numpy} de
+dimension 1 à partir d'un simple itérable, nous allons à présent créer
+un tableau à 2 dimensions, et pour cela nous allons utiliser une liste
+imbriquée~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{d2} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{11}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{21}\PY{p}{,} \PY{l+m+mi}{22}\PY{p}{,} \PY{l+m+mi}{23}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+        \PY{n}{d2}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} array([[11, 12, 13],
+               [21, 22, 23]])
+\end{Verbatim}
+            
+    Ce premier exemple va nous permettre de voir les différents attributs de
+tous les tableaux \texttt{numpy}.
+
+    \hypertarget{lattribut-shape}{%
+\subsubsection{\texorpdfstring{L'attribut
+\texttt{shape}}{L'attribut shape}}\label{lattribut-shape}}
+
+    Tous les tableaux \texttt{numpy} possèdent un attribut \texttt{shape}
+qui retourne, sous la forme d'un tuple, les dimensions du tableau~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} la forme (les dimensions) du tableau}
+        \PY{n}{d2}\PY{o}{.}\PY{n}{shape}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} (2, 3)
+\end{Verbatim}
+            
+    Dans le cas d'un tableau en 2 dimensions, cela correspond donc à
+\textbf{lignes} x \textbf{colonnes}.
+
+    \hypertarget{on-peut-facilement-changer-de-forme}{%
+\subsubsection{On peut facilement changer de
+forme}\label{on-peut-facilement-changer-de-forme}}
+
+    Comme on l'a vu dans la vidéo, un tableau est en fait une vue vers un
+bloc de données. Aussi il est facile de changer la dimension d'un
+tableau - ou plutôt, de créer une autre vue vers les mêmes données~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} l\PYZsq{}argument qu\PYZsq{}on passe à reshape est le tuple}
+        \PY{c+c1}{\PYZsh{} qui décrit la nouvelle *shape*}
+        \PY{n}{v2} \PY{o}{=} \PY{n}{d2}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+        \PY{n}{v2}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} array([[11, 12],
+               [13, 21],
+               [22, 23]])
+\end{Verbatim}
+            
+    Et donc, ces deux tableaux sont deux vues vers la même zone de données~;
+ce qui fait qu'une modification sur l'un se répercute dans l'autre~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} je change un tableau}
+        \PY{n}{d2}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{100}
+        \PY{n}{d2}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} array([[100,  12,  13],
+               [ 21,  22,  23]])
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} ça se répercute dans l\PYZsq{}autre}
+        \PY{n}{v2}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} array([[100,  12],
+               [ 13,  21],
+               [ 22,  23]])
+\end{Verbatim}
+            
+    \hypertarget{les-attributs-liuxe9s-uxe0-la-forme}{%
+\subsubsection{Les attributs liés à la
+forme}\label{les-attributs-liuxe9s-uxe0-la-forme}}
+
+    Signalons par commodité les attributs suivants, qui se dérivent de
+\texttt{shape}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} le nombre de dimensions}
+        \PY{n}{d2}\PY{o}{.}\PY{n}{ndim}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} 2
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} vrai pour tous les tableaux}
+        \PY{n+nb}{len}\PY{p}{(}\PY{n}{d2}\PY{o}{.}\PY{n}{shape}\PY{p}{)} \PY{o}{==} \PY{n}{d2}\PY{o}{.}\PY{n}{ndim}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} True
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} le nombre de cellules}
+        \PY{n}{d2}\PY{o}{.}\PY{n}{size}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} 6
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} vrai pour tous les tableaux}
+         \PY{c+c1}{\PYZsh{} une façon compliquée de dire}
+         \PY{c+c1}{\PYZsh{} une chose toute simple :}
+         \PY{c+c1}{\PYZsh{} la taille est le produit}
+         \PY{c+c1}{\PYZsh{} des dimensions}
+         \PY{k+kn}{from} \PY{n+nn}{operator} \PY{k}{import} \PY{n}{mul}
+         \PY{k+kn}{from} \PY{n+nn}{functools} \PY{k}{import} \PY{n}{reduce}
+         \PY{n}{d2}\PY{o}{.}\PY{n}{size} \PY{o}{==} \PY{n}{reduce}\PY{p}{(}\PY{n}{mul}\PY{p}{,} \PY{n}{d2}\PY{o}{.}\PY{n}{shape}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:} True
+\end{Verbatim}
+            
+    Lorsqu'on utilise \texttt{reshape}, il faut bien sûr que la nouvelle
+forme soit compatible~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{k}{try}\PY{p}{:}
+             \PY{n}{d2}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{k}{except} \PY{n+ne}{Exception} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{type(e)\PYZcb{} }\PY{l+s+si}{\PYZob{}e\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+OOPS <class 'ValueError'> cannot reshape array of size 6 into shape (3,4)
+
+    \end{Verbatim}
+
+    \hypertarget{dimensions-supuxe9rieures}{%
+\subsubsection{Dimensions supérieures}\label{dimensions-supuxe9rieures}}
+
+    Vous pouvez donc deviner comment on construit des tableaux en dimensions
+supérieures à 2, il suffit d'utiliser un attribut \texttt{shape} plus
+élaboré~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{shape} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}
+         \PY{n}{size} \PY{o}{=} \PY{n}{reduce}\PY{p}{(}\PY{n}{mul}\PY{p}{,} \PY{n}{shape}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} vous vous souvenez de arange}
+         \PY{n}{data} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n}{size}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{d3} \PY{o}{=} \PY{n}{data}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{n}{shape}\PY{p}{)}
+         \PY{n}{d3}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}13}]:} array([[[ 0,  1,  2,  3],
+                 [ 4,  5,  6,  7],
+                 [ 8,  9, 10, 11]],
+         
+                [[12, 13, 14, 15],
+                 [16, 17, 18, 19],
+                 [20, 21, 22, 23]]])
+\end{Verbatim}
+            
+    Cet exemple vous permet de voir qu'en dimensions supérieures la forme
+est toujours~:
+
+n1 x n2 x \ldots{} x \textbf{lignes} x \textbf{colonnes}
+
+    Enfin, ce que je viens de dire est arbitraire, dans le sens où, bien
+entendu, vous pouvez décider d'interpréter les tableaux comme vous
+voulez.
+
+Mais en termes au moins de l'impression par \texttt{print}, il est
+logique de voir que l'algorithme d'impression balaye le tableau de
+manière mécanique comme ceci~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{2}\NormalTok{):}
+    \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{):}
+        \ControlFlowTok{for}\NormalTok{ k }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{4}\NormalTok{):}
+\NormalTok{            array[i][j][k]}
+\end{Highlighting}
+\end{Shaded}
+
+    Et c'est pourquoi vous obtenez la présentation suivante avec des
+tableaux de dimensions plus grandes~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} la même chose avec plus de dimensions}
+         \PY{n}{shape} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}
+         \PY{n}{size} \PY{o}{=} \PY{n}{reduce}\PY{p}{(}\PY{n}{mul}\PY{p}{,} \PY{n}{shape}\PY{p}{)} \PY{c+c1}{\PYZsh{} le produit des 4 nombres dans shape}
+         \PY{n}{size}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}14}]:} 120
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{data} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n}{size}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} ce tableau est visualisé}
+         \PY{c+c1}{\PYZsh{} à base de briques de base}
+         \PY{c+c1}{\PYZsh{} de 4 lignes et 5 colonnes}
+         \PY{n}{d4} \PY{o}{=} \PY{n}{data}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{n}{shape}\PY{p}{)}
+         \PY{n}{d4}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}15}]:} array([[[[  0,   1,   2,   3,   4],
+                  [  5,   6,   7,   8,   9],
+                  [ 10,  11,  12,  13,  14],
+                  [ 15,  16,  17,  18,  19]],
+         
+                 [[ 20,  21,  22,  23,  24],
+                  [ 25,  26,  27,  28,  29],
+                  [ 30,  31,  32,  33,  34],
+                  [ 35,  36,  37,  38,  39]],
+         
+                 [[ 40,  41,  42,  43,  44],
+                  [ 45,  46,  47,  48,  49],
+                  [ 50,  51,  52,  53,  54],
+                  [ 55,  56,  57,  58,  59]]],
+         
+         
+                [[[ 60,  61,  62,  63,  64],
+                  [ 65,  66,  67,  68,  69],
+                  [ 70,  71,  72,  73,  74],
+                  [ 75,  76,  77,  78,  79]],
+         
+                 [[ 80,  81,  82,  83,  84],
+                  [ 85,  86,  87,  88,  89],
+                  [ 90,  91,  92,  93,  94],
+                  [ 95,  96,  97,  98,  99]],
+         
+                 [[100, 101, 102, 103, 104],
+                  [105, 106, 107, 108, 109],
+                  [110, 111, 112, 113, 114],
+                  [115, 116, 117, 118, 119]]]])
+\end{Verbatim}
+            
+    Vous voyez donc qu'avec la forme~:
+
+\begin{verbatim}
+2, 3, 4, 5
+\end{verbatim}
+
+cela vous donne l'impression que vous avez comme brique de base des
+tableaux qui ont~:
+
+\begin{verbatim}
+4 lignes
+5 colonnes
+\end{verbatim}
+
+    Et souvenez-vous que vous pouvez toujours insérer un \texttt{1}
+n'importe où dans la forme, puisque ça ne modifie pas la taille qui est
+le produit des dimensions~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{d2}\PY{o}{.}\PY{n}{shape}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}16}]:} (2, 3)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{d2}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}17}]:} array([[100,  12,  13],
+                [ 21,  22,  23]])
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{d2}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}18}]:} array([[[100,  12,  13]],
+         
+                [[ 21,  22,  23]]])
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n}{d2}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}19}]:} array([[[100],
+                 [ 12],
+                 [ 13]],
+         
+                [[ 21],
+                 [ 22],
+                 [ 23]]])
+\end{Verbatim}
+            
+    Ou même~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{d2}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}20}]:} array([[[100,  12,  13],
+                 [ 21,  22,  23]]])
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{d2}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}21}]:} array([[[[[[100,  12,  13],
+                    [ 21,  22,  23]]]]]])
+\end{Verbatim}
+            
+    \hypertarget{ruxe9sumuxe9-des-attributs}{%
+\subsubsection{Résumé des attributs}\label{ruxe9sumuxe9-des-attributs}}
+
+    Voici un résumé des attributs des tableaux \texttt{numpy}~:
+
+    \begin{longtable}[]{@{}lll@{}}
+\toprule
+\emph{attribut} & \emph{signification} & \emph{exemple}\tabularnewline
+\midrule
+\endhead
+\texttt{shape} & tuple des dimensions &
+\texttt{(3,\ 5,\ 7)}\tabularnewline
+\texttt{ndim} & nombre dimensions & \texttt{3}\tabularnewline
+\texttt{size} & nombre d'éléments &
+\texttt{3\ *\ 5\ *\ 7}\tabularnewline
+\texttt{dtype} & type de chaque élément &
+\texttt{np.float64}\tabularnewline
+\texttt{itemsize} & taille en octets d'un élément &
+\texttt{8}\tabularnewline
+\bottomrule
+\end{longtable}
+
+    \hypertarget{divers}{%
+\subsubsection{Divers}\label{divers}}
+
+    Je vous signale enfin, à titre totalement anecdotique cette fois,
+l'existence de la méthode \texttt{ravel} qui vous permet d'aplatir
+n'importe quel tableau~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n}{d2}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}22}]:} array([[100,  12,  13],
+                [ 21,  22,  23]])
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{n}{d2}\PY{o}{.}\PY{n}{ravel}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}23}]:} array([100,  12,  13,  21,  22,  23])
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{c+c1}{\PYZsh{} il y a d\PYZsq{}ailleurs aussi flatten qui fait}
+         \PY{c+c1}{\PYZsh{} quelque chose de semblable}
+         \PY{n}{d2}\PY{o}{.}\PY{n}{flatten}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}24}]:} array([100,  12,  13,  21,  22,  23])
+\end{Verbatim}
+            
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

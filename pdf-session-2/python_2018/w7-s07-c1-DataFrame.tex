@@ -1,0 +1,1813 @@
+    
+    
+    
+    
+
+    
+
+    \hypertarget{dataframe-de-pandas}{%
+\section{\texorpdfstring{\texttt{DataFrame} de
+\texttt{pandas}}{DataFrame de pandas}}\label{dataframe-de-pandas}}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    \hypertarget{cruxe9ation-dune-dataframe}{%
+\subsubsection{\texorpdfstring{Création d'une
+\texttt{DataFrame}}{Création d'une DataFrame}}\label{cruxe9ation-dune-dataframe}}
+
+    Une \texttt{DataFrame} est un tableau \texttt{numpy} à deux dimensions
+avec un index pour les lignes et un index pour les colonnes. Il y a de
+nombreuses manières de construire une \texttt{DataFrame}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} Regardons la construction d\PYZsq{}une DataFrame}
+        \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+        
+        \PY{c+c1}{\PYZsh{} Créons une Series pour définir des âges}
+        \PY{n}{age} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{30}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{]}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{julie}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} et une Series pour définir des tailles}
+        \PY{n}{height} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{150}\PY{p}{,} \PY{l+m+mi}{170}\PY{p}{,} \PY{l+m+mi}{168}\PY{p}{]}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{marc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{julie}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} On peut maintenant combiner ces deux Series en DataFrame,}
+        \PY{c+c1}{\PYZsh{} chaque Series définissant une colonne, une manière de le faire est}
+        \PY{c+c1}{\PYZsh{} de définir un dictionnaire qui contient pour clef le nom de la colonne}
+        \PY{c+c1}{\PYZsh{} et pour valeur la Series correspondante}
+        \PY{n}{stat} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{age}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{height}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{height}\PY{p}{\PYZcb{}}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{stat}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+        age  height
+alice  30.0   150.0
+bob    20.0     NaN
+julie  50.0   168.0
+marc    NaN   170.0
+
+    \end{Verbatim}
+
+    On remarque que \texttt{pandas} fait automatiquement l'alignement des
+index, lorsqu'une valeur n'est pas présente, elle est automatiquement
+remplacée par \texttt{NaN}. \texttt{Panda} va également broadcaster une
+valeur unique définissant une colonne sur toutes les lignes. Regardons
+cela~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{stat} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{age}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{height}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{height}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{city}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Nice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{stat}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+        age  height  city
+alice  30.0   150.0  Nice
+bob    20.0     NaN  Nice
+julie  50.0   168.0  Nice
+marc    NaN   170.0  Nice
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} On peut maintenant accéder aux index des lignes et des colonnes}
+        
+        \PY{c+c1}{\PYZsh{} l\PYZsq{}index des lignes}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{stat}\PY{o}{.}\PY{n}{index}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Index(['alice', 'bob', 'julie', 'marc'], dtype='object')
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} l\PYZsq{}index des colonnes}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{stat}\PY{o}{.}\PY{n}{columns}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Index(['age', 'height', 'city'], dtype='object')
+
+    \end{Verbatim}
+
+    Il y a de nombreuses manières d'accéder aux éléments de la
+\texttt{DataFrame}, certaines sont bonnes et d'autres à proscrire,
+commençons par prendre de bonnes habitudes. Comme il s'agit d'une
+structure à deux dimensions, il faut donner un indice de ligne et de
+colonne~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} Quel est l\PYZsq{}âge de alice}
+        \PY{n}{a} \PY{o}{=} \PY{n}{stat}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} a est un flottant}
+        \PY{n+nb}{type}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{,} \PY{n}{a}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} (numpy.float64, 30.0)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} Quel est la moyenne de tous les âges}
+        \PY{n}{c} \PY{o}{=} \PY{n}{stat}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        \PY{n}{m} \PY{o}{=} \PY{n}{c}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{L}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{âge moyen est de }\PY{l+s+si}{\PYZob{}m:.1f\PYZcb{}}\PY{l+s+s2}{ ans.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+L'âge moyen est de 33.3 ans.
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} c est une Series}
+        \PY{n+nb}{type}\PY{p}{(}\PY{n}{c}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} pandas.core.series.Series
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} et m est un flottant}
+        \PY{n+nb}{type}\PY{p}{(}\PY{n}{m}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} numpy.float64
+\end{Verbatim}
+            
+    On peut déjà noter plusieurs choses intéressantes~:
+
+\begin{itemize}
+\item
+  On peut utiliser \texttt{.loc{[}{]}} et \texttt{.iloc} comme pour les
+  \texttt{Series}. Pour les \texttt{DataFrame} c'est encore plus
+  important parce qu'il y a plus de risques d'ambiguïtés (notamment
+  entre les lignes et les colonnes, on y reviendra)~;
+\item
+  la méthode \texttt{mean} calcule la moyenne, ça n'est pas surprenant,
+  mais ignore les \texttt{NaN}. C'est en général ce que l'on veut. Si
+  vous vous demandez comment savoir si la méthode que vous utilisez
+  ignore ou pas les \texttt{NaN}, le mieux est de regarder l'aide de
+  cette méthode. Il existe pour un certain nombre de méthodes deux
+  versions~: une qui ignore les \texttt{NaN} et une autre qui les prend
+  en compte~; on en reparlera.
+\end{itemize}
+
+    Une autre manière de construire une \texttt{DataFrame} est de partir
+d'un \texttt{array} de \texttt{numpy}, et de spécifier les index pour
+les lignes et les colonnes avec les arguments \texttt{index} et
+\texttt{columns}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{a} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+         \PY{n}{p} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{z}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{p}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+    x   y   z
+a   5  13   9
+b   4   8  12
+c  19  12   1
+
+    \end{Verbatim}
+
+    \hypertarget{importation-et-exportation-de-donnuxe9es}{%
+\subsubsection{Importation et exportation de
+données}\label{importation-et-exportation-de-donnuxe9es}}
+
+    En pratique, il est très fréquent que les données qu'on manipule soient
+stockées dans un fichier ou une base de données. Il existe en
+\texttt{pandas} de nombreux utilitaires pour importer et exporter des
+données et les convertir automatiquement en \texttt{DataFrame}. Vous
+pouvez importer ou exporter du CSV, JSON, HTML, Excel, HDF5, SQL, Python
+pickle, etc.
+
+    À titre d'illustration écrivons la \texttt{DataFrame} \texttt{p} dans
+différents formats.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} écrivons notre DataFrame dans un fichier CSV}
+         \PY{n}{p}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{my\PYZus{}data.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{o}{!}cat my\PYZus{}data.csv
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+,x,y,z
+a,5,13,9
+b,4,8,12
+c,19,12,1
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} et dans un fichier JSON}
+         \PY{n}{p}\PY{o}{.}\PY{n}{to\PYZus{}json}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{my\PYZus{}data.json}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{o}{!}cat my\PYZus{}data.json
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\{"x":\{"a":5,"b":4,"c":19\},"y":\{"a":13,"b":8,"c":12\},"z":\{"a":9,"b":12,"c":1\}\}
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} on peut maintenant recharger notre fichier, la conversion en DataFrame est automatique}
+         \PY{n}{new\PYZus{}p} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}json}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{my\PYZus{}data.json}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{new\PYZus{}p}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+    x   y   z
+a   5  13   9
+b   4   8  12
+c  19  12   1
+
+    \end{Verbatim}
+
+    Pour la gestion des autres formats, comme il s'agit de quelque chose de
+très spécifique et sans difficulté particulière, je vous renvoie
+simplement à la documentation~:
+
+http://pandas.pydata.org/pandas-docs/stable/io.html
+
+    \hypertarget{manipulation-dune-dataframe}{%
+\subsubsection{\texorpdfstring{Manipulation d'une
+\texttt{DataFrame}}{Manipulation d'une DataFrame}}\label{manipulation-dune-dataframe}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} construisons maintenant une DataFrame jouet}
+         
+         \PY{c+c1}{\PYZsh{} voici une liste de prénoms}
+         \PY{n}{names} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{marc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bill}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sonia}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         
+         \PY{c+c1}{\PYZsh{} créons trois Series qui formeront les trois colonnes}
+         \PY{n}{age} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{]}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{names}\PY{p}{)}
+         \PY{n}{height} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{130}\PY{p}{,} \PY{l+m+mi}{140}\PY{p}{,} \PY{l+m+mi}{176}\PY{p}{,} \PY{l+m+mi}{120}\PY{p}{,} \PY{l+m+mi}{165}\PY{p}{]}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{names}\PY{p}{)}
+         \PY{n}{sex} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fmmmf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{names}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} créons maintenant la DataFrame}
+         \PY{n}{p} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{age}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{height}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{height}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{sex}\PY{p}{\PYZcb{}}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{p}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+       age  height sex
+alice   12     130   f
+bob     13     140   m
+marc    16     176   m
+bill    11     120   m
+sonia   16     165   f
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} et chargeons le jeux de données sur les pourboires de seaborn}
+         \PY{k+kn}{import} \PY{n+nn}{seaborn} \PY{k}{as} \PY{n+nn}{sns}
+         \PY{n}{tips} \PY{o}{=} \PY{n}{sns}\PY{o}{.}\PY{n}{load\PYZus{}dataset}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tips}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \texttt{pandas} offre de nombreuses possibilités d'explorer les données.
+Attention, dans mes exemples je vais alterner entre le
+\texttt{DataFrame} \texttt{p} et le \texttt{DataFrame} \texttt{tips}
+suivant les besoins de l'explication.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{c+c1}{\PYZsh{} afficher les premières lignes}
+         \PY{n}{tips}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}16}]:}    total\_bill   tip     sex smoker  day    time  size
+         0       16.99  1.01  Female     No  Sun  Dinner     2
+         1       10.34  1.66    Male     No  Sun  Dinner     3
+         2       21.01  3.50    Male     No  Sun  Dinner     3
+         3       23.68  3.31    Male     No  Sun  Dinner     2
+         4       24.59  3.61  Female     No  Sun  Dinner     4
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} et les dernière lignes}
+         \PY{n}{tips}\PY{o}{.}\PY{n}{tail}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}17}]:}      total\_bill   tip     sex smoker   day    time  size
+         239       29.03  5.92    Male     No   Sat  Dinner     3
+         240       27.18  2.00  Female    Yes   Sat  Dinner     2
+         241       22.67  2.00    Male    Yes   Sat  Dinner     2
+         242       17.82  1.75    Male     No   Sat  Dinner     2
+         243       18.78  3.00  Female     No  Thur  Dinner     2
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{} l\PYZsq{}index des lignes}
+         \PY{n}{p}\PY{o}{.}\PY{n}{index}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}18}]:} Index(['alice', 'bob', 'marc', 'bill', 'sonia'], dtype='object')
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} et l\PYZsq{}index des colonnes}
+         \PY{n}{p}\PY{o}{.}\PY{n}{columns}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}19}]:} Index(['age', 'height', 'sex'], dtype='object')
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{c+c1}{\PYZsh{} et afficher uniquement les valeurs}
+         \PY{n}{p}\PY{o}{.}\PY{n}{values}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}20}]:} array([[12, 130, 'f'],
+                [13, 140, 'm'],
+                [16, 176, 'm'],
+                [11, 120, 'm'],
+                [16, 165, 'f']], dtype=object)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{c+c1}{\PYZsh{} échanger lignes et colonnes}
+         \PY{c+c1}{\PYZsh{} cf. la transposition de matrices}
+         \PY{n}{p}\PY{o}{.}\PY{n}{T}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}21}]:}        alice  bob marc bill sonia
+         age       12   13   16   11    16
+         height   130  140  176  120   165
+         sex        f    m    m    m     f
+\end{Verbatim}
+            
+    Pour finir, il y a la méthodes \texttt{describe} qui permet d'obtenir
+des premières statistiques sur un \texttt{DataFrame}. \texttt{describe}
+permet de calculer des statistiques sur des type numériques, mais aussi
+sur des types chaînes de caractères.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{c+c1}{\PYZsh{} par défaut describe ne prend en compte que les colonnes numériques}
+         \PY{n}{p}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}22}]:}              age      height
+         count   5.000000    5.000000
+         mean   13.600000  146.200000
+         std     2.302173   23.605084
+         min    11.000000  120.000000
+         25\%    12.000000  130.000000
+         50\%    13.000000  140.000000
+         75\%    16.000000  165.000000
+         max    16.000000  176.000000
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{c+c1}{\PYZsh{} mais on peut le forcer à prendre en compte toutes les colonnes}
+         \PY{n}{p}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{n}{include}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{all}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}23}]:}               age      height  sex
+         count    5.000000    5.000000    5
+         unique        NaN         NaN    2
+         top           NaN         NaN    m
+         freq          NaN         NaN    3
+         mean    13.600000  146.200000  NaN
+         std      2.302173   23.605084  NaN
+         min     11.000000  120.000000  NaN
+         25\%     12.000000  130.000000  NaN
+         50\%     13.000000  140.000000  NaN
+         75\%     16.000000  165.000000  NaN
+         max     16.000000  176.000000  NaN
+\end{Verbatim}
+            
+    \hypertarget{requuxeates-sur-une-dataframe}{%
+\subsubsection{\texorpdfstring{Requêtes sur une
+\texttt{DataFrame}}{Requêtes sur une DataFrame}}\label{requuxeates-sur-une-dataframe}}
+
+    On peut maintenant commencer à faire des requêtes sur les
+\texttt{DataFrames}. Les \texttt{DataFrame} supportent la notion de
+masque que l'on a vue pour les \texttt{ndarray} de \texttt{numpy} et
+pour les \texttt{Series}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{c+c1}{\PYZsh{} p.loc prend soit un label de ligne}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{p}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sonia}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+age        16
+height    165
+sex         f
+Name: sonia, dtype: object
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{c+c1}{\PYZsh{} ou alors un label de ligne ET de colonne}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{p}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sonia}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+16
+
+    \end{Verbatim}
+
+    On peut mettre à la place d'une label~:
+
+\begin{itemize}
+\tightlist
+\item
+  une liste de labels~;
+\item
+  un slice sur les labels~;
+\item
+  un masque (c'est-à-dire un tableau de booléens)~;
+\item
+  un callable qui retourne une des trois premières possibilités.
+\end{itemize}
+
+Noter que l'on peut également utiliser la notation \texttt{.iloc{[}{]}}
+avec les mêmes règles, mais elle est moins utile.
+
+Je recommande de toujours utiliser la notation
+\texttt{.loc{[}lignes,\ colonnes{]}} pour éviter toute ambiguïté. Nous
+verrons que les notations \texttt{.loc{[}lignes{]}} ou pire seulement
+\texttt{{[}label{]}} sont sources d'erreurs.
+
+Regardons maintenant d'autres exemples plus sophistiqués~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{c+c1}{\PYZsh{} un masque sur les femmes}
+         \PY{n}{p}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{f}\PY{l+s+s1}{\PYZsq{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}26}]:} alice     True
+         bob      False
+         marc     False
+         bill     False
+         sonia     True
+         Name: sex, dtype: bool
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{c+c1}{\PYZsh{} si bien que pour construire un tableau}
+         \PY{c+c1}{\PYZsh{} avec uniquement les femmes}
+         \PY{n}{p}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{p}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{f}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{:}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}27}]:}        age  height sex
+         alice   12     130   f
+         sonia   16     165   f
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{c+c1}{\PYZsh{} si on veut ne garder uniquement}
+         \PY{c+c1}{\PYZsh{} que les femmes de plus de 14 ans}
+         \PY{n}{p}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{(}\PY{n}{p}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{f}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{p}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZgt{}} \PY{l+m+mi}{14}\PY{p}{)}\PY{p}{,} \PY{p}{:}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}28}]:}        age  height sex
+         sonia   16     165   f
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{c+c1}{\PYZsh{} quelle est la moyenne de \PYZsq{}total\PYZus{}bill\PYZsq{} pour les femmes}
+         \PY{n}{addition\PYZus{}f} \PY{o}{=} \PY{n}{tips}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{tips}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Female}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{total\PYZus{}bill}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{addition moyenne des femmes : }\PY{l+s+si}{\PYZob{}addition\PYZus{}f:.2f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+addition moyenne des femmes : 18.06
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{c+c1}{\PYZsh{} quelle est la note moyenne des hommes}
+         \PY{n}{addition\PYZus{}h} \PY{o}{=} \PY{n}{tips}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{tips}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Male}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{total\PYZus{}bill}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{addition moyenne des hommes : }\PY{l+s+si}{\PYZob{}addition\PYZus{}h:.2f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+addition moyenne des hommes : 20.74
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{c+c1}{\PYZsh{} qui laisse le plus grand pourcentage de pourboire :}
+         \PY{c+c1}{\PYZsh{} les hommes ou les femmes ?}
+         
+         \PY{n}{pourboire\PYZus{}f} \PY{o}{=} \PY{n}{tips}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{tips}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Female}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tip}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+         \PY{n}{pourboire\PYZus{}h} \PY{o}{=} \PY{n}{tips}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{tips}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Male}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tip}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+         
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Les femmes laissent }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{pourboire\PYZus{}f/addition\PYZus{}f:.2}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{\PYZcb{} de pourboire}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Les hommes laissent }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{pourboire\PYZus{}h/addition\PYZus{}h:.2}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{\PYZcb{} de pourboire}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Les femmes laissent 15.69\% de pourboire
+Les hommes laissent 14.89\% de pourboire
+
+    \end{Verbatim}
+
+    \hypertarget{erreurs-fruxe9quentes-et-ambiguuxeftuxe9s-sur-les-requuxeates}{%
+\subsubsection{Erreurs fréquentes et ambiguïtés sur les
+requêtes}\label{erreurs-fruxe9quentes-et-ambiguuxeftuxe9s-sur-les-requuxeates}}
+
+    Nous avons vu une manière simple et non ambiguë de faire des requêtes
+sur les \texttt{DataFrame}. Nous allons voir qu'il existe d'autres
+manières qui ont pour seul avantage d'être plus concises, mais sources
+de nombreuses erreurs.
+
+\textbf{Souvenez-vous, utilisez toujours la notation
+\texttt{.loc{[}lignes,\ colonnes{]}} sinon, soyez sûr de savoir ce qui
+est réellement calculé}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{c+c1}{\PYZsh{} commençons par la notation la plus classique}
+         \PY{n}{p}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}  \PY{c+c1}{\PYZsh{} prend forcément un label de colonne}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}32}]:} alice    f
+         bob      m
+         marc     m
+         bill     m
+         sonia    f
+         Name: sex, dtype: object
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}33}]:} \PY{c+c1}{\PYZsh{} mais par contre, si on passe un slice, c\PYZsq{}est forcément des lignes,}
+         \PY{c+c1}{\PYZsh{} assez perturbant et source de confusion.}
+         \PY{n}{p}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{marc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}33}]:}        age  height sex
+         alice   12     130   f
+         bob     13     140   m
+         marc    16     176   m
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{c+c1}{\PYZsh{} on peut même directement accéder à une colonne par son nom}
+         \PY{n}{p}\PY{o}{.}\PY{n}{age}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}34}]:} alice    12
+         bob      13
+         marc     16
+         bill     11
+         sonia    16
+         Name: age, dtype: int64
+\end{Verbatim}
+            
+    Mais c'est \textbf{fortement déconseillé} parce que si un attribut de
+même nom existe sur une \texttt{DataFrame}, alors la priorité est donnée
+à l'attribut, et non à la colonne~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}35}]:} \PY{c+c1}{\PYZsh{} ajoutons une colonne qui a pour nom une méthode qui existe sur}
+         \PY{c+c1}{\PYZsh{} les DataFrame}
+         \PY{n}{p}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{1}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{p}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+       age  height sex  mean
+alice   12     130   f     1
+bob     13     140   m     1
+marc    16     176   m     1
+bill    11     120   m     1
+sonia   16     165   f     1
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}36}]:} \PY{c+c1}{\PYZsh{} je peux bien accéder}
+         \PY{c+c1}{\PYZsh{} à la colonne sex}
+         \PY{n}{p}\PY{o}{.}\PY{n}{sex}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}36}]:} alice    f
+         bob      m
+         marc     m
+         bill     m
+         sonia    f
+         Name: sex, dtype: object
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}37}]:} \PY{c+c1}{\PYZsh{} mais pas à la colonne mean}
+         \PY{n}{p}\PY{o}{.}\PY{n}{mean}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}37}]:} <bound method DataFrame.mean of        age  height sex  mean
+         alice   12     130   f     1
+         bob     13     140   m     1
+         marc    16     176   m     1
+         bill    11     120   m     1
+         sonia   16     165   f     1>
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}38}]:} \PY{c+c1}{\PYZsh{} à nouveau, la seule méthode non ambiguë est d\PYZsq{}utiliser .loc}
+         \PY{n}{p}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}38}]:} alice    1
+         bob      1
+         marc     1
+         bill     1
+         sonia    1
+         Name: mean, dtype: int64
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}39}]:} \PY{c+c1}{\PYZsh{} supprimons maintenant la colonne mean *en place* (par défaut,}
+         \PY{c+c1}{\PYZsh{} drop retourne une nouvelle DataFrame)}
+         \PY{n}{p}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{inplace}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{p}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+       age  height sex
+alice   12     130   f
+bob     13     140   m
+marc    16     176   m
+bill    11     120   m
+sonia   16     165   f
+
+    \end{Verbatim}
+
+    Pour aller plus loin, vous pouvez lire la documentation officielle~:
+
+http://pandas.pydata.org/pandas-docs/stable/indexing.html
+
+    \hypertarget{universal-functions-et-pandas}{%
+\subsubsection{\texorpdfstring{\emph{Universal functions} et
+\texttt{pandas}}{Universal functions et pandas}}\label{universal-functions-et-pandas}}
+
+    Ça n'est pas une surprise, les \texttt{Series} et \texttt{DataFrame} de
+\texttt{pandas} supportent les \texttt{ufunc} de \texttt{numpy}. Mais il
+y a une subtilité. Il est parfaitement légitime et correct d'appliquer
+une \texttt{ufunc} de \texttt{numpy} sur les éléments d'une
+\texttt{DataFrame}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}40}]:} \PY{n}{d} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{randint}\PY{p}{(}
+             \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{n+nb}{list}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{d}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+   a  b  c
+0  2  1  3
+1  4  5  8
+2  4  4  7
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}41}]:} \PY{n}{np}\PY{o}{.}\PY{n}{log}\PY{p}{(}\PY{n}{d}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}41}]:}           a         b         c
+         0  0.693147  0.000000  1.098612
+         1  1.386294  1.609438  2.079442
+         2  1.386294  1.386294  1.945910
+\end{Verbatim}
+            
+    Nous remarquons que comme on s'y attend, la \texttt{ufunc} a été
+appliquée à chaque élément de la \texttt{DataFrame} et que les labels
+des lignes et colonnes ont été préservés.
+
+    Par contre, si l'on a besoin d'alignement de labels, c'est le cas avec
+toutes les opérations qui s'appliquent sur deux objets comme une
+addition, alors les \texttt{ufunc} de \texttt{numpy} ne \textbf{vont pas
+faire} ce à quoi on s'attend. Elles vont faire les opérations sur les
+tableaux \texttt{numpy} sans prendre en compte les labels.
+
+Pour avoir un alignement des labels, il faut utiliser les \texttt{ufunc}
+de \texttt{pandas}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}42}]:} \PY{c+c1}{\PYZsh{} prenons deux Series}
+         \PY{n}{s1} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{30}\PY{p}{]}\PY{p}{,}
+                        \PY{n}{index}\PY{o}{=}\PY{n+nb}{list}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{s1}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a    10
+b    20
+c    30
+dtype: int64
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}43}]:} \PY{c+c1}{\PYZsh{}}
+         \PY{n}{s2} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{22}\PY{p}{,} \PY{l+m+mi}{32}\PY{p}{]}\PY{p}{,}
+                        \PY{n}{index}\PY{o}{=}\PY{n+nb}{list}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{acd}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{s2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+a    12
+c    22
+d    32
+dtype: int64
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}44}]:} \PY{c+c1}{\PYZsh{} la ufunc numpy fait la somme}
+         \PY{c+c1}{\PYZsh{} des arrays sans prendre en compte}
+         \PY{c+c1}{\PYZsh{} les labels, donc sans alignement}
+         \PY{n}{np}\PY{o}{.}\PY{n}{add}\PY{p}{(}\PY{n}{s1}\PY{p}{,} \PY{n}{s2}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}44}]:} a    22
+         b    42
+         c    62
+         dtype: int64
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}45}]:} \PY{c+c1}{\PYZsh{} la ufunc pandas va faire}
+         \PY{c+c1}{\PYZsh{} un alignement des labels}
+         \PY{c+c1}{\PYZsh{} cet appel est équivalent à s1 + s2}
+         \PY{n}{s1}\PY{o}{.}\PY{n}{add}\PY{p}{(}\PY{n}{s2}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}45}]:} a    22.0
+         b     NaN
+         c    52.0
+         d     NaN
+         dtype: float64
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}46}]:} \PY{c+c1}{\PYZsh{} comme on l\PYZsq{}a vu sur le complément précédent, les valeurs absentes sont}
+         \PY{c+c1}{\PYZsh{} remplacées par NaN, mais on peut changer ce comportement lors de}
+         \PY{c+c1}{\PYZsh{} l\PYZsq{}appel de .add}
+         \PY{n}{s1}\PY{o}{.}\PY{n}{add}\PY{p}{(}\PY{n}{s2}\PY{p}{,} \PY{n}{fill\PYZus{}value}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}46}]:} a    22.0
+         b    20.0
+         c    52.0
+         d    32.0
+         dtype: float64
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}47}]:} \PY{c+c1}{\PYZsh{} regardons un autre exemple sur des DataFrame}
+         \PY{c+c1}{\PYZsh{} on affiche tout ça dans les cellules suivantes}
+         \PY{n}{names} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{charle}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         
+         \PY{n}{bananas} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{]}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{names}\PY{p}{)}
+         \PY{n}{oranges} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{names}\PY{p}{)}
+         \PY{n}{fruits\PYZus{}jan} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bananas}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{bananas}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{orange}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{oranges}\PY{p}{\PYZcb{}}\PY{p}{)}
+         
+         \PY{n}{bananas} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{names}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+         \PY{n}{apples} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{]}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{names}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{]}\PY{p}{)}
+         \PY{n}{fruits\PYZus{}feb} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bananas}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{bananas}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{apples}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{apples}\PY{p}{\PYZcb{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}48}]:} \PY{c+c1}{\PYZsh{} ce qui donne}
+         \PY{n}{fruits\PYZus{}jan}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}48}]:}         bananas  orange
+         alice        10       3
+         bob           3      11
+         charle        9       6
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}49}]:} \PY{c+c1}{\PYZsh{} et}
+         \PY{n}{fruits\PYZus{}feb}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}49}]:}         bananas  apples
+         alice       6.0     NaN
+         bob         1.0     8.0
+         charle      NaN     5.0
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}50}]:} \PY{c+c1}{\PYZsh{} regardons maintenant la somme des fruits mangés}
+         \PY{n}{eaten\PYZus{}fruits} \PY{o}{=} \PY{n}{fruits\PYZus{}jan} \PY{o}{+} \PY{n}{fruits\PYZus{}feb}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{eaten\PYZus{}fruits}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+        apples  bananas  orange
+alice      NaN     16.0     NaN
+bob        NaN      4.0     NaN
+charle     NaN      NaN     NaN
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}51}]:} \PY{c+c1}{\PYZsh{} On a bien un alignement des labels, mais il y a beaucoup de valeurs}
+         \PY{c+c1}{\PYZsh{} manquantes. Corrigeons cela on remplaçant les valeurs manquantes par 0}
+         \PY{n}{eaten\PYZus{}fruits} \PY{o}{=} \PY{n}{fruits\PYZus{}jan}\PY{o}{.}\PY{n}{add}\PY{p}{(}\PY{n}{fruits\PYZus{}feb}\PY{p}{,} \PY{n}{fill\PYZus{}value}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{eaten\PYZus{}fruits}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+        apples  bananas  orange
+alice      NaN     16.0     3.0
+bob        8.0      4.0    11.0
+charle     5.0      9.0     6.0
+
+    \end{Verbatim}
+
+    Notons que lorsqu'une valeur est absente dans toutes les
+\texttt{DataFrame}, \texttt{NaN} est conservé.
+
+    Un dernière subtilité à connaître lors de l'alignement des labels
+intervient lorsque vous faites une opération sur une \texttt{DataFrame}
+et une \texttt{Series}. \texttt{pandas} va considérer la \texttt{Series}
+comme une ligne et va la broadcaster sur les autres lignes. Par
+conséquent, l'index de la \texttt{Series} va être considéré comme des
+colonnes et aligné avec les colonnes de la \texttt{DataFrame}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}52}]:} \PY{n}{dataframe} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}
+             \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}\PY{p}{,}
+             \PY{n}{columns}\PY{o}{=}\PY{n+nb}{list}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n+nb}{list}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{xyz}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+         \PY{n}{dataframe}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}52}]:}    a  b  c
+         x  9  6  7
+         y  1  7  5
+         z  3  2  9
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}53}]:} \PY{n}{series\PYZus{}row} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}
+             \PY{p}{[}\PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{]}\PY{p}{,}
+             \PY{n}{index}\PY{o}{=}\PY{n+nb}{list}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+         \PY{n}{series\PYZus{}row}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}53}]:} a    100
+         b    100
+         c    100
+         dtype: int64
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}54}]:} \PY{n}{series\PYZus{}col} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}
+             \PY{p}{[}\PY{l+m+mi}{200}\PY{p}{,} \PY{l+m+mi}{200}\PY{p}{,} \PY{l+m+mi}{200}\PY{p}{]}\PY{p}{,}
+             \PY{n}{index}\PY{o}{=}\PY{n+nb}{list}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{xyz}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+         \PY{n}{series\PYZus{}col}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}54}]:} x    200
+         y    200
+         z    200
+         dtype: int64
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}55}]:} \PY{c+c1}{\PYZsh{} la Series est considérée comme une ligne et son index}
+         \PY{c+c1}{\PYZsh{} s\PYZsq{}aligne sur les colonnes de la DataFrame}
+         \PY{c+c1}{\PYZsh{} la Series va être broadcastée}
+         \PY{c+c1}{\PYZsh{} sur les autres lignes de la DataFrame}
+         
+         \PY{n}{dataframe} \PY{o}{+} \PY{n}{series\PYZus{}row}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}55}]:}      a    b    c
+         x  109  106  107
+         y  101  107  105
+         z  103  102  109
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}56}]:} \PY{c+c1}{\PYZsh{} du coup si les labels ne correspondent pas,}
+         \PY{c+c1}{\PYZsh{} le résultat sera le suivant}
+         
+         \PY{n}{dataframe} \PY{o}{+} \PY{n}{series\PYZus{}col}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}56}]:}     a   b   c   x   y   z
+         x NaN NaN NaN NaN NaN NaN
+         y NaN NaN NaN NaN NaN NaN
+         z NaN NaN NaN NaN NaN NaN
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}57}]:} \PY{c+c1}{\PYZsh{} on peut dans ce cas, changer le comportement par défaut en forçant}
+         \PY{c+c1}{\PYZsh{} l\PYZsq{}alignement de la Series suivant un autre axe avec l\PYZsq{}argument axis}
+         
+         \PY{n}{dataframe}\PY{o}{.}\PY{n}{add}\PY{p}{(}\PY{n}{series\PYZus{}col}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}57}]:}      a    b    c
+         x  209  206  207
+         y  201  207  205
+         z  203  202  209
+\end{Verbatim}
+            
+    Ici, \texttt{axis=0} signifie que la \texttt{Series} est considérée
+comme une colonne est qu'elle va être broadcastée sur les autres
+colonnes (le long de l'axe de ligne).
+
+    \hypertarget{opuxe9rations-sur-les-chauxeenes-de-caractuxe8res}{%
+\subsubsection{Opérations sur les chaînes de
+caractères}\label{opuxe9rations-sur-les-chauxeenes-de-caractuxe8res}}
+
+    Nous allons maintenant parler de la vectorisation des opérations sur les
+chaînes de caractères. Il y a plusieurs choses importantes à savoir~:
+
+\begin{itemize}
+\tightlist
+\item
+  les méthodes sur les chaînes de caractères ne sont disponibles que
+  pour les \texttt{Series} et les \texttt{Index}, mais pas pour les
+  \texttt{DataFrame}~;
+\item
+  ces méthodes ignorent les \texttt{NaN} et remplacent les valeurs qui
+  ne sont pas des chaînes de caractères par \texttt{NaN}~;
+\item
+  ces méthodes retournent une copie de l'objet (\texttt{Series} ou
+  \texttt{Index}), il n'y a pas de modification en place~;
+\item
+  la plupart des méthodes Python sur le type \texttt{str} existe sous
+  forme vectorisée~;
+\item
+  on accède à ces méthodes avec la syntaxe~:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{Series.str.\textless{}vectorized\ method\ name\textgreater{}}
+  \item
+    \texttt{Index.str.\textless{}vectorized\ method\ name\textgreater{}}
+  \end{itemize}
+\end{itemize}
+
+Regardons quelques exemples~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}58}]:} \PY{c+c1}{\PYZsh{} Créons une Series avec des noms ayant une capitalisation inconsistante}
+         \PY{c+c1}{\PYZsh{} et une mauvaise gestion des espaces}
+         \PY{n}{names} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice }\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{  bOB}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Marc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bill}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ JULIE }\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{NaN}\PY{p}{]}
+         \PY{n}{age} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n}{names}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}59}]:} \PY{c+c1}{\PYZsh{} nettoyons maintenant ces données}
+         
+         \PY{c+c1}{\PYZsh{} on met en minuscule}
+         \PY{n}{a} \PY{o}{=} \PY{n}{age}\PY{o}{.}\PY{n}{str}\PY{o}{.}\PY{n}{lower}\PY{p}{(}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} on enlève les espaces}
+         \PY{n}{a} \PY{o}{=} \PY{n}{a}\PY{o}{.}\PY{n}{str}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)}
+         \PY{n}{a}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}59}]:} 0    alice
+         1      bob
+         2     marc
+         3     bill
+         4      NaN
+         5    julie
+         6      NaN
+         dtype: object
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}60}]:} \PY{c+c1}{\PYZsh{} comme les méthodes vectorisées retournent un objet de même type, on}
+         \PY{c+c1}{\PYZsh{} peut les chaîner comme ceci}
+         
+         \PY{p}{[}\PY{n}{x} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{age}\PY{o}{.}\PY{n}{str}\PY{o}{.}\PY{n}{lower}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{str}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}60}]:} ['alice', 'bob', 'marc', 'bill', nan, 'julie', nan]
+\end{Verbatim}
+            
+    On peut également utiliser l'indexation des \texttt{str} de manière
+vectorisée~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}61}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+0    alice
+1      bob
+2     marc
+3     bill
+4      NaN
+5    julie
+6      NaN
+dtype: object
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}62}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{o}{.}\PY{n}{str}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+0      e
+1      b
+2      c
+3      l
+4    NaN
+5      e
+6    NaN
+dtype: object
+
+    \end{Verbatim}
+
+    Pour aller plus loin vous pouvez lire la documentation officielle~:
+
+http://pandas.pydata.org/pandas-docs/stable/text.html
+
+    \hypertarget{gestion-des-valeurs-manquantes}{%
+\subsubsection{Gestion des valeurs
+manquantes}\label{gestion-des-valeurs-manquantes}}
+
+    Nous avons vu que des opérations sur les \texttt{DataFrame} pouvaient
+générer des valeurs \texttt{NaN} lors de l'alignement. Il est également
+possible d'avoir de telles valeurs \emph{manquantes} dans votre jeu de
+données original. \texttt{pandas} offre plusieurs possibilités pour
+gérer correctement ces valeurs manquantes.
+
+    Avant de voir ces différentes possibilités, définissons cette notion de
+valeur manquante.
+
+Une valeur manquante peut-être représentée avec \texttt{pandas} soit par
+\texttt{np.NaN} soit par l'objet Python \texttt{None}.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{np.NaN} est un objet de type \texttt{float}, par conséquent il
+  ne peut apparaître que dans un array de \texttt{float} ou un array
+  d'\texttt{object}. Notons que \texttt{np.NaN} apparaît avec
+  \texttt{pandas} comme simplement \texttt{NaN} et que dans la suite on
+  utilise de manière indifférente les deux notations, par contre, dans
+  du code, il faut obligatoirement utiliser \texttt{np.NaN}~;
+
+  \begin{itemize}
+  \tightlist
+  \item
+    si on ajoute un \texttt{NaN} dans un array d'entier, ils seront
+    convertis en \texttt{float64}~;
+  \item
+    si on ajoute un \texttt{NaN} dans un array de booléens, ils seront
+    convertis en \texttt{object}~;
+  \end{itemize}
+\item
+  \texttt{NaN} est contaminant, toute opération avec un \texttt{NaN} a
+  pour résultat \texttt{NaN}~;
+\item
+  lorsque l'on utilise \texttt{None}, il est automatiquement converti en
+  \texttt{NaN} lorsque le type de l'array est numérique.
+\end{itemize}
+
+Illustrons ces propriétés~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}63}]:} \PY{c+c1}{\PYZsh{} une Series d\PYZsq{}entiers}
+         \PY{n}{s} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}
+         \PY{n}{s}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}63}]:} 0    1
+         1    2
+         dtype: int64
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}64}]:} \PY{c+c1}{\PYZsh{} on insère un NaN, la Series est alors convertie en float64}
+         \PY{n}{s}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{NaN}
+         \PY{n}{s}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}64}]:} 0    NaN
+         1    2.0
+         dtype: float64
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}65}]:} \PY{c+c1}{\PYZsh{} on réinitialise}
+         \PY{n}{s} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}
+         \PY{n}{s}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}65}]:} 0    1
+         1    2
+         dtype: int64
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}66}]:} \PY{c+c1}{\PYZsh{} et on insère None}
+         \PY{n}{s}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{k+kc}{None}
+         
+         \PY{c+c1}{\PYZsh{} Le résultat est le même}
+         \PY{c+c1}{\PYZsh{} None est converti en NaN}
+         \PY{n}{s}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}66}]:} 0    NaN
+         1    2.0
+         dtype: float64
+\end{Verbatim}
+            
+    Regardons maintenant, les méthodes de \texttt{pandas} pour gérer les
+valeurs manquantes (donc \texttt{NaN} ou \texttt{None})~:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{isna()} retourne un masque mettant à \texttt{True} les valeurs
+  manquantes (il y a un alias \texttt{isnull()})~;
+\item
+  \texttt{notna()} retourne un masque mettant à \texttt{False} les
+  valeurs manquantes (il y a un alias \texttt{notnull()})~;
+\item
+  \texttt{dropna()} retourne un nouvel objet sans les valeurs
+  manquantes~;
+\item
+  \texttt{fillna()} retourne un nouvel objet avec les valeurs manquantes
+  remplacées.
+\end{itemize}
+
+On remarque que l'ajout d'alias pour les méthodes est de nouveau une
+source de confusion avec laquelle il faut vivre.
+
+On remarque également qu'alors que \texttt{isnull()} et
+\texttt{notnull()} sont des méthodes simples, \texttt{dropna()} et
+\texttt{fillna()} impliquent l'utilisation de stratégies. Regardons
+cela~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}67}]:} \PY{c+c1}{\PYZsh{} créons une DataFrame avec quelques valeurs manquantes}
+         \PY{n}{names} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{charles}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{bananas} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{names}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+         \PY{n}{apples} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{]}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{names}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{]}\PY{p}{)}
+         \PY{n}{fruits\PYZus{}feb} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bananas}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{bananas}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{apples}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{apples}\PY{p}{\PYZcb{}}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{fruits\PYZus{}feb}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+         bananas  apples
+alice        6.0     NaN
+bob          1.0     8.0
+charles      NaN     5.0
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}68}]:} \PY{n}{fruits\PYZus{}feb}\PY{o}{.}\PY{n}{isna}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}68}]:}          bananas  apples
+         alice      False    True
+         bob        False   False
+         charles     True   False
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}69}]:} \PY{n}{fruits\PYZus{}feb}\PY{o}{.}\PY{n}{notna}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}69}]:}          bananas  apples
+         alice       True   False
+         bob         True    True
+         charles    False    True
+\end{Verbatim}
+            
+    Par défaut, \texttt{dropna()} va enlever toutes les lignes qui
+contiennent au moins une valeur manquante. Mais on peut changer ce
+comportement avec des arguments~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}70}]:} \PY{n}{p} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{NaN}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{NaN}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{NaN}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{NaN}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{p}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+   0    1   2
+0  1  2.0 NaN
+1  3  NaN NaN
+2  7  5.0 NaN
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}71}]:} \PY{c+c1}{\PYZsh{} comportement par défaut, j\PYZsq{}enlève toutes les lignes avec au moins}
+         \PY{c+c1}{\PYZsh{} une valeur manquante; il ne reste rien !}
+         \PY{n}{p}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}71}]:} Empty DataFrame
+         Columns: [0, 1, 2]
+         Index: []
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}72}]:} \PY{c+c1}{\PYZsh{} maintenant, je fais l\PYZsq{}opération par colonne}
+         \PY{n}{p}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}72}]:}    0
+         0  1
+         1  3
+         2  7
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}73}]:} \PY{c+c1}{\PYZsh{} je fais l\PYZsq{}opération par colonne si toute la colonne est manquante}
+         \PY{n}{p}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{how}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{all}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}73}]:}    0    1
+         0  1  2.0
+         1  3  NaN
+         2  7  5.0
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}74}]:} \PY{c+c1}{\PYZsh{} je fais l\PYZsq{}opération par ligne si au moins 2 valeurs sont manquantes}
+         \PY{n}{p}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{n}{thresh}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}74}]:}    0    1   2
+         0  1  2.0 NaN
+         2  7  5.0 NaN
+\end{Verbatim}
+            
+    Par défaut, \texttt{fillna()} remplace les valeurs manquantes avec un
+argument pas défaut. Mais on peut ici aussi changer ce comportement.
+Regardons cela~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}75}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{p}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+   0    1   2
+0  1  2.0 NaN
+1  3  NaN NaN
+2  7  5.0 NaN
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}76}]:} \PY{c+c1}{\PYZsh{} je remplace les valeurs manquantes par \PYZhy{}1}
+         \PY{n}{p}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}76}]:}    0    1    2
+         0  1  2.0 -1.0
+         1  3 -1.0 -1.0
+         2  7  5.0 -1.0
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}77}]:} \PY{c+c1}{\PYZsh{} je remplace les valeurs manquantes avec la valeur suivante sur la colonne}
+         \PY{c+c1}{\PYZsh{} bfill est pour back fill, c\PYZsq{}est\PYZhy{}à\PYZhy{}dire remplace en arrière à partir des}
+         \PY{c+c1}{\PYZsh{} valeurs existantes}
+         \PY{n}{p}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{method}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bfill}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}77}]:}    0    1   2
+         0  1  2.0 NaN
+         1  3  5.0 NaN
+         2  7  5.0 NaN
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}78}]:} \PY{c+c1}{\PYZsh{} je remplace les valeurs manquantes avec la valeur précédente sur la ligne}
+         \PY{c+c1}{\PYZsh{} ffill est pour forward fill, remplace en avant à partir des valeurs}
+         \PY{c+c1}{\PYZsh{} existantes}
+         \PY{n}{p}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{method}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ffill}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}78}]:}      0    1    2
+         0  1.0  2.0  2.0
+         1  3.0  3.0  3.0
+         2  7.0  5.0  5.0
+\end{Verbatim}
+            
+    Regardez l'aide de ces méthodes pour aller plus loin.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}79}]:} p.dropna\PY{o}{?}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}80}]:} p.fillna\PY{o}{?}
+\end{Verbatim}
+
+
+    \hypertarget{analyse-statistique-des-donnuxe9es}{%
+\subsubsection{Analyse statistique des
+données}\label{analyse-statistique-des-donnuxe9es}}
+
+    Nous n'avons pas le temps de couvrir les possibilités d'analyse
+statistique de la suite data science de Python. \texttt{pandas} offre
+quelques possibilités basiques avec des calculs de moyennes, d'écarts
+types ou de covariances que l'on peut éventuellement appliquer par
+fenêtres à un jeux de données. Pour avoir plus de détails dessus vous
+pouvez consulter cette documentation~:
+
+http://pandas.pydata.org/pandas-docs/stable/computation.html
+
+Dans la suite data science de Python, il a aussi des modules spécialisés
+dans l'analyse statistique comme~:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{http://www.statsmodels.org/stable/index.html}{StatsModels}
+\item
+  \href{http://scikit-learn.org/stable/}{ScikitLearn}
+\end{itemize}
+
+ou des outils de calculs scientifiques plus génériques comme
+\href{https://www.scipy.org/}{SciPy}.
+
+De nouveau, il s'agit d'outils appliqués à des domaines spécifiques et
+ils se basent tous sur le couple \texttt{numpy}/\texttt{pandas}.
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    \hypertarget{les-multiindex}{%
+\subsubsection{Les MultiIndex}\label{les-multiindex}}
+
+    \texttt{pandas} avait historiquement d'autres structures de données en
+plus des \texttt{Series} et des \texttt{DataFrame} permettant d'exprimer
+des dimensionnalités supérieures à 2, comme par exemple les
+\texttt{Panel}. Mais pour des raisons de maintenance du code et
+d'optimisation, les développeurs ont décidé de ne garder que les
+\texttt{Series} et les \texttt{DataFrame}. Alors, comment exprimer des
+données avec plus de deux dimensions~?
+
+On utilise pour cela des \texttt{MultiIndex}. Un \texttt{MultiIndex} est
+un index qui peut être utilisé partout où l'on utilise un index (dans
+une \texttt{Series}, ou comme ligne ou colonne d'une \texttt{DataFrame})
+et qui a pour caractéristique d'avoir plusieurs niveaux.
+
+Comme tous types d'index, et parce qu'un \texttt{MultiIndex} est une
+sous classe d'\texttt{Index}, \texttt{pandas} va correctement aligner
+les \texttt{Series} et les \texttt{DataFrame} avec des
+\texttt{MultiIndex}.
+
+Regardons tout de suite un exemple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}81}]:} \PY{c+c1}{\PYZsh{} construisons une DataFrame jouet}
+         
+         \PY{c+c1}{\PYZsh{} voici une liste de prénoms}
+         \PY{n}{names} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sonia}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         
+         \PY{c+c1}{\PYZsh{} créons trois Series qui formeront trois colonnes}
+         \PY{n}{age} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{]}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{names}\PY{p}{)}
+         \PY{n}{height} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{130}\PY{p}{,} \PY{l+m+mi}{140}\PY{p}{,} \PY{l+m+mi}{165}\PY{p}{]}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{names}\PY{p}{)}
+         \PY{n}{sex} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fmf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{names}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} créons maintenant la DataFrame}
+         \PY{n}{p} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{age}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{height}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{height}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{sex}\PY{p}{\PYZcb{}}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{p}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+       age  height sex
+alice   12     130   f
+bob     13     140   m
+sonia   16     165   f
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}82}]:} \PY{c+c1}{\PYZsh{} unstack, en première approximation, permet de passer d\PYZsq{}une DataFrame à}
+         \PY{c+c1}{\PYZsh{} une Series avec un MultiIndex}
+         \PY{n}{s} \PY{o}{=} \PY{n}{p}\PY{o}{.}\PY{n}{unstack}\PY{p}{(}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{s}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+age     alice     12
+        bob       13
+        sonia     16
+height  alice    130
+        bob      140
+        sonia    165
+sex     alice      f
+        bob        m
+        sonia      f
+dtype: object
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}83}]:} \PY{c+c1}{\PYZsh{} et voici donc l\PYZsq{}index de cette Series}
+         \PY{n}{s}\PY{o}{.}\PY{n}{index}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}83}]:} MultiIndex(levels=[['age', 'height', 'sex'], ['alice', 'bob', 'sonia']],
+                    labels=[[0, 0, 0, 1, 1, 1, 2, 2, 2], [0, 1, 2, 0, 1, 2, 0, 1, 2]])
+\end{Verbatim}
+            
+    Il existe évidemment des moyens de créer directement un
+\texttt{MultiIndex} et ensuite de le définir comme index d'une
+\texttt{Series} ou comme index de ligne ou colonne d'une
+\texttt{DataFrame}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}84}]:} \PY{c+c1}{\PYZsh{} on peut créer un MultiIndex à partir d\PYZsq{}une liste de liste}
+         \PY{n}{names} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{age} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{2014}\PY{p}{,} \PY{l+m+mi}{2015}\PY{p}{,} \PY{l+m+mi}{2016}\PY{p}{,} \PY{l+m+mi}{2014}\PY{p}{,} \PY{l+m+mi}{2015}\PY{p}{,} \PY{l+m+mi}{2016}\PY{p}{]}
+         \PY{n}{s\PYZus{}list} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{,} \PY{l+m+mi}{42}\PY{p}{,} \PY{l+m+mi}{45}\PY{p}{,} \PY{l+m+mi}{38}\PY{p}{,} \PY{l+m+mi}{40}\PY{p}{,} \PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{p}{[}\PY{n}{names}\PY{p}{,} \PY{n}{age}\PY{p}{]}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{s\PYZus{}list}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+alice  2014    40
+       2015    42
+       2016    45
+bob    2014    38
+       2015    40
+       2016    40
+dtype: int64
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}85}]:} \PY{c+c1}{\PYZsh{} ou à partir d\PYZsq{}un dictionnaire de tuples}
+         \PY{n}{s\PYZus{}tuple} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{\PYZob{}}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{2014}\PY{p}{)}\PY{p}{:} \PY{l+m+mi}{40}\PY{p}{,}
+                              \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{2015}\PY{p}{)}\PY{p}{:} \PY{l+m+mi}{42}\PY{p}{,}
+                              \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{2016}\PY{p}{)}\PY{p}{:} \PY{l+m+mi}{45}\PY{p}{,}
+                              \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{2014}\PY{p}{)}\PY{p}{:} \PY{l+m+mi}{38}\PY{p}{,}
+                              \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{2015}\PY{p}{)}\PY{p}{:} \PY{l+m+mi}{40}\PY{p}{,}
+                              \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{2016}\PY{p}{)}\PY{p}{:} \PY{l+m+mi}{40}\PY{p}{\PYZcb{}}\PY{p}{)}
+         
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{s\PYZus{}tuple}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+alice  2014    40
+       2015    42
+       2016    45
+bob    2014    38
+       2015    40
+       2016    40
+dtype: int64
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}86}]:} \PY{c+c1}{\PYZsh{} ou avec la méthode from\PYZus{}product()}
+         \PY{n}{name} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{year} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{2014}\PY{p}{,} \PY{l+m+mi}{2015}\PY{p}{,} \PY{l+m+mi}{2016}\PY{p}{]}
+         \PY{n}{i} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{MultiIndex}\PY{o}{.}\PY{n}{from\PYZus{}product}\PY{p}{(}\PY{p}{[}\PY{n}{name}\PY{p}{,} \PY{n}{year}\PY{p}{]}\PY{p}{)}
+         \PY{n}{s} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{,} \PY{l+m+mi}{42}\PY{p}{,} \PY{l+m+mi}{45}\PY{p}{,} \PY{l+m+mi}{38}\PY{p}{,} \PY{l+m+mi}{40}\PY{p}{,} \PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{i}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{s}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+alice  2014    40
+       2015    42
+       2016    45
+bob    2014    38
+       2015    40
+       2016    40
+dtype: int64
+
+    \end{Verbatim}
+
+    On peut même nommer les niveaux d'un \texttt{MultiIndex}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}87}]:} \PY{n}{name} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{year} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{2014}\PY{p}{,} \PY{l+m+mi}{2015}\PY{p}{,} \PY{l+m+mi}{2016}\PY{p}{]}
+         \PY{n}{i} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{MultiIndex}\PY{o}{.}\PY{n}{from\PYZus{}product}\PY{p}{(}\PY{p}{[}\PY{n}{name}\PY{p}{,} \PY{n}{year}\PY{p}{]}\PY{p}{,} \PY{n}{names}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         \PY{n}{s} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{,} \PY{l+m+mi}{42}\PY{p}{,} \PY{l+m+mi}{45}\PY{p}{,} \PY{l+m+mi}{38}\PY{p}{,} \PY{l+m+mi}{40}\PY{p}{,} \PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{i}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{s}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+name   year
+alice  2014    40
+       2015    42
+       2016    45
+bob    2014    38
+       2015    40
+       2016    40
+dtype: int64
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}88}]:} \PY{c+c1}{\PYZsh{} on peut changer le nom des niveaux du MultiIndex}
+         \PY{n}{s}\PY{o}{.}\PY{n}{index}\PY{o}{.}\PY{n}{names} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NAMES}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{YEARS}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{s}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+NAMES  YEARS
+alice  2014     40
+       2015     42
+       2016     45
+bob    2014     38
+       2015     40
+       2016     40
+dtype: int64
+
+    \end{Verbatim}
+
+    Créons maintenant une \texttt{DataFrame} jouet avec des
+\texttt{MultiIndex} pour étudier comment accéder aux éléments de la
+\texttt{DataFrame}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}89}]:} \PY{n}{index} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{MultiIndex}\PY{o}{.}\PY{n}{from\PYZus{}product}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{2013}\PY{p}{,} \PY{l+m+mi}{2014}\PY{p}{]}\PY{p}{,}
+                                             \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{]}\PY{p}{,}
+                                            \PY{n}{names}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                                                   \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{visit}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         
+         \PY{n}{columns} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{MultiIndex}\PY{o}{.}\PY{n}{from\PYZus{}product}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sue}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+                                               \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{avant}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{arrière}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{p}{,}
+                                              \PY{n}{names}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{client}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                                                     \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pression}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} on crée des pressions de pneus factices}
+         \PY{n}{data} \PY{o}{=} \PY{l+m+mi}{2} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{rand}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} on crée la DataFrame}
+         \PY{n}{mecanics\PYZus{}data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{data}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{index}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{n}{columns}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{mecanics\PYZus{}data}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+client           Bob                 Sue          
+pression       avant   arrière     avant   arrière
+year visit                                        
+2013 1      2.550825  2.403969  2.861040  2.734954
+     2      2.663264  2.062700  2.438937  2.955536
+     3      2.580402  2.668350  2.786914  2.033058
+2014 1      2.037373  2.083491  2.930867  2.818915
+     2      2.844628  2.930757  2.925297  2.666986
+     3      2.865377  2.076819  2.721758  2.260890
+
+    \end{Verbatim}
+
+    Il y a plusieurs manières d'accéder aux éléments, mais une seule que
+l'on recommande~:
+
+\textbf{utilisez la notation
+\texttt{.loc{[}ligne,\ colonne{]},\ .iloc{[}ligne,\ colonne{]}}}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}90}]:} \PY{c+c1}{\PYZsh{} pression en 2013 pour Bob}
+         \PY{n}{mecanics\PYZus{}data}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+m+mi}{2013}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}90}]:} pression     avant   arrière
+         visit                       
+         1         2.550825  2.403969
+         2         2.663264  2.062700
+         3         2.580402  2.668350
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}91}]:} \PY{c+c1}{\PYZsh{} pour accéder aux sous niveaux du MultiIndex, on utilise des tuples}
+         \PY{n}{mecanics\PYZus{}data}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{(}\PY{l+m+mi}{2013}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{avant}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}91}]:} 2.6632638263356445
+\end{Verbatim}
+            
+    Le slice sur le \texttt{MultiIndex} est un peu délicat. On peut utiliser
+la notation \texttt{:} si on veut slicer sur tous les éléments d'un
+\texttt{MultiIndex}, sans prendre en compte un niveau. Si on spécifie
+les niveaux, il faut utiliser un objet \texttt{slice} ou
+\texttt{pd.IndexSlice}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}92}]:} \PY{c+c1}{\PYZsh{} slice(None) signifie tous les éléments du niveau}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{mecanics\PYZus{}data}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n+nb}{slice}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2013}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{2014}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sue}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n+nb}{slice}\PY{p}{(}\PY{k+kc}{None}\PY{p}{)}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+client           Sue          
+pression       avant   arrière
+year visit                    
+2013 2      2.438937  2.955536
+     3      2.786914  2.033058
+2014 1      2.930867  2.818915
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}93}]:} \PY{c+c1}{\PYZsh{} on peut utiliser la notation : si on ne distingue par les niveaux}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{mecanics\PYZus{}data}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{(}\PY{n+nb}{slice}\PY{p}{(}\PY{k+kc}{None}\PY{p}{)}\PY{p}{,} \PY{n+nb}{slice}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{p}{:}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+client           Bob                 Sue          
+pression       avant   arrière     avant   arrière
+year visit                                        
+2013 1      2.550825  2.403969  2.861040  2.734954
+     2      2.663264  2.062700  2.438937  2.955536
+2014 1      2.037373  2.083491  2.930867  2.818915
+     2      2.844628  2.930757  2.925297  2.666986
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}94}]:} \PY{c+c1}{\PYZsh{} on peut aussi utiliser pd.IndexSlice pour slicer avec une notation}
+         \PY{c+c1}{\PYZsh{} un peu plus concise}
+         \PY{n}{idx} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{IndexSlice}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{mecanics\PYZus{}data}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{idx}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} \PY{n}{idx}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sue}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{:}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+client           Sue          
+pression       avant   arrière
+year visit                    
+2013 1      2.861040  2.734954
+     2      2.438937  2.955536
+2014 1      2.930867  2.818915
+     2      2.925297  2.666986
+
+    \end{Verbatim}
+
+    Pour aller plus loin, regardez la documentation des
+\texttt{MultiIndex}~:
+
+http://pandas.pydata.org/pandas-docs/stable/advanced.html
+
+    \hypertarget{conclusion}{%
+\subsection{Conclusion}\label{conclusion}}
+
+    La \texttt{DataFrame} est la structure de données la plus souple et la
+plus puissante de \texttt{pandas}. Nous avons vu comment créer des
+\texttt{DataFrame} et comment accéder aux éléments. Nous verrons dans le
+prochain complément les techniques permettant de faire des opérations
+complexes (et proches dans l'esprit de ce que l'on peut faire avec une
+base de données) comme les opérations de \texttt{merge} ou de
+\texttt{groupby}.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

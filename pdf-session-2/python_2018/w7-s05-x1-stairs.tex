@@ -1,0 +1,106 @@
+    
+    
+    
+    
+
+    
+
+    \hypertarget{exercice---niveau-intermuxe9diaire}{%
+\section{Exercice - niveau
+intermédiaire}\label{exercice---niveau-intermuxe9diaire}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}stairs} \PY{k}{import} \PY{n}{exo\PYZus{}stairs}
+\end{Verbatim}
+
+
+    On vous demande d'écrire une fonction \texttt{stairs} qui crée un
+tableau \texttt{numpy}.
+
+La fonction prend en argument un entier \texttt{k} et construit un
+tableau carré de taille \(2*k+1\).
+
+Aux quatre coins du tableau on trouve la valeur \(0\). Dans la case
+centrale on trouve la valeur \(2*k\).
+
+Si vous partez de n'importe quelle case et que vous vous déplacez d'une
+case horizontalement ou verticalement vers une cas plus proche du
+centre, vous incrémentez la valeur du tableau de \texttt{1}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} voici deux exemples pour la fonction stairs}
+        \PY{n}{exo\PYZus{}stairs}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} à vous de jouer}
+        \PY{k}{def} \PY{n+nf}{stairs}\PY{p}{(}\PY{n}{k}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{votre code}\PY{l+s+s2}{\PYZdq{}}
+        
+        \PY{c+c1}{\PYZsh{} NOTE:}
+        \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has used instead:}
+        \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+        \PY{n}{stairs}\PY{o}{=}\PY{n}{exo\PYZus{}stairs}\PY{o}{.}\PY{n}{solution}
+        \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
+        
+        \PY{c+c1}{\PYZsh{} pour corriger votre code}
+        \PY{n}{exo\PYZus{}stairs}\PY{o}{.}\PY{n}{correction}\PY{p}{(}\PY{n}{stairs}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{visualisation}{%
+\subsubsection{Visualisation}\label{visualisation}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+        \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+        \PY{n}{plt}\PY{o}{.}\PY{n}{ion}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    L'exercice est terminé, mais si vous avez réussi et que vous voulez
+visualisez le résultat, voici comment vous pouvez aussi voir ce type de
+tableau~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{squares} \PY{o}{=} \PY{n}{stairs}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{)}
+\end{Verbatim}
+
+
+    Pour le voir comme une image avec un niveau de gris comme code de
+couleurs (noir = 0, blanc = maximum = 201 dans notre cas)~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} convertir en flottant pour imshow}
+        \PY{n}{squares} \PY{o}{=} \PY{n}{squares}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{float}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} afficher avec une colormap \PYZsq{}gray\PYZsq{}}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{imshow}\PY{p}{(}\PY{n}{squares}\PY{p}{,} \PY{n}{cmap}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gray}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s05-x1-stairs_files/w7-s05-x1-stairs_13_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

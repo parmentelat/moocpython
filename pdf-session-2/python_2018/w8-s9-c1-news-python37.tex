@@ -1,0 +1,133 @@
+    
+    
+    
+    
+
+    
+
+    \hypertarget{nouveautuxe9s-de-python-3.7-dans-asyncio}{%
+\section{\texorpdfstring{Nouveautés de Python-3.7 dans
+\texttt{asyncio}}{Nouveautés de Python-3.7 dans asyncio}}\label{nouveautuxe9s-de-python-3.7-dans-asyncio}}
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    Comme on l'a signalé au début de la semaine, \texttt{asyncio} a subi
+quelques modifications dans Python-3.7, que nous allons rapidement
+illustrer dans ce complément.
+
+Nous verrons aussi par ailleurs une curiosité liée à la version de
+
+    \hypertarget{documentation}{%
+\subsubsection{Documentation}\label{documentation}}
+
+    L'évolution la plus radicale est une refonte totale de la documentation.
+
+C'est une très bonne nouvelle, car de ll'aveu même de Guido van Rossum,
+la documentation en place pour les versions 3.5 et 3.6 était
+particulièrement obscure;
+\href{https://twitter.com/gvanrossum/status/1041889574052429826?lang=en}{voici
+comment il l'a annoncé}~:
+
+\begin{quote}
+Finally the asyncio docs are not an embarrassment to us all.
+\end{quote}
+
+Si vous avez déjà eu l'occasion de parcourir ces anciennes
+documentations, et que vous les avez trouvées imbittables, sachez que
+vous n'êtes pas seul dans ce cas ;) Dans tous les cas je vous invite à
+\href{https://docs.python.org/3/library/asyncio.html}{parcourir la
+nouvelle version}, qui a le mérite d'apporter plus de réponses qu'elle
+ne soulève d'interrogations. Ce n'était pas vraiment le cas avant.
+
+    \hypertarget{accuxe8s-plus-facile}{%
+\subsubsection{Accès plus facile}\label{accuxe8s-plus-facile}}
+
+    Un certain nombre de changements ont été apportés à la librairie pour en
+rendre l'accès plus facile.
+
+\textbf{XXX}
+
+    \hypertarget{pas-de-changement-de-fond}{%
+\subsubsection{Pas de changement de
+fond}\label{pas-de-changement-de-fond}}
+
+    Par ailleurs en terme de l'utilisation de la librairie,
+
+\textbf{XXX}
+
+    \hypertarget{await-dans-ipython-7}{%
+\subsubsection{\texorpdfstring{\texttt{await} dans
+ipython-7}{await dans ipython-7}}\label{await-dans-ipython-7}}
+
+Cette section ne s'applique pas \emph{stricto sensu} à Python-3.7, mais
+à la version 7 de IPython.
+
+Le sujet, c'est ici encore de raccourcir le \emph{boilerplate}
+nécessaire pour faire tourner une coroutine.
+
+    \hypertarget{python-standard}{%
+\subparagraph{Python standard}\label{python-standard}}
+
+    Voici d'abord ce qui se passe avec l'interpréteur Python standard~:
+
+    \begin{verbatim}
+$ python3
+Python 3.7.0 (default, Jun 29 2018, 20:14:27)
+[Clang 9.0.0 (clang-900.0.39.2)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import asyncio
+>>> async def foo(message, duree):
+...    await asyncio.sleep(duree)
+...    print(message)
+...
+>>> await(foo("hello", 1))
+  File "<stdin>", line 1
+SyntaxError: 'await' outside function
+\end{verbatim}
+
+    La syntaxe de Python nous interdit en effet d'utiliser \texttt{await} en
+dehors du code d'une coroutine, on l'a vu dans une des vidéos.
+
+    \hypertarget{ipython-7}{%
+\subparagraph{IPython-7}\label{ipython-7}}
+
+    Pour \textbf{simplifier encore} la mise en place de code asynchrone,
+depuis ipython-7, on peut carrément déclencher une coroutine en
+invoquant \texttt{await} dans la boucle principale de l'interpréteur :
+
+    \begin{verbatim}
+$ ipython3
+Python 3.7.0 (default, Jun 29 2018, 20:14:27)
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.0.1 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: import asyncio
+
+In [2]: async def foo(message, duree):
+   ...:     await asyncio.sleep(duree)
+   ...:     print(message)
+
+In [3]: await(foo("hello", 0.5))
+hello
+
+In [4]: await(asyncio.gather(foo("hello", 0.5), foo("world", 1)))
+hello
+world
+Out[4]: [None, None]
+\end{verbatim}
+
+    Du coup cette façon de faire fonctionnera aussi dans un notebook, si
+vous avez la bonne version de IPython en dessous de Jupyter.
+
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+https://docs.python.org/3/whatsnew/3.7.html\#whatsnew37-asyncio
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

@@ -1,0 +1,382 @@
+    
+    
+    
+    
+
+    
+
+    \hypertarget{animations-interactives-avec-matplotlib}{%
+\section{\texorpdfstring{Animations interactives avec
+\texttt{matplotlib}}{Animations interactives avec matplotlib}}\label{animations-interactives-avec-matplotlib}}
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    Nous allons voir dans ce notebook comment créer une animation avec
+matplotlib et tirer parti des \emph{widgets} dans un notebook pour
+rendre ces animations interactives.
+
+Ce sera l'occasion de décortiquer un exemple un peu sophistiqué, où
+l'utilisation d'un générateur permet de rendre l'implémentation plus
+propre et plus élégante.
+
+    \hypertarget{le-sujet}{%
+\subsubsection{Le sujet}\label{le-sujet}}
+
+    En guise d'illustration, nous allons créer~: * une animation
+matplotlib~: disons que l'on veut faire défiler horizontalement une
+sinusoïde ; * un widget interactif~: disons que l'on veut pouvoir
+changer la vitesse de défilement.
+
+    \hypertarget{les-outils}{%
+\subsubsection{Les outils}\label{les-outils}}
+
+    Pour fabriquer cela nous aurons besoin principalement~: * de la
+librairie d'animation de matplotlib, et spécifiquement le sous-package
+\texttt{animation}, * et des widgets du module \texttt{ipywidgets}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{pyplot} \PY{k}{as} \PY{n}{plt}
+        \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{animation}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{display} \PY{k}{as} \PY{n}{display\PYZus{}widget}
+        \PY{k+kn}{from} \PY{n+nn}{ipywidgets} \PY{k}{import} \PY{n}{IntSlider}
+\end{Verbatim}
+
+
+    \hypertarget{la-logique}{%
+\subsubsection{La logique}\label{la-logique}}
+
+    Dans un notebook précédent nous avions abordé la fonction
+\texttt{interact}, de la librairie \texttt{ipywidgets}, qui nous
+permettait d'appeler interactivement une fonction avec des arguments
+choisis interactivement via une série de widgets.
+
+Si on essaie d'utiliser \texttt{interact} pour faire des animations,
+l'effet visuel, qui revient à effacer/recalculer une visualisation à
+chaque changement de valeur des entrées, donne un rendu peu agréable à
+l'oeil.
+
+C'est pourquoi ici la logique va être un petit peu différente~: * c'est
+une fonction native de \texttt{matplotlib} qui implémente la boucle
+principale, en travaillant sur un objet \texttt{Figure}, * et le widget
+est utilisé uniquement pour modifier une variable python ; * pour
+simplifier notre code, l'échange d'informations entre ces deux morceaux
+se fait le plus simplement possible, via une variable globale.
+
+Bien entendu cette dernière pratique n'est pas recommandée dans du code
+de production, et le lecteur intéressé est invité à améliorer ce point.
+
+    \hypertarget{version-non-interactive-et-basique}{%
+\subsubsection{Version non interactive et
+basique}\label{version-non-interactive-et-basique}}
+
+    Pour commencer nous allons voir comment utiliser
+\texttt{matplotlib.animation} sans interactivité.
+
+Cette version est inspirée du
+\href{https://jakevdp.github.io/blog/2012/08/18/matplotlib-animation-tutorial/}{tutorial
+matplotlib sur les animations}, qui montre d'ailleurs d'autres
+animations plus complexes et convaincantes, comme le double pendule par
+exemple.
+
+    Mais avant tout choisissons ce mode de rendu~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} notebook
+\end{Verbatim}
+
+
+    Nous allons utiliser la fonction \texttt{animation.FuncAnimation};
+celle-ci s'attend à recevoir en argument, principalement~: * une figure,
+* et une fonction d'affichage.
+
+La logique est que la fonction d'affichage est appelée à intervalles
+réguliers par \texttt{FuncAnimation}, elle doit retourner un itérable
+d'objets affichable dans la figure.
+
+Dans notre cas, nous allons créer une instance unique d'un objet
+\texttt{plot}; cette instance sera modifiée à chaque frame par la
+fonction d'affichage, qui le renverra dans un tuple à un élément (ceci
+parce qu'un itérable est attendu).
+
+    \hypertarget{version-basique-dite-tout-en-un}{%
+\subparagraph{\texorpdfstring{Version basique dite
+\emph{tout-en-un}}{Version basique dite tout-en-un}}\label{version-basique-dite-tout-en-un}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{pyplot} \PY{k}{as} \PY{n}{plt}
+        \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{animation}
+        
+        \PY{c+c1}{\PYZsh{} on commence par créer une figure; }
+        \PY{n}{figure1} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} en général pour une animation }
+        \PY{c+c1}{\PYZsh{} il est important de fixer les bornes en x et en y }
+        \PY{c+c1}{\PYZsh{} pour ne pas avoir d\PYZsq{}artefacts de changement d\PYZsq{}échelle}
+        \PY{c+c1}{\PYZsh{} pendant l\PYZsq{}animation}
+        \PY{n}{ax1} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{axes}\PY{p}{(}\PY{n}{xlim}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{n}{ylim}\PY{o}{=}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mf}{1.5}\PY{p}{,} \PY{l+m+mf}{1.5}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} on crée aussi un plot vide qui va être modifié à chaque frame}
+        \PY{n}{line1}\PY{p}{,} \PY{o}{=} \PY{n}{ax1}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} la vitesse de défilement}
+        \PY{n}{speed} \PY{o}{=} \PY{l+m+mi}{1}
+        
+        \PY{c+c1}{\PYZsh{} une globale; c\PYZsq{}est vilain !}
+        \PY{n}{offset} \PY{o}{=} \PY{l+m+mf}{0.}
+        
+        \PY{c+c1}{\PYZsh{} la fonction qui calcule et affiche chaque frame}
+        \PY{k}{def} \PY{n+nf}{compute\PYZus{}and\PYZus{}display}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+            \PY{k}{global} \PY{n}{offset}
+            \PY{n}{offset} \PY{o}{+}\PY{o}{=} \PY{n}{speed} \PY{o}{/} \PY{l+m+mi}{100}
+            \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1000}\PY{p}{)}
+            \PY{n}{y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{l+m+mi}{2} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{pi} \PY{o}{*} \PY{p}{(}\PY{n}{x} \PY{o}{\PYZhy{}} \PY{n}{offset}\PY{p}{)}\PY{p}{)}
+            \PY{n}{line1}\PY{o}{.}\PY{n}{set\PYZus{}data}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+            \PY{k}{return} \PY{n}{line1}\PY{p}{,}
+        
+        
+        \PY{c+c1}{\PYZsh{} la fonction magique pour animer une figure}
+        \PY{c+c1}{\PYZsh{} blit=True est une optimisation graphique }
+        \PY{c+c1}{\PYZsh{} pour ne rafficher que le nécessaire}
+        \PY{n}{anim} \PY{o}{=} \PY{n}{animation}\PY{o}{.}\PY{n}{FuncAnimation}\PY{p}{(}\PY{n}{figure1}\PY{p}{,} 
+                                       \PY{n}{func}\PY{o}{=}\PY{n}{compute\PYZus{}and\PYZus{}display}\PY{p}{,} 
+                                       \PY{n}{frames}\PY{o}{=}\PY{l+m+mi}{50}\PY{p}{,} \PY{n}{repeat}\PY{o}{=}\PY{k+kc}{False}\PY{p}{,}
+                                       \PY{n}{interval}\PY{o}{=}\PY{l+m+mi}{40}\PY{p}{,} \PY{n}{blit}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    
+    \begin{verbatim}
+<IPython.core.display.Javascript object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    \hypertarget{suxe9paration-calcul-et-affichage}{%
+\subsubsection{Séparation calcul et
+affichage}\label{suxe9paration-calcul-et-affichage}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{ion}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    On voit qu'on a appelé \texttt{FuncAnimation} avec \texttt{frames=50} et
+\texttt{interval=40} (ms); ce qui correspond donc à 25 images par
+seconde, soit une durée de deux secondes.
+
+Profitons-en pour voir tout de suite une amélioration possible. Il
+serait souhaitable de séparer~: * d'une part la logique du calcul - ou
+de l'acquisition, si on voulait par exemple faire du postprocessing
+temps réel d'images vidéo, * et d'autre part l'affichage à proprement
+parler.
+
+    Pour cela, remarquez que le paramètre \texttt{frames} est documenté
+comme pouvant être \textbf{un itérateur}. La logique en fait à l'oeuvre
+dans \texttt{FuncAnimation} est que * \texttt{frames} est un itérateur
+qui va énumérer des données, * à chaque frame cet itérateur est avancé
+avec \texttt{next()}, et son retour est passé à la fonction d'affichage.
+
+En guise de commodité, lorsqu'on passe comme ci-dessus
+\texttt{frames=200}, la fonction transforme cela en
+\texttt{frames=range(200)}. C'est pourquoi d'ailleurs il est important
+que \texttt{compute\_and\_display} accepte un paramètre unique, même si
+nous n'en avons pas eu besoin.
+
+    Cette constatation nous amène à une deuxième version, en concevant un
+\textbf{générateur} pour le calcul, qui est passé à
+\texttt{FuncAnimation} comme paramètre \texttt{frames}.
+
+    \hypertarget{version-non-interactive-mais-avec-suxe9paration-calcul-affichage}{%
+\subparagraph{Version non interactive, mais avec séparation calcul /
+affichage}\label{version-non-interactive-mais-avec-suxe9paration-calcul-affichage}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{pyplot} \PY{k}{as} \PY{n}{plt}
+        \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{animation}
+        
+        \PY{n}{figure2} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+        \PY{n}{ax2} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{axes}\PY{p}{(}\PY{n}{xlim}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{n}{ylim}\PY{o}{=}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mf}{1.5}\PY{p}{,} \PY{l+m+mf}{1.5}\PY{p}{)}\PY{p}{)}
+        \PY{n}{line2}\PY{p}{,} \PY{o}{=} \PY{n}{ax2}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} la vitesse de défilement}
+        \PY{n}{speed} \PY{o}{=} \PY{l+m+mi}{1}
+        
+        \PY{c+c1}{\PYZsh{} remarquez qu\PYZsq{}on n\PYZsq{}a plus besoin de globale ici}
+        \PY{c+c1}{\PYZsh{} une locale dans le générateur est bien plus propre}
+        
+        \PY{c+c1}{\PYZsh{} la logique du calcul est conçue comme un générateur}
+        \PY{k}{def} \PY{n+nf}{compute}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n}{offset} \PY{o}{=} \PY{l+m+mf}{0.}
+            \PY{c+c1}{\PYZsh{} nous sommes dans un générateur, il n\PYZsq{}y a pas }
+            \PY{c+c1}{\PYZsh{} de contrindication à tourner indéfiniment}
+            \PY{k}{while} \PY{k+kc}{True}\PY{p}{:}
+                \PY{n}{offset} \PY{o}{+}\PY{o}{=} \PY{n}{speed} \PY{o}{/} \PY{l+m+mi}{100}
+                \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1000}\PY{p}{)}
+                \PY{n}{y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{l+m+mi}{2} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{pi} \PY{o}{*} \PY{p}{(}\PY{n}{x} \PY{o}{\PYZhy{}} \PY{n}{offset}\PY{p}{)}\PY{p}{)}
+                \PY{c+c1}{\PYZsh{} on décide de retourner un tuple X, Y}
+                \PY{c+c1}{\PYZsh{} qui est passé tel\PYZhy{}quel à l\PYZsq{}affichage}
+                \PY{k}{yield} \PY{n}{x}\PY{p}{,} \PY{n}{y} 
+        
+        \PY{c+c1}{\PYZsh{} la fonction qui affiche}
+        \PY{k}{def} \PY{n+nf}{display}\PY{p}{(}\PY{n}{frame}\PY{p}{)}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} on retrouve nos deux éléments x et y}
+            \PY{n}{x}\PY{p}{,} \PY{n}{y} \PY{o}{=} \PY{n}{frame}
+            \PY{c+c1}{\PYZsh{} il n\PYZsq{}y a plus qu\PYZsq{}à les afficher}
+            \PY{n}{line2}\PY{o}{.}\PY{n}{set\PYZus{}data}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+            \PY{k}{return} \PY{n}{line2}\PY{p}{,}
+        
+        
+        \PY{n}{anim} \PY{o}{=} \PY{n}{animation}\PY{o}{.}\PY{n}{FuncAnimation}\PY{p}{(}\PY{n}{figure2}\PY{p}{,}
+                                       \PY{n}{func}\PY{o}{=}\PY{n}{display}\PY{p}{,}
+                                       \PY{n}{frames}\PY{o}{=}\PY{n}{compute}\PY{p}{(}\PY{p}{)}\PY{p}{,}
+                                       \PY{n}{interval}\PY{o}{=}\PY{l+m+mi}{40}\PY{p}{,} \PY{n}{blit}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    
+    \begin{verbatim}
+<IPython.core.display.Javascript object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    Cette fois l'animation ne se termine jamais, mais dans le notebook vous
+pouvez cliquer le bouton bleu en haut à droite de la figure pour la
+faire cesser.
+
+    \hypertarget{avec-interactivituxe9}{%
+\subsubsection{Avec interactivité}\label{avec-interactivituxe9}}
+
+    Pour rendre ceci interactif, nous allons simplement ajouter un widget
+qui nous permettra de régler la vitesse de défilement.
+
+    \hypertarget{version-interactive-avec-widget-pour-choisir-la-vitesse}{%
+\subparagraph{Version interactive avec widget pour choisir la
+vitesse}\label{version-interactive-avec-widget-pour-choisir-la-vitesse}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{pyplot} \PY{k}{as} \PY{n}{plt}
+        \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{animation}
+        
+        \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{display} \PY{k}{as} \PY{n}{display\PYZus{}widget}
+        \PY{k+kn}{from} \PY{n+nn}{ipywidgets} \PY{k}{import} \PY{n}{IntSlider}
+        
+        \PY{n}{figure3} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+        \PY{n}{ax3} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{axes}\PY{p}{(}\PY{n}{xlim}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{n}{ylim}\PY{o}{=}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mf}{1.5}\PY{p}{,} \PY{l+m+mf}{1.5}\PY{p}{)}\PY{p}{)}
+        \PY{n}{line3}\PY{p}{,} \PY{o}{=} \PY{n}{ax3}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} un widget pour choisir la vitesse de défilement}
+        \PY{n}{speed\PYZus{}slider} \PY{o}{=} \PY{n}{IntSlider}\PY{p}{(}\PY{n+nb}{min}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n+nb}{max}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{value}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{,}
+                                 \PY{n}{description}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Vitesse:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{k}{def} \PY{n+nf}{compute}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n}{offset} \PY{o}{=} \PY{l+m+mf}{0.}
+            \PY{c+c1}{\PYZsh{} nous sommes dans un générateur, il n\PYZsq{}y a pas }
+            \PY{c+c1}{\PYZsh{} de contrindication à tourner indéfiniment}
+            \PY{k}{while} \PY{k+kc}{True}\PY{p}{:}
+                \PY{c+c1}{\PYZsh{} on accède à la vitesse via le widget}
+                \PY{n}{offset} \PY{o}{+}\PY{o}{=} \PY{n}{speed\PYZus{}slider}\PY{o}{.}\PY{n}{value} \PY{o}{/} \PY{l+m+mi}{100}
+                \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1000}\PY{p}{)}
+                \PY{n}{y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{l+m+mi}{2} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{pi} \PY{o}{*} \PY{p}{(}\PY{n}{x} \PY{o}{\PYZhy{}} \PY{n}{offset}\PY{p}{)}\PY{p}{)}
+                \PY{c+c1}{\PYZsh{} on décide de retourner un tuple X, Y}
+                \PY{c+c1}{\PYZsh{} qui est passé tel\PYZhy{}quel à l\PYZsq{}affichage}
+                \PY{k}{yield} \PY{n}{x}\PY{p}{,} \PY{n}{y} 
+        
+        \PY{c+c1}{\PYZsh{} la fonction qui affiche}
+        \PY{k}{def} \PY{n+nf}{display}\PY{p}{(}\PY{n}{frame}\PY{p}{)}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} on retrouve nos deux éléments x et y}
+            \PY{n}{x}\PY{p}{,} \PY{n}{y} \PY{o}{=} \PY{n}{frame}
+            \PY{c+c1}{\PYZsh{} il n\PYZsq{}y a plus qu\PYZsq{}à les afficher}
+            \PY{n}{line3}\PY{o}{.}\PY{n}{set\PYZus{}data}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+            \PY{k}{return} \PY{n}{line3}\PY{p}{,}
+        
+        
+        \PY{n}{anim} \PY{o}{=} \PY{n}{animation}\PY{o}{.}\PY{n}{FuncAnimation}\PY{p}{(}\PY{n}{figure3}\PY{p}{,}
+                                       \PY{n}{func}\PY{o}{=}\PY{n}{display}\PY{p}{,}
+                                       \PY{n}{frames}\PY{o}{=}\PY{n}{compute}\PY{p}{(}\PY{p}{)}\PY{p}{,}
+                                       \PY{n}{interval}\PY{o}{=}\PY{l+m+mi}{40}\PY{p}{,} \PY{n}{blit}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+        
+        \PY{n}{display\PYZus{}widget}\PY{p}{(}\PY{n}{speed\PYZus{}slider}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    
+    \begin{verbatim}
+<IPython.core.display.Javascript object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+IntSlider(value=3, description='Vitesse:', max=10, min=1)
+    \end{verbatim}
+
+    
+    \hypertarget{conclusion}{%
+\subsubsection{Conclusion}\label{conclusion}}
+
+    Avec une approche de programmation plus traditionnelle, on pourrait
+penser avoir besoin de recourir à plusieurs \emph{threads} pour
+implémenter ce genre de visualisation interactive.
+
+En effet, vous remarquerez que dans cette dernière version, en termes de
+parallèlisme, on peut avoir l'impression que 3 choses ont lieu
+principalement en même temps~: * la logique de calcul, qui en substance
+est décrite comme un unique \texttt{while\ True:}, * la logique
+d'affichage, qui est cadencée par \texttt{FuncAnimation}, * et la
+logique interactive, qui gère le widget sur interaction de
+l'utilisateur.
+
+Le point à retenir ici est que, grâce à la fois au générateur et au
+notebook, on n'a pas du tout besoin de gérer soi-même cet aspect de
+programmation parallèle.
+
+Nous verrons d'ailleurs dans la semaine suivante comment le paradigme de
+programmation asynchrone de Python a été bâti, au dessus de cette
+capacité qu'offre le générateur, pour utiliser ce type d'approche de
+manière systématique, afin de faire tourner dans un seul \emph{thread}
+et de manière transparente, un grand nombre de logiques.
+
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+Voyez~: * \href{https://matplotlib.org/api/animation_api.html}{la
+documentation du module \texttt{animation}}, * ainsi que
+\href{https://jakevdp.github.io/blog/2012/08/18/matplotlib-animation-tutorial/}{le
+tutoriel dont on s'est inspiré pour ce notebook}, surtout pour voir
+d'autres animations plus élaborées.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

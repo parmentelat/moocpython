@@ -1,0 +1,599 @@
+    
+    
+    
+    
+
+    
+
+    \hypertarget{le-broadcasting}{%
+\section{\texorpdfstring{Le
+\emph{broadcasting}}{Le broadcasting}}\label{le-broadcasting}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+\end{Verbatim}
+
+
+    \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
+\subsection{Complément - niveau
+intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
+
+    Lorsque l'on a parlé de programmation vectorielle, on a vu que l'on
+pouvait écrire quelque chose comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{)}
+        \PY{n}{Y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{cos}\PY{p}{(}\PY{n}{X}\PY{p}{)} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{X}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{2}
+\end{Verbatim}
+
+
+    Je vous fais remarquer que dans cette dernière ligne on combine~:
+
+\begin{itemize}
+\tightlist
+\item
+  deux tableaux de mêmes tailles - quand on ajoute \texttt{np.cos(X)}
+  avec \texttt{np.sin(X)}~;
+\item
+  un tableau avec un scalaire - quand on ajoute \texttt{2} au résultat.
+\end{itemize}
+
+    En fait, le \emph{broadcasting} est ce qui permet~:
+
+\begin{itemize}
+\tightlist
+\item
+  d'unifier le sens de ces deux opérations~;
+\item
+  de donner du sens à des cas plus généraux, où on fait des opérations
+  entre des tableaux qui ont des \emph{tailles différentes}, mais assez
+  semblables pour que l'on puisse tout de même les combiner.
+\end{itemize}
+
+    \hypertarget{exemples-en-2d}{%
+\subsection{Exemples en 2D}\label{exemples-en-2d}}
+
+    Nous allons commencer par quelques exemples simples, avant de
+généraliser le mécanisme. Pour commencer, nous nous donnons un tableau
+de base~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{100} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{ones}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{int32}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[100 100 100 100 100]
+ [100 100 100 100 100]
+ [100 100 100 100 100]]
+
+    \end{Verbatim}
+
+    Je vais illustrer le broadcasting avec l'opération \texttt{+}, mais bien
+entendu ce mécanisme est à l'œuvre dès que vous faites des opérations
+entre deux tableaux qui n'ont pas les mêmes dimensions.
+
+Pour commencer, je vais donc ajouter à mon tableau de base un scalaire~:
+
+    \hypertarget{broadcasting-entre-les-dimensions-3-5-et-1}{%
+\subsubsection{\texorpdfstring{Broadcasting entre les dimensions
+\texttt{(3,\ 5)} et
+\texttt{(1,)}}{Broadcasting entre les dimensions (3, 5) et (1,)}}\label{broadcasting-entre-les-dimensions-3-5-et-1}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[100 100 100 100 100]
+ [100 100 100 100 100]
+ [100 100 100 100 100]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{b} \PY{o}{=} \PY{l+m+mi}{3}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+3
+
+    \end{Verbatim}
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+    Lorsque j'ajoute ces deux tableaux, c'est comme si j'avais ajouté à
+\texttt{a} la différence~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} pour élaborer c}
+        \PY{n}{c} \PY{o}{=} \PY{n}{a} \PY{o}{+} \PY{n}{b}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{c}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[103 103 103 103 103]
+ [103 103 103 103 103]
+ [103 103 103 103 103]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} c\PYZsq{}est comme si j\PYZsq{}avais}
+        \PY{c+c1}{\PYZsh{} ajouté à a ce terme\PYZhy{}ci}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{c} \PY{o}{\PYZhy{}} \PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[3 3 3 3 3]
+ [3 3 3 3 3]
+ [3 3 3 3 3]]
+
+    \end{Verbatim}
+
+    C'est un premier cas particulier de \emph{broadcasting} dans sa version
+extrême.
+
+Le scalaire \texttt{b}, qui est en l'occurrence considéré comme un
+tableau dont le \texttt{shape} vaut \texttt{(1,)}, est dupliqué dans les
+deux directions jusqu'à obtenir ce tableau uniforme de taille
+\texttt{(5,\ 3)} et qui contient un \texttt{3} partout.
+
+Et c'est ce tableau, qui est maintenant de la même taille que
+\texttt{a}, qui est ajouté à \texttt{a}.
+
+    Je précise que cette explication est du domaine du modèle pédagogique~;
+je ne dis pas que l'implémentation va réellement allouer un second
+tableau, bien évidemment on peut optimiser pour éviter cette
+construction inutile.
+
+    \hypertarget{broadcasting-3-5-et-5}{%
+\subsubsection{\texorpdfstring{Broadcasting \texttt{(3,\ 5)} et
+\texttt{(5,)}}{Broadcasting (3, 5) et (5,)}}\label{broadcasting-3-5-et-5}}
+
+    Voyons maintenant un cas un peu moins évident. Je peux ajouter à mon
+tableau de base une ligne, c'est-à-dire un tableau de taille
+\texttt{(5,\ )}. Voyons cela~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[100 100 100 100 100]
+ [100 100 100 100 100]
+ [100 100 100 100 100]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{b} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[1 2 3 4 5]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{b}\PY{o}{.}\PY{n}{shape}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:} (5,)
+\end{Verbatim}
+            
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+    Ici encore, je peux ajouter les deux termes~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} je peux ici encore}
+         \PY{c+c1}{\PYZsh{} ajouter les tableaux}
+         \PY{n}{c} \PY{o}{=} \PY{n}{a} \PY{o}{+} \PY{n}{b}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{c}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[101 102 103 104 105]
+ [101 102 103 104 105]
+ [101 102 103 104 105]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} et c\PYZsq{}est comme si j\PYZsq{}avais}
+         \PY{c+c1}{\PYZsh{} ajouté à a ce terme\PYZhy{}ci}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{c} \PY{o}{\PYZhy{}} \PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[1 2 3 4 5]
+ [1 2 3 4 5]
+ [1 2 3 4 5]]
+
+    \end{Verbatim}
+
+    Avec le même point de vue que tout à l'heure, on peut se dire qu'on a
+d'abord transformé (broadcasté) le tableau \texttt{b}~:
+
+    depuis la dimension \texttt{(5,)}
+
+    vers la dimension \texttt{(3,\ 5)}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} départ}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[1 2 3 4 5]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} arrivée}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{c} \PY{o}{\PYZhy{}} \PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[1 2 3 4 5]
+ [1 2 3 4 5]
+ [1 2 3 4 5]]
+
+    \end{Verbatim}
+
+    Vous commencez à mieux voir comment ça fonctionne~; s'il existe une
+direction dans laquelle on peut ``tirer'' les données pour faire
+coincider les formes, on peut faire du broadcasting. Et ça marche dans
+toutes les directions, comme on va le voir tout de suite.
+
+    \hypertarget{broadcasting-3-5-et-3-1}{%
+\subsubsection{\texorpdfstring{Broadcasting \texttt{(3,\ 5)} et
+\texttt{(3,\ 1)}}{Broadcasting (3, 5) et (3, 1)}}\label{broadcasting-3-5-et-3-1}}
+
+    Au lieu d'ajouter à \texttt{a} une ligne, on peut lui ajouter une
+colonne, pourvu qu'elle ait la même taille que les colonnes de
+\texttt{a}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[100 100 100 100 100]
+ [100 100 100 100 100]
+ [100 100 100 100 100]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{b} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[1]
+ [2]
+ [3]]
+
+    \end{Verbatim}
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+    Voyons comment se passe le broadcasting dans ce cas-là~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{c} \PY{o}{=} \PY{n}{a} \PY{o}{+} \PY{n}{b}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{c}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[101 101 101 101 101]
+ [102 102 102 102 102]
+ [103 103 103 103 103]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{c} \PY{o}{\PYZhy{}} \PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[1 1 1 1 1]
+ [2 2 2 2 2]
+ [3 3 3 3 3]]
+
+    \end{Verbatim}
+
+    Vous voyez que tout se passe exactement de la même façon que lorsqu'on
+avait ajouté une simple ligne, on a cette fois ``tiré'' la colonne dans
+la direction des lignes, pour passer~:
+
+    depuis la dimension \texttt{(3,\ 1)}
+
+    vers la dimension \texttt{(3,\ 5)}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} départ}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[1]
+ [2]
+ [3]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{c+c1}{\PYZsh{} arrivée}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{c} \PY{o}{\PYZhy{}} \PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[1 1 1 1 1]
+ [2 2 2 2 2]
+ [3 3 3 3 3]]
+
+    \end{Verbatim}
+
+    \hypertarget{broadcasting-3-1-et-1-5}{%
+\subsubsection{\texorpdfstring{Broadcasting \texttt{(3,\ 1)} et
+\texttt{(1,\ 5)}}{Broadcasting (3, 1) et (1, 5)}}\label{broadcasting-3-1-et-1-5}}
+
+    Nous avons maintenant tous les éléments en main pour comprendre un
+exemple plus intéressant, où les deux tableaux ont des formes pas
+vraiment compatibles à première vue~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{col} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{col}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[1]
+ [2]
+ [3]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n}{line} \PY{o}{=} \PY{l+m+mi}{100} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{line}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[100 200 300 400 500]
+
+    \end{Verbatim}
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+    Grâce au broadcasting, on peut additionner ces deux tableaux pour
+obtenir ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{n}{m} \PY{o}{=} \PY{n}{col} \PY{o}{+} \PY{n}{line}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{m}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[101 201 301 401 501]
+ [102 202 302 402 502]
+ [103 203 303 403 503]]
+
+    \end{Verbatim}
+
+    Remarquez qu'ici les \textbf{deux} entrées ont été étirées pour
+atteindre une dimension commune.
+
+    Et donc pour illustrer le broadcasting dans ce cas, tout se passe comme
+si on avait~:
+
+    transformé la colonne \texttt{(3,\ 1)}
+
+    en tableau \texttt{(3,\ 5)}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{col}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[1]
+ [2]
+ [3]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{col} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{int}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[1 1 1 1 1]
+ [2 2 2 2 2]
+ [3 3 3 3 3]]
+
+    \end{Verbatim}
+
+    et transformé la ligne \texttt{(1,\ 5)}
+
+    en tableau \texttt{(3,\ 5)}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{line}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[100 200 300 400 500]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{line} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{int}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[100 200 300 400 500]
+ [100 200 300 400 500]
+ [100 200 300 400 500]]
+
+    \end{Verbatim}
+
+    avant d'additionner terme à terme ces deux tableaux 3 x 5.
+
+    \hypertarget{en-dimensions-supuxe9rieures}{%
+\subsection{En dimensions
+supérieures}\label{en-dimensions-supuxe9rieures}}
+
+    Pour savoir si deux tableaux peuvent être compatibles via
+\emph{broadcasting}, il faut comparer leurs formes. Je commence par vous
+donner des exemples. Ici encore quand on mentionne l'addition, cela vaut
+pour n'importe quel opérateur binaire.
+
+    \hypertarget{exemples-de-dimensions-compatibles}{%
+\subsubsection{Exemples de dimensions
+compatibles}\label{exemples-de-dimensions-compatibles}}
+
+    \begin{verbatim}
+A   15 x 3 x 5
+B   15 x 1 x 5
+A+B 15 x 3 x 5
+\end{verbatim}
+
+    Cas de l'ajout d'un scalaire~:
+
+\begin{verbatim}
+A   15 x 3 x 5
+B            1
+A+B 15 x 3 x 5
+\end{verbatim}
+
+    \begin{verbatim}
+A   15 x 3 x 5
+B        3 x 5
+A+B 15 x 3 x 5
+\end{verbatim}
+
+    \begin{verbatim}
+A   15 x 3 x 5
+B        3 x 1
+A+B 15 x 3 x 5
+\end{verbatim}
+
+    \hypertarget{exemples-de-dimensions-non-compatibles}{%
+\subsubsection{\texorpdfstring{Exemples de dimensions \textbf{non
+compatibles}}{Exemples de dimensions non compatibles}}\label{exemples-de-dimensions-non-compatibles}}
+
+    Deux lignes de longueurs différentes~:
+
+\begin{verbatim}
+A  3
+B  4
+\end{verbatim}
+
+    Un cas plus douteux~:
+
+\begin{verbatim}
+A      2 x 1
+B  8 x 4 x 3
+\end{verbatim}
+
+    Comme vous le voyez sur tous ces exemples~:
+
+\begin{itemize}
+\item
+  on peut ajouter A et B lorsqu'il existe une dimension C qui ``étire''
+  à la fois celle de A et celle de B~;
+\item
+  on le voit sur le dernier exemple, mais on ne peut broadcaster que de
+  \textbf{1} vers \(n\)~; lorsque \(p>1\) divise \(n\), on ne
+  \textbf{peut pas} broadcaster de \(p\) vers \(n\), comme on pourrait
+  peut-être l'imaginer.
+\end{itemize}
+
+    Comme c'est un cours de Python, plutôt que de formaliser ça sous une
+forme mathématique - je vous le laisse en exercice - je vais vous
+proposer plutôt une fonction Python qui détermine si deux tuples sont
+des \texttt{shape} compatibles de ce point de vue.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{c+c1}{\PYZsh{} le module broadcasting n\PYZsq{}est pas standard}
+         \PY{c+c1}{\PYZsh{} c\PYZsq{}est moi qui l\PYZsq{}ai écrit pour illustrer le cours}
+         \PY{k+kn}{from} \PY{n+nn}{broadcasting} \PY{k}{import} \PY{n}{compatible}\PY{p}{,} \PY{n}{compatible2}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{c+c1}{\PYZsh{} on peut dupliquer selon un axe}
+         \PY{n}{compatible}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{15}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{15}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}29}]:} (15, 3, 5)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{c+c1}{\PYZsh{} ou selon deux axes}
+         \PY{n}{compatible}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{15}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}30}]:} (15, 3, 5)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{c+c1}{\PYZsh{} c\PYZsq{}est bien clair que non}
+         \PY{n}{compatible}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}31}]:} False
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{c+c1}{\PYZsh{} on ne peut pas passer de 2 à 4}
+         \PY{n}{compatible}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}32}]:} False
+\end{Verbatim}
+            
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

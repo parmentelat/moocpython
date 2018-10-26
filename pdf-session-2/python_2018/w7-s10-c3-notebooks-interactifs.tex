@@ -1,0 +1,404 @@
+    
+    
+    
+    
+
+    
+
+    \hypertarget{notebooks-interactifs}{%
+\section{Notebooks interactifs}\label{notebooks-interactifs}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+        \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{ion}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    Pour conclure cette série sur les outils de visualisation, nous allons
+voir quelques fonctionnalités disponibles uniquement dans
+l'environnement des notebooks, et qui offrent des possibilités
+supplémentaires par rapport aux visualisations que l'on a vues jusqu'à
+maintenant.
+
+    Pour commencer et en guise d'exemple, je vous invite à consulter un
+\href{http://www.nature.com/news/ipython-interactive-demo-7.21492}{exemple
+de notebook publié par la célèbre revue \emph{Nature}}, qui pourra vous
+donner une idée de ce qu'il est possible de faire de cette façon~;
+essayez de bien penser à cliquer sur \texttt{Expand\ to\ fullscreen}
+pour un meilleur confort.
+
+Je vous signale d'ailleurs que
+\href{https://github.com/jupyter/nature-demo}{ce notebook est disponible
+sur github ici}.
+
+    \hypertarget{une-visualisation-interactive-simple-interact}{%
+\subsubsection{\texorpdfstring{Une visualisation interactive simple~:
+\texttt{interact}}{Une visualisation interactive simple~: interact}}\label{une-visualisation-interactive-simple-interact}}
+
+    Pour refaire de notre coté quelque chose d'analogue, nous allons
+commencer par animer la fonction sinus, avec un bouton pour régler la
+fréquence. Pour cela nous allons utiliser la fonction
+\texttt{interact}~; à nouveau c'est un utilitaire qui fait partie de
+l'écosystème des notebooks, et plus précisément du module
+\texttt{ipywidgets}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{ipywidgets} \PY{k}{import} \PY{n}{interact}
+\end{Verbatim}
+
+
+    Dans un premier temps, j'écris une fonction qui prend en paramètre la
+fréquence, et qui dessine la fonction sinus sur un intervalle fixe de 0.
+à \(4\pi\)~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{def} \PY{n+nf}{sinus}\PY{p}{(}\PY{n}{freq}\PY{p}{)}\PY{p}{:}
+            \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mf}{0.}\PY{p}{,} \PY{l+m+mi}{4}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{l+m+mi}{200}\PY{p}{)}
+            \PY{n}{Y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{freq}\PY{o}{*}\PY{n}{X}\PY{p}{)}
+            \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{sinus}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c3-notebooks-interactifs_files/w7-s10-c3-notebooks-interactifs_11_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{sinus}\PY{p}{(}\PY{l+m+mf}{0.5}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c3-notebooks-interactifs_files/w7-s10-c3-notebooks-interactifs_12_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Maintenant, plutôt que de tracer individuellement les courbes une à une,
+j'utilise \texttt{interact} qui va m'afficher une réglette pour changer
+le paramètre \texttt{freq}. Ça se présente comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} je change maintenant la taille des visualisations}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    
+    \begin{verbatim}
+<Figure size 864x288 with 0 Axes>
+    \end{verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{interact}\PY{p}{(}\PY{n}{sinus}\PY{p}{,} \PY{n}{freq}\PY{o}{=}\PY{p}{(}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mf}{10.}\PY{p}{,} \PY{l+m+mf}{0.25}\PY{p}{)}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c3-notebooks-interactifs_files/w7-s10-c3-notebooks-interactifs_15_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{muxe9canisme-dinteract}{%
+\subsection{\texorpdfstring{Mécanisme
+d'\texttt{interact}}{Mécanisme d'interact}}\label{muxe9canisme-dinteract}}
+
+    La fonction \texttt{interact} s'attend à recevoir~: * en premier
+argument~: une fonction \texttt{f}~; * et ensuite autant d'arguments
+nommés supplémentaires que de paramètres attendus par \texttt{f}.
+
+Comme dans mon cas la fonction \texttt{sinus} attend un paramètre nommé
+\texttt{freq}, le deuxième argument de \texttt{interact} lui est passé
+aussi avec le nom \texttt{freq}.
+
+    \hypertarget{les-objets-slider}{%
+\subsubsection{\texorpdfstring{Les objets
+\texttt{Slider}}{Les objets Slider}}\label{les-objets-slider}}
+
+    Chacun des arguments à \texttt{interact} (en plus de la fonction)
+correspond à un objet de type \texttt{Slider} (dans la ménagerie de
+\texttt{ipywidget}). Ici en passant juste le tuple
+\texttt{(0.5,\ 10.,\ 0.25)} j'utilise un raccourci pour dire que je veux
+pouvoir régler le paramètre \texttt{freq} sur une plage allant de
+\texttt{0.5} à \texttt{10} avec un pas de \texttt{0.25}.
+
+    Mon premier exemple avec \texttt{interact} est en réalité équivalent à
+ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{k+kn}{from} \PY{n+nn}{ipywidgets} \PY{k}{import} \PY{n}{FloatSlider}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} exactement équivalent à la version ci\PYZhy{}dessus}
+        \PY{n}{interact}\PY{p}{(}\PY{n}{sinus}\PY{p}{,} \PY{n}{freq}\PY{o}{=}\PY{n}{FloatSlider}\PY{p}{(}\PY{n+nb}{min}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n+nb}{max}\PY{o}{=}\PY{l+m+mf}{10.}\PY{p}{,} \PY{n}{step}\PY{o}{=}\PY{l+m+mf}{0.25}\PY{p}{)}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c3-notebooks-interactifs_files/w7-s10-c3-notebooks-interactifs_22_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Mais en utilisant la forme bavarde, je peux choisir davantage d'options,
+comme notamment~:
+
+\begin{itemize}
+\tightlist
+\item
+  mettre \texttt{continuous\_update\ =\ False}~; l'effet de ce réglage,
+  c'est que l'on met à jour la figure seulement lorsque je lâche la
+  réglette~; c'est utile lorsque les calculs sont un peu lents, comme
+  ici avec l'infrastructure notebook qui est à distance~;
+\item
+  mettre \texttt{value=1.} pour choisir la valeur initiale~:
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} exactement équivalent à la version ci\PYZhy{}dessus}
+         \PY{c+c1}{\PYZsh{} sauf qu\PYZsq{}on ne redessine que lorsque la réglette}
+         \PY{c+c1}{\PYZsh{} est relâchée}
+         \PY{n}{interact}\PY{p}{(}\PY{n}{sinus}\PY{p}{,} \PY{n}{freq}\PY{o}{=}\PY{n}{FloatSlider}\PY{p}{(}\PY{n+nb}{min}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n+nb}{max}\PY{o}{=}\PY{l+m+mf}{10.}\PY{p}{,} 
+                                          \PY{n}{step}\PY{o}{=}\PY{l+m+mf}{0.25}\PY{p}{,} \PY{n}{value}\PY{o}{=}\PY{l+m+mf}{1.}\PY{p}{,}
+                                          \PY{n}{continuous\PYZus{}update}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c3-notebooks-interactifs_files/w7-s10-c3-notebooks-interactifs_24_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{plusieurs-paramuxe8tres}{%
+\subsubsection{Plusieurs paramètres}\label{plusieurs-paramuxe8tres}}
+
+    Voyons tout de suite un exemple avec deux paramètres, je vais écrire
+maintenant une fonction qui me permet de changer aussi la phase~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{k}{def} \PY{n+nf}{sinus2}\PY{p}{(}\PY{n}{freq}\PY{p}{,} \PY{n}{phase}\PY{p}{)}\PY{p}{:}
+             \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mf}{0.}\PY{p}{,} \PY{l+m+mi}{4}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{l+m+mi}{200}\PY{p}{)}
+             \PY{n}{Y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{freq}\PY{o}{*}\PY{p}{(}\PY{n}{X}\PY{o}{+}\PY{n}{phase}\PY{p}{)}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{)}
+\end{Verbatim}
+
+
+    Et donc maintenant je passe à \texttt{interact} un troisième paramètre~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{interact}\PY{p}{(}\PY{n}{sinus2}\PY{p}{,}
+                  \PY{n}{freq}\PY{o}{=}\PY{n}{FloatSlider}\PY{p}{(}\PY{n+nb}{min}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n+nb}{max}\PY{o}{=}\PY{l+m+mf}{10.}\PY{p}{,} \PY{n}{step}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{continuous\PYZus{}update}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{p}{,}
+                  \PY{n}{phase}\PY{o}{=}\PY{n}{FloatSlider}\PY{p}{(}\PY{n+nb}{min}\PY{o}{=}\PY{l+m+mf}{0.}\PY{p}{,} \PY{n+nb}{max}\PY{o}{=}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{n}{step}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{/}\PY{l+m+mi}{6}\PY{p}{,} \PY{n}{continuous\PYZus{}update}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{p}{,}
+                 \PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c3-notebooks-interactifs_files/w7-s10-c3-notebooks-interactifs_29_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{bouche-trou-fixed}{%
+\subsection{\texorpdfstring{Bouche-trou~:
+\texttt{fixed}}{Bouche-trou~: fixed}}\label{bouche-trou-fixed}}
+
+    Si j'ai une fonction qui prend plus de paramètres que je ne veux montrer
+de réglettes, je peux fixer un des paramètres par exemple comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{k+kn}{from} \PY{n+nn}{ipywidgets} \PY{k}{import} \PY{n}{fixed}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} avec une fonction à deux argument,}
+         \PY{c+c1}{\PYZsh{} je peux en fixer un, et n\PYZsq{}avoir qu\PYZsq{}une réglette}
+         \PY{c+c1}{\PYZsh{} pour fixer celui qui est libre}
+         \PY{n}{interact}\PY{p}{(}\PY{n}{sinus2}\PY{p}{,} \PY{n}{freq}\PY{o}{=}\PY{n}{fixed}\PY{p}{(}\PY{l+m+mf}{1.}\PY{p}{)}\PY{p}{,}
+                  \PY{n}{phase}\PY{o}{=}\PY{n}{FloatSlider}\PY{p}{(}\PY{n+nb}{min}\PY{o}{=}\PY{l+m+mf}{0.}\PY{p}{,} \PY{n+nb}{max}\PY{o}{=}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{n}{step}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{/}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{,}
+                 \PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c3-notebooks-interactifs_files/w7-s10-c3-notebooks-interactifs_33_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{widgets}{%
+\subsection{Widgets}\label{widgets}}
+
+    Il existe toute une famille de widgets, dont \texttt{FloatSlider} est
+l'exemple le plus courant, mais vous pouvez aussi~: * créer des radio
+bouton pour entrer un paramètre booléen~; * ou une saisie de texte pour
+entre un paramètre de type \texttt{str}~; * ou une liste à choix
+multiples\ldots{}
+
+Bref, vous pouvez créer une mini interface-utilisateur avec des objets
+graphiques simples choisis dans une palette assez complète pour ce type
+d'application.
+
+Voyez
+\href{http://ipywidgets.readthedocs.io/en/latest/examples/Using\%20Interact.html}{les
+détails complets sur \texttt{readthedocs.io}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} de même qu\PYZsq{}un tuple était ci\PYZhy{}dessus un raccourci pour un FloatSlider}
+         \PY{c+c1}{\PYZsh{} une liste ou un dictionnaire est transformé(e) en un Dropdown}
+         \PY{n}{interact}\PY{p}{(}\PY{n}{sinus}\PY{p}{,} \PY{n}{freq}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rapide}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mf}{10.}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{moyenne}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mf}{1.}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lente}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mf}{0.1}\PY{p}{\PYZcb{}}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c3-notebooks-interactifs_files/w7-s10-c3-notebooks-interactifs_36_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Voyez la
+\href{http://ipywidgets.readthedocs.io/en/latest/examples/Widget\%20List.html}{liste
+complète des widgets ici}.
+
+    \hypertarget{dashboards}{%
+\section{Dashboards}\label{dashboards}}
+
+    Lorsqu'on a besoin de faire une interface un peu plus soignée, on peut
+créer sa propre disposition de boutons et autres réglages.
+
+    Voici un exemple de dashboard, uniquement pour vous donner une meilleure
+idée, qui pour changer agit sur une visualisation réalisée avec plot.ly
+plutôt que matplotlib~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{k+kn}{import} \PY{n+nn}{plotly}
+         \PY{n}{plotly}\PY{o}{.}\PY{n}{\PYZus{}\PYZus{}version\PYZus{}\PYZus{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}16}]:} '3.1.1'
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} on importe la bibliothèque plot.ly}
+         \PY{k+kn}{import} \PY{n+nn}{plotly}\PY{n+nn}{.}\PY{n+nn}{plotly} \PY{k}{as} \PY{n+nn}{py}
+         \PY{k+kn}{import} \PY{n+nn}{plotly}\PY{n+nn}{.}\PY{n+nn}{graph\PYZus{}objs} \PY{k}{as} \PY{n+nn}{go}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{} il est impératif d\PYZsq{}utiliser plot.ly en mode \PYZsq{}offline\PYZsq{} }
+         \PY{c+c1}{\PYZsh{} pour in mode interactif, }
+         \PY{c+c1}{\PYZsh{} car sinon les affichages sont beaucoup trop lents}
+         \PY{k+kn}{import} \PY{n+nn}{plotly}\PY{n+nn}{.}\PY{n+nn}{offline} \PY{k}{as} \PY{n+nn}{pyoff}
+         
+         \PY{n}{pyoff}\PY{o}{.}\PY{n}{init\PYZus{}notebook\PYZus{}mode}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} les widgets pour construire le tableau de bord}
+         \PY{k+kn}{from} \PY{n+nn}{ipywidgets} \PY{k}{import} \PY{p}{(}\PY{n}{interactive\PYZus{}output}\PY{p}{,}
+                                 \PY{n}{IntSlider}\PY{p}{,} \PY{n}{Dropdown}\PY{p}{,} \PY{n}{Layout}\PY{p}{,} \PY{n}{HBox}\PY{p}{,} \PY{n}{VBox}\PY{p}{,} \PY{n}{Text}\PY{p}{)}
+         \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{display}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{c+c1}{\PYZsh{} une fonction sinus à 4 réglages}
+         \PY{c+c1}{\PYZsh{} qu\PYZsq{}on réalise pour changer avec plot.ly}
+         \PY{c+c1}{\PYZsh{} et non pas avec matplotlib}
+         \PY{k}{def} \PY{n+nf}{sinus4}\PY{p}{(}\PY{n}{freq}\PY{p}{,} \PY{n}{phase}\PY{p}{,} \PY{n}{amplitude}\PY{p}{,} \PY{n}{domain}\PY{p}{)}\PY{p}{:}
+         
+             \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mf}{0.}\PY{p}{,} \PY{n}{domain}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{l+m+mi}{500}\PY{p}{)}
+             \PY{n}{Y} \PY{o}{=} \PY{n}{amplitude} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{freq}\PY{o}{*}\PY{p}{(}\PY{n}{X}\PY{o}{+}\PY{n}{phase}\PY{p}{)}\PY{p}{)}
+         
+             \PY{n}{data} \PY{o}{=} \PY{p}{[} \PY{n}{go}\PY{o}{.}\PY{n}{Scatter}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{o}{=}\PY{n}{Y}\PY{p}{,} \PY{n}{mode}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lines}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{name}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sinus}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{p}{]}
+             \PY{c+c1}{\PYZsh{} je fixe l\PYZsq{}amplitude à 10 pour que les animations}
+             \PY{c+c1}{\PYZsh{} soient plus parlantes}
+             \PY{n}{layout} \PY{o}{=} \PY{n}{go}\PY{o}{.}\PY{n}{Layout}\PY{p}{(}
+                 \PY{n}{yaxis} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{range}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{]}\PY{p}{\PYZcb{}}\PY{p}{,}
+                 \PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Exemple de graphique interactif avec dashboard}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+             \PY{p}{)}
+             \PY{n}{figure} \PY{o}{=} \PY{n}{go}\PY{o}{.}\PY{n}{Figure}\PY{p}{(}\PY{n}{data} \PY{o}{=} \PY{n}{data}\PY{p}{,} \PY{n}{layout}\PY{o}{=}\PY{n}{layout}\PY{p}{)}
+             \PY{n}{pyoff}\PY{o}{.}\PY{n}{iplot}\PY{p}{(}\PY{n}{figure}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{k}{def} \PY{n+nf}{my\PYZus{}dashboard}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+         \PY{l+s+sd}{    create and display a dashboard}
+         \PY{l+s+sd}{    return a dictionary name\PYZhy{}\PYZgt{}widget suitable for interactive\PYZus{}output}
+         \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+             \PY{c+c1}{\PYZsh{} dashboard pieces as widgets}
+             \PY{n}{l\PYZus{}75} \PY{o}{=} \PY{n}{Layout}\PY{p}{(}\PY{n}{width}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{75}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+             \PY{n}{l\PYZus{}50} \PY{o}{=} \PY{n}{Layout}\PY{p}{(}\PY{n}{width}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{50}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+             \PY{n}{l\PYZus{}25} \PY{o}{=} \PY{n}{Layout}\PY{p}{(}\PY{n}{width}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{25}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+             \PY{n}{w\PYZus{}freq} \PY{o}{=} \PY{n}{Dropdown}\PY{p}{(}\PY{n}{options}\PY{o}{=}\PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}\PY{p}{,}
+                               \PY{n}{value} \PY{o}{=} \PY{l+m+mi}{1}\PY{p}{,}
+                               \PY{n}{description} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fréquence}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                               \PY{n}{layout}\PY{o}{=}\PY{n}{l\PYZus{}50}\PY{p}{)}
+             \PY{n}{w\PYZus{}phase} \PY{o}{=} \PY{n}{FloatSlider}\PY{p}{(}\PY{n+nb}{min}\PY{o}{=}\PY{l+m+mf}{0.}\PY{p}{,} \PY{n+nb}{max} \PY{o}{=} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{n}{step}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{/}\PY{l+m+mi}{12}\PY{p}{,}
+                                   \PY{n}{description}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{phase}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                                   \PY{n}{value}\PY{o}{=}\PY{l+m+mf}{0.}\PY{p}{,} \PY{n}{layout}\PY{o}{=}\PY{n}{l\PYZus{}75}\PY{p}{)}
+             \PY{n}{w\PYZus{}amplitude} \PY{o}{=} \PY{n}{Dropdown}\PY{p}{(}\PY{n}{options}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{micro}\PY{l+s+s2}{\PYZdq{}} \PY{p}{:} \PY{o}{.}\PY{l+m+mi}{1}\PY{p}{,}
+                                             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{mini}\PY{l+s+s2}{\PYZdq{}} \PY{p}{:} \PY{o}{.}\PY{l+m+mi}{5}\PY{p}{,}
+                                             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{normal}\PY{l+s+s2}{\PYZdq{}} \PY{p}{:} \PY{l+m+mf}{1.}\PY{p}{,}
+                                             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{grand}\PY{l+s+s2}{\PYZdq{}} \PY{p}{:} \PY{l+m+mf}{3.}\PY{p}{,}
+                                             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{énorme}\PY{l+s+s2}{\PYZdq{}} \PY{p}{:} \PY{l+m+mf}{10.}\PY{p}{\PYZcb{}}\PY{p}{,}
+                                    \PY{n}{value} \PY{o}{=} \PY{l+m+mf}{3.}\PY{p}{,}
+                                    \PY{n}{description} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{amplitude}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                                    \PY{n}{layout} \PY{o}{=} \PY{n}{l\PYZus{}25}\PY{p}{)}
+             \PY{n}{w\PYZus{}domain} \PY{o}{=} \PY{n}{IntSlider}\PY{p}{(}\PY{n+nb}{min}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n+nb}{max}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{description}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dom. n * π}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{layout}\PY{o}{=}\PY{n}{l\PYZus{}50}\PY{p}{)}
+         
+             \PY{c+c1}{\PYZsh{} make up a dashboard}
+             \PY{n}{dashboard} \PY{o}{=} \PY{n}{VBox}\PY{p}{(}\PY{p}{[}\PY{n}{HBox}\PY{p}{(}\PY{p}{[}\PY{n}{w\PYZus{}amplitude}\PY{p}{,} \PY{n}{w\PYZus{}phase}\PY{p}{]}\PY{p}{)}\PY{p}{,}
+                               \PY{n}{HBox}\PY{p}{(}\PY{p}{[}\PY{n}{w\PYZus{}domain}\PY{p}{,} \PY{n}{w\PYZus{}freq}\PY{p}{]}\PY{p}{)}\PY{p}{,}
+                              \PY{p}{]}\PY{p}{)}
+             \PY{n}{display}\PY{p}{(}\PY{n}{dashboard}\PY{p}{)}
+             \PY{k}{return} \PY{n+nb}{dict}\PY{p}{(}\PY{n}{freq}\PY{o}{=}\PY{n}{w\PYZus{}freq}\PY{p}{,} \PY{n}{phase}\PY{o}{=}\PY{n}{w\PYZus{}phase}\PY{p}{,} \PY{n}{amplitude}\PY{o}{=}\PY{n}{w\PYZus{}amplitude}\PY{p}{,} \PY{n}{domain}\PY{o}{=}\PY{n}{w\PYZus{}domain}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+Avec tout ceci en place on peut montrer un dialogue interactif pour
+changer tous les paramètres de sinus4.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{c+c1}{\PYZsh{} interactively call sinus4}
+         \PY{c+c1}{\PYZsh{} attention il reste un bug:}
+         \PY{c+c1}{\PYZsh{} au tout début rien ne s\PYZsq{}affiche,}
+         \PY{c+c1}{\PYZsh{} il faut faire bouger au moins un réglage}
+         \PY{n}{interactive\PYZus{}output}\PY{p}{(}\PY{n}{sinus4}\PY{p}{,} \PY{n}{my\PYZus{}dashboard}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    
+    
+    
+    \begin{verbatim}
+Output()
+    \end{verbatim}
+
+    
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

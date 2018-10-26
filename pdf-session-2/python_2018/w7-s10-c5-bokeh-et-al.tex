@@ -1,0 +1,390 @@
+    
+    
+    
+    
+
+    
+
+    \hypertarget{autres-bibliothuxe8ques-de-visualisation}{%
+\section{Autres bibliothèques de
+visualisation}\label{autres-bibliothuxe8ques-de-visualisation}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    Pour conclure cette séquence sur les outils de visualisation, nous
+allons très rapidement évoquer des alternatives à la bibliothèque
+\texttt{matplotlib}, sachant qu'il existe en réalité un très grand
+nombre de bibliothèques en développement dans ce domaine en pleine
+expansion.
+
+    \hypertarget{le-poids-du-passuxe9}{%
+\subsubsection{Le poids du passé}\label{le-poids-du-passuxe9}}
+
+    On a vu que \texttt{matplotlib} est un outil relativement complet.
+Toutefois, on peut lui reprocher deux défauts majeurs.
+
+\begin{itemize}
+\item
+  D'une part, \texttt{matplotlib} a choisi d'offrir une interface aussi
+  proche que possible de ce qui existait préalablement en MatLab. C'est
+  un choix tout à fait judicieux dans l'optique d'attirer la communauté
+  utilisatrice de MatLab à des outils open source basés sur Python et
+  numpy. Mais en contrepartie cela implique d'adopter tels quels des
+  choix de conception.
+\item
+  Et notamment, en suivant cette approche on hérite d'un modèle mental
+  qui est plus orienté vers la sortie vers du papier que vers la
+  création de documents interactifs.
+\end{itemize}
+
+    Ceci, ajouté à l'explosion du domaine de l'analyse et de la
+visualisation de données, explique la largeur de l'offre en matière de
+bibliothèques de visualisation alternatives.
+
+    \hypertarget{bokeh}{%
+\subsubsection{\texorpdfstring{\texttt{bokeh}}{bokeh}}\label{bokeh}}
+
+    Parmi celles-ci, nous voulons vous signaler notamment la bibliothèque
+\href{https://bokeh.pydata.org/en/latest/}{\texttt{bokeh}}, qui est
+développée principalement par Anaconda, dans un modèle open source.
+
+\texttt{bokeh} présente quelques bonnes propriétés qui nous semblent
+mériter d'être signalées.
+
+    Pour commencer cette bibliothèque utilise une architecture qui permet de
+\emph{penser la visualisation comme quelque chose d'interactif} (disons
+une page html), et non pas de figé comme lorsqu'on pense en termes de
+feuille de papier. Notamment elle permet de faire collaborer du code
+Python avec du code JavaScript, qui offre immédiatement des possibilités
+bien plus pertinentes lorsqu'il s'agit de créer des interactions
+utilisateur qui soient attractives et efficaces. Signalons en passant, à
+cet égard, qu'elle utilise \href{https://d3js.org/}{la librairie
+JavaScript \texttt{d3.js}}, qui est devenu un standard de fait plus ou
+moins incontournable dans le domaine de la visualisation.
+
+En tout état de cause, elle offre une interface de programmation qui
+tient compte d'environnements comme les notebooks, ce qui peut s'avérer
+un atout précieux si vous utilisez massivement ce support, comme on va
+le voir, précisément, dans ce notebook.
+
+    Il peut aussi être intéressant de savoir que \texttt{bokeh} offre des
+possibilités natives de
+\href{https://bokeh.pydata.org/en/latest/docs/user_guide/graph.html}{visualisation
+de graphes} et de
+\href{https://bokeh.pydata.org/en/latest/docs/user_guide/geo.html\#}{données
+géographiques}.
+
+    Par contre à ce stade du développement, la visualisation en 3D n'est
+sans doute pas le point fort de \texttt{bokeh}. C'est une option qui
+reste possible (voir
+\href{https://github.com/bokeh/bokeh/tree/master/examples/app/surface3d}{par
+exemple ceci}), mais cela est pour l'instant considéré comme une
+extension de la librairie, et donc n'est accessible qu'au prix de
+l'écriture de code javascript.
+
+    Pour une présentation plus complète, je vous renvoie à
+\href{https://bokeh.pydata.org/en/latest/docs/user_guide.html}{la
+documentation utilisateur}.
+
+    \hypertarget{bokeh-dans-les-notebooks}{%
+\subsubsection{\texorpdfstring{\texttt{bokeh} dans les
+notebooks}{bokeh dans les notebooks}}\label{bokeh-dans-les-notebooks}}
+
+    Nous allons rapidement illustrer ici comment \texttt{bokeh} s'interface
+avec l'environnement des notebooks pour créer une visualisation
+interactive. Vous remarquerez que dans le code qui suit, on n'a
+\textbf{pas eu besoin de mentionner} de \emph{magic} ipython, comme
+lorsqu'on avait du faire dans le complément sur les notebooks
+interactifs~:
+
+\begin{verbatim}
+%matplotlib notebook
+\end{verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} l\PYZsq{}attirail de notebooks interactifs}
+        \PY{k+kn}{from} \PY{n+nn}{ipywidgets} \PY{k}{import} \PY{n}{interact}\PY{p}{,} \PY{n}{fixed}\PY{p}{,} \PY{n}{FloatSlider}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} les imports pour bokeh}
+        \PY{k+kn}{from} \PY{n+nn}{bokeh}\PY{n+nn}{.}\PY{n+nn}{plotting} \PY{k}{import} \PY{n}{figure}\PY{p}{,} \PY{n}{show}
+        \PY{c+c1}{\PYZsh{} dans la rubrique entrée\PYZhy{}sortie, on trouve}
+        \PY{c+c1}{\PYZsh{} les outils pour produire du html}
+        \PY{c+c1}{\PYZsh{}  (le mode par défaut)}
+        \PY{c+c1}{\PYZsh{} ou pour interactig avec un notebook}
+        \PY{k+kn}{from} \PY{n+nn}{bokeh}\PY{n+nn}{.}\PY{n+nn}{io} \PY{k}{import} \PY{n}{push\PYZus{}notebook}\PY{p}{,} \PY{n}{output\PYZus{}notebook}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} c\PYZsq{}est cette déclaration qui remplace}
+        \PY{c+c1}{\PYZsh{} si on veut la magic  \PYZsq{}\PYZpc{}matplotlib notebook\PYZsq{}}
+        \PY{n}{output\PYZus{}notebook}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    
+    
+    
+    
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} on crée un objet figure}
+        \PY{n}{fig1} \PY{o}{=} \PY{n}{figure}\PY{p}{(}
+            \PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fonctions trigonométriques}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+            \PY{n}{plot\PYZus{}height}\PY{o}{=}\PY{l+m+mi}{300}\PY{p}{,} \PY{n}{plot\PYZus{}width}\PY{o}{=}\PY{l+m+mi}{600}\PY{p}{,}
+            \PY{c+c1}{\PYZsh{} c\PYZsq{}est là notamment qu\PYZsq{}on précise}
+            \PY{c+c1}{\PYZsh{} l\PYZsq{}intervalle en y}
+            \PY{n}{y\PYZus{}range}\PY{o}{=}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,}
+        \PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} on initialise la figure en créant}
+        \PY{c+c1}{\PYZsh{} un objet courbe}
+        \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{l+m+mi}{2000}\PY{p}{)}
+        \PY{n}{y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+        \PY{n}{courbe\PYZus{}trigo} \PY{o}{=} \PY{n}{fig1}\PY{o}{.}\PY{n}{line}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZsh{}2222aa}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{line\PYZus{}width}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} la fonction de mise à jour, qui sera connectée}
+        \PY{c+c1}{\PYZsh{} à interact}
+        \PY{k}{def} \PY{n+nf}{update\PYZus{}trigo}\PY{p}{(}\PY{n}{function\PYZus{}name}\PY{p}{,} \PY{n}{frequence}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+                         \PY{n}{amplitude}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{phase}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{,}
+                         \PY{c+c1}{\PYZsh{} l\PYZsq{}objet handle correspond}
+                         \PY{c+c1}{\PYZsh{} à une figure à mettre à jour}
+                         \PY{o}{*}\PY{p}{,} \PY{n}{handle}\PY{p}{)}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} juste une astuce pour pouvoir choisir}
+            \PY{c+c1}{\PYZsh{} la fonction trigonométrique, qu\PYZsq{}on recherche}
+            \PY{c+c1}{\PYZsh{} dans le module numpy}
+            \PY{n}{func} \PY{o}{=} \PY{n+nb}{getattr}\PY{p}{(}\PY{n}{np}\PY{p}{,} \PY{n}{function\PYZus{}name}\PY{p}{)}
+            \PY{c+c1}{\PYZsh{} c\PYZsq{}est ici qu\PYZsq{}on modifie les données}
+            \PY{c+c1}{\PYZsh{} utilisées pour produire la courbe}
+            \PY{n}{courbe\PYZus{}trigo}\PY{o}{.}\PY{n}{data\PYZus{}source}\PY{o}{.}\PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PYZbs{}
+               \PY{n}{amplitude} \PY{o}{*} \PY{n}{func}\PY{p}{(}\PY{n}{frequence} \PY{o}{*} \PY{n}{x} \PY{o}{+} \PY{n}{phase}\PY{p}{)}
+            \PY{c+c1}{\PYZsh{} et c\PYZsq{}est ici qu\PYZsq{}on provoque la mise à jour}
+            \PY{n}{push\PYZus{}notebook}\PY{p}{(}\PY{n}{handle}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} au moment où matérialise l\PYZsq{}objet figure}
+        \PY{c+c1}{\PYZsh{} on récupère une `handle` qui lui correspond}
+        \PY{n}{handle1} \PY{o}{=} \PY{n}{show}\PY{p}{(}\PY{n}{fig1}\PY{p}{,} \PY{n}{notebook\PYZus{}handle}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+\end{Verbatim}
+
+
+    
+    
+    
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} maintenant on peut créer un interacteur}
+        \PY{n}{interact}\PY{p}{(}\PY{n}{update\PYZus{}trigo}\PY{p}{,} \PY{n}{function\PYZus{}name}\PY{o}{=}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{sin}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{cos}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tan}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,}
+                 \PY{n}{frequence}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{20}\PY{p}{)}\PY{p}{,}
+                 \PY{n}{amplitude}\PY{o}{=}\PY{p}{[}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{]}\PY{p}{,}
+                 \PY{n}{phase}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{l+m+mf}{0.05}\PY{p}{)}\PY{p}{,}
+                 \PY{n}{handle}\PY{o}{=}\PY{n}{fixed}\PY{p}{(}\PY{n}{handle1}\PY{p}{)}\PY{p}{,}
+                \PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+    \hypertarget{exercice-distribution-uniforme}{%
+\subsubsection{Exercice : distribution
+uniforme}\label{exercice-distribution-uniforme}}
+
+    Voyons un deuxième exemple avec \texttt{bokeh}. Vous pouvez prendre ceci
+comme un exercice, et le faire de votre côté avant de lire la suite du
+notebook.
+
+    On veut ici écrire un outil pour afficher une distribution de points
+dans une ellipse, de taille et de position réglables.
+
+Dans la solution que vous trouverez ci-dessous, le nombre de points
+\texttt{N} dans la distribution est supposé constant; en fait, dans ce
+code on va tirer au sort une bonne fois pour toutes \texttt{N} points
+dans le cercle de rayon 1, avec une distribution uniforme, et simplement
+déformer cette distribution pour occuper l'espace cible.
+
+On se donne donc comme réglages~:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{dx} et \texttt{dy}, les coordonnées du centre de l'ellipse,
+\item
+  \texttt{rx} et \texttt{ry} les rayons en x et en y de l'ellipse,
+\item
+  et enfin \texttt{alpha} l'angle de rotation de l'ellipse.
+\end{itemize}
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} petit utilitaire pour calculer la distribution}
+         \PY{c+c1}{\PYZsh{} uniforme de départ}
+         \PY{k}{def} \PY{n+nf}{uniform\PYZus{}distribution}\PY{p}{(}\PY{n}{N}\PY{p}{)}\PY{p}{:}
+             \PY{c+c1}{\PYZsh{} on tire au hasard un rho et un rayon}
+             \PY{n}{rhos} \PY{o}{=} \PY{l+m+mi}{2} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{pi} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{sample}\PY{p}{(}\PY{n}{N}\PY{p}{)}
+             \PY{n}{rads} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{sample}\PY{p}{(}\PY{n}{N}\PY{p}{)}
+             \PY{c+c1}{\PYZsh{} il faut prendre la racine carrée du rayon}
+             \PY{c+c1}{\PYZsh{} sinon ce n\PYZsq{}est pas uniforme dans le plan}
+             \PY{n}{circle\PYZus{}x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{rads}\PY{p}{)} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{cos}\PY{p}{(}\PY{n}{rhos}\PY{p}{)}
+             \PY{n}{circle\PYZus{}y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{rads}\PY{p}{)} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{rhos}\PY{p}{)}
+             \PY{k}{return} \PY{n}{circle\PYZus{}x}\PY{p}{,} \PY{n}{circle\PYZus{}y}
+\end{Verbatim}
+
+
+    \hypertarget{les-grandeurs-constantes}{%
+\subparagraph{Les grandeurs constantes}\label{les-grandeurs-constantes}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} les grandeurs constantes}
+         \PY{n}{N} \PY{o}{=} \PY{l+m+mi}{1000}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} on calcule la distribution initiale}
+         \PY{c+c1}{\PYZsh{} (celle\PYZhy{}ci est vraiment uniforme)}
+         \PY{c+c1}{\PYZsh{} dans le cercle de rayon 1}
+         \PY{n}{x0}\PY{p}{,} \PY{n}{y0} \PY{o}{=} \PY{n}{uniform\PYZus{}distribution}\PY{p}{(}\PY{n}{N}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} et aussi:}
+         \PY{c+c1}{\PYZsh{} pour que ce soit plus joli je tire au hasard}
+         \PY{c+c1}{\PYZsh{} des couleurs, et des rayons pour les points}
+         
+         \PY{c+c1}{\PYZsh{} le rouge entre 50 et 250}
+         \PY{n}{reds} \PY{o}{=} \PY{l+m+mi}{50} \PY{o}{+} \PY{l+m+mi}{200} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{random}\PY{p}{(}\PY{n}{size}\PY{o}{=}\PY{n}{N}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} le vert entre 30 et 250}
+         \PY{n}{greens} \PY{o}{=} \PY{l+m+mi}{30} \PY{o}{+} \PY{l+m+mi}{220} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{random}\PY{p}{(}\PY{n}{size}\PY{o}{=}\PY{n}{N}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} la mise en forme des couleurs}
+         \PY{c+c1}{\PYZsh{} le bleu est constant à 150}
+         \PY{n}{colors} \PY{o}{=} \PY{p}{[}
+             \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZsh{}}\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{int(red):02x\PYZcb{}}\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{int(green):02x\PYZcb{}}\PY{l+s+si}{\PYZob{}150:02x\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}
+             \PY{k}{for} \PY{n}{red}\PY{p}{,} \PY{n}{green} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n}{reds}\PY{p}{,} \PY{n}{greens}\PY{p}{)}
+         \PY{p}{]}
+         
+         \PY{c+c1}{\PYZsh{} les rayons des points; entre 0.05 et 0.25}
+         \PY{n}{radii} \PY{o}{=} \PY{l+m+mf}{0.05} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{random}\PY{p}{(}\PY{n}{size}\PY{o}{=}\PY{n}{N}\PY{p}{)} \PY{o}{*} \PY{o}{.}\PY{l+m+mi}{20}
+\end{Verbatim}
+
+
+    \hypertarget{cruxe9ation-de-la-figure-initiale}{%
+\subparagraph{Création de la figure
+initiale}\label{cruxe9ation-de-la-figure-initiale}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} c\PYZsq{}est ici qu\PYZsq{}on commence à faire du bokeh}
+         \PY{c+c1}{\PYZsh{} les choix des bornes sont très arbitraires}
+         \PY{n}{fig2} \PY{o}{=} \PY{n}{figure}\PY{p}{(}
+             \PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{distribution pseudo\PYZhy{}uniforme}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+             \PY{n}{plot\PYZus{}height}\PY{o}{=}\PY{l+m+mi}{250}\PY{p}{,} \PY{n}{plot\PYZus{}width}\PY{o}{=}\PY{l+m+mi}{250}\PY{p}{,}
+             \PY{n}{x\PYZus{}range}\PY{o}{=}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,}
+             \PY{n}{y\PYZus{}range}\PY{o}{=}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,}
+         \PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} on crée le nuage de points dans la figure}
+         \PY{n}{cloud} \PY{o}{=} \PY{n}{fig2}\PY{o}{.}\PY{n}{circle}\PY{p}{(}
+             \PY{n}{x0}\PY{p}{,} \PY{n}{y0}\PY{p}{,}
+             \PY{n}{radius} \PY{o}{=} \PY{n}{radii}\PY{p}{,}
+             \PY{n}{fill\PYZus{}color}\PY{o}{=}\PY{n}{colors}\PY{p}{,} \PY{n}{fill\PYZus{}alpha}\PY{o}{=}\PY{l+m+mf}{0.6}\PY{p}{,}
+             \PY{n}{line\PYZus{}color}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{line\PYZus{}width}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{1}
+         \PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{mise-uxe0-jour-de-la-figure}{%
+\subparagraph{Mise à jour de la
+figure}\label{mise-uxe0-jour-de-la-figure}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{c+c1}{\PYZsh{} c\PYZsq{}est cette fonction qu\PYZsq{}on passe à interact}
+         \PY{k}{def} \PY{n+nf}{update\PYZus{}cloud}\PY{p}{(}\PY{n}{rx}\PY{p}{,} \PY{n}{ry}\PY{p}{,} \PY{n}{dx}\PY{p}{,} \PY{n}{dy}\PY{p}{,} \PY{n}{alpha}\PY{p}{,} \PY{n}{handle}\PY{p}{)}\PY{p}{:}
+             \PY{c+c1}{\PYZsh{} on recalcule les x et y}
+             \PY{c+c1}{\PYZsh{} à partir des valeurs initiales}
+             \PY{n}{s}\PY{p}{,} \PY{n}{c} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{alpha}\PY{p}{)}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{cos}\PY{p}{(}\PY{n}{alpha}\PY{p}{)}
+             \PY{n}{x} \PY{o}{=} \PY{n}{dx} \PY{o}{+} \PY{n}{c} \PY{o}{*} \PY{n}{rx} \PY{o}{*} \PY{n}{x0} \PY{o}{\PYZhy{}} \PY{n}{s} \PY{o}{*} \PY{n}{ry} \PY{o}{*} \PY{n}{y0}
+             \PY{n}{y} \PY{o}{=} \PY{n}{dy} \PY{o}{+} \PY{n}{s} \PY{o}{*} \PY{n}{rx} \PY{o}{*} \PY{n}{x0} \PY{o}{+} \PY{n}{c} \PY{o}{*} \PY{n}{ry} \PY{o}{*} \PY{n}{y0}
+             \PY{n}{cloud}\PY{o}{.}\PY{n}{data\PYZus{}source}\PY{o}{.}\PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{x}
+             \PY{n}{cloud}\PY{o}{.}\PY{n}{data\PYZus{}source}\PY{o}{.}\PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{y}
+             \PY{n}{push\PYZus{}notebook}\PY{p}{(}\PY{n}{handle}\PY{p}{)}
+\end{Verbatim}
+
+
+    \hypertarget{il-ny-a-plus-quuxe0}{%
+\subparagraph{Il n'y a plus qu'à \ldots{}}\label{il-ny-a-plus-quuxe0}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{handle2} \PY{o}{=} \PY{n}{show}\PY{p}{(}
+             \PY{n}{fig2}\PY{p}{,}
+             \PY{n}{notebook\PYZus{}handle}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+\end{Verbatim}
+
+
+    
+    
+    
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{interact}\PY{p}{(}
+           \PY{n}{update\PYZus{}cloud}\PY{p}{,}
+           \PY{n}{rx}\PY{o}{=}\PY{n}{FloatSlider}\PY{p}{(}\PY{n+nb}{min}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{,} \PY{n+nb}{max}\PY{o}{=}\PY{l+m+mi}{8}\PY{p}{,}
+                          \PY{n}{step}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{value}\PY{o}{=}\PY{l+m+mf}{1.}\PY{p}{)}\PY{p}{,}
+           \PY{n}{ry}\PY{o}{=}\PY{n}{FloatSlider}\PY{p}{(}\PY{n+nb}{min}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{,} \PY{n+nb}{max}\PY{o}{=}\PY{l+m+mi}{8}\PY{p}{,}
+                          \PY{n}{step}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{value}\PY{o}{=}\PY{l+m+mf}{1.}\PY{p}{)}\PY{p}{,}
+           \PY{n}{dx}\PY{o}{=}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,} \PY{o}{+}\PY{l+m+mi}{3}\PY{p}{,} \PY{o}{.}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,}
+           \PY{n}{dy}\PY{o}{=}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,} \PY{o}{+}\PY{l+m+mi}{3}\PY{p}{,} \PY{o}{.}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,}
+           \PY{n}{alpha}\PY{o}{=}\PY{n}{FloatSlider}\PY{p}{(}
+             \PY{n+nb}{min}\PY{o}{=}\PY{l+m+mf}{0.}\PY{p}{,} \PY{n+nb}{max}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,}
+             \PY{n}{step}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{05}\PY{p}{,} \PY{n}{value}\PY{o}{=}\PY{l+m+mf}{0.}\PY{p}{)}\PY{p}{,}
+           \PY{n}{handle}\PY{o}{=}\PY{n}{fixed}\PY{p}{(}\PY{n}{handle2}\PY{p}{)}
+         \PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \hypertarget{autres-bibliothuxe8ques}{%
+\subsubsection{Autres bibliothèques}\label{autres-bibliothuxe8ques}}
+
+    Pour terminer cette digression sur les solutions alternatives à
+\texttt{matplotlib}, j'aimerais vous signaler enfin rapidement
+\href{https://plot.ly/}{la bibliothèque \texttt{plotly}}.
+
+Cette bibliothèque est disponible en open source, et l'offre commerciale
+de plotly est tournée vers le conseil autour de cette technologie. Comme
+pour \texttt{bokeh}, elle est conçue comme un hybride entre Python et
+JavaScript, au dessus de \texttt{d3.js}. En réalité, elle présente même
+la particularité d'offrir une API unique disponible depuis Python,
+JavaScript, et R.
+
+    Comme on l'a dit en introduction, l'offre dans ce domaine est
+pléthorique, aussi si vous avez un témoignage à apporter sur une
+expérience que vous avez eue dans ce domaine, nous serons ravis de vous
+voir la partager dans le forum du cours.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

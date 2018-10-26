@@ -1,0 +1,597 @@
+    
+    
+    
+    
+
+    
+
+    \hypertarget{index-et-slices}{%
+\section{Index et slices}\label{index-et-slices}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+        \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+        \PY{n}{plt}\PY{o}{.}\PY{n}{ion}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    J'espère que vous êtes à présent convaincus qu'il est possible de faire
+énormément de choses avec \texttt{numpy} en faisant des opérations entre
+tableaux, et sans aller référencer un par un les éléments des tableaux,
+ni faire de boucle \texttt{for}.
+
+Il est temps maintenant de voir que l'on peut \emph{aussi} manipuler les
+tableaux \texttt{numpy} avec des index.
+
+    \hypertarget{indexation-par-des-entiers-et-tuples}{%
+\subsubsection{Indexation par des entiers et
+tuples}\label{indexation-par-des-entiers-et-tuples}}
+
+    La façon la plus naturelle d'utiliser un tableau est habituellement à
+l'aide des indices. On peut aussi bien sûr accéder aux éléments d'un
+tableau \texttt{numpy} par des indices~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} une fonction qui crée un tableau}
+        \PY{c+c1}{\PYZsh{} tab[i, j] = i + 10 * j}
+        \PY{k}{def} \PY{n+nf}{background}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+            \PY{n}{i} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n}{n}\PY{p}{)}
+            \PY{n}{j} \PY{o}{=} \PY{n}{i}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+            \PY{k}{return} \PY{n}{i} \PY{o}{+} \PY{l+m+mi}{10} \PY{o}{*} \PY{n}{j}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{a5} \PY{o}{=} \PY{n}{background}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a5}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[ 0  1  2  3  4]
+ [10 11 12 13 14]
+ [20 21 22 23 24]
+ [30 31 32 33 34]
+ [40 41 42 43 44]]
+
+    \end{Verbatim}
+
+    Avec un seul index on obtient naturellement une ligne~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{a5}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} array([10, 11, 12, 13, 14])
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} que l\PYZsq{}on peut à nouveau indexer}
+        \PY{n}{a5}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} 12
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} ou plus simplement indexer par un tuple}
+        \PY{n}{a5}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} 12
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} naturellement on peut affecter une case}
+        \PY{c+c1}{\PYZsh{} individuellement}
+        \PY{n}{a5}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{221}
+        \PY{n}{a5}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{300}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a5}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[  0   1   2   3   4]
+ [ 10  11  12  13  14]
+ [ 20 221  22  23  24]
+ [ 30  31 332  33  34]
+ [ 40  41  42  43  44]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} ou toute une ligne}
+        \PY{n}{a5}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{105}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a5}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[  0   1   2   3   4]
+ [100 101 102 103 104]
+ [ 20 221  22  23  24]
+ [ 30  31 332  33  34]
+ [ 40  41  42  43  44]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} et on on peut aussi changer}
+        \PY{c+c1}{\PYZsh{} toute une ligne par broadcasting}
+        \PY{n}{a5}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{400}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a5}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[  0   1   2   3   4]
+ [100 101 102 103 104]
+ [ 20 221  22  23  24]
+ [ 30  31 332  33  34]
+ [400 400 400 400 400]]
+
+    \end{Verbatim}
+
+    \hypertarget{slicing}{%
+\section{Slicing}\label{slicing}}
+
+    Grâce au slicing on peut aussi référencer une colonne~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{a5} \PY{o}{=} \PY{n}{background}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{a5}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[ 0  1  2  3  4]
+ [10 11 12 13 14]
+ [20 21 22 23 24]
+ [30 31 32 33 34]
+ [40 41 42 43 44]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{a5}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} array([ 3, 13, 23, 33, 43])
+\end{Verbatim}
+            
+    C'est un tableau à une dimension, mais vous pouvez tout de même modifier
+la colonne par une affectation~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{a5}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{300}\PY{p}{,} \PY{l+m+mi}{305}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{a5}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[  0   1   2 300   4]
+ [ 10  11  12 301  14]
+ [ 20  21  22 302  24]
+ [ 30  31  32 303  34]
+ [ 40  41  42 304  44]]
+
+    \end{Verbatim}
+
+    Ou, ici également bien sûr, par broadcasting~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} on affecte un scalaire à une colonne}
+         \PY{n}{a5}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{200}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{a5}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[  0   1 200 300   4]
+ [ 10  11 200 301  14]
+ [ 20  21 200 302  24]
+ [ 30  31 200 303  34]
+ [ 40  41 200 304  44]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} ou on ajoute un scalaire à une colonne}
+         \PY{n}{a5}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{]} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{400}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{a5}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[  0   1 200 300 404]
+ [ 10  11 200 301 414]
+ [ 20  21 200 302 424]
+ [ 30  31 200 303 434]
+ [ 40  41 200 304 444]]
+
+    \end{Verbatim}
+
+    Les slices peuvent prendre une forme générale~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{a8} \PY{o}{=} \PY{n}{background}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{a8}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[ 0  1  2  3  4  5  6  7]
+ [10 11 12 13 14 15 16 17]
+ [20 21 22 23 24 25 26 27]
+ [30 31 32 33 34 35 36 37]
+ [40 41 42 43 44 45 46 47]
+ [50 51 52 53 54 55 56 57]
+ [60 61 62 63 64 65 66 67]
+ [70 71 72 73 74 75 76 77]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{c+c1}{\PYZsh{} toutes les lignes de rang 1, 4, 7}
+         \PY{n}{a8}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{:}\PY{l+m+mi}{3}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}16}]:} array([[10, 11, 12, 13, 14, 15, 16, 17],
+                [40, 41, 42, 43, 44, 45, 46, 47],
+                [70, 71, 72, 73, 74, 75, 76, 77]])
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} toutes les colonnes de rang 1, 5, 9}
+         \PY{n}{a8}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{:}\PY{p}{:}\PY{l+m+mi}{4}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}17}]:} array([[ 1,  5],
+                [11, 15],
+                [21, 25],
+                [31, 35],
+                [41, 45],
+                [51, 55],
+                [61, 65],
+                [71, 75]])
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{} et on peut bien sûr les modifier}
+         \PY{n}{a8}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{:}\PY{p}{:}\PY{l+m+mi}{4}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{0}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{a8}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[ 0  0  2  3  4  0  6  7]
+ [10  0 12 13 14  0 16 17]
+ [20  0 22 23 24  0 26 27]
+ [30  0 32 33 34  0 36 37]
+ [40  0 42 43 44  0 46 47]
+ [50  0 52 53 54  0 56 57]
+ [60  0 62 63 64  0 66 67]
+ [70  0 72 73 74  0 76 77]]
+
+    \end{Verbatim}
+
+    Du coup, le slicing peut servir à extraire des blocs~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} un bloc au hasard dans a8}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{a8}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{:}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{:}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[52 53 54]
+ [62 63 64]
+ [72 73 74]]
+
+    \end{Verbatim}
+
+    \hypertarget{newaxis}{%
+\subsubsection{\texorpdfstring{\texttt{newaxis}}{newaxis}}\label{newaxis}}
+
+    On peut utiliser également le symbole spécial \texttt{np.newaxis} en
+conjonction avec un slice pour ``décaler'' les dimensions~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[1 2 3 4 5 6]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{X}\PY{o}{.}\PY{n}{shape}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}21}]:} (6,)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n}{Y} \PY{o}{=} \PY{n}{X}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{newaxis}\PY{p}{]}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{Y}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[1]
+ [2]
+ [3]
+ [4]
+ [5]
+ [6]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{n}{Y}\PY{o}{.}\PY{n}{shape}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}23}]:} (6, 1)
+\end{Verbatim}
+            
+    Et ainsi de suite~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{n}{Z} \PY{o}{=} \PY{n}{Y}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{newaxis}\PY{p}{]}
+         \PY{n}{Z}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}24}]:} array([[[1]],
+         
+                [[2]],
+         
+                [[3]],
+         
+                [[4]],
+         
+                [[5]],
+         
+                [[6]]])
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{Z}\PY{o}{.}\PY{n}{shape}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}25}]:} (6, 1, 1)
+\end{Verbatim}
+            
+    De cette façon, par exemple, en combinant le slicing pour créer X et Y,
+et le broadcasting pour créer leur somme, je peux créer facilement la
+table de tous les tirages de 2 dés à 6 faces~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{n}{dice2} \PY{o}{=} \PY{n}{X} \PY{o}{+} \PY{n}{Y}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{dice2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[ 2  3  4  5  6  7]
+ [ 3  4  5  6  7  8]
+ [ 4  5  6  7  8  9]
+ [ 5  6  7  8  9 10]
+ [ 6  7  8  9 10 11]
+ [ 7  8  9 10 11 12]]
+
+    \end{Verbatim}
+
+    Ou tous les tirages à trois dés~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{n}{dice3} \PY{o}{=} \PY{n}{X} \PY{o}{+} \PY{n}{Y} \PY{o}{+} \PY{n}{Z}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{dice3}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[[ 3  4  5  6  7  8]
+  [ 4  5  6  7  8  9]
+  [ 5  6  7  8  9 10]
+  [ 6  7  8  9 10 11]
+  [ 7  8  9 10 11 12]
+  [ 8  9 10 11 12 13]]
+
+ [[ 4  5  6  7  8  9]
+  [ 5  6  7  8  9 10]
+  [ 6  7  8  9 10 11]
+  [ 7  8  9 10 11 12]
+  [ 8  9 10 11 12 13]
+  [ 9 10 11 12 13 14]]
+
+ [[ 5  6  7  8  9 10]
+  [ 6  7  8  9 10 11]
+  [ 7  8  9 10 11 12]
+  [ 8  9 10 11 12 13]
+  [ 9 10 11 12 13 14]
+  [10 11 12 13 14 15]]
+
+ [[ 6  7  8  9 10 11]
+  [ 7  8  9 10 11 12]
+  [ 8  9 10 11 12 13]
+  [ 9 10 11 12 13 14]
+  [10 11 12 13 14 15]
+  [11 12 13 14 15 16]]
+
+ [[ 7  8  9 10 11 12]
+  [ 8  9 10 11 12 13]
+  [ 9 10 11 12 13 14]
+  [10 11 12 13 14 15]
+  [11 12 13 14 15 16]
+  [12 13 14 15 16 17]]
+
+ [[ 8  9 10 11 12 13]
+  [ 9 10 11 12 13 14]
+  [10 11 12 13 14 15]
+  [11 12 13 14 15 16]
+  [12 13 14 15 16 17]
+  [13 14 15 16 17 18]]]
+
+    \end{Verbatim}
+
+    J'en profite pour introduire un utilitaire qui n'a rien à voir, mais
+avec \texttt{np.unique}, vous pourriez calculer le nombre d'occurrences
+dans le tableau, et ainsi calculer les probabilités d'apparition de tous
+les nombres entre 3 et 18~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{n}{np}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{n}{dice3}\PY{p}{,} \PY{n}{return\PYZus{}counts}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}28}]:} (array([ 3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18]),
+          array([ 1,  3,  6, 10, 15, 21, 25, 27, 27, 25, 21, 15, 10,  6,  3,  1]))
+\end{Verbatim}
+            
+    \hypertarget{diffuxe9rences-avec-les-listes}{%
+\subsubsection{Différences avec les
+listes}\label{diffuxe9rences-avec-les-listes}}
+
+    Avec l'indexation et le slicing, on peut créer des tableaux qui sont des
+vues sur des fragments d'un tableau~; on peut également déformer leur
+dimension grâce à \texttt{newaxis}~; on peut modifier ces fragments, en
+utilisant un scalaire, un tableau, ou une slice sur un autre tableau.
+Les possibilités sont infinies.
+
+    Il est cependant utile de souligner quelques différences entre les
+tableaux \texttt{numpy} et, les listes natives, pour ce qui concerne les
+indexations et le \emph{slicing}.
+
+    \hypertarget{on-ne-peut-pas-changer-la-taille-dun-tableau-avec-le-slicing}{%
+\paragraph{On ne peut pas changer la taille d'un tableau avec le
+slicing}\label{on-ne-peut-pas-changer-la-taille-dun-tableau-avec-le-slicing}}
+
+La taille d'un objet \texttt{numpy} est par définition constante~; cela
+signifie qu'on ne peut pas, par exemple, modifier sa taille totale avec
+du slicing ; c'est à mettre en contraste avec, si vous vous souvenez~:
+
+    \hypertarget{listes}{%
+\subparagraph{Listes}\label{listes}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{c+c1}{\PYZsh{} on peut faire ceci}
+         \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}
+         \PY{n}{liste}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{102}\PY{p}{,} \PY{l+m+mi}{102}\PY{p}{]}
+         \PY{n}{liste}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}29}]:} [0, 100, 102, 102, 2]
+\end{Verbatim}
+            
+    \hypertarget{tableaux}{%
+\subparagraph{Tableaux}\label{tableaux}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{c+c1}{\PYZsh{} on ne peut pas faire cela}
+         \PY{n}{array} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}
+         \PY{k}{try}\PY{p}{:}
+             \PY{n}{array}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{102}\PY{p}{,} \PY{l+m+mi}{102}\PY{p}{]}\PY{p}{)}
+         \PY{k}{except} \PY{n+ne}{Exception} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS, }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{type(e)\PYZcb{}, }\PY{l+s+si}{\PYZob{}e\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+OOPS, <class 'ValueError'>, could not broadcast input array from shape (3) into shape (1)
+
+    \end{Verbatim}
+
+    \hypertarget{on-peut-modifier-un-tableau-en-modifiant-une-slice}{%
+\subparagraph{On peut modifier un tableau en modifiant une
+slice}\label{on-peut-modifier-un-tableau-en-modifiant-une-slice}}
+
+Une slice sur un objet \texttt{numpy} renvoie une \textbf{vue} sur un
+extrait du tableau, et en changeant la vue on change le tableau~; ici
+encore c'est à mettre en contraste avec ce qui se passe sur les listes~:
+
+    \hypertarget{listes}{%
+\subparagraph{Listes}\label{listes}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{c+c1}{\PYZsh{} une slice d\PYZsq{}une liste est une shallow copy}
+         \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}
+         \PY{n}{liste}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}31}]:} [1]
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{c+c1}{\PYZsh{} en modifiant la slice,}
+         \PY{c+c1}{\PYZsh{} on ne modifie pas la liste}
+         \PY{n}{liste}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{999999}
+         \PY{n}{liste}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}32}]:} [0, 1, 2]
+\end{Verbatim}
+            
+    \hypertarget{tableaux}{%
+\subparagraph{Tableaux}\label{tableaux}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}33}]:} \PY{c+c1}{\PYZsh{} une slice d\PYZsq{}un tableau numpy est un extrait du tableau}
+         \PY{n}{array} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}
+         \PY{n}{array}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}33}]:} array([1])
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{n}{array}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{100}
+         \PY{n}{array}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}34}]:} array([  0, 100,   2])
+\end{Verbatim}
+            
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

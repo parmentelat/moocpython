@@ -1,0 +1,715 @@
+    
+    
+    
+    
+
+    
+
+    \hypertarget{duxe9corateurs}{%
+\section{Décorateurs}\label{duxe9corateurs}}
+
+    \hypertarget{compluxe9ment---niveau-truxe8s-avancuxe9}{%
+\subsection{Complément - niveau (très)
+avancé}\label{compluxe9ment---niveau-truxe8s-avancuxe9}}
+
+    Le mécanisme des décorateurs - qui rappelle un peu, pour ceux qui
+connaissent, les macros Lisp - est un mécanisme très puissant. Sa portée
+va bien au delà de simplement rajouter du code avant et après une
+fonction, comme dans le cas de \texttt{NbAppels} que nous avons vu dans
+la vidéo.
+
+Par exemple, les notions de méthodes de classe (\texttt{@classmethod})
+et de méthodes statiques (\texttt{@staticmethod}) sont implémentées
+comme des décorateurs. Pour une liste plus représentative de ce qu'il
+est possible de faire avec les décorateurs, je vous invite à parcourir
+même rapidement ce
+\href{https://wiki.python.org/moin/PythonDecoratorLibrary}{recueil de
+décorateurs} qui propose du code (à titre indicatif, car rien de ceci ne
+fait partie de la bibliothèque standard) pour des thèmes qui sont
+propices à la décoration de code.
+
+Nous allons voir en détail quelques-uns de ces exemples.
+
+    \hypertarget{un-duxe9corateur-impluxe9mentuxe9-comme-une-classe}{%
+\subsubsection{Un décorateur implémenté comme une
+classe}\label{un-duxe9corateur-impluxe9mentuxe9-comme-une-classe}}
+
+    Dans la vidéo on a vu \texttt{NbAppels} pour compter le nombre de fois
+qu'on appelle une fonction. Pour mémoire on avait écrit~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} un rappel du code montré dans la vidéo}
+        \PY{k}{class} \PY{n+nc}{NbAppels}\PY{p}{(}\PY{n+nb}{object}\PY{p}{)}\PY{p}{:}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{f}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{f} \PY{o}{=} \PY{n}{f}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{appels} \PY{o}{=} \PY{l+m+mi}{0}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}call\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{appels} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}self.appels\PYZcb{}}\PY{l+s+s2}{\PYZhy{}ème appel à }\PY{l+s+si}{\PYZob{}self.f.\PYZus{}\PYZus{}name\PYZus{}\PYZus{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                \PY{k}{return} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{f}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} nous utilisons ici une implémentation en log(n)}
+        \PY{c+c1}{\PYZsh{} de la fonction de fibonacci}
+        
+        \PY{n+nd}{@NbAppels}
+        \PY{k}{def} \PY{n+nf}{fibo\PYZus{}aux}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Fibonacci en log(n)}\PY{l+s+s2}{\PYZdq{}}
+            \PY{k}{if} \PY{n}{n} \PY{o}{\PYZlt{}} \PY{l+m+mi}{1}\PY{p}{:}
+                \PY{k}{return} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}
+            \PY{n}{u}\PY{p}{,} \PY{n}{v} \PY{o}{=} \PY{n}{fibo\PYZus{}aux}\PY{p}{(}\PY{n}{n}\PY{o}{/}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}
+            \PY{n}{u}\PY{p}{,} \PY{n}{v} \PY{o}{=} \PY{n}{u} \PY{o}{*} \PY{p}{(}\PY{l+m+mi}{2} \PY{o}{*} \PY{n}{v} \PY{o}{\PYZhy{}} \PY{n}{u}\PY{p}{)}\PY{p}{,} \PY{n}{u}\PY{o}{*}\PY{n}{u} \PY{o}{+} \PY{n}{v}\PY{o}{*}\PY{n}{v}
+            \PY{k}{if} \PY{n}{n} \PY{o}{\PYZpc{}} \PY{l+m+mi}{2} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
+                \PY{k}{return} \PY{n}{v}\PY{p}{,} \PY{n}{u} \PY{o}{+} \PY{n}{v}
+            \PY{k}{else}\PY{p}{:}
+                \PY{k}{return} \PY{n}{u}\PY{p}{,} \PY{n}{v}
+        
+        \PY{k}{def} \PY{n+nf}{fibo\PYZus{}log}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{n}{fibo\PYZus{}aux}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} pour se convaincre que nous sommes bien en log2(n)}
+        \PY{k+kn}{from} \PY{n+nn}{math} \PY{k}{import} \PY{n}{log}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{n1} \PY{o}{=} \PY{l+m+mi}{100}
+        
+        \PY{n}{log}\PY{p}{(}\PY{n}{n1}\PY{p}{)}\PY{o}{/}\PY{n}{log}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} 6.643856189774725
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{fibo\PYZus{}log}\PY{p}{(}\PY{n}{n1}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1-ème appel à fibo\_aux
+2-ème appel à fibo\_aux
+3-ème appel à fibo\_aux
+4-ème appel à fibo\_aux
+5-ème appel à fibo\_aux
+6-ème appel à fibo\_aux
+7-ème appel à fibo\_aux
+8-ème appel à fibo\_aux
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} 354224848179261915075
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} on multiplie par 2**4 = 16,}
+        \PY{c+c1}{\PYZsh{} donc on doit voir 4 appels de plus}
+        \PY{n}{n2} \PY{o}{=} \PY{l+m+mi}{1600}
+        
+        \PY{n}{log}\PY{p}{(}\PY{n}{n2}\PY{p}{)}\PY{o}{/}\PY{n}{log}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} 10.643856189774725
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{fibo\PYZus{}log}\PY{p}{(}\PY{n}{n2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+9-ème appel à fibo\_aux
+10-ème appel à fibo\_aux
+11-ème appel à fibo\_aux
+12-ème appel à fibo\_aux
+13-ème appel à fibo\_aux
+14-ème appel à fibo\_aux
+15-ème appel à fibo\_aux
+16-ème appel à fibo\_aux
+17-ème appel à fibo\_aux
+18-ème appel à fibo\_aux
+19-ème appel à fibo\_aux
+20-ème appel à fibo\_aux
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} 10733451489189611103121609043038710477166925241925645413424099370355605456852169736033991876014762808340865848447476173426115162172818890323837138136782951865054538417494035229785971002587932638902311416018904156170269354720460896363558168129004231138415225204738582550720791061581463934092726107458349298577292984375276210232582438075
+\end{Verbatim}
+            
+    \hypertarget{memoize-impluxe9mentuxe9-comme-une-fonction}{%
+\subsubsection{\texorpdfstring{\texttt{memoize} implémenté comme une
+fonction}{memoize implémenté comme une fonction}}\label{memoize-impluxe9mentuxe9-comme-une-fonction}}
+
+    Ici nous allons implémenter \texttt{memoize}, un décorateur qui permet
+de mémoriser les résultats d'une fonction, et de les cacher pour ne pas
+avoir à les recalculer la fois suivante.
+
+Alors que \texttt{NbAppels} était \textbf{implémenté comme une classe},
+pour varier un peu, nous allons implémenter cette fois
+\textbf{\texttt{memoize} comme une vraie fonction}, pour vous montrer
+les deux alternatives que l'on a quand on veut implémenter un
+décorateur~: une vraie fonction ou une classe de callables.
+
+    \hypertarget{le-code-du-duxe9corateur}{%
+\subparagraph{Le code du décorateur}\label{le-code-du-duxe9corateur}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} une première implémentation de memoize}
+        
+        \PY{c+c1}{\PYZsh{} un décorateur de fonction}
+        \PY{c+c1}{\PYZsh{} implémenté comme une fonction}
+        \PY{k}{def} \PY{n+nf}{memoize}\PY{p}{(}\PY{n}{a\PYZus{}decorer}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    Un décorateur pour conserver les résultats}
+        \PY{l+s+sd}{    précédents et éviter de les recalculer}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{k}{def} \PY{n+nf}{decoree}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{:}
+                \PY{c+c1}{\PYZsh{} si on a déjà calculé le résultat}
+                \PY{c+c1}{\PYZsh{} on le renvoie}
+                \PY{k}{try}\PY{p}{:}
+                    \PY{k}{return} \PY{n}{decoree}\PY{o}{.}\PY{n}{cache}\PY{p}{[}\PY{n}{args}\PY{p}{]}
+                \PY{c+c1}{\PYZsh{} si les arguments ne sont pas hashables,}
+                \PY{c+c1}{\PYZsh{} par exemple s\PYZsq{}ils contiennent une liste}
+                \PY{c+c1}{\PYZsh{} on ne peut pas cacher et on reçoit TypeError}
+                \PY{k}{except} \PY{n+ne}{TypeError}\PY{p}{:}
+                    \PY{k}{return} \PY{n}{a\PYZus{}decorer}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}
+                \PY{c+c1}{\PYZsh{} les arguments sont hashables mais on}
+                \PY{c+c1}{\PYZsh{} n\PYZsq{}a pas encore calculé cette valeur}
+                \PY{k}{except} \PY{n+ne}{KeyError}\PY{p}{:}
+                    \PY{c+c1}{\PYZsh{} on fait vraiment le calcul}
+                    \PY{n}{result} \PY{o}{=} \PY{n}{a\PYZus{}decorer}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}
+                    \PY{c+c1}{\PYZsh{} on le range dans le cache}
+                    \PY{n}{decoree}\PY{o}{.}\PY{n}{cache}\PY{p}{[}\PY{n}{args}\PY{p}{]} \PY{o}{=} \PY{n}{result}
+                    \PY{c+c1}{\PYZsh{} on le retourne}
+                    \PY{k}{return} \PY{n}{result}
+            \PY{c+c1}{\PYZsh{} on initialise l\PYZsq{}attribut \PYZsq{}cache\PYZsq{}}
+            \PY{n}{decoree}\PY{o}{.}\PY{n}{cache} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+            \PY{k}{return} \PY{n}{decoree}
+\end{Verbatim}
+
+
+    \hypertarget{comment-lutiliser}{%
+\subparagraph{Comment l'utiliser}\label{comment-lutiliser}}
+
+    Avant de rentrer dans le détail du code, voyons comment cela
+s'utiliserait~; il n'y a pas de changement de ce point de vue par
+rapport à l'option développée dans la vidéo~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} créer une fonction décorée}
+        \PY{n+nd}{@memoize}
+        \PY{k}{def} \PY{n+nf}{fibo\PYZus{}cache}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    Un fibonacci hyper\PYZhy{}lent (exponentiel) se transforme}
+        \PY{l+s+sd}{    en temps linéaire une fois que les résultats sont cachés}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{k}{return} \PY{n}{n} \PY{k}{if} \PY{n}{n} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{1} \PY{k}{else} \PY{n}{fibo\PYZus{}cache}\PY{p}{(}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)} \PY{o}{+} \PY{n}{fibo\PYZus{}cache}\PY{p}{(}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+
+    Bien que l'implémentation utilise un algorithme épouvantablement lent,
+le fait de lui rajouter du caching redonne à l'ensemble un caractère
+linéaire.
+
+En effet, si vous y réfléchissez une minute, vous verrez qu'avec le
+cache, lorsqu'on calcule \texttt{fibo\_cache(n)}, on calcule d'abord
+\texttt{fibo\_cache(n-1)}, puis lorsqu'on évalue
+\texttt{fibo\_cache(n-2)} le résultat \textbf{est déjà dans le cache} si
+bien qu'on peut considérer ce deuxième calcul comme, sinon instantané,
+du moins du même ordre de grandeur qu'une addition.
+
+On peut calculer par exemple~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{fibo\PYZus{}cache}\PY{p}{(}\PY{l+m+mi}{300}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:} 222232244629420445529739893461909967206666939096499764990979600
+\end{Verbatim}
+            
+    qu'il serait hors de question de calculer sans le caching.
+
+On peut naturellement inspecter le cache, qui est rangé dans l'attribut
+\texttt{cache} de l'objet fonction lui-même~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n+nb}{len}\PY{p}{(}\PY{n}{fibo\PYZus{}cache}\PY{o}{.}\PY{n}{cache}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} 301
+\end{Verbatim}
+            
+    et voir que, comme on aurait pu le prédire, on a calculé et mémorisé les
+301 premiers résultats, pour n allant de 0 à 300.
+
+    \hypertarget{comment-uxe7a-marche}{%
+\subparagraph{Comment ça marche~?}\label{comment-uxe7a-marche}}
+
+    On l'a vu dans la vidéo avec \texttt{NbAppels}, tout se passe exactement
+comme si on avait écrit~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ fibo_cache(n):}
+    \OperatorTok{<}\NormalTok{le code}\OperatorTok{>}
+
+\NormalTok{fibo_cache }\OperatorTok{=}\NormalTok{ memoize(fibo_cache)}
+\end{Highlighting}
+\end{Shaded}
+
+    Donc \texttt{memoize} est une fonction qui prend en argument une
+fonction \texttt{a\_decorer} qui ici vaut \texttt{fibo\_cache}, et
+retourne une autre fonction, \texttt{decoree}~; on s'arrange
+naturellement pour que \texttt{decoree} retourne le même résultat que
+\texttt{a\_decorer}, avec seulement des choses supplémentaires.
+
+    Les points clés de l'implémentation sont les suivants~:
+
+\begin{itemize}
+\tightlist
+\item
+  On attache à l'objet fonction \texttt{decoree}, sous la forme d'un
+  attribut\texttt{cache}, un dictionnaire qui va nous permettre de
+  retrouver les valeurs déjà calculées, à partir d'un hash des
+  arguments.
+\item
+  On ne peut pas cacher le résultat d'un objet qui ne serait pas
+  globalement immuable~; or si on essaie on reçoit l'exception
+  \texttt{TypeError}, et dans ce cas on recalcule toujours le résultat.
+  C'est de toute façon plus sûr.
+\item
+  Si on ne trouve pas les arguments dans le cache, on reçoit l'exception
+  \texttt{KeyError}, dans ce cas on calcule le résultat, et on le
+  retourne après l'avoir rangé dans le cache.
+\item
+  Vous remarquerez aussi qu'on initialise l'attribut \texttt{cache} dans
+  l'objet \texttt{decoree} à l'appel du décorateur (une seule fois,
+  juste après avoir défini la fonction), et non pas dans le code de
+  \texttt{decoree} qui lui est évalué à chaque appel.
+\end{itemize}
+
+    Cette implémentation, sans être parfaite, est tout à fait utilisable
+dans un environnement réel, modulo les remarques de bon sens suivantes~:
+
+\begin{itemize}
+\tightlist
+\item
+  évidemment l'approche ne fonctionne que pour des fonctions
+  déterministes~; s'il y a de l'aléatoire dans la logique de la
+  fonction, il ne faut pas utiliser ce décorateur~;
+\item
+  tout aussi évidemment, la consommation mémoire peut être importante si
+  on applique le caching sans discrimination~;
+\item
+  enfin en l'état la fonction décorée ne peut pas être appelée avec des
+  arguments nommés~; en effet on utilise le tuple \texttt{args} comme
+  clé pour retrouver dans le cache la valeur associée aux arguments.
+\end{itemize}
+
+    \hypertarget{duxe9corateurs-docstring-et-help}{%
+\subsubsection{\texorpdfstring{Décorateurs, \emph{docstring} et
+\texttt{help}}{Décorateurs, docstring et help}}\label{duxe9corateurs-docstring-et-help}}
+
+    En fait, avec cette implémentation, il reste aussi un petit souci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{help}\PY{p}{(}\PY{n}{fibo\PYZus{}cache}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Help on function decoree in module \_\_main\_\_:
+
+decoree(*args)
+
+
+    \end{Verbatim}
+
+    Et ce n'est pas exactement ce qu'on veut~; ce qui se passe ici c'est que
+\texttt{help} utilise les attributs \texttt{\_\_doc\_\_} et
+\texttt{\_\_name\_\_} de l'objet qu'on lui passe. Et dans notre cas
+\texttt{fibo\_cache} est une fonction qui a été créée par
+l'instruction~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ decoree(}\OperatorTok{*}\NormalTok{args):}
+    \CommentTok{# etc.}
+\end{Highlighting}
+\end{Shaded}
+
+    Pour arranger ça et faire en sorte que \texttt{help} nous affiche ce
+qu'on veut, il faut s'occuper de ces deux attributs. Et plutôt que de
+faire ça à la main, il existe
+\href{https://docs.python.org/3/library/functools.html\#functools.wraps}{un
+utilitaire \texttt{functools.wraps}}, qui fait tout le travail
+nécessaire. Ce qui nous donne une deuxième version de ce décorateur,
+avec deux lignes supplémentaires signalées par des \texttt{+++}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} une deuxième implémentation de memoize, avec la doc}
+         
+         \PY{k+kn}{import} \PY{n+nn}{functools}                                 \PY{c+c1}{\PYZsh{} +++}
+         
+         \PY{c+c1}{\PYZsh{} un décorateur de fonction}
+         \PY{c+c1}{\PYZsh{} implémenté comme une fonction}
+         \PY{k}{def} \PY{n+nf}{memoize}\PY{p}{(}\PY{n}{a\PYZus{}decorer}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+         \PY{l+s+sd}{    Un décorateur pour conserver les résultats}
+         \PY{l+s+sd}{    précédents et éviter de les recalculer}
+         \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+             \PY{c+c1}{\PYZsh{} on décore la fonction pour qu\PYZsq{}elle ait les}
+             \PY{c+c1}{\PYZsh{} propriétés de a\PYZus{}decorer : \PYZus{}\PYZus{}doc\PYZus{}\PYZus{} et \PYZus{}\PYZus{}name\PYZus{}\PYZus{}}
+             \PY{n+nd}{@functools}\PY{o}{.}\PY{n}{wraps}\PY{p}{(}\PY{n}{a\PYZus{}decorer}\PY{p}{)}                  \PY{c+c1}{\PYZsh{} +++}
+             \PY{k}{def} \PY{n+nf}{decoree} \PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{:}
+                 \PY{c+c1}{\PYZsh{} si on a déjà calculé le résultat}
+                 \PY{c+c1}{\PYZsh{} on le renvoie}
+                 \PY{k}{try}\PY{p}{:}
+                     \PY{k}{return} \PY{n}{decoree}\PY{o}{.}\PY{n}{cache}\PY{p}{[}\PY{n}{args}\PY{p}{]}
+                 \PY{c+c1}{\PYZsh{} si les arguments ne sont pas hashables,}
+                 \PY{c+c1}{\PYZsh{} par exemple une liste, on ne peut pas cacher}
+                 \PY{c+c1}{\PYZsh{} et on reçoit TypeError}
+                 \PY{k}{except} \PY{n+ne}{TypeError}\PY{p}{:}
+                     \PY{k}{return} \PY{n}{a\PYZus{}decorer}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}
+                 \PY{c+c1}{\PYZsh{} les arguments sont hashables mais on}
+                 \PY{c+c1}{\PYZsh{} n\PYZsq{}a pas encore calculé cette valeur}
+                 \PY{k}{except} \PY{n+ne}{KeyError}\PY{p}{:}
+                     \PY{c+c1}{\PYZsh{} on fait vraiment le calcul}
+                     \PY{n}{result} \PY{o}{=} \PY{n}{a\PYZus{}decorer}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}
+                     \PY{c+c1}{\PYZsh{} on le range dans le cache}
+                     \PY{n}{decoree}\PY{o}{.}\PY{n}{cache}\PY{p}{[}\PY{n}{args}\PY{p}{]} \PY{o}{=} \PY{n}{result}
+                     \PY{c+c1}{\PYZsh{} on le retourne}
+                     \PY{k}{return} \PY{n}{result}
+             \PY{c+c1}{\PYZsh{} on initialise l\PYZsq{}attribut \PYZsq{}cache\PYZsq{}}
+             \PY{n}{decoree}\PY{o}{.}\PY{n}{cache} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+             \PY{k}{return} \PY{n}{decoree}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} créer une fonction décorée}
+         \PY{n+nd}{@memoize}
+         \PY{k}{def} \PY{n+nf}{fibo\PYZus{}cache2}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+         \PY{l+s+sd}{    Un fibonacci hyper\PYZhy{}lent (exponentiel) se transforme}
+         \PY{l+s+sd}{    en temps linéaire une fois que les résultats sont cachés}
+         \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+             \PY{k}{return} \PY{n}{n} \PY{k}{if} \PY{n}{n} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{1} \PY{k}{else} \PY{n}{fibo\PYZus{}cache2}\PY{p}{(}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)} \PY{o}{+} \PY{n}{fibo\PYZus{}cache2}\PY{p}{(}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+
+    Et on obtient à présent une aide en ligne cohérente~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{help}\PY{p}{(}\PY{n}{fibo\PYZus{}cache2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Help on function fibo\_cache2 in module \_\_main\_\_:
+
+fibo\_cache2(n)
+    Un fibonacci hyper-lent (exponentiel) se transforme
+    en temps linéaire une fois que les résultats sont cachés
+
+
+    \end{Verbatim}
+
+    \hypertarget{on-peut-duxe9corer-les-classes-aussi}{%
+\subsubsection{On peut décorer les classes
+aussi}\label{on-peut-duxe9corer-les-classes-aussi}}
+
+    De la même façon qu'on peut décorer une fonction, on peut décorer une
+classe.
+
+Pour ne pas alourdir le complément, et aussi parce que le mécanisme de
+métaclasse offre une autre alternative qui est souvent plus pertinente,
+nous ne donnons pas d'exemple ici, cela vous est laissé à titre
+d'exercice si vous êtes intéressé.
+
+    \hypertarget{un-duxe9corateur-peut-lui-muxeame-avoir-des-arguments}{%
+\subsubsection{Un décorateur peut lui-même avoir des
+arguments}\label{un-duxe9corateur-peut-lui-muxeame-avoir-des-arguments}}
+
+    Reprenons l'exemple de \texttt{memoize}, mais imaginons qu'on veuille
+ajouter un trait de ``durée de validité du cache''. Le code du
+décorateur a besoin de connaître la durée pendant laquelle on doit
+garder les résultats dans le cache.
+
+On veut pouvoir préciser ce paramètre, appelons le
+\texttt{cache\_timeout}, pour chaque fonction~; par exemple on voudrait
+écrire quelque chose comme~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AttributeTok{@memoize_expire}\NormalTok{(}\DecValTok{600}\NormalTok{)}
+\KeywordTok{def}\NormalTok{ resolve_host(hostname):}
+\NormalTok{    …}
+
+\AttributeTok{@memoize_expire}\NormalTok{(}\DecValTok{3600}\OperatorTok{*}\DecValTok{24}\NormalTok{)}
+\KeywordTok{def}\NormalTok{ network_neighbours(hostname):}
+\NormalTok{    …}
+\end{Highlighting}
+\end{Shaded}
+
+    Ceci est possible également avec les décorateurs, avec cette syntaxe
+précisément. Le modèle qu'il faut avoir à l'esprit pour bien comprendre
+le code qui suit est le suivant et se base sur deux objets~:
+
+\begin{itemize}
+\tightlist
+\item
+  le premier objet, \texttt{memoize\_expire}, est ce qu'on appelle une
+  \emph{factory} à décorateurs, c'est-à-dire que l'interpréteur va
+  d'abord appeler \texttt{memoize\_expire(600)} qui doit retourner un
+  décorateur~;
+\item
+  le deuxième objet est ce décorateur retourné par
+  \texttt{memoize\_expire(600)} qui lui-même doit se comporter comme les
+  décorateurs sans argument que l'on a vus jusqu'ici.
+\end{itemize}
+
+Pour faire court, cela signifie que l'interpréteur fera~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resolve_host }\OperatorTok{=}\NormalTok{ (memoize_expire(}\DecValTok{600}\NormalTok{))(resolve_host)}
+\end{Highlighting}
+\end{Shaded}
+
+Ou encore si vous préférez~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{memoize }\OperatorTok{=}\NormalTok{ memoize_expire(}\DecValTok{600}\NormalTok{)}
+\NormalTok{resolve_host }\OperatorTok{=}\NormalTok{ memoize(resolve_host)}
+\end{Highlighting}
+\end{Shaded}
+
+    Ce qui nous mène au code suivant~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{k+kn}{import} \PY{n+nn}{time}
+         
+         \PY{c+c1}{\PYZsh{} comme pour memoize, on est limité ici et on ne peut pas}
+         \PY{c+c1}{\PYZsh{} supporter les appels à la **kwds, voir plus haut}
+         \PY{c+c1}{\PYZsh{} la discussion sur l\PYZsq{}implémentation de memoize}
+         
+         \PY{c+c1}{\PYZsh{} memoize\PYZus{}expire est une factory à décorateur}
+         \PY{k}{def} \PY{n+nf}{memoize\PYZus{}expire}\PY{p}{(}\PY{n}{timeout}\PY{p}{)}\PY{p}{:}
+         
+             \PY{c+c1}{\PYZsh{} memoize\PYZus{}expire va retourner un décorateur sans argument}
+             \PY{c+c1}{\PYZsh{} c\PYZsq{}est\PYZhy{}à\PYZhy{}dire un objet qui se comporte}
+             \PY{c+c1}{\PYZsh{} comme notre tout premier `memoize`}
+             \PY{k}{def} \PY{n+nf}{memoize}\PY{p}{(}\PY{n}{a\PYZus{}decorer}\PY{p}{)}\PY{p}{:}
+                 \PY{c+c1}{\PYZsh{} à partir d\PYZsq{}ici on fait un peu comme dans}
+                 \PY{c+c1}{\PYZsh{} la première version de memoize}
+                 \PY{k}{def} \PY{n+nf}{decoree}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{:}
+                     \PY{k}{try}\PY{p}{:}
+                         \PY{c+c1}{\PYZsh{} sauf que disons qu\PYZsq{}on met dans le cache un tuple}
+                         \PY{c+c1}{\PYZsh{} (valeur, timestamp)}
+                         \PY{n}{valeur}\PY{p}{,} \PY{n}{timestamp} \PY{o}{=} \PY{n}{decoree}\PY{o}{.}\PY{n}{cache}\PY{p}{[}\PY{n}{args}\PY{p}{]}
+                         \PY{c+c1}{\PYZsh{} et là on peut accéder à timeout}
+                         \PY{c+c1}{\PYZsh{} parce que la liaison en Python est lexicale}
+                         \PY{k}{if} \PY{p}{(}\PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{n}{timestamp}\PY{p}{)} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{timeout}\PY{p}{:}
+                             \PY{k}{return} \PY{n}{valeur}
+                         \PY{k}{else}\PY{p}{:}
+                             \PY{c+c1}{\PYZsh{} on fait comme si on ne connaissait pas,}
+                             \PY{k}{raise} \PY{n+ne}{KeyError}
+                     \PY{c+c1}{\PYZsh{} si les arguments ne sont pas hashables,}
+                     \PY{c+c1}{\PYZsh{} par exemple une liste, on ne peut pas cacher}
+                     \PY{c+c1}{\PYZsh{} et on reçoit TypeError}
+                     \PY{k}{except} \PY{n+ne}{TypeError}\PY{p}{:}
+                         \PY{k}{return} \PY{n}{a\PYZus{}decorer}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}
+                     \PY{c+c1}{\PYZsh{} les arguments sont hashables mais on}
+                     \PY{c+c1}{\PYZsh{} n\PYZsq{}a pas encore calculé cette valeur}
+                     \PY{k}{except} \PY{n+ne}{KeyError}\PY{p}{:}
+                         \PY{n}{result} \PY{o}{=} \PY{n}{a\PYZus{}decorer}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}
+                         \PY{n}{decoree}\PY{o}{.}\PY{n}{cache}\PY{p}{[}\PY{n}{args}\PY{p}{]} \PY{o}{=} \PY{p}{(}\PY{n}{result}\PY{p}{,} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+                         \PY{k}{return} \PY{n}{result}
+         
+                 \PY{n}{decoree}\PY{o}{.}\PY{n}{cache} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+                 \PY{k}{return} \PY{n}{decoree}
+             \PY{c+c1}{\PYZsh{} le retour de memoize\PYZus{}expire, c\PYZsq{}est memoize}
+             \PY{k}{return} \PY{n}{memoize}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n+nd}{@memoize\PYZus{}expire}\PY{p}{(}\PY{l+m+mf}{0.5}\PY{p}{)}
+         \PY{k}{def} \PY{n+nf}{fibo\PYZus{}cache\PYZus{}expire}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+             \PY{k}{return} \PY{n}{n} \PY{k}{if} \PY{n}{n}\PY{o}{\PYZlt{}}\PY{o}{=}\PY{l+m+mi}{1} \PY{k}{else} \PY{n}{fibo\PYZus{}cache\PYZus{}expire}\PY{p}{(}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{+}\PY{n}{fibo\PYZus{}cache\PYZus{}expire}\PY{p}{(}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{fibo\PYZus{}cache\PYZus{}expire}\PY{p}{(}\PY{l+m+mi}{300}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}18}]:} 222232244629420445529739893461909967206666939096499764990979600
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n}{fibo\PYZus{}cache\PYZus{}expire}\PY{o}{.}\PY{n}{cache}\PY{p}{[}\PY{p}{(}\PY{l+m+mi}{200}\PY{p}{,}\PY{p}{)}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}19}]:} (280571172992510140037611932413038677189525, 1540558671.518045)
+\end{Verbatim}
+            
+    \hypertarget{remarquez-la-cluxf4ture}{%
+\subparagraph{Remarquez la clôture}\label{remarquez-la-cluxf4ture}}
+
+    Pour conclure sur cet exemple, vous remarquez que dans le code de
+\texttt{decoree} on accède à la variable \texttt{timeout}. Ça peut
+paraître un peu étonnant, si vous pensez que \texttt{decoree} est
+appelée \textbf{bien après} que la fonction \texttt{memoize\_expire} a
+fini son travail. En effet, \texttt{memoize\_expire} est évaluée
+\textbf{une fois} juste après \textbf{la définition} de
+\texttt{fibo\_cache}. Et donc on pourrait penser que la valeur de
+\texttt{timeout} ne serait plus disponible dans le contexte de
+\texttt{decoree}.
+
+Pour comprendre ce qui se passe, il faut se souvenir que Python est un
+langage à liaison lexicale. Cela signifie que la \emph{résolution} de la
+variable \texttt{timeout} se fait au moment de la compilation (de la
+production du byte-code), et non au moment où est appelé
+\texttt{decoree}.
+
+Ce type de construction s'appelle
+\href{http://fr.wikipedia.org/wiki/Fermeture_\%28informatique\%29}{une
+\textbf{clôture}}, en référence au lambda calcul~: on parle de terme
+clos lorsqu'il n'y a plus de référence non résolue dans une expression.
+C'est une technique de programmation très répandue notamment dans les
+applications réactives, où on programme beaucoup avec des
+\emph{callbacks}~; par exemple il est presque impossible de programmer
+en JavaScript sans écrire une clôture.
+
+    \hypertarget{on-peut-chauxeener-les-duxe9corateurs}{%
+\subsubsection{On peut chaîner les
+décorateurs}\label{on-peut-chauxeener-les-duxe9corateurs}}
+
+    Pour revenir à notre sujet, signalons enfin que l'on peut aussi
+``chaîner les décorateurs''~; imaginons par exemple qu'on dispose d'un
+décorateur \texttt{add\_field} qui ajoute dans une classe un
+\emph{getter} et un \emph{setter} basés sur un nom d'attribut.
+
+C'est-à-dire que~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AttributeTok{@add_field}\NormalTok{(}\StringTok{'name'}\NormalTok{)}
+\KeywordTok{class}\NormalTok{ Foo:}
+    \ControlFlowTok{pass}
+\end{Highlighting}
+\end{Shaded}
+
+donnerait pour \texttt{Foo} une classe qui dispose des méthodes
+\texttt{get\_name} et \texttt{set\_name} (exercice pour les courageux~:
+écrire \texttt{add\_field}).
+
+    Alors la syntaxe des décorateurs vous permet de faire quelque chose
+comme~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AttributeTok{@add_field}\NormalTok{(}\StringTok{'name'}\NormalTok{)}
+\AttributeTok{@add_field}\NormalTok{(}\StringTok{'address'}\NormalTok{)}
+\KeywordTok{class}\NormalTok{ Foo:}
+    \ControlFlowTok{pass}
+\end{Highlighting}
+\end{Shaded}
+
+    Ce qui revient à faire~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ Foo: }\ControlFlowTok{pass}
+\NormalTok{Foo }\OperatorTok{=}\NormalTok{ (add_field(}\StringTok{'address'}\NormalTok{))(Foo)}
+\NormalTok{Foo }\OperatorTok{=}\NormalTok{ (add_field(}\StringTok{'name'}\NormalTok{))(Foo)}
+\end{Highlighting}
+\end{Shaded}
+
+    \hypertarget{discussion}{%
+\subsubsection{Discussion}\label{discussion}}
+
+    Dans la pratique, écrire un décorateur est un exercice assez délicat. Le
+vrai problème est bien souvent la création d'objets supplémentaires~: on
+n'appelle plus la fonction de départ mais un wrapper autour de la
+fonction de départ.
+
+Ceci a tout un tas de conséquences, et le lecteur attentif aura par
+exemple remarqué~:
+
+\begin{itemize}
+\tightlist
+\item
+  que dans l'état du code de \texttt{singleton}, bien que l'on ait
+  correctement mis à jour \texttt{\_\_doc\_\_} et \texttt{\_\_name\_\_}
+  sur la classe décorée, \texttt{help(Spam)} ne renvoie pas le texte
+  attendu, il semble que \texttt{help} sur une instance de classe ne se
+  comporte pas exactement comme attendu~;
+\item
+  que si on essaie de combiner les décorateurs \texttt{NbAppels} et
+  \texttt{memoize} sur une - encore nouvelle - version de fibonacci, le
+  code obtenu ne converge pas~; en fait les techniques que nous avons
+  utilisées dans les deux cas ne sont pas compatibles entre elles.
+\end{itemize}
+
+De manière plus générale, il y a des gens pour trouver des défauts à ce
+système de décorateurs~; je vous renvoie notamment à
+\href{http://blog.dscpl.com.au/2014/01/how-you-implemented-your-python.html}{ce
+blog} qui, pour résumer, insiste sur le fait que les objets décorés
+n'ont \textbf{pas exactement} les mêmes propriétés que les objets
+originaux. L'auteur y explique que lorsqu'on fait de l'introspection
+profonde - c'est-à-dire lorsqu'on écrit du code qui ``fouille'' dans les
+objets qui représentent le code lui-même - les objets décorés ont
+parfois du mal à se \emph{faire passer} pour les objets qu'ils
+remplacent.
+
+À chacun de voir les avantages et les inconvénients de cette technique.
+C'est là encore beaucoup une question de goût. Dans certains cas
+simples, comme par exemple pour \texttt{NbAppels}, la décoration revient
+à simplement ajouter du code avant et après l'appel à la fonction à
+décorer. Et dans ce cas, vous remarquerez qu'on peut aussi faire le même
+genre de choses avec un \emph{context manager} (je laisse ça en exercice
+aux étudiants intéressés).
+
+Ce qui est clair toutefois est que la technique des décorateurs est
+quelque chose qui peut être très utile, mais dont il ne faut pas abuser.
+En particulier de notre point de vue, la possibilité de combiner les
+décorateurs, si elle existe bien dans le langage d'un point de vue
+syntaxique, est dans la pratique à utiliser avec la plus extrême
+prudence.
+
+    \hypertarget{pour-en-savoir-plus}{%
+\subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
+
+    Maintenant que vous savez presque tout sur les décorateurs, vous pouvez
+retourner lire ce
+\href{https://wiki.python.org/moin/PythonDecoratorLibrary}{recueil de
+décorateurs} mais plus en détails.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

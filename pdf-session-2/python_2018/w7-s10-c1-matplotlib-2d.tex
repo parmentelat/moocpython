@@ -1,0 +1,380 @@
+    
+    
+    
+    
+
+    
+
+    \hypertarget{matplotlib---2d}{%
+\section{\texorpdfstring{\texttt{matplotlib} -
+2D}{matplotlib - 2D}}\label{matplotlib---2d}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    Plutôt que de récrire (encore) un tutorial sur \texttt{matplotlib}, je
+préfère utiliser les ressources disponibles en ligne en anglais~:
+
+\begin{itemize}
+\tightlist
+\item
+  pour la dimension 2~:
+  https://matplotlib.org/2.0.2/users/pyplot\_tutorial.html~;
+\item
+  pour la dimension 3~:
+  https://matplotlib.org/mpl\_toolkits/mplot3d/tutorial.html.
+\end{itemize}
+
+Je vais essentiellement utiliser des extraits tels quels. N'hésitez pas
+à consulter ces documents originaux pour davantage de précisions.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} les imports habituels}
+        \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+\end{Verbatim}
+
+
+    Intentionnellement dans ce notebook, on ne va pas utiliser le mode
+automatique de \texttt{matplotlib} dans les notebooks (pour rappel,
+\texttt{plt.ion()}), car on veut justement apprendre à utiliser
+\texttt{matplotlib} dans un contexte normal.
+
+    \hypertarget{plt.plot}{%
+\subsubsection{\texorpdfstring{\texttt{plt.plot}}{plt.plot}}\label{plt.plot}}
+
+    Nous avons déjà vu plusieurs fois comment tracer une courbe avec
+\texttt{matplotlib}, avec la fonction \texttt{plot}. Si on donne
+seulement \emph{une} liste de valeurs, elles sont considérées comme les
+\emph{Y}, les \emph{X} étant les entiers en nombre suffisant et en
+commençant à 0.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} si je ne donne qu\PYZsq{}une seule liste à plot}
+        \PY{c+c1}{\PYZsh{} alors ce sont les Y}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mi}{28}\PY{p}{]}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} on peut aussi facilement ajouter une légende}
+        \PY{c+c1}{\PYZsh{} ici sur l\PYZsq{}axe des y}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{some numbers}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c1-matplotlib-2d_files/w7-s10-c1-matplotlib-2d_8_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    On peut changer le style utilisé par \texttt{plot} pour tracer~; ce
+style est spécifié sous la forme d'une chaîne de caractères, par défaut
+\texttt{\textquotesingle{}b-\textquotesingle{}}, qui signifie une ligne
+bleue (\texttt{b} pour bleu, et \texttt{-} pour ligne). Ici on va
+préciser à la place \texttt{ro}, \texttt{r} qui signifie rouge et
+\texttt{o} qui signifie cercle.
+
+Voyez
+\href{https://matplotlib.org/2.0.2/api/pyplot_api.html\#matplotlib.pyplot.plot}{la
+documentation de référence de plot} pour une liste complète.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} mais le plus souvent on passe à plot}
+        \PY{c+c1}{\PYZsh{} une liste de X ET une liste de Y}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{]}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ro}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} ici on veut dire d\PYZsq{}utiliser}
+        \PY{c+c1}{\PYZsh{} pour l\PYZsq{}axe des X : entre 0 et 5}
+        \PY{c+c1}{\PYZsh{} pour l\PYZsq{}axe des Y : entre \PYZhy{}5 et 20}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{]}\PY{p}{)}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c1-matplotlib-2d_files/w7-s10-c1-matplotlib-2d_10_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    On peut très simplement dessiner plusieurs fonctions dans la même zone~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} échantillon de points entre 0 et 5 espacés de 0.2}
+        \PY{n}{t} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mf}{0.}\PY{p}{,} \PY{l+m+mf}{5.}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} plusieurs styles de ligne}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{t}\PY{p}{,} \PY{n}{t}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{t}\PY{p}{,} \PY{n}{t}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bs}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{t}\PY{p}{,} \PY{n}{t}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{g\PYZca{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} on pourrait ajouter d\PYZsq{}autres plot bien sûr aussi}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c1-matplotlib-2d_files/w7-s10-c1-matplotlib-2d_12_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{plusieurs-subplots}{%
+\subsubsection{\texorpdfstring{Plusieurs
+\emph{subplots}}{Plusieurs subplots}}\label{plusieurs-subplots}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{def} \PY{n+nf}{f}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{t}\PY{p}{)} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{cos}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{*}\PY{n}{t}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}\PYZsh{} deux domaines presque identiques}
+        \PY{c+c1}{\PYZsh{} celui\PYZhy{}ci pour les points bleus}
+        \PY{n}{t1} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{5.0}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} celui\PYZhy{}ci pour la ligne bleue}
+        \PY{n}{t2} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{5.0}\PY{p}{,} \PY{l+m+mf}{0.02}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} cet appel n\PYZsq{}est pas nécessaire}
+        \PY{c+c1}{\PYZsh{} vous pouvez vérifier qu\PYZsq{}on pourrait l\PYZsq{}enlever}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} on crée un \PYZsq{}subplot\PYZsq{}}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{211}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} le fonctionnement de matplotlib est dit \PYZsq{}stateful\PYZsq{}}
+        \PY{c+c1}{\PYZsh{} par défaut on dessine dans le dernier objet créé}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{t1}\PY{p}{,} \PY{n}{f}\PY{p}{(}\PY{n}{t1}\PY{p}{)}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bo}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{t2}\PY{p}{,} \PY{n}{f}\PY{p}{(}\PY{n}{t2}\PY{p}{)}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} une deuxième subplot}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{212}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} on écrit dedans}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{t2}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{cos}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{*}\PY{n}{t2}\PY{p}{)}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c1-matplotlib-2d_files/w7-s10-c1-matplotlib-2d_14_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    C'est pour pouvoir construire de tels assemblages qu'il y a une fonction
+\texttt{plt.show()}, qui indique que la figure est terminée.
+
+    Il faut revenir un peu sur les arguments passés à \texttt{subplot}.
+Lorsqu'on écrit~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.subplot(}\DecValTok{211}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+ce qui est par ailleurs juste un raccourci pour~:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plt.subplot(}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+on veut dire qu'on veut créer un quadrillage de 2 lignes de 1 colonne,
+et que le subplot va occuper le 1er emplacement.
+
+    \hypertarget{plusieurs-figures}{%
+\subsubsection{Plusieurs figures}\label{plusieurs-figures}}
+
+    En fait, on peut créer plusieurs figures, et plusieurs \emph{subplots}
+dans chaque figure. Dans l'exemple qui suit on illustre encore mieux
+cette notion de \emph{statefulness}. Je commence par vous donner
+l'exemple du tutorial tel quel~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}                \PY{c+c1}{\PYZsh{} the first figure}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{211}\PY{p}{)}             \PY{c+c1}{\PYZsh{} the first subplot in the first figure}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{212}\PY{p}{)}             \PY{c+c1}{\PYZsh{} the second subplot in the first figure}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}\PY{p}{)}
+        
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}                \PY{c+c1}{\PYZsh{} a second figure}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}\PY{p}{)}          \PY{c+c1}{\PYZsh{} creates a subplot(111) by default}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}                \PY{c+c1}{\PYZsh{} figure 1 current;}
+                                     \PY{c+c1}{\PYZsh{} subplot(212) still current}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{211}\PY{p}{)}             \PY{c+c1}{\PYZsh{} make subplot(211) in figure1 current}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Easy as 1, 2, 3}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{c+c1}{\PYZsh{} subplot 211 title}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+/usr/local/lib/python3.7/site-packages/matplotlib/cbook/deprecation.py:107: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  warnings.warn(message, mplDeprecation, stacklevel=1)
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c1-matplotlib-2d_files/w7-s10-c1-matplotlib-2d_19_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c1-matplotlib-2d_files/w7-s10-c1-matplotlib-2d_19_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Cette façon de faire est améliorable. D'abord c'est source d'erreurs, il
+faut se souvenir de ce qui précède, et du coup, si on change un tout
+petit peu la logique, ça risque de casser tout le reste. En outre selon
+les environnements, on peut obtenir un vilain avertissement.
+
+C'est pourquoi je vous conseille plutôt, pour faire la même chose que
+ci-dessus, d'utiliser \texttt{plt.subplots} qui vous retourne la figure
+avec ses \emph{subplots}, que vous pouvez ranger dans des variables
+Python~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} c\PYZsq{}est assez déroutant au départ, mais}
+        \PY{c+c1}{\PYZsh{} traditionnellement les subplots sont appelés \PYZsq{}axes\PYZsq{}}
+        \PY{c+c1}{\PYZsh{} c\PYZsq{}est pourquoi ici on utilise ax1, ax2 et ax3 pour désigner}
+        \PY{c+c1}{\PYZsh{} des subplots}
+        
+        \PY{c+c1}{\PYZsh{} ici je crée une figure et deux subplots,}
+        \PY{c+c1}{\PYZsh{} sur une grille de 2 lignes * 1 colonne}
+        \PY{n}{fig1}\PY{p}{,} \PY{p}{(}\PY{n}{ax1}\PY{p}{,} \PY{n}{ax2}\PY{p}{)} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} au lieu de faire plt.plot, vous pouvez envoyer}
+        \PY{c+c1}{\PYZsh{} la méthode plot à un subplot}
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
+        \PY{n}{ax2}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}\PY{p}{)}
+        
+        \PY{n}{fig2}\PY{p}{,} \PY{n}{ax3} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+        \PY{n}{ax3}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} pour revenir au premier subplot}
+        \PY{c+c1}{\PYZsh{} il suffit d\PYZsq{}utiliser la variable ax1}
+        \PY{c+c1}{\PYZsh{} attention on avait fait avec \PYZsq{}plt.title\PYZsq{}}
+        \PY{c+c1}{\PYZsh{} ici c\PYZsq{}est la méthode \PYZsq{}set\PYZus{}title\PYZsq{}}
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Easy as 1, 2, 3}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c1-matplotlib-2d_files/w7-s10-c1-matplotlib-2d_21_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c1-matplotlib-2d_files/w7-s10-c1-matplotlib-2d_21_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{plt.hist}{%
+\subsubsection{\texorpdfstring{\texttt{plt.hist}}{plt.hist}}\label{plt.hist}}
+
+    S'agissant de la dimension 2, voici le dernier exemple que nous tirons
+du tutoriel \texttt{matplotlib}, surtout pour illustrer
+\href{https://matplotlib.org/api/_as_gen/matplotlib.pyplot.hist.html?highlight=matplotlib\%20pyplot\%20hist\#matplotlib.pyplot.hist}{\texttt{plt.hist}},
+mais qui montre aussi comment ajouter du texte~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} pour être reproductible, on fixe la graine}
+        \PY{c+c1}{\PYZsh{} du générateur aléatoire}
+        \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{seed}\PY{p}{(}\PY{l+m+mi}{19680801}\PY{p}{)}
+        
+        \PY{n}{mu}\PY{p}{,} \PY{n}{sigma} \PY{o}{=} \PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{15}
+        \PY{n}{x} \PY{o}{=} \PY{n}{mu} \PY{o}{+} \PY{n}{sigma} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{randn}\PY{p}{(}\PY{l+m+mi}{10000}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} dessiner un histogramme}
+        \PY{c+c1}{\PYZsh{} on range les valeurs en 20 boites (bins)}
+        \PY{n}{n}\PY{p}{,} \PY{n}{bins}\PY{p}{,} \PY{n}{patches} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{n}{normed}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{facecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{g}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.75}\PY{p}{)}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Smarts}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Probability}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Histogram of IQ}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{text}\PY{p}{(}\PY{l+m+mi}{60}\PY{p}{,} \PY{o}{.}\PY{l+m+mi}{025}\PY{p}{,} \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZdl{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{mu=100,}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{sigma=15\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{,} \PY{l+m+mi}{160}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mf}{0.03}\PY{p}{]}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{k+kc}{True}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+/usr/local/lib/python3.7/site-packages/matplotlib/axes/\_axes.py:6462: UserWarning: The 'normed' kwarg is deprecated, and has been replaced by the 'density' kwarg.
+  warnings.warn("The 'normed' kwarg is deprecated, and has been "
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c1-matplotlib-2d_files/w7-s10-c1-matplotlib-2d_24_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{plt.scatter}{%
+\subsubsection{\texorpdfstring{\texttt{plt.scatter}}{plt.scatter}}\label{plt.scatter}}
+
+    Je vous recommande aussi de regarder également la fonction
+\href{https://matplotlib.org/api/_as_gen/matplotlib.pyplot.scatter.html?highlight=matplotlib\%20pyplot\%20scatter\#matplotlib.pyplot.scatter}{\texttt{plt.scatter}}
+qui permet de faire par exemple des choses comme ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} pour être reproductible, on fixe la graine}
+        \PY{c+c1}{\PYZsh{} du générateur aléatoire}
+        \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{seed}\PY{p}{(}\PY{l+m+mi}{19680801}\PY{p}{)}
+        
+        \PY{n}{N} \PY{o}{=} \PY{l+m+mi}{50}
+        \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{rand}\PY{p}{(}\PY{n}{N}\PY{p}{)}
+        \PY{n}{y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{rand}\PY{p}{(}\PY{n}{N}\PY{p}{)}
+        \PY{n}{colors} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{rand}\PY{p}{(}\PY{n}{N}\PY{p}{)}
+        \PY{n}{area} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{pi} \PY{o}{*} \PY{p}{(}\PY{l+m+mi}{15} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{rand}\PY{p}{(}\PY{n}{N}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}  \PY{c+c1}{\PYZsh{} 0 to 15 point radii}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{n}{area}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{n}{colors}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c1-matplotlib-2d_files/w7-s10-c1-matplotlib-2d_27_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{plt.boxplot}{%
+\subsubsection{\texorpdfstring{\texttt{plt.boxplot}}{plt.boxplot}}\label{plt.boxplot}}
+
+    Avec
+\href{https://matplotlib.org/api/_as_gen/matplotlib.pyplot.boxplot.html}{\texttt{boxplot}}
+vous obtenez des boîtes à moustache~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}
+         
+         \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{121}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} on peut passer à boxplot une liste de suites de nombres}
+         \PY{c+c1}{\PYZsh{} chaque suite donne lieu à une boite à moustache}
+         \PY{c+c1}{\PYZsh{} ici 3 suites}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{11}\PY{p}{,} \PY{l+m+mi}{12} \PY{p}{,}\PY{l+m+mi}{13}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{)}
+         
+         \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{122}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} on peut aussi comme toujours lui passer un ndarray numpy}
+         \PY{c+c1}{\PYZsh{} attention c\PYZsq{}est lu dans l\PYZsq{}autre sens, ici aussi on a 3 suites de nombres}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{]}\PY{p}{,}
+                               \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{]}\PY{p}{,}
+                               \PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{]}\PY{p}{,}
+                               \PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{]}\PY{p}{,}
+                               \PY{p}{[}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{]}\PY{p}{,}
+                               \PY{p}{[}\PY{l+m+mi}{13}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{]}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c1-matplotlib-2d_files/w7-s10-c1-matplotlib-2d_30_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

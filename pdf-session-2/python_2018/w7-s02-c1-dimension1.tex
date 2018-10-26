@@ -1,0 +1,292 @@
+    
+    
+    
+    
+
+    
+
+    \hypertarget{numpy-en-dimension-1}{%
+\section{\texorpdfstring{\texttt{numpy} en dimension
+1}{numpy en dimension 1}}\label{numpy-en-dimension-1}}
+
+    \hypertarget{compluxe9ment---niveau-basique}{%
+\subsection{Complément - niveau
+basique}\label{compluxe9ment---niveau-basique}}
+
+    Comme on l'a vu dans la vidéo, \texttt{numpy} est une bibliothèque qui
+offre un type supplémentaire par rapport aux types de base Python~: le
+\textbf{tableau}, qui s'appelle en anglais \texttt{array} (en fait
+techniquement, \texttt{ndarray}, pour \emph{n-dimension array}).
+
+Bien que techniquement ce type ne fasse pas partie des types de base de
+Python, il est extrêmement puissant, et surtout beaucoup plus efficace
+que les types de base, dès lors qu'on manipule des données qui ont la
+bonne forme, ce qui est le cas dans un grand nombre de domaines.
+
+Aussi, si vous utilisez une bibliothèque de calcul scientifique, la
+quasi totalité des objets que vous serez amenés à manipuler seront des
+tableaux \texttt{numpy}.
+
+    Dans cette première partie nous allons commencer avec des tableaux à une
+dimension, et voir comment les créer et les manipuler.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+\end{Verbatim}
+
+
+    \hypertarget{cruxe9ation-uxe0-partir-de-donnuxe9es}{%
+\subsubsection{Création à partir de
+données}\label{cruxe9ation-uxe0-partir-de-donnuxe9es}}
+
+    \hypertarget{np.array}{%
+\subparagraph{\texorpdfstring{\texttt{np.array}}{np.array}}\label{np.array}}
+
+    On peut créer un tableau numpy à partir d'une liste - ou plus
+généralement un itérable - avec la fonction \texttt{np.array} comme
+ceci~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{array} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mi}{32}\PY{p}{,} \PY{l+m+mi}{55}\PY{p}{]}\PY{p}{)}
+        \PY{n}{array}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} array([12, 25, 32, 55])
+\end{Verbatim}
+            
+    \textbf{Attention}~: une erreur commune au début consiste à faire ceci,
+qui ne marche pas~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{try}\PY{p}{:}
+            \PY{n}{array} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}
+        \PY{k}{except} \PY{n+ne}{Exception} \PY{k}{as} \PY{n}{e}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OOPS, }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{type(e)\PYZcb{}, }\PY{l+s+si}{\PYZob{}e\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+OOPS, <class 'ValueError'>, only 2 non-keyword arguments accepted
+
+    \end{Verbatim}
+
+    Ça marche aussi à partir d'un itérable~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{builtin\PYZus{}range} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
+        \PY{n}{builtin\PYZus{}range}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+\end{Verbatim}
+            
+    \hypertarget{cruxe9ation-dintervalles}{%
+\subsubsection{Création d'intervalles}\label{cruxe9ation-dintervalles}}
+
+    \hypertarget{np.arange}{%
+\subparagraph{\texorpdfstring{\texttt{np.arange}}{np.arange}}\label{np.arange}}
+
+    Sauf que dans ce cas précis on préfèrera utiliser directement la méthode
+\texttt{arange} de \texttt{numpy}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{numpy\PYZus{}range} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
+        \PY{n}{numpy\PYZus{}range}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+\end{Verbatim}
+            
+    Avec l'avantage qu'avec cette méthode on peut donner des bornes et un
+pas d'incrément qui ne sont pas entiers~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{numpy\PYZus{}range\PYZus{}f} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{2.0}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{)}
+        \PY{n}{numpy\PYZus{}range\PYZus{}f}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} array([1. , 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9])
+\end{Verbatim}
+            
+    \hypertarget{np.linspace}{%
+\subparagraph{\texorpdfstring{\texttt{np.linspace}}{np.linspace}}\label{np.linspace}}
+
+    Aussi et surtout, lorsqu'on veut créer un intervalle dont on connaît les
+bornes, il est souvent plus facile d'utiliser \texttt{linspace}, qui
+crée un intervalle un peu comme \texttt{arange}, mais on lui précise un
+nombre de points plutôt qu'un pas~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mf}{0.}\PY{p}{,} \PY{l+m+mf}{10.}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{)}
+        \PY{n}{X}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} array([ 0.        ,  0.20408163,  0.40816327,  0.6122449 ,  0.81632653,
+                1.02040816,  1.2244898 ,  1.42857143,  1.63265306,  1.83673469,
+                2.04081633,  2.24489796,  2.44897959,  2.65306122,  2.85714286,
+                3.06122449,  3.26530612,  3.46938776,  3.67346939,  3.87755102,
+                4.08163265,  4.28571429,  4.48979592,  4.69387755,  4.89795918,
+                5.10204082,  5.30612245,  5.51020408,  5.71428571,  5.91836735,
+                6.12244898,  6.32653061,  6.53061224,  6.73469388,  6.93877551,
+                7.14285714,  7.34693878,  7.55102041,  7.75510204,  7.95918367,
+                8.16326531,  8.36734694,  8.57142857,  8.7755102 ,  8.97959184,
+                9.18367347,  9.3877551 ,  9.59183673,  9.79591837, 10.        ])
+\end{Verbatim}
+            
+    Vous remarquez que les 50 points couvrent à intervalles réguliers
+l'espace compris entre 0 et 10 inclusivement. Notons que 50 est aussi le
+nombre de points par défaut. Cette fonction est très utilisée lorsqu'on
+veut dessiner une fonction entre deux bornes, on a déjà eu l'occasion de
+le faire~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+        \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+        \PY{n}{plt}\PY{o}{.}\PY{n}{ion}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} il est d\PYZsq{}usage d\PYZsq{}ajouter un point\PYZhy{}virgule à la fin de la dernière ligne}
+        \PY{c+c1}{\PYZsh{} si on ne le fait pas (essayez..), on obtient l\PYZsq{}affichage d\PYZsq{}une ligne}
+        \PY{c+c1}{\PYZsh{} de bruit qui n\PYZsq{}apporte rien}
+        \PY{n}{Y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{cos}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s02-c1-dimension1_files/w7-s02-c1-dimension1_25_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{programmation-vectorielle}{%
+\subsubsection{Programmation
+vectorielle}\label{programmation-vectorielle}}
+
+    Attardons-nous un petit peu~:
+
+\begin{itemize}
+\tightlist
+\item
+  nous avons créé un tableau X de 50 points qui couvrent l'intervalle
+  \([0..10]\) de manière uniforme,
+\item
+  et nous avons calculé un tableau Y de 50 valeurs qui correspondent aux
+  cosinus des valeurs de X.
+\end{itemize}
+
+    Remarquez qu'on a fait ce premier calcul \textbf{sans même savoir
+comment accéder aux éléments d'un tableau}. Vous vous doutez bien qu'on
+va accèder aux éléments d'un tableau à base d'index, on le verra bien
+sûr, mais on n'en a pas eu besoin ici.
+
+En fait en \texttt{numpy} on passe son temps à écrire des expressions
+dont les éléments sont des tableaux, et cela produit des opérations
+membre à membre, comme on vient de le voir avec cosinus.
+
+Ainsi pour tracer la fonction
+\(x \longrightarrow cos^2(x) + sin^2(x) + 3\) on fera tout simplement~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} l\PYZsq{}énorme majorité du temps, on écrit avec numpy}
+         \PY{c+c1}{\PYZsh{} des expressions qui impliquent des tableaux}
+         \PY{c+c1}{\PYZsh{} exactement comme si c\PYZsq{}était des nombres}
+         \PY{n}{Z} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{cos}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{l+m+mi}{3}
+         
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Z}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s02-c1-dimension1_files/w7-s02-c1-dimension1_29_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    C'est le premier réflexe qu'il faut avoir avec les tableaux numpy~: on a
+vu que les compréhensions et les expressions génératrices permettent de
+s'affranchir des boucles du genre~:
+
+\begin{verbatim}
+out_data = []
+for x in in_data:
+   out_data.append(une_fonction(x))
+\end{verbatim}
+
+on a vu en python natif qu'on ferait plutôt~:
+
+\begin{verbatim}
+out_data = (une_fonction(x) for x in in_data)
+\end{verbatim}
+
+Eh bien en fait, en numpy, on doit penser encore plus court~:
+
+\begin{verbatim}
+out_data = une_fonction(in_data)
+\end{verbatim}
+
+ou en tous les cas une expression qui fait intervenir \texttt{in\_data}
+comme un tout, sans avoir besoin d'accéder à ses éléments.
+
+    \hypertarget{ufunc}{%
+\subparagraph{\texorpdfstring{\texttt{ufunc}}{ufunc}}\label{ufunc}}
+
+    Le mécanisme général qui applique une fonction à un tableau est connu
+sous le terme de \emph{Universal function}, ou \texttt{ufunc}, ça peut
+vous être utile avec les moteurs de recherche.
+
+    Voyez notamment la liste des
+\href{https://docs.scipy.org/doc/numpy-1.13.0/reference/ufuncs.html}{fonctionnalités
+disponibles sous cette forme dans \texttt{numpy}}.
+
+    Je vous signale également un utilitaire qui permet, sous forme de
+décorateur, de passer d'une fonction scalaire à une \texttt{ufunc}~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} le décorateur np.vectorize vous permet}
+         \PY{c+c1}{\PYZsh{} de facilement transformer une opération scalaire}
+         \PY{c+c1}{\PYZsh{} en opération vectorielle}
+         \PY{c+c1}{\PYZsh{} je choisis à dessein une fonction définie par morceaux}
+         \PY{n+nd}{@np}\PY{o}{.}\PY{n}{vectorize}
+         \PY{k}{def} \PY{n+nf}{scalar\PYZus{}function}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{:}
+             \PY{k}{return} \PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{x} \PY{o}{+} \PY{p}{(}\PY{l+m+mi}{1} \PY{k}{if} \PY{n}{x} \PY{o}{\PYZlt{}}\PY{o}{=}\PY{l+m+mi}{0} \PY{k}{else} \PY{l+m+mi}{10}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} je choisis de prendre beaucoup de points}
+         \PY{c+c1}{\PYZsh{} à cause de la discontinuité}
+         \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{1000}\PY{p}{)}
+         \PY{n}{Y} \PY{o}{=} \PY{n}{scalar\PYZus{}function}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s02-c1-dimension1_files/w7-s02-c1-dimension1_36_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{conclusion}{%
+\subsubsection{Conclusion}\label{conclusion}}
+
+    Pour conclure ce complément d'introduction, ce style de programmation -
+que je vais décider d'appeler programmation vectorielle de manière un
+peu impropre - est au cœur de \texttt{numpy}, et n'est bien entendu pas
+limitée aux tableaux de dimension 1, comme on va le voir dans la suite.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    

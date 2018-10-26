@@ -1,0 +1,494 @@
+    
+    
+    
+    
+
+    
+
+    \hypertarget{divers}{%
+\section{Divers}\label{divers}}
+
+    \hypertarget{compluxe9ment---niveau-avancuxe9}{%
+\subsection{Complément - niveau
+avancé}\label{compluxe9ment---niveau-avancuxe9}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+        \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+        \PY{n}{plt}\PY{o}{.}\PY{n}{ion}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    Pour finir notre introduction à \texttt{numpy}, nous allons survoler à
+très grande vitesse quelques traits plus annexes mais qui peuvent être
+utiles. Je vous laisse approfondir de votre côté les parties qui vous
+intéressent.
+
+    \hypertarget{utilisation-de-la-muxe9moire}{%
+\section{Utilisation de la mémoire}\label{utilisation-de-la-muxe9moire}}
+
+    \hypertarget{ruxe9fuxe9rences-croisuxe9es-vues-shallow-et-deep-copies}{%
+\subsubsection{Références croisées, vues, shallow et deep
+copies}\label{ruxe9fuxe9rences-croisuxe9es-vues-shallow-et-deep-copies}}
+
+    Pour résumer ce qu'on a vu jusqu'ici~: * un tableau \texttt{numpy} est
+un objet mutable~; * une slice sur un tableau retourne une vue, on est
+donc dans le cas d'une référence partagée~; * dans tous les cas que l'on
+a vus jusqu'ici, comme les cases des tableaux sont des objets atomiques,
+il n'y a pas de différence entre \emph{shallow} et \emph{deep} copie~; *
+pour créer une copie, utilisez \texttt{np.copy()}.
+
+    Et de plus~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} un tableau de base}
+        \PY{n}{a} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} une vue}
+        \PY{n}{v} \PY{o}{=} \PY{n}{a}\PY{o}{.}\PY{n}{view}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} une slice}
+        \PY{n}{s} \PY{o}{=} \PY{n}{a}\PY{p}{[}\PY{p}{:}\PY{p}{]}
+\end{Verbatim}
+
+
+    Les deux objets ne sont pas différentiables~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{v}\PY{o}{.}\PY{n}{base} \PY{o+ow}{is} \PY{n}{a}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} True
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{s}\PY{o}{.}\PY{n}{base} \PY{o+ow}{is} \PY{n}{a}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} True
+\end{Verbatim}
+            
+    \hypertarget{loption-out}{%
+\subsubsection{\texorpdfstring{L'option
+\texttt{out=}}{L'option out=}}\label{loption-out}}
+
+    Lorsque l'on fait du calcul vectoriel, on peut avoir tendance à créer de
+nombreux tableaux intermédiaires qui coûtent cher en mémoire. Pour cette
+raison, presque tous les opérateurs \texttt{numpy} proposent un
+paramètre optionnel \texttt{out=} qui permet de spécifier un tableau
+déjà alloué, dans lequel ranger le résultat.
+
+    Prenons l'exemple un peu factice suivant, ou on calcule
+\(e^{sin(cos(x))}\) sur l'intervalle \([0, 2\pi]\)~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} le domaine}
+        \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{Y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{cos}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s05-c6-divers_files/w7-s05-c6-divers_19_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} chaque fonction alloue un tableau pour ranger ses résultats,}
+        \PY{c+c1}{\PYZsh{} et si je décompose, ce qui se passe en fait c\PYZsq{}est ceci}
+        \PY{n}{Y1} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{cos}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+        \PY{n}{Y2} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{Y1}\PY{p}{)}
+        \PY{n}{Y3} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{n}{Y2}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} en tout en comptant X et Y j\PYZsq{}aurai créé 4 tableaux}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Y3}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s05-c6-divers_files/w7-s05-c6-divers_20_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} Mais moi je sais qu\PYZsq{}en fait je n\PYZsq{}ai besoin que de X et de Y}
+         \PY{c+c1}{\PYZsh{} ce qui fait que je peux optimiser comme ceci :}
+         
+         \PY{c+c1}{\PYZsh{} je ne peux pas récrire sur X parce que j\PYZsq{}en aurai besoin pour le plot}
+         \PY{n}{X1} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{cos}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} par contre ici je peux recycler X1 sans souci}
+         \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{X1}\PY{p}{,} \PY{n}{out}\PY{o}{=}\PY{n}{X1}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} etc ...}
+         \PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{n}{X1}\PY{p}{,} \PY{n}{out}\PY{o}{=}\PY{n}{X1}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{X1}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s05-c6-divers_files/w7-s05-c6-divers_21_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Et avec cette approche je n'ai créé que 2 tableaux en tout.
+
+    \textbf{Notez bien~:} je ne vous recommande pas d'utiliser ceci
+systématiquement, car ça défigure nettement le code. Mais il faut savoir
+que ça existe, et savoir y penser lorsque la création de tableaux
+intermédiaires a un coût important dans l'algorithme.
+
+    \hypertarget{np.add-et-similaires}{%
+\subparagraph{\texorpdfstring{\texttt{np.add} et
+similaires}{np.add et similaires}}\label{np.add-et-similaires}}
+
+    Si vous vous mettez à optimiser de cette façon, vous utiliserez par
+exemple \texttt{np.add} plutôt que \texttt{+}, qui ne vous permet pas de
+choisir la destination du résultat.
+
+    \hypertarget{types-structuruxe9s-pour-les-cellules}{%
+\section{Types structurés pour les
+cellules}\label{types-structuruxe9s-pour-les-cellules}}
+
+    Sans transition, jusqu'ici on a vu des tableaux \emph{atomiques}, où
+chaque cellule est en gros \textbf{un seul nombre}.
+
+En fait, on peut aussi se définir des types structurés, c'est-à-dire que
+chaque cellule contient l'équivalent d'un \emph{struct} en C.
+
+Pour cela, on peut se définir un \texttt{dtype} élaboré, qui va nous
+permettre de définir la structure de chacun de ces enregistrements.
+
+    \hypertarget{exemple}{%
+\subsubsection{Exemple}\label{exemple}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} un dtype structuré}
+         \PY{n}{my\PYZus{}dtype} \PY{o}{=} \PY{p}{[}
+             \PY{c+c1}{\PYZsh{} prenom est un string de taille 12}
+             \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{prenom}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{|S12}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{,}
+             \PY{c+c1}{\PYZsh{} nom est un string de taille 15}
+             \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{nom}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{|S15}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{,}
+             \PY{c+c1}{\PYZsh{} age est un entier}
+             \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{int}\PY{p}{)}
+         \PY{p}{]}
+         
+         \PY{c+c1}{\PYZsh{} un tableau qui contient des cellules de ce type}
+         \PY{n}{classe} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}
+             \PY{c+c1}{\PYZsh{} le contenu}
+             \PY{p}{[} \PY{p}{(} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Jean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Dupont}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{32}\PY{p}{)}\PY{p}{,}
+               \PY{p}{(} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Daniel}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Durand}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{18}\PY{p}{)}\PY{p}{,}
+               \PY{p}{(} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Joseph}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Delapierre}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{54}\PY{p}{)}\PY{p}{,}
+               \PY{p}{(} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Paul}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Girard}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{)}\PY{p}{]}\PY{p}{,}
+             \PY{c+c1}{\PYZsh{} le type}
+             \PY{n}{dtype} \PY{o}{=} \PY{n}{my\PYZus{}dtype}\PY{p}{)}
+         \PY{n}{classe}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} array([(b'Jean', b'Dupont', 32), (b'Daniel', b'Durand', 18),
+                (b'Joseph', b'Delapierre', 54), (b'Paul', b'Girard', 20)],
+               dtype=[('prenom', 'S12'), ('nom', 'S15'), ('age', '<i8')])
+\end{Verbatim}
+            
+    Je peux avoir l'impression d'avoir créé un tableau de 4 lignes et 3
+colonnes~; cependant pour \texttt{numpy} ce n'est pas comme ça que cela
+se présente~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{classe}\PY{o}{.}\PY{n}{shape}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} (4,)
+\end{Verbatim}
+            
+    Rien ne m'empêcherait de créer des tableaux de ce genre en dimensions
+supérieures, bien entendu~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} ça n\PYZsq{}a pas beaucoup d\PYZsq{}intérêt ici, mais si on en a besoin}
+         \PY{c+c1}{\PYZsh{} on peut bien sûr avoir plusieurs dimensions}
+         \PY{n}{classe}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}13}]:} array([[(b'Jean', b'Dupont', 32), (b'Daniel', b'Durand', 18)],
+                [(b'Joseph', b'Delapierre', 54), (b'Paul', b'Girard', 20)]],
+               dtype=[('prenom', 'S12'), ('nom', 'S15'), ('age', '<i8')])
+\end{Verbatim}
+            
+    \hypertarget{comment-duxe9finir-dtype}{%
+\subsubsection{\texorpdfstring{Comment définir
+\texttt{dtype}~?}{Comment définir dtype~?}}\label{comment-duxe9finir-dtype}}
+
+    Il existe une grande variété de moyens pour se définir son propre
+\texttt{dtype}.
+
+Je vous signale notamment la possibilité de spécifier à l'intérieur d'un
+\texttt{dtype} des cellules de type \texttt{object}, qui est
+l'équivalent d'une référence Python (approximativement, un pointeur dans
+un \emph{struct} C)~; c'est un trait qui est utilisé par \texttt{pandas}
+que nous allons voir très bientôt.
+
+Pour la définition de types structurés,
+\href{https://docs.scipy.org/doc/numpy-1.13.0/user/basics.rec.html\#defining-structured-arrays}{voir
+la documentation complète ici}.
+
+    \hypertarget{assemblages-et-duxe9coupages}{%
+\section{Assemblages et découpages}\label{assemblages-et-duxe9coupages}}
+
+    Enfin, toujours sans transition, et plus anecdotique~: jusqu'ici nous
+avons vu des fonctions qui préservent la taille. Le \emph{stacking}
+permet de créer un tableau plus grand en (juxta/super)posant plusieurs
+tableaux. Voici rapidement quelques fonctions qui permettent de faire
+des tableaux plus petits ou plus grands.
+
+    \hypertarget{assemblages-hstack-et-vstack-tableaux-2d}{%
+\subsubsection{\texorpdfstring{Assemblages~: \texttt{hstack} et
+\texttt{vstack} (tableaux
+2D)}{Assemblages~: hstack et vstack (tableaux 2D)}}\label{assemblages-hstack-et-vstack-tableaux-2d}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{a} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[1 2 3]
+ [4 5 6]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{b} \PY{o}{=} \PY{l+m+mi}{10} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[10 20 30]
+ [40 50 60]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{hstack}\PY{p}{(}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[ 1  2  3 10 20 30]
+ [ 4  5  6 40 50 60]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{vstack}\PY{p}{(}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[ 1  2  3]
+ [ 4  5  6]
+ [10 20 30]
+ [40 50 60]]
+
+    \end{Verbatim}
+
+    \hypertarget{assemblages-np.concatenate-3d-et-au-deluxe0}{%
+\subsubsection{\texorpdfstring{Assemblages~: \texttt{np.concatenate} (3D
+et au
+delà)}{Assemblages~: np.concatenate (3D et au delà)}}\label{assemblages-np.concatenate-3d-et-au-deluxe0}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{a} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{ones}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[[1. 1. 1. 1.]
+  [1. 1. 1. 1.]
+  [1. 1. 1. 1.]]
+
+ [[1. 1. 1. 1.]
+  [1. 1. 1. 1.]
+  [1. 1. 1. 1.]]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n}{b} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[[0. 0.]
+  [0. 0.]
+  [0. 0.]]
+
+ [[0. 0.]
+  [0. 0.]
+  [0. 0.]]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{concatenate}\PY{p}{(}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{)}\PY{p}{,} \PY{n}{axis} \PY{o}{=} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[[1. 1. 1. 1. 0. 0.]
+  [1. 1. 1. 1. 0. 0.]
+  [1. 1. 1. 1. 0. 0.]]
+
+ [[1. 1. 1. 1. 0. 0.]
+  [1. 1. 1. 1. 0. 0.]
+  [1. 1. 1. 1. 0. 0.]]]
+
+    \end{Verbatim}
+
+    Pour conclure~: * \texttt{hstack} et \texttt{vstack} utiles sur des
+tableaux 2D~; * au-delà, préférez \texttt{concatenate} qui a une
+sémantique plus claire.
+
+    \hypertarget{ruxe9puxe9titions-np.tile}{%
+\subsubsection{\texorpdfstring{Répétitions~:
+\texttt{np.tile}}{Répétitions~: np.tile}}\label{ruxe9puxe9titions-np.tile}}
+
+    Cette fonction permet de répéter un tableau dans toutes les directions~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{motif} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{motif}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[ 0  1]
+ [ 2 10]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{tile}\PY{p}{(}\PY{n}{motif}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[ 0  1  0  1  0  1]
+ [ 2 10  2 10  2 10]
+ [ 0  1  0  1  0  1]
+ [ 2 10  2 10  2 10]]
+
+    \end{Verbatim}
+
+    \hypertarget{duxe9coupage-np.split}{%
+\subsubsection{\texorpdfstring{Découpage~:
+\texttt{np.split}}{Découpage~: np.split}}\label{duxe9coupage-np.split}}
+
+    Cette opération, inverse du \emph{stacking}, consiste à découper un
+tableau en parties plus ou moins égales~:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{n}{complet} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{24}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{;} \PY{n+nb}{print}\PY{p}{(}\PY{n}{complet}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[ 0  1  2  3  4  5]
+ [ 6  7  8  9 10 11]
+ [12 13 14 15 16 17]
+ [18 19 20 21 22 23]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{n}{h1}\PY{p}{,} \PY{n}{h2} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{hsplit}\PY{p}{(}\PY{n}{complet}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{h1}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[ 0  1  2]
+ [ 6  7  8]
+ [12 13 14]
+ [18 19 20]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{h2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[ 3  4  5]
+ [ 9 10 11]
+ [15 16 17]
+ [21 22 23]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{n}{complet} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{24}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{complet}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[ 0  1  2  3  4  5]
+ [ 6  7  8  9 10 11]
+ [12 13 14 15 16 17]
+ [18 19 20 21 22 23]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{n}{v1}\PY{p}{,} \PY{n}{v2} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{vsplit}\PY{p}{(}\PY{n}{complet}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{v1}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[ 0  1  2  3  4  5]
+ [ 6  7  8  9 10 11]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{v2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[12 13 14 15 16 17]
+ [18 19 20 21 22 23]]
+
+    \end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
