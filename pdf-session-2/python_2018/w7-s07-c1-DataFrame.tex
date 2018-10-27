@@ -177,9 +177,9 @@ les lignes et les colonnes avec les arguments \texttt{index} et
 
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
     x   y   z
-a   4   4   9
-b   8  17   1
-c  18  14  10
+a  15  18   3
+b  12  16   1
+c  19   5  10
 \end{Verbatim}
 
     \hypertarget{importation-et-exportation-de-donnuxe9es}{%
@@ -205,9 +205,9 @@ différents formats.
 
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 ,x,y,z
-a,4,4,9
-b,8,17,1
-c,18,14,10
+a,15,18,3
+b,12,16,1
+c,19,5,10
 \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
@@ -218,7 +218,7 @@ c,18,14,10
 
 
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
-\{"x":\{"a":4,"b":8,"c":18\},"y":\{"a":4,"b":17,"c":14\},"z":\{"a":9,"b":1,"c":10\}\}
+\{"x":\{"a":15,"b":12,"c":19\},"y":\{"a":18,"b":16,"c":5\},"z":\{"a":3,"b":1,"c":10\}\}
 \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
@@ -231,9 +231,9 @@ c,18,14,10
 
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
     x   y   z
-a   4   4   9
-b   8  17   1
-c  18  14  10
+a  15  18   3
+b  12  16   1
+c  19   5  10
 \end{Verbatim}
 
     Pour la gestion des autres formats, comme il s'agit de quelque chose de
@@ -705,9 +705,9 @@ une \texttt{ufunc} de \texttt{numpy} sur les éléments d'une
 
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
    a  b  c
-0  6  9  8
-1  1  8  6
-2  4  5  6
+0  9  8  2
+1  4  1  4
+2  5  6  7
 \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
@@ -717,9 +717,9 @@ une \texttt{ufunc} de \texttt{numpy} sur les éléments d'une
 
 \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}41}]:}           a         b         c
-         0  1.791759  2.197225  2.079442
-         1  0.000000  2.079442  1.791759
-         2  1.386294  1.609438  1.791759
+         0  2.197225  2.079442  0.693147
+         1  1.386294  0.000000  1.386294
+         2  1.609438  1.791759  1.945910
 \end{Verbatim}
             
     Nous remarquons que comme on s'y attend, la \texttt{ufunc} a été
@@ -902,9 +902,9 @@ colonnes et aligné avec les colonnes de la \texttt{DataFrame}.
 
 \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}52}]:}    a  b  c
-         x  7  8  5
-         y  5  1  6
-         z  7  5  5
+         x  6  3  2
+         y  5  8  9
+         z  4  4  7
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
@@ -949,9 +949,9 @@ colonnes et aligné avec les colonnes de la \texttt{DataFrame}.
 
 \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}55}]:}      a    b    c
-         x  107  108  105
-         y  105  101  106
-         z  107  105  105
+         x  106  103  102
+         y  105  108  109
+         z  104  104  107
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
@@ -979,9 +979,9 @@ colonnes et aligné avec les colonnes de la \texttt{DataFrame}.
 
 \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}57}]:}      a    b    c
-         x  207  208  205
-         y  205  201  206
-         z  207  205  205
+         x  206  203  202
+         y  205  208  209
+         z  204  204  207
 \end{Verbatim}
             
     Ici, \texttt{axis=0} signifie que la \texttt{Series} est considérée
@@ -1661,12 +1661,12 @@ dtype: int64
 client           Bob                 Sue          
 pression       avant   arrière     avant   arrière
 year visit                                        
-2013 1      2.362589  2.672196  2.092524  2.501629
-     2      2.292228  2.986946  2.529973  2.630163
-     3      2.505786  2.681643  2.359062  2.675073
-2014 1      2.528697  2.338134  2.157152  2.843016
-     2      2.263120  2.591815  2.741532  2.434334
-     3      2.804437  2.876940  2.570344  2.900448
+2013 1      2.228850  2.028468  2.880603  2.409627
+     2      2.801466  2.682750  2.934684  2.677510
+     3      2.543906  2.589703  2.862838  2.870305
+2014 1      2.942886  2.753438  2.531425  2.440536
+     2      2.332155  2.430224  2.963495  2.864520
+     3      2.535022  2.202486  2.026215  2.518931
 \end{Verbatim}
 
     Il y a plusieurs manières d'accéder aux éléments, mais une seule que
@@ -1684,9 +1684,9 @@ l'on recommande~:
 \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}90}]:} pression     avant   arrière
          visit                       
-         1         2.362589  2.672196
-         2         2.292228  2.986946
-         3         2.505786  2.681643
+         1         2.228850  2.028468
+         2         2.801466  2.682750
+         3         2.543906  2.589703
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
@@ -1696,7 +1696,7 @@ l'on recommande~:
 
 
 \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
-{\color{outcolor}Out[{\color{outcolor}91}]:} 2.2922276144276745
+{\color{outcolor}Out[{\color{outcolor}91}]:} 2.801465848885287
 \end{Verbatim}
             
     Le slice sur le \texttt{MultiIndex} est un peu délicat. On peut utiliser
@@ -1715,9 +1715,9 @@ les niveaux, il faut utiliser un objet \texttt{slice} ou
 client           Sue          
 pression       avant   arrière
 year visit                    
-2013 2      2.529973  2.630163
-     3      2.359062  2.675073
-2014 1      2.157152  2.843016
+2013 2      2.934684  2.677510
+     3      2.862838  2.870305
+2014 1      2.531425  2.440536
 \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
@@ -1730,10 +1730,10 @@ year visit
 client           Bob                 Sue          
 pression       avant   arrière     avant   arrière
 year visit                                        
-2013 1      2.362589  2.672196  2.092524  2.501629
-     2      2.292228  2.986946  2.529973  2.630163
-2014 1      2.528697  2.338134  2.157152  2.843016
-     2      2.263120  2.591815  2.741532  2.434334
+2013 1      2.228850  2.028468  2.880603  2.409627
+     2      2.801466  2.682750  2.934684  2.677510
+2014 1      2.942886  2.753438  2.531425  2.440536
+     2      2.332155  2.430224  2.963495  2.864520
 \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
@@ -1748,10 +1748,10 @@ year visit
 client           Sue          
 pression       avant   arrière
 year visit                    
-2013 1      2.092524  2.501629
-     2      2.529973  2.630163
-2014 1      2.157152  2.843016
-     2      2.741532  2.434334
+2013 1      2.880603  2.409627
+     2      2.934684  2.677510
+2014 1      2.531425  2.440536
+     2      2.963495  2.864520
 \end{Verbatim}
 
     Pour aller plus loin, regardez la documentation des

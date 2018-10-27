@@ -207,11 +207,12 @@ permet que de stocker des représentations binaires. Il n'y a donc pas de
 façon ``naturelle'' de représenter un caractère comme `A', un guillemet
 ou un point-virgule.
 
-On utilise pour cela un encodage, par exemple le code \texttt{US-ASCII}
-- http://www.asciitable.com/ - stipule, pour faire simple, qu'un `A' est
-représenté par l'octet 65 qui s'écrit en binaire 01000001. Il se trouve
-qu'il existe plusieurs encodages, bien sûr incompatibles, selon les
-systèmes et les langues. Vous trouverez plus de détails ci-dessous.
+On utilise pour cela un encodage, par exemple
+\href{http://www.asciitable.com/}{le code \texttt{US-ASCII}} stipule,
+pour faire simple, qu'un `A' est représenté par l'octet 65 qui s'écrit
+en binaire 01000001. Il se trouve qu'il existe plusieurs encodages, bien
+sûr incompatibles, selon les systèmes et les langues. Vous trouverez
+plus de détails ci-dessous.
 
 Le point important est que pour pouvoir ouvrir un fichier
 ``proprement'', il faut bien entendu disposer du \textbf{contenu} du
@@ -284,17 +285,16 @@ documentation} et dans le
 \subsubsection{Le grand malentendu}\label{le-grand-malentendu}}
 
     Si je vous envoie un fichier contenant du français encodé avec, disons,
-\texttt{ISO/IEC\ 8859-15} (\texttt{Latin-9}) --
-http://en.wikipedia.org/wiki/ISO/IEC\_8859-15 -- vous pouvez voir dans
-la table qu'un caractère `€' va être matérialisé dans mon fichier par un
-octet `0xA4', soit 164.
+\href{http://en.wikipedia.org/wiki/ISO/IEC_8859-15}{ISO/IEC 8859-15 -
+a.k.a. \texttt{Latin-9}}; vous pouvez voir dans la table qu'un caractère
+`€' va être matérialisé dans mon fichier par un octet `0xA4', soit 164.
 
 Imaginez maintenant que vous essayez d'ouvrir ce même fichier depuis un
 vieil ordinateur Windows configuré pour le français. Si on ne lui donne
 aucune indication sur l'encodage, le programme qui va lire ce fichier
 sur Windows va utiliser l'encodage par défaut du système, c'est-à-dire
-\texttt{CP1252} -- http://en.wikipedia.org/wiki/Windows-1252. Comme vous
-le voyez dans cette table, l'octet `0xA4' correspond au caractère
+\href{http://en.wikipedia.org/wiki/Windows-1252}{CP1252}. Comme vous le
+voyez dans cette table, l'octet `0xA4' correspond au caractère
 \includegraphics{media/currency-sign.png} et c'est ça que vous allez
 voir à la place de €.
 
@@ -353,9 +353,9 @@ encodages}\label{un-peu-dhistoire-sur-les-encodages}}
 
     Jusque dans les années 1980, les ordinateurs ne parlaient pour
 l'essentiel que l'anglais. La première vague de standardisation avait
-créé l'encodage dit \texttt{ASCII}, ou encore \texttt{US-ASCII} - voir
-par exemple http://www.asciitable.com, ou en version longue
-http://en.wikipedia.org/wiki/ASCII.
+créé l'encodage dit \texttt{ASCII}, ou encore \texttt{US-ASCII}
+\href{http://www.asciitable.com}{voir par exemple ici}, ou encore
+\href{http://en.wikipedia.org/wiki/ASCII}{en version longue ici}.
 
 Le code \texttt{US-ASCII} s'étend sur 128 valeurs, soit 7 bits, mais est
 le plus souvent implémenté sur un octet pour préserver l'alignement, le

@@ -82,18 +82,18 @@ superposée, par \texttt{asyncio.gather}, ce qui fait que la sortie de
 
 
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
-E john
-W mary
-E mary
-W mary
 N john
-N mary
+S mary
+W john
+W mary
+S mary
 S mary
 S john
-W john
-S mary
-S mary
 N mary
+E john
+E mary
+W mary
+W mary
 \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
@@ -103,17 +103,17 @@ N mary
 
 
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
-E bill
-S jane
-E jane
+W bill
 W jane
-N bill
-E bill
-S jane
 N jane
 N bill
+W jane
 N bill
+S bill
+S bill
+W jane
 W bill
+W jane
 \end{Verbatim}
 
     Nous allons voir dans le notebook suivant comment on peut orchestrer

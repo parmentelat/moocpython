@@ -117,7 +117,7 @@ Indexes have overlapping values: Index(['alice'], dtype='object')
 
 
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
-489 µs ± 10.1 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+504 µs ± 14.6 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
@@ -127,7 +127,7 @@ Indexes have overlapping values: Index(['alice'], dtype='object')
 
 
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
-318 µs ± 10.6 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+331 µs ± 13.3 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 \end{Verbatim}
 
     Par défaut, \texttt{concat} concatène les lignes, c'est-à-dire que
@@ -149,8 +149,8 @@ en utilisant l'argument \texttt{axis}~:
 
 \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}11}]:}    a  b
-         x  3  5
-         y  7  6
+         x  1  3
+         y  2  3
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
@@ -160,8 +160,8 @@ en utilisant l'argument \texttt{axis}~:
 
 \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}12}]:}    a  b
-         z  3  8
-         t  8  7
+         z  8  9
+         t  1  3
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
@@ -173,10 +173,10 @@ en utilisant l'argument \texttt{axis}~:
 
 \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}13}]:}    a  b
-         x  3  5
-         y  7  6
-         z  3  8
-         t  8  7
+         x  1  3
+         y  2  3
+         z  8  9
+         t  1  3
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
@@ -194,8 +194,8 @@ en utilisant l'argument \texttt{axis}~:
 
 \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}15}]:}    a  b
-         x  8  8
-         y  6  6
+         x  8  3
+         y  6  2
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
@@ -205,8 +205,8 @@ en utilisant l'argument \texttt{axis}~:
 
 \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}16}]:}    c  d
-         x  4  3
-         y  9  2
+         x  8  6
+         y  6  4
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
@@ -217,8 +217,8 @@ en utilisant l'argument \texttt{axis}~:
 
 \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}17}]:}    a  b  c  d
-         x  8  8  4  3
-         y  6  6  9  2
+         x  8  3  8  6
+         y  6  2  6  4
 \end{Verbatim}
             
     Regardons maintenant ce cas~:
@@ -241,10 +241,10 @@ To retain the current behavior and silence the warning, pass 'sort=True'.
 
 \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}18}]:}      a    b    c    d
-         x  8.0  8.0  NaN  NaN
-         y  6.0  6.0  NaN  NaN
-         x  NaN  NaN  4.0  3.0
-         y  NaN  NaN  9.0  2.0
+         x  8.0  3.0  NaN  NaN
+         y  6.0  2.0  NaN  NaN
+         x  NaN  NaN  8.0  6.0
+         y  NaN  NaN  6.0  4.0
 \end{Verbatim}
             
     Vous remarquez que lors de la concaténation, on prend l'union des tous
@@ -281,8 +281,8 @@ garder, sous la forme d'un objet \texttt{Index}~:
 
 \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}20}]:}      a    b
-         x  8.0  8.0
-         y  6.0  6.0
+         x  8.0  3.0
+         y  6.0  2.0
          x  NaN  NaN
          y  NaN  NaN
 \end{Verbatim}
@@ -297,8 +297,8 @@ garder, sous la forme d'un objet \texttt{Index}~:
 {\color{outcolor}Out[{\color{outcolor}21}]:}      a    c
          x  8.0  NaN
          y  6.0  NaN
-         x  NaN  4.0
-         y  NaN  9.0
+         x  NaN  8.0
+         y  NaN  6.0
 \end{Verbatim}
             
     Notons que les \texttt{Series} et \texttt{DataFrame} ont une méthode
@@ -747,7 +747,7 @@ Regardons quelques exemples~:
 
 
 \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
-{\color{outcolor}Out[{\color{outcolor}51}]:} <pandas.core.groupby.groupby.DataFrameGroupBy object at 0x1086957f0>
+{\color{outcolor}Out[{\color{outcolor}51}]:} <pandas.core.groupby.groupby.DataFrameGroupBy object at 0x110128320>
 \end{Verbatim}
             
     \texttt{groupby} produit un nouvel objet, mais ne fait aucun calcul. Les
@@ -1128,10 +1128,10 @@ ne pas appliquer des fonctions qui font des modications en place.
 
 \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}71}]:}   key  data  data2
-         0   a -0.39  -0.78
-         1   b  1.39   2.79
-         2   a -0.03  -0.07
-         3   b -1.48  -2.96
+         0   a  2.14   4.28
+         1   b -2.02  -4.03
+         2   a  1.34   2.69
+         3   b -0.97  -1.94
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
@@ -1148,10 +1148,10 @@ ne pas appliquer des fonctions qui font des modications en place.
 
 \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}73}]:}    data  data2
-         0 -0.18  -0.36
-         1  1.44   2.87
-         2  0.18   0.36
-         3 -1.44  -2.87
+         0  0.40   0.80
+         1 -0.52  -1.05
+         2 -0.40  -0.80
+         3  0.52   1.05
 \end{Verbatim}
             
     Notez que la colonne \texttt{key} a disparu, ce comportement est
