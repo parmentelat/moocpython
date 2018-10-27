@@ -24,14 +24,14 @@ fonction.
 Si vous avez besoin d'écrire une fonction qui prend en argument par
 défaut une liste ou un dictionnaire vide, voici comment faire
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} ne faites SURTOUT PAS ça}
         \PY{k}{def} \PY{n+nf}{ne\PYZus{}faites\PYZus{}pas\PYZus{}ca}\PY{p}{(}\PY{n}{options}\PY{o}{=}\PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{faire quelque chose}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} mais plutôt comme ceci}
         \PY{k}{def} \PY{n+nf}{mais\PYZus{}plutot\PYZus{}ceci}\PY{p}{(}\PY{n}{options}\PY{o}{=}\PY{k+kc}{None}\PY{p}{)}\PY{p}{:}
             \PY{k}{if} \PY{n}{options} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:} 
@@ -56,7 +56,7 @@ liste passée par l'appelant.
 être utile de faire en sorte que si l'appelant n'a pas de liste sous la
 main, on va créer pour lui une liste vide. Et pour ça on fait~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{k+kn}{import} \PY{n+nn}{random}
         
         \PY{c+c1}{\PYZsh{} l\PYZsq{}intention ici est que si l\PYZsq{}appelant ne fournit pas }
@@ -69,25 +69,25 @@ main, on va créer pour lui une liste vide. Et pour ça on fait~:
 
     Si on appelle cette fonction une première fois, tout semble bien aller
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{ajouter\PYZus{}un\PYZus{}aleatoire}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}4}]:} [10]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} [5]
 \end{Verbatim}
             
     Sauf que, si on appelle la fonction une deuxième fois, on a une
 surprise~!
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{ajouter\PYZus{}un\PYZus{}aleatoire}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}5}]:} [10, 9]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} [5, 9]
 \end{Verbatim}
             
     \hypertarget{pourquoi}{%

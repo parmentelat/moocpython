@@ -1,18 +1,13 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
 
-% Default to the notebook output style
+\documentclass[10pt,a4paper,french]{book}
 
+\usepackage{xltxtra,fontspec,xunicode}
+\defaultfontfeatures{Scale=MatchLowercase}
 
-
-
-% Inherit from the specified cell style.
-
-
-
-
-
-\documentclass[10pt, a4paper, french]{book}
-
-    \usepackage[T1]{fontenc}
+    % old-school, 256 glyphs in a font is not going to make it
+    % \usepackage[T1]{fontenc}
     % Nicer default font (+ math font) than Computer Modern for most use cases
     \usepackage{mathpazo}
     \usepackage[frenchb]{babel}
@@ -52,7 +47,7 @@
     \usepackage{upquote} % Upright quotes for verbatim code
     \usepackage{eurosym} % defines \euro
     \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
-    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+%    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
     \usepackage{fancyvrb} % verbatim replacement that allows latex
     \usepackage{grffile} % extends the file name processing of package graphics
                          % to support a larger range
@@ -70,6 +65,8 @@
 % Modification subparagraph
 
 	\usepackage{titlesec}
+
+    \usepackage{tocloft}
 % -------------------------
 
     % Colors for the hyperref package
@@ -257,7 +254,11 @@
     \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
     \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
 
-
+    %% injected by striplatex.py
+    % frame around cod cells
+    \definecolor{cellframecolor}{rgb}{0.3, 0.7, 0.65}
+    % frame around as-is code (inside ```python / ``` tag)
+    \definecolor{asisframecolor}{rgb}{0.5, 0.5, 0.5}
 
 
     % Prevent overflowing lines due to hard-to-break entities
@@ -350,11 +351,13 @@ Arnaud \textsc{Legout}
 
 \end{titlepage}
 
-\pagestyle{empty}
-\addtocontents{toc}{\protect\thispagestyle{empty}}
+\pagenumbering{roman}
+\addtocontents{toc}{~\hfill\textbf{Page}\par}
+\setcounter{tocdepth}{1}
 \tableofcontents
-\thispagestyle{empty}
+\clearpage
 
+\pagenumbering{arabic}
 % utilisez contenu.py pour recréer contenu.tex en fonction des semaines
 % pertinentes
 \input{contenu}

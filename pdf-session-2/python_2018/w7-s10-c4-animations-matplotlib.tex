@@ -24,26 +24,40 @@ propre et plus élégante.
     \hypertarget{le-sujet}{%
 \subsubsection{Le sujet}\label{le-sujet}}
 
-    En guise d'illustration, nous allons créer~: * une animation
-matplotlib~: disons que l'on veut faire défiler horizontalement une
-sinusoïde ; * un widget interactif~: disons que l'on veut pouvoir
-changer la vitesse de défilement.
+    En guise d'illustration, nous allons créer~:
+
+\begin{itemize}
+\tightlist
+\item
+  une animation matplotlib~: disons que l'on veut faire défiler
+  horizontalement une sinusoïde ;
+\item
+  un widget interactif~: disons que l'on veut pouvoir changer la vitesse
+  de défilement.
+\end{itemize}
 
     \hypertarget{les-outils}{%
 \subsubsection{Les outils}\label{les-outils}}
 
-    Pour fabriquer cela nous aurons besoin principalement~: * de la
-librairie d'animation de matplotlib, et spécifiquement le sous-package
-\texttt{animation}, * et des widgets du module \texttt{ipywidgets}.
+    Pour fabriquer cela nous aurons besoin principalement~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+\begin{itemize}
+\tightlist
+\item
+  de la librairie d'animation de matplotlib, et spécifiquement le
+  sous-package \texttt{animation},
+\item
+  et des widgets du module \texttt{ipywidgets}.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
         \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{pyplot} \PY{k}{as} \PY{n}{plt}
         \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{animation}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{display} \PY{k}{as} \PY{n}{display\PYZus{}widget}
         \PY{k+kn}{from} \PY{n+nn}{ipywidgets} \PY{k}{import} \PY{n}{IntSlider}
 \end{Verbatim}
@@ -62,12 +76,21 @@ l'effet visuel, qui revient à effacer/recalculer une visualisation à
 chaque changement de valeur des entrées, donne un rendu peu agréable à
 l'oeil.
 
-C'est pourquoi ici la logique va être un petit peu différente~: * c'est
-une fonction native de \texttt{matplotlib} qui implémente la boucle
-principale, en travaillant sur un objet \texttt{Figure}, * et le widget
-est utilisé uniquement pour modifier une variable python ; * pour
-simplifier notre code, l'échange d'informations entre ces deux morceaux
-se fait le plus simplement possible, via une variable globale.
+C'est pourquoi ici la logique va être un petit peu différente~:
+
+\begin{itemize}
+\tightlist
+\item
+  c'est une fonction native de \texttt{matplotlib} qui implémente la
+  boucle principale, en travaillant sur un objet \texttt{Figure},
+\item
+  et le widget est utilisé uniquement pour modifier une variable python
+  ;
+\item
+  pour simplifier notre code, l'échange d'informations entre ces deux
+  morceaux se fait le plus simplement possible, via une variable
+  globale.
+\end{itemize}
 
 Bien entendu cette dernière pratique n'est pas recommandée dans du code
 de production, et le lecteur intéressé est invité à améliorer ce point.
@@ -87,14 +110,21 @@ exemple.
 
     Mais avant tout choisissons ce mode de rendu~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} notebook
 \end{Verbatim}
 
 
     Nous allons utiliser la fonction \texttt{animation.FuncAnimation};
-celle-ci s'attend à recevoir en argument, principalement~: * une figure,
-* et une fonction d'affichage.
+celle-ci s'attend à recevoir en argument, principalement~:
+
+\begin{itemize}
+\tightlist
+\item
+  une figure,
+\item
+  et une fonction d'affichage.
+\end{itemize}
 
 La logique est que la fonction d'affichage est appelée à intervalles
 réguliers par \texttt{FuncAnimation}, elle doit retourner un itérable
@@ -109,7 +139,7 @@ parce qu'un itérable est attendu).
 \subparagraph{\texorpdfstring{Version basique dite
 \emph{tout-en-un}}{Version basique dite tout-en-un}}\label{version-basique-dite-tout-en-un}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
         \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{pyplot} \PY{k}{as} \PY{n}{plt}
         \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{animation}
@@ -169,7 +199,7 @@ parce qu'un itérable est attendu).
 \subsubsection{Séparation calcul et
 affichage}\label{suxe9paration-calcul-et-affichage}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{ion}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
@@ -179,16 +209,29 @@ affichage}\label{suxe9paration-calcul-et-affichage}}
 seconde, soit une durée de deux secondes.
 
 Profitons-en pour voir tout de suite une amélioration possible. Il
-serait souhaitable de séparer~: * d'une part la logique du calcul - ou
-de l'acquisition, si on voulait par exemple faire du postprocessing
-temps réel d'images vidéo, * et d'autre part l'affichage à proprement
-parler.
+serait souhaitable de séparer~:
+
+\begin{itemize}
+\tightlist
+\item
+  d'une part la logique du calcul - ou de l'acquisition, si on voulait
+  par exemple faire du postprocessing temps réel d'images vidéo,
+\item
+  et d'autre part l'affichage à proprement parler.
+\end{itemize}
 
     Pour cela, remarquez que le paramètre \texttt{frames} est documenté
 comme pouvant être \textbf{un itérateur}. La logique en fait à l'oeuvre
-dans \texttt{FuncAnimation} est que * \texttt{frames} est un itérateur
-qui va énumérer des données, * à chaque frame cet itérateur est avancé
-avec \texttt{next()}, et son retour est passé à la fonction d'affichage.
+dans \texttt{FuncAnimation} est que
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{frames} est un itérateur qui va énumérer des données,
+\item
+  à chaque frame cet itérateur est avancé avec \texttt{next()}, et son
+  retour est passé à la fonction d'affichage.
+\end{itemize}
 
 En guise de commodité, lorsqu'on passe comme ci-dessus
 \texttt{frames=200}, la fonction transforme cela en
@@ -204,7 +247,7 @@ nous n'en avons pas eu besoin.
 \subparagraph{Version non interactive, mais avec séparation calcul /
 affichage}\label{version-non-interactive-mais-avec-suxe9paration-calcul-affichage}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
         \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{pyplot} \PY{k}{as} \PY{n}{plt}
         \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{animation}
@@ -275,7 +318,7 @@ qui nous permettra de régler la vitesse de défilement.
 \subparagraph{Version interactive avec widget pour choisir la
 vitesse}\label{version-interactive-avec-widget-pour-choisir-la-vitesse}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
         \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{pyplot} \PY{k}{as} \PY{n}{plt}
         \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{animation}
@@ -350,11 +393,19 @@ implémenter ce genre de visualisation interactive.
 
 En effet, vous remarquerez que dans cette dernière version, en termes de
 parallèlisme, on peut avoir l'impression que 3 choses ont lieu
-principalement en même temps~: * la logique de calcul, qui en substance
-est décrite comme un unique \texttt{while\ True:}, * la logique
-d'affichage, qui est cadencée par \texttt{FuncAnimation}, * et la
-logique interactive, qui gère le widget sur interaction de
-l'utilisateur.
+principalement en même temps~:
+
+\begin{itemize}
+\tightlist
+\item
+  la logique de calcul, qui en substance est décrite comme un unique
+  \texttt{while\ True:},
+\item
+  la logique d'affichage, qui est cadencée par \texttt{FuncAnimation},
+\item
+  et la logique interactive, qui gère le widget sur interaction de
+  l'utilisateur.
+\end{itemize}
 
 Le point à retenir ici est que, grâce à la fois au générateur et au
 notebook, on n'a pas du tout besoin de gérer soi-même cet aspect de
@@ -369,11 +420,19 @@ et de manière transparente, un grand nombre de logiques.
     \hypertarget{pour-en-savoir-plus}{%
 \subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
 
-Voyez~: * \href{https://matplotlib.org/api/animation_api.html}{la
-documentation du module \texttt{animation}}, * ainsi que
-\href{https://jakevdp.github.io/blog/2012/08/18/matplotlib-animation-tutorial/}{le
-tutoriel dont on s'est inspiré pour ce notebook}, surtout pour voir
-d'autres animations plus élaborées.
+Voyez~:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://matplotlib.org/api/animation_api.html}{la documentation
+  du module \texttt{animation}},
+\item
+  ainsi que
+  \href{https://jakevdp.github.io/blog/2012/08/18/matplotlib-animation-tutorial/}{le
+  tutoriel dont on s'est inspiré pour ce notebook}, surtout pour voir
+  d'autres animations plus élaborées.
+\end{itemize}
 
 
     % Add a bibliography block to the postdoc

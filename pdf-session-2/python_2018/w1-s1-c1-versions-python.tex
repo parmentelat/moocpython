@@ -28,7 +28,7 @@ ancienne~:
     Si vous préférez utiliser python-3.5, la différence la plus visible pour
 vous apparaitra avec les \emph{f-strings}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{n}{age} \PY{o}{=} \PY{l+m+mi}{10}
         
         \PY{c+c1}{\PYZsh{} un exemple de f\PYZhy{}string}
@@ -36,7 +36,7 @@ vous apparaitra avec les \emph{f-strings}~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}1}]:} 'Jean a 10 ans'
 \end{Verbatim}
             
@@ -45,7 +45,7 @@ introduite qu'en Python-3.6, aussi si vous utilisez Python-3.5 vous
 verrez ceci~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \OperatorTok{>>>}\NormalTok{ age }\OperatorTok{=} \DecValTok{10}
 \OperatorTok{>>>} \SpecialStringTok{f"Jean a }\SpecialCharTok{\{}\NormalTok{age}\SpecialCharTok{\}}\SpecialStringTok{ ans"}
 \NormalTok{  File }\StringTok{"<stdin>"}\NormalTok{, line }\DecValTok{1}
@@ -59,14 +59,14 @@ verrez ceci~:
 \texttt{format} - que nous verrons en Semaine 2 avec les chaines de
 caractères - et dans le cas présent il faudrait remplacer par ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{age} \PY{o}{=} \PY{l+m+mi}{10}
         
         \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Jean a }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{ ans}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{age}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}2}]:} 'Jean a 10 ans'
 \end{Verbatim}
             
@@ -115,7 +115,7 @@ prochaine séquence, dans l'immédiat pour exécuter ce code vous pouvez~:
   claire) du notebook.
 \end{itemize}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} ce premier fragment de code affiche des détails sur la}
         \PY{c+c1}{\PYZsh{} version de python qui exécute tous les notebooks du cours}
         \PY{k+kn}{import} \PY{n+nn}{sys}
@@ -123,10 +123,9 @@ prochaine séquence, dans l'immédiat pour exécuter ce code vous pouvez~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 sys.version\_info(major=3, minor=7, micro=0, releaselevel='final', serial=0)
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Pas de panique si vous n'y arrivez pas, nous consacrerons très bientôt
 une séquence entière à l'utilisation des notebooks :)

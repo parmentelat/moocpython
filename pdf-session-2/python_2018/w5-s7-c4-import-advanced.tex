@@ -13,7 +13,7 @@
 \subsection{Complément - niveau
 avancé}\label{compluxe9ment---niveau-avancuxe9}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} notre utilitaire pour afficher le code des modules}
         \PY{k+kn}{from} \PY{n+nn}{modtools} \PY{k}{import} \PY{n}{show\PYZus{}module}\PY{p}{,} \PY{n}{find\PYZus{}on\PYZus{}disk}
 \end{Verbatim}
@@ -31,37 +31,36 @@ plusieurs exemples avec par exemple les méthodes
     Voici pour commencer les attributs spéciaux les plus utilisées ; pour
 cela nous reprenons le package d'un notebook précédent~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{import} \PY{n+nn}{package\PYZus{}jouet}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 chargement du package package\_jouet
 Chargement du module package\_jouet.module\_jouet dans le package 'package\_jouet'
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{name__}{%
 \subparagraph{\texorpdfstring{\texttt{\_\_name\_\_}}{\_\_name\_\_}}\label{name__}}
 
     Le nom canonique du module~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{package\PYZus{}jouet}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}name\PYZus{}\PYZus{}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}3}]:} 'package\_jouet'
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{package\PYZus{}jouet}\PY{o}{.}\PY{n}{module\PYZus{}jouet}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}name\PYZus{}\PYZus{}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}4}]:} 'package\_jouet.module\_jouet'
 \end{Verbatim}
             
@@ -71,21 +70,21 @@ Chargement du module package\_jouet.module\_jouet dans le package 'package\_joue
     L'emplacement du fichier duquel a été chargé le module ; pour un package
 ceci dénote un fichier \texttt{\_\_init\_\_.py}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{package\PYZus{}jouet}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}file\PYZus{}\PYZus{}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:} '/Users/tparment/git/flotpython/modules/package\_jouet/\_\_init\_\_.py'
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{package\PYZus{}jouet}\PY{o}{.}\PY{n}{module\PYZus{}jouet}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}file\PYZus{}\PYZus{}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} '/Users/tparment/git/flotpython/modules/package\_jouet/module\_jouet.py'
 \end{Verbatim}
             
@@ -113,9 +112,11 @@ Dans ce mode de fonctionnement, si on trouve dans le même répertoire
 deux fichiers \texttt{foo.py} et \texttt{bar.py}, et que dans le premier
 on fait~:
 
-\begin{verbatim}
-import bar
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ImportTok{import}\NormalTok{ bar}
+\end{Highlighting}
+\end{Shaded}
 
 eh bien alors, malgré le fait qu'il existe ici même un fichier
 \texttt{bar.py}, l'import ne réussit pas (sauf si le répertoire courant
@@ -132,29 +133,31 @@ sert l'import relatif.
 
 Voyons cela sur un exemple~qui repose sur la hiérarchie suivante~:
 
-\begin{verbatim}
-package_relatif/
-    __init__.py  (vide)
-    main.py
-    random.py
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ExtensionTok{package_relatif/}
+                \ExtensionTok{__init__.py}\NormalTok{  (vide)}
+                \ExtensionTok{main.py}
+                \ExtensionTok{random.py}
+\end{Highlighting}
+\end{Shaded}
 
     Le fichier \texttt{\_\_init\_\_.py} ici est vide, et voici le code des
 deux autres modules~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{k+kn}{import} \PY{n+nn}{package\PYZus{}relatif}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} le code de main.py}
         \PY{n}{code} \PY{o}{=} \PY{n}{find\PYZus{}on\PYZus{}disk}\PY{p}{(}\PY{n}{package\PYZus{}relatif}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{main.py}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
         \PY{o}{!}cat \PY{n+nv}{\PYZdl{}code}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 
 \# pour importer un module entier en mode relatif
 from . import random as local\_random\_module
@@ -168,8 +171,7 @@ print(
     f"""On charge main.py
     \_\_name\_\_=\{\_\_name\_\_\}
     alea=\{alea()\}""")
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Nous avons illustré dans le point d'entrée \texttt{main.py} deux
 exemples d'import relatif~:
@@ -181,49 +183,46 @@ ici uniquement pour bien identifier les différents objets en jeu.
 génére un string aléatoire en se basant sur le module standard
 \texttt{random}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} le code de random.py}
         \PY{n}{code} \PY{o}{=} \PY{n}{find\PYZus{}on\PYZus{}disk}\PY{p}{(}\PY{n}{package\PYZus{}relatif}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{random.py}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
         \PY{o}{!}cat \PY{n+nv}{\PYZdl{}code}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 import random
 
 print(f"On charge le module random local \{\_\_name\_\_\}")
 
 def alea():
     return(f"[[\{random.randint(0, 10)\}]]")
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Cet exemple montre comment on peut importer un module local de nom
 \texttt{random} \textbf{et} le module \texttt{random} qui provient de la
 librairie standard~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{k+kn}{import} \PY{n+nn}{package\PYZus{}relatif}\PY{n+nn}{.}\PY{n+nn}{main}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 On charge le module random local package\_relatif.random
 On charge main.py
     \_\_name\_\_=package\_relatif.main
-    alea=[[9]]
+    alea=[[3]]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{package\PYZus{}relatif}\PY{o}{.}\PY{n}{main}\PY{o}{.}\PY{n}{alea}\PY{p}{(}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-[[2]]
-
-    \end{Verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+[[7]]
+\end{Verbatim}
 
     \hypertarget{pour-remonter-dans-larborescence}{%
 \subparagraph{Pour remonter dans
@@ -234,30 +233,32 @@ fichiers en utilisant plusieurs points \texttt{.} consécutifs. Voici un
 exemple fonctionnel, on part du même contenu que ci-dessus avec un
 sous-package, comme ceci~:
 
-    \begin{verbatim}
-package_relatif/
-    __init__.py      (vide)
-    main.py
-    random.py
-    subpackage/
-        __init__.py  (vide)
-        submodule.py
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ExtensionTok{package_relatif/}
+                \ExtensionTok{__init__.py}\NormalTok{      (vide)}
+                \ExtensionTok{main.py}
+                \ExtensionTok{random.py}
+                \ExtensionTok{subpackage/}
+                           \ExtensionTok{__init__.py}\NormalTok{  (vide)}
+                           \ExtensionTok{submodule.py}
+\end{Highlighting}
+\end{Shaded}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} voyons le code de submodule:}
          \PY{k+kn}{import} \PY{n+nn}{package\PYZus{}relatif}\PY{n+nn}{.}\PY{n+nn}{subpackage}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} le code de submodule/submodule.py}
          \PY{n}{code} \PY{o}{=} \PY{n}{find\PYZus{}on\PYZus{}disk}\PY{p}{(}\PY{n}{package\PYZus{}relatif}\PY{o}{.}\PY{n}{subpackage}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{submodule.py}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
          \PY{o}{!}cat \PY{n+nv}{\PYZdl{}code}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 
 \# notez ici la présence des deux points pour remonter
 from ..random import alea as imported
@@ -266,28 +267,25 @@ print(f"On charge \{\_\_name\_\_\}")
 
 def alea():
     return f"<<\{imported()\}>>"
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{k+kn}{import} \PY{n+nn}{package\PYZus{}relatif}\PY{n+nn}{.}\PY{n+nn}{subpackage}\PY{n+nn}{.}\PY{n+nn}{submodule}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 On charge package\_relatif.subpackage.submodule
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}15}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{package\PYZus{}relatif}\PY{o}{.}\PY{n}{subpackage}\PY{o}{.}\PY{n}{submodule}\PY{o}{.}\PY{n}{alea}\PY{p}{(}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-<<[[9]]>>
-
-    \end{Verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+<<[[1]]>>
+\end{Verbatim}
 
     \textbf{Ce qu'il faut retenir}
 
@@ -300,15 +298,19 @@ relatif}\label{avantages-de-limport-relatif}}
 
     Bien sûr ici on aurait pu faire
 
-\begin{verbatim}
-import package_relatif.random
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ImportTok{import}\NormalTok{ package_relatif.random}
+\end{Highlighting}
+\end{Shaded}
 
 au lieu de
 
-\begin{verbatim}
-from . import random
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ImportTok{from}\NormalTok{ . }\ImportTok{import}\NormalTok{ random}
+\end{Highlighting}
+\end{Shaded}
 
     Mais l'import relatif présente notamment l'avantage d'être insensible
 aux renommages divers à l'intérieur d'une bibliothèque.
@@ -333,9 +335,11 @@ import relatif, \textbf{c'est l'attribut \texttt{\_\_name\_\_}} qui sert
 
     Concrètement, lorsque dans \texttt{main.py} on fait~:
 
-\begin{verbatim}
-from . import random
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ImportTok{from}\NormalTok{ . }\ImportTok{import}\NormalTok{ random}
+\end{Highlighting}
+\end{Shaded}
 
 l'interpréteur~:
 
@@ -354,21 +358,27 @@ l'interpréteur~:
 
 Aussi cet import est-il retranscrit en
 
-\begin{verbatim}
-from package_relatif import random
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ImportTok{from}\NormalTok{ package_relatif }\ImportTok{import}\NormalTok{ random}
+\end{Highlighting}
+\end{Shaded}
 
     De la même manière
 
-\begin{verbatim}
-from .random import run
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ImportTok{from}\NormalTok{ .random }\ImportTok{import}\NormalTok{ run}
+\end{Highlighting}
+\end{Shaded}
 
 devient
 
-\begin{verbatim}
-from package_relatif.random import run
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ImportTok{from}\NormalTok{ package_relatif.random }\ImportTok{import}\NormalTok{ run}
+\end{Highlighting}
+\end{Shaded}
 
     Par contre \textbf{l'attribut \texttt{\_\_file\_\_} n'est pas utilisé} :
 ce n'est pas parce que deux fichiers python sont dans le même répertoire
@@ -386,9 +396,11 @@ python - est considéré comme un module dont l'attribut
 
 Concrètement, si vous faites
 
-\begin{verbatim}
-python3 tests/montest.py
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ExtensionTok{python3}\NormalTok{ tests/montest.py}
+\end{Highlighting}
+\end{Shaded}
 
 alors la valeur observée dans l'attribut \texttt{\_\_name\_\_} n'est pas
 \texttt{"tests.montest"}, mais la constante \texttt{"\_\_main\_\_"}.
@@ -398,11 +410,13 @@ alors la valeur observée dans l'attribut \texttt{\_\_name\_\_} n'est pas
 c'est également expliqué ici)} vous trouverez parfois à la fin d'un
 fichier source une phrase comme celle-ci~:
 
-    \begin{verbatim}
-if __name__ == "__main__":
-    <faire vraiment quelque chose>
-    <comme par exemple tester le module>
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ControlFlowTok{if} \VariableTok{__name__} \OperatorTok{==} \StringTok{"__main__"}\NormalTok{:}
+    \OperatorTok{<}\NormalTok{faire vraiment quelque chose}\OperatorTok{>}
+    \OperatorTok{<}\NormalTok{comme par exemple tester le module}\OperatorTok{>}
+\end{Highlighting}
+\end{Shaded}
 
     Cet idiome très répandu permet d'insérer à la fin d'un module du code -
 souvent un code de test - qui~:
@@ -466,6 +480,7 @@ De manière générale, une bonne pratique consiste à~:
 S'agissant des tests:
 
 \begin{itemize}
+\tightlist
 \item
   la technique qu'on a vue rapidement - de tester si
   \texttt{\_\_name\_\_} vaut \texttt{"\_\_main\_\_"} - est extrêmement
@@ -477,9 +492,13 @@ S'agissant des tests:
   \texttt{unittest}.
 \item
   du coup les tests sont toujours exécutés avec une phrase comme
-
-  python3 -m unittest tests.jeu\_de\_tests
 \end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ExtensionTok{python3}\NormalTok{ -m unittest tests.jeu_de_tests}
+\end{Highlighting}
+\end{Shaded}
 
 et dans ce contexte-là, il est possible par exemple pour les tests de
 recourir à l'import relatif.

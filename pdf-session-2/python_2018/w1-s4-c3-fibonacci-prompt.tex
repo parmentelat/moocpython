@@ -55,7 +55,7 @@ ne vous inquiétez pas, nous allons vous expliquer tout ça dans les
 prochaines semaines. Le but est uniquement de vous montrer un
 fonctionnement de l'interpréteur Python et de IDLE.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k}{def} \PY{n+nf}{fibonacci}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{retourne le nombre de fibonacci pour l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{entier n}\PY{l+s+s2}{\PYZdq{}}
             \PY{c+c1}{\PYZsh{} pour les petites valeurs de n il n\PYZsq{}y a rien à calculer}
@@ -76,7 +76,7 @@ fonctionnement de l'interpréteur Python et de IDLE.
 rentrer un nombre~; il faut le convertir en entier car \texttt{input}
 renvoie une chaîne de caractères~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{entier} \PY{o}{=} \PY{n+nb}{int}\PY{p}{(}\PY{n+nb}{input}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Entrer un entier }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
         
         \PY{c+c1}{\PYZsh{} NOTE:}
@@ -89,15 +89,14 @@ renvoie une chaîne de caractères~:
 
     On imprime le résultat~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fibonacci(}\PY{l+s+si}{\PYZob{}entier\PYZcb{}}\PY{l+s+s2}{) = }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{fibonacci(entier)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 fibonacci(12) = 233
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{exercice}{%
 \subsubsection{Exercice}\label{exercice}}
@@ -105,6 +104,7 @@ fibonacci(12) = 233
     Vous pouvez donc à présent~:
 
 \begin{itemize}
+\tightlist
 \item
   exécuter le code dans ce notebook
 \item
@@ -132,9 +132,13 @@ fibonacci(12) = 233
   \end{itemize}
 \item
   l'exécuter avec l'interpréteur Python comme ceci~:
-
-  \texttt{\$\ python3\ fibonacci\_prompt.py}
 \end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ }\ExtensionTok{python3}\NormalTok{ fibonacci_prompt.py}
+\end{Highlighting}
+\end{Shaded}
 
     Ce code est volontairement simple et peu robuste pour ne pas l'alourdir.
 Par exemple, ce programme se comporte mal si vous entrez un entier

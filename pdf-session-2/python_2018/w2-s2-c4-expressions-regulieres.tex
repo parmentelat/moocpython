@@ -40,9 +40,11 @@ lecture.
 un ensemble de textes qui possèdent des propriétés communes. Par
 exemple, s'il vous arrive d'utiliser un terminal, et que vous tapez
 
-\begin{verbatim}
-$ dir *.txt
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ }\FunctionTok{dir}\NormalTok{ *.txt}
+\end{Highlighting}
+\end{Shaded}
 
 (ou \texttt{ls\ *.txt} sur linux ou mac), vous utilisez l'expression
 régulière \texttt{*.txt} qui désigne tous les fichiers dont le nom se
@@ -57,7 +59,7 @@ sont disponibles de manière plus traditionnelle, via le module
 \texttt{re} (regular expressions) de la librairie standard. Le propos de
 ce complément est de vous en donner une première introduction.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{re}
 \end{Verbatim}
 
@@ -70,26 +72,26 @@ on cherche à savoir si un objet \texttt{chaine} est ou non de la forme
 \texttt{*-*.txt}, et si oui, à calculer la partie de la chaine qui
 remplace le \texttt{*}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} un objet \PYZsq{}expression régulière\PYZsq{} \PYZhy{} on dit aussi \PYZdq{}pattern\PYZdq{}}
         \PY{n}{regexp} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{(.*)\PYZhy{}(.*)}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{.txt}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} la chaine de départ}
         \PY{n}{chaine} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{abcdef.txt}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} la fonction qui calcule si la chaine \PYZdq{}matche\PYZdq{} le pattern}
         \PY{n}{match} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{n}{regexp}\PY{p}{,} \PY{n}{chaine}\PY{p}{)}
         \PY{n}{match} \PY{o+ow}{is} \PY{k+kc}{None}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}4}]:} True
 \end{Verbatim}
             
@@ -97,40 +99,40 @@ remplace le \texttt{*}~:
 chaine n'est pas de la bonne forme (il manque un \texttt{-} dans le
 nom); avec une autre chaine par contre~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} la chaine de départ}
         \PY{n}{chaine} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{abc\PYZhy{}def.txt}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{match} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{n}{regexp}\PY{p}{,} \PY{n}{chaine}\PY{p}{)}
         \PY{n}{match} \PY{o+ow}{is} \PY{k+kc}{None}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} False
 \end{Verbatim}
             
     Ici \texttt{match} est un objet, qui nous permet ensuite d'``extraire''
 les différentes parties, comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{n}{match}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}7}]:} 'abc'
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{n}{match}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}8}]:} 'def'
 \end{Verbatim}
             
@@ -178,7 +180,7 @@ vous obteniez des résultats légèrement différents.
 
     On se donne deux exemples de chaînes
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{n}{sentences} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Lacus a donec, vitae gravida proin sociis.}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
                      \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Neque ipsum! rhoncus cras quam.}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
 \end{Verbatim}
@@ -187,27 +189,28 @@ vous obteniez des résultats légèrement différents.
     On peut \textbf{chercher tous} les mots se terminant par \texttt{a} ou
 \texttt{m} dans une chaîne avec \texttt{findall}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{k}{for} \PY{n}{sentence} \PY{o+ow}{in} \PY{n}{sentences}\PY{p}{:}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{} dans \PYZgt{}}\PY{l+s+si}{\PYZob{}sentence\PYZcb{}}\PY{l+s+s2}{\PYZlt{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{re}\PY{o}{.}\PY{n}{findall}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{w*[am]}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{W}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{sentence}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 ---- dans >Lacus a donec, vitae gravida proin sociis.<
 ['a ', 'gravida ']
 ---- dans >Neque ipsum! rhoncus cras quam.<
 ['ipsum!', 'quam.']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Ce code permet de chercher toutes (\texttt{findall}) les occurrences de
 l'expression régulière, qui ici est définie par le \emph{raw-string}
 
-\begin{verbatim}
-r"\w*[am]\W"
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\CommentTok{r"\textbackslash{}w*[am]\textbackslash{}W"}
+\end{Highlighting}
+\end{Shaded}
 
 (On rappelle qu'un \emph{raw-string} est une chaine précédée par la
 lettre \texttt{r}, et que c'est utile surtout lorsqu'on veut insérer un
@@ -234,7 +237,7 @@ bout les morceaux suivants.
   \texttt{m}, si on ne le mettait pas on obtiendrait ceci
 \end{itemize}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} le \PYZbs{}W final est important}
          \PY{c+c1}{\PYZsh{} voici ce qu\PYZsq{}on obtient si on l\PYZsq{}omet}
          \PY{k}{for} \PY{n}{sentence} \PY{o+ow}{in} \PY{n}{sentences}\PY{p}{:}
@@ -246,13 +249,12 @@ bout les morceaux suivants.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 ---- dans >Lacus a donec, vitae gravida proin sociis.<
 ['La', 'a', 'vita', 'gravida']
 ---- dans >Neque ipsum! rhoncus cras quam.<
 ['ipsum', 'cra', 'quam']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{split}{%
 \subparagraph{\texorpdfstring{\texttt{split}}{split}}\label{split}}
@@ -261,7 +263,7 @@ bout les morceaux suivants.
 qui fournit une fonctionnalité voisine de \texttt{str.split}, mais ou
 les séparateurs sont exprimés comme une expression régulière
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{k}{for} \PY{n}{sentence} \PY{o+ow}{in} \PY{n}{sentences}\PY{p}{:}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{} dans \PYZgt{}}\PY{l+s+si}{\PYZob{}sentence\PYZcb{}}\PY{l+s+s2}{\PYZlt{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{re}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{W+}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{sentence}\PY{p}{)}\PY{p}{)}
@@ -269,15 +271,13 @@ les séparateurs sont exprimés comme une expression régulière
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 ---- dans >Lacus a donec, vitae gravida proin sociis.<
 ['Lacus', 'a', 'donec', 'vitae', 'gravida', 'proin', 'sociis', '']
 
 ---- dans >Neque ipsum! rhoncus cras quam.<
 ['Neque', 'ipsum', 'rhoncus', 'cras', 'quam', '']
-
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Ici l'expression régulière, qui bien sûr décrit le séparateur, est
 simplement \texttt{\textbackslash{}W+} c'est-à-dire toute suite d'au
@@ -292,7 +292,7 @@ Nous avons donc là un moyen simple, et plus puissant que
     Une troisième méthode utilitaire est \texttt{re.sub} qui permet de
 remplacer les occurrences d'une \emph{regexp}, comme par exemple
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{k}{for} \PY{n}{sentence} \PY{o+ow}{in} \PY{n}{sentences}\PY{p}{:}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{} dans \PYZgt{}}\PY{l+s+si}{\PYZob{}sentence\PYZcb{}}\PY{l+s+s2}{\PYZlt{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{re}\PY{o}{.}\PY{n}{sub}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{(}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{w+)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{X}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{1Y}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{sentence}\PY{p}{)}\PY{p}{)}
@@ -300,15 +300,13 @@ remplacer les occurrences d'une \emph{regexp}, comme par exemple
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 ---- dans >Lacus a donec, vitae gravida proin sociis.<
 XLacusY XaY XdonecY, XvitaeY XgravidaY XproinY XsociisY.
 
 ---- dans >Neque ipsum! rhoncus cras quam.<
 XNequeY XipsumY! XrhoncusY XcrasY XquamY.
-
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Ici, l'expression régulière (le premier argument) contient un
 \textbf{groupe}~: on a utilisé des parenthèses autour du
@@ -328,7 +326,7 @@ caractères alphanumériques par \texttt{X} et \texttt{Y}.
 \emph{raw-string}, d'ailleurs on rappelle qu'il n'y a pas de différence
 de nature entre un \emph{raw-string} et une chaîne usuelle
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{n}{raw} \PY{o}{=} \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abc}\PY{l+s+s1}{\PYZsq{}}
          \PY{n}{regular} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abc}\PY{l+s+s1}{\PYZsq{}}
          \PY{c+c1}{\PYZsh{} comme on a pris une \PYZsq{}petite\PYZsq{} chaîne ce sont les mêmes objets}
@@ -338,11 +336,10 @@ de nature entre un \emph{raw-string} et une chaîne usuelle
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 both compared with is → True
 both compared with == → True
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Il se trouve que le \emph{backslash} \texttt{\textbackslash{}} à
 l'intérieur des expressions régulières est d'un usage assez courant - on
@@ -369,7 +366,7 @@ nouveau, des lettres et enfin de nouveau des chiffres.
 
     Pour cela on considère ces trois chaines en entrée
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}15}]:} \PY{n}{samples} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{890hj000nnm890}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}    \PY{c+c1}{\PYZsh{} cette entrée convient}
                    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{123abc456def789}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}   \PY{c+c1}{\PYZsh{} celle\PYZhy{}ci aussi}
                    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{8090abababab879}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}   \PY{c+c1}{\PYZsh{} celle\PYZhy{}ci non}
@@ -383,31 +380,30 @@ nouveau, des lettres et enfin de nouveau des chiffres.
     Pour commencer, voyons que l'on peut facilement \textbf{vérifier si une
 chaîne vérifie} ou non le critère.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}16}]:} \PY{n}{regexp1} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{[0\PYZhy{}9]+[A\PYZhy{}Za\PYZhy{}z]+[0\PYZhy{}9]+[A\PYZhy{}Za\PYZhy{}z]+[0\PYZhy{}9]+}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
     Si on applique cette expression régulière à toutes nos entrées
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}17}]:} \PY{k}{for} \PY{n}{sample} \PY{o+ow}{in} \PY{n}{samples}\PY{p}{:}
              \PY{n}{match} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{n}{regexp1}\PY{p}{,} \PY{n}{sample}\PY{p}{)}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}sample:16s\PYZcb{}}\PY{l+s+s2}{ → }\PY{l+s+si}{\PYZob{}match\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 890hj000nnm890   → <re.Match object; span=(0, 14), match='890hj000nnm890'>
 123abc456def789  → <re.Match object; span=(0, 15), match='123abc456def789'>
 8090abababab879  → None
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Pour rendre ce résultat un peu plus lisible nous nous définissons une
 petite fonction de confort.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{} pour simplement visualiser si on a un match ou pas}
          \PY{k}{def} \PY{n+nf}{nice}\PY{p}{(}\PY{n}{match}\PY{p}{)}\PY{p}{:}
              \PY{c+c1}{\PYZsh{} le retour de re.match est soit None, soit un objet match}
@@ -417,7 +413,7 @@ petite fonction de confort.
 
     Avec quoi on peut refaire l'essai sur toutes nos entrées.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} la même chose mais un peu moins encombrant}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{REGEXP=}\PY{l+s+si}{\PYZob{}regexp1\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
          \PY{k}{for} \PY{n}{sample} \PY{o+ow}{in} \PY{n}{samples}\PY{p}{:}
@@ -426,14 +422,13 @@ petite fonction de confort.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 REGEXP=[0-9]+[A-Za-z]+[0-9]+[A-Za-z]+[0-9]+
 
   890hj000nnm890 → Match!
  123abc456def789 → Match!
  8090abababab879 → no
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Ici plutôt que d'utiliser les raccourcis comme
 \texttt{\textbackslash{}w} j'ai préféré écrire explicitement les
@@ -459,14 +454,14 @@ bon ordre pour construire l'expression régulière complète.
 \subparagraph{Nommer un morceau (un
 groupe)}\label{nommer-un-morceau-un-groupe}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}20}]:} \PY{c+c1}{\PYZsh{} on se concentre sur une entrée correcte}
          \PY{n}{haystack} \PY{o}{=} \PY{n}{samples}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
          \PY{n}{haystack}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}20}]:} '123abc456def789'
 \end{Verbatim}
             
@@ -474,7 +469,7 @@ groupe)}\label{nommer-un-morceau-un-groupe}}
 regexp, ici on désigne par \texttt{needle} le groupe de chiffres du
 milieu.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}21}]:} \PY{c+c1}{\PYZsh{} la même regexp, mais on donne un nom au groupe de chiffres central}
          \PY{n}{regexp2} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{[0\PYZhy{}9]+[A\PYZhy{}Za\PYZhy{}z]+(?P\PYZlt{}needle\PYZgt{}[0\PYZhy{}9]+)[A\PYZhy{}Za\PYZhy{}z]+[0\PYZhy{}9]+}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
@@ -483,15 +478,14 @@ milieu.
     Et une fois que c'est fait, on peut demander à l'outil de nous
 \textbf{retrouver la partie correspondante} dans la chaine initiale:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}22}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{re}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{n}{regexp2}\PY{p}{,} \PY{n}{haystack}\PY{p}{)}\PY{o}{.}\PY{n}{group}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{needle}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 456
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Dans cette expression on a utilisé un \textbf{groupe nommé}
 \texttt{(?P\textless{}needle\textgreater{}{[}0-9{]}+)}, dans lequel~:
@@ -515,29 +509,28 @@ déjà vu plus tôt dans la chaîne. Dans l'exemple ci-dessus, on pourrait
 ajouter comme contrainte que le premier et le dernier groupes de
 chiffres soient identiques, comme ceci
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}23}]:} \PY{n}{regexp3} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{(?P\PYZlt{}id\PYZgt{}[0\PYZhy{}9]+)[A\PYZhy{}Za\PYZhy{}z]+(?P\PYZlt{}needle\PYZgt{}[0\PYZhy{}9]+)[A\PYZhy{}Za\PYZhy{}z]+(?P=id)}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
     Si bien que maintenant, avec les mêmes entrées que tout à l'heure
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}24}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{REGEXP=}\PY{l+s+si}{\PYZob{}regexp3\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
          \PY{k}{for} \PY{n}{sample} \PY{o+ow}{in} \PY{n}{samples}\PY{p}{:}
              \PY{n}{match} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{n}{regexp3}\PY{p}{,} \PY{n}{sample}\PY{p}{)}
-             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}sample:\PYZgt{}16s\PYZcb{}}\PY{l+s+s2}{ → }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{nice(match)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}    
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}sample:\PYZgt{}16s\PYZcb{}}\PY{l+s+s2}{ → }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{nice(match)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 REGEXP=(?P<id>[0-9]+)[A-Za-z]+(?P<needle>[0-9]+)[A-Za-z]+(?P=id)
 
   890hj000nnm890 → Match!
  123abc456def789 → no
  8090abababab879 → no
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Comme précédemment on a défini le groupe nommé \texttt{id} comme étant
 la première suite de chiffres. La nouveauté ici est la
@@ -594,24 +587,23 @@ Donc à chaque fois qu'on utilise une fonction de commodité, on recompile
 la chaîne en automate, ce qui, dès qu'on a plus d'une chaîne à traiter,
 représente un surcoût.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}25}]:} \PY{c+c1}{\PYZsh{} au lieu de faire comme ci\PYZhy{}dessus:}
          
          \PY{c+c1}{\PYZsh{} imaginez 10**6 chaînes dans samples}
          \PY{k}{for} \PY{n}{sample} \PY{o+ow}{in} \PY{n}{samples}\PY{p}{:}
              \PY{n}{match} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{n}{regexp3}\PY{p}{,} \PY{n}{sample}\PY{p}{)}
-             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}sample:\PYZgt{}16s\PYZcb{}}\PY{l+s+s2}{ → }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{nice(match)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}    
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}sample:\PYZgt{}16s\PYZcb{}}\PY{l+s+s2}{ → }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{nice(match)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
   890hj000nnm890 → Match!
  123abc456def789 → no
  8090abababab879 → no
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}26}]:} \PY{c+c1}{\PYZsh{} dans du vrai code on fera plutôt:}
          
          \PY{c+c1}{\PYZsh{} on compile la chaîne en automate une seule fois}
@@ -624,12 +616,11 @@ représente un surcoût.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
   890hj000nnm890 → Match!
  123abc456def789 → no
  8090abababab879 → no
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Cette deuxième version ne compile qu'une fois la chaîne en automate, et
 donc est plus efficace.
@@ -666,7 +657,7 @@ les plus utiles sur un objet \texttt{RegexObject} sont~:
 en détail ici}. On en a déjà rencontré quelques-unes, en voici à nouveau
 un aperçu rapide.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}27}]:} \PY{c+c1}{\PYZsh{} exemple}
          \PY{n}{sample} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{    Isaac Newton, physicist}\PY{l+s+s2}{\PYZdq{}}
          \PY{n}{match} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{search}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{(}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{w+) (?P\PYZlt{}name\PYZgt{}}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{w+)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{sample}\PY{p}{)}
@@ -676,21 +667,21 @@ un aperçu rapide.
     \texttt{re} et \texttt{string} pour retrouver les données d'entrée du
 match.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}28}]:} \PY{n}{match}\PY{o}{.}\PY{n}{string}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}28}]:} '    Isaac Newton, physicist'
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}29}]:} \PY{n}{match}\PY{o}{.}\PY{n}{re}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}29}]:} re.compile(r'(\textbackslash{}w+) (?P<name>\textbackslash{}w+)', re.UNICODE)
 \end{Verbatim}
             
@@ -699,48 +690,48 @@ morceaux de la chaîne d'entrée qui correspondent aux \textbf{groupes} de
 la regexp. On peut y accéder par rang, ou par nom (comme on l'a vu plus
 haut avec \texttt{needle}).
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}30}]:} \PY{n}{match}\PY{o}{.}\PY{n}{groups}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}30}]:} ('Isaac', 'Newton')
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}31}]:} \PY{n}{match}\PY{o}{.}\PY{n}{group}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}31}]:} 'Isaac'
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}32}]:} \PY{n}{match}\PY{o}{.}\PY{n}{group}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}32}]:} 'Newton'
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}33}]:} \PY{n}{match}\PY{o}{.}\PY{n}{group}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}33}]:} 'Newton'
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}34}]:} \PY{n}{match}\PY{o}{.}\PY{n}{groupdict}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}34}]:} \{'name': 'Newton'\}
 \end{Verbatim}
             
@@ -753,31 +744,31 @@ chaîne de départ qui a effectivement été filtrée par l'expression
 régulière, et qui peut tout à fait être au beau milieu de la chaîne de
 départ, comme dans notre exemple
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}35}]:} \PY{n}{match}\PY{o}{.}\PY{n}{group}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}35}]:} 'Isaac Newton'
 \end{Verbatim}
             
     \texttt{expand} permet de faire une espèce de \texttt{str.format} avec
 les valeurs des groupes.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}36}]:} \PY{n}{match}\PY{o}{.}\PY{n}{expand}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{last\PYZus{}name }\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{g\PYZlt{}name\PYZgt{} first\PYZus{}name }\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}36}]:} 'last\_name Newton first\_name Isaac'
 \end{Verbatim}
             
     \texttt{span} pour connaître les index dans la chaîne d'entrée pour un
 groupe donné.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}37}]:} \PY{c+c1}{\PYZsh{} NB: seq[i:j] est une opération de slicing que nous verrons plus tard}
          \PY{c+c1}{\PYZsh{} Elle retourne une séquence contenant les éléments de i à j\PYZhy{}1 de seq}
          \PY{n}{begin}\PY{p}{,} \PY{n}{end} \PY{o}{=} \PY{n}{match}\PY{o}{.}\PY{n}{span}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
@@ -785,7 +776,7 @@ groupe donné.
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}37}]:} 'Newton'
 \end{Verbatim}
             
@@ -826,13 +817,13 @@ utiles sont sans doute~:
 \textbf{ou logique} (caractère \texttt{\textbar{}}) des différents flags
 que l'on veut utiliser, c'est-à-dire qu'on fera par exemple
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}38}]:} \PY{n}{regexp} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a*b+}\PY{l+s+s2}{\PYZdq{}}
          \PY{n}{re\PYZus{}obj} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{n}{regexp}\PY{p}{,} \PY{n}{flags}\PY{o}{=}\PY{n}{re}\PY{o}{.}\PY{n}{IGNORECASE} \PY{o}{|} \PY{n}{re}\PY{o}{.}\PY{n}{DEBUG}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 MAX\_REPEAT 0 MAXREPEAT
   LITERAL 97
 MAX\_REPEAT 1 MAXREPEAT
@@ -846,19 +837,17 @@ MAX\_REPEAT 1 MAXREPEAT
 16.   LITERAL\_UNI\_IGNORE 0x62 ('b')
 18.   SUCCESS
 19: SUCCESS
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}39}]:} \PY{c+c1}{\PYZsh{} on ignore la casse des caractères }
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{regexp}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZhy{}\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{nice}\PY{p}{(}\PY{n}{re\PYZus{}obj}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{AabB}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a*b+ -> Match!
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{comment-construire-une-expression-ruxe9guliuxe8re}{%
 \subsubsection{Comment construire une expression
@@ -937,7 +926,7 @@ caractère}\label{la-brique-de-base-le-caractuxe8re}}
   \end{itemize}
 \end{itemize}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}40}]:} \PY{n}{sample} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{abcd}\PY{l+s+s2}{\PYZdq{}}
          
          \PY{k}{for} \PY{n}{regexp} \PY{o+ow}{in} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abcd}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ab[cd][cd]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ab[a\PYZhy{}z]d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abc.}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abc}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{.}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{:}
@@ -946,27 +935,25 @@ caractère}\label{la-brique-de-base-le-caractuxe8re}}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 abcd / abcd       → Match!
 abcd / ab[cd][cd] → Match!
 abcd / ab[a-z]d   → Match!
 abcd / abc.       → Match!
 abcd / abc\textbackslash{}.      → no
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Pour ce dernier exemple, comme on a backslashé le \texttt{.} il faut que
 la chaîne en entrée contienne vraiment un \texttt{.}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}41}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{nice}\PY{p}{(}\PY{n}{re}\PY{o}{.}\PY{n}{match} \PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{abc}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{abc.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Match!
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{en-suxe9rie-ou-en-paralluxe8le}{%
 \subparagraph{En série ou en
@@ -978,16 +965,18 @@ filtrent (\texttt{match}) la chaine en entrée séquentiellement du début
 à la fin. On a \emph{un peu} de marge pour spécifier des alternatives,
 lorsqu'on fait par exemple
 
-\begin{verbatim}
-"ab[cd]ef"
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\CommentTok{"ab[cd]ef"}
+\end{Highlighting}
+\end{Shaded}
 
 mais c'est limité à \textbf{un seul} caractère. Si on veut reconnaitre
 deux mots qui n'ont pas grand-chose à voir comme \texttt{abc}
 \textbf{ou} \texttt{def}, il faut en quelque sorte mettre deux regexps
 en parallèle, et c'est ce que permet l'opérateur \texttt{\textbar{}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}42}]:} \PY{n}{regexp} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{abc|def}\PY{l+s+s2}{\PYZdq{}}
          
          \PY{k}{for} \PY{n}{sample} \PY{o+ow}{in} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{def}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{aef}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{:}
@@ -996,12 +985,11 @@ en parallèle, et c'est ce que permet l'opérateur \texttt{\textbar{}}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 abc / abc|def → Match!
 def / abc|def → Match!
 aef / abc|def → no
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{fins-de-chauxeene}{%
 \subparagraph{Fin(s) de chaîne}\label{fins-de-chauxeene}}
@@ -1034,7 +1022,7 @@ Reportez-vous à la documentation pour le détails des différences.
 Attention aussi à entrer le \texttt{\^{}} correctement, il vous faut le
 caractère ASCII et non un voisin dans la ménagerie Unicode.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}43}]:} \PY{n}{sample} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abcd}\PY{l+s+s1}{\PYZsq{}}
          
          \PY{k}{for} \PY{n}{regexp} \PY{o+ow}{in} \PY{p}{[} \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{Aabc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZca{}abc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
@@ -1047,7 +1035,7 @@ caractère ASCII et non un voisin dans la ménagerie Unicode.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 abcd / bc    match → no    , search → Match!
 abcd / \textbackslash{}Aabc match → Match!, search → Match!
 abcd / \^{}abc  match → Match!, search → Match!
@@ -1057,8 +1045,7 @@ abcd / bcd\textbackslash{}Z match → no    , search → Match!
 abcd / bcd\$  match → no    , search → Match!
 abcd / bc\textbackslash{}Z  match → no    , search → no
 abcd / bc\$   match → no    , search → no
-
-    \end{Verbatim}
+\end{Verbatim}
 
     On a en effet bien le pattern \texttt{bc} dans la chaine en entrée, mais
 il n'est ni au début ni à la fin.
@@ -1068,7 +1055,7 @@ il n'est ni au début ni à la fin.
 
     Pour pouvoir faire des montages élaborés, il faut pouvoir parenthéser.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}44}]:} \PY{c+c1}{\PYZsh{} une parenthése dans une RE }
          \PY{c+c1}{\PYZsh{} pour mettre en ligne:}
          \PY{c+c1}{\PYZsh{} un début \PYZsq{}a\PYZsq{}, }
@@ -1080,37 +1067,35 @@ il n'est ni au début ni à la fin.
 
     
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}45}]:} \PY{k}{for} \PY{n}{sample} \PY{o+ow}{in} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abcf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{adef}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}  \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abef}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{:}
              \PY{n}{match} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{n}{regexp}\PY{p}{,} \PY{n}{sample}\PY{p}{)}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}sample:\PYZgt{}4s\PYZcb{}}\PY{l+s+s2}{ → }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{nice(match)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 abcf → Match!
 adef → Match!
 abef → no
  abf → no
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Les parenthèses jouent un rôle additionel de \textbf{groupe}, ce qui
 signifie qu'on \textbf{peut retrouver} le texte correspondant à
 l'expression régulière comprise dans les \texttt{()}. Par exemple, pour
 le premier match
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}46}]:} \PY{n}{sample} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abcf}\PY{l+s+s1}{\PYZsq{}}
          \PY{n}{match} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{n}{regexp}\PY{p}{,} \PY{n}{sample}\PY{p}{)}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}sample\PYZcb{}}\PY{l+s+s2}{, }\PY{l+s+si}{\PYZob{}regexp\PYZcb{}}\PY{l+s+s2}{ → }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{match.groups()\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 abcf, a(bc|de)f → ('bc',)
-
-    \end{Verbatim}
+\end{Verbatim}
 
     dans cet exemple, on n'a utilisé qu'un seul groupe \texttt{()}, et le
 morceau de chaîne qui correspond à ce groupe se trouve donc être le seul
@@ -1145,7 +1130,7 @@ répétitions}\label{compter-les-ruxe9puxe9titions}}
   \texttt{\{m,n\}} entre m et n fois inclusivement.
 \end{itemize}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}47}]:} \PY{c+c1}{\PYZsh{} NB: la construction}
          \PY{c+c1}{\PYZsh{}   [op(elt) for elt in iterable] }
          \PY{c+c1}{\PYZsh{} est une compréhension de liste que nous étudierons plus tard.}
@@ -1163,7 +1148,7 @@ répétitions}\label{compter-les-ruxe9puxe9titions}}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
          / \textbackslash{}A(ab)*\textbackslash{}Z      → Match!
       ab / \textbackslash{}A(ab)*\textbackslash{}Z      → Match!
   ababab / \textbackslash{}A(ab)*\textbackslash{}Z      → Match!
@@ -1184,8 +1169,7 @@ abababab / \textbackslash{}A(ab)\{3\}\textbackslash{}Z    → no
   ababab / \textbackslash{}A(ab)\{3,4\}\textbackslash{}Z  → Match!
 abababab / \textbackslash{}A(ab)\{3,4\}\textbackslash{}Z  → Match!
     baba / \textbackslash{}A(ab)\{3,4\}\textbackslash{}Z  → no
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{groupes-et-contraintes}{%
 \subparagraph{Groupes et contraintes}\label{groupes-et-contraintes}}
@@ -1227,7 +1211,7 @@ l'expression régulière. Que ce soit avec \texttt{*}, ou \texttt{+}, ou
 \textbf{séquence la plus longue}, c'est pourquoi on qualifie l'approche
 de \emph{greedy} - quelque chose comme glouton en français.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}48}]:} \PY{c+c1}{\PYZsh{} un fragment d\PYZsq{}HTML }
          \PY{n}{line}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZlt{}h1\PYZgt{}Title\PYZlt{}/h1\PYZgt{}}\PY{l+s+s1}{\PYZsq{}}
          
@@ -1243,7 +1227,7 @@ de \emph{greedy} - quelque chose comme glouton en français.
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}48}]:} '<h1>Title</h1>'
 \end{Verbatim}
             
@@ -1262,7 +1246,7 @@ opérateurs suivants~:
   \texttt{??} : \texttt{?} mais \emph{non-greedy},
 \end{itemize}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}49}]:} \PY{c+c1}{\PYZsh{} ici on va remplacer * par *? pour rendre l\PYZsq{}opérateur * non\PYZhy{}greedy}
          \PY{n}{re\PYZus{}non\PYZus{}greedy} \PY{o}{=} \PY{n}{re\PYZus{}greedy} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZlt{}.*?\PYZgt{}}\PY{l+s+s1}{\PYZsq{}}
          
@@ -1273,7 +1257,7 @@ opérateurs suivants~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}49}]:} '<h1>'
 \end{Verbatim}
             
@@ -1291,7 +1275,7 @@ entrées ligne par ligne.
 
 Le module \texttt{re} en garde des traces, puisque
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}50}]:} \PY{c+c1}{\PYZsh{} un exemple de traitement des \PYZsq{}newlines\PYZsq{} }
          \PY{n}{sample} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s+s2}{une entrée}
          \PY{l+s+s2}{sur}
@@ -1301,13 +1285,13 @@ Le module \texttt{re} en garde des traces, puisque
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}51}]:} \PY{n}{match} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{(.*)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{n}{sample}\PY{p}{)}
          \PY{n}{match}\PY{o}{.}\PY{n}{groups}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}51}]:} ('une entrée',)
 \end{Verbatim}
             
@@ -1319,13 +1303,13 @@ voir ici tout le contenu de \texttt{sample}. Il existe un \emph{flag}
 \texttt{re.DOTALL} qui permet de faire de \texttt{.} un vrai
 attrape-tout qui capture aussi les \emph{newline}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}52}]:} \PY{n}{match} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{(.*)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{flags}\PY{o}{=}\PY{n}{re}\PY{o}{.}\PY{n}{DOTALL}\PY{p}{)}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{n}{sample}\PY{p}{)}
          \PY{n}{match}\PY{o}{.}\PY{n}{groups}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}52}]:} ('une entrée\textbackslash{}nsur\textbackslash{}nplusieurs\textbackslash{}nlignes\textbackslash{}n',)
 \end{Verbatim}
             
@@ -1334,29 +1318,29 @@ un caractère comme un autre, on peut le mentionner \textbf{dans une
 regexp} comme les autres. Voici quelques exemples pour illustrer tout
 ceci
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}53}]:} \PY{c+c1}{\PYZsh{} sans mettre le flag unicode \PYZbs{}w ne matche que l\PYZsq{}ASCII}
          \PY{n}{match} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{([}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{w ]*)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{n}{sample}\PY{p}{)}
          \PY{n}{match}\PY{o}{.}\PY{n}{groups}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}53}]:} ('une entrée',)
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}54}]:} \PY{c+c1}{\PYZsh{} sans mettre le flag unicode \PYZbs{}w ne matche que l\PYZsq{}ASCII}
          \PY{n}{match} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{([}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{w ]*)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{flags}\PY{o}{=}\PY{n}{re}\PY{o}{.}\PY{n}{U}\PY{p}{)}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{n}{sample}\PY{p}{)}
          \PY{n}{match}\PY{o}{.}\PY{n}{groups}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}54}]:} ('une entrée',)
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}55}]:} \PY{c+c1}{\PYZsh{} si on ajoute \PYZbs{}n à la liste des caractères attendus }
          \PY{c+c1}{\PYZsh{} on obtient bien tout le contenu initial}
          
@@ -1368,7 +1352,7 @@ ceci
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}55}]:} ('une entrée\textbackslash{}nsur\textbackslash{}nplusieurs\textbackslash{}nlignes\textbackslash{}n',)
 \end{Verbatim}
             

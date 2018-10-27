@@ -19,13 +19,13 @@ il suffit de les placer dans le répertoire où vous lancez la commande
 python. Si vous n'êtes pas sûr de cet emplacement vous pouvez le savoir
 en faisant~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{pathlib} \PY{k}{import} \PY{n}{Path}
         \PY{n}{Path}\PY{o}{.}\PY{n}{cwd}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}1}]:} PosixPath('/Users/tparment/git/flotpython')
 \end{Verbatim}
             
@@ -75,21 +75,23 @@ l'interpréteur.
 vous induire en erreur. Aussi je vous engage à exécuter plutôt, et sur
 votre machine, le programme suivant~:
 
-    \begin{verbatim}
-#!/usr/bin/env python3
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\CommentTok{#!/usr/bin/env python3}
 
-import sys
-from pathlib import Path
+\ImportTok{import}\NormalTok{ sys}
+\ImportTok{from}\NormalTok{ pathlib }\ImportTok{import}\NormalTok{ Path}
 
-def show_argv_and_path():
-    print(f"le répertoire courant est {Path.cwd()}")
-    print(f"le point d'entrée du programme est {sys.argv[0]}")
-    print(f"la variable sys.path contient")
-    for i, path in enumerate(sys.path, 1):
-        print(f"{i}-ème chemin dans sys.path {path}")
+\KeywordTok{def}\NormalTok{ show_argv_and_path():}
+    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"le répertoire courant est }\SpecialCharTok{\{}\NormalTok{Path}\SpecialCharTok{.}\NormalTok{cwd()}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"le point d'entrée du programme est }\SpecialCharTok{\{}\NormalTok{sys}\SpecialCharTok{.}\NormalTok{argv[}\DecValTok{0}\NormalTok{]}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"la variable sys.path contient"}\NormalTok{)}
+    \ControlFlowTok{for}\NormalTok{ i, path }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(sys.path, }\DecValTok{1}\NormalTok{):}
+        \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"}\SpecialCharTok{\{i\}}\SpecialStringTok{-ème chemin dans sys.path }\SpecialCharTok{\{}\NormalTok{path}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
 
-show_argv_and_path()
-\end{verbatim}
+\NormalTok{show_argv_and_path()}
+\end{Highlighting}
+\end{Shaded}
 
     En admettant que
 
@@ -106,15 +108,17 @@ show_argv_and_path()
 
 alors vous devriez observer ceci~:
 
-    \begin{verbatim}
-$ cd /le/repertoire/ou/vous/etes/
-/le/repertoire/ou/vous/etes $ python3 /le/repertoire/du/script/run.py
-le répertoire courant est /le/repertoire/ou/vous/etes
-le point d'entrée du programme est /le/repertoire/du/script/run.py
-la variable sys.path contient
-1-ème chemin dans sys.path /le/repertoire/du/script
-<snip>
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ }\BuiltInTok{cd}\NormalTok{ /le/repertoire/ou/vous/etes/}
+\ExtensionTok{/le/repertoire/ou/vous/etes}\NormalTok{ $ python3 /le/repertoire/du/script/run.py}
+\ExtensionTok{le}\NormalTok{ répertoire courant est /le/repertoire/ou/vous/etes}
+\ExtensionTok{le}\NormalTok{ point d}\StringTok{'entrée du programme est /le/repertoire/du/script/run.py}
+\StringTok{la variable sys.path contient}
+\StringTok{1-ème chemin dans sys.path /le/repertoire/du/script}
+\StringTok{<snip>}
+\end{Highlighting}
+\end{Shaded}
 
 \emph{le reste dépend de votre installation}
 
@@ -152,19 +156,23 @@ que le point d'entrée trouve ses deux modules sans que l'utilisateur ait
 Imaginons donc ces trois fichiers installés sur machine de l'utilisateur
 dans~:
 
-    \begin{verbatim}
-/usr/share/utilitaire/
-                      main.py
-                      spam.py
-                      eggs.py
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ExtensionTok{/usr/share/utilitaire/}
+                      \ExtensionTok{main.py}
+                      \ExtensionTok{spam.py}
+                      \ExtensionTok{eggs.py}
+\end{Highlighting}
+\end{Shaded}
 
     Si vous ne faites rien de particulier, c'est-à-dire que \texttt{main.py}
 contient juste
 
-    \begin{verbatim}
-import spam, eggs
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ImportTok{import}\NormalTok{ spam, eggs}
+\end{Highlighting}
+\end{Shaded}
 
     Alors le programme ne fonctionnera \textbf{que s'il est lancé depuis
 \texttt{/usr/share/utilitaire}}, ce qui n'est pas du tout pratique.
@@ -172,19 +180,21 @@ import spam, eggs
     Pour contourner cela on peut écrire dans \texttt{main.py} quelque chose
 comme~:
 
-    \begin{verbatim}
-# on récupère le répertoire où est installé le point d'entrée
-from pathlib import Path
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\CommentTok{# on récupère le répertoire où est installé le point d'entrée}
+\ImportTok{from}\NormalTok{ pathlib }\ImportTok{import}\NormalTok{ Path}
 
-directory_installation = Path(__file__).parent
-
-# et on l'ajoute au chemin de recherche des modules
-import sys
-sys.path.append(directory_installation)
-
-# maintenant on peut importer spam et eggs de n'importe où
-import spam, eggs
-\end{verbatim}
+\NormalTok{directory_installation }\OperatorTok{=}\NormalTok{ Path(}\VariableTok{__file__}\NormalTok{).parent}
+    
+\CommentTok{# et on l'ajoute au chemin de recherche des modules}
+\ImportTok{import}\NormalTok{ sys}
+\NormalTok{sys.path.append(directory_installation)}
+    
+\CommentTok{# maintenant on peut importer spam et eggs de n'importe où}
+\ImportTok{import}\NormalTok{ spam, eggs}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{distribuer-sa-propre-librairie-avec-setuptools}{%
 \subsubsection{\texorpdfstring{Distribuer sa propre librairie avec
@@ -224,9 +234,11 @@ application~; grâce à quoi on peut ensuite de manière unifiée~:
     Pour installer \texttt{setuptools}, comme d'habitude vous pouvez faire
 simplement~:
 
-\begin{verbatim}
-pip3 install setuptools
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ExtensionTok{pip3}\NormalTok{ install setuptools}
+\end{Highlighting}
+\end{Shaded}
 
 
     % Add a bibliography block to the postdoc

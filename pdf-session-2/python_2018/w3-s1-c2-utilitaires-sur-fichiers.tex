@@ -126,14 +126,14 @@ classe (que nous allons voir en fin de semaine).
 \textbf{un type} (on dira plutôt \textbf{une classe}) qui s'appelle
 \texttt{Path}, que nous allons importer comme ceci:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{pathlib} \PY{k}{import} \PY{n}{Path}
 \end{Verbatim}
 
 
     Nous allons faire tourner un petit scénario qui va créer un fichier:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} le nom de notre fichier jouet }
         \PY{n}{nom} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fichier\PYZhy{}temoin}\PY{l+s+s1}{\PYZsq{}}
 \end{Verbatim}
@@ -144,7 +144,7 @@ classe (que nous allons voir en fin de semaine).
 Pour ça nous créons un \textbf{objet} qui est une \textbf{instance} de
 la classe \texttt{Path}, comme ceci:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} on crée un objet de la classe Path, associé au nom de fichier}
         \PY{n}{path} \PY{o}{=} \PY{n}{Path}\PY{p}{(}\PY{n}{nom}\PY{p}{)}
 \end{Verbatim}
@@ -152,7 +152,7 @@ la classe \texttt{Path}, comme ceci:
 
     Vous remarquez que c'est cohérent avec par exemple:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} transformer un float en int}
         \PY{n}{i} \PY{o}{=} \PY{n+nb}{int}\PY{p}{(}\PY{l+m+mf}{3.5}\PY{p}{)}
 \end{Verbatim}
@@ -167,49 +167,51 @@ invite dans la cellule suivante à utiliser l'aide en ligne en appuyant
 sur la touche `Tabulation' après avoir ajouté un \texttt{.} comme si
 vous alliez envoyer une méthode à cet objet
 
-\begin{verbatim}
-path.[taper la touche TAB]
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{path.[taper la touche TAB]}
+\end{Highlighting}
+\end{Shaded}
 
 et le notebook vous montrera la liste des méthodes disponibles.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} ajouter un . et utilisez la touche \PYZlt{}Tabulation\PYZgt{}}
         \PY{n}{path}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:} PosixPath('fichier-temoin')
 \end{Verbatim}
             
     Ainsi par exemple on peut savoir si le fichier existe avec la méthode
 \texttt{exists()}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} au départ le fichier n\PYZsq{}existe pas}
         \PY{n}{path}\PY{o}{.}\PY{n}{exists}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} False
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} si j\PYZsq{}écris dedans je le crée}
         \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{n}{nom}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{w}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{output}\PY{p}{:}
             \PY{n}{output}\PY{o}{.}\PY{n}{write}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{0123456789}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} et maintenant il existe}
         \PY{n}{path}\PY{o}{.}\PY{n}{exists}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}8}]:} True
 \end{Verbatim}
             
@@ -219,14 +221,14 @@ et le notebook vous montrera la liste des méthodes disponibles.
     Voici quelques exemples qui montrent comment accéder aux métadonnées de
 ce fichier:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} cette méthode retourne (en un seul appel système) les métadonnées agrégées}
         \PY{n}{path}\PY{o}{.}\PY{n}{stat}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}9}]:} os.stat\_result(st\_mode=33188, st\_ino=17121245, st\_dev=16777220, st\_nlink=1, st\_uid=501, st\_gid=20, st\_size=11, st\_atime=1540558080, st\_mtime=1540558080, st\_ctime=1540558080)
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} os.stat\_result(st\_mode=33188, st\_ino=17186592, st\_dev=16777220, st\_nlink=1, st\_uid=501, st\_gid=20, st\_size=11, st\_atime=1540645422, st\_mtime=1540645422, st\_ctime=1540645422)
 \end{Verbatim}
             
     Pour ceux que ça intéresse, l'objet retourné par cette méthode
@@ -234,18 +236,18 @@ ce fichier:
 
 On accède aux différentes informations comme ceci:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} la taille du fichier en octets est de 11 }
          \PY{c+c1}{\PYZsh{} car il faut compter un caractère \PYZdq{}newline\PYZdq{} en fin de ligne }
          \PY{n}{path}\PY{o}{.}\PY{n}{stat}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{st\PYZus{}size}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}10}]:} 11
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} la date de dernière modification, sous forme d\PYZsq{}un nombre}
          \PY{c+c1}{\PYZsh{} c\PYZsq{}est le nombre de secondes depuis le 1er Janvier 1970}
          \PY{n}{mtime} \PY{o}{=} \PY{n}{path}\PY{o}{.}\PY{n}{stat}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{st\PYZus{}mtime}
@@ -253,11 +255,11 @@ On accède aux différentes informations comme ceci:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}11}]:} 1540558080.0
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} 1540645422.0
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} que je peux rendre lisible comme ceci}
          \PY{c+c1}{\PYZsh{} en anticipant sur le module datetime}
          \PY{k+kn}{from} \PY{n+nn}{datetime} \PY{k}{import} \PY{n}{datetime}
@@ -266,31 +268,31 @@ On accède aux différentes informations comme ceci:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}12}]:} datetime.datetime(2018, 10, 26, 14, 48)
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} datetime.datetime(2018, 10, 27, 15, 3, 42)
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} ou encore, si je formatte pour n\PYZsq{}obtenir que}
          \PY{c+c1}{\PYZsh{} l\PYZsq{}heure et la minute}
          \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{mtime\PYZus{}datetime:}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{H:}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{M\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}13}]:} '14:48'
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{outcolor}Out[{\color{outcolor}13}]:} '15:03'
 \end{Verbatim}
             
     \hypertarget{duxe9truire-un-fichier}{%
 \subparagraph{Détruire un fichier}\label{duxe9truire-un-fichier}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} je peux maintenant détruire le fichier}
          \PY{n}{path}\PY{o}{.}\PY{n}{unlink}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} ou encore mieux, si je veux détruire }
          \PY{c+c1}{\PYZsh{} seulement dans le cas où il existe je peux aussi faire}
          \PY{k}{try}\PY{p}{:} 
@@ -300,22 +302,21 @@ On accède aux différentes informations comme ceci:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 no need to remove
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}16}]:} \PY{c+c1}{\PYZsh{} et maintenant il n\PYZsq{}existe plus}
          \PY{n}{path}\PY{o}{.}\PY{n}{exists}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}16}]:} False
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} je peux aussi retrouver le nom du fichier comme ceci}
          \PY{c+c1}{\PYZsh{} attention ce n\PYZsq{}est pas une méthode mais un attribut }
          \PY{c+c1}{\PYZsh{} c\PYZsq{}est pourquoi il n\PYZsq{}y a pas de parenthèses}
@@ -323,7 +324,7 @@ no need to remove
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}17}]:} 'fichier-temoin'
 \end{Verbatim}
             
@@ -336,7 +337,7 @@ no need to remove
 La méthode la plus naturelle consiste à créer une instance de
 \texttt{Path} associée au directory lui-même:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}18}]:} \PY{n}{dirpath} \PY{o}{=} \PY{n}{Path}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{./data/}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
@@ -344,14 +345,14 @@ La méthode la plus naturelle consiste à créer une instance de
     Sur cet objet la méthode \texttt{glob} nous retourne un itérable qui
 contient ce qu'on veut:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} tous les fichiers *.json dans le répertoire data/}
          \PY{k}{for} \PY{n}{json} \PY{o+ow}{in} \PY{n}{dirpath}\PY{o}{.}\PY{n}{glob}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{*.json}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{:}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{json}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 data/cities\_europe.json
 data/cities\_foo.json
 data/cities\_france.json
@@ -367,8 +368,7 @@ data/marine-ext.json
 data/meteo\_europe.json
 data/meteo\_france.json
 data/meteo\_world.json
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{documentation-compluxe8te}{%
 \subparagraph{Documentation complète}\label{documentation-compluxe8te}}
@@ -383,12 +383,12 @@ avancé}\label{compluxe9ment---niveau-avancuxe9}}
     Pour ceux qui sont déjà familiers avec les classes, j'en profite pour
 vous faire remarquer le type de notre objet path
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}20}]:} \PY{n+nb}{type}\PY{p}{(}\PY{n}{path}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}20}]:} pathlib.PosixPath
 \end{Verbatim}
             
@@ -397,25 +397,25 @@ vous faire remarquer le type de notre objet path
 fonctionne sous linux - un objet de type \texttt{PosixPath}, qui est une
 sous-classe de \texttt{Path}, comme vous pouvez le voir:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}21}]:} \PY{k+kn}{from} \PY{n+nn}{pathlib} \PY{k}{import} \PY{n}{PosixPath}
          \PY{n+nb}{issubclass}\PY{p}{(}\PY{n}{PosixPath}\PY{p}{,} \PY{n}{Path}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}21}]:} True
 \end{Verbatim}
             
     Ce qui fait que mécaniquement, path est bien une instance de
 \texttt{Path}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}22}]:} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{path}\PY{p}{,} \PY{n}{Path}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}22}]:} True
 \end{Verbatim}
             

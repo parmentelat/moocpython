@@ -9,12 +9,12 @@
 \section{Exercice - niveau
 intermédiaire}\label{exercice---niveau-intermuxe9diaire}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}stairs} \PY{k}{import} \PY{n}{exo\PYZus{}stairs}
 \end{Verbatim}
 
@@ -32,17 +32,17 @@ Si vous partez de n'importe quelle case et que vous vous déplacez d'une
 case horizontalement ou verticalement vers une cas plus proche du
 centre, vous incrémentez la valeur du tableau de \texttt{1}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} voici deux exemples pour la fonction stairs}
         \PY{n}{exo\PYZus{}stairs}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}3}]:} <IPython.core.display.HTML object>
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} à vous de jouer}
         \PY{k}{def} \PY{n+nf}{stairs}\PY{p}{(}\PY{n}{k}\PY{p}{)}\PY{p}{:}
             \PY{k}{return} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{votre code}\PY{l+s+s2}{\PYZdq{}}
@@ -55,7 +55,7 @@ centre, vous incrémentez la valeur du tableau de \texttt{1}.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -67,7 +67,7 @@ centre, vous incrémentez la valeur du tableau de \texttt{1}.
     \hypertarget{visualisation}{%
 \subsubsection{Visualisation}\label{visualisation}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
         \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
         \PY{n}{plt}\PY{o}{.}\PY{n}{ion}\PY{p}{(}\PY{p}{)}
@@ -78,7 +78,7 @@ centre, vous incrémentez la valeur du tableau de \texttt{1}.
 visualisez le résultat, voici comment vous pouvez aussi voir ce type de
 tableau~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{squares} \PY{o}{=} \PY{n}{stairs}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{)}
 \end{Verbatim}
 
@@ -86,7 +86,7 @@ tableau~:
     Pour le voir comme une image avec un niveau de gris comme code de
 couleurs (noir = 0, blanc = maximum = 201 dans notre cas)~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} convertir en flottant pour imshow}
         \PY{n}{squares} \PY{o}{=} \PY{n}{squares}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{float}\PY{p}{)}
         \PY{c+c1}{\PYZsh{} afficher avec une colormap \PYZsq{}gray\PYZsq{}}

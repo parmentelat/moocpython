@@ -26,7 +26,7 @@ Pour l'illustrer, nous utilisons un bloc
 l'exception \texttt{NameError}, qui est produite lorsqu'on référence une
 variable qui n'est pas définie.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} la variable a n\PYZsq{}est pas définie}
         \PY{k}{try}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a=}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{a}\PY{p}{)}
@@ -35,12 +35,11 @@ variable qui n'est pas définie.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a n'est pas définie
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} on la définit}
         \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{10}
         
@@ -52,12 +51,11 @@ a n'est pas définie
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a= 10
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} maintenant on peut effacer la variable}
         \PY{k}{del} \PY{n}{a}
         
@@ -70,10 +68,9 @@ a= 10
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a n'est pas définie
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{sur-une-liste}{%
 \subsubsection{Sur une liste}\label{sur-une-liste}}
@@ -81,19 +78,18 @@ a n'est pas définie
     On peut enlever d'une liste les éléments qui correspondent à une
 \emph{slice}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} on se donne une liste}
         \PY{n}{l} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{)}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{l}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} on considère une slice dans cette liste}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{slice=}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{l}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{:}\PY{l+m+mi}{10}\PY{p}{:}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
         
@@ -103,11 +99,10 @@ a n'est pas définie
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 slice= [2, 5, 8]
 après del [0, 1, 3, 4, 6, 7, 9, 10, 11]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{sur-un-dictionnaire}{%
 \subsubsection{Sur un dictionnaire}\label{sur-un-dictionnaire}}
@@ -115,48 +110,45 @@ après del [0, 1, 3, 4, 6, 7, 9, 10, 11]
     Avec \texttt{del} on peut enlever une clé, et donc la valeur
 correspondante, d'un dictionnaire~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} partons d\PYZsq{}un dictionaire simple}
         \PY{n}{d} \PY{o}{=} \PY{n+nb}{dict}\PY{p}{(}\PY{n}{foo}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bar}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{spam}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{eggs}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{a}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{d}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 \{'foo': 'bar', 'spam': 'eggs', 'a': 'b'\}
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} on peut enlever une clé avec del}
         \PY{k}{del} \PY{n}{d}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{d}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 \{'foo': 'bar', 'spam': 'eggs'\}
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{on-peut-passer-plusieurs-arguments-uxe0-del}{%
 \subsubsection{\texorpdfstring{On peut passer plusieurs arguments à
 \texttt{del}}{On peut passer plusieurs arguments à del}}\label{on-peut-passer-plusieurs-arguments-uxe0-del}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} Voyons où en sont nos données}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{l}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{l}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{d}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 l [0, 1, 3, 4, 6, 7, 9, 10, 11]
 d \{'foo': 'bar', 'spam': 'eggs'\}
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} on peut invoquer \PYZsq{}del\PYZsq{} avec plusieurs expressions}
         \PY{c+c1}{\PYZsh{} séparées par une virgule}
         \PY{k}{del} \PY{n}{l}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{:}\PY{p}{]}\PY{p}{,} \PY{n}{d}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{spam}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
@@ -166,11 +158,10 @@ d \{'foo': 'bar', 'spam': 'eggs'\}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 l [0, 1, 3]
 d \{'foo': 'bar'\}
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{pour-en-savoir-plus}{%
 \subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}

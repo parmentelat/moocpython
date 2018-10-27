@@ -26,7 +26,7 @@ basique}\label{compluxe9ment---niveau-basique}}
 très ancien~; il s'agit d'une interface de très bas niveau avec l'OS,
 qui s'utilise comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{time}
         
         \PY{c+c1}{\PYZsh{} on obtient l\PYZsq{}heure courante sous la forme d\PYZsq{}un flottant}
@@ -36,11 +36,11 @@ qui s'utilise comme ceci~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}1}]:} 1540558396.366548
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{outcolor}Out[{\color{outcolor}1}]:} 1540645719.45262
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} et pour calculer l\PYZsq{}heure qu\PYZsq{}il sera dans trois heures on fait}
         \PY{n}{t\PYZus{}later} \PY{o}{=} \PY{n}{t\PYZus{}now} \PY{o}{+} \PY{l+m+mi}{3} \PY{o}{*} \PY{l+m+mi}{3600}
 \end{Verbatim}
@@ -49,12 +49,12 @@ qui s'utilise comme ceci~:
     Nous sommes donc ici clairement dans une approche non orientée objet~;
 on manipule des types de base, ici le type flottant~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n+nb}{type}\PY{p}{(}\PY{n}{t\PYZus{}later}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}3}]:} float
 \end{Verbatim}
             
@@ -64,30 +64,28 @@ conversions, pas vraiment explicites non plus~; voici par exemple un
 appel à \texttt{gmtime} qui convertit le flottant obtenu par la méthode
 \texttt{time()} en heure UTC (\texttt{gm} est pour Greenwich Meridian)~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{struct\PYZus{}later} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{gmtime}\PY{p}{(}\PY{n}{t\PYZus{}later}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{struct\PYZus{}later}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-time.struct\_time(tm\_year=2018, tm\_mon=10, tm\_mday=26, tm\_hour=15, tm\_min=53, tm\_sec=16, tm\_wday=4, tm\_yday=299, tm\_isdst=0)
-
-    \end{Verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+time.struct\_time(tm\_year=2018, tm\_mon=10, tm\_mday=27, tm\_hour=16, tm\_min=8, tm\_sec=39, tm\_wday=5, tm\_yday=300, tm\_isdst=0)
+\end{Verbatim}
 
     Et on met en forme ce résultat en utilisant des méthodes comme, par
 exemple, \texttt{strftime()} pour afficher l'heure UTC dans 3 heures~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{heure UTC dans trois heures }\PY{l+s+s1}{\PYZsq{}}
               \PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{time.strftime(}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{Y\PYZhy{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{m\PYZhy{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{ at }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{H:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{M}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{, struct\PYZus{}later)\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-heure UTC dans trois heures 2018-10-26 at 15:53
-
-    \end{Verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+heure UTC dans trois heures 2018-10-27 at 16:08
+\end{Verbatim}
 
     \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
@@ -111,7 +109,7 @@ va être plus clair quant à ce qui est réellement représenté.
     Le code ci-dessus s'écrirait alors, en utilisant le module
 \texttt{datetime}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{k+kn}{from} \PY{n+nn}{datetime} \PY{k}{import} \PY{n}{datetime}\PY{p}{,} \PY{n}{timedelta}
         
         \PY{n}{dt\PYZus{}now} \PY{o}{=} \PY{n}{datetime}\PY{o}{.}\PY{n}{now}\PY{p}{(}\PY{p}{)}
@@ -124,38 +122,35 @@ va être plus clair quant à ce qui est réellement représenté.
 Voyez aussi qu'on a déjà moins besoin de s'escrimer pour en avoir un
 aperçu lisible~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} on peut imprimer simplement un objet date\PYZus{}time}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{maintenant }\PY{l+s+si}{\PYZob{}dt\PYZus{}now\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-maintenant 2018-10-26 14:53:16.412543
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+maintenant 2018-10-27 15:08:39.496842
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} et si on veut un autre format, on peut toujours appeler strftime}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dans trois heures }\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{dt\PYZus{}later.strftime(}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{Y\PYZhy{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{m\PYZhy{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{ at }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{H:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{M}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{)\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-dans trois heures 2018-10-26 at 17:53
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+dans trois heures 2018-10-27 at 18:08
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} mais ce n\PYZsq{}est même pas nécessaire, on peut passer le format directement}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dans trois heures }\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{dt\PYZus{}later:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{Y\PYZhy{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{m\PYZhy{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{ at }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{H:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{M\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-dans trois heures 2018-10-26 at 17:53
-
-    \end{Verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+dans trois heures 2018-10-27 at 18:08
+\end{Verbatim}
 
     Je vous renvoie à la documentation du module, et
 \href{https://docs.python.org/3/library/datetime.html\#strftime-and-strptime-behavior}{notamment
@@ -242,7 +237,7 @@ ou disque.
 
     Si on choisit de simplement manipuler un dictionnaire standard~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{n}{bateau1} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Toccata}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{id}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+m+mi}{1000}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{country}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{France}\PY{l+s+s2}{\PYZdq{}}\PY{p}{\PYZcb{}}
 \end{Verbatim}
 
@@ -254,7 +249,7 @@ sait gérer la couche JSON.
     Si au contraire on choisit de manipuler les données sous forme d'une
 classe on pourrait avoir envie d'écrire quelque chose comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{k}{class} \PY{n+nc}{Bateau}\PY{p}{:}
              \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n+nb}{id}\PY{p}{,} \PY{n}{name}\PY{p}{,} \PY{n}{country}\PY{p}{)}\PY{p}{:}
                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{id} \PY{o}{=} \PY{n+nb}{id}
@@ -271,12 +266,12 @@ faire passer par ce médium, c'est la valeur des trois champs, dans un
 dictionnaire. Vous pouvez facilement obtenir le dictionnaire en question
 pour le passer à la couche d'encodage~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{n+nb}{vars}\PY{p}{(}\PY{n}{bateau2}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}12}]:} \{'id': 1000, 'name': 'Toccata', 'country': 'FRA'\}
 \end{Verbatim}
             
@@ -292,7 +287,7 @@ pour le passer à la couche d'encodage~:
   code comme~:
 \end{itemize}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} du côté du récepteur de la donnée}
          \PY{k}{class} \PY{n+nc}{Bateau}\PY{p}{:}
              \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{:}

@@ -21,7 +21,7 @@ erreurs}\label{parsing-des-dates-et-gestion-des-erreurs}}
 possibilité de lancer une exception ou de produire un objet \texttt{NaT}
 pour \emph{Not a Number} qui se manipule ensuite comme un \texttt{NaN}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
         \PY{n}{date} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{100/06/2018}\PY{l+s+s1}{\PYZsq{}} \PY{c+c1}{\PYZsh{} cette date ne peut pas être parsée}
         
@@ -32,50 +32,50 @@ pour \emph{Not a Number} qui se manipule ensuite comme un \texttt{NaN}.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 ('Unknown string format:', '100/06/2018')
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} retourne l\PYZsq{}input en cas d\PYZsq{}erreur}
         \PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{n}{date}\PY{p}{,} \PY{n}{errors}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ignore}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}2}]:} '100/06/2018'
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} retourne NaT en cas d\PYZsq{}erreur}
         \PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{n}{date}\PY{p}{,} \PY{n}{errors}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{coerce}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}3}]:} NaT
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} la dernière date n\PYZsq{}est pas valide}
-        \PY{n}{d} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{jun 2018}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{10/12/1980}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{25 january 2000}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{100 june 1900}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{errors}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{coerce}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{d} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{jun 2018}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{10/12/1980}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                            \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{25 january 2000}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{100 june 1900}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} 
+                           \PY{n}{errors}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{coerce}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{d}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 DatetimeIndex(['2018-06-01', '1980-10-12', '2000-01-25', 'NaT'], dtype='datetime64[ns]', freq=None)
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} on peut utiliser les méthodes pour les NaN directement sur un NaT}
         \PY{n}{d}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{10 june 1980}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:} DatetimeIndex(['2018-06-01', '1980-10-12', '2000-01-25', '1980-06-10'], dtype='datetime64[ns]', freq=None)
 \end{Verbatim}
             
@@ -83,7 +83,13 @@ DatetimeIndex(['2018-06-01', '1980-10-12', '2000-01-25', 'NaT'], dtype='datetime
 \subsubsection{Pour aller plus loin}\label{pour-aller-plus-loin}}
 
     Vous trouverez de nombreux exemples dans la documentation officielle de
-pandas : * https://pandas.pydata.org/pandas-docs/stable/timeseries.html
+pandas :
+
+\begin{itemize}
+\tightlist
+\item
+  https://pandas.pydata.org/pandas-docs/stable/timeseries.html
+\end{itemize}
 
     \hypertarget{conclusion}{%
 \subsection{Conclusion}\label{conclusion}}

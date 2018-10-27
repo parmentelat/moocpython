@@ -74,49 +74,47 @@ superposée, par \texttt{asyncio.gather}, ce qui fait que la sortie de
 
     \includegraphics{media/players.png}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} je peux lancer un sous\PYZhy{}processus}
         \PY{c+c1}{\PYZsh{} depuis le notebook}
         \PY{o}{!}data/players.py
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-S john
-N mary
-N mary
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+E john
+W mary
 E mary
-W john
-E mary
+W mary
+N john
+N mary
 S mary
-E mary
 S john
+W john
+S mary
+S mary
 N mary
-S john
-N mary
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} ou une autre configuration}
         \PY{o}{!}data/players.py \PY{l+m}{2}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 E bill
-W jane
-E bill
-W jane
 S jane
-E bill
+E jane
 W jane
-S bill
-S jane
 N bill
 E bill
-
-    \end{Verbatim}
+S jane
+N jane
+N bill
+N bill
+W bill
+\end{Verbatim}
 
     Nous allons voir dans le notebook suivant comment on peut orchestrer
 plusieurs instances du programme \texttt{players.py}, et prolonger cette

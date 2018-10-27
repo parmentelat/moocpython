@@ -30,7 +30,7 @@ tableaux \texttt{numpy}.
     Dans cette première partie nous allons commencer avec des tableaux à une
 dimension, et voir comment les créer et les manipuler.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
 \end{Verbatim}
 
@@ -46,20 +46,20 @@ données}\label{cruxe9ation-uxe0-partir-de-donnuxe9es}}
 généralement un itérable - avec la fonction \texttt{np.array} comme
 ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{array} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mi}{32}\PY{p}{,} \PY{l+m+mi}{55}\PY{p}{]}\PY{p}{)}
         \PY{n}{array}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}2}]:} array([12, 25, 32, 55])
 \end{Verbatim}
             
     \textbf{Attention}~: une erreur commune au début consiste à faire ceci,
 qui ne marche pas~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{k}{try}\PY{p}{:}
             \PY{n}{array} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}
         \PY{k}{except} \PY{n+ne}{Exception} \PY{k}{as} \PY{n}{e}\PY{p}{:}
@@ -67,20 +67,19 @@ qui ne marche pas~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 OOPS, <class 'ValueError'>, only 2 non-keyword arguments accepted
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Ça marche aussi à partir d'un itérable~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{builtin\PYZus{}range} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
         \PY{n}{builtin\PYZus{}range}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}4}]:} array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 \end{Verbatim}
             
@@ -93,26 +92,26 @@ OOPS, <class 'ValueError'>, only 2 non-keyword arguments accepted
     Sauf que dans ce cas précis on préfèrera utiliser directement la méthode
 \texttt{arange} de \texttt{numpy}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{numpy\PYZus{}range} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
         \PY{n}{numpy\PYZus{}range}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:} array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 \end{Verbatim}
             
     Avec l'avantage qu'avec cette méthode on peut donner des bornes et un
 pas d'incrément qui ne sont pas entiers~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{numpy\PYZus{}range\PYZus{}f} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{2.0}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{)}
         \PY{n}{numpy\PYZus{}range\PYZus{}f}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} array([1. , 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9])
 \end{Verbatim}
             
@@ -124,13 +123,13 @@ bornes, il est souvent plus facile d'utiliser \texttt{linspace}, qui
 crée un intervalle un peu comme \texttt{arange}, mais on lui précise un
 nombre de points plutôt qu'un pas~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mf}{0.}\PY{p}{,} \PY{l+m+mf}{10.}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{)}
         \PY{n}{X}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}7}]:} array([ 0.        ,  0.20408163,  0.40816327,  0.6122449 ,  0.81632653,
                 1.02040816,  1.2244898 ,  1.42857143,  1.63265306,  1.83673469,
                 2.04081633,  2.24489796,  2.44897959,  2.65306122,  2.85714286,
@@ -149,14 +148,14 @@ nombre de points par défaut. Cette fonction est très utilisée lorsqu'on
 veut dessiner une fonction entre deux bornes, on a déjà eu l'occasion de
 le faire~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
         \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
         \PY{n}{plt}\PY{o}{.}\PY{n}{ion}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} il est d\PYZsq{}usage d\PYZsq{}ajouter un point\PYZhy{}virgule à la fin de la dernière ligne}
         \PY{c+c1}{\PYZsh{} si on ne le fait pas (essayez..), on obtient l\PYZsq{}affichage d\PYZsq{}une ligne}
         \PY{c+c1}{\PYZsh{} de bruit qui n\PYZsq{}apporte rien}
@@ -198,7 +197,7 @@ membre à membre, comme on vient de le voir avec cosinus.
 Ainsi pour tracer la fonction
 \(x \longrightarrow cos^2(x) + sin^2(x) + 3\) on fera tout simplement~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} l\PYZsq{}énorme majorité du temps, on écrit avec numpy}
          \PY{c+c1}{\PYZsh{} des expressions qui impliquent des tableaux}
          \PY{c+c1}{\PYZsh{} exactement comme si c\PYZsq{}était des nombres}
@@ -217,23 +216,29 @@ Ainsi pour tracer la fonction
 vu que les compréhensions et les expressions génératrices permettent de
 s'affranchir des boucles du genre~:
 
-\begin{verbatim}
-out_data = []
-for x in in_data:
-   out_data.append(une_fonction(x))
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{out_data }\OperatorTok{=}\NormalTok{ []}
+\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ in_data:}
+\NormalTok{    out_data.append(une_fonction(x))}
+\end{Highlighting}
+\end{Shaded}
 
 on a vu en python natif qu'on ferait plutôt~:
 
-\begin{verbatim}
-out_data = (une_fonction(x) for x in in_data)
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{out_data }\OperatorTok{=}\NormalTok{ (une_fonction(x) }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ in_data)}
+\end{Highlighting}
+\end{Shaded}
 
 Eh bien en fait, en numpy, on doit penser encore plus court~:
 
-\begin{verbatim}
-out_data = une_fonction(in_data)
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{out_data }\OperatorTok{=}\NormalTok{ une_fonction(in_data)}
+\end{Highlighting}
+\end{Shaded}
 
 ou en tous les cas une expression qui fait intervenir \texttt{in\_data}
 comme un tout, sans avoir besoin d'accéder à ses éléments.
@@ -252,7 +257,7 @@ disponibles sous cette forme dans \texttt{numpy}}.
     Je vous signale également un utilitaire qui permet, sous forme de
 décorateur, de passer d'une fonction scalaire à une \texttt{ufunc}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} le décorateur np.vectorize vous permet}
          \PY{c+c1}{\PYZsh{} de facilement transformer une opération scalaire}
          \PY{c+c1}{\PYZsh{} en opération vectorielle}
@@ -263,7 +268,7 @@ décorateur, de passer d'une fonction scalaire à une \texttt{ufunc}~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} je choisis de prendre beaucoup de points}
          \PY{c+c1}{\PYZsh{} à cause de la discontinuité}
          \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{1000}\PY{p}{)}

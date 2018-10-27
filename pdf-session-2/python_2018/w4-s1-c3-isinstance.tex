@@ -34,7 +34,7 @@ une fonction qui travaille sur un entier, mais qui par commodité peut
 aussi accepter un entier passé comme une chaîne de caractères, ou même
 une liste d'entiers (auquel cas on renvoie la liste des factorielles)~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k}{def} \PY{n+nf}{factoriel}\PY{p}{(}\PY{n}{argument}\PY{p}{)}\PY{p}{:}
             \PY{c+c1}{\PYZsh{} si on reçoit un entier}
             \PY{k}{if} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{argument}\PY{p}{,} \PY{n+nb}{int}\PY{p}{)}\PY{p}{:}              \PY{c+c1}{\PYZsh{} (*)}
@@ -51,19 +51,18 @@ une liste d'entiers (auquel cas on renvoie la liste des factorielles)~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{entier}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{factoriel}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{chaine}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{factoriel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{8}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tuple}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{factoriel}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 entier 24
 chaine 40320
 tuple [24, 40320]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Remarquez que la fonction \texttt{isinstance} \textbf{possède elle-même}
 une logique de ce genre, puisqu'en ligne 3 \texttt{(*)} nous lui avons
@@ -84,36 +83,36 @@ intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
 peuvent être utiles dans ce contexte - vous trouverez une liste
 exhaustive à la fin de ce notebook. Par exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{k+kn}{from} \PY{n+nn}{types} \PY{k}{import} \PY{n}{FunctionType}
         \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{factoriel}\PY{p}{,} \PY{n}{FunctionType}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}3}]:} True
 \end{Verbatim}
             
     Mais méfiez-vous toutefois des fonctions \emph{built-in}, qui sont de
 type \texttt{BuiltinFunctionType}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{k+kn}{from} \PY{n+nn}{types} \PY{k}{import} \PY{n}{BuiltinFunctionType}
         \PY{n+nb}{isinstance}\PY{p}{(}\PY{n+nb}{len}\PY{p}{,} \PY{n}{BuiltinFunctionType}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}4}]:} True
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} alors qu\PYZsq{}on pourrait penser que}
         \PY{n+nb}{isinstance}\PY{p}{(}\PY{n+nb}{len}\PY{p}{,} \PY{n}{FunctionType}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:} False
 \end{Verbatim}
             
@@ -143,7 +142,7 @@ le principe de l'héritage. Si ce qui suit vous semble difficile à
 comprendre, pas d'inquiétude, nous reviendrons sur ce sujet lorsque nous
 parlerons des classes.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{k}{class} \PY{n+nc}{Animal}\PY{p}{:}
             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{name}\PY{p}{)}\PY{p}{:}
                 \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{name} \PY{o}{=} \PY{n}{name}
@@ -158,7 +157,7 @@ parlerons des classes.
 permet dans ce contexte de faire des choses qu'on ne peut pas faire
 directement avec la fonction \texttt{type}, comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} pour créer un objet de type `Animal` (méthode \PYZus{}\PYZus{}init\PYZus{}\PYZus{})}
         \PY{n}{requin} \PY{o}{=} \PY{n}{Animal}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{requin}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
         \PY{c+c1}{\PYZsh{} idem pour un Mammifere}
@@ -169,21 +168,19 @@ directement avec la fonction \texttt{type}, comme ceci~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 l'objet baleine est-il un mammifère ? True
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} ici c\PYZsq{}est moins évident, mais la réponse est \PYZsq{}True\PYZsq{} aussi}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{objet baleine est\PYZhy{}il un animal ?}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{baleine}\PY{p}{,} \PY{n}{Animal}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 l'objet baleine est-il un animal ? True
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Vous voyez qu'ici, bien que l'objet baleine soit de type
 \texttt{Mammifere}, on peut le considérer comme étant \textbf{aussi} de
@@ -203,14 +200,14 @@ mammifères est inclus dans l'ensemble des animaux.
 \href{https://docs.python.org/3/library/types.html}{la documentation du
 module \texttt{types}}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} voici par ailleurs la liste de ses attributs}
         \PY{k+kn}{import} \PY{n+nn}{types} 
         \PY{n+nb}{dir}\PY{p}{(}\PY{n}{types}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}9}]:} ['AsyncGeneratorType',
          'BuiltinFunctionType',
          'BuiltinMethodType',

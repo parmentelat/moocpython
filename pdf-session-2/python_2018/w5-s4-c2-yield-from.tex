@@ -24,7 +24,7 @@ génératrice}\label{une-fonction-guxe9nuxe9ratrice}}
 nous listons les diviseurs d'un entier, en excluant 1 et l'entier
 lui-même~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k}{def} \PY{n+nf}{divs}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{verbose}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{p}{:}
             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{n}\PY{p}{)}\PY{p}{:}
                 \PY{k}{if} \PY{n}{n} \PY{o}{\PYZpc{}} \PY{n}{i} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
@@ -36,30 +36,29 @@ lui-même~:
 
     Comme attendu, l'appel direct à cette fonction ne donne rien d'utile :
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{divs}\PY{p}{(}\PY{l+m+mi}{28}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}2}]:} <generator object divs at 0x10c329de0>
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} <generator object divs at 0x10f10dde0>
 \end{Verbatim}
             
     Mais lorsqu'on l'utilise dans une boucle \texttt{for}:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{k}{for} \PY{n}{d} \PY{o+ow}{in} \PY{n}{divs}\PY{p}{(}\PY{l+m+mi}{28}\PY{p}{)}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{n}{d}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 2
 4
 7
 14
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{une-fonction-guxe9nuxe9ratrice-qui-appelle-une-autre-fonction-guxe9nuxe9ratrice}{%
 \subsubsection{Une fonction génératrice qui appelle une autre fonction
@@ -75,14 +74,14 @@ génératrice qui en appelle une autre - ici elle même.
 
     Première idée naïve pour faire cela, mais qui ne marche pas~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{k}{def} \PY{n+nf}{divdivs}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{divs}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
                 \PY{n}{divs}\PY{p}{(}\PY{n}{i}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{k}{try}\PY{p}{:}
             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{divdivs}\PY{p}{(}\PY{l+m+mi}{28}\PY{p}{)}\PY{p}{:}
                 \PY{n+nb}{print}\PY{p}{(}\PY{n}{i}\PY{p}{)}
@@ -91,10 +90,9 @@ génératrice qui en appelle une autre - ici elle même.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 OOPS 'NoneType' object is not iterable
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Ce qui se passe ici, c'est que \texttt{divdivs} est perçue comme une
 fonction normale, lorsqu'on l'appelle elle ne retourne rien, donc
@@ -107,14 +105,14 @@ boucle \texttt{for} (à l'interieur du \texttt{try}), qui donc échoue.
     Si on utilise juste \texttt{yield}, ça ne fait pas du tout ce qu'on
 veut~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{k}{def} \PY{n+nf}{divdivs}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{divs}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
                 \PY{k}{yield} \PY{n}{divs}\PY{p}{(}\PY{n}{i}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{k}{try}\PY{p}{:}
             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{divdivs}\PY{p}{(}\PY{l+m+mi}{28}\PY{p}{)}\PY{p}{:}
                 \PY{n+nb}{print}\PY{p}{(}\PY{n}{i}\PY{p}{)}
@@ -123,13 +121,12 @@ veut~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-<generator object divs at 0x10c3b8048>
-<generator object divs at 0x10c3b80c0>
-<generator object divs at 0x10c3b8048>
-<generator object divs at 0x10c3b80c0>
-
-    \end{Verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+<generator object divs at 0x10f19b048>
+<generator object divs at 0x10f19b0c0>
+<generator object divs at 0x10f19b048>
+<generator object divs at 0x10f19b0c0>
+\end{Verbatim}
 
     En effet, c'est logique, chaque \texttt{yield} dans \texttt{divdivs()}
 correspond à une itération de la boucle. Bref, il nous manque quelque
@@ -141,14 +138,14 @@ chose dans le langage pour arriver à faire ce qu'on veut.
     La construction du langage qui permet de faire ceci s'appelle
 \texttt{yield\ from};
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{k}{def} \PY{n+nf}{divdivs}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{divs}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
                 \PY{k}{yield from} \PY{n}{divs}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{verbose}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{k}{try}\PY{p}{:}
             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{divdivs}\PY{p}{(}\PY{l+m+mi}{28}\PY{p}{)}\PY{p}{:}
                 \PY{n+nb}{print}\PY{p}{(}\PY{n}{i}\PY{p}{)}
@@ -157,15 +154,14 @@ chose dans le langage pour arriver à faire ce qu'on veut.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 trouvé diviseur 2 de 4
 2
 trouvé diviseur 2 de 14
 2
 trouvé diviseur 7 de 14
 7
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Avec \texttt{yield\ from}, on peut indiquer que \texttt{divdivs} est une
 fonction génératrice, et qu'il faut évaluer \texttt{divs(..)} comme un

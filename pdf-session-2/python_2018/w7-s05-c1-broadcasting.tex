@@ -9,7 +9,7 @@
 \section{\texorpdfstring{Le
 \emph{broadcasting}}{Le broadcasting}}\label{le-broadcasting}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
 \end{Verbatim}
 
@@ -21,7 +21,7 @@ intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
     Lorsque l'on a parlé de programmation vectorielle, on a vu que l'on
 pouvait écrire quelque chose comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{)}
         \PY{n}{Y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{cos}\PY{p}{(}\PY{n}{X}\PY{p}{)} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{X}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{2}
 \end{Verbatim}
@@ -57,18 +57,17 @@ pouvait écrire quelque chose comme ceci~:
 généraliser le mécanisme. Pour commencer, nous nous donnons un tableau
 de base~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{100} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{ones}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{int32}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[100 100 100 100 100]
  [100 100 100 100 100]
  [100 100 100 100 100]]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Je vais illustrer le broadcasting avec l'opération \texttt{+}, mais bien
 entendu ce mécanisme est à l'œuvre dès que vous faites des opérations
@@ -81,61 +80,57 @@ Pour commencer, je vais donc ajouter à mon tableau de base un scalaire~:
 \texttt{(3,\ 5)} et
 \texttt{(1,)}}{Broadcasting entre les dimensions (3, 5) et (1,)}}\label{broadcasting-entre-les-dimensions-3-5-et-1}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[100 100 100 100 100]
  [100 100 100 100 100]
  [100 100 100 100 100]]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{b} \PY{o}{=} \PY{l+m+mi}{3}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{b}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 3
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
     Lorsque j'ajoute ces deux tableaux, c'est comme si j'avais ajouté à
 \texttt{a} la différence~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} pour élaborer c}
         \PY{n}{c} \PY{o}{=} \PY{n}{a} \PY{o}{+} \PY{n}{b}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{c}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[103 103 103 103 103]
  [103 103 103 103 103]
  [103 103 103 103 103]]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} c\PYZsq{}est comme si j\PYZsq{}avais}
         \PY{c+c1}{\PYZsh{} ajouté à a ce terme\PYZhy{}ci}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{c} \PY{o}{\PYZhy{}} \PY{n}{a}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[3 3 3 3 3]
  [3 3 3 3 3]
  [3 3 3 3 3]]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     C'est un premier cas particulier de \emph{broadcasting} dans sa version
 extrême.
@@ -161,35 +156,33 @@ construction inutile.
 tableau de base une ligne, c'est-à-dire un tableau de taille
 \texttt{(5,\ )}. Voyons cela~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[100 100 100 100 100]
  [100 100 100 100 100]
  [100 100 100 100 100]]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{n}{b} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{b}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [1 2 3 4 5]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{n}{b}\PY{o}{.}\PY{n}{shape}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}10}]:} (5,)
 \end{Verbatim}
             
@@ -197,7 +190,7 @@ tableau de base une ligne, c'est-à-dire un tableau de taille
 
     Ici encore, je peux ajouter les deux termes~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} je peux ici encore}
          \PY{c+c1}{\PYZsh{} ajouter les tableaux}
          \PY{n}{c} \PY{o}{=} \PY{n}{a} \PY{o}{+} \PY{n}{b}
@@ -205,26 +198,24 @@ tableau de base une ligne, c'est-à-dire un tableau de taille
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[101 102 103 104 105]
  [101 102 103 104 105]
  [101 102 103 104 105]]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} et c\PYZsq{}est comme si j\PYZsq{}avais}
          \PY{c+c1}{\PYZsh{} ajouté à a ce terme\PYZhy{}ci}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{c} \PY{o}{\PYZhy{}} \PY{n}{a}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[1 2 3 4 5]
  [1 2 3 4 5]
  [1 2 3 4 5]]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Avec le même point de vue que tout à l'heure, on peut se dire qu'on a
 d'abord transformé (broadcasté) le tableau \texttt{b}~:
@@ -233,29 +224,27 @@ d'abord transformé (broadcasté) le tableau \texttt{b}~:
 
     vers la dimension \texttt{(3,\ 5)}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} départ}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{b}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [1 2 3 4 5]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} arrivée}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{c} \PY{o}{\PYZhy{}} \PY{n}{a}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[1 2 3 4 5]
  [1 2 3 4 5]
  [1 2 3 4 5]]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Vous commencez à mieux voir comment ça fonctionne~; s'il existe une
 direction dans laquelle on peut ``tirer'' les données pour faire
@@ -270,59 +259,55 @@ toutes les directions, comme on va le voir tout de suite.
 colonne, pourvu qu'elle ait la même taille que les colonnes de
 \texttt{a}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}15}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[100 100 100 100 100]
  [100 100 100 100 100]
  [100 100 100 100 100]]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}16}]:} \PY{n}{b} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{b}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[1]
  [2]
  [3]]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
     Voyons comment se passe le broadcasting dans ce cas-là~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}17}]:} \PY{n}{c} \PY{o}{=} \PY{n}{a} \PY{o}{+} \PY{n}{b}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{c}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[101 101 101 101 101]
  [102 102 102 102 102]
  [103 103 103 103 103]]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}18}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{c} \PY{o}{\PYZhy{}} \PY{n}{a}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[1 1 1 1 1]
  [2 2 2 2 2]
  [3 3 3 3 3]]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Vous voyez que tout se passe exactement de la même façon que lorsqu'on
 avait ajouté une simple ligne, on a cette fois ``tiré'' la colonne dans
@@ -332,31 +317,29 @@ la direction des lignes, pour passer~:
 
     vers la dimension \texttt{(3,\ 5)}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} départ}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{b}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[1]
  [2]
  [3]]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}20}]:} \PY{c+c1}{\PYZsh{} arrivée}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{c} \PY{o}{\PYZhy{}} \PY{n}{a}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[1 1 1 1 1]
  [2 2 2 2 2]
  [3 3 3 3 3]]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{broadcasting-3-1-et-1-5}{%
 \subsubsection{\texorpdfstring{Broadcasting \texttt{(3,\ 1)} et
@@ -366,47 +349,44 @@ la direction des lignes, pour passer~:
 exemple plus intéressant, où les deux tableaux ont des formes pas
 vraiment compatibles à première vue~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}21}]:} \PY{n}{col} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{col}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[1]
  [2]
  [3]]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}22}]:} \PY{n}{line} \PY{o}{=} \PY{l+m+mi}{100} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{line}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [100 200 300 400 500]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
     Grâce au broadcasting, on peut additionner ces deux tableaux pour
 obtenir ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}23}]:} \PY{n}{m} \PY{o}{=} \PY{n}{col} \PY{o}{+} \PY{n}{line}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{m}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[101 201 301 401 501]
  [102 202 302 402 502]
  [103 203 303 403 503]]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Remarquez qu'ici les \textbf{deux} entrées ont été étirées pour
 atteindre une dimension commune.
@@ -418,55 +398,51 @@ si on avait~:
 
     en tableau \texttt{(3,\ 5)}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}24}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{col}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[1]
  [2]
  [3]]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}25}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{col} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{int}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[1 1 1 1 1]
  [2 2 2 2 2]
  [3 3 3 3 3]]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     et transformé la ligne \texttt{(1,\ 5)}
 
     en tableau \texttt{(3,\ 5)}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}26}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{line}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [100 200 300 400 500]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}27}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{line} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{int}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[100 200 300 400 500]
  [100 200 300 400 500]
  [100 200 300 400 500]]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     avant d'additionner terme à terme ces deux tableaux 3 x 5.
 
@@ -483,31 +459,39 @@ pour n'importe quel opérateur binaire.
 \subsubsection{Exemples de dimensions
 compatibles}\label{exemples-de-dimensions-compatibles}}
 
-    \begin{verbatim}
-A   15 x 3 x 5
-B   15 x 1 x 5
-A+B 15 x 3 x 5
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{A   }\DecValTok{15}\NormalTok{ x }\DecValTok{3}\NormalTok{ x }\DecValTok{5}
+\NormalTok{B   }\DecValTok{15}\NormalTok{ x }\DecValTok{1}\NormalTok{ x }\DecValTok{5}
+\NormalTok{A}\OperatorTok{+}\NormalTok{B }\DecValTok{15}\NormalTok{ x }\DecValTok{3}\NormalTok{ x }\DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
 
     Cas de l'ajout d'un scalaire~:
 
-\begin{verbatim}
-A   15 x 3 x 5
-B            1
-A+B 15 x 3 x 5
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{A   }\DecValTok{15}\NormalTok{ x }\DecValTok{3}\NormalTok{ x }\DecValTok{5}
+\NormalTok{B            }\DecValTok{1}
+\NormalTok{A}\OperatorTok{+}\NormalTok{B }\DecValTok{15}\NormalTok{ x }\DecValTok{3}\NormalTok{ x }\DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
 
-    \begin{verbatim}
-A   15 x 3 x 5
-B        3 x 5
-A+B 15 x 3 x 5
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{A   }\DecValTok{15}\NormalTok{ x }\DecValTok{3}\NormalTok{ x }\DecValTok{5}
+\NormalTok{B        }\DecValTok{3}\NormalTok{ x }\DecValTok{5}
+\NormalTok{A}\OperatorTok{+}\NormalTok{B }\DecValTok{15}\NormalTok{ x }\DecValTok{3}\NormalTok{ x }\DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
 
-    \begin{verbatim}
-A   15 x 3 x 5
-B        3 x 1
-A+B 15 x 3 x 5
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{A   }\DecValTok{15}\NormalTok{ x }\DecValTok{3}\NormalTok{ x }\DecValTok{5}
+\NormalTok{B        }\DecValTok{3}\NormalTok{ x }\DecValTok{1}
+\NormalTok{A}\OperatorTok{+}\NormalTok{B }\DecValTok{15}\NormalTok{ x }\DecValTok{3}\NormalTok{ x }\DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{exemples-de-dimensions-non-compatibles}{%
 \subsubsection{\texorpdfstring{Exemples de dimensions \textbf{non
@@ -515,17 +499,21 @@ compatibles}}{Exemples de dimensions non compatibles}}\label{exemples-de-dimensi
 
     Deux lignes de longueurs différentes~:
 
-\begin{verbatim}
-A  3
-B  4
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{A  }\DecValTok{3}
+\NormalTok{B  }\DecValTok{4}
+\end{Highlighting}
+\end{Shaded}
 
     Un cas plus douteux~:
 
-\begin{verbatim}
-A      2 x 1
-B  8 x 4 x 3
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{A      }\DecValTok{2}\NormalTok{ x }\DecValTok{1}
+\NormalTok{B  }\DecValTok{8}\NormalTok{ x }\DecValTok{4}\NormalTok{ x }\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
 
     Comme vous le voyez sur tous ces exemples~:
 
@@ -545,50 +533,50 @@ forme mathématique - je vous le laisse en exercice - je vais vous
 proposer plutôt une fonction Python qui détermine si deux tuples sont
 des \texttt{shape} compatibles de ce point de vue.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}28}]:} \PY{c+c1}{\PYZsh{} le module broadcasting n\PYZsq{}est pas standard}
          \PY{c+c1}{\PYZsh{} c\PYZsq{}est moi qui l\PYZsq{}ai écrit pour illustrer le cours}
          \PY{k+kn}{from} \PY{n+nn}{broadcasting} \PY{k}{import} \PY{n}{compatible}\PY{p}{,} \PY{n}{compatible2}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}29}]:} \PY{c+c1}{\PYZsh{} on peut dupliquer selon un axe}
          \PY{n}{compatible}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{15}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{15}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}29}]:} (15, 3, 5)
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}30}]:} \PY{c+c1}{\PYZsh{} ou selon deux axes}
          \PY{n}{compatible}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{15}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}30}]:} (15, 3, 5)
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}31}]:} \PY{c+c1}{\PYZsh{} c\PYZsq{}est bien clair que non}
          \PY{n}{compatible}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}31}]:} False
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}32}]:} \PY{c+c1}{\PYZsh{} on ne peut pas passer de 2 à 4}
          \PY{n}{compatible}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}32}]:} False
 \end{Verbatim}
             

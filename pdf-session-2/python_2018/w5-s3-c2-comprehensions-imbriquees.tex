@@ -19,36 +19,36 @@ intermédiaire}\label{compluxe9ments---niveau-intermuxe9diaire}}
     On peut également imbriquer plusieurs niveaux pour ne construire qu'une
 seule liste, comme par exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{p}{[}\PY{n}{n} \PY{o}{+} \PY{n}{p} \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{]} \PY{k}{for} \PY{n}{p} \PY{o+ow}{in} \PY{p}{[}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{30}\PY{p}{]}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}1}]:} [12, 22, 32, 14, 24, 34]
 \end{Verbatim}
             
     Bien sûr on peut aussi restreindre ces compréhensions, comme par
 exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{p}{[}\PY{n}{n} \PY{o}{+} \PY{n}{p} \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{]} \PY{k}{for} \PY{n}{p} \PY{o+ow}{in} \PY{p}{[}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{30}\PY{p}{]} \PY{k}{if} \PY{n}{n}\PY{o}{*}\PY{n}{p} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{40}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}2}]:} [22, 32, 14, 24, 34]
 \end{Verbatim}
             
     Observez surtout que le résultat ci-dessus est une liste simple (de
 profondeur 1), à comparer avec~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{p}{[}\PY{p}{[}\PY{n}{n} \PY{o}{+} \PY{n}{p} \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{]}\PY{p}{]} \PY{k}{for} \PY{n}{p} \PY{o+ow}{in} \PY{p}{[}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{30}\PY{p}{]}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}3}]:} [[12, 14], [22, 24], [32, 34]]
 \end{Verbatim}
             
@@ -61,7 +61,7 @@ version ``naïve'' du code qui produirait le même résultat~; dans ce code
 les clause \texttt{for} et \texttt{if} apparaissent \textbf{dans le même
 ordre} que dans la compréhension~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} notre exemple :}
         \PY{c+c1}{\PYZsh{} [n + p for n in [2, 4] for p in [10, 20, 30] if n*p \PYZgt{}= 40]}
         
@@ -75,7 +75,7 @@ ordre} que dans la compréhension~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}4}]:} [22, 32, 14, 24, 34]
 \end{Verbatim}
             
@@ -86,19 +86,19 @@ ordre} que dans la compréhension~:
     Pour rappel, on peut imbriquer des compréhensions de compréhensions.
 Commençons par poser
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{n} \PY{o}{=} \PY{l+m+mi}{4}
 \end{Verbatim}
 
 
     On peut alors créer une liste de listes comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{p}{[}\PY{p}{[}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{j}\PY{p}{)} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{j} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{]} \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{n} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} [[(1, 1)],
          [(1, 2), (2, 2)],
          [(1, 3), (2, 3), (3, 3)],
@@ -109,7 +109,7 @@ Commençons par poser
 commençant par la fin}, ou si on préfère \textbf{``par l'extérieur''},
 c'est-à-dire que le code ci-dessus est équivalent à~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} en version bavarde, pour illustrer l\PYZsq{}ordre des \PYZdq{}for\PYZdq{}}
         \PY{n}{resultat\PYZus{}exterieur} \PY{o}{=} \PY{p}{[}\PY{p}{]}
         \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{n} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
@@ -121,7 +121,7 @@ c'est-à-dire que le code ci-dessus est équivalent à~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}7}]:} [[(1, 1)],
          [(1, 2), (2, 2)],
          [(1, 3), (2, 3), (3, 3)],
@@ -138,19 +138,19 @@ exemple, si on voulait se limiter - arbitrairement - aux lignes
 correspondant à \texttt{j} pair, et aux diagonales où \texttt{i+j} est
 pair, on écrirait~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{p}{[}\PY{p}{[}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{j}\PY{p}{)} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{j} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)} \PY{k}{if} \PY{p}{(}\PY{n}{i} \PY{o}{+} \PY{n}{j}\PY{p}{)}\PY{o}{\PYZpc{}}\PY{k}{2} == 0]
                  \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{n} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)} \PY{k}{if} \PY{n}{j} \PY{o}{\PYZpc{}} \PY{l+m+mi}{2} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}8}]:} [[(2, 2)], [(2, 4), (4, 4)]]
 \end{Verbatim}
             
     ce qui est équivalent à~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} en version bavarde à nouveau}
         \PY{n}{resultat\PYZus{}exterieur} \PY{o}{=} \PY{p}{[}\PY{p}{]}
         \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{n} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
@@ -164,7 +164,7 @@ pair, on écrirait~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}9}]:} [[(2, 2)], [(2, 4), (4, 4)]]
 \end{Verbatim}
             
@@ -183,12 +183,12 @@ avancé}\label{compluxe9ments---niveau-avancuxe9}}
     Nous avons déjà signalé que les variables de boucle \textbf{restent
 définies} après la sortie de la boucle, ainsi nous pouvons examiner~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{n}{i}\PY{p}{,} \PY{n}{j}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}10}]:} (4, 4)
 \end{Verbatim}
             
@@ -196,7 +196,7 @@ définies} après la sortie de la boucle, ainsi nous pouvons examiner~:
 imbriquées nous allons explicitement retirer les variables \texttt{i} et
 \texttt{j} de l'environnement
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{k}{del} \PY{n}{i}\PY{p}{,} \PY{n}{j}
 \end{Verbatim}
 
@@ -209,12 +209,12 @@ imbriquées nous allons explicitement retirer les variables \texttt{i} et
 imbriquée mais \textbf{à un seul niveau}. Dans une forme simple cela
 donne~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{p}{[}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]} \PY{k}{for} \PY{n}{y} \PY{o+ow}{in} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}12}]:} [(1, 1), (1, 2), (2, 1), (2, 2)]
 \end{Verbatim}
             
@@ -226,7 +226,7 @@ pas voir du premier coup d'oeil qu'ici on évalue les deux clauses
 premier exemple, mais avec une forme de double compréhension \emph{à
 plat}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -244,7 +244,7 @@ préalable).
     Ce qui se passe ici, c'est que, comme nous l'avons déjà mentionné en
 semaine 3, le code que nous avons écrit est en fait équivalent à~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         

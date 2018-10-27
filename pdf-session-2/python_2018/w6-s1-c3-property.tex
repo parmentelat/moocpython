@@ -40,7 +40,7 @@ pouvoir faire diverses vérifications et autres.
     Je vais commencer par une implémentation naïve, qui ne tire pas profit
 des \emph{properties}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} dans sa version la plus épurée, une classe}
         \PY{c+c1}{\PYZsh{} température pourrait ressembler à ça :}
         
@@ -53,24 +53,24 @@ des \emph{properties}~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} créons une instance}
         \PY{n}{t1} \PY{o}{=} \PY{n}{Temperature1}\PY{p}{(}\PY{l+m+mi}{20}\PY{p}{)}
         \PY{n}{t1}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}2}]:} 20K
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} et pour accéder à la valeur numérique je peux faire}
         \PY{n}{t1}\PY{o}{.}\PY{n}{kelvin}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}3}]:} 20
 \end{Verbatim}
             
@@ -92,7 +92,7 @@ C'est-à-dire que vous vous dites peut-être, ça ne devrait pas être fait
 comme ça, on devrait plutôt proposer une interface pour accéder à
 l'implémentation interne~; quelque chose comme~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{k}{class} \PY{n+nc}{Temperature2}\PY{p}{:}
             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{kelvin}\PY{p}{)}\PY{p}{:}
                 \PY{c+c1}{\PYZsh{} au lieu d\PYZsq{}écrire l\PYZsq{}attribut il est plus sûr}
@@ -118,25 +118,25 @@ l'implémentation interne~; quelque chose comme~:
     Bon c'est vrai que d'un coté, c'est mieux parce que je garantis un
 invariant, la température est toujours positive~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{t2} \PY{o}{=} \PY{n}{Temperature2}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{30}\PY{p}{)}
         \PY{n}{t2}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:} 0K
 \end{Verbatim}
             
     Mais par contre, d'un autre coté, c'est très lourd, parce que chaque
 fois que je veux utiliser mon objet, je dois faire pour y accéder~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{t2}\PY{o}{.}\PY{n}{get\PYZus{}kelvin}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} 0
 \end{Verbatim}
             
@@ -154,7 +154,7 @@ par une couche de logique.
 
 Ça ressemblerait à ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{k}{class} \PY{n+nc}{Temperature3}\PY{p}{:}
             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{kelvin}\PY{p}{)}\PY{p}{:}
                 \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{kelvin} \PY{o}{=} \PY{n}{kelvin}
@@ -174,21 +174,21 @@ par une couche de logique.
             
             \PY{c+c1}{\PYZsh{} et toujours la façon d\PYZsq{}imprimer}
             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
-                \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}self.\PYZus{}kelvin\PYZcb{}}\PY{l+s+s2}{K}\PY{l+s+s2}{\PYZdq{}}    
+                \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}self.\PYZus{}kelvin\PYZcb{}}\PY{l+s+s2}{K}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{n}{t3} \PY{o}{=} \PY{n}{Temperature3}\PY{p}{(}\PY{l+m+mi}{200}\PY{p}{)}
         \PY{n}{t3}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}8}]:} 200K
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} par contre ici on va le mettre à zéro}
         \PY{c+c1}{\PYZsh{} à nouveau, une exception serait préférable sans doute}
         \PY{n}{t3}\PY{o}{.}\PY{n}{kelvin} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{l+m+mi}{30}
@@ -196,7 +196,7 @@ par une couche de logique.
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}9}]:} 0K
 \end{Verbatim}
             
@@ -229,7 +229,7 @@ avancé}\label{compluxe9ment---niveau-avancuxe9}}
 (\texttt{kelvin}, \texttt{celsius} et \texttt{fahrenheit}), alors qu'en
 réalité le seul attribut de donnée est \texttt{\_kelvin}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{k}{class} \PY{n+nc}{Temperature}\PY{p}{:}
          
              \PY{c+c1}{\PYZsh{}\PYZsh{} les constantes de conversion}
@@ -258,7 +258,7 @@ réalité le seul attribut de donnée est \texttt{\_kelvin}.
              \PY{c+c1}{\PYZsh{} pour le confort}
              \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
                  \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}}\PY{l+s+si}{\PYZob{}self.kelvin:g\PYZcb{}}\PY{l+s+s2}{K == }\PY{l+s+si}{\PYZob{}self.celsius:g\PYZcb{}}\PY{l+s+s2}{℃ }\PY{l+s+s2}{\PYZdq{}} \PYZbs{}
-                        \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{== }\PY{l+s+si}{\PYZob{}self.fahrenheit:g\PYZcb{}}\PY{l+s+s2}{℉\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+                        \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{== }\PY{l+s+si}{\PYZob{}self.fahrenheit:g\PYZcb{}}\PY{l+s+s2}{F\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
          
              \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}str\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
                  \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}self.kelvin:g\PYZcb{}}\PY{l+s+s2}{K}\PY{l+s+s2}{\PYZdq{}}
@@ -302,37 +302,36 @@ réalité le seul attribut de donnée est \texttt{\_kelvin}.
 
     Et voici ce qu'on peut en faire~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{n}{t} \PY{o}{=} \PY{n}{Temperature}\PY{p}{(}\PY{n}{celsius}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
          \PY{n}{t}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}11}]:} <273.16K == 0℃ == 32℉>
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} <273.16K == 0℃ == 32F>
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{n}{t}\PY{o}{.}\PY{n}{fahrenheit}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}12}]:} 32.0
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{n}{t}\PY{o}{.}\PY{n}{celsius} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{100}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{t}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 373.16K
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{k}{try}\PY{p}{:}
              \PY{n}{t} \PY{o}{=} \PY{n}{Temperature}\PY{p}{(}\PY{n}{fahrenheit} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1000}\PY{p}{)}
          \PY{k}{except} \PY{n+ne}{Exception} \PY{k}{as} \PY{n}{e}\PY{p}{:}
@@ -340,10 +339,9 @@ réalité le seul attribut de donnée est \texttt{\_kelvin}.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 OOPS, <class 'ValueError'>, Kelvin -300.1733333333333 must be positive
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{pour-en-savoir-plus}{%
 \subparagraph{Pour en savoir plus}\label{pour-en-savoir-plus}}
@@ -355,7 +353,7 @@ documentation officielle}.
     Vous pouvez notamment aussi, en option, ajouter un \emph{deleter} pour
 intercepter les instructions du type~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} comme on n\PYZsq{}a pas défini de deleter, on ne peut pas faire ceci}
          \PY{k}{try}\PY{p}{:}
              \PY{k}{del} \PY{n}{t}\PY{o}{.}\PY{n}{kelvin}
@@ -364,10 +362,9 @@ intercepter les instructions du type~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 OOPS <class 'AttributeError'> can't delete attribute
-
-    \end{Verbatim}
+\end{Verbatim}
 
 
     % Add a bibliography block to the postdoc

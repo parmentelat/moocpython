@@ -72,20 +72,22 @@ nécessaire pour faire tourner une coroutine.
 
     Voici d'abord ce qui se passe avec l'interpréteur Python standard~:
 
-    \begin{verbatim}
-$ python3
-Python 3.7.0 (default, Jun 29 2018, 20:14:27)
-[Clang 9.0.0 (clang-900.0.39.2)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
->>> import asyncio
->>> async def foo(message, duree):
-...    await asyncio.sleep(duree)
-...    print(message)
-...
->>> await(foo("hello", 1))
-  File "<stdin>", line 1
-SyntaxError: 'await' outside function
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ python3}
+\NormalTok{Python }\DecValTok{3}\NormalTok{.}\FloatTok{7.0}\NormalTok{ (default, Jun }\DecValTok{29} \DecValTok{2018}\NormalTok{, }\DecValTok{20}\NormalTok{:}\DecValTok{14}\NormalTok{:}\DecValTok{27}\NormalTok{)}
+\NormalTok{[Clang }\DecValTok{9}\NormalTok{.}\FloatTok{0.0}\NormalTok{ (clang}\DecValTok{-900}\NormalTok{.}\DecValTok{0}\NormalTok{.}\FloatTok{39.2}\NormalTok{)] on darwin}
+\NormalTok{Type }\StringTok{"help"}\NormalTok{, }\StringTok{"copyright"}\NormalTok{, }\StringTok{"credits"} \KeywordTok{or} \StringTok{"license"} \ControlFlowTok{for}\NormalTok{ more information.}
+\OperatorTok{>>>} \ImportTok{import}\NormalTok{ asyncio}
+\OperatorTok{>>>} \ControlFlowTok{async} \KeywordTok{def}\NormalTok{ foo(message, duree):}
+\NormalTok{...    }\ControlFlowTok{await}\NormalTok{ asyncio.sleep(duree)}
+\NormalTok{...    }\BuiltInTok{print}\NormalTok{(message)}
+\NormalTok{...}
+\OperatorTok{>>>} \ControlFlowTok{await}\NormalTok{(foo(}\StringTok{"hello"}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\NormalTok{  File }\StringTok{"<stdin>"}\NormalTok{, line }\DecValTok{1}
+\PreprocessorTok{SyntaxError}\NormalTok{: }\StringTok{'await'}\NormalTok{ outside function}
+\end{Highlighting}
+\end{Shaded}
 
     La syntaxe de Python nous interdit en effet d'utiliser \texttt{await} en
 dehors du code d'une coroutine, on l'a vu dans une des vidéos.
@@ -97,26 +99,28 @@ dehors du code d'une coroutine, on l'a vu dans une des vidéos.
 depuis ipython-7, on peut carrément déclencher une coroutine en
 invoquant \texttt{await} dans la boucle principale de l'interpréteur :
 
-    \begin{verbatim}
-$ ipython3
-Python 3.7.0 (default, Jun 29 2018, 20:14:27)
-Type 'copyright', 'credits' or 'license' for more information
-IPython 7.0.1 -- An enhanced Interactive Python. Type '?' for help.
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ ipython3}
+\NormalTok{Python }\DecValTok{3}\NormalTok{.}\FloatTok{7.0}\NormalTok{ (default, Jun }\DecValTok{29} \DecValTok{2018}\NormalTok{, }\DecValTok{20}\NormalTok{:}\DecValTok{14}\NormalTok{:}\DecValTok{27}\NormalTok{)}
+\NormalTok{Type }\StringTok{'copyright'}\NormalTok{, }\StringTok{'credits'} \KeywordTok{or} \StringTok{'license'} \ControlFlowTok{for}\NormalTok{ more information}
+\NormalTok{IPython }\DecValTok{7}\NormalTok{.}\FloatTok{0.1} \OperatorTok{--}\NormalTok{ An enhanced Interactive Python. Type }\StringTok{'?'} \ControlFlowTok{for} \BuiltInTok{help}\NormalTok{.}
 
-In [1]: import asyncio
+\NormalTok{In [}\DecValTok{1}\NormalTok{]: }\ImportTok{import}\NormalTok{ asyncio}
 
-In [2]: async def foo(message, duree):
-   ...:     await asyncio.sleep(duree)
-   ...:     print(message)
+\NormalTok{In [}\DecValTok{2}\NormalTok{]: }\ControlFlowTok{async} \KeywordTok{def}\NormalTok{ foo(message, duree):}
+\NormalTok{   ...:     }\ControlFlowTok{await}\NormalTok{ asyncio.sleep(duree)}
+\NormalTok{   ...:     }\BuiltInTok{print}\NormalTok{(message)}
 
-In [3]: await(foo("hello", 0.5))
-hello
+\NormalTok{In [}\DecValTok{3}\NormalTok{]: }\ControlFlowTok{await}\NormalTok{(foo(}\StringTok{"hello"}\NormalTok{, }\FloatTok{0.5}\NormalTok{))}
+\NormalTok{hello}
 
-In [4]: await(asyncio.gather(foo("hello", 0.5), foo("world", 1)))
-hello
-world
-Out[4]: [None, None]
-\end{verbatim}
+\NormalTok{In [}\DecValTok{4}\NormalTok{]: }\ControlFlowTok{await}\NormalTok{(asyncio.gather(foo(}\StringTok{"hello"}\NormalTok{, }\FloatTok{0.5}\NormalTok{), foo(}\StringTok{"world"}\NormalTok{, }\DecValTok{1}\NormalTok{)))}
+\NormalTok{hello}
+\NormalTok{world}
+\NormalTok{Out[}\DecValTok{4}\NormalTok{]: [}\VariableTok{None}\NormalTok{, }\VariableTok{None}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
 
     Du coup cette façon de faire fonctionnera aussi dans un notebook, si
 vous avez la bonne version de IPython en dessous de Jupyter.

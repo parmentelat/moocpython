@@ -45,7 +45,7 @@ sur un objet \texttt{obj} va créer (ou altérer) un symbole \texttt{x}
 qui va référencer l'objet affecté, typiquement l'objet à droite du signe
 \texttt{=}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k}{class} \PY{n+nc}{MaClasse}\PY{p}{:}
             \PY{k}{pass}
         
@@ -57,7 +57,7 @@ qui va référencer l'objet affecté, typiquement l'objet à droite du signe
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}1}]:} True
 \end{Verbatim}
             
@@ -104,7 +104,7 @@ exception est levée.
 
 Par exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{var} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dans le module}\PY{l+s+s1}{\PYZsq{}}
         
         \PY{k}{class} \PY{n+nc}{A}\PY{p}{:}
@@ -118,10 +118,9 @@ Par exemple~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 dans la fonction f
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{en-ruxe9sumuxe9}{%
 \subparagraph{En résumé}\label{en-ruxe9sumuxe9}}
@@ -172,7 +171,7 @@ treated as references to the current block.''
 
 En effet, les classes se comportent différemment des fonctions~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{x} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{x du module}\PY{l+s+s2}{\PYZdq{}}
         \PY{k}{class} \PY{n+nc}{A}\PY{p}{(}\PY{p}{)}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dans classe A: }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{x}\PY{p}{)}
@@ -183,12 +182,11 @@ En effet, les classes se comportent différemment des fonctions~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 dans classe A: x du module
 dans classe A: x dans A
 dans classe A: x du module
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Alors pourquoi si c'est une mauvaise idée de mélanger variables globales
 et locales de même nom dans une fonction, c'est possible dans une

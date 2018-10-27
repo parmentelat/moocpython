@@ -8,7 +8,7 @@
     \hypertarget{notebooks-interactifs}{%
 \section{Notebooks interactifs}\label{notebooks-interactifs}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
         \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
         \PY{n}{plt}\PY{o}{.}\PY{n}{ion}\PY{p}{(}\PY{p}{)}
@@ -47,7 +47,7 @@ fréquence. Pour cela nous allons utiliser la fonction
 l'écosystème des notebooks, et plus précisément du module
 \texttt{ipywidgets}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{ipywidgets} \PY{k}{import} \PY{n}{interact}
 \end{Verbatim}
 
@@ -56,7 +56,7 @@ l'écosystème des notebooks, et plus précisément du module
 fréquence, et qui dessine la fonction sinus sur un intervalle fixe de 0.
 à \(4\pi\)~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{k}{def} \PY{n+nf}{sinus}\PY{p}{(}\PY{n}{freq}\PY{p}{)}\PY{p}{:}
             \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mf}{0.}\PY{p}{,} \PY{l+m+mi}{4}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{l+m+mi}{200}\PY{p}{)}
             \PY{n}{Y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{freq}\PY{o}{*}\PY{n}{X}\PY{p}{)}
@@ -64,7 +64,7 @@ fréquence, et qui dessine la fonction sinus sur un intervalle fixe de 0.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{sinus}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
 \end{Verbatim}
 
@@ -74,7 +74,7 @@ fréquence, et qui dessine la fonction sinus sur un intervalle fixe de 0.
     \end{center}
     { \hspace*{\fill} \\}
     
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{sinus}\PY{p}{(}\PY{l+m+mf}{0.5}\PY{p}{)}
 \end{Verbatim}
 
@@ -88,7 +88,7 @@ fréquence, et qui dessine la fonction sinus sur un intervalle fixe de 0.
 j'utilise \texttt{interact} qui va m'afficher une réglette pour changer
 le paramètre \texttt{freq}. Ça se présente comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} je change maintenant la taille des visualisations}
         \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}\PY{p}{;}
 \end{Verbatim}
@@ -100,7 +100,7 @@ le paramètre \texttt{freq}. Ça se présente comme ceci~:
     \end{verbatim}
 
     
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{n}{interact}\PY{p}{(}\PY{n}{sinus}\PY{p}{,} \PY{n}{freq}\PY{o}{=}\PY{p}{(}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mf}{10.}\PY{p}{,} \PY{l+m+mf}{0.25}\PY{p}{)}\PY{p}{)}\PY{p}{;}
 \end{Verbatim}
 
@@ -114,9 +114,16 @@ le paramètre \texttt{freq}. Ça se présente comme ceci~:
 \subsection{\texorpdfstring{Mécanisme
 d'\texttt{interact}}{Mécanisme d'interact}}\label{muxe9canisme-dinteract}}
 
-    La fonction \texttt{interact} s'attend à recevoir~: * en premier
-argument~: une fonction \texttt{f}~; * et ensuite autant d'arguments
-nommés supplémentaires que de paramètres attendus par \texttt{f}.
+    La fonction \texttt{interact} s'attend à recevoir~:
+
+\begin{itemize}
+\tightlist
+\item
+  en premier argument~: une fonction \texttt{f}~;
+\item
+  et ensuite autant d'arguments nommés supplémentaires que de paramètres
+  attendus par \texttt{f}.
+\end{itemize}
 
 Comme dans mon cas la fonction \texttt{sinus} attend un paramètre nommé
 \texttt{freq}, le deuxième argument de \texttt{interact} lui est passé
@@ -136,12 +143,12 @@ pouvoir régler le paramètre \texttt{freq} sur une plage allant de
     Mon premier exemple avec \texttt{interact} est en réalité équivalent à
 ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{k+kn}{from} \PY{n+nn}{ipywidgets} \PY{k}{import} \PY{n}{FloatSlider}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} exactement équivalent à la version ci\PYZhy{}dessus}
         \PY{n}{interact}\PY{p}{(}\PY{n}{sinus}\PY{p}{,} \PY{n}{freq}\PY{o}{=}\PY{n}{FloatSlider}\PY{p}{(}\PY{n+nb}{min}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n+nb}{max}\PY{o}{=}\PY{l+m+mf}{10.}\PY{p}{,} \PY{n}{step}\PY{o}{=}\PY{l+m+mf}{0.25}\PY{p}{)}\PY{p}{)}\PY{p}{;}
 \end{Verbatim}
@@ -166,7 +173,7 @@ comme notamment~:
   mettre \texttt{value=1.} pour choisir la valeur initiale~:
 \end{itemize}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} exactement équivalent à la version ci\PYZhy{}dessus}
          \PY{c+c1}{\PYZsh{} sauf qu\PYZsq{}on ne redessine que lorsque la réglette}
          \PY{c+c1}{\PYZsh{} est relâchée}
@@ -187,7 +194,7 @@ comme notamment~:
     Voyons tout de suite un exemple avec deux paramètres, je vais écrire
 maintenant une fonction qui me permet de changer aussi la phase~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{k}{def} \PY{n+nf}{sinus2}\PY{p}{(}\PY{n}{freq}\PY{p}{,} \PY{n}{phase}\PY{p}{)}\PY{p}{:}
              \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mf}{0.}\PY{p}{,} \PY{l+m+mi}{4}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{l+m+mi}{200}\PY{p}{)}
              \PY{n}{Y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{freq}\PY{o}{*}\PY{p}{(}\PY{n}{X}\PY{o}{+}\PY{n}{phase}\PY{p}{)}\PY{p}{)}
@@ -197,10 +204,12 @@ maintenant une fonction qui me permet de changer aussi la phase~:
 
     Et donc maintenant je passe à \texttt{interact} un troisième paramètre~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{n}{interact}\PY{p}{(}\PY{n}{sinus2}\PY{p}{,}
-                  \PY{n}{freq}\PY{o}{=}\PY{n}{FloatSlider}\PY{p}{(}\PY{n+nb}{min}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n+nb}{max}\PY{o}{=}\PY{l+m+mf}{10.}\PY{p}{,} \PY{n}{step}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{continuous\PYZus{}update}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{p}{,}
-                  \PY{n}{phase}\PY{o}{=}\PY{n}{FloatSlider}\PY{p}{(}\PY{n+nb}{min}\PY{o}{=}\PY{l+m+mf}{0.}\PY{p}{,} \PY{n+nb}{max}\PY{o}{=}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{n}{step}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{/}\PY{l+m+mi}{6}\PY{p}{,} \PY{n}{continuous\PYZus{}update}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{p}{,}
+                  \PY{n}{freq}\PY{o}{=}\PY{n}{FloatSlider}\PY{p}{(}\PY{n+nb}{min}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n+nb}{max}\PY{o}{=}\PY{l+m+mf}{10.}\PY{p}{,} \PY{n}{step}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,}
+                                   \PY{n}{continuous\PYZus{}update}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{p}{,}
+                  \PY{n}{phase}\PY{o}{=}\PY{n}{FloatSlider}\PY{p}{(}\PY{n+nb}{min}\PY{o}{=}\PY{l+m+mf}{0.}\PY{p}{,} \PY{n+nb}{max}\PY{o}{=}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{n}{step}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{/}\PY{l+m+mi}{6}\PY{p}{,} 
+                                    \PY{n}{continuous\PYZus{}update}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{p}{,}
                  \PY{p}{)}\PY{p}{;}
 \end{Verbatim}
 
@@ -217,12 +226,12 @@ maintenant une fonction qui me permet de changer aussi la phase~:
     Si j'ai une fonction qui prend plus de paramètres que je ne veux montrer
 de réglettes, je peux fixer un des paramètres par exemple comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{k+kn}{from} \PY{n+nn}{ipywidgets} \PY{k}{import} \PY{n}{fixed}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} avec une fonction à deux argument,}
          \PY{c+c1}{\PYZsh{} je peux en fixer un, et n\PYZsq{}avoir qu\PYZsq{}une réglette}
          \PY{c+c1}{\PYZsh{} pour fixer celui qui est libre}
@@ -241,10 +250,17 @@ de réglettes, je peux fixer un des paramètres par exemple comme ceci~:
 \subsection{Widgets}\label{widgets}}
 
     Il existe toute une famille de widgets, dont \texttt{FloatSlider} est
-l'exemple le plus courant, mais vous pouvez aussi~: * créer des radio
-bouton pour entrer un paramètre booléen~; * ou une saisie de texte pour
-entre un paramètre de type \texttt{str}~; * ou une liste à choix
-multiples\ldots{}
+l'exemple le plus courant, mais vous pouvez aussi~:
+
+\begin{itemize}
+\tightlist
+\item
+  créer des radio bouton pour entrer un paramètre booléen~;
+\item
+  ou une saisie de texte pour entre un paramètre de type \texttt{str}~;
+\item
+  ou une liste à choix multiples\ldots{}
+\end{itemize}
 
 Bref, vous pouvez créer une mini interface-utilisateur avec des objets
 graphiques simples choisis dans une palette assez complète pour ce type
@@ -254,7 +270,7 @@ Voyez
 \href{http://ipywidgets.readthedocs.io/en/latest/examples/Using\%20Interact.html}{les
 détails complets sur \texttt{readthedocs.io}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} de même qu\PYZsq{}un tuple était ci\PYZhy{}dessus un raccourci pour un FloatSlider}
          \PY{c+c1}{\PYZsh{} une liste ou un dictionnaire est transformé(e) en un Dropdown}
          \PY{n}{interact}\PY{p}{(}\PY{n}{sinus}\PY{p}{,} \PY{n}{freq}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rapide}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mf}{10.}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{moyenne}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mf}{1.}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lente}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mf}{0.1}\PY{p}{\PYZcb{}}\PY{p}{)}\PY{p}{;}
@@ -280,24 +296,24 @@ créer sa propre disposition de boutons et autres réglages.
 idée, qui pour changer agit sur une visualisation réalisée avec plot.ly
 plutôt que matplotlib~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}16}]:} \PY{k+kn}{import} \PY{n+nn}{plotly}
          \PY{n}{plotly}\PY{o}{.}\PY{n}{\PYZus{}\PYZus{}version\PYZus{}\PYZus{}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}16}]:} '3.1.1'
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} on importe la bibliothèque plot.ly}
          \PY{k+kn}{import} \PY{n+nn}{plotly}\PY{n+nn}{.}\PY{n+nn}{plotly} \PY{k}{as} \PY{n+nn}{py}
          \PY{k+kn}{import} \PY{n+nn}{plotly}\PY{n+nn}{.}\PY{n+nn}{graph\PYZus{}objs} \PY{k}{as} \PY{n+nn}{go}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{} il est impératif d\PYZsq{}utiliser plot.ly en mode \PYZsq{}offline\PYZsq{} }
          \PY{c+c1}{\PYZsh{} pour in mode interactif, }
          \PY{c+c1}{\PYZsh{} car sinon les affichages sont beaucoup trop lents}
@@ -309,7 +325,7 @@ plutôt que matplotlib~:
 
     
     
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} les widgets pour construire le tableau de bord}
          \PY{k+kn}{from} \PY{n+nn}{ipywidgets} \PY{k}{import} \PY{p}{(}\PY{n}{interactive\PYZus{}output}\PY{p}{,}
                                  \PY{n}{IntSlider}\PY{p}{,} \PY{n}{Dropdown}\PY{p}{,} \PY{n}{Layout}\PY{p}{,} \PY{n}{HBox}\PY{p}{,} \PY{n}{VBox}\PY{p}{,} \PY{n}{Text}\PY{p}{)}
@@ -317,7 +333,7 @@ plutôt que matplotlib~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}20}]:} \PY{c+c1}{\PYZsh{} une fonction sinus à 4 réglages}
          \PY{c+c1}{\PYZsh{} qu\PYZsq{}on réalise pour changer avec plot.ly}
          \PY{c+c1}{\PYZsh{} et non pas avec matplotlib}
@@ -338,7 +354,7 @@ plutôt que matplotlib~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}21}]:} \PY{k}{def} \PY{n+nf}{my\PYZus{}dashboard}\PY{p}{(}\PY{p}{)}\PY{p}{:}
              \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
          \PY{l+s+sd}{    create and display a dashboard}
@@ -371,7 +387,8 @@ plutôt que matplotlib~:
                                \PY{n}{HBox}\PY{p}{(}\PY{p}{[}\PY{n}{w\PYZus{}domain}\PY{p}{,} \PY{n}{w\PYZus{}freq}\PY{p}{]}\PY{p}{)}\PY{p}{,}
                               \PY{p}{]}\PY{p}{)}
              \PY{n}{display}\PY{p}{(}\PY{n}{dashboard}\PY{p}{)}
-             \PY{k}{return} \PY{n+nb}{dict}\PY{p}{(}\PY{n}{freq}\PY{o}{=}\PY{n}{w\PYZus{}freq}\PY{p}{,} \PY{n}{phase}\PY{o}{=}\PY{n}{w\PYZus{}phase}\PY{p}{,} \PY{n}{amplitude}\PY{o}{=}\PY{n}{w\PYZus{}amplitude}\PY{p}{,} \PY{n}{domain}\PY{o}{=}\PY{n}{w\PYZus{}domain}\PY{p}{)}
+             \PY{k}{return} \PY{n+nb}{dict}\PY{p}{(}\PY{n}{freq}\PY{o}{=}\PY{n}{w\PYZus{}freq}\PY{p}{,} \PY{n}{phase}\PY{o}{=}\PY{n}{w\PYZus{}phase}\PY{p}{,}
+                         \PY{n}{amplitude}\PY{o}{=}\PY{n}{w\PYZus{}amplitude}\PY{p}{,} \PY{n}{domain}\PY{o}{=}\PY{n}{w\PYZus{}domain}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -380,7 +397,7 @@ plutôt que matplotlib~:
 Avec tout ceci en place on peut montrer un dialogue interactif pour
 changer tous les paramètres de sinus4.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}22}]:} \PY{c+c1}{\PYZsh{} interactively call sinus4}
          \PY{c+c1}{\PYZsh{} attention il reste un bug:}
          \PY{c+c1}{\PYZsh{} au tout début rien ne s\PYZsq{}affiche,}

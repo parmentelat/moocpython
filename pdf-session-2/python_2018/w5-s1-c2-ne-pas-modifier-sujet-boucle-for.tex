@@ -20,14 +20,14 @@ seulement que dans une boucle \texttt{for} sur un objet mutable,
 Ainsi par exemple il ne \textbf{faut pas faire} quelque chose comme
 ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} on veut enlever de l\PYZsq{}ensemble toutes les chaînes }
         \PY{c+c1}{\PYZsh{} qui ne contiennent pas \PYZsq{}bert\PYZsq{}}
         \PY{n}{ensemble} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{marc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{albert}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -46,13 +46,13 @@ ceci~:
     Première remarque, votre premier réflexe pourrait être de penser à une
 compréhension d'ensemble~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{ensemble2} \PY{o}{=} \PY{p}{\PYZob{}}\PY{n}{valeur} \PY{k}{for} \PY{n}{valeur} \PY{o+ow}{in} \PY{n}{ensemble} \PY{k}{if} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bert}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{valeur}\PY{p}{\PYZcb{}}
         \PY{n}{ensemble2}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}2}]:} \{'albert'\}
 \end{Verbatim}
             
@@ -63,7 +63,7 @@ la boucle sur une \emph{shallow copy} de cet objet. Notez qu'ici, il ne
 s'agit d'économiser de la mémoire, puisque l'on fait une \emph{shallow
 copy}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{k+kn}{from} \PY{n+nn}{copy} \PY{k}{import} \PY{n}{copy}
         \PY{c+c1}{\PYZsh{} on veut enlever de l\PYZsq{}ensemble toutes les chaînes }
         \PY{c+c1}{\PYZsh{} qui ne contiennent pas \PYZsq{}bert\PYZsq{}}
@@ -78,10 +78,9 @@ copy}.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 \{'albert'\}
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{avertissement}{%
 \subsubsection{Avertissement}\label{avertissement}}
@@ -107,28 +106,26 @@ constitue l'itération.
 
 Ainsi cette construction par contre est tout à fait valide~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{]}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{avant}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 avant [[1], [2], [3]]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{k}{for} \PY{n}{sous\PYZus{}liste} \PY{o+ow}{in} \PY{n}{liste}\PY{p}{:}
             \PY{n}{sous\PYZus{}liste}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{après}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 après [[1, 100], [2, 100], [3, 100]]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Dans cet exemple, les modifications ont lieu sur les éléments de
 \texttt{liste}, et non sur l'objet \texttt{liste} lui-même, c'est donc
@@ -177,13 +174,15 @@ d'implémentation}\label{difficultuxe9-dimpluxe9mentation}}
     Voyons maintenant un exemple de code qui ne respecte pas la règle, et
 qui modifie le sujet de la boucle en lui ajoutant des valeurs
 
-    \begin{verbatim}
-# cette boucle ne termine pas
-liste = [1, 2, 3]
-for c in liste:
-    if c == 3:
-        liste.append(c)
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\CommentTok{# cette boucle ne termine pas}
+\NormalTok{liste }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{]}
+\ControlFlowTok{for}\NormalTok{ c }\KeywordTok{in}\NormalTok{ liste:}
+    \ControlFlowTok{if}\NormalTok{ c }\OperatorTok{==} \DecValTok{3}\NormalTok{:}
+\NormalTok{        liste.append(c)}
+\end{Highlighting}
+\end{Shaded}
 
     Nous avons volontairement mis ce code \textbf{dans une cellule de texte}
 et non de code~: vous \textbf{ne pouvez pas l'exécuter} dans le

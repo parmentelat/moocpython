@@ -19,7 +19,7 @@ terminale}\label{les-tuples-et-la-virgule-terminale}}
     Comme on l'a vu dans la vidéo, on peut construire un tuple à deux
 éléments - un couple - de quatre façons~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} sans parenthèse ni virgule terminale}
         \PY{n}{couple1} \PY{o}{=} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}
         \PY{c+c1}{\PYZsh{} avec parenthèses}
@@ -31,13 +31,13 @@ terminale}\label{les-tuples-et-la-virgule-terminale}}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} toutes ces formes sont équivalentes ; par exemple}
         \PY{n}{couple1} \PY{o}{==} \PY{n}{couple4}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}2}]:} True
 \end{Verbatim}
             
@@ -67,7 +67,7 @@ veut créer un tuple qui contient des listes (naturellement un tuple peut
 contenir n'importe quel objet Python), et comme c'est assez long on
 préfère mettre un élément du tuple par ligne~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{mon\PYZus{}tuple} \PY{o}{=} \PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,}
                      \PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}\PY{p}{,}
                      \PY{p}{[}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{]}\PY{p}{,}
@@ -104,7 +104,7 @@ de faire figurer une virgule terminale.
 cas particulier, parmi les quatre syntaxes que l'on a vues ci-dessus, on
 obtiendrait dans ce cas~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} ATTENTION : ces deux premières formes ne construisent pas un tuple !}
         \PY{n}{simple1} \PY{o}{=} \PY{l+m+mi}{1}
         \PY{n}{simple2} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
@@ -125,33 +125,33 @@ obtiendrait dans ce cas~:
 
 Et en fait ces deux premières formes créent un entier simple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n+nb}{type}\PY{p}{(}\PY{n}{simple2}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:} int
 \end{Verbatim}
             
     Les deux autres formes créent par contre toutes les deux un tuple à un
 élément comme on cherchait à le faire~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n+nb}{type}\PY{p}{(}\PY{n}{simple3}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} tuple
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{n}{simple3} \PY{o}{==} \PY{n}{simple4}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}7}]:} True
 \end{Verbatim}
             
@@ -165,19 +165,19 @@ obligatoire}\label{parenthuxe8se-parfois-obligatoire}}
     Dans certains cas vous vous apercevrez que la parenthèse est
 obligatoire. Par exemple on peut écrire~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{n}{x} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{p}{)}
         \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{p}{)} \PY{o}{==} \PY{n}{x}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}8}]:} True
 \end{Verbatim}
             
     Mais si on essaie d'écrire le même test sans les parenthèses~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -196,32 +196,30 @@ utiliser les parenthèses.
 d'additionner deux tuples, et l'addition va produire un \textbf{nouveau}
 tuple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{n}{tuple1} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,}\PY{p}{)}
         \PY{n}{tuple2} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{addition}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{tuple1} \PY{o}{+} \PY{n}{tuple2}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 addition (1, 2, 3, 4)
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Ainsi on peut également utiliser l'opérateur \texttt{+=} avec un tuple
 qui va créer, comme précédemment, un nouvel objet tuple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{n}{tuple1} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,}\PY{p}{)}
          \PY{n}{tuple1} \PY{o}{+}\PY{o}{=} \PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,}\PY{p}{)}
          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{apres ajout}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{tuple1}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 apres ajout (1, 2, 3, 4)
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{construire-des-tuples-uxe9laboruxe9s}{%
 \subsubsection{Construire des tuples
@@ -234,7 +232,7 @@ construction d'un tuple peut s'avérer fastidieuse.
 construire un tuple à partir de - par exemple - une liste. Ainsi on peut
 faire par exemple ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} on fabrique une liste pas à pas}
          \PY{n}{liste} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
          \PY{n}{liste}\PY{p}{[}\PY{l+m+mi}{9}\PY{p}{]} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Inconnu}\PY{l+s+s1}{\PYZsq{}}
@@ -243,18 +241,18 @@ faire par exemple ceci~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}11}]:} [0, 1, 5, 6, 7, 8, 'Inconnu']
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} on convertit le résultat en tuple}
          \PY{n}{mon\PYZus{}tuple} \PY{o}{=} \PY{n+nb}{tuple}\PY{p}{(}\PY{n}{liste}\PY{p}{)}
          \PY{n}{mon\PYZus{}tuple}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}12}]:} (0, 1, 5, 6, 7, 8, 'Inconnu')
 \end{Verbatim}
             
@@ -271,7 +269,7 @@ Ces variables en effet sont des variables ``comme les autres''. Imaginez
 qu'on ait en fait deux tuples à construire comme ci-dessus, voici ce
 qu'on obtiendrait si on n'avait pas pris cette précaution~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{n}{liste} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
          \PY{c+c1}{\PYZsh{} ATTENTION : ceci redéfinit le symbole tuple}
          \PY{n+nb}{tuple} \PY{o}{=} \PY{n+nb}{tuple}\PY{p}{(}\PY{n}{liste}\PY{p}{)}
@@ -279,11 +277,11 @@ qu'on obtiendrait si on n'avait pas pris cette précaution~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}13}]:} (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         

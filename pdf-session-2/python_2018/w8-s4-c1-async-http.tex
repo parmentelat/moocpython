@@ -42,18 +42,20 @@ toutes ensemble à la fin du programme, c'est beaucoup moins drôle.
 
     Voici son mode d'emploi~:
 
-    \begin{verbatim}
-$ python3 async_http.py --help
-usage: async_http.py [-h] [-s] [-d] [urls [urls ...]]
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ python3 async_http.py }\OperatorTok{--}\BuiltInTok{help}
+\NormalTok{usage: async_http.py [}\OperatorTok{-}\NormalTok{h] [}\OperatorTok{-}\NormalTok{s] [}\OperatorTok{-}\NormalTok{d] [urls [urls ...]]}
 
-positional arguments:
-  urls              URL's to be fetched
+\NormalTok{positional arguments:}
+\NormalTok{  urls              URL}\StringTok{'s to be fetched}
 
-optional arguments:
-  -h, --help        show this help message and exit
-  -s, --sequential  run sequentially
-  -d, --details     show details of lines as they show up (using fetch2)
-\end{verbatim}
+\StringTok{optional arguments:}
+\StringTok{  -h, --help        show this help message and exit}
+\StringTok{  -s, --sequential  run sequentially}
+\StringTok{  -d, --details     show details of lines as they show up (using fetch2)}
+\end{Highlighting}
+\end{Shaded}
 
     Et voici les chiffres que j'obtiens lorsque je l'utilise dans une
 configuration réseau plus stable que dans la vidéo, on voit ici un réel
@@ -61,33 +63,37 @@ gain à l'utilisation de communications asynchrones~(à cause de
 conditions réseau un peu erratiques lors de la vidéo, on n'y voit pas
 bien le gain obtenu) :
 
-    \begin{verbatim}
-$ python3 async_http.py -s
-Running sequential mode on 4 URLs
-http://www.irs.gov/pub/irs-pdf/f1040.pdf returned 179940 chars
-http://www.irs.gov/pub/irs-pdf/f1040ez.pdf returned 113242 chars
-http://www.irs.gov/pub/irs-pdf/f1040es.pdf returned 395201 chars
-http://www.irs.gov/pub/irs-pdf/f1040sb.pdf returned 73189 chars
-duration = 9.80829906463623s
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ python3 async_http.py }\OperatorTok{-}\NormalTok{s}
+\NormalTok{Running sequential mode on }\DecValTok{4}\NormalTok{ URLs}
+\NormalTok{http:}\OperatorTok{//}\NormalTok{www.irs.gov}\OperatorTok{/}\NormalTok{pub}\OperatorTok{/}\NormalTok{irs}\OperatorTok{-}\NormalTok{pdf}\OperatorTok{/}\NormalTok{f1040.pdf returned }\DecValTok{179940}\NormalTok{ chars}
+\NormalTok{http:}\OperatorTok{//}\NormalTok{www.irs.gov}\OperatorTok{/}\NormalTok{pub}\OperatorTok{/}\NormalTok{irs}\OperatorTok{-}\NormalTok{pdf}\OperatorTok{/}\NormalTok{f1040ez.pdf returned }\DecValTok{113242}\NormalTok{ chars}
+\NormalTok{http:}\OperatorTok{//}\NormalTok{www.irs.gov}\OperatorTok{/}\NormalTok{pub}\OperatorTok{/}\NormalTok{irs}\OperatorTok{-}\NormalTok{pdf}\OperatorTok{/}\NormalTok{f1040es.pdf returned }\DecValTok{395201}\NormalTok{ chars}
+\NormalTok{http:}\OperatorTok{//}\NormalTok{www.irs.gov}\OperatorTok{/}\NormalTok{pub}\OperatorTok{/}\NormalTok{irs}\OperatorTok{-}\NormalTok{pdf}\OperatorTok{/}\NormalTok{f1040sb.pdf returned }\DecValTok{73189}\NormalTok{ chars}
+\NormalTok{duration }\OperatorTok{=} \FloatTok{9.80829906463623}\NormalTok{s}
+\end{Highlighting}
+\end{Shaded}
 
-    \begin{verbatim}
-$ python3 async_http.py
-Running simple mode (fetch) on 4 URLs
-fetching http://www.irs.gov/pub/irs-pdf/f1040.pdf
-fetching http://www.irs.gov/pub/irs-pdf/f1040sb.pdf
-fetching http://www.irs.gov/pub/irs-pdf/f1040es.pdf
-fetching http://www.irs.gov/pub/irs-pdf/f1040ez.pdf
-http://www.irs.gov/pub/irs-pdf/f1040.pdf response status 200
-http://www.irs.gov/pub/irs-pdf/f1040ez.pdf response status 200
-http://www.irs.gov/pub/irs-pdf/f1040sb.pdf response status 200
-http://www.irs.gov/pub/irs-pdf/f1040es.pdf response status 200
-http://www.irs.gov/pub/irs-pdf/f1040sb.pdf returned 75864 bytes
-http://www.irs.gov/pub/irs-pdf/f1040.pdf returned 186928 bytes
-http://www.irs.gov/pub/irs-pdf/f1040ez.pdf returned 117807 bytes
-http://www.irs.gov/pub/irs-pdf/f1040es.pdf returned 409193 bytes
-duration = 2.211031913757324s
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ python3 async_http.py}
+\NormalTok{Running simple mode (fetch) on }\DecValTok{4}\NormalTok{ URLs}
+\NormalTok{fetching http:}\OperatorTok{//}\NormalTok{www.irs.gov}\OperatorTok{/}\NormalTok{pub}\OperatorTok{/}\NormalTok{irs}\OperatorTok{-}\NormalTok{pdf}\OperatorTok{/}\NormalTok{f1040.pdf}
+\NormalTok{fetching http:}\OperatorTok{//}\NormalTok{www.irs.gov}\OperatorTok{/}\NormalTok{pub}\OperatorTok{/}\NormalTok{irs}\OperatorTok{-}\NormalTok{pdf}\OperatorTok{/}\NormalTok{f1040sb.pdf}
+\NormalTok{fetching http:}\OperatorTok{//}\NormalTok{www.irs.gov}\OperatorTok{/}\NormalTok{pub}\OperatorTok{/}\NormalTok{irs}\OperatorTok{-}\NormalTok{pdf}\OperatorTok{/}\NormalTok{f1040es.pdf}
+\NormalTok{fetching http:}\OperatorTok{//}\NormalTok{www.irs.gov}\OperatorTok{/}\NormalTok{pub}\OperatorTok{/}\NormalTok{irs}\OperatorTok{-}\NormalTok{pdf}\OperatorTok{/}\NormalTok{f1040ez.pdf}
+\NormalTok{http:}\OperatorTok{//}\NormalTok{www.irs.gov}\OperatorTok{/}\NormalTok{pub}\OperatorTok{/}\NormalTok{irs}\OperatorTok{-}\NormalTok{pdf}\OperatorTok{/}\NormalTok{f1040.pdf response status }\DecValTok{200}
+\NormalTok{http:}\OperatorTok{//}\NormalTok{www.irs.gov}\OperatorTok{/}\NormalTok{pub}\OperatorTok{/}\NormalTok{irs}\OperatorTok{-}\NormalTok{pdf}\OperatorTok{/}\NormalTok{f1040ez.pdf response status }\DecValTok{200}
+\NormalTok{http:}\OperatorTok{//}\NormalTok{www.irs.gov}\OperatorTok{/}\NormalTok{pub}\OperatorTok{/}\NormalTok{irs}\OperatorTok{-}\NormalTok{pdf}\OperatorTok{/}\NormalTok{f1040sb.pdf response status }\DecValTok{200}
+\NormalTok{http:}\OperatorTok{//}\NormalTok{www.irs.gov}\OperatorTok{/}\NormalTok{pub}\OperatorTok{/}\NormalTok{irs}\OperatorTok{-}\NormalTok{pdf}\OperatorTok{/}\NormalTok{f1040es.pdf response status }\DecValTok{200}
+\NormalTok{http:}\OperatorTok{//}\NormalTok{www.irs.gov}\OperatorTok{/}\NormalTok{pub}\OperatorTok{/}\NormalTok{irs}\OperatorTok{-}\NormalTok{pdf}\OperatorTok{/}\NormalTok{f1040sb.pdf returned }\DecValTok{75864} \BuiltInTok{bytes}
+\NormalTok{http:}\OperatorTok{//}\NormalTok{www.irs.gov}\OperatorTok{/}\NormalTok{pub}\OperatorTok{/}\NormalTok{irs}\OperatorTok{-}\NormalTok{pdf}\OperatorTok{/}\NormalTok{f1040.pdf returned }\DecValTok{186928} \BuiltInTok{bytes}
+\NormalTok{http:}\OperatorTok{//}\NormalTok{www.irs.gov}\OperatorTok{/}\NormalTok{pub}\OperatorTok{/}\NormalTok{irs}\OperatorTok{-}\NormalTok{pdf}\OperatorTok{/}\NormalTok{f1040ez.pdf returned }\DecValTok{117807} \BuiltInTok{bytes}
+\NormalTok{http:}\OperatorTok{//}\NormalTok{www.irs.gov}\OperatorTok{/}\NormalTok{pub}\OperatorTok{/}\NormalTok{irs}\OperatorTok{-}\NormalTok{pdf}\OperatorTok{/}\NormalTok{f1040es.pdf returned }\DecValTok{409193} \BuiltInTok{bytes}
+\NormalTok{duration }\OperatorTok{=} \FloatTok{2.211031913757324}\NormalTok{s}
+\end{Highlighting}
+\end{Shaded}
 
     N'hésitez pas à utiliser ceci comme base pour expérimenter.
 

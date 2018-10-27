@@ -54,9 +54,10 @@ python est connu sous le nom de
 \href{http://en.wikipedia.org/wiki/Duck_typing}{\emph{duck typing}}, une
 appellation qui fait référence à cette phrase~:
 
-\begin{verbatim}
-When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck.
-\end{verbatim}
+\begin{quote}
+When I see a bird that walks like a duck and swims like a duck and
+quacks like a duck, I call that bird a duck.
+\end{quote}
 
     \hypertarget{lexemple-des-ituxe9rables}{%
 \subsubsection{L'exemple des
@@ -66,11 +67,12 @@ itérables}\label{lexemple-des-ituxe9rables}}
 d'\emph{itérable} est un type abstrait, en ce sens que, pour que le
 fragment~:
 
-\begin{verbatim}
-for item in container:
-    do_something(item)
-    
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ControlFlowTok{for}\NormalTok{ item }\KeywordTok{in}\NormalTok{ container:}
+\NormalTok{    do_something(item)}
+\end{Highlighting}
+\end{Shaded}
 
 ait un sens, il faut et il suffit que \texttt{container} soit un
 itérable. Et vous connaissez maintenant plein d'exemples très différents
@@ -88,39 +90,39 @@ complément, il n'existe pas dans le système python d'objet de type
 regarde les superclasses de nos types concrets itérables, on voit que
 leur seul ancêtre commun est la classe \texttt{object}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{n+nb}{str}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}bases\PYZus{}\PYZus{}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}1}]:} (object,)
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n+nb}{list}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}bases\PYZus{}\PYZus{}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}2}]:} (object,)
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n+nb}{tuple}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}bases\PYZus{}\PYZus{}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}3}]:} (object,)
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n+nb}{range}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}bases\PYZus{}\PYZus{}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}4}]:} (object,)
 \end{Verbatim}
             
@@ -129,11 +131,13 @@ leur seul ancêtre commun est la classe \texttt{object}~:
 
     Pour prendre un exemple plus simple, si je considère~:
 
-\begin{verbatim}
-def foo(graphic):
-    ...
-    graphic.draw()
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\KeywordTok{def}\NormalTok{ foo(graphic):}
+\NormalTok{    ...}
+\NormalTok{    graphic.draw()}
+\end{Highlighting}
+\end{Shaded}
 
 pour que l'expression \texttt{graphic.draw()} ait un sens, il faut et il
 suffit que l'objet \texttt{graphic} ait une méthode \texttt{draw}.
@@ -179,30 +183,30 @@ propriétés comme ``cet objet est-il iterable~?'', on a choisi d'étendre
 \href{http://legacy.python.org/dev/peps/pep-3119/}{cette initiative}.
 C'est ainsi qu'on peut faire par exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{k+kn}{from} \PY{n+nn}{collections}\PY{n+nn}{.}\PY{n+nn}{abc} \PY{k}{import} \PY{n}{Iterable}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n+nb}{isinstance}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ab}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{Iterable}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} True
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{n+nb}{isinstance}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} \PY{n}{Iterable}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}7}]:} True
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} comme on l\PYZsq{}a vu, un objet qui a des méthodes}
         \PY{c+c1}{\PYZsh{} \PYZus{}\PYZus{}iter\PYZus{}\PYZus{}() et \PYZus{}\PYZus{}next\PYZus{}\PYZus{}() }
         \PY{c+c1}{\PYZsh{} est considéré comme un itérable}
@@ -211,17 +215,17 @@ C'est ainsi qu'on peut faire par exemple~:
                 \PY{k}{return} \PY{n+nb+bp}{self}
             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}next\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
                 \PY{c+c1}{\PYZsh{} ceci naturellement est bidon}
-                \PY{k}{return} 
+                \PY{k}{return}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{n}{foo} \PY{o}{=} \PY{n}{Foo}\PY{p}{(}\PY{p}{)}
         \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{foo}\PY{p}{,} \PY{n}{Iterable}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}9}]:} True
 \end{Verbatim}
             
@@ -241,12 +245,12 @@ vu que les clés doivent être globalement immuables. C'est une
 caractéristique qui est assez difficile à écrire, et en tous cas ceci de
 mon point de vue ne remplit pas la fonction~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{k+kn}{from} \PY{n+nn}{collections}\PY{n+nn}{.}\PY{n+nn}{abc} \PY{k}{import} \PY{n}{Hashable}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} un tuple qui contient une liste ne convient }
          \PY{c+c1}{\PYZsh{} pas comme clé dans un dictionnaire}
          \PY{c+c1}{\PYZsh{} et pourtant}
@@ -254,7 +258,7 @@ mon point de vue ne remplit pas la fonction~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}11}]:} True
 \end{Verbatim}
             

@@ -124,7 +124,7 @@ informations de debugging comme les traces de pile lorsqu'une exception
 est levée. Elle est aussi utilisée lorsque vous affichez un objet sans
 passer par \texttt{print}, c'est-à-dire par exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k}{class} \PY{n+nc}{Foo}\PY{p}{:} 
             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
                 \PY{k}{return} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{custom repr}\PY{l+s+s1}{\PYZsq{}}
@@ -136,7 +136,7 @@ passer par \texttt{print}, c'est-à-dire par exemple~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}1}]:} custom repr
 \end{Verbatim}
             
@@ -147,7 +147,7 @@ passer par \texttt{print}, c'est-à-dire par exemple~:
 que \texttt{\_\_repr\_\_}, dans le second on a redéfini les deux
 méthodes~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} une classe qui ne définit que \PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}
         \PY{k}{class} \PY{n+nc}{Point}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{première version de Point \PYZhy{} on ne définit que \PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}\PY{l+s+s2}{\PYZdq{}}
@@ -167,16 +167,15 @@ méthodes~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 avec print Point(0,100)
+\end{Verbatim}
 
-    \end{Verbatim}
-
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}2}]:} Point(0,100)
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} la même chose mais où on redéfinit \PYZus{}\PYZus{}str\PYZus{}\PYZus{} et \PYZus{}\PYZus{}repr\PYZus{}\PYZus{}}
         \PY{k}{class} \PY{n+nc}{Point2}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{seconde version de Point \PYZhy{} on définit \PYZus{}\PYZus{}repr\PYZus{}\PYZus{} et \PYZus{}\PYZus{}str\PYZus{}\PYZus{}}\PY{l+s+s2}{\PYZdq{}}
@@ -201,13 +200,12 @@ avec print Point(0,100)
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 avec print (0,100)
 avec format (0,100)
+\end{Verbatim}
 
-    \end{Verbatim}
-
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}3}]:} Point2(0,100)
 \end{Verbatim}
             
@@ -289,7 +287,7 @@ qui illustre cette fois~:
 Cette dernière possibilité va nous permettre de simplifier le code de
 l'addition, comme on va le voir.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} notre classe Matrix2 avec encore une autre implémentation}
         \PY{k}{class} \PY{n+nc}{Matrix2}\PY{p}{:}
         
@@ -336,7 +334,7 @@ l'addition, comme on va le voir.
     On peut à présent créer deux objets, les ajouter, et vérifier que la
 matrice nulle se comporte bien comme attendu~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{zero}     \PY{o}{=} \PY{n}{Matrix2} \PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
         
         \PY{n}{matrice1} \PY{o}{=} \PY{n}{Matrix2} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}
@@ -357,7 +355,7 @@ matrice nulle se comporte bien comme attendu~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 avant matrice1 [1, 2, 3, 4]
 avant matrice2 [10, 20, 30, 40]
 somme [11, 22, 33, 44]
@@ -365,8 +363,7 @@ après matrice1 [1, 2, 3, 4]
 après matrice2 [10, 20, 30, 40]
 [1, 2, 3, 4] n'est pas nulle
 [0, 0, 0, 0] est nulle
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Voici en vrac quelques commentaires sur cet exemple.
 
@@ -386,9 +383,11 @@ l'appelant).
 \textbf{nouvel objet}, au lieu de modifier \texttt{self} en place. C'est
 la bonne façon de procéder tout simplement parce que lorsqu'on écrit~:
 
-\begin{verbatim}
-print('somme', matrice1 + matrice2)
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\BuiltInTok{print}\NormalTok{(}\StringTok{'somme'}\NormalTok{, matrice1 }\OperatorTok{+}\NormalTok{ matrice2)}
+\end{Highlighting}
+\end{Shaded}
 
 on ne s'attend pas du tout à ce que \texttt{matrice1} soit modifiée
 après cet appel.
@@ -404,12 +403,12 @@ ne pas pouvoir l'exécuter avec en entrée une liste de matrices puisque
 maintenant on sait les additionner, (mais on a dû toutefois passer à
 \texttt{sum} comme élément neutre \texttt{zero})~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n+nb}{sum}\PY{p}{(}\PY{p}{[}\PY{n}{matrice1}\PY{p}{,} \PY{n}{matrice2}\PY{p}{,} \PY{n}{matrice1}\PY{p}{]} \PY{p}{,} \PY{n}{zero}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} [12, 24, 36, 48]
 \end{Verbatim}
             
@@ -463,9 +462,11 @@ identique (quoique plus fastidieuse naturellement).
 La multiplication d'une matrice par un scalaire (un réel ou complexe
 pour fixer les idées), comme ici~:
 
-\begin{verbatim}
-matrice2 = reel * matrice1
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{matrice2 }\OperatorTok{=}\NormalTok{ reel }\OperatorTok{*}\NormalTok{ matrice1}
+\end{Highlighting}
+\end{Shaded}
 
 peut être également réalisée par surcharge de l'opérateur
 \texttt{\_\_rmul\_\_}.
@@ -479,7 +480,7 @@ garantir la stabilité de l'interpréteur).
 Voici donc comment on s'y prendrait. Pour éviter de reproduire tout le
 code de la classe, on va l'étendre à la volée.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} remarquez que les opérandes sont apparemment inversés}
         \PY{c+c1}{\PYZsh{} dans le sens où pour evaluer }
         \PY{c+c1}{\PYZsh{}     reel * matrice}
@@ -495,21 +496,21 @@ code de la classe, on va l'étendre à la volée.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{n}{matrice1}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}8}]:} [1, 2, 3, 4]
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{l+m+mi}{12} \PY{o}{*} \PY{n}{matrice1}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}9}]:} [12, 24, 36, 48]
 \end{Verbatim}
             

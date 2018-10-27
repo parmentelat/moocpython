@@ -56,7 +56,7 @@ instruction \texttt{for} & ~ & compréhension(s)\tabularnewline
 quelle expression. On l'a déjà signalé, il n'est pas nécessaire que
 cette expression retourne un booléen~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} dans ce code le test }
         \PY{c+c1}{\PYZsh{} if n \PYZpc{} 3:}
         \PY{c+c1}{\PYZsh{} est équivalent à}
@@ -70,11 +70,10 @@ cette expression retourne un booléen~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 18 divisible par trois
 19 non divisible par trois
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{une-valeur-est-elle-vraie}{%
 \subsubsection{Une valeur est-elle ``vraie''
@@ -105,19 +104,19 @@ est donc par construction une valeur booléenne - vous indique, cette
 fois sans ambiguïté - comment se comportera \texttt{if} avec cette
 entrée.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{k}{def} \PY{n+nf}{show\PYZus{}bool}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{condition }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{repr(x):\PYZgt{}10\PYZcb{} considérée comme }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{bool(x)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{k}{for} \PY{n}{exp} \PY{o+ow}{in} \PY{p}{[}\PY{k+kc}{None}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}\PY{p}{,} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{1}\PY{p}{\PYZcb{}}\PY{p}{,} \PY{n+nb}{set}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{p}{\PYZob{}}\PY{l+m+mi}{1}\PY{p}{\PYZcb{}}\PY{p}{]}\PY{p}{:}
             \PY{n}{show\PYZus{}bool}\PY{p}{(}\PY{n}{exp}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 condition       None considérée comme False
 condition         '' considérée comme False
 condition        'a' considérée comme True
@@ -129,8 +128,7 @@ condition         \{\} considérée comme False
 condition   \{'a': 1\} considérée comme True
 condition      set() considérée comme False
 condition        \{1\} considérée comme True
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{quelques-exemples-dexpressions}{%
 \subsubsection{Quelques exemples
@@ -140,18 +138,17 @@ d'expressions}\label{quelques-exemples-dexpressions}}
 \subparagraph{Référence à une variable et
 dérivés}\label{ruxe9fuxe9rence-uxe0-une-variable-et-duxe9rivuxe9s}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{a} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [0, 1, 2, 3]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{k}{if} \PY{n}{a}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a n}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{est pas vide}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
         \PY{k}{if} \PY{n}{a}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{:}
@@ -161,29 +158,27 @@ dérivés}\label{ruxe9fuxe9rence-uxe0-une-variable-et-duxe9rivuxe9s}}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a n'est pas vide
 a[1] n'est pas nul
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{appels-de-fonction-ou-de-muxe9thode}{%
 \subparagraph{Appels de fonction ou de
 méthode}\label{appels-de-fonction-ou-de-muxe9thode}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{chaine} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{jean}\PY{l+s+s2}{\PYZdq{}}
         \PY{k}{if} \PY{n}{chaine}\PY{o}{.}\PY{n}{upper}\PY{p}{(}\PY{p}{)}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{la chaine mise en majuscule n}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{est pas vide}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 la chaine mise en majuscule n'est pas vide
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} on rappelle qu\PYZsq{}une fonction qui ne fait pas \PYZsq{}return\PYZsq{} retourne None}
         \PY{k}{def} \PY{n+nf}{procedure}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{c}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{cette fonction ne retourne rien}\PY{l+s+s2}{\PYZdq{}}
@@ -196,10 +191,9 @@ la chaine mise en majuscule n'est pas vide
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 par contre on passe ici
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{compruxe9hensions}{%
 \subparagraph{Compréhensions}\label{compruxe9hensions}}
@@ -208,7 +202,7 @@ par contre on passe ici
 compréhension comme condition, ce qui peut être utile pour savoir si au
 moins un élément remplit une condition, comme par exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{n}{inputs} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{23}\PY{p}{,} \PY{l+m+mi}{65}\PY{p}{,} \PY{l+m+mi}{24}\PY{p}{]}
         
         \PY{c+c1}{\PYZsh{} y a\PYZhy{}t\PYZhy{}il dans inputs au moins un nombre }
@@ -221,10 +215,9 @@ moins un élément remplit une condition, comme par exemple~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 au moins une entrée convient
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{opuxe9rateurs}{%
 \subparagraph{Opérateurs}\label{opuxe9rateurs}}
@@ -264,21 +257,21 @@ opérateurs}\label{remarques-sur-les-opuxe9rateurs}}
 que sur des objets de même type~; c'est-à-dire que notamment un tuple ne
 sera jamais égal à une liste~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{p}{[}\PY{p}{]} \PY{o}{==} \PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}9}]:} False
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]} \PY{o}{==} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}10}]:} False
 \end{Verbatim}
             
@@ -290,27 +283,35 @@ opérateurs logiques ont une \emph{priorité}, qui précise le sens des
 phrases non parenthésées. C'est-à-dire pour être explicite, que de la
 même manière que
 
-\begin{verbatim}
-12 + 4 * 8 
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\DecValTok{12} \OperatorTok{+} \DecValTok{4} \OperatorTok{*} \DecValTok{8}
+\end{Highlighting}
+\end{Shaded}
 
 est équivalent à
 
-\begin{verbatim}
-12 + ( 4 * 8 )
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\DecValTok{12} \OperatorTok{+}\NormalTok{ ( }\DecValTok{4} \OperatorTok{*} \DecValTok{8}\NormalTok{ )}
+\end{Highlighting}
+\end{Shaded}
 
 pour les booléens il existe une règle de ce genre et
 
-\begin{verbatim}
-a and not b or c and d
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{a }\KeywordTok{and} \KeywordTok{not}\NormalTok{ b }\KeywordTok{or}\NormalTok{ c }\KeywordTok{and}\NormalTok{ d}
+\end{Highlighting}
+\end{Shaded}
 
 est équivalent à
 
-\begin{verbatim}
-(a and (not b)) or (c and d)
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{(a }\KeywordTok{and}\NormalTok{ (}\KeywordTok{not}\NormalTok{ b)) }\KeywordTok{or}\NormalTok{ (c }\KeywordTok{and}\NormalTok{ d)}
+\end{Highlighting}
+\end{Shaded}
 
 Mais en fait, il est assez facile de s'emmêler dans ces priorités, et
 c'est pourquoi il est \textbf{très fortement conseillé} de parenthéser.
@@ -321,21 +322,21 @@ c'est pourquoi il est \textbf{très fortement conseillé} de parenthéser.
     Remarquez aussi que les opérateurs logiques peuvent être appliqués à des
 valeurs qui ne sont pas booléennes~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{l+m+mi}{2} \PY{o+ow}{and} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}11}]:} [1, 2]
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{k+kc}{None} \PY{o+ow}{or} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{abcde}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}12}]:} 'abcde'
 \end{Verbatim}
             
@@ -344,39 +345,39 @@ remarquez que lorsque l'évaluation d'un \texttt{and} ou d'un \texttt{or}
 ne peut pas être court-circuitée, le résultat est alors toujours le
 résultat de la dernière expression évaluée~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{l+m+mi}{1} \PY{o+ow}{and} \PY{l+m+mi}{2} \PY{o+ow}{and} \PY{l+m+mi}{3}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}13}]:} 3
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{l+m+mi}{1} \PY{o+ow}{and} \PY{l+m+mi}{2} \PY{o+ow}{and} \PY{l+m+mi}{3} \PY{o+ow}{and} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{and} \PY{l+m+mi}{4}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}14}]:} ''
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}15}]:} \PY{p}{[}\PY{p}{]} \PY{o+ow}{or} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}} \PY{o+ow}{or} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}15}]:} \{\}
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}16}]:} \PY{p}{[}\PY{p}{]} \PY{o+ow}{or} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}} \PY{o+ow}{or} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}} \PY{o+ow}{or} \PY{l+m+mi}{4} \PY{o+ow}{or} \PY{n+nb}{set}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}16}]:} 4
 \end{Verbatim}
             
@@ -392,7 +393,7 @@ instruction \texttt{if}. Nous le signalons pour bien illustrer la
 logique du langage, mais cette pratique n'est bien sûr pas du tout
 conseillée.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} cet exemple est volontairement tiré par les cheveux }
          \PY{c+c1}{\PYZsh{} pour bien montrer qu\PYZsq{}on peut mettre }
          \PY{c+c1}{\PYZsh{} n\PYZsq{}importe quelle expression comme condition}
@@ -408,10 +409,9 @@ conseillée.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 une construction illisible
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{pour-en-savoir-plus}{%
 \subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}
@@ -432,19 +432,23 @@ De manière plus générale, tous les traits natifs du langage sont
 redéfinissables sur les classes. Nous verrons par exemple également
 comment donner du sens à des phrases comme
 
-\begin{verbatim}
-mon_objet = MaClasse()
-if mon_objet:
-    <faire quelque chose>
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{mon_objet }\OperatorTok{=}\NormalTok{ MaClasse()}
+\ControlFlowTok{if}\NormalTok{ mon_objet:}
+    \OperatorTok{<}\NormalTok{faire quelque chose}\OperatorTok{>}
+\end{Highlighting}
+\end{Shaded}
 
 ou encore
 
-\begin{verbatim}
-mon_objet = MaClasse()
-for partie in mon_objet:
-    <faire quelque chose sur partie>
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{mon_objet }\OperatorTok{=}\NormalTok{ MaClasse()}
+\ControlFlowTok{for}\NormalTok{ partie }\KeywordTok{in}\NormalTok{ mon_objet:}
+    \OperatorTok{<}\NormalTok{faire quelque chose sur partie}\OperatorTok{>}
+\end{Highlighting}
+\end{Shaded}
 
 Mais n'anticipons pas trop, rendez-vous en semaine 6.
 

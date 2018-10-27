@@ -23,9 +23,11 @@ intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
 
     D'abord pour importer tout un module
 
-    \begin{verbatim}
-import monmodule
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ImportTok{import}\NormalTok{ monmodule}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{importer-un-symbole-dans-un-module}{%
 \subparagraph{Importer un symbole dans un
@@ -33,9 +35,11 @@ module}\label{importer-un-symbole-dans-un-module}}
 
     Dans la vidéo nous venons de voir qu'on peut aussi faire~:
 
-    \begin{verbatim}
-from monmodule import monsymbole
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ImportTok{from}\NormalTok{ monmodule }\ImportTok{import}\NormalTok{ monsymbole}
+\end{Highlighting}
+\end{Shaded}
 
     Pour mémoire, le langage permet de faire aussi des \texttt{import\ *},
 qui est d'un usage déconseillé en dehors de l'interpréteur interactif,
@@ -49,17 +53,19 @@ espaces de nommage.
 qu'un nom fixe. On ne peut pas calculer le nom d'un module, et le
 charger ensuite~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} si on calcule un nom de module}
-        \PY{n}{modulename} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ma}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{th}\PY{l+s+s2}{\PYZdq{}} 
+        \PY{n}{modulename} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ma}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{th}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
     on ne peut pas ensuite charger le module math avec import puisque
 
-\begin{verbatim}
-import modulename
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ImportTok{import}\NormalTok{ modulename}
+\end{Highlighting}
+\end{Shaded}
 
 cherche un module dont le nom est ``modulename''
 
@@ -67,25 +73,25 @@ cherche un module dont le nom est ``modulename''
 \texttt{import\_module} du module \texttt{importlib}, qui cette fois
 permet d'importer un module dont vous avez calculé le nom~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{importlib} \PY{k}{import} \PY{n}{import\PYZus{}module}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{loaded} \PY{o}{=} \PY{n}{import\PYZus{}module}\PY{p}{(}\PY{n}{modulename}\PY{p}{)}
         \PY{n+nb}{type}\PY{p}{(}\PY{n}{loaded}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}3}]:} module
 \end{Verbatim}
             
     Nous avons maintenant bien chargé le module \texttt{math}, et on l'a
 rangé dans la variable \texttt{loaded}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} loaded référence le même objet module que si on avait fait }
         \PY{c+c1}{\PYZsh{} import math}
         \PY{k+kn}{import} \PY{n+nn}{math}
@@ -93,7 +99,7 @@ rangé dans la variable \texttt{loaded}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}4}]:} True
 \end{Verbatim}
             
@@ -109,13 +115,13 @@ illustrer ce que font, précisément, les différentes formes de
     Maintenant que nous savons ce que fait \texttt{import\_module}, on peut
 récrire les deux formes d'\texttt{import} de cette façon~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} un import simple}
         \PY{k+kn}{import} \PY{n+nn}{math}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} peut se récrire}
         \PY{n}{math} \PY{o}{=} \PY{n}{import\PYZus{}module}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{math}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
@@ -123,13 +129,13 @@ récrire les deux formes d'\texttt{import} de cette façon~:
 
     Et~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} et un import from}
         \PY{k+kn}{from} \PY{n+nn}{pathlib} \PY{k}{import} \PY{n}{Path}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} est en gros équivalent à}
         \PY{n}{tmp} \PY{o}{=} \PY{n}{import\PYZus{}module}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pathlib}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
         \PY{n}{Path} \PY{o}{=} \PY{n}{tmp}\PY{o}{.}\PY{n}{Path}
@@ -154,9 +160,11 @@ un autre symbole.
 Par exemple, vous écrivez un module dans un fichier \texttt{globals.py}
 et vous l'importez dans votre code
 
-    \begin{verbatim}
-import globals
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ImportTok{import} \BuiltInTok{globals}
+\end{Highlighting}
+\end{Shaded}
 
     Puis un moment après pour débugger vous voulez utiliser la fonction
 \emph{built-in} \texttt{globals}. Sauf que, en vertu de la règle de
@@ -169,15 +177,19 @@ cela peut prendre du temps parce qu'il y a de nombreuses dépendances. En
 attendant vous pouvez tirer profit de la clause \texttt{import\ as} dont
 la forme générale est~:
 
-    \begin{verbatim}
-import monmodule as autremodule
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ImportTok{import}\NormalTok{ monmodule }\ImportTok{as}\NormalTok{ autremodule}
+\end{Highlighting}
+\end{Shaded}
 
     ce qui, toujours à la grosse louche, est équivalent à~:
 
-    \begin{verbatim}
-autremodule = import_module('monmodule')
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{autremodule }\OperatorTok{=}\NormalTok{ import_module(}\StringTok{'monmodule'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{un-symbole-dans-un-module}{%
 \subparagraph{Un symbole dans un
@@ -192,11 +204,13 @@ from monmodule import monsymbole as autresymbole
 
     qui fait quelque chose comme~:
 
-    \begin{verbatim}
-temporaire = import_module('monmodule')
-autresymbole = temporaire.monsymbole
-del temporaire
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{temporaire }\OperatorTok{=}\NormalTok{ import_module(}\StringTok{'monmodule'}\NormalTok{)}
+\NormalTok{autresymbole }\OperatorTok{=}\NormalTok{ temporaire.monsymbole}
+\KeywordTok{del}\NormalTok{ temporaire}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{quelques-exemples}{%
 \subsubsection{Quelques exemples}\label{quelques-exemples}}
@@ -218,49 +232,46 @@ del temporaire
 
 Toutes ces fonctions se contentent d'écrire leur nom et leur module.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} changer le nom du module importé}
         \PY{k+kn}{import} \PY{n+nn}{un\PYZus{}deux} \PY{k}{as} \PY{n+nn}{one\PYZus{}two}
         \PY{n}{one\PYZus{}two}\PY{o}{.}\PY{n}{un}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 la fonction un dans le module un\_deux
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} changer le nom d\PYZsq{}un symbole importé du module}
          \PY{k+kn}{from} \PY{n+nn}{un\PYZus{}deux\PYZus{}trois} \PY{k}{import} \PY{n}{un} \PY{k}{as} \PY{n}{one}
          \PY{n}{one}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 la fonction un dans le module un\_deux\_trois
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} on peut mélanger tout ça}
          \PY{k+kn}{from} \PY{n+nn}{un\PYZus{}deux\PYZus{}trois\PYZus{}quatre} \PY{k}{import} \PY{n}{un} \PY{k}{as} \PY{n}{one}\PY{p}{,} \PY{n}{deux}\PY{p}{,} \PY{n}{trois} \PY{k}{as} \PY{n}{three}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{n}{one}\PY{p}{(}\PY{p}{)}
          \PY{n}{deux}\PY{p}{(}\PY{p}{)}
          \PY{n}{three}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 la fonction un dans le module un\_deux\_trois\_quatre
 la fonction deux dans le module un\_deux\_trois\_quatre
 la fonction trois dans le module un\_deux\_trois\_quatre
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{pour-en-savoir-plus}{%
 \subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}

@@ -34,7 +34,7 @@ en action.
 \subsubsection{\texorpdfstring{Hachage par défaut~: basé sur
 \texttt{id()}}{Hachage par défaut~: basé sur id()}}\label{hachage-par-duxe9faut-basuxe9-sur-id}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} une classe Point}
         \PY{k}{class} \PY{n+nc}{Point1}\PY{p}{:}
             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{:}
@@ -48,14 +48,14 @@ en action.
 
     Avec ce code, les instances de \texttt{Point} sont mutables~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} deux instances }
         \PY{n}{p1} \PY{o}{=} \PY{n}{Point1}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
         \PY{n}{p2} \PY{o}{=} \PY{n}{Point1}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} objets mutables}
         \PY{n}{p1}\PY{o}{.}\PY{n}{y} \PY{o}{=} \PY{l+m+mi}{3}
 \end{Verbatim}
@@ -70,17 +70,17 @@ Ce qui, dit autrement, signifie que deux objets qui sont distincts au
 sens de \texttt{id()} sont considérés comme différents, et donc peuvent
 coexister dans un ensemble (ou dans un dictionnaire)~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} nos deux objets se ressemblent}
         \PY{n}{p1}\PY{p}{,} \PY{n}{p2}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}4}]:} (Pt[2, 3], Pt[2, 3])
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} mais peuvent coexister }
         \PY{c+c1}{\PYZsh{} dans un ensemble}
         \PY{c+c1}{\PYZsh{} qui a alors 2 éléments}
@@ -89,29 +89,29 @@ coexister dans un ensemble (ou dans un dictionnaire)~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:} 2
 \end{Verbatim}
             
     Si on recherche un de ces deux objets on le trouve~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{p1} \PY{o+ow}{in} \PY{n}{s}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} True
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} mais pas un troisième}
         \PY{n}{p3} \PY{o}{=} \PY{n}{Point1}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}
         \PY{n}{p3} \PY{o+ow}{in} \PY{n}{s}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}7}]:} False
 \end{Verbatim}
             
@@ -125,25 +125,29 @@ qu'une liste.
 
     Par exemple envisagez :
 
-\begin{verbatim}
-class Animal:
-    # blabla
-   
-class Zoo:
-    def __init__(self):
-        self.animals = set()
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\KeywordTok{class}\NormalTok{ Animal:}
+    \CommentTok{# blabla}
+
+\KeywordTok{class}\NormalTok{ Zoo:}
+    \KeywordTok{def} \FunctionTok{__init__}\NormalTok{(}\VariableTok{self}\NormalTok{):}
+        \VariableTok{self}\NormalTok{.animals }\OperatorTok{=} \BuiltInTok{set}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
 
     Plutôt que :
 
-\begin{verbatim}
-class Animal:
-    # blabla
-   
-class Zoo:
-    def __init__(self):
-        self.animals = []
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\KeywordTok{class}\NormalTok{ Animal:}
+    \CommentTok{# blabla}
+
+\KeywordTok{class}\NormalTok{ Zoo:}
+    \KeywordTok{def} \FunctionTok{__init__}\NormalTok{(}\VariableTok{self}\NormalTok{):}
+        \VariableTok{self}\NormalTok{.animals }\OperatorTok{=}\NormalTok{ []}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{compluxe9ment---niveau-avancuxe9}{%
 \subsection{Complément - niveau
@@ -198,7 +202,7 @@ hachage utilise elle aussi ces deux attributs. Voir la documentation de
     Voyons cela sur une sous-classe de \texttt{Point1}, dans laquelle nous
 définissons ces deux méthodes~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{k}{class} \PY{n+nc}{Point2}\PY{p}{(}\PY{n}{Point1}\PY{p}{)}\PY{p}{:}
         
             \PY{c+c1}{\PYZsh{} l\PYZsq{}égalité va se baser naturellement sur x et y}
@@ -214,7 +218,7 @@ définissons ces deux méthodes~:
 
     On peut vérifier que cette fois les choses fonctionnent correctement~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{n}{q1} \PY{o}{=} \PY{n}{Point2}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
         \PY{n}{q2} \PY{o}{=} \PY{n}{Point2}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
 \end{Verbatim}
@@ -223,36 +227,35 @@ définissons ces deux méthodes~:
     Nos deux objets sont distincts pour \texttt{id()}/\texttt{is}, mais
 égaux pour \texttt{==}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{is → }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{q1 is q2\PYZcb{} }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{== → }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{q1 == q2\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 is → False 
 == → True
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Et un ensemble contenant les deux points n'en contient qu'un~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{n}{s} \PY{o}{=} \PY{p}{\PYZob{}}\PY{n}{q1}\PY{p}{,} \PY{n}{q2}\PY{p}{\PYZcb{}}
          \PY{n+nb}{len}\PY{p}{(}\PY{n}{s}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}11}]:} 1
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{n}{q3} \PY{o}{=} \PY{n}{Point2}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
          \PY{n}{q3} \PY{o+ow}{in} \PY{n}{s}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}12}]:} True
 \end{Verbatim}
             
@@ -260,18 +263,18 @@ is → False
 de table de hachage, on peut aussi indifféremment utiliser n'importe
 lequel de nos 3 points pour indexer un dictionnaire~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{n}{d} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
          \PY{n}{d}\PY{p}{[}\PY{n}{q1}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{1}
          \PY{n}{d}\PY{p}{[}\PY{n}{q2}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}13}]:} 1
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} les clés q1, q2 et q3 sont}
          \PY{c+c1}{\PYZsh{} les mêmes pour le dictionnaire}
          \PY{n}{d}\PY{p}{[}\PY{n}{q3}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{10000}
@@ -279,7 +282,7 @@ lequel de nos 3 points pour indexer un dictionnaire~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}14}]:} \{Pt[2, 3]: 10000\}
 \end{Verbatim}
             
@@ -291,57 +294,57 @@ lequel de nos 3 points pour indexer un dictionnaire~:
 \textbf{mutables}. Du coup on peut maintenant imaginer un scénario comme
 celui-ci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}15}]:} \PY{n}{t1}\PY{p}{,} \PY{n}{t2} \PY{o}{=} \PY{n}{Point2}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{Point2}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}
          \PY{n}{s} \PY{o}{=} \PY{p}{\PYZob{}}\PY{n}{t1}\PY{p}{,} \PY{n}{t2}\PY{p}{\PYZcb{}}
          \PY{n}{s}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}15}]:} \{Pt[10, 10]\}
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}16}]:} \PY{n}{t1} \PY{o+ow}{in} \PY{n}{s}\PY{p}{,} \PY{n}{t2} \PY{o+ow}{in} \PY{n}{s}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}16}]:} (True, True)
 \end{Verbatim}
             
     Mais si maintenant je change un des deux objets:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}17}]:} \PY{n}{t1}\PY{o}{.}\PY{n}{x} \PY{o}{=} \PY{l+m+mi}{100}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}18}]:} \PY{n}{s}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}18}]:} \{Pt[100, 10]\}
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}19}]:} \PY{n}{t1} \PY{o+ow}{in} \PY{n}{s}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}19}]:} False
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}20}]:} \PY{n}{t2} \PY{o+ow}{in} \PY{n}{s}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}20}]:} False
 \end{Verbatim}
             

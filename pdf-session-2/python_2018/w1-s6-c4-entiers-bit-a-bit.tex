@@ -28,7 +28,7 @@ base 2.
 
 Considérons par exemple deux entiers constants dans cet exercice
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{n}{x49} \PY{o}{=} \PY{l+m+mi}{49}
         \PY{n}{y81} \PY{o}{=} \PY{l+m+mi}{81}
 \end{Verbatim}
@@ -50,12 +50,12 @@ il suffit d'observer que~:
     L'opération logique \texttt{\&} va faire un \emph{et} logique bit à bit
 entre les opérandes, ainsi
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{x49} \PY{o}{\PYZam{}} \PY{n}{y81}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}2}]:} 17
 \end{Verbatim}
             
@@ -70,12 +70,12 @@ entre les opérandes, ainsi
     De même, l'opérateur logique \texttt{\textbar{}} fait simplement un
 \emph{ou} logique, comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{x49} \PY{o}{|} \PY{n}{y81}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}3}]:} 113
 \end{Verbatim}
             
@@ -90,12 +90,12 @@ entre les opérandes, ainsi
     Enfin, on peut également faire la même opération à base de \emph{ou}
 exclusif avec l'opérateur \texttt{\^{}}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{x49} \PY{o}{\PYZca{}} \PY{n}{y81}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}4}]:} 96
 \end{Verbatim}
             
@@ -111,12 +111,12 @@ décaler tout le champ de bits de 4 cases à gauche (les 4 nouveaux bits
 insérés sont toujours des 0). C'est donc équivalent à une
 \textbf{multiplication} par \(2^4 = 16\)~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{x49} \PY{o}{\PYZlt{}\PYZlt{}} \PY{l+m+mi}{4}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:} 784
 \end{Verbatim}
             
@@ -126,12 +126,12 @@ insérés sont toujours des 0). C'est donc équivalent à une
 \textbf{division} par \(2^n\) (plus précisément, le quotient de la
 division)~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{x49} \PY{o}{\PYZgt{}\PYZgt{}} \PY{l+m+mi}{4}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} 3
 \end{Verbatim}
             
@@ -144,25 +144,25 @@ division)~:
 la représentation binaire d'un entier. Attention, la valeur de retour
 est une chaîne de caractères de type \texttt{str}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{n+nb}{bin}\PY{p}{(}\PY{n}{x49}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}7}]:} '0b110001'
 \end{Verbatim}
             
     Dans l'autre sens, on peut aussi entrer un entier directement en base 2
 comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{n}{x49bis} \PY{o}{=} \PY{l+m+mb}{0b110001}
         \PY{n}{x49bis} \PY{o}{==} \PY{n}{x49}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}8}]:} True
 \end{Verbatim}
             

@@ -52,7 +52,7 @@ que l'on note \texttt{id}.
 
     Commençons par charger les données de l'exercice~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}marine\PYZus{}dict} \PY{k}{import} \PY{n}{extended}\PY{p}{,} \PY{n}{abbreviated}
 \end{Verbatim}
 
@@ -73,29 +73,27 @@ mode abrégé: [id, latitude, longitude, date_heure]
 sachant que les entrées après le code pays dans le format étendu ne nous
 intéressent pas pour cet exercice.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} une entrée étendue est une liste qui ressemble à ceci}
         \PY{n}{sample\PYZus{}extended\PYZus{}entry} \PY{o}{=} \PY{n}{extended}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{sample\PYZus{}extended\PYZus{}entry}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [255801560, 49.3815, -4.412167, '2013-10-08T21:51:00', 'AUTOPRIDE', 'PT', '', 'ZEEBRUGGE']
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} une entrée abrégée ressemble à ceci}
         \PY{n}{sample\PYZus{}abbreviated\PYZus{}entry} \PY{o}{=} \PY{n}{abbreviated}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{sample\PYZus{}abbreviated\PYZus{}entry}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [227254910, 49.91799, -5.315172, '2013-10-08T22:59:00']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     On précise également que les deux listes \texttt{extended} et
 \texttt{abbreviated}~:
@@ -118,7 +116,7 @@ intéressent pas pour cet exercice.
 \subsubsection{Exercice - niveau
 basique}\label{exercice---niveau-basique}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} chargement de l\PYZsq{}exercice}
         \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}marine\PYZus{}dict} \PY{k}{import} \PY{n}{exo\PYZus{}index}
 \end{Verbatim}
@@ -141,7 +139,7 @@ partir de la liste des données étendues, un dictionnaire qui est~:
     De manière plus imagée, si~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \NormalTok{extended }\OperatorTok{=}\NormalTok{ [ bateau1, bateau2, ... ]}
 \end{Highlighting}
 \end{Shaded}
@@ -149,7 +147,7 @@ partir de la liste des données étendues, un dictionnaire qui est~:
 Et si~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \NormalTok{bateau1 }\OperatorTok{=}\NormalTok{ [ id1, latitude, ... ]}
 \end{Highlighting}
 \end{Shaded}
@@ -157,7 +155,7 @@ Et si~:
 On doit obtenir comme résultat de \texttt{index} un dictionnaire~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \NormalTok{\{}
 \NormalTok{    id1 }\OperatorTok{->}\NormalTok{ [ id_bateau1, latitude, ... ],}
 \NormalTok{    id2 ...}
@@ -169,7 +167,7 @@ Bref, on veut pouvoir retrouver les différents éléments de la liste
 \texttt{extended} par accès direct, en ne faisant qu'une seule recherche
 dans l'index.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} le résultat attendu}
         \PY{n}{result\PYZus{}index} \PY{o}{=} \PY{n}{exo\PYZus{}index}\PY{o}{.}\PY{n}{resultat}\PY{p}{(}\PY{n}{extended}\PY{p}{)}
         
@@ -186,13 +184,12 @@ dans l'index.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 ==== clé
 992271012
 ==== valeur
 [992271012, 47.64744, -3.509282, '2013-10-08T21:50:00', 'PENMEN', 'FR', '', '']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Remarquez ci-dessus l'utilisation d'un utilitaire parfois pratique~: le
 \href{https://docs.python.org/3/library/pprint.html}{module
@@ -201,7 +198,7 @@ dans l'index.
     \hypertarget{votre-code}{%
 \subparagraph{Votre code}\label{votre-code}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{k}{def} \PY{n+nf}{index}\PY{p}{(}\PY{n}{extended}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre\PYZus{}code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
@@ -210,7 +207,7 @@ dans l'index.
     \hypertarget{validation}{%
 \subparagraph{Validation}\label{validation}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -223,7 +220,7 @@ exercice, c'est que l'id des bateaux arrive en première position (dans
 la liste qui matérialise le bateau), aussi votre code doit marcher à
 l'identique avec les bateaux étendus~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -235,7 +232,7 @@ l'identique avec les bateaux étendus~:
 \subsubsection{Exercice - niveau
 intermédiaire}\label{exercice---niveau-intermuxe9diaire}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} chargement de l\PYZsq{}exercice}
         \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}marine\PYZus{}dict} \PY{k}{import} \PY{n}{exo\PYZus{}merge}
 \end{Verbatim}
@@ -249,7 +246,7 @@ consolidation des données, de façon à obtenir en sortie un
 dictionnaire~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \BuiltInTok{id} \OperatorTok{->}\NormalTok{ [nom_bateau, code_pays, position_etendu, position_abrege]}
 \end{Highlighting}
 \end{Shaded}
@@ -258,14 +255,14 @@ dans lequel les deux objets \texttt{position} sont tous les deux des
 tuples de la forme~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \NormalTok{(latitude, longitude, date_heure)}
 \end{Highlighting}
 \end{Shaded}
 
     Voici par exemple un couple clé-valeur dans le résultat attendu~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} le résultat attendu}
         \PY{n}{result\PYZus{}merge} \PY{o}{=} \PY{n}{exo\PYZus{}merge}\PY{o}{.}\PY{n}{resultat}\PY{p}{(}\PY{n}{extended}\PY{p}{,} \PY{n}{abbreviated}\PY{p}{)}
         
@@ -277,19 +274,18 @@ tuples de la forme~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 (992271012,
  ['PENMEN',
   'FR',
   (47.64744, -3.509282, '2013-10-08T21:50:00'),
   (47.64748, -3.509307, '2013-10-08T22:56:00')])
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{votre-code}{%
 \subparagraph{Votre code}\label{votre-code}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{k}{def} \PY{n+nf}{merge}\PY{p}{(}\PY{n}{extended}\PY{p}{,} \PY{n}{abbreviated}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{votre code}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
@@ -298,7 +294,7 @@ tuples de la forme~:
     \hypertarget{validation}{%
 \subparagraph{Validation}\label{validation}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -340,7 +336,7 @@ données un peu plus significatives, sachez que~:
   semaines à venir~:
 \end{itemize}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} load data from files}
          \PY{k+kn}{import} \PY{n+nn}{json}
          
@@ -355,7 +351,7 @@ données un peu plus significatives, sachez que~:
     Une fois que vous avez un code qui fonctionne vous pouvez le lancer sur
 ces données plus copieuses en faisant~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         

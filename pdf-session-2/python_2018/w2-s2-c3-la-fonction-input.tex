@@ -22,7 +22,7 @@ l'utilisateur.
 
     C'est le propos de la fonction \texttt{input}. Par exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{n}{nom\PYZus{}ville} \PY{o}{=} \PY{n+nb}{input}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Entrez le nom de la ville : }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
         
         \PY{c+c1}{\PYZsh{} NOTE:}
@@ -33,15 +33,14 @@ l'utilisateur.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{nom\PYZus{}ville=}\PY{l+s+si}{\PYZob{}nom\PYZus{}ville\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 nom\_ville=Paris
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{attention-uxe0-bien-vuxe9rifierconvertir}{%
 \subsubsection{Attention à bien
@@ -54,7 +53,7 @@ s'attend à recevoir, par exemple, un nombre entier, auquel cas les
 choses se passent mal~:
 
     \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \OperatorTok{>>>} \BuiltInTok{input}\NormalTok{(}\StringTok{"nombre de lignes ? "}\NormalTok{) }\OperatorTok{+} \DecValTok{3}
 \NormalTok{nombre de lignes ? }\DecValTok{12}
 \NormalTok{Traceback (most recent call last):}
@@ -66,7 +65,7 @@ choses se passent mal~:
     Dans ce cas il faut appeler la fonction \texttt{int} pour convertir le
 résultat en un entier~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         

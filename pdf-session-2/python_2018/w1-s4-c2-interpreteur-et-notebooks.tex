@@ -52,7 +52,7 @@ interactif}\label{linterpruxe9teur-python-interactif}}
     Le programme choisi est très simple, c'est le suivant~:
 
     \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \DecValTok{10} \OperatorTok{*} \DecValTok{10}
 \DecValTok{20} \OperatorTok{*} \DecValTok{20}
 \DecValTok{30} \OperatorTok{*} \DecValTok{30}
@@ -62,20 +62,22 @@ interactif}\label{linterpruxe9teur-python-interactif}}
     Voici comment se comporte l'interpréteur interactif quand on lui soumet
 ces instructions~:
 
-    \begin{verbatim}
-$ python3
-Python 3.5.1 (v3.5.1:37a07cee5969, Dec  5 2015, 21:12:44)
-[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
->>> 10 * 10
-100
->>> 20 * 20
-400
->>> 30 * 30
-900
->>> exit()
-$
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ python3}
+\NormalTok{Python }\DecValTok{3}\NormalTok{.}\FloatTok{5.1}\NormalTok{ (v3.}\FloatTok{5.1}\NormalTok{:37a07cee5969, Dec  }\DecValTok{5} \DecValTok{2015}\NormalTok{, }\DecValTok{21}\NormalTok{:}\DecValTok{12}\NormalTok{:}\DecValTok{44}\NormalTok{)}
+\NormalTok{[GCC }\DecValTok{4}\NormalTok{.}\FloatTok{2.1}\NormalTok{ (Apple Inc. build }\DecValTok{5666}\NormalTok{) (dot }\DecValTok{3}\NormalTok{)] on darwin}
+\NormalTok{Type }\StringTok{"help"}\NormalTok{, }\StringTok{"copyright"}\NormalTok{, }\StringTok{"credits"} \KeywordTok{or} \StringTok{"license"} \ControlFlowTok{for}\NormalTok{ more information.}
+\OperatorTok{>>>} \DecValTok{10} \OperatorTok{*} \DecValTok{10}
+\DecValTok{100}
+\OperatorTok{>>>} \DecValTok{20} \OperatorTok{*} \DecValTok{20}
+\DecValTok{400}
+\OperatorTok{>>>} \DecValTok{30} \OperatorTok{*} \DecValTok{30}
+\DecValTok{900}
+\OperatorTok{>>>}\NormalTok{ exit()}
+\NormalTok{$}
+\end{Highlighting}
+\end{Shaded}
 
     Notez que pour terminer la session, il nous faut ``sortir'' de
 l'interpréteur en tapant \texttt{exit()}.
@@ -95,20 +97,24 @@ programme complet. Pour cela, il nous faut tout d'abord fabriquer un
 fichier avec un suffixe en \texttt{.py}, en utilisant par exemple un
 éditeur de fichier. Le résultat doit ressembler à ceci~:
 
-    \begin{verbatim}
-$ cat foo.py
-10 * 10
-20 * 20
-30 * 30
-$
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ }\FunctionTok{cat}\NormalTok{ foo.py}
+\ExtensionTok{10}\NormalTok{ * 10}
+\ExtensionTok{20}\NormalTok{ * 20}
+\ExtensionTok{30}\NormalTok{ * 30}
+\NormalTok{$}
+\end{Highlighting}
+\end{Shaded}
 
     Exécutons à présent ce programme~:
 
-    \begin{verbatim}
-$ python3 foo.py
-$
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ }\ExtensionTok{python3}\NormalTok{ foo.py}
+\NormalTok{$}
+\end{Highlighting}
+\end{Shaded}
 
     On constate donc que ce programme \textbf{ne fait rien~!} En tout cas,
 selon toute apparence.
@@ -129,14 +135,14 @@ comme c'est le cas en mode interactif.
 
     Voici à présent le même programme dans un notebook~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{l+m+mi}{10} \PY{o}{*} \PY{l+m+mi}{10}
         \PY{l+m+mi}{20} \PY{o}{*} \PY{l+m+mi}{20}
         \PY{l+m+mi}{30} \PY{o}{*} \PY{l+m+mi}{30}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}1}]:} 900
 \end{Verbatim}
             
@@ -155,7 +161,7 @@ de la dernière ligne.}
 semaines qui viennent, mais en guise d'introduction disons seulement que
 c'est une fonction comme les autres en Python 3.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{10}
         \PY{n}{b} \PY{o}{=} \PY{l+m+mi}{20}
         
@@ -163,10 +169,9 @@ c'est une fonction comme les autres en Python 3.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 10 20
-
-    \end{Verbatim}
+\end{Verbatim}
 
     On peut naturellement mélanger des objets de plusieurs types, et donc
 mélanger des chaînes de caractères et des nombres pour obtenir un
@@ -174,26 +179,24 @@ résultat un peu plus lisible. En effet, lorsque le programme devient
 gros, il est important de savoir à quoi correspond une ligne dans le
 flot de toutes les impressions. Aussi on préfèrera quelque chose comme~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a =}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{a}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{et b =}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{b}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a = 10 et b = 20
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} ou encore, équivalente mais avec un f\PYZhy{}string}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a = }\PY{l+s+si}{\PYZob{}a\PYZcb{}}\PY{l+s+s2}{ et b = }\PY{l+s+si}{\PYZob{}b\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a = 10 et b = 20
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Une pratique courante consiste d'ailleurs à utiliser les commentaires
 pour laisser dans le code les instructions \texttt{print} qui
@@ -210,7 +213,7 @@ résultat.
 
 C'est-à-dire, en pratique, que si on écrit~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{100}
 \end{Verbatim}
 
@@ -222,15 +225,14 @@ C'est-à-dire, en pratique, que si on écrit~:
 l'expression est complexe et pour rendre explicite la valeur qui vient
 d'être affectée~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{100}\PY{p}{;} \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 100
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Notez bien que cette technique est uniquement pédagogique, et n'a
 absolument aucun autre intérêt dans la pratique~; il n'est \textbf{pas

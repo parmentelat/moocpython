@@ -8,7 +8,7 @@
     \hypertarget{les-diffuxe9rentes-copies}{%
 \section{Les différentes copies}\label{les-diffuxe9rentes-copies}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} ipythontutor
 \end{Verbatim}
 
@@ -49,7 +49,7 @@ fonctionne avec tous les types de manière identique, consiste à utiliser
   \texttt{copy.deepcopy} pour une copie en profondeur.
 \end{itemize}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{import} \PY{n+nn}{copy}
         \PY{c+c1}{\PYZsh{}help(copy.copy)}
         \PY{c+c1}{\PYZsh{}help(copy.deepcopy)}
@@ -70,7 +70,7 @@ de départ.
     N'oubliez pas de cliquer le bouton \texttt{Forward} dans la fenêtre
 pythontutor~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -107,7 +107,7 @@ pythontutor~:
 bien faire la copie superficielle avec
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \NormalTok{shallow2 }\OperatorTok{=}\NormalTok{ source[:]}
 \end{Highlighting}
 \end{Shaded}
@@ -118,7 +118,7 @@ bien faire la copie superficielle avec
 
     Sur le même objet de départ, voici ce que fait la copie profonde~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -165,7 +165,7 @@ l'opérateur \texttt{is}.
 \subsection{Complément - niveau
 intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} on répète car le code précédent a seulement été exposé à pythontutor}
         \PY{k+kn}{import} \PY{n+nn}{copy}
         \PY{n}{source} \PY{o}{=} \PY{p}{[}
@@ -187,17 +187,16 @@ logique}{Objets égaux au sens logique}}\label{objets-uxe9gaux-au-sens-logique}}
     Bien sûr ces trois objets se ressemblent si on fait une comparaison
 \emph{logique} avec \texttt{==}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{source == shallow\PYZus{}copy:}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{source} \PY{o}{==} \PY{n}{shallow\PYZus{}copy}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{source == deep\PYZus{}copy:}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{source} \PY{o}{==} \PY{n}{deep\PYZus{}copy}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 source == shallow\_copy: True
 source == deep\_copy: True
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{inspectons-les-objets-de-premier-niveau}{%
 \subsubsection{Inspectons les objets de premier
@@ -207,7 +206,7 @@ niveau}\label{inspectons-les-objets-de-premier-niveau}}
 niveau, on voit que \texttt{source} et \texttt{shallow\_copy} partagent
 leurs objets~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} voir la cellule ci\PYZhy{}dessous si ceci vous parait peu clair}
         \PY{k}{for} \PY{n}{i}\PY{p}{,} \PY{p}{(}\PY{n}{source\PYZus{}item}\PY{p}{,} \PY{n}{copy\PYZus{}item}\PY{p}{)} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n+nb}{zip}\PY{p}{(}\PY{n}{source}\PY{p}{,} \PY{n}{shallow\PYZus{}copy}\PY{p}{)}\PY{p}{)}\PY{p}{:}
             \PY{n}{compare} \PY{o}{=} \PY{n}{source\PYZus{}item} \PY{o+ow}{is} \PY{n}{copy\PYZus{}item}
@@ -215,16 +214,15 @@ leurs objets~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 source[0] is shallow\_copy[0] -> True
 source[1] is shallow\_copy[1] -> True
 source[2] is shallow\_copy[2] -> True
 source[3] is shallow\_copy[3] -> True
 source[4] is shallow\_copy[4] -> True
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} rappel au sujet de zip et enumerate}
         \PY{c+c1}{\PYZsh{} la cellule ci\PYZhy{}dessous est essentiellement équivalente à}
         \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{source}\PY{p}{)}\PY{p}{)}\PY{p}{:}
@@ -233,33 +231,31 @@ source[4] is shallow\_copy[4] -> True
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 source[0] is shallow\_copy[0] -> True
 source[1] is shallow\_copy[1] -> True
 source[2] is shallow\_copy[2] -> True
 source[3] is shallow\_copy[3] -> True
 source[4] is shallow\_copy[4] -> True
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Alors que naturellement ce \textbf{n'est pas le cas} avec la copie en
 profondeur~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{k}{for} \PY{n}{i}\PY{p}{,} \PY{p}{(}\PY{n}{source\PYZus{}item}\PY{p}{,} \PY{n}{deep\PYZus{}item}\PY{p}{)} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n+nb}{zip}\PY{p}{(}\PY{n}{source}\PY{p}{,} \PY{n}{deep\PYZus{}copy}\PY{p}{)}\PY{p}{)}\PY{p}{:}
             \PY{n}{compare} \PY{o}{=} \PY{n}{source\PYZus{}item} \PY{o+ow}{is} \PY{n}{deep\PYZus{}item}
             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{source[}\PY{l+s+si}{\PYZob{}i\PYZcb{}}\PY{l+s+s2}{] is deep\PYZus{}copy[}\PY{l+s+si}{\PYZob{}i\PYZcb{}}\PY{l+s+s2}{] \PYZhy{}\PYZgt{} }\PY{l+s+si}{\PYZob{}compare\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 source[0] is deep\_copy[0] -> False
 source[1] is deep\_copy[1] -> False
 source[2] is deep\_copy[2] -> True
 source[3] is deep\_copy[3] -> True
 source[4] is deep\_copy[4] -> True
-
-    \end{Verbatim}
+\end{Verbatim}
 
     On retrouve ici ce qu'on avait déjà remarqué sous pythontutor, à savoir
 que les trois derniers objets - immuables - n'ont pas été dupliqués
@@ -278,7 +274,7 @@ exemple \textbf{à l'intérieur} de la liste qui est le premier fils de
 \texttt{source}, cela sera \textbf{répercuté} dans
 \texttt{shallow\_copy}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{avant, source      }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{source}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{avant, shallow\PYZus{}copy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{shallow\PYZus{}copy}\PY{p}{)}
         \PY{n}{source}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}
@@ -287,18 +283,17 @@ exemple \textbf{à l'intérieur} de la liste qui est le premier fils de
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 avant, source       [[1, 2, 3], \{1, 2, 3\}, (1, 2, 3), '123', 123]
 avant, shallow\_copy [[1, 2, 3], \{1, 2, 3\}, (1, 2, 3), '123', 123]
 après, source       [[1, 2, 3, 4], \{1, 2, 3\}, (1, 2, 3), '123', 123]
 après, shallow\_copy [[1, 2, 3, 4], \{1, 2, 3\}, (1, 2, 3), '123', 123]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Si par contre on remplace complètement un élément de premier niveau dans
 la source, cela ne sera pas répercuté dans la copie superficielle~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{avant, source      }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{source}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{avant, shallow\PYZus{}copy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{shallow\PYZus{}copy}\PY{p}{)}
         \PY{n}{source}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{remplacement}\PY{l+s+s1}{\PYZsq{}}
@@ -307,13 +302,12 @@ la source, cela ne sera pas répercuté dans la copie superficielle~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 avant, source       [[1, 2, 3, 4], \{1, 2, 3\}, (1, 2, 3), '123', 123]
 avant, shallow\_copy [[1, 2, 3, 4], \{1, 2, 3\}, (1, 2, 3), '123', 123]
 après, source       ['remplacement', \{1, 2, 3\}, (1, 2, 3), '123', 123]
 après, shallow\_copy [[1, 2, 3, 4], \{1, 2, 3\}, (1, 2, 3), '123', 123]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{copie-et-circularituxe9}{%
 \subsubsection{Copie et circularité}\label{copie-et-circularituxe9}}
@@ -321,32 +315,32 @@ après, shallow\_copy [[1, 2, 3, 4], \{1, 2, 3\}, (1, 2, 3), '123', 123]
     Le module \texttt{copy} est capable de copier - même en profondeur - des
 objets contenant des références circulaires.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{n}{l} \PY{o}{=} \PY{p}{[}\PY{k+kc}{None}\PY{p}{]}
          \PY{n}{l}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{n}{l}
          \PY{n}{l}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}10}]:} [[{\ldots}]]
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{n}{copy}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{n}{l}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}11}]:} [[[{\ldots}]]]
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{n}{copy}\PY{o}{.}\PY{n}{deepcopy}\PY{p}{(}\PY{n}{l}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}12}]:} [[{\ldots}]]
 \end{Verbatim}
             

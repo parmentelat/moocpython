@@ -25,7 +25,7 @@ critère propre à l'application. Imaginons par exemple que l'on dispose
 d'une liste de tuples à deux éléments, dont le premier est la latitude
 et le second la longitude~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{n}{coordonnees} \PY{o}{=} \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{43}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{46}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{7}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{46}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{]}
 \end{Verbatim}
 
@@ -36,7 +36,7 @@ comparer deux éléments de la liste.
 
 Voyons comment on pourrait procéder pour trier par longitude~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{k}{def} \PY{n+nf}{longitude}\PY{p}{(}\PY{n}{element}\PY{p}{)}\PY{p}{:} 
             \PY{k}{return} \PY{n}{element}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
         
@@ -45,10 +45,9 @@ Voyons comment on pourrait procéder pour trier par longitude~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 coordonnées triées par longitude [(46, -7), (46, 0), (43, 7)]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Comme on le devine, le procédé ici consiste à indiquer à \texttt{sort}
 comment calculer, à partir de chaque élément, une valeur numérique qui
@@ -63,7 +62,7 @@ second élément du tuple.
     On aurait pu utiliser de manière équivalente une fonction lambda ou la
 méthode \texttt{itemgetter} du module \texttt{operator}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} fonction lambda }
         \PY{n}{coordonnees} \PY{o}{=} \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{43}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{46}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{7}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{46}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{]}
         \PY{n}{coordonnees}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{n}{key}\PY{o}{=}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
@@ -77,11 +76,10 @@ méthode \texttt{itemgetter} du module \texttt{operator}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 coordonnées triées par longitude [(46, -7), (46, 0), (43, 7)]
 coordonnées triées par longitude [(46, -7), (46, 0), (43, 7)]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{fonction-de-commodituxe9-sorted}{%
 \subsubsection{\texorpdfstring{Fonction de commodité~:
@@ -95,7 +93,7 @@ fonction de commodité, qui permet précisément de renvoyer la
 arguments \texttt{reverse} et \texttt{key} peuvent être mentionnés comme
 avec \texttt{sort}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}
         \PY{c+c1}{\PYZsh{} on peut passer à sorted les mêmes arguments que pour sort}
         \PY{n}{triee} \PY{o}{=} \PY{n+nb}{sorted}\PY{p}{(}\PY{n}{liste}\PY{p}{,} \PY{n}{reverse}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
@@ -105,17 +103,16 @@ avec \texttt{sort}~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 la liste triée est une copie  [9, 8, 7, 6, 5, 4, 3, 2, 1]
 la liste initiale est intacte [8, 7, 4, 3, 2, 9, 1, 5, 6]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Nous avons qualifié \texttt{sorted} de fonction de commodité car il est
 très facile de s'en passer~; en effet on aurait pu écrire à la place du
 fragment précédent~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}
         \PY{c+c1}{\PYZsh{} ce qu\PYZsq{}on a fait dans la cellule précédente est équivalent à}
         \PY{n}{triee} \PY{o}{=} \PY{n}{liste}\PY{p}{[}\PY{p}{:}\PY{p}{]}
@@ -126,11 +123,10 @@ fragment précédent~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 la liste triée est une copie  [9, 8, 7, 6, 5, 4, 3, 2, 1]
 la liste initiale est intacte [8, 7, 4, 3, 2, 9, 1, 5, 6]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Alors que \texttt{sort} est une fonction sur les listes, \texttt{sorted}
 peut trier n'importe quel itérable et retourne le résultat dans une

@@ -26,7 +26,7 @@ En fait nous en avons déjà vu un exemple en Semaine 1, avec la fonction
 \texttt{fibonacci} dans laquelle il y avait ce fragment~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{2}\NormalTok{, n }\OperatorTok{+} \DecValTok{1}\NormalTok{):}
 \NormalTok{    f2, f1 }\OperatorTok{=}\NormalTok{ f1, f1 }\OperatorTok{+}\NormalTok{ f2}
 \end{Highlighting}
@@ -41,7 +41,7 @@ phrase qui a probablement excité votre curiosité. :)
     Commençons par un exemple simple à base de tuple. Imaginons que l'on
 dispose d'un tuple \texttt{couple} dont on sait qu'il a deux éléments~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{n}{couple} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{spam}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
@@ -50,17 +50,16 @@ dispose d'un tuple \texttt{couple} dont on sait qu'il a deux éléments~:
 variables distinctes. Une solution naïve consiste bien sûr à faire
 simplement~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{gauche} \PY{o}{=} \PY{n}{couple}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
         \PY{n}{droite} \PY{o}{=} \PY{n}{couple}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gauche}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{gauche}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{droite}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{droite}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 gauche 100 droite spam
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Cela fonctionne naturellement très bien, mais n'est pas très pythonique
 - comme on dit ;) Vous devez toujours garder en tête qu'il est rare en
@@ -69,16 +68,15 @@ votre code, vous devez vous demander si votre code est pythonique.
 
 On préfèrera la formulation équivalente suivante~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{p}{(}\PY{n}{gauche}\PY{p}{,} \PY{n}{droite}\PY{p}{)} \PY{o}{=} \PY{n}{couple}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gauche}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{gauche}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{droite}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{droite}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 gauche 100 droite spam
-
-    \end{Verbatim}
+\end{Verbatim}
 
     La logique ici consiste à dire : affecter les deux variables de sorte
 que le tuple \texttt{(gauche,\ droite)} soit égal à \texttt{couple}. On
@@ -91,16 +89,15 @@ Remarquons que les parenthèses ici sont optionnelles - comme lorsque
 l'on construit un tuple - et on peut tout aussi bien écrire, et c'est le
 cas d'usage le plus fréquent d'omission des parenthèses pour le tuple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{gauche}\PY{p}{,} \PY{n}{droite} \PY{o}{=} \PY{n}{couple}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gauche}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{gauche}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{droite}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{droite}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 gauche 100 droite spam
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{autres-types}{%
 \subsubsection{Autres types}\label{autres-types}}
@@ -116,7 +113,7 @@ on peut utiliser~:
   une liste comme expression à droite du \texttt{=}.
 \end{itemize}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} comme ceci}
         \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}
         \PY{p}{[}\PY{n}{gauche}\PY{p}{,} \PY{n}{milieu}\PY{p}{,} \PY{n}{droit}\PY{p}{]} \PY{o}{=} \PY{n}{liste}
@@ -124,15 +121,14 @@ on peut utiliser~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 gauche 1 milieu 2 droit 3
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Et on n'est même pas obligés d'avoir le même type à gauche et à droite
 du signe \texttt{=}, comme ici~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} membre droit: une liste}
         \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}
         \PY{c+c1}{\PYZsh{} membre gauche : un tuple}
@@ -141,10 +137,9 @@ du signe \texttt{=}, comme ici~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 gauche 1 milieu 2 droit 3
-
-    \end{Verbatim}
+\end{Verbatim}
 
     En réalité, les seules contraintes fixées par Python sont que~:
 
@@ -178,7 +173,7 @@ unpacking} est qu'elle est sûre~; on n'a pas à se préoccuper d'un
 l'affectation sont \textbf{toutes} évaluées en premier, et ainsi on peut
 par exemple échanger deux variables comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{1}
         \PY{n}{b} \PY{o}{=} \PY{l+m+mi}{2}
         \PY{n}{a}\PY{p}{,} \PY{n}{b} \PY{o}{=} \PY{n}{b}\PY{p}{,} \PY{n}{a}
@@ -186,10 +181,9 @@ par exemple échanger deux variables comme ceci~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a 2 b 1
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{extended-unpacking}{%
 \subsubsection{\texorpdfstring{\emph{Extended
@@ -198,17 +192,16 @@ unpacking}}{Extended unpacking}}\label{extended-unpacking}}
     Le \emph{extended unpacking} a été introduit en Python 3~; commençons
 par en voir un exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{n}{reference} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{]}
         \PY{n}{a}\PY{p}{,} \PY{o}{*}\PY{n}{b}\PY{p}{,} \PY{n}{c} \PY{o}{=} \PY{n}{reference}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a=}\PY{l+s+si}{\PYZob{}a\PYZcb{}}\PY{l+s+s2}{ b=}\PY{l+s+si}{\PYZob{}b\PYZcb{}}\PY{l+s+s2}{ c=}\PY{l+s+si}{\PYZob{}c\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a=1 b=[2, 3, 4] c=5
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Comme vous le voyez, le mécanisme ici est une extension de
 \emph{sequence unpacking}~; Python vous autorise à mentionner
@@ -220,22 +213,21 @@ Cette variable est interprétée comme une \textbf{liste de longueur
 quelconque} des éléments de \texttt{reference}. On aurait donc aussi
 bien pu écrire~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{n}{reference} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{20}\PY{p}{)}
         \PY{n}{a}\PY{p}{,} \PY{o}{*}\PY{n}{b}\PY{p}{,} \PY{n}{c} \PY{o}{=} \PY{n}{reference}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a=}\PY{l+s+si}{\PYZob{}a\PYZcb{}}\PY{l+s+s2}{ b=}\PY{l+s+si}{\PYZob{}b\PYZcb{}}\PY{l+s+s2}{ c=}\PY{l+s+si}{\PYZob{}c\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a=0 b=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18] c=19
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Ce trait peut s'avérer pratique, lorsque par exemple on s'intéresse
 seulement aux premiers éléments d'une structure~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} si on sait que data contient prenom, nom, }
          \PY{c+c1}{\PYZsh{} et un nombre inconnu d\PYZsq{}autres informations}
          \PY{n}{data} \PY{o}{=} \PY{p}{[} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Jean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Dupont}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{061234567}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{12}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rue du four}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{57000}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{METZ}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{]}
@@ -248,10 +240,9 @@ seulement aux premiers éléments d'une structure~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 prenom=Jean nom=Dupont
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
 \subsection{Complément - niveau
@@ -267,7 +258,7 @@ variable}\label{plusieurs-occurrences-dune-muxeame-variable}}
     On peut utiliser \textbf{plusieurs fois} la même variable dans la partie
 gauche de l'affectation~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} ceci en toute rigueur est légal}
          \PY{c+c1}{\PYZsh{} mais en pratique on évite de le faire}
          \PY{n}{entree} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}
@@ -276,10 +267,9 @@ gauche de l'affectation~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a = 3
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \textbf{Attention} toutefois, comme on le voit ici, Python
 \textbf{n'impose pas} que les différentes occurrences de \texttt{a}
@@ -289,7 +279,7 @@ beaucoup plus pragmatique, l'interpréteur se contente de faire comme
 s'il faisait l'affectation plusieurs fois de gauche à droite,
 c'est-à-dire comme s'il faisait~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{1}\PY{p}{;} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{2}\PY{p}{;} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{3}
 \end{Verbatim}
 
@@ -301,7 +291,7 @@ qu'il est légal, ou tout autre nom comme \texttt{ignored} pour
 manifester le fait que cette partie de la structure ne sera pas
 utilisée, par exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{n}{entree} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}
          
          \PY{n}{\PYZus{}}\PY{p}{,} \PY{n}{milieu}\PY{p}{,} \PY{n}{\PYZus{}} \PY{o}{=} \PY{n}{entree}
@@ -312,11 +302,10 @@ utilisée, par exemple~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 milieu 2
 right 3
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{en-profondeur}{%
 \subsubsection{En profondeur}\label{en-profondeur}}
@@ -325,7 +314,7 @@ right 3
 structures, on peut extraire des données plus profondément imbriquées
 dans la structure de départ~; par exemple avec en entrée la liste~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{n}{structure} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{]}
 \end{Verbatim}
 
@@ -333,42 +322,39 @@ dans la structure de départ~; par exemple avec en entrée la liste~:
     Si on souhaite extraire la valeur qui se trouve à l'emplacement du
 \texttt{3}, on peut écrire~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}15}]:} \PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{p}{(}\PY{n}{b}\PY{p}{,} \PY{p}{(}\PY{p}{(}\PY{n}{trois}\PY{p}{,}\PY{p}{)}\PY{p}{,} \PY{n}{c}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{d}\PY{p}{)} \PY{o}{=} \PY{n}{structure}
          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{trois}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{trois}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 trois 3
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Ou encore, sans doute un peu plus lisible~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}16}]:} \PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{p}{(}\PY{n}{b}\PY{p}{,} \PY{p}{(}\PY{p}{[}\PY{n}{trois}\PY{p}{]}\PY{p}{,} \PY{n}{c}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{d}\PY{p}{)} \PY{o}{=} \PY{n}{structure}
          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{trois}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{trois}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 trois 3
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Naturellement on aurait aussi bien pu écrire ici quelque chose comme~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}17}]:} \PY{n}{trois} \PY{o}{=} \PY{n}{structure}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{trois}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{trois}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 trois 3
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Affaire de goût évidemment. Mais n'oublions pas une des phrases du Zen
 de Python \(\textit{Flat is better than nested}\), ce qui veut dire que
@@ -384,7 +370,7 @@ profondeur}{Extended unpacking et profondeur}}\label{extended-unpacking-et-profo
     On peut naturellement ajouter de l'\emph{extended unpacking} à n'importe
 quel étage d'un \emph{unpacking} imbriqué~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{} un exemple très alambiqué }
          \PY{n}{tree} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{33}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{three}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{thirty\PYZhy{}three}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{]}\PY{p}{,}
                  \PY{p}{(} \PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{44}\PY{p}{,} \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{forty}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{forty\PYZhy{}four}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{p}{]}
@@ -392,21 +378,20 @@ quel étage d'un \emph{unpacking} imbriqué~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}18}]:} [1, 2, [(3, 33, 'three', 'thirty-three')], [4, 44, ('forty', 'forty-four')]]
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} unpacking avec plusieurs variables *extended}
          \PY{o}{*}\PY{n}{\PYZus{}}\PY{p}{,}  \PY{p}{(}\PY{p}{(}\PY{n}{\PYZus{}}\PY{p}{,} \PY{o}{*}\PY{n}{x3}\PY{p}{,} \PY{n}{\PYZus{}}\PY{p}{)}\PY{p}{,}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{o}{*}\PY{n}{\PYZus{}}\PY{p}{,} \PY{n}{x4}\PY{p}{)} \PY{o}{=} \PY{n}{tree}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{x3=}\PY{l+s+si}{\PYZob{}x3\PYZcb{}}\PY{l+s+s2}{, x4=}\PY{l+s+si}{\PYZob{}x4\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 x3=[33, 'three'], x4=('forty', 'forty-four')
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Dans ce cas, la limitation d'avoir une seule variable de la forme
 \texttt{*extended} s'applique toujours, naturellement, mais à chaque

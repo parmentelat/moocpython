@@ -25,7 +25,7 @@ fonction.
 Pour définir une autre variable locale, il suffit de la définir
 (l'affecter), elle devient alors accessible en lecture~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k}{def} \PY{n+nf}{ma\PYZus{}fonction1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
             \PY{n}{variable1} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{locale}\PY{l+s+s2}{\PYZdq{}}
             \PY{n+nb}{print}\PY{p}{(}\PY{n}{variable1}\PY{p}{)}
@@ -34,14 +34,13 @@ Pour définir une autre variable locale, il suffit de la définir
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 locale
-
-    \end{Verbatim}
+\end{Verbatim}
 
     et ceci que l'on ait ou non une variable globale de même nom
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{variable2} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{globale}\PY{l+s+s2}{\PYZdq{}}
         
         \PY{k}{def} \PY{n+nf}{ma\PYZus{}fonction2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
@@ -52,10 +51,9 @@ locale
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 locale
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{variable-globale}{%
 \subsubsection{Variable globale}\label{variable-globale}}
@@ -63,7 +61,7 @@ locale
     On peut accéder \textbf{en lecture} à une variable globale sans
 précaution particulière~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{variable3} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{globale}\PY{l+s+s2}{\PYZdq{}}
         
         \PY{k}{def} \PY{n+nf}{ma\PYZus{}fonction3}\PY{p}{(}\PY{p}{)}\PY{p}{:}
@@ -73,10 +71,9 @@ précaution particulière~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 globale
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{mais-il-faut-choisir}{%
 \subsubsection{Mais il faut choisir~!}\label{mais-il-faut-choisir}}
@@ -86,7 +83,7 @@ fonction. On ne peut pas utiliser \textbf{d'abord} une variable comme
 une variable \textbf{globale}, \textbf{puis} essayer de l'affecter
 localement - ce qui signifie la déclarer comme une \textbf{locale}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} cet exemple ne fonctionne pas et lève UnboundLocalError}
         \PY{n}{variable4} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{globale}\PY{l+s+s2}{\PYZdq{}}
         
@@ -104,11 +101,10 @@ localement - ce qui signifie la déclarer comme une \textbf{locale}~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 OOPS, exception <class 'UnboundLocalError'>:
 local variable 'variable4' referenced before assignment
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{comment-faire-alors}{%
 \subsubsection{Comment faire alors~?}\label{comment-faire-alors}}
@@ -125,7 +121,7 @@ vous avez fait cette confusion.
 modifier une variable globale depuis une fonction~? Pour cela il faut
 utiliser l'instruction \texttt{global} comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} Pour résoudre ce conflit il faut explicitement}
         \PY{c+c1}{\PYZsh{} déclarer la variable  comme globale}
         \PY{n}{variable5} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{globale}\PY{l+s+s2}{\PYZdq{}}
@@ -142,11 +138,10 @@ utiliser l'instruction \texttt{global} comme ceci~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 dans la fonction globale
 après la fonction changée localement
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Nous reviendrons plus longuement sur l'instruction \texttt{global} dans
 la prochaine vidéo.

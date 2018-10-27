@@ -18,9 +18,11 @@ déjà vue, mais cette fois nous voulons que l'utilisateur puisse indiquer
 l'entier en entrée de l'algorithme, non plus en répondant à une
 question, mais sur la ligne de commande, c'est-à-dire en tapant~:
 
-\begin{verbatim}
-$ python3 fibonacci.py 12
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ }\ExtensionTok{python3}\NormalTok{ fibonacci.py 12}
+\end{Highlighting}
+\end{Shaded}
 
     \textbf{Avertissement~:}
 
@@ -39,14 +41,14 @@ tourner ce programme sur votre propre ordinateur.
 nous permettre d'interpréter les arguments passés sur la ligne de
 commande.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{argparse} \PY{k}{import} \PY{n}{ArgumentParser}
 \end{Verbatim}
 
 
     Puis nous répétons la fonction \texttt{fibonacci}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{k}{def} \PY{n+nf}{fibonacci}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{retourne le nombre de fibonacci pour l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{entier n}\PY{l+s+s2}{\PYZdq{}}
             \PY{c+c1}{\PYZsh{} pour les petites valeurs de n il n\PYZsq{}y a rien à calculer}
@@ -80,7 +82,7 @@ comprenez pas tout le code. L'objectif est de vous donner un morceau de
 code utilisable tout de suite, pour jouer avec votre interpréteur
 Python.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} à nouveau : ceci n\PYZsq{}est pas conçu pour être exécuté dans le notebook !}
         \PY{n}{parser} \PY{o}{=} \PY{n}{ArgumentParser}\PY{p}{(}\PY{p}{)}
         \PY{n}{parser}\PY{o}{.}\PY{n}{add\PYZus{}argument}\PY{p}{(}\PY{n}{dest}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{entier}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{type}\PY{o}{=}\PY{n+nb}{int}\PY{p}{,}
@@ -98,28 +100,32 @@ Python.
 
     Nous pouvons à présent afficher le résultat~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fibonacci(}\PY{l+s+si}{\PYZob{}entier\PYZcb{}}\PY{l+s+s2}{) = }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{fibonacci(entier)\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 fibonacci(8) = 34
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Vous pouvez donc à présent~:
 
 \begin{itemize}
+\tightlist
 \item
   télécharger ce code sur votre disque comme un fichier
   \texttt{fibonacci.py} en utilisant le menu
   \emph{``File~-\textgreater{}~Download as~-\textgreater{}~Python''}
 \item
   l'exécuter avec simplement l'interpréteur Python comme ceci~:
-
-  \$ python3 fibonacci.py 56
 \end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ }\ExtensionTok{python3}\NormalTok{ fibonacci.py 56}
+\end{Highlighting}
+\end{Shaded}
 
 
     % Add a bibliography block to the postdoc

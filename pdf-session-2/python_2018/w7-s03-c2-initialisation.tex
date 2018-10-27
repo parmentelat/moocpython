@@ -15,7 +15,7 @@ basique}\label{compluxe9ment---niveau-basique}}
     Passons rapidement en revue quelques méthodes pour créer des tableaux
 \texttt{numpy}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
 \end{Verbatim}
 
@@ -27,7 +27,7 @@ basique}\label{compluxe9ment---niveau-basique}}
     La méthode la plus efficace pour créer un tableau \texttt{numpy}
 consiste à faire l'allocation de la mémoire mais sans l'initialiser~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{memory} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{empty}\PY{p}{(}\PY{n}{dtype}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{int8}\PY{p}{,}
                           \PY{n}{shape}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{1}\PY{n}{\PYZus{}000}\PY{p}{,} \PY{l+m+mi}{1}\PY{n}{\PYZus{}000}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
@@ -36,12 +36,12 @@ consiste à faire l'allocation de la mémoire mais sans l'initialiser~:
     J'en profite pour attirer votre attention sur l'impression des gros
 tableaux où l'on s'efforce de vous montrer les coins~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{memory}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[0 0 0 {\ldots} 0 0 0]
  [0 0 0 {\ldots} 0 0 0]
  [0 0 0 {\ldots} 0 0 0]
@@ -49,8 +49,7 @@ tableaux où l'on s'efforce de vous montrer les coins~:
  [0 0 0 {\ldots} 0 0 0]
  [0 0 0 {\ldots} 0 0 0]
  [0 0 0 {\ldots} 0 0 0]]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Il se \emph{peut} que vous voyiez ici des valeurs particulières~; selon
 votre OS, il y a une probabilité non nulle que vous ne voyiez ici que
@@ -67,13 +66,13 @@ devez pas écrire un programme qui repose sur le fait que
     On peut aussi créer et initialiser un tableau avec \texttt{np.zeros} et
 \texttt{np.ones}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{zeros} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{n}{dtype}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{complex128}\PY{p}{,} \PY{n}{shape}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{1}\PY{n}{\PYZus{}000}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{zeros}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[0.+0.j 0.+0.j 0.+0.j {\ldots} 0.+0.j 0.+0.j 0.+0.j]
  [0.+0.j 0.+0.j 0.+0.j {\ldots} 0.+0.j 0.+0.j 0.+0.j]
  [0.+0.j 0.+0.j 0.+0.j {\ldots} 0.+0.j 0.+0.j 0.+0.j]
@@ -81,16 +80,15 @@ devez pas écrire un programme qui repose sur le fait que
  [0.+0.j 0.+0.j 0.+0.j {\ldots} 0.+0.j 0.+0.j 0.+0.j]
  [0.+0.j 0.+0.j 0.+0.j {\ldots} 0.+0.j 0.+0.j 0.+0.j]
  [0.+0.j 0.+0.j 0.+0.j {\ldots} 0.+0.j 0.+0.j 0.+0.j]]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{fours} \PY{o}{=} \PY{l+m+mi}{4} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{ones}\PY{p}{(}\PY{n}{dtype}\PY{o}{=}\PY{n+nb}{float}\PY{p}{,} \PY{n}{shape}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
         \PY{n}{fours}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:} array([[4., 4., 4., 4., 4., 4., 4., 4.],
                [4., 4., 4., 4., 4., 4., 4., 4.],
                [4., 4., 4., 4., 4., 4., 4., 4.],
@@ -109,32 +107,32 @@ devez pas écrire un programme qui repose sur le fait que
 valeurs espacées d'une valeur constante. Ça ressemble donc un peu au
 \texttt{range} de Python natif~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} array([0, 1, 2, 3])
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}7}]:} array([1, 2, 3, 4])
 \end{Verbatim}
             
     Sauf qu'on peut y passer un pas qui n'est pas entier~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{o}{.}\PY{l+m+mi}{5}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}8}]:} array([5. , 5.5, 6. , 6.5])
 \end{Verbatim}
             
@@ -148,14 +146,14 @@ inclure la deuxième borne. C'est ce que fait \texttt{linspace}, c'est
 très utile pour modéliser une fonction sur un intervalle~; on a déjà vu
 des exemples de ce genre~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
         \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
         \PY{n}{plt}\PY{o}{.}\PY{n}{ion}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mf}{3.}\PY{p}{,} \PY{o}{+}\PY{l+m+mf}{3.}\PY{p}{)}
          \PY{n}{Y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{n}{X}\PY{p}{)}
          
@@ -168,7 +166,7 @@ des exemples de ce genre~:
     \end{center}
     { \hspace*{\fill} \\}
     
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} par défaut linspace crée 50 points}
          \PY{c+c1}{\PYZsh{} avec moins de points}
          
@@ -192,28 +190,28 @@ des exemples de ce genre~:
     La méthode \texttt{np.indices} se comporte un peu comme \texttt{arange}
 mais pour plusieurs directions~; voyons ça sur un exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{n}{ix}\PY{p}{,} \PY{n}{iy} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{indices}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{n}{ix}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}13}]:} array([[0, 0, 0, 0, 0],
                 [1, 1, 1, 1, 1],
                 [2, 2, 2, 2, 2]])
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{n}{iy}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}14}]:} array([[0, 1, 2, 3, 4],
                 [0, 1, 2, 3, 4],
                 [0, 1, 2, 3, 4]])
@@ -227,22 +225,20 @@ tableau) ou \(j\) pour le second.
     Ainsi, si vous voulez construire un tableau de taille (2, 4) dans
 lequel, par exemple~:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{tab[i, j] }\OperatorTok{=} \DecValTok{200}\OperatorTok{*}\NormalTok{i }\OperatorTok{+} \DecValTok{2}\OperatorTok{*}\NormalTok{j }\OperatorTok{+} \DecValTok{50}
-\end{Highlighting}
-\end{Shaded}
+\begin{verbatim}
+tab[i, j] = 200*i + 2*j + 50
+\end{verbatim}
 
 Vous n'avez qu'à faire~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}15}]:} \PY{n}{ix}\PY{p}{,} \PY{n}{iy} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{indices}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
          \PY{n}{tab} \PY{o}{=} \PY{l+m+mi}{200}\PY{o}{*}\PY{n}{ix} \PY{o}{+} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{iy} \PY{o}{+} \PY{l+m+mi}{50}
          \PY{n}{tab}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}15}]:} array([[ 50,  52,  54,  56],
                 [250, 252, 254, 256]])
 \end{Verbatim}
@@ -265,22 +261,24 @@ Sur un pavé délimité par~:
 réalise un maillage uniforme de ce pavé, et pour ça vous pouvez utiliser
 \texttt{meshgrid}. Pour commencer~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}16}]:} \PY{c+c1}{\PYZsh{} on fabrique deux tableaux qui échantillonnent}
          \PY{c+c1}{\PYZsh{} de manière uniforme les intervalles en X et en Y}
          \PY{c+c1}{\PYZsh{} on prend un pas de 10 dans les deux sens, ça nous donnera}
          \PY{c+c1}{\PYZsh{} 100 points pour couvrir l\PYZsq{}espace carré qui nous intéresse}
          
-         \PY{n}{Xticks}\PY{p}{,} \PY{n}{Yticks} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{n}{num}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{3}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{l+m+mi}{5}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{n}{num}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}
+         \PY{n}{Xticks}\PY{p}{,} \PY{n}{Yticks} \PY{o}{=} \PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{n}{num}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,}
+                           \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{3}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{l+m+mi}{5}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{n}{num}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
     Avec meshgrid, on va créer deux tableaux, qui sont respectivement les
 (100) X et les (100) Y de notre maillage~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} avec meshgrid on les croise}
-         \PY{c+c1}{\PYZsh{} ça fait comme un produit cartésien, en extrayant les X et les Y du résultat}
+         \PY{c+c1}{\PYZsh{} ça fait comme un produit cartésien, }
+         \PY{c+c1}{\PYZsh{} en extrayant les X et les Y du résultat}
          
          \PY{n}{X}\PY{p}{,} \PY{n}{Y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{meshgrid}\PY{p}{(}\PY{n}{Xticks}\PY{p}{,} \PY{n}{Yticks}\PY{p}{)}
          
@@ -289,21 +287,21 @@ réalise un maillage uniforme de ce pavé, et pour ça vous pouvez utiliser
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}17}]:} ((10, 10), (10, 10))
 \end{Verbatim}
             
     Que peut-on faire avec ça~? Eh bien, en fait, on a tout ce qu'il nous
 faut pour afficher notre fonction~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{} un tableau 10 x 10 qui contient les images de f()}
          \PY{c+c1}{\PYZsh{} sur les points de la grille}
          \PY{n}{Z} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{cos}\PY{p}{(}\PY{n}{X}\PY{p}{)} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{cos}\PY{p}{(}\PY{n}{Y}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}19}]:} \PY{k+kn}{from} \PY{n+nn}{mpl\PYZus{}toolkits}\PY{n+nn}{.}\PY{n+nn}{mplot3d} \PY{k}{import} \PY{n}{Axes3D}
          \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{p}{)}
          \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{,} \PY{n}{projection}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{3d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}

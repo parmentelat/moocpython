@@ -13,7 +13,7 @@ circulaires}\label{listes-infinies-ruxe9fuxe9rences-circulaires}}
 \subsection{Complément - niveau
 intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} ipythontutor
 \end{Verbatim}
 
@@ -24,7 +24,7 @@ logique du langage.
 
     Construisons une liste à un seul élément, peu importe quoi~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{infini\PYZus{}1} \PY{o}{=} \PY{p}{[}\PY{k+kc}{None}\PY{p}{]}
 \end{Verbatim}
 
@@ -32,16 +32,15 @@ logique du langage.
     À présent nous allons remplacer le premier et seul élément de la liste
 par\ldots{} la liste elle-même~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{infini\PYZus{}1}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{n}{infini\PYZus{}1}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{infini\PYZus{}1}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[{\ldots}]]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Pour essayer de décrire l'objet liste ainsi obtenu, on pourrait dire
 qu'il s'agit d'une liste de taille 1 et de profondeur infinie, une sorte
@@ -63,7 +62,7 @@ la séquence. À la fin de la séquence vous verrez - ce n'est pas
 forcément clair - la seule cellule de la liste à se référencer
 elle-même~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -76,31 +75,30 @@ elle-même~:
     Toutes les fonctions de python ne sont pas aussi intelligentes que
 \texttt{print}. Bien qu'on puisse comparer cette liste avec elle-même~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{infini\PYZus{}1} \PY{o}{==} \PY{n}{infini\PYZus{}1}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}4}]:} True
 \end{Verbatim}
             
     il n'en est pas de même si on la compare avec un objet analogue mais pas
 identique~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{infini\PYZus{}2} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
         \PY{n}{infini\PYZus{}2}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{n}{infini\PYZus{}2}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{infini\PYZus{}2}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[{\ldots}]]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -118,7 +116,7 @@ circulaires}\label{guxe9nuxe9ralisation-aux-ruxe9fuxe9rences-circulaires}}
 un objet fait référence à l'objet lui-même. Voici par exemple comment on
 peut construire un dictionnaire qui contient une référence circulaire~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{collection\PYZus{}de\PYZus{}points} \PY{o}{=} \PY{p}{[}
             \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{10}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{20}\PY{p}{\PYZcb{}}\PY{p}{,}
             \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{30}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{50}\PY{p}{\PYZcb{}}\PY{p}{,}
@@ -135,10 +133,9 @@ peut construire un dictionnaire qui contient une référence circulaire~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [\{'x': 10, 'y': 20, 'points': [{\ldots}]\}, \{'x': 30, 'y': 50, 'points': [{\ldots}]\}]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     On voit à nouveau réapparaître les ellipses, qui indiquent que pour
 chaque point, le nouveau champ \texttt{points} est un objet qui a déjà
@@ -154,7 +151,7 @@ autres points de la collection dont il fait partie.
 exemple avec \url{http://pythontutor.com} pour bien comprendre ce qui se
 passe, si cela ne vous semble pas clair à première vue~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         

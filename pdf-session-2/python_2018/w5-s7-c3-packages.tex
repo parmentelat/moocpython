@@ -20,7 +20,7 @@ qu'avec un simple module.
     Pour ce notebook nous aurons besoin de deux utilitaires pour voir le
 code correspondant aux modules et packages que nous manipulons~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{modtools} \PY{k}{import} \PY{n}{show\PYZus{}module}
 \end{Verbatim}
 
@@ -34,24 +34,23 @@ travers d'un objet python de type \textbf{module}.
 
     Chargeons un module ``jouet''~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{import} \PY{n+nn}{module\PYZus{}simple}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Chargement du module module\_simple
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Voyons à quoi ressemble ce module~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{show\PYZus{}module}\PY{p}{(}\PY{n}{module\PYZus{}simple}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Fichier /Users/tparment/git/flotpython/modules/module\_simple.py
 ----------------------------------------
 1|print("Chargement du module", \_\_name\_\_)
@@ -59,34 +58,31 @@ Fichier /Users/tparment/git/flotpython/modules/module\_simple.py
 3|def spam(n):
 4|    "Le polynôme (n+1)*(n-3)"
 5|    return n**2 - 2*n - 3
-
-    \end{Verbatim}
+\end{Verbatim}
 
     On a bien compris maintenant que le module joue le rôle d'\textbf{espace
 de nom}, dans le sens où~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} on peut définir sans risque une variable globale \PYZsq{}spam\PYZsq{}}
         \PY{n}{spam} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{eggs}\PY{l+s+s1}{\PYZsq{}}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{spam globale}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{spam}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 spam globale eggs
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} qui est indépendante de celle définie dans le module}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{spam du module}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{module\PYZus{}simple}\PY{o}{.}\PY{n}{spam}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-spam du module <function spam at 0x10d5a8620>
-
-    \end{Verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+spam du module <function spam at 0x1094ec6a8>
+\end{Verbatim}
 
     Pour résumer, un module est donc un objet python qui correspond à la
 fois à~:
@@ -111,33 +107,34 @@ qu'intervient la notion de \textbf{package}, qui est un peu aux
     Nous allons illustrer ceci en créant un package qui contient un module.
 Pour cela nous créons une arborescence de fichiers comme ceci~:
 
-\begin{verbatim}
-package_jouet/
-    __init__.py
-    module_jouet.py
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ExtensionTok{package_jouet/}
+              \ExtensionTok{__init__.py}
+              \ExtensionTok{module_jouet.py}
+\end{Highlighting}
+\end{Shaded}
 
     On importe un package exactement comme un module~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{k+kn}{import} \PY{n+nn}{package\PYZus{}jouet}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 chargement du package package\_jouet
 Chargement du module package\_jouet.module\_jouet dans le package 'package\_jouet'
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Voici le contenu de ces deux fichiers~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{n}{show\PYZus{}module}\PY{p}{(}\PY{n}{package\PYZus{}jouet}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Fichier /Users/tparment/git/flotpython/modules/package\_jouet/\_\_init\_\_.py
 ----------------------------------------
 1|print("chargement du package", \_\_name\_\_)
@@ -149,22 +146,20 @@ Fichier /Users/tparment/git/flotpython/modules/package\_jouet/\_\_init\_\_.py
 7|
 8|\# et définir des raccourcis
 9|jouet = package\_jouet.module\_jouet.jouet
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{n}{show\PYZus{}module}\PY{p}{(}\PY{n}{package\PYZus{}jouet}\PY{o}{.}\PY{n}{module\PYZus{}jouet}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Fichier /Users/tparment/git/flotpython/modules/package\_jouet/module\_jouet.py
 ----------------------------------------
 1|print("Chargement du module", \_\_name\_\_, "dans le package 'package\_jouet'")
 2|
 3|jouet = 'une variable définie dans package\_jouet.module\_jouet'
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Comme on le voit, le package porte \textbf{le même nom} que le
 répertoire, c'est-à-dire que, de même que le module
@@ -183,21 +178,21 @@ le fichier \texttt{\_\_init\_\_.py} dans le répertoire correspondant.
 termes d'implémentation les deux objets sont en fait de même nature, ce
 sont des modules~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{n+nb}{type}\PY{p}{(}\PY{n}{package\PYZus{}jouet}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}9}]:} module
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{n+nb}{type}\PY{p}{(}\PY{n}{package\PYZus{}jouet}\PY{o}{.}\PY{n}{module\PYZus{}jouet}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}10}]:} module
 \end{Verbatim}
             
@@ -205,12 +200,12 @@ sont des modules~:
 a une troisième variable \texttt{spam} qui est encore différente des
 deux autres~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{n}{package\PYZus{}jouet}\PY{o}{.}\PY{n}{spam}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}11}]:} ['a', 'b', 'c']
 \end{Verbatim}
             
@@ -218,12 +213,12 @@ deux autres~:
 qu'il contient, comme on l'a vu ci-dessus, le package référence le
 module au travers de son attribut \texttt{module\_jouet}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{n}{package\PYZus{}jouet}\PY{o}{.}\PY{n}{module\PYZus{}jouet}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}12}]:} <module 'package\_jouet.module\_jouet' from '/Users/tparment/git/flotpython/modules/package\_jouet/module\_jouet.py'>
 \end{Verbatim}
             
@@ -243,23 +238,23 @@ réalité définis dans un module.
 Avec le code ci-dessus, après avoir importé \texttt{package\_jouet},
 nous pouvons utiliser
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{n}{package\PYZus{}jouet}\PY{o}{.}\PY{n}{jouet}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}13}]:} 'une variable définie dans package\_jouet.module\_jouet'
 \end{Verbatim}
             
     alors qu'en fait il faudrait écrire en toute rigueur
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{n}{package\PYZus{}jouet}\PY{o}{.}\PY{n}{module\PYZus{}jouet}\PY{o}{.}\PY{n}{jouet}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}14}]:} 'une variable définie dans package\_jouet.module\_jouet'
 \end{Verbatim}
             

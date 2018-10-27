@@ -40,7 +40,7 @@ attributs}\label{les-fonctions-de-gestion-des-attributs}}
     \hypertarget{lire-un-attribut}{%
 \subparagraph{Lire un attribut}\label{lire-un-attribut}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{math}
         \PY{c+c1}{\PYZsh{} nous savons lire un attribut comme ceci }
         \PY{c+c1}{\PYZsh{} qui lit l\PYZsq{}attribut de nom \PYZsq{}pi\PYZsq{} dans le module math}
@@ -48,7 +48,7 @@ attributs}\label{les-fonctions-de-gestion-des-attributs}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}1}]:} 3.141592653589793
 \end{Verbatim}
             
@@ -57,18 +57,18 @@ attributs}\label{les-fonctions-de-gestion-des-attributs}}
 \emph{built-in} \texttt{getattr}} permet de lire un attribut
 programmativement~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} si on part d\PYZsq{}une chaîne qui désigne le nom de l\PYZsq{}attribut}
         \PY{c+c1}{\PYZsh{} la formule équivalente est alors}
         \PY{n+nb}{getattr}\PY{p}{(}\PY{n}{math}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pi}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}2}]:} 3.141592653589793
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} on peut utiliser les attributs avec la plupart des objets}
         \PY{c+c1}{\PYZsh{} ici nous allons le faire sur une fonction}
         \PY{k}{def} \PY{n+nf}{foo}\PY{p}{(}\PY{p}{)}\PY{p}{:} 
@@ -80,26 +80,25 @@ programmativement~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 nom=foo, docstring=`une fonction vide`
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} on peut préciser une valeur par défaut pour le cas où l\PYZsq{}attribut}
         \PY{c+c1}{\PYZsh{} n\PYZsq{}existe pas}
         \PY{n+nb}{getattr}\PY{p}{(}\PY{n}{foo}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{attribut\PYZus{}inexistant}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{valeur\PYZus{}par\PYZus{}defaut}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}4}]:} 'valeur\_par\_defaut'
 \end{Verbatim}
             
     \hypertarget{uxe9crire-un-attribut}{%
 \subparagraph{Écrire un attribut}\label{uxe9crire-un-attribut}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} on peut ajouter un attribut arbitraire (toujours sur l\PYZsq{}objet fonction)}
         \PY{n}{foo}\PY{o}{.}\PY{n}{hauteur} \PY{o}{=} \PY{l+m+mi}{100}
         
@@ -107,7 +106,7 @@ nom=foo, docstring=`une fonction vide`
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:} 100
 \end{Verbatim}
             
@@ -116,7 +115,7 @@ la
 \href{https://docs.python.org/3/library/functions.html\#setattr}{fonction
 \emph{built-in} \texttt{setattr}}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} écrire un attribut avec setattr}
         \PY{n+nb}{setattr}\PY{p}{(}\PY{n}{foo}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{largeur}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+m+mi}{200}\PY{p}{)}
         
@@ -126,7 +125,7 @@ la
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} 200
 \end{Verbatim}
             
@@ -138,13 +137,13 @@ la
 \emph{built-in} \texttt{hasattr}} permet de savoir si un objet possède
 ou pas un attribut~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} pour savoir si un attribut existe}
         \PY{n+nb}{hasattr}\PY{p}{(}\PY{n}{math}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pi}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}7}]:} True
 \end{Verbatim}
             
@@ -152,12 +151,12 @@ ou pas un attribut~:
 \href{https://docs.python.org/3/library/functions.html\#vars}{fonction
 \emph{built-in} \texttt{vars}}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{n+nb}{vars}\PY{p}{(}\PY{n}{foo}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}8}]:} \{'hauteur': 100, 'largeur': 200\}
 \end{Verbatim}
             
@@ -167,7 +166,7 @@ ou pas un attribut~:
     Il n'est pas possible d'ajouter des attributs sur les types de base, car
 ce sont des classes immuables~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{k}{for} \PY{n}{builtin\PYZus{}type} \PY{o+ow}{in} \PY{p}{(}\PY{n+nb}{int}\PY{p}{,} \PY{n+nb}{str}\PY{p}{,} \PY{n+nb}{float}\PY{p}{,} \PY{n+nb}{complex}\PY{p}{,} \PY{n+nb}{tuple}\PY{p}{,} \PY{n+nb}{dict}\PY{p}{,} \PY{n+nb}{set}\PY{p}{,} \PY{n+nb}{frozenset}\PY{p}{)}\PY{p}{:}
             \PY{n}{obj} \PY{o}{=} \PY{n}{builtin\PYZus{}type}\PY{p}{(}\PY{p}{)}
             \PY{k}{try}\PY{p}{:} 
@@ -177,7 +176,7 @@ ce sont des classes immuables~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
        int → exception <class 'AttributeError'> - 'int' object has no attribute 'foo'
        str → exception <class 'AttributeError'> - 'str' object has no attribute 'foo'
      float → exception <class 'AttributeError'> - 'float' object has no attribute 'foo'
@@ -186,8 +185,7 @@ ce sont des classes immuables~:
       dict → exception <class 'AttributeError'> - 'dict' object has no attribute 'foo'
        set → exception <class 'AttributeError'> - 'set' object has no attribute 'foo'
  frozenset → exception <class 'AttributeError'> - 'frozenset' object has no attribute 'foo'
-
-    \end{Verbatim}
+\end{Verbatim}
 
     C'est par contre possible sur virtuellement tout le reste, et notamment
 là où c'est très utile, c'est-à-dire pour ce qui nous concerne sur les~:

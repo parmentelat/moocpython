@@ -16,7 +16,7 @@ basique}\label{compluxe9ment---niveau-basique}}
 
     Les noms les plus simples sont constitués de lettres. Par exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{n}{factoriel} \PY{o}{=} \PY{l+m+mi}{1}
 \end{Verbatim}
 
@@ -24,13 +24,13 @@ basique}\label{compluxe9ment---niveau-basique}}
     On peut utiliser aussi les majuscules, mais attention cela définit une
 variable différente. Ainsi~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{Factoriel} \PY{o}{=} \PY{l+m+mi}{100}
         \PY{n}{factoriel} \PY{o}{==} \PY{n}{Factoriel}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}2}]:} False
 \end{Verbatim}
             
@@ -53,14 +53,14 @@ par le langage lui-même.
     Pour des raisons de lisibilité, il est également possible d'utiliser le
 tiret bas \texttt{\_} dans les noms de variables. On préfèrera ainsi~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{age\PYZus{}moyen} \PY{o}{=} \PY{l+m+mi}{75} \PY{c+c1}{\PYZsh{} oui}
 \end{Verbatim}
 
 
     plutôt que ceci (bien qu'autorisé par le langage)~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{AgeMoyen} \PY{o}{=} \PY{l+m+mi}{75} \PY{c+c1}{\PYZsh{} autorisé, mais non}
 \end{Verbatim}
 
@@ -68,7 +68,7 @@ tiret bas \texttt{\_} dans les noms de variables. On préfèrera ainsi~:
     On peut également utiliser des chiffres dans les noms de variables comme
 par exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{age\PYZus{}moyen\PYZus{}dept75} \PY{o}{=} \PY{l+m+mi}{80}
 \end{Verbatim}
 
@@ -76,7 +76,7 @@ par exemple~:
     avec la restriction toutefois que le premier caractère ne peut pas être
 un chiffre, cette affectation est donc refusée~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -93,7 +93,7 @@ tiret bas comme premier caractère~; toutefois, à ce stade, nous vous
 déconseillons d'utiliser cette pratique qui est réservée à des
 conventions de nommage bien spécifiques.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{\PYZus{}autorise\PYZus{}mais\PYZus{}deconseille} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Voir le PEP 008}\PY{l+s+s1}{\PYZsq{}}
 \end{Verbatim}
 
@@ -104,12 +104,12 @@ Nous reviendrons sur ce point dans le futur, mais regardez par exemple
 cette variable que nous n'avons définie nulle part mais qui pourtant
 existe bel et bien~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{n+nv+vm}{\PYZus{}\PYZus{}name\PYZus{}\PYZus{}}  \PY{c+c1}{\PYZsh{} ne définissez pas vous\PYZhy{}même de variables de ce genre}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}7}]:} '\_\_main\_\_'
 \end{Verbatim}
             
@@ -121,7 +121,7 @@ d'utiliser d'autres caractères que les caractères alphanumériques et le
 tiret bas. Notamment le tiret haut \texttt{-} est interprété comme
 l'opération de soustraction. Attention donc à cette erreur fréquente~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -135,13 +135,13 @@ l'opération de soustraction. Attention donc à cette erreur fréquente~:
     En Python 3, il est maintenant aussi possible d'utiliser des caractères
 Unicode dans les identificateurs~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} les caractères accentués sont permis}
         \PY{n}{nom\PYZus{}élève} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Jules Maigret}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} ainsi que l\PYZsq{}alphabet grec}
         \PY{k+kn}{from} \PY{n+nn}{math} \PY{k}{import} \PY{n}{cos}\PY{p}{,} \PY{n}{pi} \PY{k}{as} \PY{n}{π}
         \PY{n}{θ} \PY{o}{=} \PY{n}{π} \PY{o}{/} \PY{l+m+mi}{4}
@@ -149,7 +149,7 @@ Unicode dans les identificateurs~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}9}]:} 0.7071067811865476
 \end{Verbatim}
             
@@ -157,7 +157,7 @@ Unicode dans les identificateurs~:
 serait source de confusion. Nous citons dans les références les
 documents qui précisent quels sont exactement les caractères autorisés.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -167,7 +167,7 @@ documents qui précisent quels sont exactement les caractères autorisés.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         

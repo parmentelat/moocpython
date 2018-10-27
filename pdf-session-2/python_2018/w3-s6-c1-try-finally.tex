@@ -42,7 +42,7 @@ managers}.
 Et par exemple, comme avec les \emph{context managers}, une fonction
 peut faire des choses même après un \texttt{return}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} une fonction qui fait des choses après un return}
         \PY{k}{def} \PY{n+nf}{return\PYZus{}with\PYZus{}finally}\PY{p}{(}\PY{n}{number}\PY{p}{)}\PY{p}{:}
             \PY{k}{try}\PY{p}{:}
@@ -55,34 +55,32 @@ peut faire des choses même après un \texttt{return}.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} sans exception}
         \PY{n}{return\PYZus{}with\PYZus{}finally}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 on passe ici même si on a vu un return
+\end{Verbatim}
 
-    \end{Verbatim}
-
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}2}]:} 1.0
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} avec exception}
         \PY{n}{return\PYZus{}with\PYZus{}finally}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 OOPS, <class 'ZeroDivisionError'>, division by zero
 on passe ici même si on a vu un return
+\end{Verbatim}
 
-    \end{Verbatim}
-
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}3}]:} 'zero-divide'
 \end{Verbatim}
             
@@ -110,7 +108,7 @@ courant, et sera donc propagée.
     Voici un exemple rapide, en pratique on rencontre assez peu souvent une
 clause \texttt{else} dans un \texttt{try}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} pour montrer la clause else dans un usage banal}
         \PY{k}{def} \PY{n+nf}{function\PYZus{}with\PYZus{}else}\PY{p}{(}\PY{n}{number}\PY{p}{)}\PY{p}{:}
             \PY{k}{try}\PY{p}{:}
@@ -123,40 +121,38 @@ clause \texttt{else} dans un \texttt{try}~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} sans exception}
         \PY{n}{function\PYZus{}with\PYZus{}else}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 on passe ici seulement avec un nombre non nul
+\end{Verbatim}
 
-    \end{Verbatim}
-
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:} 'something else'
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} avec exception}
         \PY{n}{function\PYZus{}with\PYZus{}else}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 OOPS, <class 'ZeroDivisionError'>, division by zero
+\end{Verbatim}
 
-    \end{Verbatim}
-
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} 'something else'
 \end{Verbatim}
             
     Remarquez que \texttt{else} ne présente pas cette particularité de
 ``traverser'' le \texttt{return}, que l'on a vue avec \texttt{finally}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} la clause else ne traverse pas les return}
         \PY{k}{def} \PY{n+nf}{return\PYZus{}with\PYZus{}else}\PY{p}{(}\PY{n}{number}\PY{p}{)}\PY{p}{:}
             \PY{k}{try}\PY{p}{:}
@@ -169,28 +165,27 @@ OOPS, <class 'ZeroDivisionError'>, division by zero
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} sans exception}
         \PY{n}{return\PYZus{}with\PYZus{}else}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}8}]:} 1.0
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} avec exception}
         \PY{n}{return\PYZus{}with\PYZus{}else}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 OOPS, <class 'ZeroDivisionError'>, division by zero
+\end{Verbatim}
 
-    \end{Verbatim}
-
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}9}]:} 'zero-divide'
 \end{Verbatim}
             

@@ -36,7 +36,7 @@ qu'on peut déclarer dans une fonction~:
 
 Pour rappel~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} une fonction qui combine les différents }
         \PY{c+c1}{\PYZsh{} types de paramètres}
         \PY{k}{def} \PY{n+nf}{foo}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{,} \PY{o}{*}\PY{n}{args}\PY{p}{,} \PY{o}{*}\PY{o}{*}\PY{n}{kwds}\PY{p}{)}\PY{p}{:}
@@ -44,45 +44,41 @@ Pour rappel~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{foo}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a=1, b=100, args=(), kwds=\{\}
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{foo}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a=1, b=2, args=(), kwds=\{\}
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{foo}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a=1, b=2, args=(3,), kwds=\{\}
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{foo}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{n}{bar}\PY{o}{=}\PY{l+m+mi}{1000}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a=1, b=2, args=(3,), kwds=\{'bar': 1000\}
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{un-seul-paramuxe8tre-attrape-tout}{%
 \subsubsection{Un seul paramètre
@@ -92,12 +88,13 @@ attrape-tout}\label{un-seul-paramuxe8tre-attrape-tout}}
 paramètre de chacune des formes d'attrape-tout~; on ne peut pas par
 exemple déclarer
 
-\begin{verbatim}
-# c'est illégal de faire ceci
-def foo(*args1, *args2):
-    pass
-  
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\CommentTok{# c'est illégal de faire ceci}
+\KeywordTok{def}\NormalTok{ foo(}\OperatorTok{*}\NormalTok{args1, }\OperatorTok{*}\NormalTok{args2):}
+    \ControlFlowTok{pass}
+\end{Highlighting}
+\end{Shaded}
 
 car évidemment on ne saurait pas décider de ce qui va dans
 \texttt{args1} et ce qui va dans \texttt{args2}.
@@ -128,7 +125,7 @@ argument)
 
 Voyons cela sur un exemple
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} on peut déclarer un paramètre nommé **après** l\PYZsq{}attrape\PYZhy{}tout *args}
         \PY{k}{def} \PY{n+nf}{bar}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{o}{*}\PY{n}{args}\PY{p}{,} \PY{n}{b}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{,} \PY{o}{*}\PY{o}{*}\PY{n}{kwds}\PY{p}{)}\PY{p}{:}
                 \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a=}\PY{l+s+si}{\PYZob{}a\PYZcb{}}\PY{l+s+s2}{, b=}\PY{l+s+si}{\PYZob{}b\PYZcb{}}\PY{l+s+s2}{, args=}\PY{l+s+si}{\PYZob{}args\PYZcb{}}\PY{l+s+s2}{, kwds=}\PY{l+s+si}{\PYZob{}kwds\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
@@ -138,38 +135,35 @@ Voyons cela sur un exemple
     L'effet de cette déclaration est que, si je veux passer un argument au
 paramètre \texttt{b}, \textbf{je dois le nommer}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} je peux toujours faire ceci}
         \PY{n}{bar}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a=1, b=100, args=(), kwds=\{\}
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} mais si je fais ceci l\PYZsq{}argument 2 va aller dans args}
         \PY{n}{bar}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a=1, b=100, args=(2,), kwds=\{\}
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} pour passer b=2, je **dois** nommer mon argument}
         \PY{n}{bar}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{b}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a=1, b=2, args=(), kwds=\{\}
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Ce trait n'est objectivement pas utilisé massivement en Python, mais
 cela peut être utile de le savoir~:

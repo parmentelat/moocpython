@@ -12,7 +12,7 @@
 \subsection{Exercice - niveau
 avancé}\label{exercice---niveau-avancuxe9}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} Pour charger l\PYZsq{}exercice}
         \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}compare\PYZus{}all} \PY{k}{import} \PY{n}{exo\PYZus{}compare\PYZus{}all}
 \end{Verbatim}
@@ -25,9 +25,11 @@ fonction à corriger.
 
 Par exemple un peu plus bas, la cellule de correction fait
 
-\begin{verbatim}
-exo_compare_all.correction(compare_all)  
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{exo_compare_all.correction(compare_all)}
+\end{Highlighting}
+\end{Shaded}
 
 dans lequel \texttt{compare\_all} est l'objet fonction que vous écrivez
 en réponse à cet exercice.
@@ -69,13 +71,13 @@ les entrées ne sont pas modifiées par \texttt{f} ou \texttt{g}.
   0 au lieu de 1 pour l'entrée 0.
 \end{itemize}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} par exemple}
         \PY{n}{exo\PYZus{}compare\PYZus{}all}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}2}]:} <IPython.core.display.HTML object>
 \end{Verbatim}
             
@@ -84,14 +86,14 @@ les entrées ne sont pas modifiées par \texttt{f} ou \texttt{g}.
 \texttt{broken\_fact} et \texttt{factorial} ne renvoient pas la même
 valeur avec l'entrée \texttt{0}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} c\PYZsq{}est à vous}
         \PY{k}{def} \PY{n+nf}{compare\PYZus{}all}\PY{p}{(}\PY{n}{f}\PY{p}{,} \PY{n}{g}\PY{p}{,} \PY{n}{entrees}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -104,7 +106,7 @@ valeur avec l'entrée \texttt{0}.
 \subsection{Exercice optionnel - niveau
 avancé}\label{exercice-optionnel---niveau-avancuxe9}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} Pour charger l\PYZsq{}exercice}
         \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}compare\PYZus{}args} \PY{k}{import} \PY{n}{exo\PYZus{}compare\PYZus{}args}
 \end{Verbatim}
@@ -156,23 +158,23 @@ booléens, de même taille que \texttt{argument\_tuples}, telle que, si
   lorsque le premier argument est nul.
 \end{itemize}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{exo\PYZus{}compare\PYZus{}args}\PY{o}{.}\PY{n}{example}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:} <IPython.core.display.HTML object>
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} ATTENTION vous devez aussi définir les arguments de la fonction}
         \PY{k}{def} \PY{n+nf}{compare\PYZus{}args}\PY{p}{(}\PY{n}{votre}\PY{p}{,} \PY{n}{signature}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre\PYZus{}code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         

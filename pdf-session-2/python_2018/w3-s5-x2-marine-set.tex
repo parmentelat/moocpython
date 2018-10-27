@@ -12,7 +12,7 @@
 \subsection{Exercice - niveau
 intermédiaire}\label{exercice---niveau-intermuxe9diaire}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} chargement de l\PYZsq{}exercice}
         \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}marine\PYZus{}set} \PY{k}{import} \PY{n}{exo\PYZus{}diff}
 \end{Verbatim}
@@ -24,7 +24,7 @@ intermédiaire}\label{exercice---niveau-intermuxe9diaire}}
     Nous reprenons le même genre de données marines en provenance de
 MarineTraffic que nous avons vues dans l'exercice précédent.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}marine\PYZus{}set} \PY{k}{import} \PY{n}{abbreviated}\PY{p}{,} \PY{n}{extended}
 \end{Verbatim}
 
@@ -37,30 +37,28 @@ MarineTraffic que nous avons vues dans l'exercice précédent.
 abrégé: [id, latitude, longitude, date_heure]
 \end{verbatim}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{extended}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-[305880000, 48.95318, -5.629418, '2013-10-08T21:51:00', 'MISTRAL', 'AG', '', 'ANTWERP']
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+[538001945, 49.84063, -3.698033, '2013-10-08T21:51:00', 'CHEM STAR', 'MH', '', 'ANTWERP']
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{abbreviated}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-[227843000, 47.34981, -5.879823, '2013-10-08T22:58:00']
-
-    \end{Verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+[224175430, 47.21678, -5.869355, '2013-10-08T22:59:00']
+\end{Verbatim}
 
     \hypertarget{but-de-lexercice}{%
 \subsubsection{But de l'exercice}\label{but-de-lexercice}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} chargement de l\PYZsq{}exercice}
         \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}marine\PYZus{}set} \PY{k}{import} \PY{n}{exo\PYZus{}diff}
 \end{Verbatim}
@@ -74,8 +72,8 @@ Le but de l'exercice est précisément d'étudier la différence, et pour
 cela on vous demande d'écrire une fonction
 
 \begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{    diff(extended, abbreviated)}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{diff(extended, abbreviated)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -96,7 +94,7 @@ qui retourne un tuple à trois éléments~:
   ces bateaux).
 \end{itemize}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} le résultat attendu}
         \PY{n}{result} \PY{o}{=} \PY{n}{exo\PYZus{}diff}\PY{o}{.}\PY{n}{resultat}\PY{p}{(}\PY{n}{extended}\PY{p}{,} \PY{n}{abbreviated}\PY{p}{)}
         
@@ -119,7 +117,7 @@ qui retourne un tuple à trois éléments~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 ---------- Les entrées
 Dans extended: 4 entrées
 Dans abbreviated: 4 entrées
@@ -127,13 +125,12 @@ Dans abbreviated: 4 entrées
 Dans extended mais pas dans abbreviated 2
 Dans les deux 2
 Dans abbreviated mais pas dans extended 2
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{votre-code}{%
 \subsubsection{Votre code}\label{votre-code}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{k}{def} \PY{n+nf}{diff}\PY{p}{(}\PY{n}{extended}\PY{p}{,} \PY{n}{abbreviated}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre\PYZus{}code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
         
@@ -148,7 +145,7 @@ Dans abbreviated mais pas dans extended 2
     \hypertarget{validation}{%
 \subsubsection{Validation}\label{validation}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -175,7 +172,7 @@ plus complets~:
 
 Ce qui donnerait en Python~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} load data from files}
         \PY{k+kn}{import} \PY{n+nn}{json}
         
@@ -187,7 +184,7 @@ Ce qui donnerait en Python~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} le résultat de votre fonction sur des données plus vastes}
         \PY{c+c1}{\PYZsh{} attention, show\PYZus{}result fait des hypothèses sur le type de votre résultat}
         \PY{c+c1}{\PYZsh{} aussi si vous essayez d\PYZsq{}exécuter ceci avec comme fonction diff}
@@ -198,7 +195,7 @@ Ce qui donnerait en Python~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 ---------- Les entrées
 Dans extended: 205 entrées
 Dans abbreviated: 200 entrées
@@ -206,8 +203,7 @@ Dans abbreviated: 200 entrées
 Dans extended mais pas dans abbreviated 70
 Dans les deux 132
 Dans abbreviated mais pas dans extended 68
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Je signale enfin à propos de ces données plus complètes que~:
 

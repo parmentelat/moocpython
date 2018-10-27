@@ -32,63 +32,60 @@ mémoire, on souhaiterait pouvoir créer un itérateur directement à partir
 d'une compréhension de liste. C'est possible et très facile en Python.
 Il suffit de remplacer les crochets par des parenthèses, regardons cela.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} c\PYZsq{}est une compréhension de liste}
         \PY{n}{comprehension} \PY{o}{=} \PY{p}{[}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{)} \PY{k}{if} \PY{n}{x}\PY{o}{\PYZpc{}}\PY{k}{17} == 0] 
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{comprehension}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [0, 289, 1156, 2601, 4624, 7225]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} c\PYZsq{}est une expression génératrice}
         \PY{n}{generator} \PY{o}{=} \PY{p}{(}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{)} \PY{k}{if} \PY{n}{x}\PY{o}{\PYZpc{}}\PY{k}{17} == 0) 
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{generator}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-<generator object <genexpr> at 0x1101c7ed0>
-
-    \end{Verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+<generator object <genexpr> at 0x10e385ed0>
+\end{Verbatim}
 
     Ensuite pour utiliser une expression génératrice, c'est très simple, on
 l'utilise comme n'importe quel itérateur.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{generator} \PY{o+ow}{is} \PY{n+nb}{iter}\PY{p}{(}\PY{n}{generator}\PY{p}{)} \PY{c+c1}{\PYZsh{} generator est bien un itérateur}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}3}]:} True
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} affiche les premiers carrés des multiples de 17}
         \PY{k}{for} \PY{n}{count}\PY{p}{,} \PY{n}{carre} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{generator}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Contenu de generator après }\PY{l+s+si}{\PYZob{}count\PYZcb{}}\PY{l+s+s1}{ itérations : }\PY{l+s+si}{\PYZob{}carre\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Contenu de generator après 1 itérations : 0
 Contenu de generator après 2 itérations : 289
 Contenu de generator après 3 itérations : 1156
 Contenu de generator après 4 itérations : 2601
 Contenu de generator après 5 itérations : 4624
 Contenu de generator après 6 itérations : 7225
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Avec une expression génératrice on n'est plus limité comme avec les
 compréhensions par le nombre d'éléments~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} trop grand pour une compréhension,}
         \PY{c+c1}{\PYZsh{} mais on peut créer le générateur sans souci}
         \PY{n}{generator} \PY{o}{=} \PY{p}{(}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{18}\PY{p}{)} \PY{k}{if} \PY{n}{x}\PY{o}{\PYZpc{}}\PY{k}{17}==0) 
@@ -111,10 +108,9 @@ compréhensions par le nombre d'éléments~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 \{617721316, 4536561316, 3617541316, 311381316\}
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{compluxe9ment---niveau-intermuxe9diaire}{%
 \subsection{Complément - niveau
@@ -134,41 +130,40 @@ retourne les premiers entiers.
 Ou plutôt, c'est \textbf{comme si} elle retournait les premiers entiers
 lorsqu'on fait une boucle \texttt{for}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} on peut parcourir un range comme si c\PYZsq{}était une liste}
         \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{n}{i}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 0
 1
 2
 3
-
-    \end{Verbatim}
+\end{Verbatim}
 
     mais en réalité le résultat de \texttt{range} exhibe un comportement un
 peu étrange, en ce sens que~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} mais en fait la fonction range ne renvoie PAS une liste (depuis Python 3)}
         \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}7}]:} range(0, 4)
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} et en effet ce n\PYZsq{}est pas une liste}
         \PY{n+nb}{isinstance}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{n+nb}{list}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}8}]:} False
 \end{Verbatim}
             
@@ -197,7 +192,7 @@ préférable d'utiliser une \textbf{expression génératrice}.
 
 Voyons tout de suite sur un exemple à quoi cela ressemblerait.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{n}{depart} \PY{o}{=} \PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}
         \PY{c+c1}{\PYZsh{} dans le premier calcul de arrivee }
         \PY{c+c1}{\PYZsh{} pour rappel, la compréhension est entre []}
@@ -209,29 +204,28 @@ Voyons tout de suite sur un exemple à quoi cela ressemblerait.
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}9}]:} <generator object <genexpr> at 0x110252138>
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} <generator object <genexpr> at 0x10e411138>
 \end{Verbatim}
             
     Comme pour \texttt{range}, le résultat de l'expression génératrice ne se
 laisse pas regarder avec \texttt{print}, mais comme pour \texttt{range},
 on peut itérer sur le résultat~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{k}{for} \PY{n}{x}\PY{p}{,} \PY{n}{y} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n}{depart}\PY{p}{,} \PY{n}{arrivee2}\PY{p}{)}\PY{p}{:}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{x=}\PY{l+s+si}{\PYZob{}x\PYZcb{}}\PY{l+s+s2}{ =\PYZgt{} y=}\PY{l+s+si}{\PYZob{}y\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 x=-5 => y=25
 x=-3 => y=9
 x=0 => y=0
 x=3 => y=9
 x=5 => y=25
 x=10 => y=100
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Il n'est pas \textbf{toujours} possible de remplacer une compréhension
 par une expression génératrice, mais c'est \textbf{souvent souhaitable},
@@ -243,7 +237,7 @@ d'itérer sur les résultats.
 comme toujours si on essaie de faire plusieurs fois une boucle sur le
 même itérateur, il ne se passe plus rien, car l'itérateur a été épuisé~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{k}{for} \PY{n}{x}\PY{p}{,} \PY{n}{y} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n}{depart}\PY{p}{,} \PY{n}{arrivee2}\PY{p}{)}\PY{p}{:}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{x=}\PY{l+s+si}{\PYZob{}x\PYZcb{}}\PY{l+s+s2}{ =\PYZgt{} y=}\PY{l+s+si}{\PYZob{}y\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}

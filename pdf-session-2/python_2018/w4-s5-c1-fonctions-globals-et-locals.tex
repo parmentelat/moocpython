@@ -24,20 +24,20 @@ Cela est fait grâce aux fonctions \emph{built-in} \texttt{globals} et
 \texttt{locals}, que nous allons commencer par essayer sur quelques
 exemples. Nous avons pour cela écrit un module dédié~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{env\PYZus{}locals\PYZus{}globals}
 \end{Verbatim}
 
 
     dont voici le code
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{modtools} \PY{k}{import} \PY{n}{show\PYZus{}module}
         \PY{n}{show\PYZus{}module}\PY{p}{(}\PY{n}{env\PYZus{}locals\PYZus{}globals}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Fichier /Users/tparment/git/flotpython/modules/env\_locals\_globals.py
 ----------------------------------------
 01|"""
@@ -64,17 +64,16 @@ Fichier /Users/tparment/git/flotpython/modules/env\_locals\_globals.py
 22|
 23|class Foo:
 24|    "une classe vide"
-
-    \end{Verbatim}
+\end{Verbatim}
 
     et voici ce qu'on obtient lorsqu'on appelle
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{env\PYZus{}locals\PYZus{}globals}\PY{o}{.}\PY{n}{temoin}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 -------------------- globals:
                  Foo → type
         \_\_builtins\_\_ → dict
@@ -91,8 +90,7 @@ Fichier /Users/tparment/git/flotpython/modules/env\_locals\_globals.py
 -------------------- locals:
                    x → int
                    y → int
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{interpruxe9tation}{%
 \subsubsection{Interprétation}\label{interpruxe9tation}}
@@ -117,18 +115,18 @@ Fichier /Users/tparment/git/flotpython/modules/env\_locals\_globals.py
   points d'une même fonction.
 \end{itemize}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{k+kn}{import} \PY{n+nn}{env\PYZus{}locals}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} le code de ce module }
         \PY{n}{show\PYZus{}module}\PY{p}{(}\PY{n}{env\PYZus{}locals}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Fichier /Users/tparment/git/flotpython/modules/env\_locals.py
 ----------------------------------------
 01|"""
@@ -148,16 +146,15 @@ Fichier /Users/tparment/git/flotpython/modules/env\_locals.py
 15|        for j in (1,):
 16|            print(20*'-', 'locals - boucles for:')
 17|            display\_env(locals())
-18|            
+18|
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{env\PYZus{}locals}\PY{o}{.}\PY{n}{temoin}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 -------------------- locals - entrée:
                    x → int
                    y → int
@@ -166,8 +163,7 @@ Fichier /Users/tparment/git/flotpython/modules/env\_locals.py
                    j → int
                    x → int
                    y → int
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{compluxe9ment---niveau-avancuxe9}{%
 \subsection{Complément - niveau
@@ -195,31 +191,31 @@ exemples ci-dessous.
 
     On peut utiliser \texttt{format} qui s'attend à quelque chose comme~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}nom\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{nom}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Dupont}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}7}]:} 'Dupont'
 \end{Verbatim}
             
     que l'on peut obtenir de manière équivalente, en anticipant sur la
 prochaine vidéo, avec le passage d'arguments en \texttt{**}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}nom\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{o}{*}\PY{o}{*}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{nom}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Dupont}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}8}]:} 'Dupont'
 \end{Verbatim}
             
     En versant la fonction \texttt{locals} dans cette formule on obtient une
 forme relativement élégante
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{k}{def} \PY{n+nf}{format\PYZus{}et\PYZus{}locals}\PY{p}{(}\PY{n}{nom}\PY{p}{,} \PY{n}{prenom}\PY{p}{,} \PY{n}{civilite}\PY{p}{,} \PY{n}{telephone}\PY{p}{)}\PY{p}{:}
             \PY{k}{return} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}civilite\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZob{}prenom\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZob{}nom\PYZcb{}}\PY{l+s+s2}{ : Poste }\PY{l+s+si}{\PYZob{}telephone\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{o}{*}\PY{o}{*}\PY{n+nb}{locals}\PY{p}{(}\PY{p}{)}\PY{p}{)}
         
@@ -227,7 +223,7 @@ forme relativement élégante
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}9}]:} 'Mr Jean Dupont : Poste 7748'
 \end{Verbatim}
             
@@ -238,7 +234,7 @@ forme relativement élégante
     De manière similaire, avec l'opérateur \texttt{\%} - dont nous rappelons
 qu'il est obsolète - on peut écrire
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{k}{def} \PY{n+nf}{pourcent\PYZus{}et\PYZus{}locals}\PY{p}{(}\PY{n}{nom}\PY{p}{,} \PY{n}{prenom}\PY{p}{,} \PY{n}{civilite}\PY{p}{,} \PY{n}{telephone}\PY{p}{)}\PY{p}{:}
              \PY{k}{return} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}(civilite)s}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZpc{}(prenom)s}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZpc{}(nom)s}\PY{l+s+s2}{ : Poste }\PY{l+s+si}{\PYZpc{}(telephone)s}\PY{l+s+s2}{\PYZdq{}}\PY{o}{\PYZpc{}}\PY{k}{locals}()
          
@@ -246,7 +242,7 @@ qu'il est obsolète - on peut écrire
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}10}]:} 'Mr Jean Dupont : Poste 7748'
 \end{Verbatim}
             
@@ -257,7 +253,7 @@ qu'il est obsolète - on peut écrire
     Pour rappel si vous disposez de python 3.6, vous pouvez alors écrire
 simplement - et sans avoir recours, donc, à \texttt{locals()} ou autre~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} attention ceci nécessite python\PYZhy{}3.6}
          \PY{k}{def} \PY{n+nf}{avec\PYZus{}f\PYZus{}string}\PY{p}{(}\PY{n}{nom}\PY{p}{,} \PY{n}{prenom}\PY{p}{,} \PY{n}{civilite}\PY{p}{,} \PY{n}{telephone}\PY{p}{)}\PY{p}{:}
              \PY{k}{return} \PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}civilite\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZob{}prenom\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZob{}nom\PYZcb{}}\PY{l+s+s2}{ : Poste }\PY{l+s+si}{\PYZob{}telephone\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}
@@ -266,7 +262,7 @@ simplement - et sans avoir recours, donc, à \texttt{locals()} ou autre~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}11}]:} 'Mr Jean Dupont : Poste 7748'
 \end{Verbatim}
             

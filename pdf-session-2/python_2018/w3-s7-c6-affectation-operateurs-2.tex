@@ -36,7 +36,7 @@ que les listes le sont. Du coup le comportement de \texttt{+=} est
 ou plus généralement selon qu'on l'invoque sur un type mutable ou non.
 Voyons cela sur des exemples très simples~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} Premier exemple avec un entier}
         
         \PY{c+c1}{\PYZsh{} on commence avec une référence partagée}
@@ -45,11 +45,11 @@ Voyons cela sur des exemples très simples~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}1}]:} True
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} on utilise += sur une des deux variables}
         \PY{n}{a} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
         
@@ -62,14 +62,13 @@ Voyons cela sur des exemples très simples~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 4
 3
 False
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} Deuxième exemple, cette fois avec une liste}
         
         \PY{c+c1}{\PYZsh{} la même référence partagée}
@@ -78,11 +77,11 @@ False
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}3}]:} True
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} pareil, on fait += sur une des variables}
         \PY{n}{a} \PY{o}{+}\PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
         
@@ -94,12 +93,11 @@ False
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [1]
 [1]
 True
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Vous voyez donc que la sémantique de \texttt{+=} (c'est bien entendu le
 cas pour toutes les autres formes d'instructions qui combinent
@@ -118,7 +116,7 @@ ne recommande pas de l'utiliser.
     Nous avions dit en première semaine, et en première approximation, que~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \NormalTok{x }\OperatorTok{+=}\NormalTok{ y}
 \end{Highlighting}
 \end{Shaded}
@@ -126,7 +124,7 @@ ne recommande pas de l'utiliser.
 était équivalent à~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \NormalTok{x }\OperatorTok{=}\NormalTok{ x }\OperatorTok{+}\NormalTok{ y}
 \end{Highlighting}
 \end{Shaded}
@@ -134,7 +132,7 @@ ne recommande pas de l'utiliser.
     Au vu de ce qui précède, on voit que ce n'est \textbf{pas tout à fait
 exact}, puisque~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} si on fait x += y sur une liste}
         \PY{c+c1}{\PYZsh{} on fait un effet de bord sur la liste}
         \PY{c+c1}{\PYZsh{} comme on vient de le voir}
@@ -146,13 +144,12 @@ exact}, puisque~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-avant 4569334792
-après 4569334792
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+avant 4360107464
+après 4360107464
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} alors que si on fait x = x + y sur une liste}
         \PY{c+c1}{\PYZsh{} on crée un nouvel objet liste}
         
@@ -163,11 +160,10 @@ après 4569334792
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-avant 4569333896
-après 4569183240
-
-    \end{Verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+avant 4360106312
+après 4360106504
+\end{Verbatim}
 
     Vous voyez donc que vis-à-vis des références partagées, ces deux façons
 de faire mènent à un résultat différent.

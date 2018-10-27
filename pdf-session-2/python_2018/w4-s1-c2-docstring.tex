@@ -20,7 +20,7 @@ fonction}\label{comment-documenter-une-fonction}}
     Pour rappel, il est recommandé de toujours documenter les fonctions en
 ajoutant une chaîne comme première instruction.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k}{def} \PY{n+nf}{flatten}\PY{p}{(}\PY{n}{containers}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{returns a list of the elements of the elements in containers}\PY{l+s+s2}{\PYZdq{}}
             \PY{k}{return} \PY{p}{[}\PY{n}{element} \PY{k}{for} \PY{n}{container} \PY{o+ow}{in} \PY{n}{containers} \PY{k}{for} \PY{n}{element} \PY{o+ow}{in} \PY{n}{container}\PY{p}{]}
@@ -29,28 +29,26 @@ ajoutant une chaîne comme première instruction.
 
     Cette information peut être consultée, soit interactivement~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{help}\PY{p}{(}\PY{n}{flatten}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Help on function flatten in module \_\_main\_\_:
 
 flatten(containers)
     returns a list of the elements of the elements in containers
-
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Soit programmativement~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{flatten}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}doc\PYZus{}\PYZus{}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}3}]:} 'returns a list of the elements of the elements in containers'
 \end{Verbatim}
             
@@ -69,7 +67,7 @@ Dans ce cas le format est très flexible, car le \emph{docstring} est
 normalisé, comme on le voit sur ces deux exemples, où le rendu final est
 identique~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} un style de docstring multi\PYZhy{}lignes}
         \PY{k}{def} \PY{n+nf}{flatten}\PY{p}{(}\PY{n}{containers}\PY{p}{)}\PY{p}{:}
             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
@@ -83,18 +81,16 @@ identique~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Help on function flatten in module \_\_main\_\_:
 
 flatten(containers)
     provided that containers is a list (or more generally an iterable)
     of elements that are themselves iterables, this function
     returns a list of the items in these elements
+\end{Verbatim}
 
-
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} un autre style, qui donne le même résultat}
         \PY{k}{def} \PY{n+nf}{flatten}\PY{p}{(}\PY{n}{containers}\PY{p}{)}\PY{p}{:}
             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
@@ -108,16 +104,14 @@ flatten(containers)
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Help on function flatten in module \_\_main\_\_:
 
 flatten(containers)
     provided that containers is a list (or more generally an iterable)
     of elements that are themselves iterables, this function
     returns a list of the items in these elements
-
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{quelle-information}{%
 \subsubsection{Quelle information ?}\label{quelle-information}}
@@ -136,11 +130,12 @@ function/method parameters (which can be obtained by introspection).
 Don't do:
 \end{quote}
 
-\begin{verbatim}
-def function(a, b):
-    """function(a, b) -> list"""
- 
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\KeywordTok{def}\NormalTok{ function(a, b):}
+    \CommentTok{"""function(a, b) -> list"""}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{quote}
 \textless{}\ldots{}\textgreater{}
@@ -150,10 +145,12 @@ def function(a, b):
 The preferred form for such a docstring would be something like:
 \end{quote}
 
-\begin{verbatim}
-def function(a, b):
-    """Do X and return a list."""
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\KeywordTok{def}\NormalTok{ function(a, b):}
+    \CommentTok{"""Do X and return a list."""}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{quote}
 (Of course ``Do X'' should be replaced by a useful description!)

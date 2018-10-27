@@ -115,7 +115,7 @@ ces tableaux. Par conséquent, \texttt{pandas} repose entièrement sur
 recommande donc d'utiliser au moins \texttt{pandas} dans sa version
 0.21. Voici les versions que l'on utilise ici.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{numpy version }\PY{l+s+si}{\PYZob{}np.\PYZus{}\PYZus{}version\PYZus{}\PYZus{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
         
@@ -124,11 +124,10 @@ recommande donc d'utiliser au moins \texttt{pandas} dans sa version
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 numpy version 1.14.5
 pandas version 0.23.3
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Il est important de comprendre que le monde de la data science en Python
 suit un autre paradigme que Python. Là où Python favorise la clarté, la
@@ -159,7 +158,7 @@ petit exemple. Nous allons revenir sur les notions utilisées dans cet
 exemple, notre but ici est de vous montrer l'utilité de \texttt{pandas}
 sur un exemple.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} seaborn est un module pour dessiner des courbes qui améliore}
         \PY{c+c1}{\PYZsh{} sensiblement matplotlib, mais ça n\PYZsq{}est pas ce qui nous intéresse ici.}
         \PY{c+c1}{\PYZsh{} seaborn vient avec quelques jeux de données sur lesquels on peut jouer.}
@@ -172,18 +171,18 @@ sur un exemple.
 
     \texttt{load\_dataset} retourne une \texttt{DataFrame}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n+nb}{type}\PY{p}{(}\PY{n}{tips}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}3}]:} pandas.core.frame.DataFrame
 \end{Verbatim}
             
     Regardons maintenant à quoi ressemble une \texttt{DataFrame}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} voici à quoi ressemblent ces données. On a la note totale (total\PYZus{}bill),}
         \PY{c+c1}{\PYZsh{} le pourboire (tip), le sexe de la personne qui a donné le pourboire,}
         \PY{c+c1}{\PYZsh{} si la personne est fumeur ou non fumeur (smoker), le jour du repas,}
@@ -192,7 +191,7 @@ sur un exemple.
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}4}]:}    total\_bill   tip     sex smoker  day    time  size
         0       16.99  1.01  Female     No  Sun  Dinner     2
         1       10.34  1.66    Male     No  Sun  Dinner     3
@@ -206,13 +205,13 @@ indexées, à la fois par des labels sur les colonnes, et par un rang
 entier sur les lignes. C'est l'utilisation de ces index qui va nous
 permettre de faire des requêtes expressives sur ces données.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} commençons par une rapide description statistique de ces données}
         \PY{n}{tips}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:}        total\_bill         tip        size
         count  244.000000  244.000000  244.000000
         mean    19.785943    2.998279    2.569672
@@ -224,26 +223,26 @@ permettre de faire des requêtes expressives sur ces données.
         max     50.810000   10.000000    6.000000
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} prenons la moyenne par sexe}
         \PY{n}{tips}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:}         total\_bill       tip      size
         sex                                   
         Male     20.744076  3.089618  2.630573
         Female   18.056897  2.833448  2.459770
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} et maintenant la moyenne par jour}
         \PY{n}{tips}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{day}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}7}]:}       total\_bill       tip      size
         day                                 
         Thur   17.682742  2.771452  2.451613
@@ -252,13 +251,13 @@ permettre de faire des requêtes expressives sur ces données.
         Sun    21.410000  3.255132  2.842105
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} et pour finir la moyenne par moment du repas}
         \PY{n}{tips}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{time}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}8}]:}         total\_bill       tip      size
         time                                  
         Lunch    17.168676  2.728088  2.411765

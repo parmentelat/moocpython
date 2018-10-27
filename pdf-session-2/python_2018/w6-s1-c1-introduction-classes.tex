@@ -40,7 +40,7 @@ classe \texttt{Matrix2}} pour mettre en action les mécanismes de base
 des classes de python. Naturellement, il s'agit d'une implémentation
 jouet.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k}{class} \PY{n+nc}{Matrix2}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Une implémentation sommaire de matrice carrée 2x2}\PY{l+s+s2}{\PYZdq{}}
         
@@ -68,12 +68,12 @@ jouet.
     Pour commencer, vous remarquez qu'on peut attacher à cette classe un
 \emph{docstring} comme pour les fonctions
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{help}\PY{p}{(}\PY{n}{Matrix2}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Help on class Matrix2 in module \_\_main\_\_:
 
 class Matrix2(builtins.object)
@@ -97,9 +97,7 @@ class Matrix2(builtins.object)
  |  
  |  \_\_weakref\_\_
  |      list of weak references to the object (if defined)
-
-
-    \end{Verbatim}
+\end{Verbatim}
 
     La classe définit donc deux méthodes, nommées \texttt{\_\_init\_\_} et
 \texttt{determinant}.
@@ -115,16 +113,15 @@ spéciale}. En l'occurrence, il s'agit de ce qu'on appelle le
 appelé lorsqu'on crée une instance. Voyons cela tout de suite sur un
 exemple.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{matrice} \PY{o}{=} \PY{n}{Matrix2}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{matrice}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-<\_\_main\_\_.Matrix2 object at 0x10f985fd0>
-
-    \end{Verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+<\_\_main\_\_.Matrix2 object at 0x1089c9e10>
+\end{Verbatim}
 
     Vous remarquez tout d'abord que \texttt{\_\_init\_\_} s'attend à
 recevoir \emph{5 arguments}, mais que nous appelons \texttt{Matrix2}
@@ -158,12 +155,12 @@ autrement, on évite de faire trop de traitements dans le constructeur.
     La classe définit aussi la méthode \texttt{determinant}, qu'on
 utiliserait comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{matrice}\PY{o}{.}\PY{n}{determinant}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}4}]:} -3
 \end{Verbatim}
             
@@ -184,12 +181,12 @@ l'interpréteur python à \texttt{determinant} est l'objet
 En fait on aurait pu aussi bien écrire, de manière parfaitement
 équivalente~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{Matrix2}\PY{o}{.}\PY{n}{determinant}\PY{p}{(}\PY{n}{matrice}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:} -3
 \end{Verbatim}
             
@@ -320,7 +317,7 @@ les 4 attributs nommés \texttt{self.a11}, \texttt{self.a12}, etc., qui
 n'étaient pas très extensibles, par un seul attribut \texttt{a} qui
 regroupe tous les coefficients de la matrice dans un seul tuple.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{k}{class} \PY{n+nc}{Matrix2}\PY{p}{:}
             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Une deuxième implémentation, tout aussi}
         \PY{l+s+sd}{    sommaire, mais différente, de matrice carrée 2x2\PYZdq{}\PYZdq{}\PYZdq{}}
@@ -344,36 +341,34 @@ regroupe tous les coefficients de la matrice dans un seul tuple.
     Grâce à l'\textbf{encapsulation}, on peut continuer à utiliser la classe
 exactement de la même manière~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{n}{matrice} \PY{o}{=} \PY{n}{Matrix2}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Determinant =}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{matrice}\PY{o}{.}\PY{n}{determinant}\PY{p}{(}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Determinant = -3
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Et en prime, grâce à la \textbf{résolution dynamique de méthode}, et
 parce que dans cette seconde implémentation on a défini une autre
 méthode spéciale \texttt{\_\_repr\_\_}, nous avons maintenant une
 impression beaucoup plus lisible de l'objet \texttt{matrice}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{matrice}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 <<mat-2x2 (1, 2, 2, 1)>>
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Ce format d'impression reste d'ailleurs valable dans l'impression
 d'objets plus compliqués, comme par exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} on profite de ce nouveau format d\PYZsq{}impression même si on met}
         \PY{c+c1}{\PYZsh{} par exemple un objet Matrix2 à l\PYZsq{}intérieur d\PYZsq{}une liste}
         \PY{n}{composite} \PY{o}{=} \PY{p}{[}\PY{n}{matrice}\PY{p}{,} \PY{k+kc}{None}\PY{p}{,} \PY{n}{Matrix2}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{]}
@@ -381,10 +376,9 @@ d'objets plus compliqués, comme par exemple~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 composite=[<<mat-2x2 (1, 2, 2, 1)>>, None, <<mat-2x2 (1, 0, 0, 1)>>]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Cela est possible parce que le code de \texttt{print} envoie la méthode
 \texttt{\_\_repr\_\_} sur les objets qu'elle parcourt. Le langage

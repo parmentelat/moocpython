@@ -68,9 +68,11 @@ intermédiaires sur disque.
 
     Ainsi par exemple lorsque l'on écrit~:
 
-\begin{verbatim}
-    $ monprogramme < fichier_entree > fichier_sortie
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ }\ExtensionTok{monprogramme} \OperatorTok{<}\NormalTok{ fichier_entree }\OperatorTok{>}\NormalTok{ fichier_sortie}
+\end{Highlighting}
+\end{Shaded}
 
 Les deux fichiers en question sont ouverts par le \emph{shell}, et
 passés à \texttt{monprogramme} - que celui-ci soit écrit en C, en Python
@@ -84,19 +86,18 @@ ou en Java - sous la forme des fichiers \texttt{stdin} et
     L'interpréteur Python vous expose ces trois fichiers sous la forme
 d'attributs du module \texttt{sys}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{sys}
         \PY{k}{for} \PY{n}{channel} \PY{o+ow}{in} \PY{p}{(}\PY{n}{sys}\PY{o}{.}\PY{n}{stdin}\PY{p}{,} \PY{n}{sys}\PY{o}{.}\PY{n}{stdout}\PY{p}{,} \PY{n}{sys}\PY{o}{.}\PY{n}{stderr}\PY{p}{)}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{n}{channel}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 <\_io.TextIOWrapper name='<stdin>' mode='r' encoding='UTF-8'>
-<ipykernel.iostream.OutStream object at 0x106ac7588>
-<ipykernel.iostream.OutStream object at 0x106ac7a90>
-
-    \end{Verbatim}
+<ipykernel.iostream.OutStream object at 0x10697d7b8>
+<ipykernel.iostream.OutStream object at 0x10697d898>
+\end{Verbatim}
 
     Dans le contexte du notebook vous pouvez constater que les deux flux de
 sortie sont implémentés comme des classes spécifiques à IPython. Si vous
@@ -104,7 +105,7 @@ exécutez ce code localement dans votre ordinateur vous allez sans doute
 obtenir quelque chose comme~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \OperatorTok{<}\NormalTok{_io.TextIOWrapper name}\OperatorTok{=}\StringTok{'<stdin>'}\NormalTok{ mode}\OperatorTok{=}\StringTok{'r'}\NormalTok{ encoding}\OperatorTok{=}\StringTok{'UTF-8'}\OperatorTok{>}
 \OperatorTok{<}\NormalTok{_io.TextIOWrapper name}\OperatorTok{=}\StringTok{'<stdout>'}\NormalTok{ mode}\OperatorTok{=}\StringTok{'w'}\NormalTok{ encoding}\OperatorTok{=}\StringTok{'UTF-8'}\OperatorTok{>}
 \OperatorTok{<}\NormalTok{_io.TextIOWrapper name}\OperatorTok{=}\StringTok{'<stderr>'}\NormalTok{ mode}\OperatorTok{=}\StringTok{'w'}\NormalTok{ encoding}\OperatorTok{=}\StringTok{'UTF-8'}\OperatorTok{>}
@@ -123,7 +124,7 @@ fichier, on peut lui faire référencer un autre objet fichier et ainsi
 rediriger depuis notre programme tous les sorties, qui sinon iraient sur
 le terminal, vers un fichier de notre choix~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} ici je fais exprès de ne pas utiliser un `with`}
         \PY{c+c1}{\PYZsh{} car très souvent les deux redirections apparaissent}
         \PY{c+c1}{\PYZsh{} dans des fonctions différentes}
@@ -147,24 +148,21 @@ le terminal, vers un fichier de notre choix~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 sur le terminal
 de nouveau sur le terminal
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} et en effet, dans le fichier on a bien}
         \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ma\PYZus{}sortie.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{check}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{n}{check}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 dans le fichier
-
-
-    \end{Verbatim}
+\end{Verbatim}
 
 
     % Add a bibliography block to the postdoc

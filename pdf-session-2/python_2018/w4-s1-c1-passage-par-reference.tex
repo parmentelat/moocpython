@@ -16,7 +16,7 @@ intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
     Entre le code qui appelle une fonction et le code de la fonction
 elle-même
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k}{def} \PY{n+nf}{ma\PYZus{}fonction}\PY{p}{(}\PY{n}{dans\PYZus{}fonction}\PY{p}{)}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{n}{dans\PYZus{}fonction}\PY{p}{)}
             
@@ -25,10 +25,9 @@ elle-même
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 ['texte']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     on peut se demander quelle est exactement la nature de la relation entre
 l'appelant et l'appelé, c'est-à-dire ici \texttt{dans\_appelant} et
@@ -63,13 +62,13 @@ référence}\label{python-fait-du-passage-par-ruxe9fuxe9rence}}
 modes. En Python, tous les passages de paramètres se font \textbf{par
 référence}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} chargeons la magie pour pythontutor}
         \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} ipythontutor
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -85,7 +84,7 @@ référence}.
     Ce qui signifie qu'on peut voir le code ci-dessus comme étant - pour
 simplifier - équivalent à ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{dans\PYZus{}appelant} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{texte}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
         
         \PY{c+c1}{\PYZsh{} ma\PYZus{}fonction (dans\PYZus{}appelant)}
@@ -95,16 +94,15 @@ simplifier - équivalent à ceci~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 ['texte']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     On peut le voir encore d'une autre façon en instrumentant le code comme
 ceci -- on rappelle que la fonction built-in \texttt{id} retourne
 l'adresse mémoire d'un objet~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{k}{def} \PY{n+nf}{ma\PYZus{}fonction}\PY{p}{(}\PY{n}{dans\PYZus{}fonction}\PY{p}{)}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dans ma\PYZus{}fonction}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{dans\PYZus{}fonction} \PY{p}{,} \PY{n+nb}{id}\PY{p}{(}\PY{n}{dans\PYZus{}fonction}\PY{p}{)}\PY{p}{)}
             
@@ -114,11 +112,10 @@ l'adresse mémoire d'un objet~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-dans appelant    ['texte'] 4459729736
-dans ma\_fonction ['texte'] 4459729736
-
-    \end{Verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+dans appelant    ['texte'] 4474811464
+dans ma\_fonction ['texte'] 4474811464
+\end{Verbatim}
 
     \hypertarget{des-ruxe9fuxe9rences-partaguxe9es}{%
 \subsubsection{Des références
@@ -128,7 +125,7 @@ partagées}\label{des-ruxe9fuxe9rences-partaguxe9es}}
 exactement comme l'affectation, et que tout ce que nous avons vu au
 sujet des références partagées s'applique exactement à l'identique~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} on ne peut pas modifier un immuable dans une fonction}
         \PY{k}{def} \PY{n+nf}{increment}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
             \PY{n}{n} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
@@ -139,12 +136,11 @@ sujet des références partagées s'applique exactement à l'identique~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 10
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} on peut par contre ajouter dans une liste}
         \PY{k}{def} \PY{n+nf}{insert}\PY{p}{(}\PY{n}{liste}\PY{p}{,} \PY{n}{valeur}\PY{p}{)}\PY{p}{:}
             \PY{n}{liste}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{valeur}\PY{p}{)}
@@ -155,10 +151,9 @@ sujet des références partagées s'applique exactement à l'identique~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 ['un', 'texte']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Pour cette raison, il est important de bien préciser, quand vous
 documentez une fonction, si elle fait des effets de bord sur ses

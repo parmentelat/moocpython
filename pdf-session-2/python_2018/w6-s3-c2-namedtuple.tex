@@ -33,7 +33,7 @@ peut utiliser~:
     \hypertarget{un-dictionnaire}{%
 \subparagraph{un dictionnaire}\label{un-dictionnaire}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{n}{p1} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{2}\PY{p}{\PYZcb{}}
         \PY{c+c1}{\PYZsh{} ou de manière équivalente}
         \PY{n}{p1} \PY{o}{=} \PY{n+nb}{dict}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{y}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
@@ -43,7 +43,7 @@ peut utiliser~:
     \hypertarget{ou-une-classe}{%
 \subparagraph{ou une classe}\label{ou-une-classe}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{k}{class} \PY{n+nc}{Point}\PY{p}{:}
             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{:}
                 \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{x} \PY{o}{=} \PY{n}{x}
@@ -73,19 +73,19 @@ module \texttt{collections} nous offre un utilitaire}~:
     \hypertarget{namedtuple}{%
 \subparagraph{\texorpdfstring{\texttt{namedtuple}}{namedtuple}}\label{namedtuple}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{k+kn}{from} \PY{n+nn}{collections} \PY{k}{import} \PY{n}{namedtuple}
 \end{Verbatim}
 
 
     Techniquement, il s'agit d'une fonction~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n+nb}{type}\PY{p}{(}\PY{n}{namedtuple}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}4}]:} function
 \end{Verbatim}
             
@@ -93,7 +93,7 @@ module \texttt{collections} nous offre un utilitaire}~:
 les autres~; par exemple pour créer une classe \texttt{TuplePoint}, on
 ferait~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} on passe à namedtuple}
         \PY{c+c1}{\PYZsh{}  \PYZhy{} le nom du type qu\PYZsq{}on veut créer}
         \PY{c+c1}{\PYZsh{}  \PYZhy{} la liste ordonnée des composants (champs)}
@@ -103,43 +103,43 @@ ferait~:
 
     Et maintenant si je crée un objet~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{p3} \PY{o}{=} \PY{n}{TuplePoint}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} cet objet est un tuple}
         \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{p3}\PY{p}{,} \PY{n+nb}{tuple}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}7}]:} True
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} auquel je peux accéder par index}
         \PY{c+c1}{\PYZsh{} comme un tuple}
         \PY{n}{p3}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}8}]:} 1
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} mais aussi par nom via un attribut}
         \PY{n}{p3}\PY{o}{.}\PY{n}{x}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}9}]:} 1
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} et comme c\PYZsq{}est un tuple il est immuable}
          \PY{k}{try}\PY{p}{:}
              \PY{n}{p3}\PY{o}{.}\PY{n}{x} \PY{o}{=} \PY{l+m+mi}{10}
@@ -148,10 +148,9 @@ ferait~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 OOPS <class 'AttributeError'> can't set attribute
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{uxe0-quoi-uxe7a-sert}{%
 \subsubsection{À quoi ça sert}\label{uxe0-quoi-uxe7a-sert}}
@@ -161,27 +160,27 @@ déjà rencontré un exemple dans le notebook sur le module
 \texttt{pathlib}. En effet le type de retour de la méthode
 \texttt{Path.stat} est un \texttt{namedtuple}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{k+kn}{from} \PY{n+nn}{pathlib} \PY{k}{import} \PY{n}{Path}
          \PY{n}{dot\PYZus{}stat} \PY{o}{=} \PY{n}{Path}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{.}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{stat}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{n}{dot\PYZus{}stat}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}12}]:} os.stat\_result(st\_mode=16877, st\_ino=1808553, st\_dev=16777220, st\_nlink=78, st\_uid=501, st\_gid=20, st\_size=2652, st\_atime=1540558426, st\_mtime=1540558109, st\_ctime=1540558109)
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} os.stat\_result(st\_mode=16877, st\_ino=1808553, st\_dev=16777220, st\_nlink=79, st\_uid=501, st\_gid=20, st\_size=2686, st\_atime=1540645747, st\_mtime=1540645451, st\_ctime=1540645451)
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{dot\PYZus{}stat}\PY{p}{,} \PY{n+nb}{tuple}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}13}]:} True
 \end{Verbatim}
             
@@ -194,24 +193,24 @@ qu'il faut en pratique le donner deux fois. Pour être précis, le
 paramètre qu'on a passé à \texttt{namedtuple} sert à ranger le nom dans
 l'attribut \texttt{\_\_name\_\_} de la classe créée~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{n}{Foo} \PY{o}{=} \PY{n}{namedtuple}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Bar}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{spam}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{eggs}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} Foo est le nom de la variable classe}
          \PY{n}{foo} \PY{o}{=} \PY{n}{Foo}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}16}]:} \PY{c+c1}{\PYZsh{} mais cette classe a son attribut \PYZus{}\PYZus{}name\PYZus{}\PYZus{} mal positionné}
          \PY{n}{Foo}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}name\PYZus{}\PYZus{}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}16}]:} 'Bar'
 \end{Verbatim}
             
@@ -224,7 +223,7 @@ l'attribut \texttt{\_\_name\_\_} de la classe créée~:
 le \texttt{namedtuple} ne semble pas de ce point de vue spécialement
 attractif par rapport à une instance~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}17}]:} \PY{k+kn}{import} \PY{n+nn}{sys}
          
          \PY{c+c1}{\PYZsh{} p1 = dict / p2 = instance / p3 = namedtuple}
@@ -234,12 +233,11 @@ attractif par rapport à une instance~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 240
 56
 64
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{duxe9finir-des-muxe9thodes-sur-un-namedtuple}{%
 \subsubsection{\texorpdfstring{Définir des méthodes sur un
@@ -255,7 +253,7 @@ Voyons ici comment on pourrait tirer parti d'un \texttt{namedtuple} pour
 refaire proprement notre classe \texttt{Point2} - souvenez-vous, il
 s'agissait de rechercher dans un ensemble de points.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}18}]:} \PY{n}{Point2} \PY{o}{=} \PY{n}{namedtuple}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Point2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
@@ -265,7 +263,7 @@ petite gymnastique pour redéfinir les méthodes spéciales sur la classe
 \texttt{Point2}. Nous allons utiliser l'héritage pour arriver au même
 résultat~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} ce code est très proche du code utilisé dans le précédent complément}
          \PY{k}{class} \PY{n+nc}{Point2}\PY{p}{(}\PY{n}{namedtuple}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Point2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{:}
          
@@ -282,55 +280,55 @@ résultat~:
 
     Avec ceci en place on peut maintenant faire:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}20}]:} \PY{c+c1}{\PYZsh{} trois points égaux au sens de cette classe}
          \PY{n}{q1}\PY{p}{,} \PY{n}{q2}\PY{p}{,} \PY{n}{q3} \PY{o}{=} \PY{n}{Point2}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{Point2}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{Point2}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}21}]:} \PY{c+c1}{\PYZsh{} deux objets distincts}
          \PY{n}{q1} \PY{o+ow}{is} \PY{n}{q2}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}21}]:} False
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}22}]:} \PY{c+c1}{\PYZsh{} mais égaux}
          \PY{n}{q1} \PY{o}{==} \PY{n}{q2}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}22}]:} True
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}23}]:} \PY{c+c1}{\PYZsh{} ne font qu\PYZsq{}un dans un ensemble}
          \PY{n}{s} \PY{o}{=} \PY{p}{\PYZob{}}\PY{n}{q1}\PY{p}{,} \PY{n}{q2}\PY{p}{\PYZcb{}}
          \PY{n+nb}{len}\PY{p}{(}\PY{n}{s}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}23}]:} 1
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}24}]:} \PY{c+c1}{\PYZsh{} et on peut les trouver}
          \PY{c+c1}{\PYZsh{} par le troisiéme}
          \PY{n}{q3} \PY{o+ow}{in} \PY{n}{s}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}24}]:} True
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}25}]:} \PY{c+c1}{\PYZsh{} et les instances ne sont pas mutables}
          \PY{k}{try}\PY{p}{:}
              \PY{n}{q1}\PY{o}{.}\PY{n}{x} \PY{o}{=} \PY{l+m+mi}{100}
@@ -339,10 +337,9 @@ résultat~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 OOPS <class 'AttributeError'>
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{pour-en-savoir-plus}{%
 \section{Pour en savoir plus}\label{pour-en-savoir-plus}}
@@ -369,7 +366,7 @@ Vous y remarquerez notamment~:
   de semaine.
 \end{itemize}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         

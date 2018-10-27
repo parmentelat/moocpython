@@ -75,12 +75,12 @@ Pour commencer, sélectionnez cette cellule de code avec votre souris, et
 appuyez dans la barre de menu - en haut du notebook, donc - sur celui en
 forme de flèche triangulaire vers la droite (Play)~: 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{l+m+mi}{20} \PY{o}{*} \PY{l+m+mi}{30}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}1}]:} 600
 \end{Verbatim}
             
@@ -117,14 +117,14 @@ essais~; ainsi vous pouvez vous servir du modèle ci-dessous pour
 calculer la racine carrée de 3, ou essayer la fonction sur un nombre
 négatif et voir comment est signalée l'erreur.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} math.sqrt (pour square root) calcule la racine carrée}
         \PY{k+kn}{import} \PY{n+nn}{math}
         \PY{n}{math}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}2}]:} 1.4142135623730951
 \end{Verbatim}
             
@@ -145,24 +145,23 @@ désordre, on obtient naturellement un programme différent.
 
     On le voit sur cet exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{message} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Faites attention à l}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{ordre dans lequel vous évaluez les notebooks}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{message}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Faites attention à l'ordre dans lequel vous évaluez les notebooks
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Si un peu plus loin dans le notebook on fait par exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} ceci a pour effet d\PYZsq{}effacer la variable \PYZsq{}message\PYZsq{}}
         \PY{k}{del} \PY{n}{message}
 \end{Verbatim}

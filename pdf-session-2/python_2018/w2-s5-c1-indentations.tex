@@ -18,7 +18,7 @@ basique}\label{compluxe9ment---niveau-basique}}
     Nous l'avons vu dans la vidéo, la pratique la plus courante est
 d'utiliser systématiquement une indentation de 4 espaces~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} la convention la plus généralement utilisée}
         \PY{c+c1}{\PYZsh{} consiste à utiliser une indentation de 4 espaces}
         \PY{k}{if} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{g}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{egg}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
@@ -28,15 +28,14 @@ d'utiliser systématiquement une indentation de 4 espaces~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 OUI
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Voyons tout de suite comment on pourrait écrire plusieurs tests
 imbriqués~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{entree} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{spam}\PY{l+s+s1}{\PYZsq{}}
         
         \PY{c+c1}{\PYZsh{} pour imbriquer il suffit d\PYZsq{}indenter de 8 espaces}
@@ -57,10 +56,9 @@ imbriqués~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a mais pas b
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Dans cette construction assez simple, remarquez bien \textbf{les deux
 points `:'} à chaque début de bloc, c'est-à-dire à chaque fin de ligne
@@ -119,7 +117,7 @@ valeur de ces tabulations. Aussi il va dans les préférences de
 \texttt{vim}, choisit Tabulation=4, et écrit un programme qu'il voit
 comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{k}{if} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{entree}\PY{p}{:}
             \PY{k}{if} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{entree}\PY{p}{:}
                 \PY{n}{cas11} \PY{o}{=} \PY{k+kc}{True}
@@ -130,16 +128,15 @@ comme ceci~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a mais pas b
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Sauf qu'en fait, il a mis un mélange de tabulations et d'espaces, et en
 fait le fichier contient (avec \texttt{\^{}I} pour tabulation)~:
 
     \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \ControlFlowTok{if} \StringTok{'a'} \KeywordTok{in}\NormalTok{ entree:}
 \OperatorTok{^}\NormalTok{Iif }\StringTok{'b'} \KeywordTok{in}\NormalTok{ entree:}
 \OperatorTok{^}\NormalTok{I}\OperatorTok{^}\NormalTok{Icas11 }\OperatorTok{=} \VariableTok{True}
@@ -156,7 +153,7 @@ avec \texttt{print}. Bernard envoie son code à Alice qui utilise
 tabulation comme 8 caractères. Du coup Alice ``voit'' le code suivant~:
 
     \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \ControlFlowTok{if} \StringTok{'a'} \KeywordTok{in}\NormalTok{ entree:}
         \ControlFlowTok{if} \StringTok{'b'} \KeywordTok{in}\NormalTok{ entree:}
 \NormalTok{                cas11 }\OperatorTok{=} \VariableTok{True}
@@ -214,7 +211,7 @@ Voyons quelques exemples. Tout d'abord le code suivant est
 \textbf{légal}, quoique, redisons-le pour la dernière fois, \textbf{pas
 du tout recommandé}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} code accepté mais pas du tout recommandé}
         \PY{k}{if} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pas du tout recommande}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
           \PY{n}{succes} \PY{o}{=} \PY{k+kc}{True}
@@ -224,10 +221,9 @@ du tout recommandé}~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 OUI
-
-    \end{Verbatim}
+\end{Verbatim}
 
     En effet, les deux blocs (après \texttt{if} et après \texttt{else}) sont
 des blocs distincts, ils sont libres d'utiliser deux indentations
@@ -235,7 +231,7 @@ différentes (ici 2 et 6).
 
     Par contre la construction ci-dessous n'est pas légale~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         

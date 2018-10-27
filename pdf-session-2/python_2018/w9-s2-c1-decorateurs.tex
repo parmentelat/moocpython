@@ -37,7 +37,7 @@ classe}\label{un-duxe9corateur-impluxe9mentuxe9-comme-une-classe}}
     Dans la vidéo on a vu \texttt{NbAppels} pour compter le nombre de fois
 qu'on appelle une fonction. Pour mémoire on avait écrit~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} un rappel du code montré dans la vidéo}
         \PY{k}{class} \PY{n+nc}{NbAppels}\PY{p}{(}\PY{n+nb}{object}\PY{p}{)}\PY{p}{:}
             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{f}\PY{p}{)}\PY{p}{:}
@@ -50,7 +50,7 @@ qu'on appelle une fonction. Pour mémoire on avait écrit~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} nous utilisons ici une implémentation en log(n)}
         \PY{c+c1}{\PYZsh{} de la fonction de fibonacci}
         
@@ -71,29 +71,29 @@ qu'on appelle une fonction. Pour mémoire on avait écrit~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} pour se convaincre que nous sommes bien en log2(n)}
         \PY{k+kn}{from} \PY{n+nn}{math} \PY{k}{import} \PY{n}{log}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{n1} \PY{o}{=} \PY{l+m+mi}{100}
         
         \PY{n}{log}\PY{p}{(}\PY{n}{n1}\PY{p}{)}\PY{o}{/}\PY{n}{log}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}4}]:} 6.643856189774725
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{fibo\PYZus{}log}\PY{p}{(}\PY{n}{n1}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 1-ème appel à fibo\_aux
 2-ème appel à fibo\_aux
 3-ème appel à fibo\_aux
@@ -102,14 +102,13 @@ qu'on appelle une fonction. Pour mémoire on avait écrit~:
 6-ème appel à fibo\_aux
 7-ème appel à fibo\_aux
 8-ème appel à fibo\_aux
+\end{Verbatim}
 
-    \end{Verbatim}
-
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:} 354224848179261915075
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} on multiplie par 2**4 = 16,}
         \PY{c+c1}{\PYZsh{} donc on doit voir 4 appels de plus}
         \PY{n}{n2} \PY{o}{=} \PY{l+m+mi}{1600}
@@ -118,16 +117,16 @@ qu'on appelle une fonction. Pour mémoire on avait écrit~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} 10.643856189774725
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{n}{fibo\PYZus{}log}\PY{p}{(}\PY{n}{n2}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 9-ème appel à fibo\_aux
 10-ème appel à fibo\_aux
 11-ème appel à fibo\_aux
@@ -140,10 +139,9 @@ qu'on appelle une fonction. Pour mémoire on avait écrit~:
 18-ème appel à fibo\_aux
 19-ème appel à fibo\_aux
 20-ème appel à fibo\_aux
+\end{Verbatim}
 
-    \end{Verbatim}
-
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}7}]:} 10733451489189611103121609043038710477166925241925645413424099370355605456852169736033991876014762808340865848447476173426115162172818890323837138136782951865054538417494035229785971002587932638902311416018904156170269354720460896363558168129004231138415225204738582550720791061581463934092726107458349298577292984375276210232582438075
 \end{Verbatim}
             
@@ -164,7 +162,7 @@ décorateur~: une vraie fonction ou une classe de callables.
     \hypertarget{le-code-du-duxe9corateur}{%
 \subparagraph{Le code du décorateur}\label{le-code-du-duxe9corateur}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} une première implémentation de memoize}
         
         \PY{c+c1}{\PYZsh{} un décorateur de fonction}
@@ -206,7 +204,7 @@ décorateur~: une vraie fonction ou une classe de callables.
 s'utiliserait~; il n'y a pas de changement de ce point de vue par
 rapport à l'option développée dans la vidéo~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} créer une fonction décorée}
         \PY{n+nd}{@memoize}
         \PY{k}{def} \PY{n+nf}{fibo\PYZus{}cache}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
@@ -231,12 +229,12 @@ du moins du même ordre de grandeur qu'une addition.
 
 On peut calculer par exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{n}{fibo\PYZus{}cache}\PY{p}{(}\PY{l+m+mi}{300}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}10}]:} 222232244629420445529739893461909967206666939096499764990979600
 \end{Verbatim}
             
@@ -245,12 +243,12 @@ On peut calculer par exemple~:
 On peut naturellement inspecter le cache, qui est rangé dans l'attribut
 \texttt{cache} de l'objet fonction lui-même~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{n+nb}{len}\PY{p}{(}\PY{n}{fibo\PYZus{}cache}\PY{o}{.}\PY{n}{cache}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}11}]:} 301
 \end{Verbatim}
             
@@ -264,7 +262,7 @@ On peut naturellement inspecter le cache, qui est rangé dans l'attribut
 comme si on avait écrit~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \KeywordTok{def}\NormalTok{ fibo_cache(n):}
     \OperatorTok{<}\NormalTok{le code}\OperatorTok{>}
 
@@ -327,18 +325,16 @@ dans un environnement réel, modulo les remarques de bon sens suivantes~:
 
     En fait, avec cette implémentation, il reste aussi un petit souci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{n}{help}\PY{p}{(}\PY{n}{fibo\PYZus{}cache}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Help on function decoree in module \_\_main\_\_:
 
 decoree(*args)
-
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Et ce n'est pas exactement ce qu'on veut~; ce qui se passe ici c'est que
 \texttt{help} utilise les attributs \texttt{\_\_doc\_\_} et
@@ -347,7 +343,7 @@ decoree(*args)
 l'instruction~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \KeywordTok{def}\NormalTok{ decoree(}\OperatorTok{*}\NormalTok{args):}
     \CommentTok{# etc.}
 \end{Highlighting}
@@ -361,7 +357,7 @@ utilitaire \texttt{functools.wraps}}, qui fait tout le travail
 nécessaire. Ce qui nous donne une deuxième version de ce décorateur,
 avec deux lignes supplémentaires signalées par des \texttt{+++}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} une deuxième implémentation de memoize, avec la doc}
          
          \PY{k+kn}{import} \PY{n+nn}{functools}                                 \PY{c+c1}{\PYZsh{} +++}
@@ -401,7 +397,7 @@ avec deux lignes supplémentaires signalées par des \texttt{+++}~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} créer une fonction décorée}
          \PY{n+nd}{@memoize}
          \PY{k}{def} \PY{n+nf}{fibo\PYZus{}cache2}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
@@ -415,20 +411,18 @@ avec deux lignes supplémentaires signalées par des \texttt{+++}~:
 
     Et on obtient à présent une aide en ligne cohérente~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}15}]:} \PY{n}{help}\PY{p}{(}\PY{n}{fibo\PYZus{}cache2}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Help on function fibo\_cache2 in module \_\_main\_\_:
 
 fibo\_cache2(n)
     Un fibonacci hyper-lent (exponentiel) se transforme
     en temps linéaire une fois que les résultats sont cachés
-
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{on-peut-duxe9corer-les-classes-aussi}{%
 \subsubsection{On peut décorer les classes
@@ -456,7 +450,7 @@ On veut pouvoir préciser ce paramètre, appelons le
 écrire quelque chose comme~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \AttributeTok{@memoize_expire}\NormalTok{(}\DecValTok{600}\NormalTok{)}
 \KeywordTok{def}\NormalTok{ resolve_host(hostname):}
 \NormalTok{    …}
@@ -487,7 +481,7 @@ le code qui suit est le suivant et se base sur deux objets~:
 Pour faire court, cela signifie que l'interpréteur fera~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \NormalTok{resolve_host }\OperatorTok{=}\NormalTok{ (memoize_expire(}\DecValTok{600}\NormalTok{))(resolve_host)}
 \end{Highlighting}
 \end{Shaded}
@@ -495,7 +489,7 @@ Pour faire court, cela signifie que l'interpréteur fera~:
 Ou encore si vous préférez~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \NormalTok{memoize }\OperatorTok{=}\NormalTok{ memoize_expire(}\DecValTok{600}\NormalTok{)}
 \NormalTok{resolve_host }\OperatorTok{=}\NormalTok{ memoize(resolve_host)}
 \end{Highlighting}
@@ -503,7 +497,7 @@ Ou encore si vous préférez~:
 
     Ce qui nous mène au code suivant~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}16}]:} \PY{k+kn}{import} \PY{n+nn}{time}
          
          \PY{c+c1}{\PYZsh{} comme pour memoize, on est limité ici et on ne peut pas}
@@ -550,29 +544,29 @@ Ou encore si vous préférez~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}17}]:} \PY{n+nd}{@memoize\PYZus{}expire}\PY{p}{(}\PY{l+m+mf}{0.5}\PY{p}{)}
          \PY{k}{def} \PY{n+nf}{fibo\PYZus{}cache\PYZus{}expire}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
              \PY{k}{return} \PY{n}{n} \PY{k}{if} \PY{n}{n}\PY{o}{\PYZlt{}}\PY{o}{=}\PY{l+m+mi}{1} \PY{k}{else} \PY{n}{fibo\PYZus{}cache\PYZus{}expire}\PY{p}{(}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{+}\PY{n}{fibo\PYZus{}cache\PYZus{}expire}\PY{p}{(}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}18}]:} \PY{n}{fibo\PYZus{}cache\PYZus{}expire}\PY{p}{(}\PY{l+m+mi}{300}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}18}]:} 222232244629420445529739893461909967206666939096499764990979600
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}19}]:} \PY{n}{fibo\PYZus{}cache\PYZus{}expire}\PY{o}{.}\PY{n}{cache}\PY{p}{[}\PY{p}{(}\PY{l+m+mi}{200}\PY{p}{,}\PY{p}{)}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}19}]:} (280571172992510140037611932413038677189525, 1540558671.518045)
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{outcolor}Out[{\color{outcolor}19}]:} (280571172992510140037611932413038677189525, 1540645974.893704)
 \end{Verbatim}
             
     \hypertarget{remarquez-la-cluxf4ture}{%
@@ -615,7 +609,7 @@ décorateur \texttt{add\_field} qui ajoute dans une classe un
 C'est-à-dire que~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \AttributeTok{@add_field}\NormalTok{(}\StringTok{'name'}\NormalTok{)}
 \KeywordTok{class}\NormalTok{ Foo:}
     \ControlFlowTok{pass}
@@ -630,7 +624,7 @@ donnerait pour \texttt{Foo} une classe qui dispose des méthodes
 comme~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \AttributeTok{@add_field}\NormalTok{(}\StringTok{'name'}\NormalTok{)}
 \AttributeTok{@add_field}\NormalTok{(}\StringTok{'address'}\NormalTok{)}
 \KeywordTok{class}\NormalTok{ Foo:}
@@ -641,7 +635,7 @@ comme~:
     Ce qui revient à faire~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \KeywordTok{class}\NormalTok{ Foo: }\ControlFlowTok{pass}
 \NormalTok{Foo }\OperatorTok{=}\NormalTok{ (add_field(}\StringTok{'address'}\NormalTok{))(Foo)}
 \NormalTok{Foo }\OperatorTok{=}\NormalTok{ (add_field(}\StringTok{'name'}\NormalTok{))(Foo)}

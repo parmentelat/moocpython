@@ -22,16 +22,15 @@ basique}\label{compluxe9ment---niveau-basique}}
     On l'a vu, la méthode la plus directe pour créer un dictionnaire est en
 extension comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{n}{annuaire} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{marc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{35}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{30}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{eric}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{38}\PY{p}{\PYZcb{}}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{annuaire}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 \{'marc': 35, 'alice': 30, 'eric': 38\}
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{cruxe9ation---la-fonction-dict}{%
 \subsubsection{Création - la fonction
@@ -43,7 +42,7 @@ un constructeur. On a vu aussi dans la vidéo qu'on peut utiliser ce
 constructeur à base d'une liste de tuples (\texttt{clé},
 \texttt{valeur})
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} le paramètre de la fonction dict est}
         \PY{c+c1}{\PYZsh{} une liste de couples (clé, valeur)}
         \PY{n}{annuaire} \PY{o}{=} \PY{n+nb}{dict}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{marc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{35}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{30}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{eric}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{38}\PY{p}{)}\PY{p}{]}\PY{p}{)}
@@ -51,24 +50,22 @@ constructeur à base d'une liste de tuples (\texttt{clé},
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 \{'marc': 35, 'alice': 30, 'eric': 38\}
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Remarquons qu'on peut aussi utiliser cette autre forme d'appel à
 \texttt{dict} pour un résultat équivalent~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{annuaire} \PY{o}{=} \PY{n+nb}{dict}\PY{p}{(}\PY{n}{marc}\PY{o}{=}\PY{l+m+mi}{35}\PY{p}{,} \PY{n}{alice}\PY{o}{=}\PY{l+m+mi}{30}\PY{p}{,} \PY{n}{eric}\PY{o}{=}\PY{l+m+mi}{38}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{annuaire}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 \{'marc': 35, 'alice': 30, 'eric': 38\}
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Remarquez ci-dessus l'absence de quotes autour des clés comme
 \texttt{marc}. Il s'agit d'un cas particulier de passage d'arguments que
@@ -80,15 +77,14 @@ nous expliciterons plus longuement en fin de semaine 4.
     Pour accéder à la valeur associée à une clé, on utilise la notation à
 base de crochets \texttt{{[}{]}}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{la valeur pour marc est}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{annuaire}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{marc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 la valeur pour marc est 35
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Cette forme d'accès ne fonctionne que si la clé est effectivement
 présente dans le dictionnaire. Dans le cas contraire, une exception
@@ -96,73 +92,68 @@ présente dans le dictionnaire. Dans le cas contraire, une exception
 soit présente, vous pouvez utiliser la méthode \texttt{get} qui accepte
 une valeur par défaut~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{valeur pour marc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{annuaire}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{marc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{valeur pour inconnu}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{annuaire}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{inconnu}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 valeur pour marc 35
 valeur pour inconnu 0
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Le dictionnaire est un type \textbf{mutable}, et donc on peut
 \textbf{modifier la valeur} associée à une clé~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{annuaire}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{eric}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{39}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{annuaire}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 \{'marc': 35, 'alice': 30, 'eric': 39\}
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Ou encore, exactement de la même façon, \textbf{ajouter une entrée}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{n}{annuaire}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{42}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{annuaire}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 \{'marc': 35, 'alice': 30, 'eric': 39, 'bob': 42\}
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Enfin pour \textbf{détruire une entrée}, on peut utiliser l'instruction
 \texttt{del} comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} pour supprimer la clé \PYZsq{}marc\PYZsq{} et donc sa valeur aussi}
         \PY{k}{del} \PY{n}{annuaire}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{marc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{annuaire}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 \{'alice': 30, 'eric': 39, 'bob': 42\}
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Pour savoir si une clé est présente ou non, il est conseillé d'utiliser
 l'opérateur d'appartenance \texttt{in} comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} forme recommandée}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{john}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{annuaire}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 False
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{parcourir-toutes-les-entruxe9es}{%
 \subsubsection{Parcourir toutes les
@@ -172,18 +163,17 @@ entrées}\label{parcourir-toutes-les-entruxe9es}}
 base de la méthode \texttt{items}~; voici par exemple comment on
 pourrait afficher le contenu~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{k}{for} \PY{n}{nom}\PY{p}{,} \PY{n}{age} \PY{o+ow}{in} \PY{n}{annuaire}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{:}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}nom\PYZcb{}}\PY{l+s+s2}{, age }\PY{l+s+si}{\PYZob{}age\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 alice, age 30
 eric, age 39
 bob, age 42
-
-    \end{Verbatim}
+\end{Verbatim}
 
     On remarque d'abord que les entrées sont listées dans le désordre, plus
 précisément, il n'y a pas de notion d'ordre dans un dictionnaire~; ceci
@@ -192,31 +182,29 @@ vidéo précédente.
 
     On peut obtenir séparément la liste des clés et des valeurs avec~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{k}{for} \PY{n}{clé} \PY{o+ow}{in} \PY{n}{annuaire}\PY{o}{.}\PY{n}{keys}\PY{p}{(}\PY{p}{)}\PY{p}{:}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{clé}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 alice
 eric
 bob
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{k}{for} \PY{n}{valeur} \PY{o+ow}{in} \PY{n}{annuaire}\PY{o}{.}\PY{n}{values}\PY{p}{(}\PY{p}{)}\PY{p}{:}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{valeur}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 30
 39
 42
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{la-fonction-len}{%
 \subsubsection{\texorpdfstring{La fonction
@@ -225,15 +213,14 @@ bob
     On peut comme d'habitude obtenir la taille d'un dictionnaire avec la
 fonction \texttt{len}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{len(annuaire)\PYZcb{} entrées dans annuaire}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 3 entrées dans annuaire
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{pour-en-savoir-plus-sur-le-type-dict}{%
 \subsubsection{\texorpdfstring{Pour en savoir plus sur le type
@@ -257,23 +244,22 @@ intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
     On peut également modifier un dictionnaire avec le contenu d'un autre
 dictionnaire avec la méthode \texttt{update}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{avant: }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{list(annuaire.items())\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 avant: [('alice', 30), ('eric', 39), ('bob', 42)]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}15}]:} \PY{n}{annuaire}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{jean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{l+m+mi}{25}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{eric}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{l+m+mi}{70}\PY{p}{\PYZcb{}}\PY{p}{)}
          \PY{n+nb}{list}\PY{p}{(}\PY{n}{annuaire}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}15}]:} [('alice', 30), ('eric', 70), ('bob', 42), ('jean', 25)]
 \end{Verbatim}
             
@@ -287,7 +273,7 @@ souvient pas de l'ordre dans lequel les éléments ont été insérés.
 C'était particulièrement visible dans les versions de Python jusque
 3.5~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}16}]:} \PY{o}{\PYZpc{}\PYZpc{}python}2
          \PY{c+c1}{\PYZsh{} coding: utf\PYZhy{}8}
          
@@ -300,31 +286,29 @@ C'était particulièrement visible dans les versions de Python jusque
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a 2
 c 3
 b 1
-
-    \end{Verbatim}
+\end{Verbatim}
 
     En réalité, et depuis la version 3.6 de Python, il se trouve
 qu'\textbf{incidemment} l'implémentation CPython (la plus répandue donc)
 a été modifiée, et maintenant on peut avoir l'\textbf{impression} que
 les dictionnaires sont ordonnés~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}17}]:} \PY{n}{d} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+m+mi}{2}\PY{p}{\PYZcb{}}
          \PY{k}{for} \PY{n}{k}\PY{p}{,} \PY{n}{v} \PY{o+ow}{in} \PY{n}{d}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{:}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{k}\PY{p}{,} \PY{n}{v}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 c 3
 b 1
 a 2
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Il faut insister sur le fait qu'il s'agit d'un \textbf{détail
 d'implémentation}, et que vous ne devez pas écrire du code qui suppose
@@ -338,7 +322,7 @@ ordonnés, voyez dans
 qui est une personnalisation (une sous-classe) du type \texttt{dict},
 qui cette fois possède cette bonne propriété~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}18}]:} \PY{k+kn}{from} \PY{n+nn}{collections} \PY{k}{import} \PY{n}{OrderedDict}
          \PY{n}{d} \PY{o}{=} \PY{n}{OrderedDict}\PY{p}{(}\PY{p}{)}
          \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{:}
@@ -348,13 +332,12 @@ qui cette fois possède cette bonne propriété~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 OrderedDict a a
 OrderedDict 7 7
 OrderedDict 3 3
 OrderedDict x x
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{collections.defaultdict-initialisation-automatique}{%
 \subsubsection{\texorpdfstring{\texttt{collections.defaultdict}~:
@@ -368,7 +351,7 @@ dans ces listes.
 Avec un dictionnaire de base, cela peut vous amener à écrire un code qui
 ressemble à ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} imaginons qu\PYZsq{}on a lu dans un fichier des couples (x, y)}
          \PY{n}{tuples} \PY{o}{=} \PY{p}{[}
              \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,}
@@ -379,7 +362,7 @@ ressemble à ceci~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}20}]:} \PY{c+c1}{\PYZsh{} et on veut construire un dictionnaire}
          \PY{c+c1}{\PYZsh{} x \PYZhy{}\PYZgt{} [liste de tous les y connectés à x]}
          \PY{n}{resultat} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
@@ -394,17 +377,16 @@ ressemble à ceci~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 1 [2, 3]
 2 [1, 4]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Cela fonctionne, mais n'est pas très élégant. Pour simplifier ce type de
 traitement, vous pouvez utiliser \texttt{defaultdict}, une sous-classe
 de \texttt{dict} dans le module \texttt{collections}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}21}]:} \PY{k+kn}{from} \PY{n+nn}{collections} \PY{k}{import} \PY{n}{defaultdict}
          
          \PY{c+c1}{\PYZsh{} on indique que les valeurs doivent être créées à la volée}
@@ -420,16 +402,15 @@ de \texttt{dict} dans le module \texttt{collections}~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 1 [2, 3]
 2 [1, 4]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Cela fonctionne aussi avec le type \texttt{int}, lorsque vous voulez par
 exemple compter des occurrences~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}22}]:} \PY{n}{compteurs} \PY{o}{=} \PY{n}{defaultdict}\PY{p}{(}\PY{n+nb}{int}\PY{p}{)}
          
          \PY{n}{phrase} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{une phrase dans laquelle on veut compter les caractères}\PY{l+s+s2}{\PYZdq{}}
@@ -441,7 +422,7 @@ exemple compter des occurrences~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}22}]:} [(' ', 8),
           ('a', 5),
           ('c', 3),
@@ -470,43 +451,43 @@ méthode \texttt{setdefault}} qui permet, en un seul appel, de retourner
 la valeur associée à une clé et de créer cette clé au besoin,
 c'est-à-dire si elle n'est pas encore présente~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}23}]:} \PY{c+c1}{\PYZsh{} avant}
          \PY{n}{annuaire}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}23}]:} \{'alice': 30, 'eric': 70, 'bob': 42, 'jean': 25\}
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}24}]:} \PY{c+c1}{\PYZsh{} ceci sera sans effet car eric est déjà présent}
          \PY{n}{annuaire}\PY{o}{.}\PY{n}{setdefault}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{eric}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}24}]:} 70
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}25}]:} \PY{c+c1}{\PYZsh{} par contre ceci va insérer une entrée dans le dictionnaire}
          \PY{n}{annuaire}\PY{o}{.}\PY{n}{setdefault}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{inconnu}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}25}]:} 50
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}26}]:} \PY{c+c1}{\PYZsh{} comme on le voit}
          \PY{n}{annuaire}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}26}]:} \{'alice': 30, 'eric': 70, 'bob': 42, 'jean': 25, 'inconnu': 50\}
 \end{Verbatim}
             
@@ -530,64 +511,61 @@ itérables}\label{ce-sont-des-objets-ituxe9rables}}
 retournent pas des listes (comme c'était le cas en Python 2), mais des
 \textbf{objets itérables}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}27}]:} \PY{n}{d} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+m+mi}{2}\PY{p}{\PYZcb{}}
          \PY{n}{keys} \PY{o}{=} \PY{n}{d}\PY{o}{.}\PY{n}{keys}\PY{p}{(}\PY{p}{)}
          \PY{n}{keys}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}27}]:} dict\_keys(['a', 'b'])
 \end{Verbatim}
             
     Comme ce sont des itérables, on peut naturellement faire un \texttt{for}
 avec, on l'a vu~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}28}]:} \PY{k}{for} \PY{n}{key} \PY{o+ow}{in} \PY{n}{keys}\PY{p}{:}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{key}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a
 b
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Et un test d'appartenance avec \texttt{in}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}29}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{keys}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 True
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}30}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{keys}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 False
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{mais-ce-ne-sont-pas-des-listes}{%
 \paragraph{\texorpdfstring{Mais \textbf{ce ne sont pas des
 listes}}{Mais ce ne sont pas des listes}}\label{mais-ce-ne-sont-pas-des-listes}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}31}]:} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{keys}\PY{p}{,} \PY{n+nb}{list}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}31}]:} False
 \end{Verbatim}
             
@@ -595,7 +573,7 @@ listes}}{Mais ce ne sont pas des listes}}\label{mais-ce-ne-sont-pas-des-listes}}
 toutes les clés, mais seulement un objet qui ne prend pas de place, ni
 de temps à construire~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}32}]:} \PY{c+c1}{\PYZsh{} construisons un dictionnaire}
          \PY{c+c1}{\PYZsh{} pour anticiper un peu sur la compréhension de dictionnaire}
          
@@ -603,36 +581,34 @@ de temps à construire~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}33}]:} \PY{o}{\PYZpc{}\PYZpc{}time}it \PYZhy{}n 10000
          \PY{c+c1}{\PYZsh{} créer un objet vue est très rapide}
          \PY{n}{big\PYZus{}keys} \PY{o}{=} \PY{n}{big\PYZus{}dict}\PY{o}{.}\PY{n}{keys}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-84.8 ns ± 13.7 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+86.4 ns ± 16.7 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}34}]:} \PY{c+c1}{\PYZsh{} on répète ici car timeit travaille dans un espace qui lui est propre}
          \PY{c+c1}{\PYZsh{} et donc on n\PYZsq{}a pas défini big\PYZus{}keys pour notre interpréteur}
          \PY{n}{big\PYZus{}keys} \PY{o}{=} \PY{n}{big\PYZus{}dict}\PY{o}{.}\PY{n}{keys}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}35}]:} \PY{o}{\PYZpc{}\PYZpc{}time}it \PYZhy{}n 20
          \PY{c+c1}{\PYZsh{} si on devait vraiment construire la liste ce serait beaucoup plus long}
          \PY{n}{big\PYZus{}lkeys} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n}{big\PYZus{}keys}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-18.1 ms ± 832 µs per loop (mean ± std. dev. of 7 runs, 20 loops each)
-
-    \end{Verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+16.4 ms ± 1.04 ms per loop (mean ± std. dev. of 7 runs, 20 loops each)
+\end{Verbatim}
 
     \hypertarget{en-fait-ce-sont-des-vues}{%
 \paragraph{\texorpdfstring{En fait ce sont des
@@ -644,26 +620,25 @@ connaissent, cela fait fait référence à la notion de vue dans les bases
 de données) c'est que la vue \emph{voit} les changements fait sur
 l'objet dictionnaire \emph{même après sa création}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}36}]:} \PY{n}{d} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+m+mi}{2}\PY{p}{\PYZcb{}}
          \PY{n}{keys} \PY{o}{=} \PY{n}{d}\PY{o}{.}\PY{n}{keys}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}37}]:} \PY{c+c1}{\PYZsh{} sans surprise, il y a deux clés dans keys}
          \PY{k}{for} \PY{n}{k} \PY{o+ow}{in} \PY{n}{keys}\PY{p}{:}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{k}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a
 b
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}38}]:} \PY{c+c1}{\PYZsh{} mais si maintenant j\PYZsq{}ajoute un objet au dictionnaire}
          \PY{n}{d}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{3}
          \PY{c+c1}{\PYZsh{} alors on va \PYZsq{}voir\PYZsq{} cette nouvelle clé à partir}
@@ -673,12 +648,11 @@ b
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a
 b
 c
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Reportez vous à
 \href{https://docs.python.org/3/library/stdtypes.html\#dictionary-view-objects}{la

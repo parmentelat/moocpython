@@ -29,7 +29,7 @@ préfère utiliser les ressources disponibles en ligne en anglais~:
 Je vais essentiellement utiliser des extraits tels quels. N'hésitez pas
 à consulter ces documents originaux pour davantage de précisions.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} les imports habituels}
         \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
         \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
@@ -50,7 +50,7 @@ seulement \emph{une} liste de valeurs, elles sont considérées comme les
 \emph{Y}, les \emph{X} étant les entiers en nombre suffisant et en
 commençant à 0.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} si je ne donne qu\PYZsq{}une seule liste à plot}
         \PY{c+c1}{\PYZsh{} alors ce sont les Y}
         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mi}{28}\PY{p}{]}\PY{p}{)}
@@ -78,7 +78,7 @@ Voyez
 \href{https://matplotlib.org/2.0.2/api/pyplot_api.html\#matplotlib.pyplot.plot}{la
 documentation de référence de plot} pour une liste complète.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} mais le plus souvent on passe à plot}
         \PY{c+c1}{\PYZsh{} une liste de X ET une liste de Y}
         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{]}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ro}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
@@ -99,7 +99,7 @@ documentation de référence de plot} pour une liste complète.
     
     On peut très simplement dessiner plusieurs fonctions dans la même zone~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} échantillon de points entre 0 et 5 espacés de 0.2}
         \PY{n}{t} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mf}{0.}\PY{p}{,} \PY{l+m+mf}{5.}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{)}
         
@@ -119,7 +119,7 @@ documentation de référence de plot} pour une liste complète.
 \subsubsection{\texorpdfstring{Plusieurs
 \emph{subplots}}{Plusieurs subplots}}\label{plusieurs-subplots}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{k}{def} \PY{n+nf}{f}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{:}
             \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{t}\PY{p}{)} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{cos}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{*}\PY{n}{t}\PY{p}{)}
         
@@ -159,7 +159,7 @@ documentation de référence de plot} pour une liste complète.
 Lorsqu'on écrit~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \NormalTok{plt.subplot(}\DecValTok{211}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -167,7 +167,7 @@ Lorsqu'on écrit~:
 ce qui est par ailleurs juste un raccourci pour~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \NormalTok{plt.subplot(}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -183,7 +183,7 @@ dans chaque figure. Dans l'exemple qui suit on illustre encore mieux
 cette notion de \emph{statefulness}. Je commence par vous donner
 l'exemple du tutorial tel quel~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}                \PY{c+c1}{\PYZsh{} the first figure}
         \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{211}\PY{p}{)}             \PY{c+c1}{\PYZsh{} the first subplot in the first figure}
         \PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
@@ -205,11 +205,10 @@ l'exemple du tutorial tel quel~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 /usr/local/lib/python3.7/site-packages/matplotlib/cbook/deprecation.py:107: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
   warnings.warn(message, mplDeprecation, stacklevel=1)
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \begin{center}
     \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c1-matplotlib-2d_files/w7-s10-c1-matplotlib-2d_19_1.png}
@@ -231,7 +230,7 @@ ci-dessus, d'utiliser \texttt{plt.subplots} qui vous retourne la figure
 avec ses \emph{subplots}, que vous pouvez ranger dans des variables
 Python~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} c\PYZsq{}est assez déroutant au départ, mais}
         \PY{c+c1}{\PYZsh{} traditionnellement les subplots sont appelés \PYZsq{}axes\PYZsq{}}
         \PY{c+c1}{\PYZsh{} c\PYZsq{}est pourquoi ici on utilise ax1, ax2 et ax3 pour désigner}
@@ -277,7 +276,7 @@ du tutoriel \texttt{matplotlib}, surtout pour illustrer
 \href{https://matplotlib.org/api/_as_gen/matplotlib.pyplot.hist.html?highlight=matplotlib\%20pyplot\%20hist\#matplotlib.pyplot.hist}{\texttt{plt.hist}},
 mais qui montre aussi comment ajouter du texte~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} pour être reproductible, on fixe la graine}
         \PY{c+c1}{\PYZsh{} du générateur aléatoire}
         \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{seed}\PY{p}{(}\PY{l+m+mi}{19680801}\PY{p}{)}
@@ -299,11 +298,10 @@ mais qui montre aussi comment ajouter du texte~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 /usr/local/lib/python3.7/site-packages/matplotlib/axes/\_axes.py:6462: UserWarning: The 'normed' kwarg is deprecated, and has been replaced by the 'density' kwarg.
   warnings.warn("The 'normed' kwarg is deprecated, and has been "
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \begin{center}
     \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{w7-s10-c1-matplotlib-2d_files/w7-s10-c1-matplotlib-2d_24_1.png}
@@ -317,7 +315,7 @@ mais qui montre aussi comment ajouter du texte~:
 \href{https://matplotlib.org/api/_as_gen/matplotlib.pyplot.scatter.html?highlight=matplotlib\%20pyplot\%20scatter\#matplotlib.pyplot.scatter}{\texttt{plt.scatter}}
 qui permet de faire par exemple des choses comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} pour être reproductible, on fixe la graine}
         \PY{c+c1}{\PYZsh{} du générateur aléatoire}
         \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{seed}\PY{p}{(}\PY{l+m+mi}{19680801}\PY{p}{)}
@@ -345,7 +343,7 @@ qui permet de faire par exemple des choses comme ceci~:
 \href{https://matplotlib.org/api/_as_gen/matplotlib.pyplot.boxplot.html}{\texttt{boxplot}}
 vous obtenez des boîtes à moustache~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}
          
          \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{121}\PY{p}{)}

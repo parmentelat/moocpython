@@ -21,12 +21,12 @@ Python}}{Le module this et le Zen de Python}}\label{le-module-this-et-le-zen-de-
     Nous avons déjà eu l'occasion de parler du \emph{Zen de Python}~; on
 peut lire ce texte en important le module \texttt{this} comme ceci
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{this}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 The Zen of Python, by Tim Peters
 
 Beautiful is better than ugly.
@@ -48,25 +48,24 @@ Although never is often better than *right* now.
 If the implementation is hard to explain, it's a bad idea.
 If the implementation is easy to explain, it may be a good idea.
 Namespaces are one honking great idea -- let's do more of those!
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Il suit du cours qu'une fois cet import effectué nous avons accès à une
 variable \texttt{this}, de type module~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{this}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}2}]:} <module 'this' from '/usr/local/Cellar/python/3.7.0/Frameworks/Python.framework/Versions/3.7/lib/python3.7/this.py'>
 \end{Verbatim}
             
     \hypertarget{but-de-lexercice}{%
 \subsubsection{But de l'exercice}\label{but-de-lexercice}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} chargement de l\PYZsq{}exercice}
         \PY{k+kn}{from} \PY{n+nn}{corrections}\PY{n+nn}{.}\PY{n+nn}{exo\PYZus{}decode\PYZus{}zen} \PY{k}{import} \PY{n}{exo\PYZus{}decode\PYZus{}zen}
 \end{Verbatim}
@@ -83,14 +82,14 @@ manifeste.
     Cet exercice peut paraître un peu déconcertant~; voici quelques indices
 optionnels~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} on rappelle que dir() renvoie les noms des attributs }
         \PY{c+c1}{\PYZsh{} accessibles à partir de l\PYZsq{}objet}
         \PY{n+nb}{dir}\PY{p}{(}\PY{n}{this}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}4}]:} ['\_\_builtins\_\_',
          '\_\_cached\_\_',
          '\_\_doc\_\_',
@@ -108,7 +107,7 @@ optionnels~:
     Vous pouvez ignorer \texttt{this.c} et \texttt{this.i}, les deux autres
 variables du module sont importantes pour nous.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} ici on calcule le résultat attendu}
         \PY{n}{resultat} \PY{o}{=} \PY{n}{exo\PYZus{}decode\PYZus{}zen}\PY{o}{.}\PY{n}{resultat}\PY{p}{(}\PY{n}{this}\PY{p}{)}
 \end{Verbatim}
@@ -117,31 +116,31 @@ variables du module sont importantes pour nous.
     Ceci devrait vous donner une idée de comment utiliser une des deux
 variables du module~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} ces deux quantités sont égales}
         \PY{n+nb}{len}\PY{p}{(}\PY{n}{this}\PY{o}{.}\PY{n}{s}\PY{p}{)} \PY{o}{==} \PY{n+nb}{len}\PY{p}{(}\PY{n}{resultat}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} True
 \end{Verbatim}
             
     À quoi peut bien servir l'autre variable~?
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} se pourrait\PYZhy{}il que d agisse comme un code simple ?}
         \PY{n}{this}\PY{o}{.}\PY{n}{d}\PY{p}{[}\PY{n}{this}\PY{o}{.}\PY{n}{s}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]} \PY{o}{==} \PY{n}{resultat}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}7}]:} True
 \end{Verbatim}
             
     Le texte comporte certes des caractères alphabétiques
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} si on ignore les accents, }
         \PY{c+c1}{\PYZsh{} il y a 26 caractères minuscules}
         \PY{c+c1}{\PYZsh{} et 26 caractères majuscules}
@@ -149,7 +148,7 @@ variables du module~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}8}]:} 52
 \end{Verbatim}
             
@@ -158,7 +157,7 @@ variables du module~:
     \hypertarget{uxe0-vous-de-jouer}{%
 \subsubsection{À vous de jouer}\label{uxe0-vous-de-jouer}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{k}{def} \PY{n+nf}{decode\PYZus{}zen}\PY{p}{(}\PY{n}{this}\PY{p}{)}\PY{p}{:}
             \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}votre code\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
@@ -167,7 +166,7 @@ variables du module~:
     \hypertarget{correction}{%
 \subsubsection{Correction}\label{correction}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         

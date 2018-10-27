@@ -67,7 +67,7 @@ d'héritage}\label{plusieurs-formes-dhuxe9ritage}}
 
     Commençons par illustrer tout ceci sur un petit exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} Une classe mère}
         \PY{k}{class} \PY{n+nc}{Fleur}\PY{p}{:}
             \PY{k}{def} \PY{n+nf}{implicite}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
@@ -93,7 +93,7 @@ d'héritage}\label{plusieurs-formes-dhuxe9ritage}}
     On peut à présent créer une instance de Rose et appeler sur cette
 instance les trois méthodes.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} fille est une instance de Rose}
         \PY{n}{fille} \PY{o}{=} \PY{n}{Rose}\PY{p}{(}\PY{p}{)}
         
@@ -101,45 +101,44 @@ instance les trois méthodes.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Fleur.implicite
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{fille}\PY{o}{.}\PY{n}{redefinie}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Rose.redefinie
-
-    \end{Verbatim}
+\end{Verbatim}
 
     S'agissant des deux premières méthodes, le comportement qu'on observe
 est simplement la conséquence de l'algorithme de recherche d'attributs~:
 \texttt{implicite} est trouvée dans la classe Fleur et
 \texttt{redefinie} est trouvée dans la classe Rose.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{fille}\PY{o}{.}\PY{n}{modifiee}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Fleur.modifiée
 Rose.modifiee apres Fleur
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Pour la troisième méthode, attardons-nous un peu car on voit ici comment
 \emph{combiner} facilement le code de la classe mère avec du code
 spécifique à la classe fille, en appelant explicitement la méthode de la
 classe mère lorsqu'on fait~:
 
-\begin{verbatim}
-Fleur.modifiee(self)
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{Fleur.modifiee(}\VariableTok{self}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{la-fonction-built-in-super}{%
 \subparagraph{\texorpdfstring{La fonction \emph{built-in}
@@ -150,7 +149,7 @@ Fleur.modifiee(self)
 \emph{built-in} \texttt{super()}} qui permet de réaliser la même chose
 sans nommer explicitement la classe mère, comme on le fait ici~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} Une version allégée de la classe fille, qui utilise super()}
         \PY{k}{class} \PY{n+nc}{Rose}\PY{p}{(}\PY{n}{Fleur}\PY{p}{)}\PY{p}{:}
             \PY{k}{def} \PY{n+nf}{modifiee}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
@@ -159,18 +158,17 @@ sans nommer explicitement la classe mère, comme on le fait ici~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{fille} \PY{o}{=} \PY{n}{Rose}\PY{p}{(}\PY{p}{)}
         
         \PY{n}{fille}\PY{o}{.}\PY{n}{modifiee}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Fleur.modifiée
 Rose.modifiee apres Fleur
-
-    \end{Verbatim}
+\end{Verbatim}
 
     On peut envisager d'utiliser \texttt{super()} dans du code très abstrait
 où on ne sait pas déterminer statiquement le nom de la classe dont il
@@ -200,7 +198,7 @@ similaires, mais qu'il est important de bien distinguer.
 Voyons d'abord en quoi consiste la composition et pourquoi le résultat
 est voisin~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} Une classe avec qui on n\PYZsq{}aura pas de relation d\PYZsq{}héritage}
         \PY{k}{class} \PY{n+nc}{Tige}\PY{p}{:}
             \PY{k}{def} \PY{n+nf}{implicite}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
@@ -235,7 +233,7 @@ est voisin~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} on obtient ici exactement le même comportement }
         \PY{c+c1}{\PYZsh{} pour les trois sortes de méthodes}
         \PY{n}{fille} \PY{o}{=} \PY{n}{Rose}\PY{p}{(}\PY{p}{)}
@@ -246,13 +244,12 @@ est voisin~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Tige.implicite
 Rose.redefinie
 Tige.modifiee
 Rose.modifiee apres Tige
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{comment-choisir}{%
 \subparagraph{Comment choisir~?}\label{comment-choisir}}
@@ -301,11 +298,13 @@ d'informations.
 Le point ici est que les concepteurs ont choisi un graphe d'héritage
 comme ceci~:
 
-\begin{verbatim}
-Calendar
-|-- TextCalendar
-|-- HTMLCalendar
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{    Calendar}
+    \OperatorTok{|--}\NormalTok{ TextCalendar}
+    \OperatorTok{|--}\NormalTok{ HTMLCalendar}
+\end{Highlighting}
+\end{Shaded}
 
 qui permet de grouper le code concernant la logique dans la classe
 \texttt{Calendar}, puis dans les deux sous-classes d'implémenter le type
@@ -330,21 +329,23 @@ l'héritage.
 
 Le module propose une hiérarchie de classes comme ceci~:
 
-    \begin{verbatim}
-+------------+
-| BaseServer |
-+------------+
-      |
-      v
-+-----------+        +------------------+
-| TCPServer |------->| UnixStreamServer |
-+-----------+        +------------------+
-      |
-      v
-+-----------+        +--------------------+
-| UDPServer |------->| UnixDatagramServer |
-+-----------+        +--------------------+
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+    \OperatorTok{+------------+}
+    \OperatorTok{|}\NormalTok{ BaseServer }\OperatorTok{|}
+    \OperatorTok{+------------+}
+          \OperatorTok{|}
+\NormalTok{          v}
+    \OperatorTok{+-----------+}        \OperatorTok{+------------------+}
+    \OperatorTok{|}\NormalTok{ TCPServer }\OperatorTok{|------->|}\NormalTok{ UnixStreamServer }\OperatorTok{|}
+    \OperatorTok{+-----------+}        \OperatorTok{+------------------+}
+          \OperatorTok{|}
+\NormalTok{          v}
+    \OperatorTok{+-----------+}        \OperatorTok{+--------------------+}
+    \OperatorTok{|}\NormalTok{ UDPServer }\OperatorTok{|------->|}\NormalTok{ UnixDatagramServer }\OperatorTok{|}
+    \OperatorTok{+-----------+}        \OperatorTok{+--------------------+}
+\end{Highlighting}
+\end{Shaded}
 
     Ici encore notre propos n'est pas d'entrer dans les détails, mais
 d'observer le fait que les différents \emph{niveaux d'intelligence} sont

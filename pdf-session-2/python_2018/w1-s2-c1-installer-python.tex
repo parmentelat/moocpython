@@ -61,15 +61,19 @@ Windows
 
 Par exemple~sur un mac :
 
-\begin{verbatim}
-~/git/flotpython/w1 $ 
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ExtensionTok{~/git/flotpython/w1}\NormalTok{ $ }
+\end{Highlighting}
+\end{Shaded}
 
 Ou sur Windows~:
 
-\begin{verbatim}
-C:\Users>        
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ExtensionTok{C}\NormalTok{:\textbackslash{}Users}\OperatorTok{>}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{linterpruxe8te-python}{%
 \subsubsection{L'interprète Python}\label{linterpruxe8te-python}}
@@ -78,24 +82,28 @@ C:\Users>
 qui se reconnaît car son prompt est fait de \textbf{3 chevrons
 \texttt{\textgreater{}\textgreater{}\textgreater{}}}
 
-\begin{verbatim}
-~/git/flotpython/w1 $ python3
-Python 3.7.0 (default, Jun 29 2018, 20:14:27)
-[Clang 9.0.0 (clang-900.0.39.2)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
->>>
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ExtensionTok{~/git/flotpython/w1}\NormalTok{ $ python3}
+\ExtensionTok{Python}\NormalTok{ 3.7.0 (default, Jun 29 2018, 20:14:27)}
+\NormalTok{[}\ExtensionTok{Clang}\NormalTok{ 9.0.0 (clang-900.0.39.2)] }\ExtensionTok{on}\NormalTok{ darwin}
+\ExtensionTok{Type} \StringTok{"help"}\NormalTok{, }\StringTok{"copyright"}\NormalTok{, }\StringTok{"credits"}\NormalTok{ or }\StringTok{"license"}\NormalTok{ for more information.}
+\OperatorTok{>>>}
+\end{Highlighting}
+\end{Shaded}
 
     Pour sortir de l'interpréteur Python, et retourner au terminal,
 j'utilise la fonction Python \texttt{exit()}~:
 
-\begin{verbatim}
-~/git/flotpython/w1 $ python3
->>> 20 * 60
-1200
->>> exit()
-~/git/flotpython/w1 $ python3
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ExtensionTok{~/git/flotpython/w1}\NormalTok{ $ python3}
+\OperatorTok{>>>} \ExtensionTok{20}\NormalTok{ * 60}
+\ExtensionTok{1200}
+\OperatorTok{>>>} \FunctionTok{exit()}
+\ExtensionTok{~/git/flotpython/w1}\NormalTok{ $ python3}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{les-erreurs-typiques}{%
 \subsubsection{Les erreurs typiques}\label{les-erreurs-typiques}}
@@ -112,25 +120,29 @@ Si vous essayez de la taper alors que vous êtes déjà dans un
 interpréteur python - ou sous IDLE d'ailleurs -, vous obtenez un message
 d'erreur de ce genre :
 
-\begin{verbatim}
->>> python3 -V
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'python3' is not defined
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\OperatorTok{>>>} \ExtensionTok{python3}\NormalTok{ -V}
+\ExtensionTok{Traceback}\NormalTok{ (most recent call last)}\BuiltInTok{:}
+  \ExtensionTok{File} \StringTok{"<stdin>"}\NormalTok{, line 1, in }\OperatorTok{<}\NormalTok{module}\OperatorTok{>}
+\ExtensionTok{NameError}\NormalTok{: name }\StringTok{'python3'}\NormalTok{ is not defined}
+\end{Highlighting}
+\end{Shaded}
 
     Réciproquement, si vous essayez de taper du Python directement dans un
 terminal, ça se passe mal aussi, forcément. Par exemple sur Mac, avec
 des fragments Python tout simples~:
 
-\begin{verbatim}
-~/git/flotpython/w1 $ import math
--bash: import: command not found
-~/git/flotpython/w1 $ 30 * 60
--bash: 30: command not found
-~/git/flotpython/w1 $ foo = 30 * 60
--bash: foo: command not found
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ExtensionTok{~/git/flotpython/w1}\NormalTok{ $ import math}
+\ExtensionTok{-bash}\NormalTok{: import: command not found}
+\ExtensionTok{~/git/flotpython/w1}\NormalTok{ $ 30 * 60}
+\ExtensionTok{-bash}\NormalTok{: 30: command not found}
+\ExtensionTok{~/git/flotpython/w1}\NormalTok{ $ foo = 30 * 60}
+\ExtensionTok{-bash}\NormalTok{: foo: command not found}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{digression---coexistence-de-python2-et-python3}{%
 \subsection{Digression - coexistence de Python2 et
@@ -163,22 +175,26 @@ convention suivante sous Linux et macOS~:
 
 à titre d'illustration, voici ce que j'obtiens sur mon mac~:
 
-\begin{verbatim}
-$ python3 -V
-Python 3.6.2
-$ python2 -V
-Python 2.7.13
-$ python -V
-Python 3.6.2
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ }\ExtensionTok{python3}\NormalTok{ -V}
+\ExtensionTok{Python}\NormalTok{ 3.6.2}
+\NormalTok{$ }\ExtensionTok{python2}\NormalTok{ -V}
+\ExtensionTok{Python}\NormalTok{ 2.7.13}
+\NormalTok{$ }\ExtensionTok{python}\NormalTok{ -V}
+\ExtensionTok{Python}\NormalTok{ 3.6.2}
+\end{Highlighting}
+\end{Shaded}
 
 Sous Windows, vous avez un lanceur qui s'appelle \texttt{py}. Par
 défaut, il lance la version de Python la plus récente installée, mais
 vous pouvez spécifier une version spécifique de la manière suivante~:
 
-\begin{verbatim}
-C:\> py -2.7
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ExtensionTok{C}\NormalTok{:}\DataTypeTok{\textbackslash{}>}\NormalTok{ py -2.7}
+\end{Highlighting}
+\end{Shaded}
 
 pour lancer, par exemple, Python en version 2.7. Vous trouverez toute la
 documentation nécessaire pour Windows sur cette page (en anglais)~:
@@ -212,9 +228,11 @@ Sachez aussi, si vous utilisez déjà MacPorts (https://www.macports.org),
 que vous pouvez également utiliser cet outil pour installer, par exemple
 Python 3.6, avec la commande
 
-    \begin{verbatim}
-$ sudo port install python36
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ }\FunctionTok{sudo}\NormalTok{ port install python36}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{vous-utilisez-linux}{%
 \subsubsection{Vous utilisez Linux}\label{vous-utilisez-linux}}
@@ -229,13 +247,15 @@ votre machine. Pour vous en assurer, essayez de lancer la commande
     Voici par exemple ce qu'on obtient depuis un terminal sur une machine
 installée en Fedora-20~:
 
-    \begin{verbatim}
-$ python3
-Python 3.6.2 (default, Jul 20 2017, 12:30:02)
-[GCC 6.3.1 20161221 (Red Hat 6.3.1-1)] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> exit()
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ }\ExtensionTok{python3}
+\ExtensionTok{Python}\NormalTok{ 3.6.2 (default, Jul 20 2017, 12:30:02)}
+\NormalTok{[}\ExtensionTok{GCC}\NormalTok{ 6.3.1 20161221 (Red Hat 6.3.1-1)] }\ExtensionTok{on}\NormalTok{ linux}
+\ExtensionTok{Type} \StringTok{"help"}\NormalTok{, }\StringTok{"copyright"}\NormalTok{, }\StringTok{"credits"}\NormalTok{ or }\StringTok{"license"}\NormalTok{ for more information.}
+\OperatorTok{>>>} \FunctionTok{exit()}
+\end{Highlighting}
+\end{Shaded}
 
     \textbf{Vérifiez bien le numéro de version} qui doit être en 3.\emph{x}.
 Si vous obtenez un message du style
@@ -243,25 +263,31 @@ Si vous obtenez un message du style
 (anciennement connu sous le nom de \texttt{yum}) pour installer le rpm
 \texttt{python3} comme ceci~:
 
-    \begin{verbatim}
-$ sudo dnf install python3
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ }\FunctionTok{sudo}\NormalTok{ dnf install python3}
+\end{Highlighting}
+\end{Shaded}
 
     S'agissant d'\texttt{idle}, l'éditeur que nous utilisons dans le cours
 (optionnel si vous êtes familier avec un éditeur de texte), vérifiez sa
 présence comme ceci~:
 
-    \begin{verbatim}
-$ type idle3
-idle is hashed (/usr/bin/idle3)
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ }\BuiltInTok{type}\NormalTok{ idle3}
+\ExtensionTok{idle}\NormalTok{ is hashed (/usr/bin/idle3)}
+\end{Highlighting}
+\end{Shaded}
 
     Ici encore, si la commande n'est pas disponible vous pouvez l'installer
 avec~:
 
-    \begin{verbatim}
-$ sudo yum install python3-tools
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ }\FunctionTok{sudo}\NormalTok{ yum install python3-tools}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{debian-ubuntu}{%
 \subparagraph{Debian / Ubuntu}\label{debian-ubuntu}}
@@ -270,25 +296,31 @@ $ sudo yum install python3-tools
 ci-dessus, voici un exemple recueilli dans un terminal sur une machine
 installée en Ubuntu-14.04/trusty~:
 
-    \begin{verbatim}
-$ python3
-Python 3.6.2 (default, Jul 20 2017, 12:30:02)
-[GCC 6.3.1 20161221 (Red Hat 6.3.1-1)] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> exit()
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ }\ExtensionTok{python3}
+\ExtensionTok{Python}\NormalTok{ 3.6.2 (default, Jul 20 2017, 12:30:02)}
+\NormalTok{[}\ExtensionTok{GCC}\NormalTok{ 6.3.1 20161221 (Red Hat 6.3.1-1)] }\ExtensionTok{on}\NormalTok{ linux}
+\ExtensionTok{Type} \StringTok{"help"}\NormalTok{, }\StringTok{"copyright"}\NormalTok{, }\StringTok{"credits"}\NormalTok{ or }\StringTok{"license"}\NormalTok{ for more information.}
+\OperatorTok{>>>} \FunctionTok{exit()}
+\end{Highlighting}
+\end{Shaded}
 
     Pour installer Python~:
 
-    \begin{verbatim}
-$ sudo apt-get install python3
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ }\FunctionTok{sudo}\NormalTok{ apt-get install python3}
+\end{Highlighting}
+\end{Shaded}
 
     Pour installer idle~:
 
-    \begin{verbatim}
-$ sudo apt-get install idle3
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ }\FunctionTok{sudo}\NormalTok{ apt-get install idle3}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{installation-de-bibliothuxe8ques-compluxe9mentaires}{%
 \subsubsection{Installation de bibliothèques

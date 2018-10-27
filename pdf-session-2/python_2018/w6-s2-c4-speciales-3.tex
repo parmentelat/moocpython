@@ -22,9 +22,11 @@ apparentés}{\_\_getattr\_\_ et apparentés}}\label{getattr__-et-apparentuxe9s}}
 \texttt{\_\_getattr\_\_}, on peut redéfinir la façon que le langage a
 d'évaluer~:
 
-\begin{verbatim}
-objet.attribut
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{objet.attribut}
+\end{Highlighting}
+\end{Shaded}
 
     \textbf{Avertissement~:} on a vu dans la séquence consacrée à l'héritage
 que, pour l'essentiel, le mécanisme d'héritage repose
@@ -114,7 +116,7 @@ dans notre code simplifié, d'imprimer un message.
 \texttt{RPCProxy} doit offrir au reste du monde. Dans une première
 version naïve on pourrait écrire quelque chose comme~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} la version naïve de la classe RPCProxy}
         
         \PY{k}{class} \PY{n+nc}{RPCProxy}\PY{p}{:}
@@ -144,7 +146,7 @@ version naïve on pourrait écrire quelque chose comme~:
 
     Ainsi l'application utilise la classe de cette façon~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} création d\PYZsq{}une instance de RPCProxy}
         
         \PY{n}{rpc\PYZus{}proxy} \PY{o}{=} \PY{n}{RPCProxy}\PY{p}{(}\PY{n}{url}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{http://cloud.provider.com/JSONAPI}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
@@ -164,13 +166,12 @@ version naïve on pourrait écrire quelque chose comme~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Envoi à http://cloud.provider.com/JSONAPI
 de la fonction GetNodes -- args= ([('phy\_mem', '>=', '32G')],)
 Envoi à http://cloud.provider.com/JSONAPI
 de la fonction BookNode -- args= (\{'id': 1002, 'phy\_mem': '32G'\},)
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{discussion}{%
 \subparagraph{Discussion}\label{discussion}}
@@ -208,7 +209,7 @@ version naïve, mais sans la nécessité de définir une à une toutes les
 fonctions de l'API, on peut tirer profit de \texttt{\_\_getattr\_\_},
 comme dans cette deuxième version~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} une deuxième implémentation de RPCProxy}
         
         \PY{k}{class} \PY{n+nc}{RPCProxy}\PY{p}{:}
@@ -234,7 +235,7 @@ comme dans cette deuxième version~:
     Qui est cette fois \textbf{totalement découplée} des détails de l'API,
 et qu'on peut utiliser exactement comme tout à l'heure~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} création d\PYZsq{}une instance de RPCProxy}
         
         \PY{n}{rpc\PYZus{}proxy} \PY{o}{=} \PY{n}{RPCProxy} \PY{p}{(}\PY{n}{url}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{http://cloud.provider.com/JSONAPI}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
@@ -254,13 +255,12 @@ et qu'on peut utiliser exactement comme tout à l'heure~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Envoi à http://cloud.provider.com/JSONAPI{\ldots}
 de la fonction GetNodes -- args= ([('phy\_mem', '>=', '32G')],)
 Envoi à http://cloud.provider.com/JSONAPI{\ldots}
 de la fonction BookNode -- args= (\{'id': 1002, 'phy\_mem': '32G'\},)
-
-    \end{Verbatim}
+\end{Verbatim}
 
 
     % Add a bibliography block to the postdoc

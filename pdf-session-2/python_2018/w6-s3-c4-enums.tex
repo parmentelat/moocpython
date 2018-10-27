@@ -30,12 +30,12 @@ sans grande surprise \texttt{enum}, et qui expose entre autres une
 classe \texttt{Enum}. On l'utiliserait comme ceci, dans un cas d'usage
 plus simple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{enum} \PY{k}{import} \PY{n}{Enum}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{k}{class} \PY{n+nc}{Flavour}\PY{p}{(}\PY{n}{Enum}\PY{p}{)}\PY{p}{:}
             \PY{n}{CHOCOLATE} \PY{o}{=} \PY{l+m+mi}{1}
             \PY{n}{VANILLA} \PY{o}{=} \PY{l+m+mi}{2}
@@ -43,7 +43,7 @@ plus simple~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{vanilla} \PY{o}{=} \PY{n}{Flavour}\PY{o}{.}\PY{n}{VANILLA}
 \end{Verbatim}
 
@@ -51,53 +51,53 @@ plus simple~:
     Un premier avantage est que les représentations textuelles sont plus
 parlantes~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n+nb}{str}\PY{p}{(}\PY{n}{vanilla}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}4}]:} 'Flavour.VANILLA'
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n+nb}{repr}\PY{p}{(}\PY{n}{vanilla}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:} '<Flavour.VANILLA: 2>'
 \end{Verbatim}
             
     Vous pouvez aussi retrouver une valeur par son nom~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{chocolate} \PY{o}{=} \PY{n}{Flavour}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{CHOCOLATE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
         \PY{n}{chocolate}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} <Flavour.CHOCOLATE: 1>
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{n}{Flavour}\PY{o}{.}\PY{n}{CHOCOLATE}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}7}]:} <Flavour.CHOCOLATE: 1>
 \end{Verbatim}
             
     Et réciproquement~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{n}{chocolate}\PY{o}{.}\PY{n}{name}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}8}]:} 'CHOCOLATE'
 \end{Verbatim}
             
@@ -108,7 +108,7 @@ parlantes~:
 sous-classe de \texttt{Enum} qui permet également de faire des
 comparaisons. Pour reprendre le cas des codes d'erreur HTTP~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{k+kn}{from} \PY{n+nn}{enum} \PY{k}{import} \PY{n}{IntEnum}
         
         \PY{k}{class} \PY{n+nc}{HttpError}\PY{p}{(}\PY{n}{IntEnum}\PY{p}{)}\PY{p}{:}
@@ -125,17 +125,17 @@ comparaisons. Pour reprendre le cas des codes d'erreur HTTP~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{n}{code} \PY{o}{=} \PY{n}{HttpError}\PY{o}{.}\PY{n}{REDIRECT\PYZus{}TMP}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{n}{code}\PY{o}{.}\PY{n}{is\PYZus{}redirect}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}11}]:} True
 \end{Verbatim}
             

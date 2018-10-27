@@ -25,21 +25,20 @@ enregistrement est l'équivalent, selon les langages, de \emph{struct} ou
     Notre exemple était celui des personnes, et nous avions alors écrit
 quelque chose comme~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{n}{pierre} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{nom}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pierre}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{25}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{email}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pierre@foo.com}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{pierre}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 \{'nom': 'pierre', 'age': 25, 'email': 'pierre@foo.com'\}
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Cette fois-ci nous allons implémenter la même abstraction, mais avec une
 classe \texttt{Personne} comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{k}{class} \PY{n+nc}{Personne}\PY{p}{:}
             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Une personne possède un nom, un âge et une adresse e\PYZhy{}mail\PYZdq{}\PYZdq{}\PYZdq{}}
             
@@ -59,7 +58,7 @@ classe \texttt{Personne} comme ceci~:
 on l'utiliserait - en guise de rappel sur le passage d'arguments aux
 fonctions~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{personnes} \PY{o}{=} \PY{p}{[}
         
             \PY{c+c1}{\PYZsh{} on se fie à l\PYZsq{}ordre des arguments dans le créateur}
@@ -76,12 +75,11 @@ fonctions~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 <<pierre, 25 ans, email:pierre@foo.com>>
 <<paul, 18 ans, email:paul@bar.com>>
 <<jacques, 52 ans, email:jacques@cool.com>>
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{un-dictionnaire-pour-indexer-les-enregistrements}{%
 \subsubsection{Un dictionnaire pour indexer les
@@ -90,7 +88,7 @@ enregistrements}\label{un-dictionnaire-pour-indexer-les-enregistrements}}
     Nous pouvons appliquer exactement la même technique d'indexation qu'avec
 les dictionnaires~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} on crée un index pour pouvoir rechercher efficacement}
         \PY{c+c1}{\PYZsh{} une personne par son nom}
         \PY{n}{index\PYZus{}par\PYZus{}nom} \PY{o}{=} \PY{p}{\PYZob{}}\PY{n}{personne}\PY{o}{.}\PY{n}{nom}\PY{p}{:} \PY{n}{personne} \PY{k}{for} \PY{n}{personne} \PY{o+ow}{in} \PY{n}{personnes}\PY{p}{\PYZcb{}}
@@ -99,29 +97,28 @@ les dictionnaires~:
 
     De façon à pouvoir facilement localiser une personne~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{pierre} \PY{o}{=} \PY{n}{index\PYZus{}par\PYZus{}nom}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pierre}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{pierre}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 <<pierre, 25 ans, email:pierre@foo.com>>
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{encapsulation}{%
 \subsubsection{Encapsulation}\label{encapsulation}}
 
     Pour marquer l'anniversaire d'une personne, nous pourrions faire~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{pierre}\PY{o}{.}\PY{n}{age} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
         \PY{n}{pierre}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} <<pierre, 26 ans, email:pierre@foo.com>>
 \end{Verbatim}
             
@@ -151,7 +148,7 @@ sont implémentées comme des attributs de l'objet classe}.
 
     Ainsi, on peut étendre l'objet \texttt{classe} lui-même dynamiquement~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} pour une implémentation réelle voyez la bibliothèque smtplib}
         \PY{c+c1}{\PYZsh{} https://docs.python.org/3/library/smtplib.html}
         
@@ -177,12 +174,12 @@ Vous voyez que c'est très simple, et à présent la classe a connaissance
 de cette méthode exactement comme si on l'avait définie dans la clause
 \texttt{class}, comme le montre l'aide~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{n}{help}\PY{p}{(}\PY{n}{Personne}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Help on class Personne in module \_\_main\_\_:
 
 class Personne(builtins.object)
@@ -209,23 +206,20 @@ class Personne(builtins.object)
  |  
  |  \_\_weakref\_\_
  |      list of weak references to the object (if defined)
-
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Et on peut à présent utiliser cette méthode~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{n}{pierre}\PY{o}{.}\PY{n}{sendmail}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Coucou}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Salut ça va ?}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 To: pierre@foo.com
 Subject: Coucou
 Body: Salut ça va ?
-
-    \end{Verbatim}
+\end{Verbatim}
 
 
     % Add a bibliography block to the postdoc

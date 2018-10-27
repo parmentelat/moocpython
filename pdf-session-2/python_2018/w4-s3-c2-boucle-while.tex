@@ -28,10 +28,12 @@ avec une condition \texttt{True}.
 Par exemple le code de l'interpréteur interactif de python pourrait
 ressembler, vu de très loin, à quelque chose comme ceci~:
 
-\begin{verbatim}
-while True:
-    print(eval(read()))
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\ControlFlowTok{while} \VariableTok{True}\NormalTok{:}
+    \BuiltInTok{print}\NormalTok{(}\BuiltInTok{eval}\NormalTok{(read()))}
+\end{Highlighting}
+\end{Shaded}
 
     Notez bien par ailleurs que les instructions \texttt{break} et
 \texttt{continue} fonctionnent, à l'intérieur d'une boucle
@@ -64,7 +66,7 @@ toutefois, pourquoi le langage autorise d'écrire des conditions dont le
 résultat n'est \textbf{pas nécessairement un booléen}. Voyons cela sur
 un exemple simple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} une autre façon de parcourir une liste}
         \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
         
@@ -74,12 +76,11 @@ un exemple simple~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 c
 b
 a
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{une-curiosituxe9-la-clause-else}{%
 \subsubsection{\texorpdfstring{Une curiosité~: la clause
@@ -91,7 +92,7 @@ que la boucle \texttt{for}, peut être assortie
 clause \texttt{else}}, qui est exécutée à la fin de la boucle,
 \textbf{sauf dans le cas d'une sortie avec \texttt{break}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} Un exemple de while avec une clause else}
         
         \PY{c+c1}{\PYZsh{} si break\PYZus{}mode est vrai on va faire un break}
@@ -110,31 +111,29 @@ clause \texttt{else}}, qui est exécutée à la fin de la boucle,
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} sortie de la boucle sans break}
         \PY{c+c1}{\PYZsh{} on passe par else}
         \PY{n}{scan}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{k+kc}{False}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 sans break
 a
 else{\ldots}
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} on sort de la boucle par le break}
         \PY{n}{scan}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{k+kc}{True}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 avec break
 a
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Ce trait est toutefois \textbf{très rarement} utilisé.
 

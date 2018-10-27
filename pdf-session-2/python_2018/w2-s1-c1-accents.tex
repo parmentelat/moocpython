@@ -107,7 +107,7 @@ sources, voici ce qu'il faut savoir.
   sens large), cela est à présent \textbf{permis en Python 3}~:
 \end{itemize}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} pas recommandé, mais autorisé par le langage}
         \PY{n}{nb\PYZus{}élèves} \PY{o}{=} \PY{l+m+mi}{12}
 \end{Verbatim}
@@ -119,14 +119,14 @@ sources, voici ce qu'il faut savoir.
   On peut même utiliser des symboles, comme par exemple
 \end{itemize}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{math} \PY{k}{import} \PY{n}{cos}\PY{p}{,} \PY{n}{pi} \PY{k}{as} \PY{n}{𝞟}
         \PY{n}{θ} \PY{o}{=} \PY{n}{𝞟} \PY{o}{/} \PY{l+m+mi}{4}
         \PY{n}{cos}\PY{p}{(}\PY{n}{θ}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}2}]:} 0.7071067811865476
 \end{Verbatim}
             
@@ -175,7 +175,7 @@ cet endroit de la documentation officielle (en anglais)}.
 \end{itemize}
 
     \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \NormalTok{message }\OperatorTok{=} \StringTok{"on peut mettre un caractère accentué dans une chaîne"}
 \end{Highlighting}
 \end{Shaded}
@@ -192,7 +192,7 @@ cet endroit de la documentation officielle (en anglais)}.
 \end{itemize}
 
     \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \CommentTok{# on peut mettre un caractère accentué dans un commentaire}
 \CommentTok{# ainsi que cos(Θ), ∀x ∈ ∫f(t)dt vous voyez l'idée générale}
 \end{Highlighting}
@@ -233,7 +233,7 @@ en faisant figurer dans vos fichiers, \textbf{en première ou deuxième
 ligne}, une déclaration comme ceci~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \CommentTok{# -*- coding: <nom_de_l_encodage> -*-}
 \end{Highlighting}
 \end{Shaded}
@@ -241,7 +241,7 @@ ligne}, une déclaration comme ceci~:
 ou plus simplement, comme ceci~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \CommentTok{# coding: <nom_de_l_encodage>}
 \end{Highlighting}
 \end{Shaded}
@@ -259,7 +259,7 @@ autre encodage. Pour déterminer la valeur à utiliser dans votre cas
 précis vous pouvez faire dans l'interpréteur interactif~:
 
     \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \CommentTok{# ceci doit être exécuté sur votre machine}
 \ImportTok{import}\NormalTok{ sys}
 \BuiltInTok{print}\NormalTok{(sys.getdefaultencoding())}
@@ -270,7 +270,7 @@ précis vous pouvez faire dans l'interpréteur interactif~:
 plus rares) vous pouvez être amenés à écrire~:
 
     \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \CommentTok{# coding: cp1252}
 \end{Highlighting}
 \end{Shaded}

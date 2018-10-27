@@ -21,142 +21,13 @@ basique}\label{compluxe9ment---niveau-basique}}
     Pour commencer, rappelons comment retrouver la liste des méthodes
 définies sur le type \texttt{list}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}1}]:} \PY{n}{help}\PY{p}{(}\PY{n+nb}{list}\PY{p}{)}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
+        \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
+        
+        \PY{n}{help}\PY{p}{(}\PY{n+nb}{list}\PY{p}{)}
 \end{Verbatim}
 
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-Help on class list in module builtins:
-
-class list(object)
- |  list(iterable=(), /)
- |  
- |  Built-in mutable sequence.
- |  
- |  If no argument is given, the constructor creates a new empty list.
- |  The argument must be an iterable if specified.
- |  
- |  Methods defined here:
- |  
- |  \_\_add\_\_(self, value, /)
- |      Return self+value.
- |  
- |  \_\_contains\_\_(self, key, /)
- |      Return key in self.
- |  
- |  \_\_delitem\_\_(self, key, /)
- |      Delete self[key].
- |  
- |  \_\_eq\_\_(self, value, /)
- |      Return self==value.
- |  
- |  \_\_ge\_\_(self, value, /)
- |      Return self>=value.
- |  
- |  \_\_getattribute\_\_(self, name, /)
- |      Return getattr(self, name).
- |  
- |  \_\_getitem\_\_({\ldots})
- |      x.\_\_getitem\_\_(y) <==> x[y]
- |  
- |  \_\_gt\_\_(self, value, /)
- |      Return self>value.
- |  
- |  \_\_iadd\_\_(self, value, /)
- |      Implement self+=value.
- |  
- |  \_\_imul\_\_(self, value, /)
- |      Implement self*=value.
- |  
- |  \_\_init\_\_(self, /, *args, **kwargs)
- |      Initialize self.  See help(type(self)) for accurate signature.
- |  
- |  \_\_iter\_\_(self, /)
- |      Implement iter(self).
- |  
- |  \_\_le\_\_(self, value, /)
- |      Return self<=value.
- |  
- |  \_\_len\_\_(self, /)
- |      Return len(self).
- |  
- |  \_\_lt\_\_(self, value, /)
- |      Return self<value.
- |  
- |  \_\_mul\_\_(self, value, /)
- |      Return self*value.
- |  
- |  \_\_ne\_\_(self, value, /)
- |      Return self!=value.
- |  
- |  \_\_repr\_\_(self, /)
- |      Return repr(self).
- |  
- |  \_\_reversed\_\_(self, /)
- |      Return a reverse iterator over the list.
- |  
- |  \_\_rmul\_\_(self, value, /)
- |      Return value*self.
- |  
- |  \_\_setitem\_\_(self, key, value, /)
- |      Set self[key] to value.
- |  
- |  \_\_sizeof\_\_(self, /)
- |      Return the size of the list in memory, in bytes.
- |  
- |  append(self, object, /)
- |      Append object to the end of the list.
- |  
- |  clear(self, /)
- |      Remove all items from list.
- |  
- |  copy(self, /)
- |      Return a shallow copy of the list.
- |  
- |  count(self, value, /)
- |      Return number of occurrences of value.
- |  
- |  extend(self, iterable, /)
- |      Extend list by appending elements from the iterable.
- |  
- |  index(self, value, start=0, stop=9223372036854775807, /)
- |      Return first index of value.
- |      
- |      Raises ValueError if the value is not present.
- |  
- |  insert(self, index, object, /)
- |      Insert object before index.
- |  
- |  pop(self, index=-1, /)
- |      Remove and return item at index (default last).
- |      
- |      Raises IndexError if list is empty or index is out of range.
- |  
- |  remove(self, value, /)
- |      Remove first occurrence of value.
- |      
- |      Raises ValueError if the value is not present.
- |  
- |  reverse(self, /)
- |      Reverse *IN PLACE*.
- |  
- |  sort(self, /, *, key=None, reverse=False)
- |      Stable sort *IN PLACE*.
- |  
- |  ----------------------------------------------------------------------
- |  Static methods defined here:
- |  
- |  \_\_new\_\_(*args, **kwargs) from builtins.type
- |      Create and return a new object.  See help(type) for accurate signature.
- |  
- |  ----------------------------------------------------------------------
- |  Data and other attributes defined here:
- |  
- |  \_\_hash\_\_ = None
-
-
-    \end{Verbatim}
 
     Ignorez les méthodes dont le nom commence et termine par \texttt{\_\_}
 (nous parlerons de ceci en semaine 6), vous trouvez alors les méthodes
@@ -172,16 +43,15 @@ complète.
 
     Donnons-nous pour commencer une liste témoin~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{liste}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 liste [0, 1, 2, 3]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \textbf{Avertissements}~:
 
@@ -204,16 +74,15 @@ liste [0, 1, 2, 3]
     La méthode \texttt{append} permet d'ajouter \textbf{un élément} à la fin
 d'une liste~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{liste}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ap}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{liste}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ap}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{liste}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 liste [0, 1, 2, 3, 'ap']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{extend}{%
 \subsubsection{\texorpdfstring{\texttt{extend}}{extend}}\label{extend}}
@@ -221,17 +90,16 @@ liste [0, 1, 2, 3, 'ap']
     La méthode \texttt{extend} réalise la même opération, mais avec
 \textbf{tous les éléments} de la liste qu'on lui passe en argument~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{liste2} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ex1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ex2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{liste2} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ex1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ex2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
         \PY{n}{liste}\PY{o}{.}\PY{n}{extend}\PY{p}{(}\PY{n}{liste2}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{liste}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 liste [0, 1, 2, 3, 'ap', 'ex1', 'ex2']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{append-vs}{%
 \subsubsection{\texorpdfstring{\texttt{append} \emph{vs}
@@ -245,8 +113,8 @@ est un objet \textbf{mutable}. \texttt{append} et \texttt{extend}
 \textbf{modifient} la liste sur laquelle elles travaillent, alors que
 l'addition \textbf{crée un nouvel objet}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} pour créer une liste avec les n premiers entiers, on utilise}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} pour créer une liste avec les n premiers entiers, on utilise}
         \PY{c+c1}{\PYZsh{} la fonction built\PYZhy{}in range(), que l\PYZsq{}on convertit en liste}
         \PY{c+c1}{\PYZsh{} on aura l\PYZsq{}occasion d\PYZsq{}y revenir}
         \PY{n}{a1} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}
@@ -254,49 +122,46 @@ l'addition \textbf{crée un nouvel objet}.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [0, 1, 2]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{a2} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{)}\PY{p}{)}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{a2} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{)}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{a2}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [10, 11, 12]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} le fait d\PYZsq{}utiliser + crée une nouvelle liste}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} le fait d\PYZsq{}utiliser + crée une nouvelle liste}
         \PY{n}{a3} \PY{o}{=} \PY{n}{a1} \PY{o}{+} \PY{n}{a2}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} si bien que maintenant on a trois objets différents}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} si bien que maintenant on a trois objets différents}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{a1}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{a2}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a3}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{a3}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a1 [0, 1, 2]
 a2 [10, 11, 12]
 a3 [0, 1, 2, 10, 11, 12]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Comme on le voit, après une addition, les deux termes de l'addition sont
 inchangés. Pour bien comprendre, voyons exactement le même scénario sous
 pythontutor~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}9}]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} ipythontutor
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} ipythontutor
 \end{Verbatim}
 
 
@@ -304,7 +169,7 @@ pythontutor~:
 \texttt{\%\%ipythontutor}, vous devez cliquer sur le bouton
 \texttt{Forward} pour voir pas à pas le comportement du programme.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -317,7 +182,7 @@ pythontutor~:
 
     Alors que si on avait utilisé \texttt{extend}, on aurait obtenu ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -355,45 +220,43 @@ pourquoi \texttt{e3} ici vaut None.
     Reprenons notre inventaire des méthodes de \texttt{list}, et pour cela
 rappelons nous le contenu de la variable \texttt{liste}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{liste}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{liste}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}10}]:} [0, 1, 2, 3, 'ap', 'ex1', 'ex2']
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} [0, 1, 2, 3, 'ap', 'ex1', 'ex2']
 \end{Verbatim}
             
     La méthode \texttt{insert} permet, comme le nom le suggère, d'insérer un
 élément à une certaine position~; comme toujours les indices commencent
 à zéro et donc~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} insérer à l\PYZsq{}index 2}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} insérer à l\PYZsq{}index 2}
          \PY{n}{liste}\PY{o}{.}\PY{n}{insert}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{1 bis}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{liste}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 liste [0, 1, '1 bis', 2, 3, 'ap', 'ex1', 'ex2']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     On peut remarquer qu'un résultat analogue peut être obtenu avec une
 affectation de slice~; par exemple pour insérer au rang 5 (i.e.~avant
 \texttt{ap}), on pourrait aussi bien faire~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{liste}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{:}\PY{l+m+mi}{5}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{3 bis}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{liste}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{:}\PY{l+m+mi}{5}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{3 bis}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{liste}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 liste [0, 1, '1 bis', 2, 3, '3 bis', 'ap', 'ex1', 'ex2']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{remove}{%
 \subsubsection{\texorpdfstring{\texttt{remove}}{remove}}\label{remove}}
@@ -401,16 +264,15 @@ liste [0, 1, '1 bis', 2, 3, '3 bis', 'ap', 'ex1', 'ex2']
     La méthode \texttt{remove} détruit la \textbf{première occurrence} d'un
 objet dans la liste~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{liste}\PY{o}{.}\PY{n}{remove}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{liste}\PY{o}{.}\PY{n}{remove}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}
          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{liste}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 liste [0, 1, '1 bis', 2, '3 bis', 'ap', 'ex1', 'ex2']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{pop}{%
 \subsubsection{\texorpdfstring{\texttt{pop}}{pop}}\label{pop}}
@@ -419,30 +281,28 @@ liste [0, 1, '1 bis', 2, '3 bis', 'ap', 'ex1', 'ex2']
 d'extraire l'élément à cet indice. En un seul appel on obtient la valeur
 de l'élément et on l'enlève de la liste~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{popped} \PY{o}{=} \PY{n}{liste}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{popped} \PY{o}{=} \PY{n}{liste}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{popped}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{popped}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{liste}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 popped 0 liste [1, '1 bis', 2, '3 bis', 'ap', 'ex1', 'ex2']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Si l'indice n'est pas précisé, c'est le dernier élément de la liste qui
 est visé~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{popped} \PY{o}{=} \PY{n}{liste}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{p}{)}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{popped} \PY{o}{=} \PY{n}{liste}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{p}{)}
          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{popped}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{popped}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{liste}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 popped ex2 liste [1, '1 bis', 2, '3 bis', 'ap', 'ex1']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{reverse}{%
 \subsubsection{\texorpdfstring{\texttt{reverse}}{reverse}}\label{reverse}}
@@ -450,30 +310,28 @@ popped ex2 liste [1, '1 bis', 2, '3 bis', 'ap', 'ex1']
     Enfin \texttt{reverse} renverse la liste, le premier élément devient le
 dernier~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{liste}\PY{o}{.}\PY{n}{reverse}\PY{p}{(}\PY{p}{)}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{liste}\PY{o}{.}\PY{n}{reverse}\PY{p}{(}\PY{p}{)}
          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{liste}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 liste ['ex1', 'ap', '3 bis', 2, '1 bis', 1]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     On peut remarquer ici que le résultat se rapproche de ce qu'on peut
 obtenir avec une opération de slicing comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{liste2} \PY{o}{=} \PY{n}{liste}\PY{p}{[}\PY{p}{:}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{liste2} \PY{o}{=} \PY{n}{liste}\PY{p}{[}\PY{p}{:}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{liste2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste2}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 liste2 [1, '1 bis', 2, '3 bis', 'ap', 'ex1']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \textbf{À la différence toutefois} qu'avec le slicing c'est une copie de
 la liste initiale qui est retournée, la liste de départ quant à elle
@@ -497,25 +355,23 @@ l'aide avec un point d'interrogation \texttt{?} inséré avant ou après un
 symbole. Par exemple pour obtenir des précisions sur la méthode
 \texttt{list.pop}, on peut faire soit~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{} fonctionne dans tous les environnements Python}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} fonctionne dans tous les environnements Python}
          \PY{n}{help}\PY{p}{(}\PY{n+nb}{list}\PY{o}{.}\PY{n}{pop}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Help on method\_descriptor:
 
 pop(self, index=-1, /)
     Remove and return item at index (default last).
     
     Raises IndexError if list is empty or index is out of range.
+\end{Verbatim}
 
-
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} spécifique aux notebooks}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{} spécifique aux notebooks}
          \PY{c+c1}{\PYZsh{} l\PYZsq{}affichage obtenu est légèrement différent}
          \PY{c+c1}{\PYZsh{} tapez la touche \PYZsq{}Esc\PYZsq{} \PYZhy{} ou cliquez la petite croix}
          \PY{c+c1}{\PYZsh{} pour faire disparaitre le dialogue qui apparaît en bas}
@@ -533,7 +389,7 @@ voyez apparaître un dialogue avec les noms connus qui commencent par ce
 mot ici \texttt{li}; utilisez les flèches pour choisir, et `Return' pour
 sélectionner.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         

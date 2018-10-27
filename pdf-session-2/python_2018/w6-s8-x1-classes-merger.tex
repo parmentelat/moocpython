@@ -268,13 +268,15 @@ Il utilise trois modules annexes, qui sont~:
     Lorsque le programme est complet et qu'il fonctionne correctement, on le
 lance comme ceci~:
 
-\begin{verbatim}
-    $ python3 merger.py json/*
-Opening ALL_SHIPS.txt for listing all named ships
-Opening ALL_SHIPS.kml for ship ALL_SHIPS
-Comparing ALL_SHIPS.txt and ALL_SHIPS.txt.ref -> OK
-Comparing ALL_SHIPS.kml and ALL_SHIPS.kml.ref -> OK
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ }\ExtensionTok{python3}\NormalTok{ merger.py json/*}
+\ExtensionTok{Opening}\NormalTok{ ALL_SHIPS.txt for listing all named ships}
+\ExtensionTok{Opening}\NormalTok{ ALL_SHIPS.kml for ship ALL_SHIPS}
+\ExtensionTok{Comparing}\NormalTok{ ALL_SHIPS.txt and ALL_SHIPS.txt.ref -}\OperatorTok{>}\NormalTok{ OK}
+\ExtensionTok{Comparing}\NormalTok{ ALL_SHIPS.kml and ALL_SHIPS.kml.ref -}\OperatorTok{>}\NormalTok{ OK}
+\end{Highlighting}
+\end{Shaded}
 
 qui comme on le voit produit~:
 
@@ -297,48 +299,54 @@ ce qui donne un résultat plus détaillé. Le code KML généré reste
 inchangé, mais la sortie sur le terminal et le fichier de résumé sont
 plus étoffés~:
 
-\begin{verbatim}
-$ python merger.py --verbose json/*.json
-Opening json/2013-10-01-00-00--t=10--ext.json for parsing JSON
-Opening json/2013-10-01-00-10--t=10.json for parsing JSON
-...
-Opening json/2013-10-01-23-40--t=10.json for parsing JSON
-Opening json/2013-10-01-23-50--t=10.json for parsing JSON
-Opening ALL_SHIPS-v.txt for listing all named ships
-Opening ALL_SHIPS.kml for ship ALL_SHIPS
-Comparing ALL_SHIPS-v.txt and ALL_SHIPS-v.txt.ref -> OK
-Comparing ALL_SHIPS.kml and ALL_SHIPS.kml.ref -> OK
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ python3 merger.py }\OperatorTok{--}\NormalTok{verbose json}\OperatorTok{/*}\NormalTok{.json}
+\NormalTok{Opening json}\OperatorTok{/}\DecValTok{2013-10-01-00-00}\OperatorTok{--}\NormalTok{t}\OperatorTok{=}\DecValTok{10}\OperatorTok{--}\NormalTok{ext.json }\ControlFlowTok{for}\NormalTok{ parsing JSON}
+\NormalTok{Opening json}\OperatorTok{/}\DecValTok{2013-10-01-00-10}\OperatorTok{--}\NormalTok{t}\OperatorTok{=}\FloatTok{10.}\NormalTok{json }\ControlFlowTok{for}\NormalTok{ parsing JSON}
+\NormalTok{...}
+\NormalTok{Opening json}\OperatorTok{/}\DecValTok{2013-10-01-23-40}\OperatorTok{--}\NormalTok{t}\OperatorTok{=}\FloatTok{10.}\NormalTok{json }\ControlFlowTok{for}\NormalTok{ parsing JSON}
+\NormalTok{Opening json}\OperatorTok{/}\DecValTok{2013-10-01-23-50}\OperatorTok{--}\NormalTok{t}\OperatorTok{=}\FloatTok{10.}\NormalTok{json }\ControlFlowTok{for}\NormalTok{ parsing JSON}
+\NormalTok{Opening ALL_SHIPS}\OperatorTok{-}\NormalTok{v.txt }\ControlFlowTok{for}\NormalTok{ listing }\BuiltInTok{all}\NormalTok{ named ships}
+\NormalTok{Opening ALL_SHIPS.kml }\ControlFlowTok{for}\NormalTok{ ship ALL_SHIPS}
+\NormalTok{Comparing ALL_SHIPS}\OperatorTok{-}\NormalTok{v.txt }\KeywordTok{and}\NormalTok{ ALL_SHIPS}\OperatorTok{-}\NormalTok{v.txt.ref }\OperatorTok{->}\NormalTok{ OK}
+\NormalTok{Comparing ALL_SHIPS.kml }\KeywordTok{and}\NormalTok{ ALL_SHIPS.kml.ref }\OperatorTok{->}\NormalTok{ OK}
+\end{Highlighting}
+\end{Shaded}
 
 À noter que dans le mode bavard toutes les positions sont listées dans
 le résumé au format texte, ce qui le rend beaucoup plus bavard comme
 vous pouvez le voir en inspectant la taille des deux fichiers de
 référence~:
 
-\begin{verbatim}
-$ ls -l ALL_SHIPS*txt.ref v2.0
--rw-r--r--  1 parmentelat  staff  1438681 Dec  4 16:20 ALL_SHIPS-v.txt.ref
--rw-r--r--  1 parmentelat  staff    15331 Dec  4 16:20 ALL_SHIPS.txt.ref
--rw-r--r--  1 parmentelat  staff        0 Dec  4 16:21 v2.0
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ ls }\OperatorTok{-}\NormalTok{l ALL_SHIPS}\OperatorTok{*}\NormalTok{txt.ref v2}\FloatTok{.0}
+\OperatorTok{-}\NormalTok{rw}\OperatorTok{-}\NormalTok{r}\OperatorTok{--}\NormalTok{r}\OperatorTok{--}  \DecValTok{1}\NormalTok{ parmentelat  staff  }\DecValTok{1438681}\NormalTok{ Dec  }\DecValTok{4} \DecValTok{16}\NormalTok{:}\DecValTok{20}\NormalTok{ ALL_SHIPS}\OperatorTok{-}\NormalTok{v.txt.ref}
+\OperatorTok{-}\NormalTok{rw}\OperatorTok{-}\NormalTok{r}\OperatorTok{--}\NormalTok{r}\OperatorTok{--}  \DecValTok{1}\NormalTok{ parmentelat  staff    }\DecValTok{15331}\NormalTok{ Dec  }\DecValTok{4} \DecValTok{16}\NormalTok{:}\DecValTok{20}\NormalTok{ ALL_SHIPS.txt.ref}
+\OperatorTok{-}\NormalTok{rw}\OperatorTok{-}\NormalTok{r}\OperatorTok{--}\NormalTok{r}\OperatorTok{--}  \DecValTok{1}\NormalTok{ parmentelat  staff        }\DecValTok{0}\NormalTok{ Dec  }\DecValTok{4} \DecValTok{16}\NormalTok{:}\DecValTok{21}\NormalTok{ v2}\FloatTok{.0}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{merger.py---help}{%
 \subparagraph{\texorpdfstring{\texttt{merger.py\ -\/-help}}{merger.py -\/-help}}\label{merger.py---help}}
 
-    \begin{verbatim}
-$ merger.py --help
-usage: merger.py [-h] [-v] [-s SHIP_NAME] [-z] [inputs [inputs ...]]
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ }\ExtensionTok{merger.py}\NormalTok{ --help}
+\ExtensionTok{usage}\NormalTok{: merger.py [-h] [-v] [-s SHIP_NAME] [-z] [inputs [inputs ...]]}
 
-positional arguments:
-  inputs
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -v, --verbose         Verbose mode
-  -s SHIP_NAME, --ship SHIP_NAME
-                        Restrict to ships by that name
-  -z, --gzip            Store kml output in gzip (KMZ) format
-\end{verbatim}
+\ExtensionTok{positional}\NormalTok{ arguments:}
+  \ExtensionTok{inputs}
+    
+\ExtensionTok{optional}\NormalTok{ arguments:}
+  \ExtensionTok{-h}\NormalTok{, --help            show this help message and exit}
+  \ExtensionTok{-v}\NormalTok{, --verbose         Verbose mode}
+  \ExtensionTok{-s}\NormalTok{ SHIP_NAME, --ship SHIP_NAME}
+                        \ExtensionTok{Restrict}\NormalTok{ to ships by that name}
+  \ExtensionTok{-z}\NormalTok{, --gzip            Store kml output in gzip (KMZ) }\ExtensionTok{format}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{un-mot-sur-les-donnuxe9es}{%
 \subparagraph{Un mot sur les données}\label{un-mot-sur-les-donnuxe9es}}
@@ -350,29 +358,37 @@ simplifications ont été apportées.
 
 Voici ce avec quoi on travaille cette fois-ci~:
 
-\begin{verbatim}
->>> extended[0]
-[228317000, 48.76829, -4.334262, 75, 333, u'2013-09-30T21:54:00', u'MA GONDOLE', 30, 0, u'FGSA', u'FR', u'', u'', u'', u'CLASS B', u'', 13, 3, 0, u'', u'', u'']
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\OperatorTok{>>>}\NormalTok{ extended[}\DecValTok{0}\NormalTok{]}
+\NormalTok{[}\DecValTok{228317000}\NormalTok{, }\FloatTok{48.76829}\NormalTok{, }\FloatTok{-4.334262}\NormalTok{, }\DecValTok{75}\NormalTok{, }\DecValTok{333}\NormalTok{, }\StringTok{u'2013-09-30T21:54:00'}\NormalTok{, }\StringTok{u'MA GONDOLE'}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{0}\NormalTok{, }\StringTok{u'FGSA'}\NormalTok{, }\StringTok{u'FR'}\NormalTok{, }\StringTok{u''}\NormalTok{, }\StringTok{u''}\NormalTok{, }\StringTok{u''}\NormalTok{, }\StringTok{u'CLASS B'}\NormalTok{, }\StringTok{u''}\NormalTok{, }\DecValTok{13}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{0}\NormalTok{, }\StringTok{u''}\NormalTok{, }\StringTok{u''}\NormalTok{, }\StringTok{u''}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
 
 c'est-à-dire~:
 
-\begin{verbatim}
-[ id, latitude, longitude, _, _, timestamp, name, _, _, _, country, ...]
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{[ }\BuiltInTok{id}\NormalTok{, latitude, longitude, _, _, timestamp, name, _, _, _, country, ...]}
+\end{Highlighting}
+\end{Shaded}
 
 et en ce qui concerne les données abrégées~:
 
-\begin{verbatim}
->>> abbreviated[0]
-[232005670, 49.39331, -5.939922, 33, 269, 3, u'2013-10-01T06:08:00']
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\OperatorTok{>>>}\NormalTok{ abbreviated[}\DecValTok{0}\NormalTok{]}
+\NormalTok{[}\DecValTok{232005670}\NormalTok{, }\FloatTok{49.39331}\NormalTok{, }\FloatTok{-5.939922}\NormalTok{, }\DecValTok{33}\NormalTok{, }\DecValTok{269}\NormalTok{, }\DecValTok{3}\NormalTok{, }\StringTok{u'2013-10-01T06:08:00'}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
 
 c'est-à-dire~:
 
-\begin{verbatim}
-[ id, latitude, longitude, _, _, _, timestamp]
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{[ }\BuiltInTok{id}\NormalTok{, latitude, longitude, _, _, _, timestamp]}
+\end{Highlighting}
+\end{Shaded}
 
     Il y a unicité des \texttt{id} bien entendu (deux relevés qui portent le
 même \texttt{id} concernent le même bateau).
@@ -423,15 +439,17 @@ pour traduire un flottant en représentation textuelle.
     Vous pouvez considérer que vous avez achevé l'exercice lorsque les deux
 appels suivants affichent les deux dernières lignes avec OK~:
 
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{$ python3 merger.py json}\OperatorTok{/*}\NormalTok{.json}
+\NormalTok{...}
+\NormalTok{Comparing ALL_SHIPS.txt }\KeywordTok{and}\NormalTok{ ALL_SHIPS.txt.ref }\OperatorTok{->}\NormalTok{ OK}
+\NormalTok{Comparing ALL_SHIPS.kml }\KeywordTok{and}\NormalTok{ ALL_SHIPS.kml.ref }\OperatorTok{->}\NormalTok{ OK}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-$ python merger.py json/*.json
-...
-Comparing ALL_SHIPS.txt and ALL_SHIPS.txt.ref -> OK
-Comparing ALL_SHIPS.kml and ALL_SHIPS.kml.ref -> OK
-
-
-
-$ python merger.py -v json/*.json
+$ python3 merger.py -v json/*.json
 ...
 Comparing ALL_SHIPS-v.txt and ALL_SHIPS-v.txt.ref -> OK
 Comparing ALL_SHIPS.kml and ALL_SHIPS.kml.ref -> OK
@@ -450,21 +468,23 @@ manière à vous donner une indication de ce que vous devez écrire.
 \subparagraph{\texorpdfstring{Classe
 \texttt{Position}}{Classe Position}}\label{classe-position}}
 
-    \begin{verbatim}
-Help on class Position in module shipdict:
-
-class Position(__builtin__.object)
- |  a position atom with timestamp attached
- |  
- |  Methods defined here:
- |  
- |  __init__(self, latitude, longitude, timestamp)
- |      constructor
- |  
- |  __repr__(self)
- |      only used when merger.py is run in verbose mode
- |  
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{    Help on }\KeywordTok{class}\NormalTok{ Position }\KeywordTok{in}\NormalTok{ module shipdict:}
+    
+    \KeywordTok{class}\NormalTok{ Position(__builtin__.}\BuiltInTok{object}\NormalTok{)}
+     \OperatorTok{|}\NormalTok{  a position atom }\ControlFlowTok{with}\NormalTok{ timestamp attached}
+     \OperatorTok{|}  
+     \OperatorTok{|}\NormalTok{  Methods defined here:}
+     \OperatorTok{|}  
+     \OperatorTok{|}  \FunctionTok{__init__}\NormalTok{(}\VariableTok{self}\NormalTok{, latitude, longitude, timestamp)}
+     \OperatorTok{|}\NormalTok{      constructor}
+     \OperatorTok{|}  
+     \OperatorTok{|}  \FunctionTok{__repr__}\NormalTok{(}\VariableTok{self}\NormalTok{)}
+     \OperatorTok{|}\NormalTok{      only used when merger.py }\KeywordTok{is}\NormalTok{ run }\KeywordTok{in}\NormalTok{ verbose mode}
+     \OperatorTok{|}  
+\end{Highlighting}
+\end{Shaded}
 
     \textbf{Notes}
 
@@ -483,86 +503,90 @@ class Position(__builtin__.object)
 \subparagraph{\texorpdfstring{Classe
 \texttt{Ship}}{Classe Ship}}\label{classe-ship}}
 
-    \begin{verbatim}
-Help on class Ship in module shipdict:
-
-class Ship(__builtin__.object)
- |  a ship object, that requires a ship id, 
- |  and optionally a ship name and country
- |  which can also be set later on
- |  
- |  this object also manages a list of known positions
- |  
- |  Methods defined here:
- |  
- |  __init__(self, id, name=None, country=None)
- |      constructor
- |  
- |  add_position(self, position)
- |      insert a position relating to this ship
- |      positions are not kept in order so you need 
- |      to call `sort_positions` once you're done
- |  
- |  sort_positions(self)
- |      sort list of positions by chronological order
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{    Help on }\KeywordTok{class}\NormalTok{ Ship }\KeywordTok{in}\NormalTok{ module shipdict:}
+    
+    \KeywordTok{class}\NormalTok{ Ship(__builtin__.}\BuiltInTok{object}\NormalTok{)}
+     \OperatorTok{|}\NormalTok{  a ship }\BuiltInTok{object}\NormalTok{, that requires a ship }\BuiltInTok{id}\NormalTok{, }
+     \OperatorTok{|}  \KeywordTok{and}\NormalTok{ optionally a ship name }\KeywordTok{and}\NormalTok{ country}
+     \OperatorTok{|}\NormalTok{  which can also be }\BuiltInTok{set}\NormalTok{ later on}
+     \OperatorTok{|}  
+     \OperatorTok{|}\NormalTok{  this }\BuiltInTok{object}\NormalTok{ also manages a }\BuiltInTok{list}\NormalTok{ of known positions}
+     \OperatorTok{|}  
+     \OperatorTok{|}\NormalTok{  Methods defined here:}
+     \OperatorTok{|}  
+     \OperatorTok{|}  \FunctionTok{__init__}\NormalTok{(}\VariableTok{self}\NormalTok{, }\BuiltInTok{id}\NormalTok{, name}\OperatorTok{=}\VariableTok{None}\NormalTok{, country}\OperatorTok{=}\VariableTok{None}\NormalTok{)}
+     \OperatorTok{|}\NormalTok{      constructor}
+     \OperatorTok{|}  
+     \OperatorTok{|}\NormalTok{  add_position(}\VariableTok{self}\NormalTok{, position)}
+     \OperatorTok{|}\NormalTok{      insert a position relating to this ship}
+     \OperatorTok{|}\NormalTok{      positions are }\KeywordTok{not}\NormalTok{ kept }\KeywordTok{in}\NormalTok{ order so you need }
+     \OperatorTok{|}\NormalTok{      to call `sort_positions` once you}\StringTok{'re done}
+\StringTok{     |  }
+\StringTok{     |  sort_positions(self)}
+\StringTok{     |      sort list of positions by chronological order}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{classe-shipdict}{%
 \subparagraph{\texorpdfstring{Classe
 \texttt{Shipdict}}{Classe Shipdict}}\label{classe-shipdict}}
 
-    \begin{verbatim}
-Help on class ShipDict in module shipdict:
-
-class ShipDict(__builtin__.dict)
- |  a repository for storing all ships that we know about
- |  indexed by their id
- |  
- |  Method resolution order:
- |      ShipDict
- |      __builtin__.dict
- |      __builtin__.object
- |  
- |  Methods defined here:
- |  
- |  __init__(self)
- |      constructor
- |  
- |  __repr__(self)
- |  
- |  add_abbreviated(self, chunk)
- |      adds an abbreviated data chunk to the repository
- |  
- |  add_chunk(self, chunk)
- |      chunk is a plain list coming from the JSON data
- |      and be either extended or abbreviated
- |      
- |      based on the result of is_abbreviated(), 
- |      gets sent to add_extended or add_abbreviated
- |  
- |  add_extended(self, chunk)
- |      adds an extended data chunk to the repository
- |  
- |  all_ships(self)
- |      returns a list of all ships known to us
- |  
- |  clean_unnamed(self)
- |      Because we enter abbreviated and extended data
- |      in no particular order, and for any time period,
- |      we might have ship instances with no name attached
- |      This method removes such entries from the dict
- |  
- |  is_abbreviated(self, chunk)
- |      depending on the size of the incoming data chunk, 
- |      guess if it is an abbreviated or extended data
- |  
- |  ships_by_name(self, name)
- |      returns a list of all known ships with name <name>
- |  
- |  sort(self)
- |      makes sure all the ships have their positions
- |      sorted in chronological order
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{    Help on }\KeywordTok{class}\NormalTok{ ShipDict }\KeywordTok{in}\NormalTok{ module shipdict:}
+    
+    \KeywordTok{class}\NormalTok{ ShipDict(__builtin__.}\BuiltInTok{dict}\NormalTok{)}
+     \OperatorTok{|}\NormalTok{  a repository }\ControlFlowTok{for}\NormalTok{ storing }\BuiltInTok{all}\NormalTok{ ships that we know about}
+     \OperatorTok{|}\NormalTok{  indexed by their }\BuiltInTok{id}
+     \OperatorTok{|}  
+     \OperatorTok{|}\NormalTok{  Method resolution order:}
+     \OperatorTok{|}\NormalTok{      ShipDict}
+     \OperatorTok{|}\NormalTok{      __builtin__.}\BuiltInTok{dict}
+     \OperatorTok{|}\NormalTok{      __builtin__.}\BuiltInTok{object}
+     \OperatorTok{|}  
+     \OperatorTok{|}\NormalTok{  Methods defined here:}
+     \OperatorTok{|}  
+     \OperatorTok{|}  \FunctionTok{__init__}\NormalTok{(}\VariableTok{self}\NormalTok{)}
+     \OperatorTok{|}\NormalTok{      constructor}
+     \OperatorTok{|}  
+     \OperatorTok{|}  \FunctionTok{__repr__}\NormalTok{(}\VariableTok{self}\NormalTok{)}
+     \OperatorTok{|}  
+     \OperatorTok{|}\NormalTok{  add_abbreviated(}\VariableTok{self}\NormalTok{, chunk)}
+     \OperatorTok{|}\NormalTok{      adds an abbreviated data chunk to the repository}
+     \OperatorTok{|}  
+     \OperatorTok{|}\NormalTok{  add_chunk(}\VariableTok{self}\NormalTok{, chunk)}
+     \OperatorTok{|}\NormalTok{      chunk }\KeywordTok{is}\NormalTok{ a plain }\BuiltInTok{list}\NormalTok{ coming }\ImportTok{from}\NormalTok{ the JSON data}
+     \OperatorTok{|}      \KeywordTok{and}\NormalTok{ be either extended }\KeywordTok{or}\NormalTok{ abbreviated}
+     \OperatorTok{|}      
+     \OperatorTok{|}\NormalTok{      based on the result of is_abbreviated(), }
+     \OperatorTok{|}\NormalTok{      gets sent to add_extended }\KeywordTok{or}\NormalTok{ add_abbreviated}
+     \OperatorTok{|}  
+     \OperatorTok{|}\NormalTok{  add_extended(}\VariableTok{self}\NormalTok{, chunk)}
+     \OperatorTok{|}\NormalTok{      adds an extended data chunk to the repository}
+     \OperatorTok{|}  
+     \OperatorTok{|}\NormalTok{  all_ships(}\VariableTok{self}\NormalTok{)}
+     \OperatorTok{|}\NormalTok{      returns a }\BuiltInTok{list}\NormalTok{ of }\BuiltInTok{all}\NormalTok{ ships known to us}
+     \OperatorTok{|}  
+     \OperatorTok{|}\NormalTok{  clean_unnamed(}\VariableTok{self}\NormalTok{)}
+     \OperatorTok{|}\NormalTok{      Because we enter abbreviated }\KeywordTok{and}\NormalTok{ extended data}
+     \OperatorTok{|}      \KeywordTok{in}\NormalTok{ no particular order, }\KeywordTok{and} \ControlFlowTok{for} \BuiltInTok{any}\NormalTok{ time period,}
+     \OperatorTok{|}\NormalTok{      we might have ship instances }\ControlFlowTok{with}\NormalTok{ no name attached}
+     \OperatorTok{|}\NormalTok{      This method removes such entries }\ImportTok{from}\NormalTok{ the }\BuiltInTok{dict}
+     \OperatorTok{|}  
+     \OperatorTok{|}\NormalTok{  is_abbreviated(}\VariableTok{self}\NormalTok{, chunk)}
+     \OperatorTok{|}\NormalTok{      depending on the size of the incoming data chunk, }
+     \OperatorTok{|}\NormalTok{      guess }\ControlFlowTok{if}\NormalTok{ it }\KeywordTok{is}\NormalTok{ an abbreviated }\KeywordTok{or}\NormalTok{ extended data}
+     \OperatorTok{|}  
+     \OperatorTok{|}\NormalTok{  ships_by_name(}\VariableTok{self}\NormalTok{, name)}
+     \OperatorTok{|}\NormalTok{      returns a }\BuiltInTok{list}\NormalTok{ of }\BuiltInTok{all}\NormalTok{ known ships }\ControlFlowTok{with}\NormalTok{ name }\OperatorTok{<}\NormalTok{name}\OperatorTok{>}
+     \OperatorTok{|}  
+     \OperatorTok{|}\NormalTok{  sort(}\VariableTok{self}\NormalTok{)}
+     \OperatorTok{|}\NormalTok{      makes sure }\BuiltInTok{all}\NormalTok{ the ships have their positions}
+     \OperatorTok{|}      \BuiltInTok{sorted} \KeywordTok{in}\NormalTok{ chronological order}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{un-dernier-indice}{%
 \subparagraph{Un dernier indice}\label{un-dernier-indice}}
@@ -571,18 +595,20 @@ class ShipDict(__builtin__.dict)
 transformer un flottant en coordonnées lisibles dans le résumé généré en
 mode bavard.
 
-    \begin{verbatim}
-def d_m_s(f):
-    """
-    makes a float readable; e.g. transforms 2.5 into 2.30'00'' 
-    we avoid using ° to keep things simple
-    input is assumed positive
-    """
-    d = int (f)
-    m = int((f-d)*60)
-    s = int( (f-d)*3600 - 60*m)
-    return f"{d:02d}.{m:02d}'{s:02d}''"
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+    \KeywordTok{def}\NormalTok{ d_m_s(f):}
+        \CommentTok{"""}
+\CommentTok{        makes a float readable; e.g. transforms 2.5 into 2.30'00'' }
+\CommentTok{        we avoid using ° to keep things simple}
+\CommentTok{        input is assumed positive}
+\CommentTok{        """}
+\NormalTok{        d }\OperatorTok{=} \BuiltInTok{int}\NormalTok{ (f)}
+\NormalTok{        m }\OperatorTok{=} \BuiltInTok{int}\NormalTok{((f}\OperatorTok{-}\NormalTok{d)}\OperatorTok{*}\DecValTok{60}\NormalTok{)}
+\NormalTok{        s }\OperatorTok{=} \BuiltInTok{int}\NormalTok{( (f}\OperatorTok{-}\NormalTok{d)}\OperatorTok{*}\DecValTok{3600} \OperatorTok{-} \DecValTok{60}\OperatorTok{*}\NormalTok{m)}
+        \ControlFlowTok{return} \SpecialStringTok{f"}\SpecialCharTok{\{d:02d\}}\SpecialStringTok{.}\SpecialCharTok{\{m:02d\}}\SpecialStringTok{'}\SpecialCharTok{\{s:02d\}}\SpecialStringTok{''"}
+\end{Highlighting}
+\end{Shaded}
 
 
     % Add a bibliography block to the postdoc

@@ -19,23 +19,23 @@ intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
     Le symbole \texttt{object} est une variable prédéfinie (qui donc fait
 partie du module \texttt{builtins})~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{n+nb}{object}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}1}]:} object
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{import} \PY{n+nn}{builtins}
         
         \PY{n}{builtins}\PY{o}{.}\PY{n}{object} \PY{o+ow}{is} \PY{n+nb}{object}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}2}]:} True
 \end{Verbatim}
             
@@ -43,7 +43,7 @@ partie du module \texttt{builtins})~:
 en Python héritent de la classe \texttt{object}, même lorsqu'aucun
 héritage n'est spécifié~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{k}{class} \PY{n+nc}{Foo}\PY{p}{:}
             \PY{k}{pass}
         
@@ -51,7 +51,7 @@ héritage n'est spécifié~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}3}]:} (object,)
 \end{Verbatim}
             
@@ -66,7 +66,7 @@ faisait Python 2 entre classes \emph{old-style} et classes
 \emph{new-style}. Nous le mentionnons seulement car on rencontre encore
 parfois du code qui fait quelque chose comme~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{k}{class} \PY{n+nc}{Bar}\PY{p}{(}\PY{n+nb}{object}\PY{p}{)}\PY{p}{:}
             \PY{k}{pass}
 \end{Verbatim}
@@ -191,7 +191,7 @@ le signe d'erreurs de conception plus profondes.
 
     On se donne la hiérarchie suivante~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{k}{class} \PY{n+nc}{LeftTop}\PY{p}{(}\PY{n+nb}{object}\PY{p}{)}\PY{p}{:}
             \PY{k}{def} \PY{n+nf}{attribut}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:} 
                 \PY{k}{return} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{attribut(LeftTop)}\PY{l+s+s2}{\PYZdq{}}
@@ -224,12 +224,12 @@ les deux définitions de la méthode \texttt{attribut}~:
 ici. En fait, c'est la méthode de \texttt{LeftTop} qui est héritée dans
 \texttt{Class}, comme on le voit ici~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{instance}\PY{o}{.}\PY{n}{attribut}\PY{p}{(}\PY{p}{)} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{attribut(LeftTop)}\PY{l+s+s1}{\PYZsq{}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} True
 \end{Verbatim}
             
@@ -250,7 +250,7 @@ de la redéfinir, et ainsi d'en \textbf{choisir} une autre. Dans notre
 exemple si on préfère la méthode implémentée dans \texttt{Right}, on
 définira plutôt la classe \texttt{Class} comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{k}{class} \PY{n+nc}{Class}\PY{p}{(}\PY{n}{Left}\PY{p}{,} \PY{n}{Middle}\PY{p}{,} \PY{n}{Right}\PY{p}{)}\PY{p}{:}
             \PY{c+c1}{\PYZsh{} en redéfinissant explicitement la méthode}
             \PY{c+c1}{\PYZsh{} attribut ici on court\PYZhy{}circuite la mro}
@@ -264,7 +264,7 @@ définira plutôt la classe \texttt{Class} comme ceci~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}7}]:} 'attribut(Right)'
 \end{Verbatim}
             
@@ -272,7 +272,7 @@ définira plutôt la classe \texttt{Class} comme ceci~:
 \textbf{les deux} méthodes dont vous pourriez hériter et les combiner,
 vous pouvez le faire aussi, par exemple comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{k}{class} \PY{n+nc}{Class}\PY{p}{(}\PY{n}{Left}\PY{p}{,} \PY{n}{Middle}\PY{p}{,} \PY{n}{Right}\PY{p}{)}\PY{p}{:}
             \PY{c+c1}{\PYZsh{} pour faire un composite des deux méthodes}
             \PY{c+c1}{\PYZsh{} trouvées dans les classes mères}
@@ -286,7 +286,7 @@ vous pouvez le faire aussi, par exemple comme ceci~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}8}]:} 'attribut(LeftTop) ** attribut(Right)'
 \end{Verbatim}
             
@@ -297,7 +297,7 @@ compliqué}\label{un-exemple-un-peu-plus-compliquuxe9}}
     Voici un exemple, assez parlant, tiré de la deuxième référence (voir
 ci-dessous la dernière section, ``Pour en savoir plus'').
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{n}{O} \PY{o}{=} \PY{n+nb}{object}
         \PY{k}{class} \PY{n+nc}{F}\PY{p}{(}\PY{n}{O}\PY{p}{)}\PY{p}{:} \PY{k}{pass}
         \PY{k}{class} \PY{n+nc}{E}\PY{p}{(}\PY{n}{O}\PY{p}{)}\PY{p}{:} \PY{k}{pass}
@@ -310,39 +310,41 @@ ci-dessous la dernière section, ``Pour en savoir plus'').
 
     Cette hiérarchie nous donne, en partant de A, l'ordre suivant~:
 
-    \begin{verbatim}
-                           6
-                          ---
-Level 3                  | O |
-                       /  ---  \
-                      /    |    \
-                     /     |     \
-                    /      |      \
-                  ---     ---    ---
-Level 2        2 | E | 4 | D |  | F | 5
-                  ---     ---    ---
-                   \      / \     /
-                    \    /   \   /
-                     \  /     \ /
-                      ---     ---
-Level 1            1 | B |   | C | 3
-                      ---     ---
-                       \       /
-                        \     /
-                          ---
-Level 0                0 | A |
-                          ---
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+                               \DecValTok{6}
+                              \OperatorTok{---}
+\NormalTok{    Level }\DecValTok{3}                  \OperatorTok{|}\NormalTok{ O }\OperatorTok{|}
+                           \OperatorTok{/}  \OperatorTok{---}  \OperatorTok{\textbackslash{}}
+                          \OperatorTok{/}    \OperatorTok{|}    \OperatorTok{\textbackslash{}}
+                         \OperatorTok{/}     \OperatorTok{|}     \OperatorTok{\textbackslash{}}
+                        \OperatorTok{/}      \OperatorTok{|}      \OperatorTok{\textbackslash{}}
+                      \OperatorTok{---}     \OperatorTok{---}    \OperatorTok{---}
+\NormalTok{    Level }\DecValTok{2}        \DecValTok{2} \OperatorTok{|}\NormalTok{ E }\OperatorTok{|} \DecValTok{4} \OperatorTok{|}\NormalTok{ D }\OperatorTok{|}  \OperatorTok{|}\NormalTok{ F }\OperatorTok{|} \DecValTok{5}
+                      \OperatorTok{---}     \OperatorTok{---}    \OperatorTok{---}
+                       \OperatorTok{\textbackslash{}}      \OperatorTok{/} \OperatorTok{\textbackslash{}}     \OperatorTok{/}
+                        \OperatorTok{\textbackslash{}}    \OperatorTok{/}   \OperatorTok{\textbackslash{}}   \OperatorTok{/}
+                         \OperatorTok{\textbackslash{}}  \OperatorTok{/}     \OperatorTok{\textbackslash{}} \OperatorTok{/}
+                          \OperatorTok{---}     \OperatorTok{---}
+\NormalTok{    Level }\DecValTok{1}            \DecValTok{1} \OperatorTok{|}\NormalTok{ B }\OperatorTok{|}   \OperatorTok{|}\NormalTok{ C }\OperatorTok{|} \DecValTok{3}
+                          \OperatorTok{---}     \OperatorTok{---}
+                           \OperatorTok{\textbackslash{}}       \OperatorTok{/}
+                            \OperatorTok{\textbackslash{}}     \OperatorTok{/}
+                              \OperatorTok{---}
+\NormalTok{    Level }\DecValTok{0}                \DecValTok{0} \OperatorTok{|}\NormalTok{ A }\OperatorTok{|}
+                              \OperatorTok{---}
+\end{Highlighting}
+\end{Shaded}
 
     Que l'on peut calculer, sous l'interpréteur python, avec la méthode
 \texttt{mro} sur la classe de départ~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{n}{A}\PY{o}{.}\PY{n}{mro}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}10}]:} [\_\_main\_\_.A,
           \_\_main\_\_.B,
           \_\_main\_\_.E,
@@ -361,7 +363,7 @@ pas trouver d'ordre} qui respecte les bonnes propriétés que l'on a vues
 tout à l'heure, et qui pour cette raison sera \textbf{rejetée par
 l'interpréteur python}. D'abord en version dessinée~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} puis en version code}
          \PY{k}{class} \PY{n+nc}{X}\PY{p}{:} \PY{k}{pass}
          \PY{k}{class} \PY{n+nc}{Y}\PY{p}{:} \PY{k}{pass}
@@ -377,11 +379,10 @@ l'interpréteur python}. D'abord en version dessinée~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 OOPS, <class 'TypeError'>, Cannot create a consistent method resolution
 order (MRO) for bases X, Y
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{pour-en-savoir-plus}{%
 \subsubsection{Pour en savoir plus}\label{pour-en-savoir-plus}}

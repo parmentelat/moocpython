@@ -35,12 +35,12 @@ fonctionnalité, de manière relativement simple.
     Pour illustrer le concept, voici à quoi ressemblent les 6 permutations
 d'un ensemble à trois éléments~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{itertools} \PY{k}{import} \PY{n}{permutations}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n+nb}{set} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{\PYZcb{}}
         
         \PY{k}{for} \PY{n}{p} \PY{o+ow}{in} \PY{n}{permutations}\PY{p}{(}\PY{n+nb}{set}\PY{p}{)}\PY{p}{:}
@@ -48,22 +48,21 @@ d'un ensemble à trois éléments~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 (1, 2, 3)
 (1, 3, 2)
 (2, 1, 3)
 (2, 3, 1)
 (3, 1, 2)
 (3, 2, 1)
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{une-impluxe9mentation}{%
 \subparagraph{Une implémentation}\label{une-impluxe9mentation}}
 
     Voici une implémentation possible pour un itérateur de permutations~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{k}{class} \PY{n+nc}{Permutations}\PY{p}{:}
             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
         \PY{l+s+sd}{    Un itérateur qui énumère les permutations de n}
@@ -229,7 +228,7 @@ contraire, on veut éviter à tout prix le coût d'une telle construction.
 On peut le voir sur un code qui n'utiliserait que les 20 premières
 valeurs de l'itérateur, vous constatez que ce code est immédiat~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{k}{def} \PY{n+nf}{show\PYZus{}first\PYZus{}items}\PY{p}{(}\PY{n}{iterable}\PY{p}{,} \PY{n}{nb\PYZus{}items}\PY{p}{)}\PY{p}{:}
             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
         \PY{l+s+sd}{    montre les \PYZlt{}nb\PYZus{}items\PYZgt{} premiers items de iterable}
@@ -243,12 +242,12 @@ valeurs de l'itérateur, vous constatez que ce code est immédiat~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{show\PYZus{}first\PYZus{}items}\PY{p}{(}\PY{n}{Permutations}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Il y a 479001600 items dans l'itérable
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 10]
@@ -272,8 +271,7 @@ Il y a 479001600 items dans l'itérable
 [0, 1, 2, 3, 11, 4, 5, 6, 7, 8, 10, 9]
 [0, 1, 2, 11, 3, 4, 5, 6, 7, 8, 10, 9]
 {\ldots}
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Ce tableau vous montre par ailleurs sous un autre angle comment
 fonctionne l'algorithme, si vous observez le \texttt{11} qui balaie en
@@ -302,7 +300,7 @@ optionnelles~:
     C'est ce qu'on a fait dans cette deuxième version~; après avoir enlevé
 la logorrhée de commentaires ça redevient presque lisible ;)
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{k+kn}{import} \PY{n+nn}{itertools}
         
         \PY{k}{class} \PY{n+nc}{Permutations2}\PY{p}{:}
@@ -349,12 +347,12 @@ la logorrhée de commentaires ça redevient presque lisible ;)
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{n}{show\PYZus{}first\PYZus{}items}\PY{p}{(}\PY{n}{Permutations2}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Il y a 120 items dans l'itérable
 [0, 1, 2, 3, 4]
 [0, 1, 2, 4, 3]
@@ -378,8 +376,7 @@ Il y a 120 items dans l'itérable
 [4, 3, 0, 1, 2]
 [0, 2, 1, 3, 4]
 {\ldots}
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
@@ -393,7 +390,7 @@ de réviser la notion de \texttt{yield\ from}.
 
     On commence par une version très rustique qui fait des impressions~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} pour simplifier ici on suppose que l\PYZsq{}entrée est une vraie liste}
         \PY{c+c1}{\PYZsh{} que l\PYZsq{}on va ainsi pouvoir modifier par effets de bord}
         \PY{k}{def} \PY{n+nf}{gen\PYZus{}perm1}\PY{p}{(}\PY{n}{subject}\PY{p}{,} \PY{n}{k}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}\PY{p}{:}
@@ -410,12 +407,12 @@ de réviser la notion de \texttt{yield\ from}.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{n}{gen\PYZus{}perm1}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 ['a', 'b', 'c', 'd']
 ['a', 'b', 'd', 'c']
 ['a', 'c', 'b', 'd']
@@ -440,14 +437,13 @@ de réviser la notion de \texttt{yield\ from}.
 ['d', 'c', 'a', 'b']
 ['d', 'a', 'c', 'b']
 ['d', 'a', 'b', 'c']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Très bien, mais on ne veut pas imprimer, on veut itérer. On pourrait se
 dire, il me suffit de remplacer \texttt{print} par \texttt{yield}.
 Essayons cela~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} pour simplifier ici on suppose que l\PYZsq{}entrée est une vraie liste}
          \PY{c+c1}{\PYZsh{} que l\PYZsq{}on va ainsi pouvoir modifier par effets de bord}
          \PY{k}{def} \PY{n+nf}{gen\PYZus{}perm2}\PY{p}{(}\PY{n}{subject}\PY{p}{,} \PY{n}{k}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}\PY{p}{:}
@@ -464,7 +460,7 @@ Essayons cela~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{k}{for} \PY{n}{perm} \PY{o+ow}{in} \PY{n}{gen\PYZus{}perm2}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{:}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{perm}\PY{p}{)}
 \end{Verbatim}
@@ -477,7 +473,7 @@ maintenant un objet générateur. Pour faire ce qu'on cherche à faire il
 nous faut bien utiliser cet objet générateur, et pour cela on utilise
 \texttt{yield\ from}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} pour simplifier ici on suppose que l\PYZsq{}entrée est une vraie liste}
          \PY{c+c1}{\PYZsh{} que l\PYZsq{}on va ainsi pouvoir modifier par effets de bord}
          \PY{k}{def} \PY{n+nf}{gen\PYZus{}perm3}\PY{p}{(}\PY{n}{subject}\PY{p}{,} \PY{n}{k}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}\PY{p}{:}
@@ -494,13 +490,13 @@ nous faut bien utiliser cet objet générateur, et pour cela on utilise
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{k}{for} \PY{n}{perm} \PY{o+ow}{in} \PY{n}{gen\PYZus{}perm3}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{:}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{perm}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 ['a', 'b', 'c', 'd']
 ['a', 'b', 'd', 'c']
 ['a', 'c', 'b', 'd']
@@ -525,8 +521,7 @@ nous faut bien utiliser cet objet générateur, et pour cela on utilise
 ['d', 'c', 'a', 'b']
 ['d', 'a', 'c', 'b']
 ['d', 'a', 'b', 'c']
-
-    \end{Verbatim}
+\end{Verbatim}
 
 
     % Add a bibliography block to the postdoc

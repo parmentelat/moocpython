@@ -74,13 +74,13 @@ le programme lorsque le dernier sous-processus se termine.
     C'est ce notebook qui va jouer pour nous le rôle du programme
 \texttt{game.py}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{asyncio}
         \PY{k+kn}{import} \PY{n+nn}{sys}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} cette constante est utile pour déclarer qu\PYZsq{}on a l\PYZsq{}intention}
         \PY{c+c1}{\PYZsh{} de lire les sorties (stout et stderr)}
         \PY{c+c1}{\PYZsh{} de nos sous\PYZhy{}process par l\PYZsq{}intermédiaire de pipes}
@@ -93,15 +93,17 @@ charger de lancer les sous-process selon un scénario. Pour ne pas se
 compliquer la vie on choisit de représenter un scénario (un script)
 comme une liste de tuples de la forme~:
 
-\begin{verbatim}
-script = [ (secondes, predef), ...]
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{script }\OperatorTok{=}\NormalTok{ [ (secondes, predef), ...]}
+\end{Highlighting}
+\end{Shaded}
 
 qui signifie de lancer, un délai de \texttt{secondes} secondes après le
 début du programme, le programme \texttt{players.py} dans la
 configuration \texttt{predef} - de 1 à 4 donc.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{k}{class} \PY{n+nc}{Scheduler}\PY{p}{:}
         
             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{script}\PY{p}{)}\PY{p}{:}
@@ -241,7 +243,7 @@ configuration \texttt{predef} - de 1 à 4 donc.
     À ce stade on a déjà le cœur de la logique du \emph{scheduler}, et aussi
 du multiplexer. Il ne nous manque plus que l'horloge~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{k}{class} \PY{n+nc}{Clock}\PY{p}{:}
         
             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
@@ -258,7 +260,7 @@ du multiplexer. Il ne nous manque plus que l'horloge~:
     Et enfin pour mettre tous ces morceaux en route il nous faut une boucle
 d'événements~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{k}{class} \PY{n+nc}{Game}\PY{p}{:}
         
             \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{script}\PY{p}{)}\PY{p}{:}
@@ -287,46 +289,46 @@ par les sorties on va se contenter de lancer~:
   1 seconde après le début une instance de \texttt{players.py\ 2}
 \end{itemize}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{game} \PY{o}{=} \PY{n}{Game}\PY{p}{(} \PY{p}{[}\PY{p}{(}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mf}{1.}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{)}
         \PY{n}{game}\PY{o}{.}\PY{n}{mainloop}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 clock = 0000s
 >>>>>>>> worker ps\#1 (predef 1)
-         got `E john` from ps\#1 (predef 1)
-         got `E mary` from ps\#1 (predef 1)
          got `S john` from ps\#1 (predef 1)
          got `W mary` from ps\#1 (predef 1)
-         got `E john` from ps\#1 (predef 1)
-         got `W john` from ps\#1 (predef 1)
+         got `N mary` from ps\#1 (predef 1)
 clock = 0001s
 >>>>>>>> worker ps\#2 (predef 2)
-         got `S bill` from ps\#2 (predef 2)
-         got `N jane` from ps\#2 (predef 2)
-         got `W jane` from ps\#2 (predef 2)
          got `S mary` from ps\#1 (predef 1)
          got `W bill` from ps\#2 (predef 2)
-         got `E mary` from ps\#1 (predef 1)
          got `S jane` from ps\#2 (predef 2)
+         got `E jane` from ps\#2 (predef 2)
+         got `N mary` from ps\#1 (predef 1)
+         got `S john` from ps\#1 (predef 1)
+         got `S bill` from ps\#2 (predef 2)
+         got `W jane` from ps\#2 (predef 2)
+         got `S mary` from ps\#1 (predef 1)
+         got `N john` from ps\#1 (predef 1)
+         got `S jane` from ps\#2 (predef 2)
+         got `W mary` from ps\#1 (predef 1)
          got `N bill` from ps\#2 (predef 2)
+clock = 0002s
+         got `W jane` from ps\#2 (predef 2)
          got `E mary` from ps\#1 (predef 1)
-         got `E mary` from ps\#1 (predef 1)
+         got `W john` from ps\#1 (predef 1)
          got `W bill` from ps\#2 (predef 2)
          got `W mary` from ps\#1 (predef 1)
-         got `W bill` from ps\#2 (predef 2)
-         got `W bill` from ps\#2 (predef 2)
-         got `E mary` from ps\#1 (predef 1)
-         got `S jane` from ps\#2 (predef 2)
-clock = 0002s
 <<<<<<<< worker ps\#1 (predef 1) - exit code 0 - 1 still running
-         got `W jane` from ps\#2 (predef 2)
+         got `S bill` from ps\#2 (predef 2)
+         got `S bill` from ps\#2 (predef 2)
+clock = 0003s
 <<<<<<<< worker ps\#2 (predef 2) - exit code 0 - 0 still running
 no process left - bye
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{conclusion}{%
 \subsubsection{Conclusion}\label{conclusion}}

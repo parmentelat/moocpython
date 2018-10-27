@@ -24,7 +24,7 @@ après usage. On a vu aussi qu'il est recommandé de \textbf{toujours}
 utiliser l'instruction \texttt{with} et de contrôler son encodage. Il
 est donc recommandé de faire~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} avec un `with\PYZsq{} on garantit la fermeture du fichier}
         \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{foo.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{w}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{sortie}\PY{p}{:}
             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{:}
@@ -55,7 +55,7 @@ est donc recommandé de faire~:
 le fichier \texttt{foo.txt} qui contient, à ce stade du notebook, deux
 entiers~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} on ouvre le fichier en mode \PYZsq{}a\PYZsq{} comme append (= ajouter)}
         \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{foo.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{sortie}\PY{p}{:}
             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{102}\PY{p}{)}\PY{p}{:}
@@ -63,7 +63,7 @@ entiers~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} maintenant on regarde ce que contient le fichier}
         \PY{c+c1}{\PYZsh{} remarquez que sans \PYZsq{}mode\PYZsq{}, on ouvre en lecture seule}
         \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{foo.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{entree}\PY{p}{:} 
@@ -73,13 +73,12 @@ entiers~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 0
 1
 100
 101
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Il existe de nombreuses variantes au mode d'ouverture, pour par
 exemple~:
@@ -111,27 +110,26 @@ suivantes. Pour l'instant, on peut dire qu'un fichier - qui donc
 peut le parcourir qu'une fois dans une boucle \texttt{for}. Pour le
 reparcourir, il faut le fermer et l'ouvrir de nouveau.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} un fichier est son propre itérateur}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{foo.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{entree}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{n}{entree}\PY{o}{.}\PY{n+nf+fm}{\PYZus{}\PYZus{}iter\PYZus{}\PYZus{}}\PY{p}{(}\PY{p}{)} \PY{o+ow}{is} \PY{n}{entree}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 True
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Par conséquent, écrire deux boucles \texttt{for} imbriquées sur
 \textbf{le même objet fichier} ne \textbf{fonctionnerait pas} comme on
 pourrait s'y attendre.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} Si l\PYZsq{}on essaie d\PYZsq{}écrire deux boucles imbriquées}
         \PY{c+c1}{\PYZsh{} sur le même objet fichier, le résultat est inattendu}
         \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{foo.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{entree}\PY{p}{:}
@@ -145,12 +143,11 @@ pourrait s'y attendre.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 0 x 1
 0 x 100
 0 x 101
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{compluxe9ment---niveau-avancuxe9}{%
 \subsection{Complément - niveau
@@ -171,13 +168,13 @@ d'exploitation~; nous allons en décrire deux parmi les plus utiles.
 lire du texte, pour examiner ce texte nous allons utiliser la fonction
 \texttt{repr()}, et voici pourquoi~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} construisons à la main une chaîne qui contient deux lignes}
         \PY{n}{lines} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{abc}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{def}\PY{l+s+s2}{\PYZdq{}}  \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} si on l\PYZsq{}imprime on voit bien les retours à la ligne}
         \PY{c+c1}{\PYZsh{} d\PYZsq{}ailleurs on sait qu\PYZsq{}il n\PYZsq{}est pas utile}
         \PY{c+c1}{\PYZsh{} d\PYZsq{}ajouter un retour à la ligne à la fin}
@@ -185,23 +182,21 @@ lire du texte, pour examiner ce texte nous allons utiliser la fonction
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 abc
 def
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} vérifions que repr() nous permet de bien}
         \PY{c+c1}{\PYZsh{} voir le contenu de cette chaine}
         \PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{repr}\PY{p}{(}\PY{n}{lines}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 'abc\textbackslash{}ndef\textbackslash{}n'
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{lire-un-contenu---bas-niveau}{%
 \subparagraph{Lire un contenu - bas
@@ -210,7 +205,7 @@ niveau}\label{lire-un-contenu---bas-niveau}}
     Revenons aux fichiers~; la méthode \texttt{read()} permet de lire dans
 le fichier un buffer d'une certaine taille~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} read() retourne TOUT le contenu}
          \PY{c+c1}{\PYZsh{} ne pas utiliser avec de très gros fichiers bien sûr}
          
@@ -221,16 +216,15 @@ le fichier un buffer d'une certaine taille~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Contenu complet
 0
 1
 100
 101
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} lire dans le fichier deux blocs de quatre caractères}
          \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{foo.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{entree}\PY{p}{:}
              \PY{k}{for} \PY{n}{bloc} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{:}
@@ -238,11 +232,10 @@ Contenu complet
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Bloc 0 >>'0\textbackslash{}n1\textbackslash{}n'<<
 Bloc 1 >>'100\textbackslash{}n'<<
-
-    \end{Verbatim}
+\end{Verbatim}
 
     On voit donc que chaque bloc contient bien quatre caractères en comptant
 les sauts de ligne~:
@@ -284,7 +277,7 @@ binaires}\label{fichiers-textuels-et-fichiers-binaires}}
 \emph{textuel} (c'est le défaut), et c'est pourquoi nous avons interagi
 avec eux avec des objets de type \texttt{str}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} un fichier ouvert en mode textuel nous donne des str}
          \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{foo.txt}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n+nb}{input}\PY{p}{:}
              \PY{k}{for} \PY{n}{line} \PY{o+ow}{in} \PY{n+nb}{input}\PY{p}{:}
@@ -292,13 +285,12 @@ avec eux avec des objets de type \texttt{str}~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 on a lu un objet de type <class 'str'>
 on a lu un objet de type <class 'str'>
 on a lu un objet de type <class 'str'>
 on a lu un objet de type <class 'str'>
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Lorsque ce n'est pas le comportement souhaité, on peut~:
 
@@ -316,7 +308,7 @@ on a lu un objet de type <class 'str'>
 texte, et y insérer du texte en UTF-8~; 0. relire le fichier en mode
 binaire, et retrouver le codage des différents caractères.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} phase 1 : on écrit un fichier avec du texte en UTF\PYZhy{}8}
          \PY{c+c1}{\PYZsh{} on ouvre donc le fichier en mode texte}
          \PY{c+c1}{\PYZsh{} en toute rigueur il faut préciser l\PYZsq{}encodage,}
@@ -327,7 +319,7 @@ binaire, et retrouver le codage des différents caractères.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} phase 2: on ouvre le fichier en mode binaire}
          \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{strbytes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rb}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{rawinput}\PY{p}{:}
              \PY{c+c1}{\PYZsh{} on lit tout le contenu}
@@ -340,7 +332,7 @@ binaire, et retrouver le codage des différents caractères.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 on a lu un objet de type <class 'bytes'>
 0 → 'd' [0x64]
 1 → 'Ã' [0xc3]
@@ -357,8 +349,7 @@ on a lu un objet de type <class 'bytes'>
 12 → 'Ã' [0xc3]
 13 → '©' [0xa9]
 14 → '\textbackslash{}n' [0xa]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Vous retrouvez ainsi le fait que l'unique caractère Unicode \texttt{é} a
 été encodé par UTF-8 sous la forme de deux octets de code hexadécimal
@@ -369,7 +360,7 @@ avec notre séquence d'entrée~:
 
 https://mothereff.in/utf-8\#d\%C3\%A9j\%C3\%A0\%20l\%27\%C3\%A9t\%C3\%A9\%0A
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} on peut comparer le nombre d\PYZsq{}octets et le nombre de caractères}
          \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{strbytes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{textfile}\PY{p}{:}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{en mode texte, }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{len(textfile.read())\PYZcb{} caractères}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
@@ -378,11 +369,10 @@ https://mothereff.in/utf-8\#d\%C3\%A9j\%C3\%A0\%20l\%27\%C3\%A9t\%C3\%A9\%0A
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 en mode texte, 11 caractères
 en mode binaire, 15 octets
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Ce qui correspond au fait que nos quatre caractères non-ASCII (3 x
 \texttt{é} et 1 x \texttt{à}) sont tous encodés par UTF-8 comme deux

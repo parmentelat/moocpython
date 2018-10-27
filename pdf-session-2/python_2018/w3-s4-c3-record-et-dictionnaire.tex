@@ -28,7 +28,7 @@ adresse mail.
 Il est possible, et assez fréquent, d'utiliser le dictionnaire comme
 support pour modéliser ces données comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{n}{personnes} \PY{o}{=} \PY{p}{[}
             \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{nom}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Pierre}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}  \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{25}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{email}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pierre@example.com}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}\PY{p}{,}
             \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{nom}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Paul}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{18}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{email}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{paul@example.com}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}\PY{p}{,}
@@ -41,14 +41,14 @@ support pour modéliser ces données comme ceci~:
 
 Par exemple, pour l'anniversaire de Pierre on fera~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{personnes}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
 \end{Verbatim}
 
 
     Ce qui nous donne~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{k}{for} \PY{n}{personne} \PY{o+ow}{in} \PY{n}{personnes}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{l+m+mi}{10}\PY{o}{*}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{=}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
             \PY{k}{for} \PY{n}{info}\PY{p}{,} \PY{n}{valeur} \PY{o+ow}{in} \PY{n}{personne}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{:}
@@ -56,7 +56,7 @@ Par exemple, pour l'anniversaire de Pierre on fera~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 ==========
 nom -> Pierre
 age -> 26
@@ -69,8 +69,7 @@ email -> paul@example.com
 nom -> Jacques
 age -> 52
 email -> jacques@example.com
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{un-dictionnaire-pour-indexer-les-enregistrements}{%
 \subsubsection{Un dictionnaire pour indexer les
@@ -90,7 +89,7 @@ index de ces dictionnaires, (un dictionnaire de dictionnaires, donc).
 C'est-à-dire, en anticipant un peu sur la construction de dictionnaires
 par compréhension~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} on crée un index permettant de retrouver rapidement}
         \PY{c+c1}{\PYZsh{} une personne dans la liste}
         \PY{n}{index\PYZus{}par\PYZus{}nom} \PY{o}{=} \PY{p}{\PYZob{}}\PY{n}{personne}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{nom}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{:} \PY{n}{personne} \PY{k}{for} \PY{n}{personne} \PY{o+ow}{in} \PY{n}{personnes}\PY{p}{\PYZcb{}}
@@ -98,19 +97,19 @@ par compréhension~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}4}]:} \{'Pierre': \{'nom': 'Pierre', 'age': 26, 'email': 'pierre@example.com'\},
          'Paul': \{'nom': 'Paul', 'age': 18, 'email': 'paul@example.com'\},
          'Jacques': \{'nom': 'Jacques', 'age': 52, 'email': 'jacques@example.com'\}\}
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} du coup pour accéder à l\PYZsq{}enregistrement pour Pierre}
         \PY{n}{index\PYZus{}par\PYZus{}nom}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Pierre}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:} \{'nom': 'Pierre', 'age': 26, 'email': 'pierre@example.com'\}
 \end{Verbatim}
             
@@ -122,18 +121,17 @@ pour le moment, pas d'inquiétude.
 
 Le résultat est donc un dictionnaire qu'on peut afficher comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{k}{for} \PY{n}{nom}\PY{p}{,} \PY{n}{record} \PY{o+ow}{in} \PY{n}{index\PYZus{}par\PYZus{}nom}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Nom : }\PY{l+s+si}{\PYZob{}nom\PYZcb{}}\PY{l+s+s2}{ \PYZhy{}\PYZgt{} enregistrement : }\PY{l+s+si}{\PYZob{}record\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Nom : Pierre -> enregistrement : \{'nom': 'Pierre', 'age': 26, 'email': 'pierre@example.com'\}
 Nom : Paul -> enregistrement : \{'nom': 'Paul', 'age': 18, 'email': 'paul@example.com'\}
 Nom : Jacques -> enregistrement : \{'nom': 'Jacques', 'age': 52, 'email': 'jacques@example.com'\}
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Dans cet exemple, le premier niveau de dictionnaire permet de trouver
 rapidement un objet à partir d'un nom~; dans le second niveau au
@@ -167,7 +165,7 @@ de cette approche.
     Pour commencer je définis la classe \texttt{Personne}, qui va me servir
 à modéliser chaque personne~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{k}{class} \PY{n+nc}{Personne}\PY{p}{:}
         
             \PY{c+c1}{\PYZsh{} le constructeur \PYZhy{} vous ignorez le paramètre self,}
@@ -187,7 +185,7 @@ de cette approche.
 
     Pour construire ma liste de personnes, je fais alors~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{n}{personnes2} \PY{o}{=} \PY{p}{[}
             \PY{n}{Personne}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Pierre}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}  \PY{l+m+mi}{25}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pierre@example.com}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{,}
             \PY{n}{Personne}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Paul}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}    \PY{l+m+mi}{18}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{paul@example.com}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{,}
@@ -198,19 +196,19 @@ de cette approche.
 
     Si je regarde un élément de la liste j'obtiens~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{n}{personnes2}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}9}]:} Pierre (25 ans) sur pierre@example.com
 \end{Verbatim}
             
     Je peux indexer tout ceci comme tout à l'heure, si j'ai besoin d'un
 accès rapide~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} je dois utiliser cette fois personne.nom et non plus personne[\PYZsq{}nom\PYZsq{}]}
          \PY{n}{index2} \PY{o}{=} \PY{p}{\PYZob{}}\PY{n}{personne}\PY{o}{.}\PY{n}{nom} \PY{p}{:} \PY{n}{personne} \PY{k}{for} \PY{n}{personne} \PY{o+ow}{in} \PY{n}{personnes2}\PY{p}{\PYZcb{}}
 \end{Verbatim}
@@ -222,15 +220,14 @@ d'instances.
 
 Et de cette façon~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{index2}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Pierre}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Pierre (25 ans) sur pierre@example.com
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Rendez-vous en semaine 6 pour approfondir la notion de classes et
 d'instances.

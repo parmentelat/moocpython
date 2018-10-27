@@ -23,7 +23,7 @@ affectation. En voici quelques exemples.
     On peut facilement augmenter la valeur d'une variable numérique comme
 ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{n}{entier} \PY{o}{=} \PY{l+m+mi}{10}
         
         \PY{n}{entier} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{2}
@@ -31,14 +31,13 @@ ceci~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 entier 12
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Comme on le devine peut-être, ceci est équivalent à~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{entier} \PY{o}{=} \PY{l+m+mi}{10}
         
         \PY{n}{entier} \PY{o}{=} \PY{n}{entier} \PY{o}{+} \PY{l+m+mi}{2}
@@ -46,10 +45,9 @@ entier 12
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 entier 12
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{autres-opuxe9rateurs-courants}{%
 \subsubsection{Autres opérateurs
@@ -59,7 +57,7 @@ courants}\label{autres-opuxe9rateurs-courants}}
 résultat à la même variable, est disponible avec tous les opérateurs
 courants~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{entier} \PY{o}{\PYZhy{}}\PY{o}{=} \PY{l+m+mi}{4}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{après décrément}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{entier}\PY{p}{)}
         \PY{n}{entier} \PY{o}{*}\PY{o}{=} \PY{l+m+mi}{2}
@@ -69,12 +67,11 @@ courants~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 après décrément 8
 après doublement 16
 mis à moitié 8.0
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{types-non-numuxe9riques}{%
 \subsubsection{Types non numériques}\label{types-non-numuxe9riques}}
@@ -83,7 +80,7 @@ mis à moitié 8.0
 supportent l'opérateur en question. Par exemple, les listes (que nous
 verrons bientôt) peuvent être additionnées entre elles~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{]}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{liste}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
         
@@ -92,11 +89,10 @@ verrons bientôt) peuvent être additionnées entre elles~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 liste [0, 3, 5]
 après ajout [0, 3, 5, 'a', 'b']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Beaucoup de types supportent l'opérateur \texttt{+}, qui est sans doute
 de loin celui qui est le plus utilisé avec cette construction.
@@ -108,7 +104,7 @@ abscons}\label{opuxe9rateurs-plus-abscons}}
     Signalons enfin que l'on trouve aussi cette construction avec d'autres
 opérateurs moins fréquents, par exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{entier} \PY{o}{=} \PY{l+m+mi}{2}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{entier:}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{entier}\PY{p}{)}
         \PY{n}{entier} \PY{o}{*}\PY{o}{*}\PY{o}{=} \PY{l+m+mi}{10}
@@ -118,26 +114,24 @@ opérateurs moins fréquents, par exemple~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 entier: 2
 à la puissance dix: 1024
 modulo 5: 4
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Et pour ceux qui connaissent déjà un peu Python, on peut même le faire
 avec des opérateurs de décalage, que nous verrons très bientôt~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{entier} \PY{o}{\PYZlt{}\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{2}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{double décalage gauche:}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{entier}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 double décalage gauche: 16
-
-    \end{Verbatim}
+\end{Verbatim}
 
 
     % Add a bibliography block to the postdoc

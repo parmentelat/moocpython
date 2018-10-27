@@ -16,7 +16,7 @@ basique}\label{compluxe9ment---niveau-basique}}
 être amenés à faire des opérations logiques et du coup à manipuler des
 tableaux de booléens. Nous allons voir quelques éléments à ce sujet.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
 \end{Verbatim}
 
@@ -31,42 +31,40 @@ fait des opérations arithmétiques.
 signaler qu'on peut copier un tableau avec, tout simplement,
 \texttt{np.copy}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{a} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{25}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[ 0  1  2  3  4]
  [ 5  6  7  8  9]
  [10 11 12 13 14]
  [15 16 17 18 19]
  [20 21 22 23 24]]
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{b} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{n}{a}\PY{p}{)}
         \PY{n}{b}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{1000}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{b}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[   0    1    2    3    4]
  [   5    6    7    8    9]
  [  10   11 1000   13   14]
  [  15   16   17   18   19]
  [  20   21   22   23   24]]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Dans la lignée de ce qu'on a vu jusqu'ici en matière de programmation
 vectorielle, une opération logique va ici aussi nous retourner un
 tableau de la même taille~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} la comparaison par == ne nous}
         \PY{c+c1}{\PYZsh{} retourne pas directement un booléen}
         \PY{c+c1}{\PYZsh{} mais un tableau de la même taille que a et b}
@@ -74,14 +72,13 @@ tableau de la même taille~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[ True  True  True  True  True]
  [ True  True  True  True  True]
  [ True  True False  True  True]
  [ True  True  True  True  True]
  [ True  True  True  True  True]]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{all-et-any}{%
 \subsubsection{\texorpdfstring{\texttt{all} et
@@ -92,27 +89,27 @@ entièrement identiques, utilisez \texttt{np.all}~- et non pas le
 \emph{built-in} natif \texttt{all} de Python~- qui va vérifier que tous
 les éléments du tableau sont vrais~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} oui}
         \PY{n}{np}\PY{o}{.}\PY{n}{all}\PY{p}{(}\PY{n}{a} \PY{o}{==} \PY{n}{a}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:} True
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} oui}
         \PY{n}{np}\PY{o}{.}\PY{n}{all}\PY{p}{(}\PY{n}{a} \PY{o}{==} \PY{n}{b}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} False
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} oui}
         \PY{c+c1}{\PYZsh{} on peut faire aussi bien}
         \PY{c+c1}{\PYZsh{}   np.all(x)}
@@ -122,11 +119,11 @@ les éléments du tableau sont vrais~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}7}]:} True
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} par contre : non !}
         \PY{c+c1}{\PYZsh{} ceci n\PYZsq{}est pas conseillé}
         \PY{c+c1}{\PYZsh{} même si ça peut parfois fonctionner}
@@ -137,30 +134,29 @@ les éléments du tableau sont vrais~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 OOPS <class 'ValueError'> The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
-
-    \end{Verbatim}
+\end{Verbatim}
 
     C'est bien sûr la même chose pour \texttt{any} qui va vérifier qu'il y a
 au moins un élément vrai. Comme en Python natif, un nombre qui est nul
 est considéré comme faux~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}9}]:} False
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{n}{np}\PY{o}{.}\PY{n}{ones}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}10}]:} True
 \end{Verbatim}
             
@@ -175,14 +171,14 @@ tableau.
     J'en profite pour introduire une fonction de \texttt{matplotlib} qui
 s'appelle \texttt{imshow} et qui permet d'afficher une image~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
          \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
          \PY{n}{plt}\PY{o}{.}\PY{n}{ion}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} construisons un disque centré au milieu de l\PYZsq{}image}
          
          \PY{n}{width} \PY{o}{=} \PY{l+m+mi}{128}
@@ -203,7 +199,7 @@ s'appelle \texttt{imshow} et qui permet d'afficher une image~:
     Maintenant je peux créer un masque qui produise des rayures en
 diagonale, donc selon la valeur de \texttt{(i+j)}. Par exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} pour faire des rayures}
          \PY{c+c1}{\PYZsh{} de 6 pixels de large}
          \PY{n}{rayures} \PY{o}{=} \PY{p}{(}\PY{n}{ix} \PY{o}{+} \PY{n}{iy}\PY{p}{)} \PY{o}{\PYZpc{}} \PY{l+m+mi}{8} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{5}
@@ -216,14 +212,14 @@ diagonale, donc selon la valeur de \texttt{(i+j)}. Par exemple~:
     \end{center}
     { \hspace*{\fill} \\}
     
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} en fait c\PYZsq{}est bien sûr}
          \PY{c+c1}{\PYZsh{} un tableau de booléens}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{rayures}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [[ True  True  True {\ldots}  True False False]
  [ True  True  True {\ldots} False False  True]
  [ True  True  True {\ldots} False  True  True]
@@ -231,13 +227,12 @@ diagonale, donc selon la valeur de \texttt{(i+j)}. Par exemple~:
  [ True False False {\ldots}  True  True  True]
  [False False  True {\ldots}  True  True  True]
  [False  True  True {\ldots}  True  True False]]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     je vous montre aussi comment inverser un masque parce que c'est un peu
 abscons~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} on ne peut pas faire }
          \PY{k}{try}\PY{p}{:}
              \PY{n}{anti\PYZus{}rayures} \PY{o}{=} \PY{o+ow}{not} \PY{n}{rayures}
@@ -246,12 +241,11 @@ abscons~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 OOPS - <class 'ValueError'> - The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}16}]:} \PY{c+c1}{\PYZsh{} on ne peut pas non plus faire}
          \PY{c+c1}{\PYZsh{}   rayures.not() }
          \PY{c+c1}{\PYZsh{}   parce not est un mot clé}
@@ -270,7 +264,7 @@ OOPS - <class 'ValueError'> - The truth value of an array with more than one ele
     \end{center}
     { \hspace*{\fill} \\}
     
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} lorsque vous avez de vrais }
          \PY{c+c1}{\PYZsh{} booléens, vous pouvez}
          \PY{c+c1}{\PYZsh{} utiliser l\PYZsq{}opérateur \PYZti{} }
@@ -289,7 +283,7 @@ OOPS - <class 'ValueError'> - The truth value of an array with more than one ele
     Maintenant je peux utiliser le masque \texttt{rayures} pour faire des
 choses sur l'image. Par exemple simplement~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{} pour effacer les rayures}
          \PY{n}{plt}\PY{o}{.}\PY{n}{imshow}\PY{p}{(}\PY{n}{image}\PY{o}{*}\PY{n}{rayures}\PY{p}{,} \PY{n}{cmap}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gray}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;}
 \end{Verbatim}
@@ -300,7 +294,7 @@ choses sur l'image. Par exemple simplement~:
     \end{center}
     { \hspace*{\fill} \\}
     
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} ou garder l\PYZsq{}autre moitié}
          \PY{n}{plt}\PY{o}{.}\PY{n}{imshow}\PY{p}{(}\PY{n}{image}\PY{o}{*}\PY{n}{anti\PYZus{}rayures}\PY{p}{,} \PY{n}{cmap}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gray}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;}
 \end{Verbatim}
@@ -311,12 +305,12 @@ choses sur l'image. Par exemple simplement~:
     \end{center}
     { \hspace*{\fill} \\}
     
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}20}]:} \PY{n}{image}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}20}]:} array([[8192., 8065., 7940., {\ldots}, 7817., 7940., 8065.],
                 [8065., 7938., 7813., {\ldots}, 7690., 7813., 7938.],
                 [7940., 7813., 7688., {\ldots}, 7565., 7688., 7813.],
@@ -326,12 +320,12 @@ choses sur l'image. Par exemple simplement~:
                 [8065., 7938., 7813., {\ldots}, 7690., 7813., 7938.]])
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}21}]:} \PY{n}{np}\PY{o}{.}\PY{n}{logical\PYZus{}not}\PY{p}{(}\PY{n}{image}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}21}]:} array([[False, False, False, {\ldots}, False, False, False],
                 [False, False, False, {\ldots}, False, False, False],
                 [False, False, False, {\ldots}, False, False, False],
@@ -347,12 +341,12 @@ choses sur l'image. Par exemple simplement~:
 
     Nous avons vu en Python natif l'expression conditionnelle~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}22}]:} \PY{l+m+mi}{3} \PY{k}{if} \PY{k+kc}{True} \PY{k}{else} \PY{l+m+mi}{2}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}22}]:} 3
 \end{Verbatim}
             
@@ -363,7 +357,7 @@ deux images facilement discernables. Et, pour cela, on va utiliser
 sont suffisamment proches, surtout pour les calculs flottants en fait,
 mais ça nous convient très bien ici aussi~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}23}]:} np.isclose\PY{o}{?}
 \end{Verbatim}
 
@@ -373,7 +367,7 @@ la distance au centre (je rappelle que c'est le contenu de
 \texttt{image}) est suffisamment proche de \(64^2\), ce que vaut
 \texttt{image} au milieu de chaque bord~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}24}]:} \PY{n}{big\PYZus{}circle} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{isclose}\PY{p}{(}\PY{n}{image}\PY{p}{,} \PY{l+m+mi}{64} \PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{10}\PY{o}{/}\PY{l+m+mi}{100}\PY{p}{)}
          \PY{n}{plt}\PY{o}{.}\PY{n}{imshow}\PY{p}{(}\PY{n}{big\PYZus{}circle}\PY{p}{,} \PY{n}{cmap}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gray}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;}
 \end{Verbatim}
@@ -384,7 +378,7 @@ la distance au centre (je rappelle que c'est le contenu de
     \end{center}
     { \hspace*{\fill} \\}
     
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}25}]:} \PY{n}{small\PYZus{}circle} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{isclose}\PY{p}{(}\PY{n}{image}\PY{p}{,} \PY{l+m+mi}{32} \PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{10}\PY{o}{/}\PY{l+m+mi}{100}\PY{p}{)}
          \PY{n}{plt}\PY{o}{.}\PY{n}{imshow}\PY{p}{(}\PY{n}{small\PYZus{}circle}\PY{p}{,} \PY{n}{cmap}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gray}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;}
 \end{Verbatim}
@@ -399,12 +393,12 @@ la distance au centre (je rappelle que c'est le contenu de
 ceci~:
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
 \NormalTok{mixed }\OperatorTok{=}\NormalTok{ big_circle }\ControlFlowTok{if}\NormalTok{ rayures }\ControlFlowTok{else}\NormalTok{ small_circle}
 \end{Highlighting}
 \end{Shaded}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}26}]:} \PY{c+c1}{\PYZsh{} sauf que ça se présente en fait comme ceci :}
          \PY{n}{mixed} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{where}\PY{p}{(}\PY{n}{rayures}\PY{p}{,} \PY{n}{big\PYZus{}circle}\PY{p}{,} \PY{n}{small\PYZus{}circle}\PY{p}{)}
          \PY{n}{plt}\PY{o}{.}\PY{n}{imshow}\PY{p}{(}\PY{n}{mixed}\PY{p}{,} \PY{n}{cmap}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gray}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;}
@@ -419,7 +413,7 @@ ceci~:
     Remarquez enfin qu'on peut aussi faire la même chose en tirant profit
 que \texttt{True} == 1 et \texttt{False} == 0~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}27}]:} \PY{n}{mixed2} \PY{o}{=} \PY{n}{rayures} \PY{o}{*} \PY{n}{big\PYZus{}circle} \PY{o}{+} \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{rayures}\PY{p}{)} \PY{o}{*} \PY{n}{small\PYZus{}circle}
          \PY{n}{plt}\PY{o}{.}\PY{n}{imshow}\PY{p}{(}\PY{n}{mixed2}\PY{p}{,} \PY{n}{cmap}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gray}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;}
 \end{Verbatim}

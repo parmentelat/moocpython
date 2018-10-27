@@ -18,7 +18,7 @@ vu notamment qu'il était bon pour la méthode \texttt{\_\_exit\_\_()} de
 retourner \texttt{False}, de façon à ce que l'exception soit propagée à
 l'instruction \texttt{with}:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{time}
         
         \PY{k}{class} \PY{n+nc}{Timer1}\PY{p}{:}
@@ -40,7 +40,7 @@ l'instruction \texttt{with}:
     Ainsi si le corps de l'instruction lève une exception, celle-ci est
 propagée :
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{import} \PY{n+nn}{time}
         \PY{k}{try}\PY{p}{:}
             \PY{k}{with} \PY{n}{Timer1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
@@ -52,12 +52,11 @@ propagée :
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Entering Timer1
-Total duration 0.503758
+Total duration 0.500135
 OOPS -> <class 'ZeroDivisionError'>
-
-    \end{Verbatim}
+\end{Verbatim}
 
     À la toute première itération de la boucle, on fait une division par 0
 qui lève l'exception \texttt{ZeroDivisionError}, qui passe bien à
@@ -81,9 +80,11 @@ pour pouvoir faire le tri. Comme
 pouvez le retrouver ici}, la méthode \texttt{\_\_exit\_\_} reçoit trois
 arguments~:
 
-\begin{verbatim}
-def __exit__(self, exc_type, exc_value, traceback):
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\KeywordTok{def} \FunctionTok{__exit__}\NormalTok{(}\VariableTok{self}\NormalTok{, exc_type, exc_value, traceback):}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{itemize}
 \tightlist
@@ -100,7 +101,7 @@ def __exit__(self, exc_type, exc_value, traceback):
 filtre, disons, l'exception \texttt{ZeroDivisionError} que je choisis au
 hasard, c'est uniquement pour illustrer le mécanisme.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} une deuxième version de Timer}
         \PY{c+c1}{\PYZsh{} qui propage toutes les exceptions sauf \PYZsq{}OSError\PYZsq{}}
         
@@ -131,7 +132,7 @@ hasard, c'est uniquement pour illustrer le mécanisme.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} commençons avec un code sans souci}
         \PY{k}{try}\PY{p}{:}
             \PY{k}{with} \PY{n}{Timer2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
@@ -142,13 +143,12 @@ hasard, c'est uniquement pour illustrer le mécanisme.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Entering Timer1
-Total duration 0.504747
+Total duration 0.500446
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} avec une exception filtrée}
         \PY{k}{try}\PY{p}{:}
             \PY{k}{with} \PY{n}{Timer2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
@@ -160,13 +160,12 @@ Total duration 0.504747
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Entering Timer1
 on étouffe
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} avec une autre exception }
         \PY{k}{try}\PY{p}{:}
             \PY{k}{with} \PY{n}{Timer2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
@@ -178,12 +177,11 @@ on étouffe
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Entering Timer1
 OOPS : on propage l'exception <class 'OSError'> - 
 OOPS -> <class 'OSError'>
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{la-bibliothuxe8que-contextlib}{%
 \subsubsection{\texorpdfstring{La bibliothèque
@@ -198,12 +196,12 @@ Notamment, elle permet d'implémenter un context manager sous une forme
 compacte à l'aide d'une fonction génératrice - et du décorateur
 \texttt{contextmanager}:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{k+kn}{from} \PY{n+nn}{contextlib} \PY{k}{import} \PY{n}{contextmanager}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} l\PYZsq{}objet compact\PYZus{}timer est un context manager !}
         \PY{n+nd}{@contextmanager}
         \PY{k}{def} \PY{n+nf}{compact\PYZus{}timer}\PY{p}{(}\PY{n}{message}\PY{p}{)}\PY{p}{:}
@@ -213,17 +211,16 @@ compacte à l'aide d'une fonction génératrice - et du décorateur
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{k}{with} \PY{n}{compact\PYZus{}timer}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Squares sum}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{sum}\PY{p}{(}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 333328333350000
-Squares sum: duration = 0.06232810020446777
-
-    \end{Verbatim}
+Squares sum: duration = 0.033908843994140625
+\end{Verbatim}
 
     Un peu comme on peut implémenter un itérateur à partir d'une fonction
 génératrice qui fait (n'importe quel nombre de) \texttt{yield}, ici on

@@ -21,7 +21,7 @@ sans grande surprise, \texttt{sort}.
 
     Voyons comment se comporte \texttt{sort} sur un exemple simple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{avant tri}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
         \PY{n}{liste}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{p}{)}
@@ -29,11 +29,10 @@ sans grande surprise, \texttt{sort}.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 avant tri [8, 7, 4, 3, 2, 9, 1, 5, 6]
 apres tri [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     On retrouve ici, avec l'instruction \texttt{liste.sort()} un cas d'appel
 de méthode (ici \texttt{sort}) sur un objet (ici \texttt{liste}), comme
@@ -43,12 +42,12 @@ on l'avait vu dans la vidéo.
 on dit ``en place'', ou encore ``par effet de bord''. Voyons cela sous
 pythontutor~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} ipythontutor
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -70,7 +69,7 @@ mémoire autant que possible et d'accélérer sensiblement le tri.
     Si vous avez besoin de faire le tri sur une copie de votre liste, la
 fonction \texttt{sorted} vous permet de le faire~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} NOTE}
         \PY{c+c1}{\PYZsh{} auto\PYZhy{}exec\PYZhy{}for\PYZhy{}latex has skipped execution of this cell}
         
@@ -87,7 +86,7 @@ fonction \texttt{sorted} vous permet de le faire~:
 défaut la liste est triée par ordre croissant, si au contraire vous
 voulez l'ordre décroissant, faites comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{avant tri}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
         \PY{n}{liste}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{n}{reverse}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
@@ -95,11 +94,10 @@ voulez l'ordre décroissant, faites comme ceci~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 avant tri [8, 7, 4, 3, 2, 9, 1, 5, 6]
 apres tri décroissant [9, 8, 7, 6, 5, 4, 3, 2, 1]
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Nous n'avons pas encore vu à quoi correspond cette formule
 \texttt{reverse=True} dans l'appel à la méthode - ceci sera approfondi
@@ -114,17 +112,16 @@ caractères}\label{chauxeenes-de-caractuxe8res}}
 (enfin, à l'exception des complexes~; en guise d'exercice, pourquoi~?),
 ainsi que sur les chaînes de caractères~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{spam}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{egg}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bacon}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{beef}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
         \PY{n}{liste}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{après tri}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{liste}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 après tri ['bacon', 'beef', 'egg', 'spam']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Comme on s'y attend, il s'agit cette fois d'un \textbf{tri
 lexicographique}, dérivé de l'ordre sur les caractères. Autrement dit,
@@ -135,33 +132,33 @@ l'alphabet.
 
     Ainsi par exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} deux caractères minuscules se comparent}
         \PY{c+c1}{\PYZsh{} comme on s\PYZsq{}y attend}
         \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}} \PY{o}{\PYZlt{}} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{z}\PY{l+s+s1}{\PYZsq{}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}5}]:} True
 \end{Verbatim}
             
     Bon, mais par contre~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} si l\PYZsq{}un est en minuscule et l\PYZsq{}autre en majuscule,}
         \PY{c+c1}{\PYZsh{} ce n\PYZsq{}est plus le cas}
         \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Z}\PY{l+s+s1}{\PYZsq{}} \PY{o}{\PYZlt{}} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} True
 \end{Verbatim}
             
     Ce qui à son tour explique ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} la conséquence de \PYZsq{}Z\PYZsq{} \PYZlt{} \PYZsq{}a\PYZsq{}, c\PYZsq{}est que}
         \PY{n}{liste} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Zoo}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
         \PY{n}{liste}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{p}{)}
@@ -169,15 +166,14 @@ l'alphabet.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 ['Zoo', 'abc']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Et lorsque les chaînes contiennent des espaces ou autres ponctuations,
 le résultat du tri peut paraître surprenant~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} attention ici notre premiere chaîne commence par une espace}
         \PY{c+c1}{\PYZsh{} et le caractère \PYZsq{}Espace\PYZsq{} est plus petit}
         \PY{c+c1}{\PYZsh{} que tous les autres caractères imprimables}
@@ -187,10 +183,9 @@ le résultat du tri peut paraître surprenant~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 [' zoo', 'ane']
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{uxe0-suivre}{%
 \subsubsection{À suivre}\label{uxe0-suivre}}

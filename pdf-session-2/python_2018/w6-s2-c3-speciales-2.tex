@@ -24,9 +24,11 @@ apparentés}{\_\_contains\_\_, \_\_len\_\_, \_\_getitem\_\_ et apparentés}}\lab
 
     La méthode \texttt{\_\_contains\_\_} permet de donner un sens à~:
 
-\begin{verbatim}
-item in objet
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{item }\KeywordTok{in}\NormalTok{ objet}
+\end{Highlighting}
+\end{Shaded}
 
 Sans grande surprise, elle prend en argument un objet et un item, et
 doit renvoyer un booléen. Nous l'illustrons ci-dessous avec la classe
@@ -51,7 +53,7 @@ peut donner l'illusion d'une continuité, et se présenter comme un
 container unique. De plus cette implémentation ne fait aucun contrôle
 pour ne pas obscurcir le code.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{k}{class} \PY{n+nc}{DualQueue}\PY{p}{:}
             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Une double file d\PYZsq{}attente FIFO\PYZdq{}\PYZdq{}\PYZdq{}}
         
@@ -92,7 +94,7 @@ pour ne pas obscurcir le code.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} on construit une instance pour nos essais}
         \PY{n}{queue} \PY{o}{=} \PY{n}{DualQueue}\PY{p}{(}\PY{p}{)}
         \PY{n}{queue}\PY{o}{.}\PY{n}{add\PYZus{}input}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{zero}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
@@ -106,10 +108,9 @@ pour ne pas obscurcir le code.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 <DualQueue, inputs=['trois', 'deux'], outputs=['un', 'zero']>
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{longueur-et-appartenance}{%
 \subparagraph{Longueur et appartenance}\label{longueur-et-appartenance}}
@@ -117,7 +118,7 @@ pour ne pas obscurcir le code.
     Avec cette première version de la classe \texttt{DualQueue} on peut
 utiliser \texttt{len} et le test d'appartenance~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{len() = }\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{len(queue)\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
         
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{deux appartient\PYZhy{}il ? }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{deux}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{ in queue\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
@@ -125,12 +126,11 @@ utiliser \texttt{len} et le test d'appartenance~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 len() = 4
 deux appartient-il ? True
 1 appartient-il ? False
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{accuxe8s-suxe9quentiel-accuxe8s-par-un-index-entier}{%
 \subparagraph{Accès séquentiel (accès par un index
@@ -141,16 +141,18 @@ il peut être opportun - quoique cela n'est pas imposé par le langage,
 comme on vient de le voir - de proposer également un accès indexé par un
 entier pour pouvoir faire~:
 
-\begin{verbatim}
-queue[1]
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{queue[}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
 
 \textbf{Pour ne pas répéter tout le code de la classe}, nous allons
 étendre \texttt{DualQueue}~; pour cela nous définissons une fonction,
 que nous affectons ensuite à \texttt{DualQueue.\_\_getitem\_\_}, comme
 nous avons déjà eu l'occasion de le faire~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} une première version de DualQueue.\PYZus{}\PYZus{}getitem\PYZus{}\PYZus{}}
         \PY{c+c1}{\PYZsh{} pour uniquement l\PYZsq{}accès par index}
         
@@ -178,20 +180,19 @@ nous avons déjà eu l'occasion de le faire~:
     À présent, on peut \textbf{accéder} aux objets de la queue
 \textbf{séquentiellement}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{queue}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 zero
-
-    \end{Verbatim}
+\end{Verbatim}
 
     ce qui lève la même exception qu'avec une vraie liste si on utilise un
 mauvais index~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{k}{try}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{n}{queue}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)}
         \PY{k}{except} \PY{n+ne}{IndexError} \PY{k}{as} \PY{n}{e}\PY{p}{:}
@@ -199,10 +200,9 @@ mauvais index~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 ERREUR Mauvais indice 5 pour DualQueue
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{amuxe9lioration-accuxe8s-par-slice}{%
 \subparagraph{Amélioration~: accès par
@@ -210,9 +210,11 @@ slice}\label{amuxe9lioration-accuxe8s-par-slice}}
 
     Si on veut aussi supporter l'accès par slice comme ceci~:
 
-\begin{verbatim}
-queue[1:3]
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{queue[}\DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
 
 il nous faut modifier la méthode \texttt{\_\_getitem\_\_}.
 
@@ -221,7 +223,7 @@ au contenu des crochets \texttt{{[}{]}}, on utilise donc
 \texttt{isinstance} pour écrire un code qui s'adapte au type
 d'indexation, comme ceci~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} une deuxième version de DualQueue.\PYZus{}\PYZus{}getitem\PYZus{}\PYZus{}}
         \PY{c+c1}{\PYZsh{} pour l\PYZsq{}accès par index et/ou par slice}
         
@@ -259,18 +261,18 @@ d'indexation, comme ceci~:
 
     Maintenant on peut accéder par slice~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{n}{queue}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{3}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}8}]:} ['un', 'deux']
 \end{Verbatim}
             
     Et on reçoit bien une exception si on essaie d'accéder par clé~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{k}{try}\PY{p}{:}
             \PY{n}{queue}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{key}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
         \PY{k}{except} \PY{n+ne}{KeyError} \PY{k}{as} \PY{n}{e}\PY{p}{:}
@@ -278,10 +280,9 @@ d'indexation, comme ceci~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 OOPS: KeyError: '[] avec type non reconnu key'
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{lobjet-est-ituxe9rable-muxeame-sans-avoir-__iter__}{%
 \subparagraph{\texorpdfstring{L'objet est itérable (même sans avoir
@@ -292,7 +293,7 @@ boucle} sur l'objet queue. On l'a mentionné rapidement dans la séquence
 sur les itérateurs, mais la \textbf{méthode \texttt{\_\_iter\_\_} n'est
 pas la seule façon} de rendre un objet itérable~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} grâce à \PYZus{}\PYZus{}getitem\PYZus{}\PYZus{} on a rendu les }
          \PY{c+c1}{\PYZsh{} objets de type DualQueue itérables}
          \PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{queue}\PY{p}{:}
@@ -300,13 +301,12 @@ pas la seule façon} de rendre un objet itérable~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 zero
 un
 deux
 trois
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{on-peut-faire-un-test-sur-lobjet}{%
 \subparagraph{On peut faire un test sur
@@ -316,19 +316,18 @@ l'objet}\label{on-peut-faire-un-test-sur-lobjet}}
 classe sait \textbf{faire des tests de manière correcte} grâce
 uniquement à la méthode \texttt{\_\_len\_\_}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} un test fait directement sur la queue}
          \PY{k}{if} \PY{n}{queue}\PY{p}{:}
              \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{La queue }\PY{l+s+si}{\PYZob{}queue\PYZcb{}}\PY{l+s+s2}{ est considérée comme True}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 La queue <DualQueue, inputs=['trois', 'deux'], outputs=['un', 'zero']> est considérée comme True
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} le même test sur une queue vide}
          \PY{n}{empty} \PY{o}{=} \PY{n}{DualQueue}\PY{p}{(}\PY{p}{)}
          
@@ -338,10 +337,9 @@ La queue <DualQueue, inputs=['trois', 'deux'], outputs=['un', 'zero']> est consi
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 La queue <DualQueue, inputs=[], outputs=[]> est considérée comme False
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
@@ -354,17 +352,21 @@ La queue <DualQueue, inputs=[], outputs=[]> est considérée comme False
 est très simple, on cherche à donner un sens à un fragment de code du
 genre de~:
 
-    \begin{verbatim}
-# on crée une instance
-objet = Classe(arguments)
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\CommentTok{# on crée une instance}
+\NormalTok{objet }\OperatorTok{=}\NormalTok{ Classe(arguments)}
+\end{Highlighting}
+\end{Shaded}
 
 et c'est l'objet (Attention~: \textbf{l'objet, pas la classe}) qu'on
 utilise comme une fonction
 
-\begin{verbatim}
-objet(arg1, arg2)
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{objet(arg1, arg2)}
+\end{Highlighting}
+\end{Shaded}
 
     Le protocole ici est très simple~; cette dernière ligne a un sens en
 Python dès lors que~:
@@ -381,13 +383,15 @@ Python dès lors que~:
   \texttt{objet(arg1,\ arg2)}~:
 \end{itemize}
 
-    \begin{verbatim}
-objet(arg1, arg2) ⟺ objet.__call__(arg1, arg2)
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\NormalTok{objet(arg1, arg2) ⟺ objet.}\FunctionTok{__call__}\NormalTok{(arg1, arg2)}
+\end{Highlighting}
+\end{Shaded}
 
     Voyons cela sur un exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}13}]:} \PY{k}{class} \PY{n+nc}{PlusClosure}\PY{p}{:}
              \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Une classe callable qui permet de faire un peu comme la }
          \PY{l+s+sd}{    fonction built\PYZhy{}in sum mais en ajoutant une valeur initiale\PYZdq{}\PYZdq{}\PYZdq{}}
@@ -401,32 +405,32 @@ objet(arg1, arg2) ⟺ objet.__call__(arg1, arg2)
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} on peut maintenant utiliser cet objet }
          \PY{c+c1}{\PYZsh{} comme une fonction qui fait sum(*arg)+2}
          \PY{n}{plus2}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}14}]:} 2
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}15}]:} \PY{n}{plus2}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}15}]:} 3
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}16}]:} \PY{n}{plus2}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}16}]:} 5
 \end{Verbatim}
             

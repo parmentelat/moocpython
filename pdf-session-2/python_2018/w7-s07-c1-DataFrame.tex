@@ -21,7 +21,7 @@ intermédiaire}\label{compluxe9ment---niveau-intermuxe9diaire}}
 avec un index pour les lignes et un index pour les colonnes. Il y a de
 nombreuses manières de construire une \texttt{DataFrame}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} Regardons la construction d\PYZsq{}une DataFrame}
         \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
         \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
@@ -41,14 +41,13 @@ nombreuses manières de construire une \texttt{DataFrame}.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
         age  height
 alice  30.0   150.0
 bob    20.0     NaN
 julie  50.0   168.0
 marc    NaN   170.0
-
-    \end{Verbatim}
+\end{Verbatim}
 
     On remarque que \texttt{pandas} fait automatiquement l'alignement des
 index, lorsqu'une valeur n'est pas présente, elle est automatiquement
@@ -56,22 +55,21 @@ remplacée par \texttt{NaN}. \texttt{Panda} va également broadcaster une
 valeur unique définissant une colonne sur toutes les lignes. Regardons
 cela~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{stat} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{age}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{height}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{height}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{city}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Nice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{stat}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
         age  height  city
 alice  30.0   150.0  Nice
 bob    20.0     NaN  Nice
 julie  50.0   168.0  Nice
 marc    NaN   170.0  Nice
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} On peut maintenant accéder aux index des lignes et des colonnes}
         
         \PY{c+c1}{\PYZsh{} l\PYZsq{}index des lignes}
@@ -79,21 +77,19 @@ marc    NaN   170.0  Nice
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Index(['alice', 'bob', 'julie', 'marc'], dtype='object')
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} l\PYZsq{}index des colonnes}
         \PY{n+nb}{print}\PY{p}{(}\PY{n}{stat}\PY{o}{.}\PY{n}{columns}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Index(['age', 'height', 'city'], dtype='object')
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Il y a de nombreuses manières d'accéder aux éléments de la
 \texttt{DataFrame}, certaines sont bonnes et d'autres à proscrire,
@@ -101,23 +97,23 @@ commençons par prendre de bonnes habitudes. Comme il s'agit d'une
 structure à deux dimensions, il faut donner un indice de ligne et de
 colonne~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} Quel est l\PYZsq{}âge de alice}
         \PY{n}{a} \PY{o}{=} \PY{n}{stat}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} a est un flottant}
         \PY{n+nb}{type}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{,} \PY{n}{a}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}6}]:} (numpy.float64, 30.0)
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} Quel est la moyenne de tous les âges}
         \PY{n}{c} \PY{o}{=} \PY{n}{stat}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
         \PY{n}{m} \PY{o}{=} \PY{n}{c}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
@@ -125,28 +121,27 @@ colonne~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 L'âge moyen est de 33.3 ans.
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} c est une Series}
         \PY{n+nb}{type}\PY{p}{(}\PY{n}{c}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}8}]:} pandas.core.series.Series
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} et m est un flottant}
         \PY{n+nb}{type}\PY{p}{(}\PY{n}{m}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}9}]:} numpy.float64
 \end{Verbatim}
             
@@ -173,20 +168,19 @@ d'un \texttt{array} de \texttt{numpy}, et de spécifier les index pour
 les lignes et les colonnes avec les arguments \texttt{index} et
 \texttt{columns}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{n}{a} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
          \PY{n}{p} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{z}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{p}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
     x   y   z
-a   5  13   9
-b   4   8  12
-c  19  12   1
-
-    \end{Verbatim}
+a   4   4   9
+b   8  17   1
+c  18  14  10
+\end{Verbatim}
 
     \hypertarget{importation-et-exportation-de-donnuxe9es}{%
 \subsubsection{Importation et exportation de
@@ -202,46 +196,45 @@ pickle, etc.
     À titre d'illustration écrivons la \texttt{DataFrame} \texttt{p} dans
 différents formats.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} écrivons notre DataFrame dans un fichier CSV}
          \PY{n}{p}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{my\PYZus{}data.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
          \PY{o}{!}cat my\PYZus{}data.csv
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 ,x,y,z
-a,5,13,9
-b,4,8,12
-c,19,12,1
+a,4,4,9
+b,8,17,1
+c,18,14,10
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} et dans un fichier JSON}
          \PY{n}{p}\PY{o}{.}\PY{n}{to\PYZus{}json}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{my\PYZus{}data.json}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
          \PY{o}{!}cat my\PYZus{}data.json
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-\{"x":\{"a":5,"b":4,"c":19\},"y":\{"a":13,"b":8,"c":12\},"z":\{"a":9,"b":12,"c":1\}\}
-    \end{Verbatim}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+\{"x":\{"a":4,"b":8,"c":18\},"y":\{"a":4,"b":17,"c":14\},"z":\{"a":9,"b":1,"c":10\}\}
+\end{Verbatim}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} on peut maintenant recharger notre fichier, la conversion en DataFrame est automatique}
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} on peut maintenant recharger notre fichier}
+         \PY{c+c1}{\PYZsh{} la conversion en DataFrame est automatique}
          \PY{n}{new\PYZus{}p} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}json}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{my\PYZus{}data.json}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{new\PYZus{}p}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
     x   y   z
-a   5  13   9
-b   4   8  12
-c  19  12   1
-
-    \end{Verbatim}
+a   4   4   9
+b   8  17   1
+c  18  14  10
+\end{Verbatim}
 
     Pour la gestion des autres formats, comme il s'agit de quelque chose de
 très spécifique et sans difficulté particulière, je vous renvoie
@@ -253,7 +246,7 @@ http://pandas.pydata.org/pandas-docs/stable/io.html
 \subsubsection{\texorpdfstring{Manipulation d'une
 \texttt{DataFrame}}{Manipulation d'une DataFrame}}\label{manipulation-dune-dataframe}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} construisons maintenant une DataFrame jouet}
          
          \PY{c+c1}{\PYZsh{} voici une liste de prénoms}
@@ -270,17 +263,16 @@ http://pandas.pydata.org/pandas-docs/stable/io.html
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
        age  height sex
 alice   12     130   f
 bob     13     140   m
 marc    16     176   m
 bill    11     120   m
 sonia   16     165   f
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} et chargeons le jeux de données sur les pourboires de seaborn}
          \PY{k+kn}{import} \PY{n+nn}{seaborn} \PY{k}{as} \PY{n+nn}{sns}
          \PY{n}{tips} \PY{o}{=} \PY{n}{sns}\PY{o}{.}\PY{n}{load\PYZus{}dataset}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tips}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
@@ -292,13 +284,13 @@ Attention, dans mes exemples je vais alterner entre le
 \texttt{DataFrame} \texttt{p} et le \texttt{DataFrame} \texttt{tips}
 suivant les besoins de l'explication.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}16}]:} \PY{c+c1}{\PYZsh{} afficher les premières lignes}
          \PY{n}{tips}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}16}]:}    total\_bill   tip     sex smoker  day    time  size
          0       16.99  1.01  Female     No  Sun  Dinner     2
          1       10.34  1.66    Male     No  Sun  Dinner     3
@@ -307,13 +299,13 @@ suivant les besoins de l'explication.
          4       24.59  3.61  Female     No  Sun  Dinner     4
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} et les dernière lignes}
          \PY{n}{tips}\PY{o}{.}\PY{n}{tail}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}17}]:}      total\_bill   tip     sex smoker   day    time  size
          239       29.03  5.92    Male     No   Sat  Dinner     3
          240       27.18  2.00  Female    Yes   Sat  Dinner     2
@@ -322,33 +314,33 @@ suivant les besoins de l'explication.
          243       18.78  3.00  Female     No  Thur  Dinner     2
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{} l\PYZsq{}index des lignes}
          \PY{n}{p}\PY{o}{.}\PY{n}{index}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}18}]:} Index(['alice', 'bob', 'marc', 'bill', 'sonia'], dtype='object')
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} et l\PYZsq{}index des colonnes}
          \PY{n}{p}\PY{o}{.}\PY{n}{columns}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}19}]:} Index(['age', 'height', 'sex'], dtype='object')
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}20}]:} \PY{c+c1}{\PYZsh{} et afficher uniquement les valeurs}
          \PY{n}{p}\PY{o}{.}\PY{n}{values}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}20}]:} array([[12, 130, 'f'],
                 [13, 140, 'm'],
                 [16, 176, 'm'],
@@ -356,14 +348,14 @@ suivant les besoins de l'explication.
                 [16, 165, 'f']], dtype=object)
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}21}]:} \PY{c+c1}{\PYZsh{} échanger lignes et colonnes}
          \PY{c+c1}{\PYZsh{} cf. la transposition de matrices}
          \PY{n}{p}\PY{o}{.}\PY{n}{T}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}21}]:}        alice  bob marc bill sonia
          age       12   13   16   11    16
          height   130  140  176  120   165
@@ -375,13 +367,13 @@ des premières statistiques sur un \texttt{DataFrame}. \texttt{describe}
 permet de calculer des statistiques sur des type numériques, mais aussi
 sur des types chaînes de caractères.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}22}]:} \PY{c+c1}{\PYZsh{} par défaut describe ne prend en compte que les colonnes numériques}
          \PY{n}{p}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}22}]:}              age      height
          count   5.000000    5.000000
          mean   13.600000  146.200000
@@ -393,13 +385,13 @@ sur des types chaînes de caractères.
          max    16.000000  176.000000
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}23}]:} \PY{c+c1}{\PYZsh{} mais on peut le forcer à prendre en compte toutes les colonnes}
          \PY{n}{p}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{n}{include}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{all}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}23}]:}               age      height  sex
          count    5.000000    5.000000    5
          unique        NaN         NaN    2
@@ -423,30 +415,28 @@ sur des types chaînes de caractères.
 masque que l'on a vue pour les \texttt{ndarray} de \texttt{numpy} et
 pour les \texttt{Series}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}24}]:} \PY{c+c1}{\PYZsh{} p.loc prend soit un label de ligne}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{p}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sonia}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 age        16
 height    165
 sex         f
 Name: sonia, dtype: object
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}25}]:} \PY{c+c1}{\PYZsh{} ou alors un label de ligne ET de colonne}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{p}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sonia}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 16
-
-    \end{Verbatim}
+\end{Verbatim}
 
     On peut mettre à la place d'une label~:
 
@@ -472,13 +462,13 @@ verrons que les notations \texttt{.loc{[}lignes{]}} ou pire seulement
 
 Regardons maintenant d'autres exemples plus sophistiqués~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}26}]:} \PY{c+c1}{\PYZsh{} un masque sur les femmes}
          \PY{n}{p}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{f}\PY{l+s+s1}{\PYZsq{}}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}26}]:} alice     True
          bob      False
          marc     False
@@ -487,56 +477,54 @@ Regardons maintenant d'autres exemples plus sophistiqués~:
          Name: sex, dtype: bool
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}27}]:} \PY{c+c1}{\PYZsh{} si bien que pour construire un tableau}
          \PY{c+c1}{\PYZsh{} avec uniquement les femmes}
          \PY{n}{p}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{p}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{f}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{:}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}27}]:}        age  height sex
          alice   12     130   f
          sonia   16     165   f
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}28}]:} \PY{c+c1}{\PYZsh{} si on veut ne garder uniquement}
          \PY{c+c1}{\PYZsh{} que les femmes de plus de 14 ans}
          \PY{n}{p}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{(}\PY{n}{p}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{f}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{p}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZgt{}} \PY{l+m+mi}{14}\PY{p}{)}\PY{p}{,} \PY{p}{:}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}28}]:}        age  height sex
          sonia   16     165   f
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}29}]:} \PY{c+c1}{\PYZsh{} quelle est la moyenne de \PYZsq{}total\PYZus{}bill\PYZsq{} pour les femmes}
          \PY{n}{addition\PYZus{}f} \PY{o}{=} \PY{n}{tips}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{tips}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Female}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{total\PYZus{}bill}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{addition moyenne des femmes : }\PY{l+s+si}{\PYZob{}addition\PYZus{}f:.2f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 addition moyenne des femmes : 18.06
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}30}]:} \PY{c+c1}{\PYZsh{} quelle est la note moyenne des hommes}
          \PY{n}{addition\PYZus{}h} \PY{o}{=} \PY{n}{tips}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{tips}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Male}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{total\PYZus{}bill}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{addition moyenne des hommes : }\PY{l+s+si}{\PYZob{}addition\PYZus{}h:.2f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 addition moyenne des hommes : 20.74
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}31}]:} \PY{c+c1}{\PYZsh{} qui laisse le plus grand pourcentage de pourboire :}
          \PY{c+c1}{\PYZsh{} les hommes ou les femmes ?}
          
@@ -548,11 +536,10 @@ addition moyenne des hommes : 20.74
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 Les femmes laissent 15.69\% de pourboire
 Les hommes laissent 14.89\% de pourboire
-
-    \end{Verbatim}
+\end{Verbatim}
 
     \hypertarget{erreurs-fruxe9quentes-et-ambiguuxeftuxe9s-sur-les-requuxeates}{%
 \subsubsection{Erreurs fréquentes et ambiguïtés sur les
@@ -567,13 +554,13 @@ de nombreuses erreurs.
 \texttt{.loc{[}lignes,\ colonnes{]}} sinon, soyez sûr de savoir ce qui
 est réellement calculé}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}32}]:} \PY{c+c1}{\PYZsh{} commençons par la notation la plus classique}
          \PY{n}{p}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}  \PY{c+c1}{\PYZsh{} prend forcément un label de colonne}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}32}]:} alice    f
          bob      m
          marc     m
@@ -582,27 +569,27 @@ est réellement calculé}.
          Name: sex, dtype: object
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}33}]:} \PY{c+c1}{\PYZsh{} mais par contre, si on passe un slice, c\PYZsq{}est forcément des lignes,}
          \PY{c+c1}{\PYZsh{} assez perturbant et source de confusion.}
          \PY{n}{p}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{marc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}33}]:}        age  height sex
          alice   12     130   f
          bob     13     140   m
          marc    16     176   m
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}34}]:} \PY{c+c1}{\PYZsh{} on peut même directement accéder à une colonne par son nom}
          \PY{n}{p}\PY{o}{.}\PY{n}{age}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}34}]:} alice    12
          bob      13
          marc     16
@@ -615,7 +602,7 @@ est réellement calculé}.
 même nom existe sur une \texttt{DataFrame}, alors la priorité est donnée
 à l'attribut, et non à la colonne~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}35}]:} \PY{c+c1}{\PYZsh{} ajoutons une colonne qui a pour nom une méthode qui existe sur}
          \PY{c+c1}{\PYZsh{} les DataFrame}
          \PY{n}{p}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{1}
@@ -623,24 +610,23 @@ même nom existe sur une \texttt{DataFrame}, alors la priorité est donnée
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
        age  height sex  mean
 alice   12     130   f     1
 bob     13     140   m     1
 marc    16     176   m     1
 bill    11     120   m     1
 sonia   16     165   f     1
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}36}]:} \PY{c+c1}{\PYZsh{} je peux bien accéder}
          \PY{c+c1}{\PYZsh{} à la colonne sex}
          \PY{n}{p}\PY{o}{.}\PY{n}{sex}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}36}]:} alice    f
          bob      m
          marc     m
@@ -649,13 +635,13 @@ sonia   16     165   f     1
          Name: sex, dtype: object
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}37}]:} \PY{c+c1}{\PYZsh{} mais pas à la colonne mean}
          \PY{n}{p}\PY{o}{.}\PY{n}{mean}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}37}]:} <bound method DataFrame.mean of        age  height sex  mean
          alice   12     130   f     1
          bob     13     140   m     1
@@ -664,13 +650,13 @@ sonia   16     165   f     1
          sonia   16     165   f     1>
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}38}]:} \PY{c+c1}{\PYZsh{} à nouveau, la seule méthode non ambiguë est d\PYZsq{}utiliser .loc}
          \PY{n}{p}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}38}]:} alice    1
          bob      1
          marc     1
@@ -679,7 +665,7 @@ sonia   16     165   f     1
          Name: mean, dtype: int64
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}39}]:} \PY{c+c1}{\PYZsh{} supprimons maintenant la colonne mean *en place* (par défaut,}
          \PY{c+c1}{\PYZsh{} drop retourne une nouvelle DataFrame)}
          \PY{n}{p}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{inplace}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
@@ -687,15 +673,14 @@ sonia   16     165   f     1
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
        age  height sex
 alice   12     130   f
 bob     13     140   m
 marc    16     176   m
 bill    11     120   m
 sonia   16     165   f
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Pour aller plus loin, vous pouvez lire la documentation officielle~:
 
@@ -711,31 +696,30 @@ y a une subtilité. Il est parfaitement légitime et correct d'appliquer
 une \texttt{ufunc} de \texttt{numpy} sur les éléments d'une
 \texttt{DataFrame}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}40}]:} \PY{n}{d} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{randint}\PY{p}{(}
              \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{n+nb}{list}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{d}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
    a  b  c
-0  2  1  3
-1  4  5  8
-2  4  4  7
+0  6  9  8
+1  1  8  6
+2  4  5  6
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}41}]:} \PY{n}{np}\PY{o}{.}\PY{n}{log}\PY{p}{(}\PY{n}{d}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}41}]:}           a         b         c
-         0  0.693147  0.000000  1.098612
-         1  1.386294  1.609438  2.079442
-         2  1.386294  1.386294  1.945910
+         0  1.791759  2.197225  2.079442
+         1  0.000000  2.079442  1.791759
+         2  1.386294  1.609438  1.791759
 \end{Verbatim}
             
     Nous remarquons que comme on s'y attend, la \texttt{ufunc} a été
@@ -751,7 +735,7 @@ tableaux \texttt{numpy} sans prendre en compte les labels.
 Pour avoir un alignement des labels, il faut utiliser les \texttt{ufunc}
 de \texttt{pandas}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}42}]:} \PY{c+c1}{\PYZsh{} prenons deux Series}
          \PY{n}{s1} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{30}\PY{p}{]}\PY{p}{,}
                         \PY{n}{index}\PY{o}{=}\PY{n+nb}{list}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
@@ -759,15 +743,14 @@ de \texttt{pandas}.
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a    10
 b    20
 c    30
 dtype: int64
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}43}]:} \PY{c+c1}{\PYZsh{}}
          \PY{n}{s2} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{22}\PY{p}{,} \PY{l+m+mi}{32}\PY{p}{]}\PY{p}{,}
                         \PY{n}{index}\PY{o}{=}\PY{n+nb}{list}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{acd}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
@@ -775,15 +758,14 @@ dtype: int64
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 a    12
 c    22
 d    32
 dtype: int64
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}44}]:} \PY{c+c1}{\PYZsh{} la ufunc numpy fait la somme}
          \PY{c+c1}{\PYZsh{} des arrays sans prendre en compte}
          \PY{c+c1}{\PYZsh{} les labels, donc sans alignement}
@@ -791,14 +773,14 @@ dtype: int64
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}44}]:} a    22
          b    42
          c    62
          dtype: int64
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}45}]:} \PY{c+c1}{\PYZsh{} la ufunc pandas va faire}
          \PY{c+c1}{\PYZsh{} un alignement des labels}
          \PY{c+c1}{\PYZsh{} cet appel est équivalent à s1 + s2}
@@ -806,7 +788,7 @@ dtype: int64
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}45}]:} a    22.0
          b     NaN
          c    52.0
@@ -814,7 +796,7 @@ dtype: int64
          dtype: float64
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}46}]:} \PY{c+c1}{\PYZsh{} comme on l\PYZsq{}a vu sur le complément précédent, les valeurs absentes sont}
          \PY{c+c1}{\PYZsh{} remplacées par NaN, mais on peut changer ce comportement lors de}
          \PY{c+c1}{\PYZsh{} l\PYZsq{}appel de .add}
@@ -822,7 +804,7 @@ dtype: int64
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}46}]:} a    22.0
          b    20.0
          c    52.0
@@ -830,7 +812,7 @@ dtype: int64
          dtype: float64
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}47}]:} \PY{c+c1}{\PYZsh{} regardons un autre exemple sur des DataFrame}
          \PY{c+c1}{\PYZsh{} on affiche tout ça dans les cellules suivantes}
          \PY{n}{names} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{charle}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
@@ -845,48 +827,47 @@ dtype: int64
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}48}]:} \PY{c+c1}{\PYZsh{} ce qui donne}
          \PY{n}{fruits\PYZus{}jan}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}48}]:}         bananas  orange
          alice        10       3
          bob           3      11
          charle        9       6
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}49}]:} \PY{c+c1}{\PYZsh{} et}
          \PY{n}{fruits\PYZus{}feb}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}49}]:}         bananas  apples
          alice       6.0     NaN
          bob         1.0     8.0
          charle      NaN     5.0
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}50}]:} \PY{c+c1}{\PYZsh{} regardons maintenant la somme des fruits mangés}
          \PY{n}{eaten\PYZus{}fruits} \PY{o}{=} \PY{n}{fruits\PYZus{}jan} \PY{o}{+} \PY{n}{fruits\PYZus{}feb}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{eaten\PYZus{}fruits}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
         apples  bananas  orange
 alice      NaN     16.0     NaN
 bob        NaN      4.0     NaN
 charle     NaN      NaN     NaN
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}51}]:} \PY{c+c1}{\PYZsh{} On a bien un alignement des labels, mais il y a beaucoup de valeurs}
          \PY{c+c1}{\PYZsh{} manquantes. Corrigeons cela on remplaçant les valeurs manquantes par 0}
          \PY{n}{eaten\PYZus{}fruits} \PY{o}{=} \PY{n}{fruits\PYZus{}jan}\PY{o}{.}\PY{n}{add}\PY{p}{(}\PY{n}{fruits\PYZus{}feb}\PY{p}{,} \PY{n}{fill\PYZus{}value}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
@@ -894,13 +875,12 @@ charle     NaN      NaN     NaN
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
         apples  bananas  orange
 alice      NaN     16.0     3.0
 bob        8.0      4.0    11.0
 charle     5.0      9.0     6.0
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Notons que lorsqu'une valeur est absente dans toutes les
 \texttt{DataFrame}, \texttt{NaN} est conservé.
@@ -912,7 +892,7 @@ comme une ligne et va la broadcaster sur les autres lignes. Par
 conséquent, l'index de la \texttt{Series} va être considéré comme des
 colonnes et aligné avec les colonnes de la \texttt{DataFrame}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}52}]:} \PY{n}{dataframe} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}
              \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}\PY{p}{,}
              \PY{n}{columns}\PY{o}{=}\PY{n+nb}{list}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n+nb}{list}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{xyz}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
@@ -920,14 +900,14 @@ colonnes et aligné avec les colonnes de la \texttt{DataFrame}.
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}52}]:}    a  b  c
-         x  9  6  7
-         y  1  7  5
-         z  3  2  9
+         x  7  8  5
+         y  5  1  6
+         z  7  5  5
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}53}]:} \PY{n}{series\PYZus{}row} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}
              \PY{p}{[}\PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{]}\PY{p}{,}
              \PY{n}{index}\PY{o}{=}\PY{n+nb}{list}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{abc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
@@ -935,14 +915,14 @@ colonnes et aligné avec les colonnes de la \texttt{DataFrame}.
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}53}]:} a    100
          b    100
          c    100
          dtype: int64
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}54}]:} \PY{n}{series\PYZus{}col} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}
              \PY{p}{[}\PY{l+m+mi}{200}\PY{p}{,} \PY{l+m+mi}{200}\PY{p}{,} \PY{l+m+mi}{200}\PY{p}{]}\PY{p}{,}
              \PY{n}{index}\PY{o}{=}\PY{n+nb}{list}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{xyz}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
@@ -950,14 +930,14 @@ colonnes et aligné avec les colonnes de la \texttt{DataFrame}.
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}54}]:} x    200
          y    200
          z    200
          dtype: int64
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}55}]:} \PY{c+c1}{\PYZsh{} la Series est considérée comme une ligne et son index}
          \PY{c+c1}{\PYZsh{} s\PYZsq{}aligne sur les colonnes de la DataFrame}
          \PY{c+c1}{\PYZsh{} la Series va être broadcastée}
@@ -967,14 +947,14 @@ colonnes et aligné avec les colonnes de la \texttt{DataFrame}.
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}55}]:}      a    b    c
-         x  109  106  107
-         y  101  107  105
-         z  103  102  109
+         x  107  108  105
+         y  105  101  106
+         z  107  105  105
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}56}]:} \PY{c+c1}{\PYZsh{} du coup si les labels ne correspondent pas,}
          \PY{c+c1}{\PYZsh{} le résultat sera le suivant}
          
@@ -982,14 +962,14 @@ colonnes et aligné avec les colonnes de la \texttt{DataFrame}.
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}56}]:}     a   b   c   x   y   z
          x NaN NaN NaN NaN NaN NaN
          y NaN NaN NaN NaN NaN NaN
          z NaN NaN NaN NaN NaN NaN
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}57}]:} \PY{c+c1}{\PYZsh{} on peut dans ce cas, changer le comportement par défaut en forçant}
          \PY{c+c1}{\PYZsh{} l\PYZsq{}alignement de la Series suivant un autre axe avec l\PYZsq{}argument axis}
          
@@ -997,11 +977,11 @@ colonnes et aligné avec les colonnes de la \texttt{DataFrame}.
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}57}]:}      a    b    c
-         x  209  206  207
-         y  201  207  205
-         z  203  202  209
+         x  207  208  205
+         y  205  201  206
+         z  207  205  205
 \end{Verbatim}
             
     Ici, \texttt{axis=0} signifie que la \texttt{Series} est considérée
@@ -1044,7 +1024,7 @@ chaînes de caractères. Il y a plusieurs choses importantes à savoir~:
 
 Regardons quelques exemples~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}58}]:} \PY{c+c1}{\PYZsh{} Créons une Series avec des noms ayant une capitalisation inconsistante}
          \PY{c+c1}{\PYZsh{} et une mauvaise gestion des espaces}
          \PY{n}{names} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice }\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{  bOB}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Marc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bill}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ JULIE }\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{NaN}\PY{p}{]}
@@ -1052,7 +1032,7 @@ Regardons quelques exemples~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}59}]:} \PY{c+c1}{\PYZsh{} nettoyons maintenant ces données}
          
          \PY{c+c1}{\PYZsh{} on met en minuscule}
@@ -1064,7 +1044,7 @@ Regardons quelques exemples~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}59}]:} 0    alice
          1      bob
          2     marc
@@ -1075,7 +1055,7 @@ Regardons quelques exemples~:
          dtype: object
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}60}]:} \PY{c+c1}{\PYZsh{} comme les méthodes vectorisées retournent un objet de même type, on}
          \PY{c+c1}{\PYZsh{} peut les chaîner comme ceci}
          
@@ -1083,19 +1063,19 @@ Regardons quelques exemples~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}60}]:} ['alice', 'bob', 'marc', 'bill', nan, 'julie', nan]
 \end{Verbatim}
             
     On peut également utiliser l'indexation des \texttt{str} de manière
 vectorisée~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}61}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 0    alice
 1      bob
 2     marc
@@ -1104,15 +1084,14 @@ vectorisée~:
 5    julie
 6      NaN
 dtype: object
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}62}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{o}{.}\PY{n}{str}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 0      e
 1      b
 2      c
@@ -1121,8 +1100,7 @@ dtype: object
 5      e
 6    NaN
 dtype: object
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Pour aller plus loin vous pouvez lire la documentation officielle~:
 
@@ -1173,46 +1151,46 @@ Une valeur manquante peut-être représentée avec \texttt{pandas} soit par
 
 Illustrons ces propriétés~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}63}]:} \PY{c+c1}{\PYZsh{} une Series d\PYZsq{}entiers}
          \PY{n}{s} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}
          \PY{n}{s}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}63}]:} 0    1
          1    2
          dtype: int64
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}64}]:} \PY{c+c1}{\PYZsh{} on insère un NaN, la Series est alors convertie en float64}
          \PY{n}{s}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{NaN}
          \PY{n}{s}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}64}]:} 0    NaN
          1    2.0
          dtype: float64
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}65}]:} \PY{c+c1}{\PYZsh{} on réinitialise}
          \PY{n}{s} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}
          \PY{n}{s}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}65}]:} 0    1
          1    2
          dtype: int64
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}66}]:} \PY{c+c1}{\PYZsh{} et on insère None}
          \PY{n}{s}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{k+kc}{None}
          
@@ -1222,7 +1200,7 @@ Illustrons ces propriétés~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}66}]:} 0    NaN
          1    2.0
          dtype: float64
@@ -1255,7 +1233,7 @@ On remarque également qu'alors que \texttt{isnull()} et
 \texttt{fillna()} impliquent l'utilisation de stratégies. Regardons
 cela~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}67}]:} \PY{c+c1}{\PYZsh{} créons une DataFrame avec quelques valeurs manquantes}
          \PY{n}{names} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{charles}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
          \PY{n}{bananas} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{names}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
@@ -1265,32 +1243,31 @@ cela~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
          bananas  apples
 alice        6.0     NaN
 bob          1.0     8.0
 charles      NaN     5.0
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}68}]:} \PY{n}{fruits\PYZus{}feb}\PY{o}{.}\PY{n}{isna}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}68}]:}          bananas  apples
          alice      False    True
          bob        False   False
          charles     True   False
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}69}]:} \PY{n}{fruits\PYZus{}feb}\PY{o}{.}\PY{n}{notna}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}69}]:}          bananas  apples
          alice       True   False
          bob         True    True
@@ -1301,66 +1278,65 @@ charles      NaN     5.0
 contiennent au moins une valeur manquante. Mais on peut changer ce
 comportement avec des arguments~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}70}]:} \PY{n}{p} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{NaN}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{NaN}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{NaN}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{NaN}\PY{p}{]}\PY{p}{]}\PY{p}{)}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{p}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
    0    1   2
 0  1  2.0 NaN
 1  3  NaN NaN
 2  7  5.0 NaN
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}71}]:} \PY{c+c1}{\PYZsh{} comportement par défaut, j\PYZsq{}enlève toutes les lignes avec au moins}
          \PY{c+c1}{\PYZsh{} une valeur manquante; il ne reste rien !}
          \PY{n}{p}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}71}]:} Empty DataFrame
          Columns: [0, 1, 2]
          Index: []
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}72}]:} \PY{c+c1}{\PYZsh{} maintenant, je fais l\PYZsq{}opération par colonne}
          \PY{n}{p}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}72}]:}    0
          0  1
          1  3
          2  7
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}73}]:} \PY{c+c1}{\PYZsh{} je fais l\PYZsq{}opération par colonne si toute la colonne est manquante}
          \PY{n}{p}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{how}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{all}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}73}]:}    0    1
          0  1  2.0
          1  3  NaN
          2  7  5.0
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}74}]:} \PY{c+c1}{\PYZsh{} je fais l\PYZsq{}opération par ligne si au moins 2 valeurs sont manquantes}
          \PY{n}{p}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{n}{thresh}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}74}]:}    0    1   2
          0  1  2.0 NaN
          2  7  5.0 NaN
@@ -1370,33 +1346,32 @@ comportement avec des arguments~:
 argument pas défaut. Mais on peut ici aussi changer ce comportement.
 Regardons cela~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}75}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{p}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
    0    1   2
 0  1  2.0 NaN
 1  3  NaN NaN
 2  7  5.0 NaN
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}76}]:} \PY{c+c1}{\PYZsh{} je remplace les valeurs manquantes par \PYZhy{}1}
          \PY{n}{p}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}76}]:}    0    1    2
          0  1  2.0 -1.0
          1  3 -1.0 -1.0
          2  7  5.0 -1.0
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}77}]:} \PY{c+c1}{\PYZsh{} je remplace les valeurs manquantes avec la valeur suivante sur la colonne}
          \PY{c+c1}{\PYZsh{} bfill est pour back fill, c\PYZsq{}est\PYZhy{}à\PYZhy{}dire remplace en arrière à partir des}
          \PY{c+c1}{\PYZsh{} valeurs existantes}
@@ -1404,14 +1379,14 @@ Regardons cela~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}77}]:}    0    1   2
          0  1  2.0 NaN
          1  3  5.0 NaN
          2  7  5.0 NaN
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}78}]:} \PY{c+c1}{\PYZsh{} je remplace les valeurs manquantes avec la valeur précédente sur la ligne}
          \PY{c+c1}{\PYZsh{} ffill est pour forward fill, remplace en avant à partir des valeurs}
          \PY{c+c1}{\PYZsh{} existantes}
@@ -1419,7 +1394,7 @@ Regardons cela~:
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}78}]:}      0    1    2
          0  1.0  2.0  2.0
          1  3.0  3.0  3.0
@@ -1428,12 +1403,12 @@ Regardons cela~:
             
     Regardez l'aide de ces méthodes pour aller plus loin.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}79}]:} p.dropna\PY{o}{?}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}80}]:} p.fillna\PY{o}{?}
 \end{Verbatim}
 
@@ -1495,7 +1470,7 @@ les \texttt{Series} et les \texttt{DataFrame} avec des
 
 Regardons tout de suite un exemple~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}81}]:} \PY{c+c1}{\PYZsh{} construisons une DataFrame jouet}
          
          \PY{c+c1}{\PYZsh{} voici une liste de prénoms}
@@ -1512,15 +1487,14 @@ Regardons tout de suite un exemple~:
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
        age  height sex
 alice   12     130   f
 bob     13     140   m
 sonia   16     165   f
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}82}]:} \PY{c+c1}{\PYZsh{} unstack, en première approximation, permet de passer d\PYZsq{}une DataFrame à}
          \PY{c+c1}{\PYZsh{} une Series avec un MultiIndex}
          \PY{n}{s} \PY{o}{=} \PY{n}{p}\PY{o}{.}\PY{n}{unstack}\PY{p}{(}\PY{p}{)}
@@ -1528,7 +1502,7 @@ sonia   16     165   f
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 age     alice     12
         bob       13
         sonia     16
@@ -1539,16 +1513,15 @@ sex     alice      f
         bob        m
         sonia      f
 dtype: object
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}83}]:} \PY{c+c1}{\PYZsh{} et voici donc l\PYZsq{}index de cette Series}
          \PY{n}{s}\PY{o}{.}\PY{n}{index}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}83}]:} MultiIndex(levels=[['age', 'height', 'sex'], ['alice', 'bob', 'sonia']],
                     labels=[[0, 0, 0, 1, 1, 1, 2, 2, 2], [0, 1, 2, 0, 1, 2, 0, 1, 2]])
 \end{Verbatim}
@@ -1558,7 +1531,7 @@ dtype: object
 \texttt{Series} ou comme index de ligne ou colonne d'une
 \texttt{DataFrame}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}84}]:} \PY{c+c1}{\PYZsh{} on peut créer un MultiIndex à partir d\PYZsq{}une liste de liste}
          \PY{n}{names} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
          \PY{n}{age} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{2014}\PY{p}{,} \PY{l+m+mi}{2015}\PY{p}{,} \PY{l+m+mi}{2016}\PY{p}{,} \PY{l+m+mi}{2014}\PY{p}{,} \PY{l+m+mi}{2015}\PY{p}{,} \PY{l+m+mi}{2016}\PY{p}{]}
@@ -1567,7 +1540,7 @@ dtype: object
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 alice  2014    40
        2015    42
        2016    45
@@ -1575,10 +1548,9 @@ bob    2014    38
        2015    40
        2016    40
 dtype: int64
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}85}]:} \PY{c+c1}{\PYZsh{} ou à partir d\PYZsq{}un dictionnaire de tuples}
          \PY{n}{s\PYZus{}tuple} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{\PYZob{}}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{2014}\PY{p}{)}\PY{p}{:} \PY{l+m+mi}{40}\PY{p}{,}
                               \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{2015}\PY{p}{)}\PY{p}{:} \PY{l+m+mi}{42}\PY{p}{,}
@@ -1591,7 +1563,7 @@ dtype: int64
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 alice  2014    40
        2015    42
        2016    45
@@ -1599,10 +1571,9 @@ bob    2014    38
        2015    40
        2016    40
 dtype: int64
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}86}]:} \PY{c+c1}{\PYZsh{} ou avec la méthode from\PYZus{}product()}
          \PY{n}{name} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
          \PY{n}{year} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{2014}\PY{p}{,} \PY{l+m+mi}{2015}\PY{p}{,} \PY{l+m+mi}{2016}\PY{p}{]}
@@ -1612,7 +1583,7 @@ dtype: int64
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 alice  2014    40
        2015    42
        2016    45
@@ -1620,12 +1591,11 @@ bob    2014    38
        2015    40
        2016    40
 dtype: int64
-
-    \end{Verbatim}
+\end{Verbatim}
 
     On peut même nommer les niveaux d'un \texttt{MultiIndex}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}87}]:} \PY{n}{name} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alice}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
          \PY{n}{year} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{2014}\PY{p}{,} \PY{l+m+mi}{2015}\PY{p}{,} \PY{l+m+mi}{2016}\PY{p}{]}
          \PY{n}{i} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{MultiIndex}\PY{o}{.}\PY{n}{from\PYZus{}product}\PY{p}{(}\PY{p}{[}\PY{n}{name}\PY{p}{,} \PY{n}{year}\PY{p}{]}\PY{p}{,} \PY{n}{names}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
@@ -1634,7 +1604,7 @@ dtype: int64
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 name   year
 alice  2014    40
        2015    42
@@ -1643,17 +1613,16 @@ bob    2014    38
        2015    40
        2016    40
 dtype: int64
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}88}]:} \PY{c+c1}{\PYZsh{} on peut changer le nom des niveaux du MultiIndex}
          \PY{n}{s}\PY{o}{.}\PY{n}{index}\PY{o}{.}\PY{n}{names} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NAMES}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{YEARS}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{s}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 NAMES  YEARS
 alice  2014     40
        2015     42
@@ -1662,14 +1631,13 @@ bob    2014     38
        2015     40
        2016     40
 dtype: int64
-
-    \end{Verbatim}
+\end{Verbatim}
 
     Créons maintenant une \texttt{DataFrame} jouet avec des
 \texttt{MultiIndex} pour étudier comment accéder aux éléments de la
 \texttt{DataFrame}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}89}]:} \PY{n}{index} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{MultiIndex}\PY{o}{.}\PY{n}{from\PYZus{}product}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{2013}\PY{p}{,} \PY{l+m+mi}{2014}\PY{p}{]}\PY{p}{,}
                                              \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{]}\PY{p}{,}
                                             \PY{n}{names}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
@@ -1689,18 +1657,17 @@ dtype: int64
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 client           Bob                 Sue          
 pression       avant   arrière     avant   arrière
 year visit                                        
-2013 1      2.550825  2.403969  2.861040  2.734954
-     2      2.663264  2.062700  2.438937  2.955536
-     3      2.580402  2.668350  2.786914  2.033058
-2014 1      2.037373  2.083491  2.930867  2.818915
-     2      2.844628  2.930757  2.925297  2.666986
-     3      2.865377  2.076819  2.721758  2.260890
-
-    \end{Verbatim}
+2013 1      2.362589  2.672196  2.092524  2.501629
+     2      2.292228  2.986946  2.529973  2.630163
+     3      2.505786  2.681643  2.359062  2.675073
+2014 1      2.528697  2.338134  2.157152  2.843016
+     2      2.263120  2.591815  2.741532  2.434334
+     3      2.804437  2.876940  2.570344  2.900448
+\end{Verbatim}
 
     Il y a plusieurs manières d'accéder aux éléments, mais une seule que
 l'on recommande~:
@@ -1708,28 +1675,28 @@ l'on recommande~:
 \textbf{utilisez la notation
 \texttt{.loc{[}ligne,\ colonne{]},\ .iloc{[}ligne,\ colonne{]}}}.
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}90}]:} \PY{c+c1}{\PYZsh{} pression en 2013 pour Bob}
          \PY{n}{mecanics\PYZus{}data}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+m+mi}{2013}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{outcolor}Out[{\color{outcolor}90}]:} pression     avant   arrière
          visit                       
-         1         2.550825  2.403969
-         2         2.663264  2.062700
-         3         2.580402  2.668350
+         1         2.362589  2.672196
+         2         2.292228  2.986946
+         3         2.505786  2.681643
 \end{Verbatim}
             
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}91}]:} \PY{c+c1}{\PYZsh{} pour accéder aux sous niveaux du MultiIndex, on utilise des tuples}
          \PY{n}{mecanics\PYZus{}data}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{(}\PY{l+m+mi}{2013}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{avant}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}91}]:} 2.6632638263356445
+\begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
+{\color{outcolor}Out[{\color{outcolor}91}]:} 2.2922276144276745
 \end{Verbatim}
             
     Le slice sur le \texttt{MultiIndex} est un peu délicat. On peut utiliser
@@ -1738,40 +1705,38 @@ la notation \texttt{:} si on veut slicer sur tous les éléments d'un
 les niveaux, il faut utiliser un objet \texttt{slice} ou
 \texttt{pd.IndexSlice}~:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}92}]:} \PY{c+c1}{\PYZsh{} slice(None) signifie tous les éléments du niveau}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{mecanics\PYZus{}data}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n+nb}{slice}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2013}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{2014}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sue}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n+nb}{slice}\PY{p}{(}\PY{k+kc}{None}\PY{p}{)}\PY{p}{)}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 client           Sue          
 pression       avant   arrière
 year visit                    
-2013 2      2.438937  2.955536
-     3      2.786914  2.033058
-2014 1      2.930867  2.818915
+2013 2      2.529973  2.630163
+     3      2.359062  2.675073
+2014 1      2.157152  2.843016
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}93}]:} \PY{c+c1}{\PYZsh{} on peut utiliser la notation : si on ne distingue par les niveaux}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{mecanics\PYZus{}data}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{(}\PY{n+nb}{slice}\PY{p}{(}\PY{k+kc}{None}\PY{p}{)}\PY{p}{,} \PY{n+nb}{slice}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{p}{:}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 client           Bob                 Sue          
 pression       avant   arrière     avant   arrière
 year visit                                        
-2013 1      2.550825  2.403969  2.861040  2.734954
-     2      2.663264  2.062700  2.438937  2.955536
-2014 1      2.037373  2.083491  2.930867  2.818915
-     2      2.844628  2.930757  2.925297  2.666986
+2013 1      2.362589  2.672196  2.092524  2.501629
+     2      2.292228  2.986946  2.529973  2.630163
+2014 1      2.528697  2.338134  2.157152  2.843016
+     2      2.263120  2.591815  2.741532  2.434334
+\end{Verbatim}
 
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 {\color{incolor}In [{\color{incolor}94}]:} \PY{c+c1}{\PYZsh{} on peut aussi utiliser pd.IndexSlice pour slicer avec une notation}
          \PY{c+c1}{\PYZsh{} un peu plus concise}
          \PY{n}{idx} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{IndexSlice}
@@ -1779,16 +1744,15 @@ year visit
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \begin{Verbatim}[commandchars=\\\{\},frame=single,framerule=0.3mm,rulecolor=\color{cellframecolor}]
 client           Sue          
 pression       avant   arrière
 year visit                    
-2013 1      2.861040  2.734954
-     2      2.438937  2.955536
-2014 1      2.930867  2.818915
-     2      2.925297  2.666986
-
-    \end{Verbatim}
+2013 1      2.092524  2.501629
+     2      2.529973  2.630163
+2014 1      2.157152  2.843016
+     2      2.741532  2.434334
+\end{Verbatim}
 
     Pour aller plus loin, regardez la documentation des
 \texttt{MultiIndex}~:

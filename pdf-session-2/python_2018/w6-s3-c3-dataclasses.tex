@@ -29,21 +29,23 @@ moyen de définir des classes d'enregistrements.
 Voici par exemple comment on pourrait définir une classe
 \texttt{Personne}:
 
-    \begin{verbatim}
->>> from dataclasses import dataclass
->>>
->>> @dataclass
-... class Personne:
-...     nom: str
-...     age: int
-...     email: str = ""
-...
->>> personne = Personne(nom='jean', age=12)
->>>
->>> print(personne)
-Personne(nom='jean', age=12, email='')
->>>
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\OperatorTok{>>>} \ImportTok{from}\NormalTok{ dataclasses }\ImportTok{import}\NormalTok{ dataclass}
+\OperatorTok{>>>}
+\OperatorTok{>>>} \OperatorTok{@}\NormalTok{dataclass}
+\NormalTok{... }\KeywordTok{class}\NormalTok{ Personne:}
+\NormalTok{...     nom: }\BuiltInTok{str}
+\NormalTok{...     age: }\BuiltInTok{int}
+\NormalTok{...     email: }\BuiltInTok{str} \OperatorTok{=} \StringTok{""}
+\NormalTok{...}
+\OperatorTok{>>>}\NormalTok{ personne }\OperatorTok{=}\NormalTok{ Personne(nom}\OperatorTok{=}\StringTok{'jean'}\NormalTok{, age}\OperatorTok{=}\DecValTok{12}\NormalTok{)}
+\OperatorTok{>>>}
+\OperatorTok{>>>} \BuiltInTok{print}\NormalTok{(personne)}
+\NormalTok{Personne(nom}\OperatorTok{=}\StringTok{'jean'}\NormalTok{, age}\OperatorTok{=}\DecValTok{12}\NormalTok{, email}\OperatorTok{=}\StringTok{''}\NormalTok{)}
+\OperatorTok{>>>}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{instances-non-mutables}{%
 \subsubsection{Instances non mutables}\label{instances-non-mutables}}
@@ -55,42 +57,46 @@ documentation pour une liste complète, mais voici un exemple qui utilise
 instances non mutables. Nous retrouvons ici le même scénario d'ensemble
 de points que nous avons déjà rencontré plusieurs fois~:
 
-    \begin{verbatim}
->>> import sys; print(sys.version)
-3.7.0 (default, Jun 29 2018, 20:14:27)
-[Clang 9.0.0 (clang-900.0.39.2)]
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\OperatorTok{>>>} \ImportTok{import}\NormalTok{ sys}\OperatorTok{;} \BuiltInTok{print}\NormalTok{(sys.version)}
+\DecValTok{3}\NormalTok{.}\FloatTok{7.0}\NormalTok{ (default, Jun }\DecValTok{29} \DecValTok{2018}\NormalTok{, }\DecValTok{20}\NormalTok{:}\DecValTok{14}\NormalTok{:}\DecValTok{27}\NormalTok{)}
+\NormalTok{[Clang }\DecValTok{9}\NormalTok{.}\FloatTok{0.0}\NormalTok{ (clang}\DecValTok{-900}\NormalTok{.}\DecValTok{0}\NormalTok{.}\FloatTok{39.2}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
 
-    \begin{verbatim}
->>> from dataclasses import dataclass
->>>
->>> @dataclass(frozen=True)
-... class Point:
-...     x: float
-...     y: float
-...
-...     def __eq__(self, other):
-...         return self.x == other.x and self.y == other.y
-...
-...     def __hash__(self):
-...         return (11 * self.x + self.y) // 16
-...
->>> p1, p2, p3 = Point(1, 1), Point(1, 1), Point(1, 1)
->>>
->>> s = {p1, p2}
->>> len(s)
-1
->>>
->>> p3 in s
-True
->>>
->>> try:
-...     p1.x = 10
-... except Exception as e:
-...     print(f"OOPS {type(e)}")
-...
-OOPS <class 'dataclasses.FrozenInstanceError'>
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[frame=lines,framerule=0.6mm,rulecolor=\color{asisframecolor}]
+\OperatorTok{>>>} \ImportTok{from}\NormalTok{ dataclasses }\ImportTok{import}\NormalTok{ dataclass}
+\OperatorTok{>>>}
+\OperatorTok{>>>} \OperatorTok{@}\NormalTok{dataclass(frozen}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{... }\KeywordTok{class}\NormalTok{ Point:}
+\NormalTok{...     x: }\BuiltInTok{float}
+\NormalTok{...     y: }\BuiltInTok{float}
+\NormalTok{...}
+\NormalTok{...     }\KeywordTok{def} \FunctionTok{__eq__}\NormalTok{(}\VariableTok{self}\NormalTok{, other):}
+\NormalTok{...         }\ControlFlowTok{return} \VariableTok{self}\NormalTok{.x }\OperatorTok{==}\NormalTok{ other.x }\KeywordTok{and} \VariableTok{self}\NormalTok{.y }\OperatorTok{==}\NormalTok{ other.y}
+\NormalTok{...}
+\NormalTok{...     }\KeywordTok{def} \FunctionTok{__hash__}\NormalTok{(}\VariableTok{self}\NormalTok{):}
+\NormalTok{...         }\ControlFlowTok{return}\NormalTok{ (}\DecValTok{11} \OperatorTok{*} \VariableTok{self}\NormalTok{.x }\OperatorTok{+} \VariableTok{self}\NormalTok{.y) }\OperatorTok{//} \DecValTok{16}
+\NormalTok{...}
+\OperatorTok{>>>}\NormalTok{ p1, p2, p3 }\OperatorTok{=}\NormalTok{ Point(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{), Point(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{), Point(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\OperatorTok{>>>}
+\OperatorTok{>>>}\NormalTok{ s }\OperatorTok{=}\NormalTok{ \{p1, p2\}}
+\OperatorTok{>>>} \BuiltInTok{len}\NormalTok{(s)}
+\DecValTok{1}
+\OperatorTok{>>>}
+\OperatorTok{>>>}\NormalTok{ p3 }\KeywordTok{in}\NormalTok{ s}
+\VariableTok{True}
+\OperatorTok{>>>}
+\OperatorTok{>>>} \ControlFlowTok{try}\NormalTok{:}
+\NormalTok{...     p1.x }\OperatorTok{=} \DecValTok{10}
+\NormalTok{... }\ControlFlowTok{except} \PreprocessorTok{Exception} \ImportTok{as}\NormalTok{ e:}
+\NormalTok{...     }\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"OOPS }\SpecialCharTok{\{}\BuiltInTok{type}\NormalTok{(e)}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+\NormalTok{...}
+\NormalTok{OOPS }\OperatorTok{<}\KeywordTok{class} \StringTok{'dataclasses.FrozenInstanceError'}\OperatorTok{>}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{pour-aller-plus-loin}{%
 \subsubsection{Pour aller plus loin}\label{pour-aller-plus-loin}}
