@@ -1,4 +1,4 @@
-# Mise `a jour Novembre 2018
+# Mise à jour Novembre 2018
 
 Ce repository est à présent archivé, il a été incorporé dans celui-ci:
 
